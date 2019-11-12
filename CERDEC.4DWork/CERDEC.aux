@@ -1,0 +1,275 @@
+==============================================================
+==============================================================
+4DGL Compiler 2.8.1.0 -- Copyright 2004-2016 4D Labs
+** C:\Users\ebenton\Documents\CERDEC TS\CERDEC.4Dg
+compiled Tue Nov 12 15:59:41 2019
+
+==============================================================
+==============================================================
+
+
+No Ref for file
+button_enable_idx                      1  word     [arg]  (usage 6)
+button_disable_idx                     1  word     [arg]  (usage 2)
+x_pos                                  2  word     [arg]  (usage 2)
+y_pos                                  2  word     [arg]  (usage 2)
+
+[LINKING]
+function 15, process_input, address 0x5e, stack usage 40 + 4 
+tmpByte                                1  word     [local]  (usage 9)
+dataByteCount                          2  word     [local]  (usage 10)
+mod_number                            19  word     [local]  (usage 6)
+shelf_number                          18  word     [local]  (usage 12)
+temp_vals                              3  word[15]  [local]  (usage 24)
+i                                     20  word     [local]  (usage 12)
+
+[LINKING]
+function 14, request_all_shelf_mods, address 0x11a, stack usage 4 + 4 
+i                                      2  word     [local]  (usage 12)
+mods_per_shelf                         1  word     [local]  (usage 4)
+shelf                                  1  word     [arg]  (usage 3)
+
+[LINKING]
+function 13, request_mod, address 0x14e, stack usage 16 + 4 
+cmd                                    1  word[7]  [local]  (usage 24)
+mod                                    1  word     [arg]  (usage 3)
+i                                      8  word     [local]  (usage 12)
+shelf                                  1  word     [arg]  (usage 3)
+
+[LINKING]
+function 12, set_mods, address 0x1ab, stack usage 0 + 4 
+data                                   1  word     [arg]  (usage 24)
+
+[LINKING]
+function 11, get_mods, address 0x226, stack usage 2 + 4 
+mod                                    1  word     [arg]  (usage 6)
+mods_per_shelf                         1  word     [local]  (usage 7)
+shelf                                  1  word     [arg]  (usage 6)
+
+[LINKING]
+function 10, set_shelf, address 0x250, stack usage 0 + 4 
+data                                   1  word     [arg]  (usage 24)
+
+[LINKING]
+function 9, get_shelf, address 0x2bc, stack usage 0 + 4 
+
+[LINKING]
+function 8, calc_temperature, address 0x2c3, stack usage 8 + 4 
+temp_int                               1  word     [arg]  (usage 3)
+temp_flt_1                             1  word[2]  [local]  (usage 12)
+temp_flt_2                             3  word[2]  [local]  (usage 6)
+
+temp_flt                               1  word[2]  [local]  (usage 4)
+temp_int                               1  word     [arg]  (usage 2)
+x_pos                                  1  word     [arg]  (usage 2)
+y_pos                                  2  word     [arg]  (usage 2)
+
+temp_flt                               3  word[2]  [local]  (usage 4)
+volt_flt                               1  word[2]  [local]  (usage 4)
+volt_int                               1  word     [arg]  (usage 2)
+
+[LINKING]
+function 5, calc_shelf_voltage, address 0x2e7, stack usage 10 + 4 
+temp_flt                               4  word[2]  [local]  (usage 6)
+volt_flt                               2  word[2]  [local]  (usage 6)
+volt_int                               1  word     [local]  (usage 6)
+shelf                                  1  word     [arg]  (usage 3)
+
+x_pos                                  1  word     [arg]  (usage 2)
+volt_flt                               1  word[2]  [local]  (usage 2)
+y_pos                                  2  word     [arg]  (usage 2)
+shelf                                  1  word     [arg]  (usage 2)
+
+[LINKING]
+function 3, calc_system_voltage, address 0x31d, stack usage 6 + 4 
+sys_volt                               1  word[2]  [local]  (usage 12)
+i                                      3  word     [local]  (usage 12)
+
+sys_volt                               1  word[2]  [local]  (usage 4)
+x_pos                                  1  word     [arg]  (usage 2)
+y_pos                                  1  word     [arg]  (usage 2)
+
+[LINKING]
+function 1, main(main entry point), address 0x378, stack usage 2 + 4 
+current_shelf                          1  word     [local]  (usage 4)
+
+[RESERVED WORDS]
+#inherit
+#LISTCODE
+#MODE
+#STACK
+#OPTIMIZE_ON
+#OPTIMIZE_OFF
+byte
+word
+dword
+float
+private
+#IF
+#IFNOT
+#ELSE
+#ENDIF
+#CONST
+#constant
+#USE
+USING
+func
+endfunc
+var
+#STOP
+#DATA
+#ASM
+#END
+#platform
+EXISTS
+#ERROR
+#MESSAGE
+#NOTICE
+sizeof
+argcount
+if
+else
+endif
+while
+wend
+repeat
+until
+forever
+return
+break
+continue
+for
+next
+switch
+case
+default
+endswitch
+print
+goto
+gosub
+endsub
+mcall
+lookup8
+lookup16
+
+[MACRO]
+
+[CONSTANTS]
+__MAXMEM                          00008000      32768  (usage 1)
+__MAXPROG                         00007FEE      32750  (usage 1)
+DIABLO                            00000003          3  (usage 3)
+I_TOUCH_DISABLE                   00000020         32  (usage 4)
+ID                                00000003          3  (usage 6)
+LANDSCAPE                         00000000          0  (usage 3)
+LIME                              000007E0       2016  (usage 3)
+MOD_A                             00000007          7  (usage 6)
+MOD_FORM                          00000002          2  (usage 3)
+MOD_T                             00000006          6  (usage 6)
+MOD_V                             00000004          4  (usage 12)
+OVERVIEW_FORM                     00000000          0  (usage 6)
+RED                               0000F800      63488  (usage 3)
+SCREEN_MODE                       00000017         23  (usage 3)
+SHELF_A                           00000000          0  (usage 3)
+SHELF_E                           00000000          0  (usage 3)
+SHELF_FORM                        00000001          1  (usage 3)
+SHELF_H                           00000000          0  (usage 3)
+SHELF_ID                          00000000          0  (usage 3)
+SHELF_L                           00000000          0  (usage 3)
+SHELF_T                           00000000          0  (usage 3)
+SHELF_V                           00000000          0  (usage 6)
+START_BYT                         00000018         24  (usage 3)
+TYPE                              00000002          2  (usage 9)
+
+[PmmC FUNCTIONS]
+com1_Count                        FFFFFF07        -249  args=0 r=1  (usage 6)
+file_LoadImageControl             FFFFFE3D        -451  args=3 r=1  (usage 3)
+file_Mount                        FFFFFE3C        -452  args=0 r=1  (usage 6)
+flt_ADD                           FFFFFF9F         -97  args=3 r=1  (usage 3)
+flt_ITOF                          FFFFFFB1         -79  args=2 r=1  (usage 8)
+flt_MUL                           FFFFFF9D         -99  args=3 r=1  (usage 8)
+flt_PRINT                         FFFFFFAD         -83  args=2 r=1  (usage 6)
+flt_VAL                           FFFFFFB2         -78  args=2 r=1  (usage 11)
+gfx_Cls                           FFFFFF82        -126  args=0 r=0  (usage 3)
+gfx_MoveTo                        FFFFFF81        -127  args=2 r=0  (usage 6)
+gfx_Set                           FFFFFF83        -125  args=2 r=0  (usage 3)
+img_ClearAttributes               FFFFFE81        -383  args=3 r=1  (usage 2)
+img_SetAttributes                 FFFFFE82        -382  args=3 r=1  (usage 2)
+img_SetPosition                   FFFFFE8A        -374  args=4 r=1  (usage 2)
+img_Show                          FFFFFE83        -381  args=2 r=1  (usage 2)
+pause                             FFFFFFFA          -6  args=1 r=0  (usage 9)
+putstr                            FFFFFFF7          -9  args=1 r=1  (usage 6)
+serin1                            FFFFFF13        -237  args=0 r=1  (usage 9)
+serout1                           FFFFFF0F        -241  args=1 r=0  (usage 3)
+
+[USER FUNCTIONS]
+calc_shelf_voltage                000002E7  args=1 r=0  (usage 5)
+calc_system_voltage               0000031D  args=0 r=0  (usage 2)
+calc_temperature                  000002C3  args=1 r=0  (usage 2)
+get_mods                          00000226  args=2 r=0  (usage 3)
+get_shelf                         000002BC  args=1 r=0  (usage 6)
+process_input                     0000005E  args=0 r=0  (usage 3)
+request_all_shelf_mods            0000011A  args=1 r=0  (usage 3)
+request_mod                       0000014E  args=2 r=0  (usage 3)
+set_mods                          000001AB  args=1 r=0  (usage 3)
+set_shelf                         00000250  args=1 r=0  (usage 3)
+
+[GLOBAL VARIABLES]
+current_form                           2  word       (usage 7)
+current_mod                          102  word       (usage 1)
+hndl                                   1  word       (usage 11)
+mod0                                  21  word[8]   (usage 2)
+mod1                                  29  word[8]   (usage 2)
+mod2                                  37  word[8]   (usage 2)
+mod3                                  45  word[8]   (usage 2)
+mod4                                  53  word[8]   (usage 2)
+mod5                                  61  word[8]   (usage 2)
+mod6                                  69  word[8]   (usage 2)
+mod7                                  77  word[8]   (usage 2)
+mod8                                  85  word[8]   (usage 2)
+mod_ptr_1                            103  word       (usage 15)
+mod_ptr_2                            104  word       (usage 15)
+mods                                  93  word[9]   (usage 6)
+prev_form                              3  word       (usage 1)
+shelf0                                 4  word[12]   (usage 3)
+shelf_ptr                             16  word       (usage 30)
+shelf_volt                            17  word[2]   (usage 6)
+
+[PRIVATE VARIABLES]
+
+[DATA]
+0007: 15 00 1D 00 25 00 2D 00 35 00 3D 00 45 00 4D 00     ....%.-.5.=.E.M.
+0017: 55 00 30 2E 35 00 30 2E 30 32 00 30 2E 30 00 4D     U.0.5.0.02.0.0.M
+0027: 6F 75 6E 74 69 6E 67 2E 2E 2E 0A 00 44 72 69 76     ounting.....Driv
+0037: 65 20 6E 6F 74 20 6D 6F 75 6E 74 65 64 2E 2E 2E     e not mounted...
+0047: 00 43 45 52 44 45 43 2E 64 61 74 00 43 45 52 44     .CERDEC.dat.CERD
+0057: 45 43 2E 67 63 69 00                                EC.gci.
+
+[__MAXPROG]
+32750
+[__MAXMEM]
+32768
+
+[PROGRAM]
+main
+[CODESIZE]
+1018
+[MEMSIZE]
+108
+[ARGCOUNT]
+0
+[RETURNS]
+NO
+[STACKSIZE]
+0 (AUTO)
+[STACK_ESTIMATE]
+152   (nb:- worst case estimate)
+[MODE]
+0
+
+[PROJECT]
+C:\Users\ebenton\Documents\CERDEC TS\CERDEC.4Dg
+C:\Program Files (x86)\4D Labs\4D Workshop 4 IDE\include\Gen4-uLCD-70DT.fnc
+C:\Program Files (x86)\4D Labs\4D Workshop 4 IDE\include\Diablo16_Functions.fnc
+C:\Program Files (x86)\4D Labs\4D Workshop 4 IDE\include\4DGL_16bitColours.fnc
+C:\Program Files (x86)\4D Labs\4D Workshop 4 IDE\include\VisualConst.inc
+C:\Users\ebenton\Documents\CERDEC TS\CERDEC.4DWork\CERDECConst.inc
