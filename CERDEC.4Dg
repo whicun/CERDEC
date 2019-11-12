@@ -403,3 +403,71 @@ func update_button(var button_enable_idx, var button_disable_idx, var x_pos, var
     // Show the button (assumed on top of 'disable button')
     img_Show(hndl, button_enable_idx);
 endfunc
+
+
+    // OverallStatus_Form 1.1 generated 11/12/2019 4:04:22 PM
+    img_Show(hndl,iOverallStatus_Form) ;
+
+
+    // Panel1 1.0 generated 11/12/2019 4:04:43 PM
+    gfx_Panel(PANEL_SUNKEN, 12, 129, 65, 30, WHITE) ;
+
+    // Panel11 1.0 generated 11/12/2019 4:04:46 PM
+    gfx_Panel(PANEL_SUNKEN, 12, 360, 65, 30, WHITE) ;
+
+    // Panel9 1.0 generated 11/12/2019 4:04:49 PM
+    gfx_Panel(PANEL_SUNKEN, 516, 96, 108, 35, WHITE) ;
+
+    // Panel5 1.0 generated 11/12/2019 4:04:51 PM
+    gfx_Panel(PANEL_SUNKEN, 516, 181, 108, 35, WHITE) ;
+
+    // Panel6 1.0 generated 11/12/2019 4:04:53 PM
+    gfx_Panel(PANEL_SUNKEN, 516, 222, 108, 35, WHITE) ;
+
+    // Panel7 1.0 generated 11/12/2019 4:04:55 PM
+    gfx_Panel(PANEL_SUNKEN, 516, 275, 108, 35, WHITE) ;
+
+    // Panel8 1.0 generated 11/12/2019 4:04:57 PM
+    gfx_Panel(PANEL_SUNKEN, 516, 316, 108, 35, WHITE) ;
+
+    // Panel10 1.0 generated 11/12/2019 4:05:00 PM
+    gfx_Panel(PANEL_SUNKEN, 516, 357, 108, 35, WHITE) ;
+
+
+    // ResetSystemStatus_btn 1.0 generated 11/12/2019 4:10:53 PM
+    img_ClearAttributes(hndl, iResetSystemStatus_btn, I_TOUCH_DISABLE); // set to enable touch, only need to do this once
+    img_Show(hndl, iResetSystemStatus_btn);  // show button, only do this once
+    img_SetWord(hndl, iResetSystemStatus_btn, IMAGE_INDEX, state); // where state is 0 for up and 1 for down
+    img_Show(hndl,iResetSystemStatus_btn) ;
+
+    // ResetDischarges_btn 1.0 generated 11/12/2019 4:10:58 PM
+    img_ClearAttributes(hndl, iResetDischarges_btn, I_TOUCH_DISABLE); // set to enable touch, only need to do this once
+    img_Show(hndl, iResetDischarges_btn);  // show button, only do this once
+    img_SetWord(hndl, iResetDischarges_btn, IMAGE_INDEX, state); // where state is 0 for up and 1 for down
+    img_Show(hndl,iResetDischarges_btn) ;
+
+    // SystemStart_btn 1.0 generated 11/12/2019 4:11:01 PM
+    img_ClearAttributes(hndl, iSystemStart_btn, I_TOUCH_DISABLE); // set to enable touch, only need to do this once
+    img_Show(hndl, iSystemStart_btn);  // show button, only do this once
+    img_SetWord(hndl, iSystemStart_btn, IMAGE_INDEX, state); // where state is 0 for up and 1 for down
+    img_Show(hndl,iSystemStart_btn) ;
+
+    // SystemStop_btn 1.0 generated 11/12/2019 4:11:04 PM
+    img_ClearAttributes(hndl, iSystemStop_btn, I_TOUCH_DISABLE); // set to enable touch, only need to do this once
+    img_Show(hndl, iSystemStop_btn);  // show button, only do this once
+    img_SetWord(hndl, iSystemStop_btn, IMAGE_INDEX, state); // where state is 0 for up and 1 for down
+    img_Show(hndl,iSystemStop_btn) ;
+
+    // Shelf_btn 1.0 generated 11/12/2019 4:11:07 PM
+    img_ClearAttributes(hndl, iShelf_btn, I_TOUCH_DISABLE); // set to enable touch, only need to do this once
+    img_Show(hndl, iShelf_btn);  // show button, only do this once
+    img_SetWord(hndl, iShelf_btn, IMAGE_INDEX, state); // where state is 0 for up and 1 for down
+    img_Show(hndl,iShelf_btn) ;
+
+    // EmergencyStop_btn 1.0 generated 11/12/2019 4:11:09 PM
+    img_ClearAttributes(hndl, iEmergencyStop_btn, I_TOUCH_DISABLE); // set to enable touch, only need to do this once
+    img_Show(hndl, iEmergencyStop_btn);  // show button, only do this once
+    img_SetWord(hndl, iEmergencyStop_btn, IMAGE_INDEX, state); // where state is 0 for up and 1 for down
+    img_Show(hndl,iEmergencyStop_btn) ;
+
+

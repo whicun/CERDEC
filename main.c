@@ -4,6 +4,8 @@
 #inherit "CERDECConst.inc"
 
 // Generic
+#constant UP            0
+#constant DOWN          1
 #constant ACTIVE        1
 #constant INACTIVE      0
 #constant TRUE          1
