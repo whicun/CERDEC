@@ -403,3 +403,70 @@ func update_button(var button_enable_idx, var button_disable_idx, var x_pos, var
     // Show the button (assumed on top of 'disable button')
     img_Show(hndl, button_enable_idx);
 endfunc
+
+
+    // 1FrameInfo_panel 1.0 generated 11/13/2019 11:06:35 AM
+    gfx_OutlineColour(SILVER) ;
+    gfx_Panel(PANEL_SUNKEN, 18, 225, 270, 236, 0x8D9C) ;
+    gfx_OutlineColour(BLACK) ;
+
+    // ShelfOverCharged_LED 1.0 generated 11/13/2019 11:47:43 AM
+    gfx_CircleFilled(50, 265, 20, LIMEGREEN) ;
+
+    // ShelfOverTemp_LED 1.0 generated 11/13/2019 11:47:46 AM
+    gfx_CircleFilled(50, 317, 20, LIMEGREEN) ;
+
+    // ShelfOverDischarged_LED 1.0 generated 11/13/2019 11:47:49 AM
+    gfx_CircleFilled(50, 368, 20, LIMEGREEN) ;
+
+    // ShelfError_LED 1.0 generated 11/13/2019 11:47:52 AM
+    gfx_CircleFilled(50, 425, 20, LIMEGREEN) ;
+
+    // ShelfOverCharge_Label 1.0 generated 11/13/2019 12:01:32 PM
+    img_Show(hndl,iShelfOverCharge_Label) ;
+
+    // ShelfOverTemp_Label 1.0 generated 11/13/2019 12:01:35 PM
+    img_Show(hndl,iShelfOverTemp_Label) ;
+
+    // OverDischarged_Label 1.0 generated 11/13/2019 12:01:38 PM
+    img_Show(hndl,iOverDischarged_Label) ;
+
+    // ShelfError_Label 1.0 generated 11/13/2019 12:01:40 PM
+    img_Show(hndl,iShelfError_Label) ;
+
+    // Panel12 1.0 generated 11/13/2019 12:04:10 PM
+    gfx_Panel(PANEL_SUNKEN, 160, 406, 108, 35, WHITE) ;
+
+    // ShelfAlarms_Title 1.0 generated 11/13/2019 12:04:56 PM
+    img_Show(hndl,iShelfAlarms_Title) ;
+
+    // !1TempsPanel13 1.0 generated 11/13/2019 12:06:46 PM
+    gfx_OutlineColour(SILVER) ;
+    gfx_Panel(PANEL_SUNKEN, 296, 225, 324, 236, 0x8D9C) ;
+    gfx_OutlineColour(BLACK) ;
+
+
+
+    // Panel19 1.0 generated 11/13/2019 12:10:36 PM
+    gfx_Panel(PANEL_SUNKEN, 441, 246, 108, 35, WHITE) ;
+
+    // Panel15 1.0 generated 11/13/2019 12:10:38 PM
+    gfx_Panel(PANEL_SUNKEN, 441, 291, 108, 35, WHITE) ;
+
+    // Panel13 1.0 generated 11/13/2019 12:10:40 PM
+    gfx_Panel(PANEL_SUNKEN, 441, 364, 108, 35, WHITE) ;
+
+    // Panel14 1.0 generated 11/13/2019 12:10:43 PM
+    gfx_Panel(PANEL_SUNKEN, 441, 416, 108, 35, WHITE) ;
+
+
+    // ShelfReadings_Title 1.0 generated 11/13/2019 12:14:20 PM
+    img_Show(hndl,iShelfReadings_Title) ;
+    // Panel16 1.0 generated 11/13/2019 12:10:46 PM
+    gfx_Panel(PANEL_SUNKEN, 560, 364, 50, 35, WHITE) ;
+
+    // Panel17 1.0 generated 11/13/2019 12:10:48 PM
+    gfx_Panel(PANEL_SUNKEN, 560, 416, 50, 35, WHITE) ;
+
+
+

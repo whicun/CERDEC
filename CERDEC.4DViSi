@@ -3176,8 +3176,8 @@ StaticText
     WordWrap                     No
 end
 WinButton
-    Name                         Module1_btn_bad
-    Alias                        Module1_btn_bad
+    Name                         Module1Bad_btn
+    Alias                        Module1Bad_btn
     Appearance.Alignment         Center
     Appearance.Layout            Left
     Appearance.PictureAlignment  Right
@@ -3224,8 +3224,8 @@ WinButton
     OnTouchReleased              ''
 end
 WinButton
-    Name                         Module4_btn_bad
-    Alias                        Module4_btn_bad
+    Name                         Module4Bad_btn
+    Alias                        Module4Bad_btn
     Appearance.Alignment         Center
     Appearance.Layout            Left
     Appearance.PictureAlignment  Right
@@ -3272,8 +3272,8 @@ WinButton
     OnTouchReleased              ''
 end
 WinButton
-    Name                         Module7_btn_bad
-    Alias                        Module7_btn_bad
+    Name                         Module7Bad_btn
+    Alias                        Module7Bad_btn
     Appearance.Alignment         Center
     Appearance.Layout            Left
     Appearance.PictureAlignment  Right
@@ -3320,8 +3320,8 @@ WinButton
     OnTouchReleased              ''
 end
 WinButton
-    Name                         Module8_btn_bad
-    Alias                        Module8_btn_bad
+    Name                         Module8Bad_btn
+    Alias                        Module8Bad_btn
     Appearance.Alignment         Center
     Appearance.Layout            Left
     Appearance.PictureAlignment  Right
@@ -3368,8 +3368,8 @@ WinButton
     OnTouchReleased              ''
 end
 WinButton
-    Name                         Module5_btn_bad
-    Alias                        Module5_btn_bad
+    Name                         Module5Bad_btn
+    Alias                        Module5Bad_btn
     Appearance.Alignment         Center
     Appearance.Layout            Left
     Appearance.PictureAlignment  Right
@@ -3416,8 +3416,8 @@ WinButton
     OnTouchReleased              ''
 end
 WinButton
-    Name                         Module2_btn_bad
-    Alias                        Module2_btn_bad
+    Name                         Module2Bad_btn
+    Alias                        Module2Bad_btn
     Appearance.Alignment         Center
     Appearance.Layout            Left
     Appearance.PictureAlignment  Right
@@ -3464,8 +3464,8 @@ WinButton
     OnTouchReleased              ''
 end
 WinButton
-    Name                         Module3_btn_bad
-    Alias                        Module3_btn_bad
+    Name                         Module3Bad_btn
+    Alias                        Module3Bad_btn
     Appearance.Alignment         Center
     Appearance.Layout            Left
     Appearance.PictureAlignment  Right
@@ -3512,8 +3512,8 @@ WinButton
     OnTouchReleased              ''
 end
 WinButton
-    Name                         Module6_btn_bad
-    Alias                        Module6_btn_bad
+    Name                         Module6Bad_btn
+    Alias                        Module6Bad_btn
     Appearance.Alignment         Center
     Appearance.Layout            Left
     Appearance.PictureAlignment  Right
@@ -3560,8 +3560,8 @@ WinButton
     OnTouchReleased              ''
 end
 WinButton
-    Name                         Module9_btn_bad
-    Alias                        Module9_btn_bad
+    Name                         Module9Bad_btn
+    Alias                        Module9Bad_btn
     Appearance.Alignment         Center
     Appearance.Layout            Left
     Appearance.PictureAlignment  Right

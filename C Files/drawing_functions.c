@@ -275,11 +275,13 @@ func draw_overall_mods()
     img_ClearAttributes(hndl, iMainModule1Good_btn, I_TOUCH_DISABLE);
     img_SetWord(hndl, iMainModule1Good_btn, IMAGE_INDEX, UP);
     img_Show(hndl,iMainModule1Good_btn);
+    img_SetAttributes(hndl, iMainModule1Bad_btn, I_TOUCH_DISABLE);
   else
     // MainModule1Bad_btn
     img_ClearAttributes(hndl, iMainModule1Bad_btn, I_TOUCH_DISABLE);
     img_SetWord(hndl, iMainModule1Bad_btn, IMAGE_INDEX, UP);
     img_Show(hndl,iMainModule1Bad_btn);
+    img_SetAttributes(hndl, iMainModule1Good_btn, I_TOUCH_DISABLE);
   endif
 
   // Main Module 1 Button
@@ -288,11 +290,13 @@ func draw_overall_mods()
     img_ClearAttributes(hndl, iMainModule2Good_btn, I_TOUCH_DISABLE);
     img_SetWord(hndl, iMainModule2Good_btn, IMAGE_INDEX, UP);
     img_Show(hndl,iMainModule2Good_btn);
+    img_SetAttributes(hndl, iMainModule2Bad_btn, I_TOUCH_DISABLE);
   else
     // MainModule2Bad_btn
     img_ClearAttributes(hndl, iMainModule2Bad_btn, I_TOUCH_DISABLE);
     img_SetWord(hndl, iMainModule2Bad_btn, IMAGE_INDEX, UP);
     img_Show(hndl,iMainModule2Bad_btn);
+    img_SetAttributes(hndl, iMainModule2Good_btn, I_TOUCH_DISABLE);
   endif
 
   // Main Module 2 Button
@@ -301,11 +305,13 @@ func draw_overall_mods()
     img_ClearAttributes(hndl, iMainModule3Good_btn, I_TOUCH_DISABLE);
     img_SetWord(hndl, iMainModule3Good_btn, IMAGE_INDEX, UP);
     img_Show(hndl,iMainModule3Good_btn);
+    img_SetAttributes(hndl, iMainModule3Bad_btn, I_TOUCH_DISABLE);
   else
     // MainModule3Bad_btn
     img_ClearAttributes(hndl, iMainModule3Bad_btn, I_TOUCH_DISABLE);
     img_SetWord(hndl, iMainModule3Bad_btn, IMAGE_INDEX, UP);
     img_Show(hndl,iMainModule3Bad_btn);
+    img_SetAttributes(hndl, iMainModule3Good_btn, I_TOUCH_DISABLE);
   endif
 
   // Main Module 3 Button
@@ -314,11 +320,13 @@ func draw_overall_mods()
     img_ClearAttributes(hndl, iMainModule4Good_btn, I_TOUCH_DISABLE);
     img_SetWord(hndl, iMainModule4Good_btn, IMAGE_INDEX, UP);
     img_Show(hndl,iMainModule4Good_btn);
+    img_SetAttributes(hndl, iMainModule4Bad_btn, I_TOUCH_DISABLE);
   else
     // MainModule4Good_btn
     img_ClearAttributes(hndl, iMainModule4Bad_btn, I_TOUCH_DISABLE);
     img_SetWord(hndl, iMainModule4Bad_btn, IMAGE_INDEX, UP);
     img_Show(hndl,iMainModule4Bad_btn);
+    img_SetAttributes(hndl, iMainModule4Good_btn, I_TOUCH_DISABLE);
   endif
 
   // Main Module 4 Button
@@ -327,11 +335,13 @@ func draw_overall_mods()
     img_ClearAttributes(hndl, iMainModule5Good_btn, I_TOUCH_DISABLE);
     img_SetWord(hndl, iMainModule5Good_btn, IMAGE_INDEX, UP);
     img_Show(hndl,iMainModule5Good_btn);
+    img_SetAttributes(hndl, iMainModule5Bad_btn, I_TOUCH_DISABLE);
   else
     // MainModule5Good_btn
     img_ClearAttributes(hndl, iMainModule5Bad_btn, I_TOUCH_DISABLE);
     img_SetWord(hndl, iMainModule5Bad_btn, IMAGE_INDEX, UP);
     img_Show(hndl,iMainModule5Bad_btn);
+    img_SetAttributes(hndl, iMainModule5Good_btn, I_TOUCH_DISABLE);
   endif
 
   // Main Module 5 Button
@@ -340,11 +350,13 @@ func draw_overall_mods()
     img_ClearAttributes(hndl, iMainModule6Good_btn, I_TOUCH_DISABLE);
     img_SetWord(hndl, iMainModule6Good_btn, IMAGE_INDEX, UP);
     img_Show(hndl,iMainModule6Good_btn);
+    img_SetAttributes(hndl, iMainModule6Bad_btn, I_TOUCH_DISABLE);
   else
     // MainModule6Good_btn
     img_ClearAttributes(hndl, iMainModule6Bad_btn, I_TOUCH_DISABLE);
     img_SetWord(hndl, iMainModule6Bad_btn, IMAGE_INDEX, UP);
     img_Show(hndl,iMainModule6Bad_btn);
+    img_SetAttributes(hndl, iMainModule6Good_btn, I_TOUCH_DISABLE);
   endif
 
   // Main Module 6 Button
@@ -353,11 +365,13 @@ func draw_overall_mods()
     img_ClearAttributes(hndl, iMainModule7Good_btn, I_TOUCH_DISABLE);
     img_SetWord(hndl, iMainModule7Good_btn, IMAGE_INDEX, UP);
     img_Show(hndl,iMainModule7Good_btn);
+    img_SetAttributes(hndl, iMainModule7Bad_btn, I_TOUCH_DISABLE);
   else
     // MainModule7Good_btn
     img_ClearAttributes(hndl, iMainModule7Bad_btn, I_TOUCH_DISABLE);
     img_SetWord(hndl, iMainModule7Bad_btn, IMAGE_INDEX, UP);
     img_Show(hndl,iMainModule7Bad_btn);
+    img_SetAttributes(hndl, iMainModule7Good_btn, I_TOUCH_DISABLE);
   endif
 
   // Main Module 7 Button
@@ -366,11 +380,13 @@ func draw_overall_mods()
     img_ClearAttributes(hndl, iMainModule8Good_btn, I_TOUCH_DISABLE);
     img_SetWord(hndl, iMainModule8Good_btn, IMAGE_INDEX, UP);
     img_Show(hndl,iMainModule8Good_btn);
+    img_SetAttributes(hndl, iMainModule8Bad_btn, I_TOUCH_DISABLE);
   else
     // MainModule8Good_btn
     img_ClearAttributes(hndl, iMainModule8Bad_btn, I_TOUCH_DISABLE);
     img_SetWord(hndl, iMainModule8Bad_btn, IMAGE_INDEX, UP);
     img_Show(hndl,iMainModule8Bad_btn);
+    img_SetAttributes(hndl, iMainModule8Good_btn, I_TOUCH_DISABLE);
   endif
 
   // Main Module 8 Button
@@ -379,11 +395,13 @@ func draw_overall_mods()
     img_ClearAttributes(hndl, iMainModule9Good_btn, I_TOUCH_DISABLE);
     img_SetWord(hndl, iMainModule9Good_btn, IMAGE_INDEX, UP);
     img_Show(hndl,iMainModule9Good_btn);
+    img_SetAttributes(hndl, iMainModule9Bad_btn, I_TOUCH_DISABLE);
   else
     // MainModule9Good_btn
     img_ClearAttributes(hndl, iMainModule9Bad_btn, I_TOUCH_DISABLE);
     img_SetWord(hndl, iMainModule9Bad_btn, IMAGE_INDEX, UP);
     img_Show(hndl,iMainModule9Bad_btn);
+    img_SetAttributes(hndl, iMainModule9Good_btn, I_TOUCH_DISABLE);
   endif
 
 endfunc
@@ -445,6 +463,227 @@ func draw_shelf_readings()
 
 endfunc
 
+func draw_shelf_modules()
+
+  // Draw the background panel
+  gfx_OutlineColour(SILVER);
+  gfx_Panel(PANEL_SUNKEN, 18, 29, 270, 166, 0x8D9C);
+  gfx_OutlineColour(BLACK);
+
+  // Draw the modules
+  draww_shelf_module_buttons();
+
+  // Draw the title
+  img_Show(hndl,iModules_Title);
+
+endfunc
+
+func draw_shelf_mod_info(var mod_number)
+
+  // Draw the background panel
+  gfx_OutlineColour(SILVER);
+  gfx_Panel(PANEL_SUNKEN, 296, 29, 324, 166, 0x8D9C);
+  gfx_OutlineColour(BLACK);
+
+  // Draw the LEDs for the module's alarms
+  draw_mod_alarm_leds(mods[mod_number]);
+  
+  // Draw the labels for the module's fields
+  draw_mod_labels();
+
+  // Draw the title
+  img_Show(hndl,iModuleNumber_Title);
+
+endfunc
+
+func draw_mod_alarm_leds(var mod)
+
+  var alarm_index, alarms;
+  alarm_index := 2;
+  alarms := mod[alarm_index];
+
+  // Shelf Over Charged
+  if(alarms & 0x01 == 0x01)
+    gfx_CircleFilled(324, 140, 10, LED_GOOD);
+  else
+    gfx_CircleFilled(324, 140, 10, LED_BAD);
+  endif
+
+  // Shelf Over Temp
+  if(alarms & 0x04 == 0x04)
+    gfx_CircleFilled(500, 140, 10, LED_GOOD);
+  else
+    gfx_CircleFilled(500, 140, 10, LED_BAD);
+  endif
+
+  // Shelf Over Disc
+  if(alarms & 0x02 == 0x02)
+    gfx_CircleFilled(324, 172, 10, LED_GOOD);
+  else
+    gfx_CircleFilled(324, 172, 10, LED_BAD);
+  endif
+
+  // Shelf Error
+  if(alarms & 0x08 == 0x08)
+    gfx_CircleFilled(500, 172, 10, LED_GOOD);
+  else
+    gfx_CircleFilled(500, 172, 10, LED_BAD);
+  endif
+
+endfunc
+
+func draw_mod_labels()
+
+  // Module Voltage
+  img_Show(hndl,iModuleVoltage_Label) ;
+
+  // Module Temp
+  img_Show(hndl,iModuleTemp_Label) ;
+
+  // Module Voltage Units
+  img_Show(hndl,iModuleVoltage_Unit) ;
+
+  // Module Temp Units
+  img_Show(hndl,iModuleTemp_Units) ;
+
+  // Module Over Charged
+  img_Show(hndl,iModuleOverCharged_Label) ;
+
+  // Module Over Discharged
+  img_Show(hndl,iModuleOverDischarged_Label) ;
+
+  // Module Over Temp
+  img_Show(hndl,iModuleOverTemp_Label) ;
+
+  // Module Error
+  img_Show(hndl,iModuleError_Label) ;
+  gfx_Panel(PANEL_RAiSED, 572, 160, 35, 25, WHITE) ;
+
+endfunc
+
+func draw_shelf_module_buttons()
+
+  var alarm_index := 2;
+
+  // Main Module 0 Button
+  if(any_mod_errors?(mod0))
+    img_ClearAttributes(hndl, iModule1Good_btn, I_TOUCH_DISABLE);
+    img_SetWord(hndl, iModule1Good_btn, IMAGE_INDEX, UP);
+    img_Show(hndl,iModule1Good_btn);
+    img_SetAttributes(hndl, iModule1Bad_btn, I_TOUCH_DISABLE);
+  else
+    img_ClearAttributes(hndl, iModule1Bad_btn, I_TOUCH_DISABLE);
+    img_SetWord(hndl, iModule1Bad_btn, IMAGE_INDEX, UP);
+    img_Show(hndl,iModule1Bad_btn);
+    img_SetAttributes(hndl, iModule1Good_btn, I_TOUCH_DISABLE);
+  endif
+
+  // Main Module 1 Button
+  if(any_mod_errors?(mod1))
+    img_ClearAttributes(hndl, iModule2Good_btn, I_TOUCH_DISABLE);
+    img_SetWord(hndl, iModule2Good_btn, IMAGE_INDEX, UP);
+    img_Show(hndl,iModule2Good_btn);
+    img_SetAttributes(hndl, iModule2Bad_btn, I_TOUCH_DISABLE);
+  else
+    img_ClearAttributes(hndl, iModule2Bad_btn, I_TOUCH_DISABLE);
+    img_SetWord(hndl, iModule2Bad_btn, IMAGE_INDEX, UP);
+    img_Show(hndl,iModule2Bad_btn);
+    img_SetAttributes(hndl, iModule2Good_btn, I_TOUCH_DISABLE);
+  endif
+
+  // Main Module 2 Button
+  if(any_mod_errors?(mod2))
+    img_ClearAttributes(hndl, iModule3Good_btn, I_TOUCH_DISABLE);
+    img_SetWord(hndl, iModule3Good_btn, IMAGE_INDEX, UP);
+    img_Show(hndl,iModule3Good_btn);
+    img_SetAttributes(hndl, iModule3Bad_btn, I_TOUCH_DISABLE);
+  else
+    img_ClearAttributes(hndl, iModule3Bad_btn, I_TOUCH_DISABLE);
+    img_SetWord(hndl, iModule3Bad_btn, IMAGE_INDEX, UP);
+    img_Show(hndl,iModule3Bad_btn);
+    img_SetAttributes(hndl, iModule3Good_btn, I_TOUCH_DISABLE);
+  endif
+
+  // Main Module 3 Button
+  if(any_mod_errors?(mod3))
+    img_ClearAttributes(hndl, iModule4Good_btn, I_TOUCH_DISABLE);
+    img_SetWord(hndl, iModule4Good_btn, IMAGE_INDEX, UP);
+    img_Show(hndl,iModule4Good_btn);
+    img_SetAttributes(hndl, iModule4Bad_btn, I_TOUCH_DISABLE);
+  else
+    img_ClearAttributes(hndl, iModule4Bad_btn, I_TOUCH_DISABLE);
+    img_SetWord(hndl, iModule4Bad_btn, IMAGE_INDEX, UP);
+    img_Show(hndl,iModule4Bad_btn);
+    img_SetAttributes(hndl, iModule4Good_btn, I_TOUCH_DISABLE);
+  endif
+
+  // Main Module 4 Button
+  if(any_mod_errors?(mod4))
+    img_ClearAttributes(hndl, iModule5Good_btn, I_TOUCH_DISABLE);
+    img_SetWord(hndl, iModule5Good_btn, IMAGE_INDEX, UP);
+    img_Show(hndl,iModule5Good_btn);
+    img_SetAttributes(hndl, iModule5Bad_btn, I_TOUCH_DISABLE);
+  else
+    img_ClearAttributes(hndl, iModule5Bad_btn, I_TOUCH_DISABLE);
+    img_SetWord(hndl, iModule5Bad_btn, IMAGE_INDEX, UP);
+    img_Show(hndl,iModule5Bad_btn);
+    img_SetAttributes(hndl, iModule5Good_btn, I_TOUCH_DISABLE);
+  endif
+
+  // Main Module 5 Button
+  if(any_mod_errors?(mod5))
+    img_ClearAttributes(hndl, iModule6Good_btn, I_TOUCH_DISABLE);
+    img_SetWord(hndl, iModule6Good_btn, IMAGE_INDEX, UP);
+    img_Show(hndl,iModule6Good_btn);
+    img_SetAttributes(hndl, iModule6Bad_btn, I_TOUCH_DISABLE);
+  else
+    img_ClearAttributes(hndl, iModule6Bad_btn, I_TOUCH_DISABLE);
+    img_SetWord(hndl, iModule6Bad_btn, IMAGE_INDEX, UP);
+    img_Show(hndl,iModule6Bad_btn);
+    img_SetAttributes(hndl, iModule6Good_btn, I_TOUCH_DISABLE);
+  endif
+
+  // Main Module 6 Button
+  if(any_mod_errors?(mod6))
+    img_ClearAttributes(hndl, iModule7Good_btn, I_TOUCH_DISABLE);
+    img_SetWord(hndl, iModule7Good_btn, IMAGE_INDEX, UP);
+    img_Show(hndl,iModule7Good_btn);
+    img_SetAttributes(hndl, iModule7Bad_btn, I_TOUCH_DISABLE);
+  else
+    img_ClearAttributes(hndl, iModule7Bad_btn, I_TOUCH_DISABLE);
+    img_SetWord(hndl, iModule7Bad_btn, IMAGE_INDEX, UP);
+    img_Show(hndl,iModule7Bad_btn);
+    img_SetAttributes(hndl, iModule7Good_btn, I_TOUCH_DISABLE);
+  endif
+
+  // Main Module 7 Button
+  if(any_mod_errors?(mod7))
+    img_ClearAttributes(hndl, iModule8Good_btn, I_TOUCH_DISABLE);
+    img_SetWord(hndl, iModule8Good_btn, IMAGE_INDEX, UP);
+    img_Show(hndl,iModule8Good_btn);
+    img_SetAttributes(hndl, iModule8Bad_btn, I_TOUCH_DISABLE);
+  else
+    img_ClearAttributes(hndl, iModule8Bad_btn, I_TOUCH_DISABLE);
+    img_SetWord(hndl, iModule8Bad_btn, IMAGE_INDEX, UP);
+    img_Show(hndl,iModule8Bad_btn);
+    img_SetAttributes(hndl, iModule8Good_btn, I_TOUCH_DISABLE);
+  endif
+
+  // Main Module 8 Button
+  if(any_mod_errors?(mod8))
+    img_ClearAttributes(hndl, iModule9Good_btn, I_TOUCH_DISABLE);
+    img_SetWord(hndl, iModule9Good_btn, IMAGE_INDEX, UP);
+    img_Show(hndl,iModule9Good_btn);
+    img_SetAttributes(hndl, iModule9Bad_btn, I_TOUCH_DISABLE);
+  else
+    img_ClearAttributes(hndl, iModule9Bad_btn, I_TOUCH_DISABLE);
+    img_SetWord(hndl, iModule9Bad_btn, IMAGE_INDEX, UP);
+    img_Show(hndl,iModule9Bad_btn);
+    img_SetAttributes(hndl, iModule9Good_btn, I_TOUCH_DISABLE);
+  endif
+
+endfunc
+
 func draw_shelf_alarm_leds()
 
   var alarm_index, alarms;
@@ -459,14 +698,14 @@ func draw_shelf_alarm_leds()
   endif
 
   // Shelf Over Temp
-  if(alarms & 0x02 == 0x02)
+  if(alarms & 0x04 == 0x04)
     gfx_CircleFilled(50, 317, 20, LED_GOOD);
   else
     gfx_CircleFilled(50, 317, 20, LED_BAD);
   endif
 
   // Shelf Over Disc
-  if(alarms & 0x04 == 0x04)
+  if(alarms & 0x02 == 0x02)
     gfx_CircleFilled(50, 368, 20, LED_GOOD);
   else
     gfx_CircleFilled(50, 368, 20, LED_BAD);
@@ -500,46 +739,46 @@ endfunc
 func draw_shelf_readings_labels()
 
   // Shelf Total Voltage
-  img_Show(hndl,iShelfTotalVoltage_Label) ;
+  img_Show(hndl,iShelfTotalVoltage_Label);
 
   // Shelf Average Temp
-  img_Show(hndl,iShelfAverageTemp_Label) ;
+  img_Show(hndl,iShelfAverageTemp_Label);
 
   // Shelf Max Temp
-  img_Show(hndl,iShelfMaxTemp_Label) ;
+  img_Show(hndl,iShelfMaxTemp_Label);
 
   // Shelf Min Temp
-  img_Show(hndl,iShelfMinTemp_Label) ;
+  img_Show(hndl,iShelfMinTemp_Label);
 
   // Shelf TotalVoltage_Units
-  img_Show(hndl,iShelfTotalVoltage_Units) ;
+  img_Show(hndl,iShelfTotalVoltage_Units);
 
   // Shelf AverageTemp_Units
-  img_Show(hndl,iShelfAverageTemp_Units) ;
+  img_Show(hndl,iShelfAverageTemp_Units);
 
   // Module ID
-  img_Show(hndl,iModuleID_Label) ;
+  img_Show(hndl,iModuleID_Label);
 
 endfunc
 
 func draw_shelf_readings_fields()
 
   // Total Voltage
-  gfx_Panel(PANEL_RAISED, 441, 246, 108, 35, WHITE) ;
+  gfx_Panel(PANEL_RAISED, 441, 246, 108, 35, WHITE);
 
   // Average Temp
-  gfx_Panel(PANEL_RAISED, 441, 291, 108, 35, WHITE) ;
+  gfx_Panel(PANEL_RAISED, 441, 291, 108, 35, WHITE);
 
   // Max Temp
-  gfx_Panel(PANEL_RAISED, 441, 364, 108, 35, WHITE) ;
+  gfx_Panel(PANEL_RAISED, 441, 364, 108, 35, WHITE);
 
   // Min Temp
-  gfx_Panel(PANEL_RAISED, 441, 416, 108, 35, WHITE) ;
+  gfx_Panel(PANEL_RAISED, 441, 416, 108, 35, WHITE);
 
   // Max ID
-  gfx_Panel(PANEL_RAISED, 560, 364, 50, 35, WHITE) ;
+  gfx_Panel(PANEL_RAISED, 560, 364, 50, 35, WHITE);
 
   // Min ID
-  gfx_Panel(PANEL_RAISED, 560, 416, 50, 35, WHITE) ;
+  gfx_Panel(PANEL_RAISED, 560, 416, 50, 35, WHITE);
 
 endfunc
