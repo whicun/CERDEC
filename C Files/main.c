@@ -25,8 +25,6 @@
 #constant OVERVIEW_FORM 0
 #constant SHELF_FORM 1
 #constant MOD_FORM 2
-var current_form := OVERVIEW_FORM;
-var prev_form := OVERVIEW_FORM;
 
 // Indices
 #constant TYPE  2
@@ -96,6 +94,9 @@ var *mod_ptr_1;
 var *mod_ptr_2;
 var mod_volt[2];
 var mod_temp[2];
+
+var current_form := OVERVIEW_FORM;
+var prev_form := OVERVIEW_FORM;
 
 
 func main()
