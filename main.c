@@ -18,6 +18,8 @@
 #constant LED_GOOD          LIME
 #constant LED_IDLE          0x34DF
 #constant LED_BAD           RED
+#constant RB_CHKD           BLACK
+#constant RB_UNCHKD         0xD699
 
 // Forms
 #constant OVERVIEW_FORM 0
@@ -43,6 +45,18 @@ var prev_form := OVERVIEW_FORM;
 #constant SHELF_E
 
 // Structures
+// System has 12 major characteristics
+// 1) System Status, Int: 1 Byte
+// 2) System Mode, Int: 1 Byte
+// 3) Relay Status, Int: 1 Byte
+// 4) # of Discharges, Int: 1 Byte
+// 5) Stored Energy, Float: 2 Bytes
+// 6) Time at Max, Float: 2 Bytes
+// 7) Estimated Runtime, Float: 2 Bytes
+// 8) Bus Voltage, Float: 2 Bytes
+// 9) Output Current, Float: 2 Bytes
+// 10) Capacitors' Voltage, Float: 2 Bytes
+var system[16];
 
 // Shelves have 9 major characteristics
 // 1) Total Voltage, Float: 2 Bytes
