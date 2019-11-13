@@ -14,7 +14,7 @@
 #constant START_BYT     0x18
 // Colors
 #constant BACKGROUND_COLOR  0xDF5F
-#constant LED_GOOD          LIME
+#constant LED_GOOD          LIMEGREEN
 #constant LED_IDLE          0x34DF
 #constant LED_BAD           RED
 #constant RB_CHKD           BLACK

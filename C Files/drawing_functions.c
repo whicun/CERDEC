@@ -62,7 +62,7 @@ func draw_system_status()
   img_Show(hndl,iResetSystemStatus_btn);
 
   // System Status Title
-  img_Show(hndl,iSystemStatus_Title) ;
+  img_Show(hndl,iSystemStatus_Title);
 
 endfunc
 
@@ -129,7 +129,7 @@ func draw_estimated_runtime()
   gfx_Panel(PANEL_RAISED, 516, 222, 108, 35, WHITE);
 
   // Estimated Runtime Label
-  img_Show(hndl,iEstimatedRuntime_Label) ;
+  img_Show(hndl,iEstimatedRuntime_Label);
 
 endfunc
 
@@ -169,7 +169,7 @@ func draw_relay_status_led()
   relay_index := 2;
 
   // Draw the background LED first
-  gfx_CircleFilled(111, 298, 18, 0x6B6D) ;
+  gfx_CircleFilled(111, 298, 18, 0x6B6D);
 
   // Draw the Relay Status LED
   if(system[relay_index] == ACTIVE)
@@ -191,9 +191,9 @@ func draw_system_mode_radios()
 
   // System Off Radio Button
   if(system[mode_index] == off)
-    gfx_CircleFilled(25, 215, 10, RB_CHKD) ;
+    gfx_CircleFilled(25, 215, 10, RB_CHKD);
   else
-    gfx_CircleFilled(25, 215, 10, RB_UNCHKD) ;
+    gfx_CircleFilled(25, 215, 10, RB_UNCHKD);
   endif
 
   // System Idle Radio Button
@@ -396,4 +396,150 @@ func any_mod_errors?(var mod)
   else
     return FALSE;
   endif
+endfunc
+
+// === Shelf Form ===
+
+func draw_shelf_form()
+
+
+
+endfunc
+
+func draw_shelf_alarms()
+
+  // Draw the background panel
+  gfx_OutlineColour(SILVER);
+  gfx_Panel(PANEL_SUNKEN, 18, 225, 270, 236, 0x8D9C);
+  gfx_OutlineColour(BLACK);
+
+  // Draw the LEDs
+  draw_shelf_alarm_leds();
+
+  // Draw the labels for the LEDs
+  draw_shelf_alarms_labels();
+
+  // Draw the "Error" field
+  gfx_Panel(PANEL_RAISED, 160, 406, 108, 35, WHITE);
+
+  // Draw the title
+  img_Show(hndl,iShelfAlarms_Title);
+
+endfunc
+
+func draw_shelf_readings()
+
+  // Draw the background panel
+  gfx_OutlineColour(SILVER);
+  gfx_Panel(PANEL_SUNKEN, 296, 225, 324, 236, 0x8D9C);
+  gfx_OutlineColour(BLACK);
+
+  // Draw the labels
+  draw_shelf_readings_labels();
+
+  // Draw the fields
+  draw_shelf_readings_fields();
+
+  // Draw the title
+  img_Show(hndl,iShelfReadings_Title);
+
+endfunc
+
+func draw_shelf_alarm_leds()
+
+  var alarm_index, alarms;
+  alarm_index := 6;
+  alarms := shelf0[alarm_index];
+
+  // Shelf Over Charged
+  if(alarms & 0x01 == 0x01)
+    gfx_CircleFilled(50, 265, 20, LED_GOOD);
+  else
+    gfx_CircleFilled(50, 265, 20, LED_BAD);
+  endif
+
+  // Shelf Over Temp
+  if(alarms & 0x02 == 0x02)
+    gfx_CircleFilled(50, 317, 20, LED_GOOD);
+  else
+    gfx_CircleFilled(50, 317, 20, LED_BAD);
+  endif
+
+  // Shelf Over Disc
+  if(alarms & 0x04 == 0x04)
+    gfx_CircleFilled(50, 368, 20, LED_GOOD);
+  else
+    gfx_CircleFilled(50, 368, 20, LED_BAD);
+  endif
+
+  // Shelf Error
+  if(alarms & 0x08 == 0x08)
+    gfx_CircleFilled(50, 425, 20, LED_GOOD);
+  else
+    gfx_CircleFilled(50, 425, 20, LED_BAD);
+  endif
+
+endfunc
+
+func draw_shelf_alarms_labels()
+
+  // Shelf Over Charge
+  img_Show(hndl,iShelfOverCharge_Label);
+
+  // Shelf Over Temp
+  img_Show(hndl,iShelfOverTemp_Label);
+
+  // Over Discharged
+  img_Show(hndl,iOverDischarged_Label);
+
+  // Shelf Error
+  img_Show(hndl,iShelfError_Label);
+
+endfunc
+
+func draw_shelf_readings_labels()
+
+  // Shelf Total Voltage
+  img_Show(hndl,iShelfTotalVoltage_Label) ;
+
+  // Shelf Average Temp
+  img_Show(hndl,iShelfAverageTemp_Label) ;
+
+  // Shelf Max Temp
+  img_Show(hndl,iShelfMaxTemp_Label) ;
+
+  // Shelf Min Temp
+  img_Show(hndl,iShelfMinTemp_Label) ;
+
+  // Shelf TotalVoltage_Units
+  img_Show(hndl,iShelfTotalVoltage_Units) ;
+
+  // Shelf AverageTemp_Units
+  img_Show(hndl,iShelfAverageTemp_Units) ;
+
+  // Module ID
+  img_Show(hndl,iModuleID_Label) ;
+
+endfunc
+
+func draw_shelf_readings_fields()
+
+  // Total Voltage
+  gfx_Panel(PANEL_RAISED, 441, 246, 108, 35, WHITE) ;
+
+  // Average Temp
+  gfx_Panel(PANEL_RAISED, 441, 291, 108, 35, WHITE) ;
+
+  // Max Temp
+  gfx_Panel(PANEL_RAISED, 441, 364, 108, 35, WHITE) ;
+
+  // Min Temp
+  gfx_Panel(PANEL_RAISED, 441, 416, 108, 35, WHITE) ;
+
+  // Max ID
+  gfx_Panel(PANEL_RAISED, 560, 364, 50, 35, WHITE) ;
+
+  // Min ID
+  gfx_Panel(PANEL_RAISED, 560, 416, 50, 35, WHITE) ;
+
 endfunc

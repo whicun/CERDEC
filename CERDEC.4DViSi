@@ -1162,7 +1162,7 @@ Border
     ShadowColor                  STEELBLUE
     Shape                        Frame
     Style                        Raised
-    Top                          197
+    Top                          196
     Width                        180
 end
 WinButton

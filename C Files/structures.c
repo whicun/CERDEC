@@ -21,11 +21,13 @@ var system[16];
 // 3) Highest Temp, Float: 1 Byte
 // 4) Lowest Temp, Float: 1 Bytes
 // 5) ID Highest/Lowest Temp, Int: 1 Byte
-// 6) X Position,  Int: 1 Byte
-// 7) Y Position,  Int: 1 Byte
-// 8) Good Button handle, Ptr: 1 Byte
-// 9) Bad Button handle, Ptr: 1 Byte
-var shelf0[12];
+// 6) Alarm/Error, Int : 1 Byte
+// 7) Error ID, Int: 1 Byte
+// 8) X Position,  Int: 1 Byte
+// 9) Y Position,  Int: 1 Byte
+// 10) Good Button handle, Ptr: 1 Byte
+// 11) Bad Button handle, Ptr: 1 Byte
+var shelf0[13];
 var *shelf_ptr;
 var shelf_volt[2];
 var shelf_temp[2];
