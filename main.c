@@ -140,6 +140,10 @@ func main()
 
 endfunc
 
+// ##################
+// Math
+// ##################
+
 // Prints the system voltage
 // Sums the voltage from each shelf
 func print_system_voltage(var x_pos, var y_pos)
@@ -255,6 +259,10 @@ func calc_temperature(var temp_int)
 
 endfunc
 
+// ##################
+// Get/Set
+// ##################
+
 // Basic Shelf Get/Set
 // Sets the global shelf_ptr to 'shelf'
 func get_shelf(var shelf)
@@ -306,38 +314,11 @@ func set_mods(var data)
     mod_ptr_2[3] := data[MOD_A + 4];
 endfunc
 
-// Requests the basic module info
-// Sends out the "B#" command
-func request_mod(var shelf, var mod)
+// ##################
+// Input/Output
+// ##################
 
-    var cmd[7];
-    cmd[0] := 0x18;
-    cmd[1] := 0xEA;
-    cmd[2] := shelf;
-    cmd[3] := 0x0F;
-    cmd[4] := (0xB0) + (mod/2);
-    cmd[5] := 0xFF;
-    cmd[6] := 0x00;
-
-    var i;
-    for(i := 0; i < 7; i++)
-        serout1(cmd[i]);
-    next
-
-endfunc
-
-// Sends a request for all the mods on the current shelf
-func request_all_shelf_mods(var shelf)
-
-    var mods_per_shelf := 12;
-
-    var i;
-    for(i := 0; i < mods_per_shelf; i += 2)
-        // Send request for each mod on current shelf
-        request_mod(shelf, i);
-        // pause(5);
-    next
-endfunc
+// === Input ===
 
 // Handles input messages
 func process_input()
@@ -406,6 +387,45 @@ func process_input()
         endif
     endif
 endfunc
+
+// === Output ===
+
+// Requests the basic module info
+// Sends out the "B#" command
+func request_mod(var shelf, var mod)
+
+    var cmd[7];
+    cmd[0] := 0x18;
+    cmd[1] := 0xEA;
+    cmd[2] := shelf;
+    cmd[3] := 0x0F;
+    cmd[4] := (0xB0) + (mod/2);
+    cmd[5] := 0xFF;
+    cmd[6] := 0x00;
+
+    var i;
+    for(i := 0; i < 7; i++)
+        serout1(cmd[i]);
+    next
+
+endfunc
+
+// Sends a request for all the mods on the current shelf
+func request_all_shelf_mods(var shelf)
+
+    var mods_per_shelf := 12;
+
+    var i;
+    for(i := 0; i < mods_per_shelf; i += 2)
+        // Send request for each mod on current shelf
+        request_mod(shelf, i);
+        // pause(5);
+    next
+endfunc
+
+// ##################
+// Helpers
+// ##################
 
 // Changes the buttons for status updates (aka Green button -> Red)
 // *Assumes the 'enable button' is being drawn on top of 'disable button'

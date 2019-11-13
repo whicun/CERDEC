@@ -1,4 +1,8 @@
-// Overall Form Drawing Functions
+// ##################
+// DRAWING
+// ##################
+
+// === Overall Form ===
 
 func draw_overall_form()
 
