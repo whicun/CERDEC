@@ -921,7 +921,7 @@ func draw_shelf_mod_info(var mod_number)
   gfx_OutlineColour(BLACK);
 
   // Draw the LEDs for the module's alarms
-  draw_mod_alarm_leds(mods[mod_number]);
+  draw_mod_alarms(mods[mod_number]);
 
   // Draw the labels for the module's fields
   draw_mod_labels();
@@ -937,17 +937,36 @@ func draw_shelf_mod_info(var mod_number)
 
 endfunc
 
-func draw_mod_alarm_leds(var mod)
+func draw_mod_alarms(var mod)
 
-  var alarm_index, alarms;
-  alarm_index := 2;
-  alarms := mod[alarm_index];
+  // Draw the backgrounds
+  draw_mod_alarm_leds_background();
+
+  // Draw the LEDs
+  draw_mod_alarm_leds(mod);
+
+endfunc
+
+func draw_mod_alarm_leds_background()
 
   // Draw the LED backgrounds first
   gfx_CircleFilled(324, 140, 12, BLACK);
   gfx_CircleFilled(500, 140, 12, BLACK);
   gfx_CircleFilled(324, 172, 12, BLACK);
   gfx_CircleFilled(500, 172, 12, BLACK);
+
+endfunc
+
+func draw_mod_alarm_leds(var mod)
+
+    gfx_MoveTo(0, 0);
+    print("       ");
+    gfx_MoveTo(0, 0);
+    print("yay");
+
+  var alarm_index, alarms;
+  alarm_index := 2;
+  alarms := mod[alarm_index];
 
   // Shelf Over Charged
   if(alarms & 0x01 == 0x01)
