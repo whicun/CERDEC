@@ -138,6 +138,7 @@ func main()
   
   // Basic initialization stuff
   gfx_Set(SCREEN_MODE, LANDSCAPE);
+  touch_Set(TOUCH_ENABLE);
 
   // Draw the logo screen then the overall screen
   draw_logo_screen();
@@ -151,7 +152,7 @@ func main()
     if(current_form == SHELF_FORM || current_form == MOD_FORM)
 
       var current_shelf := 0;
-      request_all_shelf_mods(current_shelf);
+      //request_all_shelf_mods(current_shelf);
 
     endif
     // Read Commands
@@ -160,6 +161,7 @@ func main()
     // Update the view
 
     // Check for user input
+    check_press();
 
     // React to user input
 
@@ -185,8 +187,8 @@ endfunc
 func draw_overall_form()
 
   // Overall System Form
-  // Also contains the border for the System Mode
-  img_Show(hndl,iOverallStatus_Form);
+  gfx_BGcolour(0x8D9C) ;
+  gfx_Cls() ;
 
   // Draw the Title
   img_Show(hndl,iCERDEC_Title);
@@ -246,7 +248,8 @@ endfunc
 
 func draw_system_mode()
 
-  // System Mode Border is drawn in parent function
+  // Background panel
+  gfx_Panel(PANEL_SUNKEN, 8, 188, 176, 84, 0x8D9C) ;
   
   // Draw the title + labels
   draw_system_mode_labels();
@@ -682,6 +685,9 @@ func draw_shelf_mod_info(var mod_number)
   // Draw the labels for the module's fields
   draw_mod_labels();
 
+  // Draw the fields for the module's info
+  draw_mod_info_fields();
+
   // Draw the title
   img_Show(hndl,iModuleNumber_Title);
 
@@ -749,6 +755,13 @@ func draw_mod_labels()
   // Module Error
   img_Show(hndl,iModuleError_Label) ;
   gfx_Panel(PANEL_RAISED, 572, 160, 35, 25, WHITE) ;
+
+endfunc
+
+func draw_mod_info_fields()
+
+  gfx_Panel(PANEL_RAISED, 439, 44, 108, 35, WHITE);
+  gfx_Panel(PANEL_RAISED, 439, 82, 108, 35, WHITE);
 
 endfunc
 
@@ -975,9 +988,6 @@ func draw_shelf_readings_fields()
 endfunc
 
 func draw_shelf_system_status()
-
-
-
 endfunc
 
 func draw_shelf_side_buttons()
@@ -1303,11 +1313,10 @@ func check_press()
     // If we are looking at the overview screen
     if(current_form == OVERVIEW_FORM)
 
-      if(n == iShelf_btn)
-        // current_form := SHELF_FORM;
+      if(touched_image == iShelf_btn)
+        current_form := SHELF_FORM;
         disable_all_inputs();
         draw_shelf_form();
-        return
       endif
 
     endif
@@ -1315,10 +1324,10 @@ func check_press()
     // If we are looking at the shelf form
     if(current_form == SHELF_FORM)
 
-      if(n == iShelfToMain_btn)
+      if(touched_image == iShelfToMain_btn)
+        current_form := OVERVIEW_FORM;
         disable_all_inputs();
         draw_overall_form();
-        return
       endif
 
     endif

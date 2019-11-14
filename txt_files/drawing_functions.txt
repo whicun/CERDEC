@@ -16,8 +16,8 @@ endfunc
 func draw_overall_form()
 
   // Overall System Form
-  // Also contains the border for the System Mode
-  img_Show(hndl,iOverallStatus_Form);
+  gfx_BGcolour(0x8D9C) ;
+  gfx_Cls() ;
 
   // Draw the Title
   img_Show(hndl,iCERDEC_Title);
@@ -77,7 +77,8 @@ endfunc
 
 func draw_system_mode()
 
-  // System Mode Border is drawn in parent function
+  // Background panel
+  gfx_Panel(PANEL_SUNKEN, 8, 188, 176, 84, 0x8D9C) ;
   
   // Draw the title + labels
   draw_system_mode_labels();
@@ -513,6 +514,9 @@ func draw_shelf_mod_info(var mod_number)
   // Draw the labels for the module's fields
   draw_mod_labels();
 
+  // Draw the fields for the module's info
+  draw_mod_info_fields();
+
   // Draw the title
   img_Show(hndl,iModuleNumber_Title);
 
@@ -580,6 +584,13 @@ func draw_mod_labels()
   // Module Error
   img_Show(hndl,iModuleError_Label) ;
   gfx_Panel(PANEL_RAISED, 572, 160, 35, 25, WHITE) ;
+
+endfunc
+
+func draw_mod_info_fields()
+
+  gfx_Panel(PANEL_RAISED, 439, 44, 108, 35, WHITE);
+  gfx_Panel(PANEL_RAISED, 439, 82, 108, 35, WHITE);
 
 endfunc
 
@@ -806,9 +817,6 @@ func draw_shelf_readings_fields()
 endfunc
 
 func draw_shelf_system_status()
-
-
-
 endfunc
 
 func draw_shelf_side_buttons()

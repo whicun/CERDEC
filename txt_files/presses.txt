@@ -14,11 +14,10 @@ func check_press()
     // If we are looking at the overview screen
     if(current_form == OVERVIEW_FORM)
 
-      if(n == iShelf_btn)
-        // current_form := SHELF_FORM;
+      if(touched_image == iShelf_btn)
+        current_form := SHELF_FORM;
         disable_all_inputs();
         draw_shelf_form();
-        return
       endif
 
     endif
@@ -26,10 +25,10 @@ func check_press()
     // If we are looking at the shelf form
     if(current_form == SHELF_FORM)
 
-      if(n == iShelfToMain_btn)
+      if(touched_image == iShelfToMain_btn)
+        current_form := OVERVIEW_FORM;
         disable_all_inputs();
         draw_overall_form();
-        return
       endif
 
     endif

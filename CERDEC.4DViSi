@@ -73,19 +73,19 @@ StaticText
     Name                         SystemMode_Title
     Alias                        SystemMode_Title
     Alignment                    Left
-    AutoSize                     No
+    AutoSize                     Yes
     Caption                      'System Mode'
-    Color                        BLACK
+    Color                        'Office 2003 (Blue)'
     Font.Color                   BLACK
     Font.Effects                 []
     Font.Name                    Tahoma
     Font.Size                    18
     Font.Style                   []
-    Height                       30
+    Height                       29
     Left                         12
     Top                          166
-    Transparent                  Yes
-    Width                        152
+    Transparent                  No
+    Width                        143
     WordWrap                     Yes
 end
 StaticText
@@ -1153,18 +1153,6 @@ Circle
     X                            111
     Y                            298
 end
-Border
-    Name                         !SystemMode_border
-    Alias                        !SystemMode_border
-    Height                       74
-    HighlightColor               WHITE
-    Left                         4
-    ShadowColor                  STEELBLUE
-    Shape                        Frame
-    Style                        Raised
-    Top                          196
-    Width                        180
-end
 WinButton
     Name                         EmergencyStop_btn
     Alias                        EmergencyStop_btn
@@ -1269,6 +1257,19 @@ Circle
     Rad                          17
     X                            111
     Y                            298
+end
+Panel
+    Name                         !Panel3
+    Alias                        !Panel3
+    Color                        'Office 2003 (Blue)'
+    Height                       84
+    Left                         8
+    Outlined                     Yes
+    OutlineColor                 SILVER
+    Pattern                      Solid
+    State                        Lowered
+    Top                          188
+    Width                        176
 end
 Form
     Name                         Shelf_Form
