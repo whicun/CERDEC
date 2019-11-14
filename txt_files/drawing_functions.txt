@@ -103,6 +103,10 @@ func draw_num_discharges()
   // Draw the Number Discharges Field
   gfx_Panel(PANEL_RAISED, 12, 360, 65, 30, WHITE);
 
+  // Print the number of Discharges
+  reset_font(12, 367);
+  print(num_discharges);
+
   // Reset Discharges Button
   img_ClearAttributes(hndl, iResetDischarges_btn, I_TOUCH_DISABLE);
   img_SetWord(hndl, iResetDischarges_btn, IMAGE_INDEX, BTN_UP);
@@ -428,14 +432,14 @@ endfunc
 
 // === Shelf Form ===
 
-func draw_shelf_form()
+func draw_shelf_form(var mod_number)
 
   gfx_BGcolour(0x8D9C);
   gfx_Cls();
 
   draw_shelf_modules();
 
-  draw_shelf_mod_info(0);
+  draw_shelf_mod_info(mod_number);
 
   draw_shelf_alarms();
 
@@ -841,4 +845,12 @@ func draw_shelf_side_buttons()
   img_SetWord(hndl, iEmergencyStop_btn, IMAGE_INDEX, BTN_UP);
   img_Show(hndl,iEmergencyStop_btn);
 
+endfunc
+
+// === Helpers ===
+
+func reset_font(var x, var y)
+  txt_Set(TEXT_HIGHLIGHT, 0xFFFF);
+  txt_Set(TEXT_COLOUR, BLACK);
+  gfx_MoveTo(x, y);
 endfunc

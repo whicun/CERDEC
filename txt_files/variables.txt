@@ -4,3 +4,5 @@
 
 // Initialize to the overview screen
 var current_form := OVERVIEW_FORM;
+var current_mod := 0;
+var num_discharges := 0;

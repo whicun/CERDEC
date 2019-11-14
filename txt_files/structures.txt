@@ -50,7 +50,6 @@ var mod6[8];
 var mod7[8];
 var mod8[8];
 var mods[9] := [mod0, mod1, mod2, mod3, mod4, mod5, mod6, mod7, mod8];
-var current_mod := 0;
 var *mod_ptr_1;
 var *mod_ptr_2;
 var mod_volt[2];
