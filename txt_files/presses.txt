@@ -1,0 +1,45 @@
+func check_press()
+
+  var touch_state;
+  touch_state := touch_Get(TOUCH_STATUS);
+
+  if(touch_state == TOUCH_RELEASED)
+    
+    // Get the touched image and location
+    var touched_image, x_touch, y_touch;
+    touched_image := img_Touched(hndl, -1);
+    x_touch := touch_Get(TOUCH_GETX);
+    y_touch := touch_Get(TOUCH_GETY);
+
+    // If we are looking at the overview screen
+    if(current_form == OVERVIEW_FORM)
+
+      if(n == iShelf_btn)
+        // current_form := SHELF_FORM;
+        disable_all_inputs();
+        draw_shelf_form();
+        return
+      endif
+
+    endif
+
+    // If we are looking at the shelf form
+    if(current_form == SHELF_FORM)
+
+      if(n == iShelfToMain_btn)
+        disable_all_inputs();
+        draw_overall_form();
+        return
+      endif
+
+    endif
+
+  endif
+
+endfunc
+
+func disable_all_inputs()
+
+  img_SetAttributes(hndl, -1, I_TOUCH_DISABLE);
+
+endfunc

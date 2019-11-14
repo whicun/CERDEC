@@ -1,4 +1,4 @@
-// File generated 11/12/2019 3:57:07 PM
+// File generated 11/14/2019 9:25:09 AM
 // Warning! This is a generated file, any manual changes will be
 // lost during the next generation.
 
@@ -17,7 +17,7 @@
     iCapacitorVoltage_Label // offset 0xD4A00
     iSystemStart_btn // offset 0xD7E00
     iResetDischarges_btn // offset 0xE0800
-    iGauge          // offset 0xE4200
+    iStoredEnergy_Gauge // offset 0xE4200
     iSystemStop_btn // offset 0x215000
     iCERDEC_Title   // offset 0x21DA00
     iShelf_btn      // offset 0x230C00
@@ -88,15 +88,24 @@
     iWinbutton20    // offset 0x2D6800
     iWinbutton21    // offset 0x2DF200
     iStatictext20   // offset 0x2E7C00
-    iModule1_btn_bad // offset 0x2E9000
-    iModule4_btn_bad // offset 0x2EB800
-    iModule7_btn_bad // offset 0x2EE000
-    iModule8_btn_bad // offset 0x2F0800
-    iModule5_btn_bad // offset 0x2F3000
-    iModule2_btn_bad // offset 0x2F5800
-    iModule3_btn_bad // offset 0x2F8000
-    iModule6_btn_bad // offset 0x2FA800
-    iModule9_btn_bad // offset 0x2FD000
+    iModule1Bad_btn // offset 0x2E9000
+    iModule4Bad_btn // offset 0x2EB800
+    iModule7Bad_btn // offset 0x2EE000
+    iModule8Bad_btn // offset 0x2F0800
+    iModule5Bad_btn // offset 0x2F3000
+    iModule2Bad_btn // offset 0x2F5800
+    iModule3Bad_btn // offset 0x2F8000
+    iModule6Bad_btn // offset 0x2FA800
+    iModule9Bad_btn // offset 0x2FD000
+    iMainModule1Bad_btn // offset 0x2FF800
+    iMainModule2Bad_btn // offset 0x302000
+    iMainModule3Bad_btn // offset 0x304800
+    iMainModule4Bad_btn // offset 0x307000
+    iMainModule5Bad_btn // offset 0x309800
+    iMainModule6Bad_btn // offset 0x30C000
+    iMainModule7Bad_btn // offset 0x30E800
+    iMainModule8Bad_btn // offset 0x311000
+    iMainModule9Bad_btn // offset 0x313800
 #END
 
 #IFNOT EXISTS NOGLOBALS
