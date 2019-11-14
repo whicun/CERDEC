@@ -2,7 +2,7 @@
 ==============================================================
 4DGL Compiler 2.8.1.0 -- Copyright 2004-2016 4D Labs
 ** C:\Users\ebenton\Documents\CERDEC TS\CERDEC.4dg
-compiled Thu Nov 14 13:38:40 2019
+compiled Thu Nov 14 15:01:47 2019
 
 ==============================================================
 ==============================================================
@@ -10,13 +10,13 @@ compiled Thu Nov 14 13:38:40 2019
 
 No Ref for file
 [LINKING]
-function 51, disable_all_inputs, address 0x5e, stack usage 0 + 4 
+function 54, disable_all_inputs, address 0x5e, stack usage 0 + 4 
 
 [LINKING]
-function 50, check_press, address 0x6c, stack usage 18 + 4 
+function 53, check_press, address 0x6c, stack usage 18 + 4 
 voltage                                8  word     [local]  (usage 9)
 touch_state                            1  word     [local]  (usage 6)
-touched_image                          2  word     [local]  (usage 39)
+touched_image                          2  word     [local]  (usage 120)
 y_touch                                4  word     [local]  (usage 27)
 x_touch                                3  word     [local]  (usage 27)
 power                                  9  word     [local]  (usage 9)
@@ -29,7 +29,7 @@ mods_per_shelf                         1  word     [local]  (usage 2)
 shelf                                  1  word     [arg]  (usage 2)
 
 [LINKING]
-function 48, request_mod, address 0x37f, stack usage 16 + 4 
+function 51, request_mod, address 0x50b, stack usage 16 + 4 
 cmd                                    1  word[7]  [local]  (usage 24)
 mod                                    1  word     [arg]  (usage 3)
 i                                      8  word     [local]  (usage 12)
@@ -43,24 +43,24 @@ temp_vals                              3  word[15]  [local]  (usage 16)
 i                                     20  word     [local]  (usage 8)
 
 [LINKING]
-function 46, set_mods, address 0x3dc, stack usage 0 + 4 
+function 49, set_mods, address 0x568, stack usage 0 + 4 
 data                                   1  word     [arg]  (usage 24)
 
 [LINKING]
-function 45, get_mods, address 0x457, stack usage 2 + 4 
+function 48, get_mods, address 0x5e3, stack usage 2 + 4 
 mod                                    1  word     [arg]  (usage 6)
 mods_per_shelf                         1  word     [local]  (usage 7)
 shelf                                  1  word     [arg]  (usage 6)
 
 [LINKING]
-function 44, set_shelf, address 0x481, stack usage 0 + 4 
+function 47, set_shelf, address 0x60d, stack usage 0 + 4 
 data                                   1  word     [arg]  (usage 24)
 
 [LINKING]
-function 43, get_shelf, address 0x4ed, stack usage 0 + 4 
+function 46, get_shelf, address 0x679, stack usage 0 + 4 
 
 [LINKING]
-function 42, calc_temperature, address 0x4f4, stack usage 8 + 4 
+function 45, calc_temperature, address 0x680, stack usage 8 + 4 
 temp_int                               1  word     [arg]  (usage 3)
 temp_flt_1                             1  word[2]  [local]  (usage 12)
 temp_flt_2                             3  word[2]  [local]  (usage 6)
@@ -75,7 +75,7 @@ volt_flt                               1  word[2]  [local]  (usage 4)
 volt_int                               1  word     [arg]  (usage 2)
 
 [LINKING]
-function 39, calc_shelf_voltage, address 0x518, stack usage 10 + 4 
+function 42, calc_shelf_voltage, address 0x6a4, stack usage 10 + 4 
 temp_flt                               4  word[2]  [local]  (usage 6)
 volt_flt                               2  word[2]  [local]  (usage 6)
 volt_int                               1  word     [local]  (usage 6)
@@ -87,7 +87,7 @@ y_pos                                  2  word     [arg]  (usage 2)
 shelf                                  1  word     [arg]  (usage 2)
 
 [LINKING]
-function 37, calc_system_voltage, address 0x54e, stack usage 6 + 4 
+function 40, calc_system_voltage, address 0x6da, stack usage 6 + 4 
 sys_volt                               1  word[2]  [local]  (usage 12)
 i                                      3  word     [local]  (usage 12)
 
@@ -96,79 +96,92 @@ x_pos                                  1  word     [arg]  (usage 2)
 y_pos                                  1  word     [arg]  (usage 2)
 
 [LINKING]
-function 35, reset_font, address 0x58e, stack usage 0 + 4 
+function 38, blue_background_font, address 0x71a, stack usage 0 + 4 
 x                                      1  word     [arg]  (usage 3)
 y                                      1  word     [arg]  (usage 3)
 
 [LINKING]
-function 34, draw_shelf_side_buttons, address 0x5ae, stack usage 0 + 4 
+function 37, reset_font, address 0x74a, stack usage 0 + 4 
+x                                      1  word     [arg]  (usage 3)
+y                                      1  word     [arg]  (usage 3)
 
 [LINKING]
-function 33, draw_shelf_system_status, address 0x63f, stack usage 0 + 4 (Empty Function)
-[LINKING]
-function 32, draw_shelf_readings_fields, address 0x640, stack usage 0 + 4 
+function 36, draw_shelf_side_buttons, address 0x77a, stack usage 0 + 4 
 
 [LINKING]
-function 31, draw_shelf_readings_labels, address 0x6be, stack usage 0 + 4 
+function 35, draw_shelf_system_status, address 0x80b, stack usage 0 + 4 (Empty Function)
+[LINKING]
+function 34, update_shelf_mod, address 0x80c, stack usage 0 + 4 
+mod_number                             1  word     [arg]  (usage 6)
 
 [LINKING]
-function 30, draw_shelf_alarms_labels, address 0x705, stack usage 0 + 4 
+function 33, draw_mod_info_number, address 0x81d, stack usage 0 + 4 
+mod_number                             1  word     [arg]  (usage 3)
 
 [LINKING]
-function 29, draw_shelf_alarm_leds, address 0x72e, stack usage 4 + 4 
-alarm_index                            1  word     [local]  (usage 6)
-alarms                                 2  word     [local]  (usage 15)
+function 32, draw_mod_info_fields, address 0x839, stack usage 0 + 4 
 
 [LINKING]
-function 28, draw_shelf_module_buttons, address 0x7f7, stack usage 2 + 4 
-alarm_index                            1  word     [local]  (usage 1)
+function 31, draw_mod_labels, address 0x862, stack usage 0 + 4 
 
 [LINKING]
-function 27, draw_mod_info_fields, address 0xbd3, stack usage 0 + 4 
-
-[LINKING]
-function 26, draw_mod_labels, address 0xbfc, stack usage 0 + 4 
-
-[LINKING]
-function 25, draw_mod_alarm_leds, address 0xc61, stack usage 4 + 4 
+function 30, draw_mod_alarm_leds, address 0x8c7, stack usage 4 + 4 
 alarm_index                            1  word     [local]  (usage 6)
 mod                                    1  word     [arg]  (usage 3)
 alarms                                 2  word     [local]  (usage 15)
 
 [LINKING]
-function 24, draw_shelf_mod_info, address 0xd2a, stack usage 0 + 4 
+function 29, draw_shelf_mod_info, address 0x990, stack usage 0 + 4 
 mod_number                             1  word     [arg]  (usage 3)
 
 [LINKING]
-function 23, draw_shelf_modules, address 0xd73, stack usage 0 + 4 
+function 28, draw_shelf_module_buttons, address 0x9e1, stack usage 2 + 4 
+alarm_index                            1  word     [local]  (usage 1)
 
 [LINKING]
-function 22, draw_shelf_readings, address 0xda9, stack usage 0 + 4 
+function 27, draw_shelf_modules, address 0xdbd, stack usage 0 + 4 
 
 [LINKING]
-function 21, draw_shelf_alarms, address 0xde6, stack usage 0 + 4 
+function 26, draw_shelf_readings_fields, address 0xdf3, stack usage 0 + 4 
 
 [LINKING]
-function 20, draw_shelf_form, address 0xe36, stack usage 0 + 4 
+function 25, draw_shelf_readings_labels, address 0xe71, stack usage 0 + 4 
+
+[LINKING]
+function 24, draw_shelf_readings, address 0xeb8, stack usage 0 + 4 
+
+[LINKING]
+function 23, draw_shelf_alarms_labels, address 0xef5, stack usage 0 + 4 
+
+[LINKING]
+function 22, draw_shelf_alarm_leds, address 0xf1e, stack usage 4 + 4 
+alarm_index                            1  word     [local]  (usage 6)
+alarms                                 2  word     [local]  (usage 15)
+
+[LINKING]
+function 21, draw_shelf_alarms, address 0xfe7, stack usage 0 + 4 
+
+[LINKING]
+function 20, draw_shelf_form, address 0x1037, stack usage 0 + 4 
 mod_number                             1  word     [arg]  (usage 3)
 
 [LINKING]
-function 19, any_mod_errors, address 0xe6c, stack usage 2 + 4 
+function 19, any_mod_errors, address 0x106d, stack usage 2 + 4 
 alarm_index                            1  word     [local]  (usage 9)
 mod                                    1  word     [arg]  (usage 6)
 
 [LINKING]
-function 18, draw_overall_mods, address 0xe96, stack usage 2 + 4 
+function 18, draw_overall_mods, address 0x1097, stack usage 2 + 4 
 alarm_index                            1  word     [local]  (usage 1)
 
 [LINKING]
-function 17, draw_overall_side_buttons, address 0x1272, stack usage 0 + 4 
+function 17, draw_overall_side_buttons, address 0x1473, stack usage 0 + 4 
 
 [LINKING]
-function 16, draw_system_mode_labels, address 0x1309, stack usage 0 + 4 
+function 16, draw_system_mode_labels, address 0x150a, stack usage 0 + 4 
 
 [LINKING]
-function 15, draw_system_mode_radios, address 0x133c, stack usage 10 + 4 
+function 15, draw_system_mode_radios, address 0x153d, stack usage 10 + 4 
 voltage                                4  word     [local]  (usage 6)
 power                                  5  word     [local]  (usage 6)
 mode_index                             1  word     [local]  (usage 15)
@@ -176,47 +189,47 @@ idle                                   3  word     [local]  (usage 6)
 off                                    2  word     [local]  (usage 6)
 
 [LINKING]
-function 14, draw_relay_status_led, address 0x140d, stack usage 2 + 4 
+function 14, draw_relay_status_led, address 0x160e, stack usage 2 + 4 
 relay_index                            1  word     [local]  (usage 6)
 
 [LINKING]
-function 13, draw_capacitors_voltage, address 0x1453, stack usage 0 + 4 
+function 13, draw_capacitors_voltage, address 0x1654, stack usage 0 + 4 
 
 [LINKING]
-function 12, draw_output_current, address 0x1473, stack usage 0 + 4 
+function 12, draw_output_current, address 0x1674, stack usage 0 + 4 
 
 [LINKING]
-function 11, draw_bus_voltage, address 0x1493, stack usage 0 + 4 
+function 11, draw_bus_voltage, address 0x1694, stack usage 0 + 4 
 
 [LINKING]
-function 10, draw_estimated_runtime, address 0x14b3, stack usage 0 + 4 
+function 10, draw_estimated_runtime, address 0x16b4, stack usage 0 + 4 
 
 [LINKING]
-function 9, draw_time_at_max, address 0x14d2, stack usage 0 + 4 
+function 9, draw_time_at_max, address 0x16d3, stack usage 0 + 4 
 
 [LINKING]
-function 8, draw_stored_energy, address 0x14f1, stack usage 0 + 4 
+function 8, draw_stored_energy, address 0x16f2, stack usage 0 + 4 
 
 [LINKING]
-function 7, draw_num_discharges, address 0x1510, stack usage 0 + 4 
+function 7, draw_num_discharges, address 0x1711, stack usage 0 + 4 
 
 [LINKING]
-function 6, draw_relay_status, address 0x156b, stack usage 0 + 4 
+function 6, draw_relay_status, address 0x176c, stack usage 0 + 4 
 
 [LINKING]
-function 5, draw_system_mode, address 0x157c, stack usage 0 + 4 
+function 5, draw_system_mode, address 0x177d, stack usage 0 + 4 
 
 [LINKING]
-function 4, draw_system_status, address 0x159c, stack usage 0 + 4 
+function 4, draw_system_status, address 0x179d, stack usage 0 + 4 
 
 [LINKING]
-function 3, draw_overall_form, address 0x15de, stack usage 0 + 4 
+function 3, draw_overall_form, address 0x17df, stack usage 0 + 4 
 
 [LINKING]
-function 2, draw_logo_screen, address 0x1640, stack usage 0 + 4 
+function 2, draw_logo_screen, address 0x1841, stack usage 0 + 4 
 
 [LINKING]
-function 1, main(main entry point), address 0x166b, stack usage 2 + 4 
+function 1, main(main entry point), address 0x186c, stack usage 2 + 4 
 current_shelf                          1  word     [local]  (usage 1)
 
 [RESERVED WORDS]
@@ -284,7 +297,7 @@ lookup16
 __MAXMEM                          00008000      32768  (usage 1)
 __MAXPROG                         00007FEE      32750  (usage 1)
 ACTIVE                            00000001          1  (usage 3)
-BLACK                             00000000          0  (usage 18)
+BLACK                             00000000          0  (usage 21)
 BTN_UP                            00000000          0  (usage 138)
 DIABLO                            00000003          3  (usage 3)
 FALSE                             00000000          0  (usage 3)
@@ -296,43 +309,43 @@ ID                                00000003          3  (usage 4)
 iEmergencyStop_btn                0000001D         29  (usage 18)
 iEstimatedRuntime_Label           00000006          6  (usage 3)
 IMAGE_INDEX                       00000009          9  (usage 138)
-iMainModule1Bad_btn               0000005C         92  (usage 12)
+iMainModule1Bad_btn               0000005C         92  (usage 15)
 iMainModule1Good_btn              00000012         18  (usage 15)
-iMainModule2Bad_btn               0000005D         93  (usage 12)
+iMainModule2Bad_btn               0000005D         93  (usage 15)
 iMainModule2Good_btn              00000011         17  (usage 15)
-iMainModule3Bad_btn               0000005E         94  (usage 12)
+iMainModule3Bad_btn               0000005E         94  (usage 15)
 iMainModule3Good_btn              00000010         16  (usage 15)
-iMainModule4Bad_btn               0000005F         95  (usage 12)
+iMainModule4Bad_btn               0000005F         95  (usage 15)
 iMainModule4Good_btn              00000013         19  (usage 15)
-iMainModule5Bad_btn               00000060         96  (usage 12)
+iMainModule5Bad_btn               00000060         96  (usage 15)
 iMainModule5Good_btn              00000014         20  (usage 15)
-iMainModule6Bad_btn               00000061         97  (usage 12)
+iMainModule6Bad_btn               00000061         97  (usage 15)
 iMainModule6Good_btn              00000015         21  (usage 15)
-iMainModule7Bad_btn               00000062         98  (usage 12)
+iMainModule7Bad_btn               00000062         98  (usage 15)
 iMainModule7Good_btn              00000016         22  (usage 15)
-iMainModule8Bad_btn               00000063         99  (usage 12)
+iMainModule8Bad_btn               00000063         99  (usage 15)
 iMainModule8Good_btn              00000017         23  (usage 15)
-iMainModule9Bad_btn               00000064        100  (usage 12)
+iMainModule9Bad_btn               00000064        100  (usage 15)
 iMainModule9Good_btn              00000018         24  (usage 15)
 iMaxTime_Label                    00000005          5  (usage 3)
-iModule1Bad_btn                   00000053         83  (usage 12)
-iModule1Good_btn                  0000002A         42  (usage 12)
-iModule2Bad_btn                   00000058         88  (usage 12)
-iModule2Good_btn                  00000030         48  (usage 12)
-iModule3Bad_btn                   00000059         89  (usage 12)
-iModule3Good_btn                  00000033         51  (usage 12)
-iModule4Bad_btn                   00000054         84  (usage 12)
-iModule4Good_btn                  0000002E         46  (usage 12)
-iModule5Bad_btn                   00000057         87  (usage 12)
-iModule5Good_btn                  00000031         49  (usage 12)
-iModule6Bad_btn                   0000005A         90  (usage 12)
-iModule6Good_btn                  00000034         52  (usage 12)
-iModule7Bad_btn                   00000055         85  (usage 12)
-iModule7Good_btn                  0000002F         47  (usage 12)
-iModule8Bad_btn                   00000056         86  (usage 12)
-iModule8Good_btn                  00000032         50  (usage 12)
-iModule9Bad_btn                   0000005B         91  (usage 12)
-iModule9Good_btn                  00000035         53  (usage 12)
+iModule1Bad_btn                   00000053         83  (usage 15)
+iModule1Good_btn                  0000002A         42  (usage 15)
+iModule2Bad_btn                   00000058         88  (usage 15)
+iModule2Good_btn                  00000030         48  (usage 15)
+iModule3Bad_btn                   00000059         89  (usage 15)
+iModule3Good_btn                  00000033         51  (usage 15)
+iModule4Bad_btn                   00000054         84  (usage 15)
+iModule4Good_btn                  0000002E         46  (usage 15)
+iModule5Bad_btn                   00000057         87  (usage 15)
+iModule5Good_btn                  00000031         49  (usage 15)
+iModule6Bad_btn                   0000005A         90  (usage 15)
+iModule6Good_btn                  00000034         52  (usage 15)
+iModule7Bad_btn                   00000055         85  (usage 15)
+iModule7Good_btn                  0000002F         47  (usage 15)
+iModule8Bad_btn                   00000056         86  (usage 15)
+iModule8Good_btn                  00000032         50  (usage 15)
+iModule9Bad_btn                   0000005B         91  (usage 15)
+iModule9Good_btn                  00000035         53  (usage 15)
 iModuleError_Label                00000040         64  (usage 3)
 iModuleID_Label                   00000028         40  (usage 3)
 iModuleNumber_Title               00000041         65  (usage 3)
@@ -397,8 +410,8 @@ SHELF_T                           00000000          0  (usage 3)
 SHELF_V                           00000000          0  (usage 6)
 SILVER                            0000C618      50712  (usage 12)
 START_BYT                         00000018         24  (usage 2)
-TEXT_COLOUR                       00000000          0  (usage 3)
-TEXT_HIGHLIGHT                    00000001          1  (usage 3)
+TEXT_COLOUR                       00000000          0  (usage 6)
+TEXT_HIGHLIGHT                    00000001          1  (usage 6)
 TOUCH_ENABLE                      00000000          0  (usage 3)
 TOUCH_GETX                        00000001          1  (usage 3)
 TOUCH_GETY                        00000002          2  (usage 3)
@@ -420,7 +433,7 @@ flt_VAL                           FFFFFFB2         -78  args=2 r=1  (usage 11)
 gfx_BGcolour                      FFFFFF48        -184  args=1 r=1  (usage 9)
 gfx_CircleFilled                  FFFFFF77        -137  args=4 r=0  (usage 81)
 gfx_Cls                           FFFFFF82        -126  args=0 r=0  (usage 12)
-gfx_MoveTo                        FFFFFF81        -127  args=2 r=0  (usage 9)
+gfx_MoveTo                        FFFFFF81        -127  args=2 r=0  (usage 12)
 gfx_OutlineColour                 FFFFFF41        -191  args=1 r=1  (usage 24)
 gfx_Panel                         FFFFFF5F        -161  args=6 r=0  (usage 69)
 gfx_Set                           FFFFFF83        -125  args=2 r=0  (usage 3)
@@ -435,57 +448,62 @@ serin1                            FFFFFF13        -237  args=0 r=1  (usage 6)
 serout1                           FFFFFF0F        -241  args=1 r=0  (usage 3)
 touch_Get                         FFFFFE68        -408  args=1 r=1  (usage 9)
 touch_Set                         FFFFFE69        -407  args=1 r=0  (usage 3)
-txt_Set                           FFFFFFEF         -17  args=2 r=0  (usage 6)
+txt_Height                        FFFFFFEA         -22  args=1 r=1  (usage 6)
+txt_Set                           FFFFFFEF         -17  args=2 r=0  (usage 12)
+txt_Width                         FFFFFFEB         -21  args=1 r=1  (usage 6)
 
 [USER FUNCTIONS]
-any_mod_errors                    00000E6C  args=1 r=0  (usage 54)
-calc_shelf_voltage                00000518  args=1 r=0  (usage 5)
-calc_system_voltage               0000054E  args=0 r=0  (usage 2)
-calc_temperature                  000004F4  args=1 r=0  (usage 2)
+any_mod_errors                    0000106D  args=1 r=0  (usage 54)
+blue_background_font              0000071A  args=2 r=0  (usage 3)
+calc_shelf_voltage                000006A4  args=1 r=0  (usage 5)
+calc_system_voltage               000006DA  args=0 r=0  (usage 2)
+calc_temperature                  00000680  args=1 r=0  (usage 2)
 check_press                       0000006C  args=0 r=0  (usage 3)
 disable_all_inputs                0000005E  args=0 r=0  (usage 33)
-draw_bus_voltage                  00001493  args=0 r=0  (usage 3)
-draw_capacitors_voltage           00001453  args=0 r=0  (usage 3)
-draw_estimated_runtime            000014B3  args=0 r=0  (usage 3)
-draw_logo_screen                  00001640  args=0 r=0  (usage 3)
-draw_mod_alarm_leds               00000C61  args=1 r=0  (usage 3)
-draw_mod_info_fields              00000BD3  args=0 r=0  (usage 3)
-draw_mod_labels                   00000BFC  args=0 r=0  (usage 3)
-draw_num_discharges               00001510  args=0 r=0  (usage 6)
-draw_output_current               00001473  args=0 r=0  (usage 3)
-draw_overall_form                 000015DE  args=0 r=0  (usage 6)
-draw_overall_mods                 00000E96  args=0 r=0  (usage 6)
-draw_overall_side_buttons         00001272  args=0 r=0  (usage 3)
-draw_relay_status                 0000156B  args=0 r=0  (usage 3)
-draw_relay_status_led             0000140D  args=0 r=0  (usage 3)
-draw_shelf_alarm_leds             0000072E  args=0 r=0  (usage 3)
-draw_shelf_alarms                 00000DE6  args=0 r=0  (usage 3)
-draw_shelf_alarms_labels          00000705  args=0 r=0  (usage 3)
-draw_shelf_form                   00000E36  args=1 r=0  (usage 30)
-draw_shelf_mod_info               00000D2A  args=1 r=0  (usage 3)
-draw_shelf_module_buttons         000007F7  args=0 r=0  (usage 3)
-draw_shelf_modules                00000D73  args=0 r=0  (usage 3)
-draw_shelf_readings               00000DA9  args=0 r=0  (usage 3)
-draw_shelf_readings_fields        00000640  args=0 r=0  (usage 3)
-draw_shelf_readings_labels        000006BE  args=0 r=0  (usage 3)
-draw_shelf_side_buttons           000005AE  args=0 r=0  (usage 3)
-draw_shelf_system_status          0000063F  args=0 r=0  (usage 3)
-draw_stored_energy                000014F1  args=0 r=0  (usage 3)
-draw_system_mode                  0000157C  args=0 r=0  (usage 3)
-draw_system_mode_labels           00001309  args=0 r=0  (usage 3)
-draw_system_mode_radios           0000133C  args=0 r=0  (usage 15)
-draw_system_status                0000159C  args=0 r=0  (usage 3)
-draw_time_at_max                  000014D2  args=0 r=0  (usage 3)
-get_mods                          00000457  args=2 r=0  (usage 2)
-get_shelf                         000004ED  args=1 r=0  (usage 5)
-request_mod                       0000037F  args=2 r=0  (usage 2)
-reset_font                        0000058E  args=2 r=0  (usage 3)
-set_mods                          000003DC  args=1 r=0  (usage 2)
-set_shelf                         00000481  args=1 r=0  (usage 2)
+draw_bus_voltage                  00001694  args=0 r=0  (usage 3)
+draw_capacitors_voltage           00001654  args=0 r=0  (usage 3)
+draw_estimated_runtime            000016B4  args=0 r=0  (usage 3)
+draw_logo_screen                  00001841  args=0 r=0  (usage 3)
+draw_mod_alarm_leds               000008C7  args=1 r=0  (usage 6)
+draw_mod_info_fields              00000839  args=0 r=0  (usage 3)
+draw_mod_info_number              0000081D  args=1 r=0  (usage 6)
+draw_mod_labels                   00000862  args=0 r=0  (usage 3)
+draw_num_discharges               00001711  args=0 r=0  (usage 6)
+draw_output_current               00001674  args=0 r=0  (usage 3)
+draw_overall_form                 000017DF  args=0 r=0  (usage 6)
+draw_overall_mods                 00001097  args=0 r=0  (usage 6)
+draw_overall_side_buttons         00001473  args=0 r=0  (usage 3)
+draw_relay_status                 0000176C  args=0 r=0  (usage 3)
+draw_relay_status_led             0000160E  args=0 r=0  (usage 3)
+draw_shelf_alarm_leds             00000F1E  args=0 r=0  (usage 3)
+draw_shelf_alarms                 00000FE7  args=0 r=0  (usage 3)
+draw_shelf_alarms_labels          00000EF5  args=0 r=0  (usage 3)
+draw_shelf_form                   00001037  args=1 r=0  (usage 30)
+draw_shelf_mod_info               00000990  args=1 r=0  (usage 3)
+draw_shelf_module_buttons         000009E1  args=0 r=0  (usage 3)
+draw_shelf_modules                00000DBD  args=0 r=0  (usage 3)
+draw_shelf_readings               00000EB8  args=0 r=0  (usage 3)
+draw_shelf_readings_fields        00000DF3  args=0 r=0  (usage 3)
+draw_shelf_readings_labels        00000E71  args=0 r=0  (usage 3)
+draw_shelf_side_buttons           0000077A  args=0 r=0  (usage 3)
+draw_shelf_system_status          0000080B  args=0 r=0  (usage 3)
+draw_stored_energy                000016F2  args=0 r=0  (usage 3)
+draw_system_mode                  0000177D  args=0 r=0  (usage 3)
+draw_system_mode_labels           0000150A  args=0 r=0  (usage 3)
+draw_system_mode_radios           0000153D  args=0 r=0  (usage 15)
+draw_system_status                0000179D  args=0 r=0  (usage 3)
+draw_time_at_max                  000016D3  args=0 r=0  (usage 3)
+get_mods                          000005E3  args=2 r=0  (usage 2)
+get_shelf                         00000679  args=1 r=0  (usage 5)
+request_mod                       0000050B  args=2 r=0  (usage 2)
+reset_font                        0000074A  args=2 r=0  (usage 3)
+set_mods                          00000568  args=1 r=0  (usage 2)
+set_shelf                         0000060D  args=1 r=0  (usage 2)
+update_shelf_mod                  0000080C  args=1 r=0  (usage 27)
 
 [GLOBAL VARIABLES]
 current_form                         123  word       (usage 46)
-current_mod                          124  word       (usage 61)
+current_mod                          124  word       (usage 118)
 hndl                                   1  word       (usage 645)
 mod0                                  36  word[8]   (usage 8)
 mod1                                  44  word[8]   (usage 8)
@@ -523,7 +541,7 @@ system                                 2  word[16]   (usage 39)
 [PROGRAM]
 main
 [CODESIZE]
-5890
+6403
 [MEMSIZE]
 125
 [ARGCOUNT]
@@ -533,7 +551,7 @@ NO
 [STACKSIZE]
 0 (AUTO)
 [STACK_ESTIMATE]
-292   (nb:- worst case estimate)
+304   (nb:- worst case estimate)
 [MODE]
 0
 

@@ -276,7 +276,7 @@ func draw_num_discharges()
   gfx_Panel(PANEL_RAISED, 12, 360, 65, 30, WHITE);
 
   // Print the number of Discharges
-  reset_font(12, 367);
+  reset_font(20, 362);
   print(num_discharges);
 
   // Reset Discharges Button
@@ -623,6 +623,8 @@ func draw_shelf_form(var mod_number)
 
 endfunc
 
+// Shelf Alarms
+
 func draw_shelf_alarms()
 
   // Draw the background panel
@@ -644,6 +646,60 @@ func draw_shelf_alarms()
 
 endfunc
 
+func draw_shelf_alarm_leds()
+
+  var alarm_index, alarms;
+  alarm_index := 6;
+  alarms := shelf0[alarm_index];
+
+  // Shelf Over Charged
+  if(alarms & 0x01 == 0x01)
+    gfx_CircleFilled(50, 265, 20, LED_GOOD);
+  else
+    gfx_CircleFilled(50, 265, 20, LED_BAD);
+  endif
+
+  // Shelf Over Temp
+  if(alarms & 0x04 == 0x04)
+    gfx_CircleFilled(50, 317, 20, LED_GOOD);
+  else
+    gfx_CircleFilled(50, 317, 20, LED_BAD);
+  endif
+
+  // Shelf Over Disc
+  if(alarms & 0x02 == 0x02)
+    gfx_CircleFilled(50, 368, 20, LED_GOOD);
+  else
+    gfx_CircleFilled(50, 368, 20, LED_BAD);
+  endif
+
+  // Shelf Error
+  if(alarms & 0x08 == 0x08)
+    gfx_CircleFilled(50, 425, 20, LED_GOOD);
+  else
+    gfx_CircleFilled(50, 425, 20, LED_BAD);
+  endif
+
+endfunc
+
+func draw_shelf_alarms_labels()
+
+  // Shelf Over Charge
+  img_Show(hndl,iShelfOverCharge_Label);
+
+  // Shelf Over Temp
+  img_Show(hndl,iShelfOverTemp_Label);
+
+  // Over Discharged
+  img_Show(hndl,iOverDischarged_Label);
+
+  // Shelf Error
+  img_Show(hndl,iShelfError_Label);
+
+endfunc
+
+// Shelf Readings
+
 func draw_shelf_readings()
 
   // Draw the background panel
@@ -662,6 +718,55 @@ func draw_shelf_readings()
 
 endfunc
 
+func draw_shelf_readings_labels()
+
+  // Shelf Total Voltage
+  img_Show(hndl,iShelfTotalVoltage_Label);
+
+  // Shelf Average Temp
+  img_Show(hndl,iShelfAverageTemp_Label);
+
+  // Shelf Max Temp
+  img_Show(hndl,iShelfMaxTemp_Label);
+
+  // Shelf Min Temp
+  img_Show(hndl,iShelfMinTemp_Label);
+
+  // Shelf Total Voltage Units
+  img_Show(hndl,iShelfTotalVoltage_Units);
+
+  // Shelf Average Temp Units
+  img_Show(hndl,iShelfAverageTemp_Units);
+
+  // Module ID
+  img_Show(hndl,iModuleID_Label);
+
+endfunc
+
+func draw_shelf_readings_fields()
+
+  // Total Voltage
+  gfx_Panel(PANEL_RAISED, 441, 246, 108, 35, WHITE);
+
+  // Average Temp
+  gfx_Panel(PANEL_RAISED, 441, 291, 108, 35, WHITE);
+
+  // Max Temp
+  gfx_Panel(PANEL_RAISED, 441, 364, 108, 35, WHITE);
+
+  // Min Temp
+  gfx_Panel(PANEL_RAISED, 441, 416, 108, 35, WHITE);
+
+  // Max ID
+  gfx_Panel(PANEL_RAISED, 560, 364, 50, 35, WHITE);
+
+  // Min ID
+  gfx_Panel(PANEL_RAISED, 560, 416, 50, 35, WHITE);
+
+endfunc
+
+// Shelf Module Buttons
+
 func draw_shelf_modules()
 
   // Draw the background panel
@@ -674,99 +779,6 @@ func draw_shelf_modules()
 
   // Draw the title
   img_Show(hndl,iModules_Title);
-
-endfunc
-
-func draw_shelf_mod_info(var mod_number)
-
-  // Draw the background panel
-  gfx_OutlineColour(SILVER);
-  gfx_Panel(PANEL_SUNKEN, 296, 29, 324, 166, 0x8D9C);
-  gfx_OutlineColour(BLACK);
-
-  // Draw the LEDs for the module's alarms
-  draw_mod_alarm_leds(mods[mod_number]);
-  
-  // Draw the labels for the module's fields
-  draw_mod_labels();
-
-  // Draw the fields for the module's info
-  draw_mod_info_fields();
-
-  // Draw the title
-  img_Show(hndl,iModuleNumber_Title);
-
-endfunc
-
-func draw_mod_alarm_leds(var mod)
-
-  var alarm_index, alarms;
-  alarm_index := 2;
-  alarms := mod[alarm_index];
-
-  // Shelf Over Charged
-  if(alarms & 0x01 == 0x01)
-    gfx_CircleFilled(324, 140, 10, LED_GOOD);
-  else
-    gfx_CircleFilled(324, 140, 10, LED_BAD);
-  endif
-
-  // Shelf Over Temp
-  if(alarms & 0x04 == 0x04)
-    gfx_CircleFilled(500, 140, 10, LED_GOOD);
-  else
-    gfx_CircleFilled(500, 140, 10, LED_BAD);
-  endif
-
-  // Shelf Over Disc
-  if(alarms & 0x02 == 0x02)
-    gfx_CircleFilled(324, 172, 10, LED_GOOD);
-  else
-    gfx_CircleFilled(324, 172, 10, LED_BAD);
-  endif
-
-  // Shelf Error
-  if(alarms & 0x08 == 0x08)
-    gfx_CircleFilled(500, 172, 10, LED_GOOD);
-  else
-    gfx_CircleFilled(500, 172, 10, LED_BAD);
-  endif
-
-endfunc
-
-func draw_mod_labels()
-
-  // Module Voltage
-  img_Show(hndl,iModuleVoltage_Label) ;
-
-  // Module Temp
-  img_Show(hndl,iModuleTemp_Label) ;
-
-  // Module Voltage Units
-  img_Show(hndl,iModuleVoltage_Unit) ;
-
-  // Module Temp Units
-  img_Show(hndl,iModuleTemp_Units) ;
-
-  // Module Over Charged
-  img_Show(hndl,iModuleOverCharged_Label) ;
-
-  // Module Over Discharged
-  img_Show(hndl,iModuleOverDischarged_Label) ;
-
-  // Module Over Temp
-  img_Show(hndl,iModuleOverTemp_Label) ;
-
-  // Module Error
-  img_Show(hndl,iModuleError_Label) ;
-  gfx_Panel(PANEL_RAISED, 572, 160, 35, 25, WHITE) ;
-
-endfunc
-
-func draw_mod_info_fields()
-
-  gfx_Panel(PANEL_RAISED, 439, 44, 108, 35, WHITE);
-  gfx_Panel(PANEL_RAISED, 439, 82, 108, 35, WHITE);
 
 endfunc
 
@@ -893,104 +905,120 @@ func draw_shelf_module_buttons()
 
 endfunc
 
-func draw_shelf_alarm_leds()
+// Current Mod Info
+
+func draw_shelf_mod_info(var mod_number)
+
+  // Draw the background panel
+  gfx_OutlineColour(SILVER);
+  gfx_Panel(PANEL_SUNKEN, 296, 29, 324, 166, 0x8D9C);
+  gfx_OutlineColour(BLACK);
+
+  // Draw the LEDs for the module's alarms
+  draw_mod_alarm_leds(mods[mod_number]);
+  
+  // Draw the labels for the module's fields
+  draw_mod_labels();
+
+  // Draw the fields for the module's info
+  draw_mod_info_fields();
+
+  // Draw the title
+  img_Show(hndl,iModuleNumber_Title);
+
+  // Draw the Module number
+  draw_mod_info_number(current_mod);
+
+endfunc
+
+func draw_mod_alarm_leds(var mod)
 
   var alarm_index, alarms;
-  alarm_index := 6;
-  alarms := shelf0[alarm_index];
+  alarm_index := 2;
+  alarms := mod[alarm_index];
 
   // Shelf Over Charged
   if(alarms & 0x01 == 0x01)
-    gfx_CircleFilled(50, 265, 20, LED_GOOD);
+    gfx_CircleFilled(324, 140, 10, LED_GOOD);
   else
-    gfx_CircleFilled(50, 265, 20, LED_BAD);
+    gfx_CircleFilled(324, 140, 10, LED_BAD);
   endif
 
   // Shelf Over Temp
   if(alarms & 0x04 == 0x04)
-    gfx_CircleFilled(50, 317, 20, LED_GOOD);
+    gfx_CircleFilled(500, 140, 10, LED_GOOD);
   else
-    gfx_CircleFilled(50, 317, 20, LED_BAD);
+    gfx_CircleFilled(500, 140, 10, LED_BAD);
   endif
 
   // Shelf Over Disc
   if(alarms & 0x02 == 0x02)
-    gfx_CircleFilled(50, 368, 20, LED_GOOD);
+    gfx_CircleFilled(324, 172, 10, LED_GOOD);
   else
-    gfx_CircleFilled(50, 368, 20, LED_BAD);
+    gfx_CircleFilled(324, 172, 10, LED_BAD);
   endif
 
   // Shelf Error
   if(alarms & 0x08 == 0x08)
-    gfx_CircleFilled(50, 425, 20, LED_GOOD);
+    gfx_CircleFilled(500, 172, 10, LED_GOOD);
   else
-    gfx_CircleFilled(50, 425, 20, LED_BAD);
+    gfx_CircleFilled(500, 172, 10, LED_BAD);
   endif
 
 endfunc
 
-func draw_shelf_alarms_labels()
+func draw_mod_labels()
 
-  // Shelf Over Charge
-  img_Show(hndl,iShelfOverCharge_Label);
+  // Module Voltage
+  img_Show(hndl,iModuleVoltage_Label) ;
 
-  // Shelf Over Temp
-  img_Show(hndl,iShelfOverTemp_Label);
+  // Module Temp
+  img_Show(hndl,iModuleTemp_Label) ;
 
-  // Over Discharged
-  img_Show(hndl,iOverDischarged_Label);
+  // Module Voltage Units
+  img_Show(hndl,iModuleVoltage_Unit) ;
 
-  // Shelf Error
-  img_Show(hndl,iShelfError_Label);
+  // Module Temp Units
+  img_Show(hndl,iModuleTemp_Units) ;
 
-endfunc
+  // Module Over Charged
+  img_Show(hndl,iModuleOverCharged_Label) ;
 
-func draw_shelf_readings_labels()
+  // Module Over Discharged
+  img_Show(hndl,iModuleOverDischarged_Label) ;
 
-  // Shelf Total Voltage
-  img_Show(hndl,iShelfTotalVoltage_Label);
+  // Module Over Temp
+  img_Show(hndl,iModuleOverTemp_Label) ;
 
-  // Shelf Average Temp
-  img_Show(hndl,iShelfAverageTemp_Label);
-
-  // Shelf Max Temp
-  img_Show(hndl,iShelfMaxTemp_Label);
-
-  // Shelf Min Temp
-  img_Show(hndl,iShelfMinTemp_Label);
-
-  // Shelf Total Voltage Units
-  img_Show(hndl,iShelfTotalVoltage_Units);
-
-  // Shelf Average Temp Units
-  img_Show(hndl,iShelfAverageTemp_Units);
-
-  // Module ID
-  img_Show(hndl,iModuleID_Label);
+  // Module Error
+  img_Show(hndl,iModuleError_Label) ;
+  gfx_Panel(PANEL_RAISED, 572, 160, 35, 25, WHITE) ;
 
 endfunc
 
-func draw_shelf_readings_fields()
+func draw_mod_info_fields()
 
-  // Total Voltage
-  gfx_Panel(PANEL_RAISED, 441, 246, 108, 35, WHITE);
-
-  // Average Temp
-  gfx_Panel(PANEL_RAISED, 441, 291, 108, 35, WHITE);
-
-  // Max Temp
-  gfx_Panel(PANEL_RAISED, 441, 364, 108, 35, WHITE);
-
-  // Min Temp
-  gfx_Panel(PANEL_RAISED, 441, 416, 108, 35, WHITE);
-
-  // Max ID
-  gfx_Panel(PANEL_RAISED, 560, 364, 50, 35, WHITE);
-
-  // Min ID
-  gfx_Panel(PANEL_RAISED, 560, 416, 50, 35, WHITE);
+  gfx_Panel(PANEL_RAISED, 439, 44, 108, 35, WHITE);
+  gfx_Panel(PANEL_RAISED, 439, 82, 108, 35, WHITE);
 
 endfunc
+
+func draw_mod_info_number(var mod_number)
+
+  blue_background_font(405, 13);
+  print(mod_number + 1);
+
+endfunc
+
+func update_shelf_mod(var mod_number)
+
+  draw_mod_info_number(mod_number);
+  draw_mod_alarm_leds(mod_number);
+  // Print off actual values...
+
+endfunc
+
+// System Status
 
 func draw_shelf_system_status()
 endfunc
@@ -1024,6 +1052,16 @@ endfunc
 func reset_font(var x, var y)
   txt_Set(TEXT_HIGHLIGHT, 0xFFFF);
   txt_Set(TEXT_COLOUR, BLACK);
+  txt_Width(2);
+  txt_Height(2);
+  gfx_MoveTo(x, y);
+endfunc
+
+func blue_background_font(var x, var y)
+  txt_Set(TEXT_HIGHLIGHT, 0x8D9C);
+  txt_Set(TEXT_COLOUR, BLACK);
+  txt_Width(2);
+  txt_Height(2);
   gfx_MoveTo(x, y);
 endfunc
 
@@ -1382,63 +1420,63 @@ func check_press()
 
       // Individual Module Buttons
 
-      if(touched_image == iMainModule1Good_btn)
+      if(touched_image == iMainModule1Good_btn || touched_image == iMainModule1Bad_btn)
         current_form := SHELF_FORM;
         current_mod := 0;
         disable_all_inputs();
         draw_shelf_form(current_mod);
       endif
 
-      if(touched_image == iMainModule2Good_btn)
+      if(touched_image == iMainModule2Good_btn || touched_image == iMainModule2Bad_btn)
         current_form := SHELF_FORM;
         current_mod := 1;
         disable_all_inputs();
         draw_shelf_form(current_mod);
       endif
 
-      if(touched_image == iMainModule3Good_btn)
+      if(touched_image == iMainModule3Good_btn || touched_image == iMainModule3Bad_btn)
         current_form := SHELF_FORM;
         current_mod := 2;
         disable_all_inputs();
         draw_shelf_form(current_mod);
       endif
 
-      if(touched_image == iMainModule4Good_btn)
+      if(touched_image == iMainModule4Good_btn || touched_image == iMainModule4Bad_btn)
         current_form := SHELF_FORM;
         current_mod := 3;
         disable_all_inputs();
         draw_shelf_form(current_mod);
       endif
 
-      if(touched_image == iMainModule5Good_btn)
+      if(touched_image == iMainModule5Good_btn || touched_image == iMainModule5Bad_btn)
         current_form := SHELF_FORM;
         current_mod := 4;
         disable_all_inputs();
         draw_shelf_form(current_mod);
       endif
 
-      if(touched_image == iMainModule6Good_btn)
+      if(touched_image == iMainModule6Good_btn || touched_image == iMainModule6Bad_btn)
         current_form := SHELF_FORM;
         current_mod := 5;
         disable_all_inputs();
         draw_shelf_form(current_mod);
       endif
 
-      if(touched_image == iMainModule7Good_btn)
+      if(touched_image == iMainModule7Good_btn || touched_image == iMainModule7Bad_btn)
         current_form := SHELF_FORM;
         current_mod := 6;
         disable_all_inputs();
         draw_shelf_form(current_mod);
       endif
 
-      if(touched_image == iMainModule8Good_btn)
+      if(touched_image == iMainModule8Good_btn || touched_image == iMainModule8Bad_btn)
         current_form := SHELF_FORM;
         current_mod := 7;
         disable_all_inputs();
         draw_shelf_form(current_mod);
       endif
 
-      if(touched_image == iMainModule9Good_btn)
+      if(touched_image == iMainModule9Good_btn || touched_image == iMainModule9Bad_btn)
         current_form := SHELF_FORM;
         current_mod := 8;
         disable_all_inputs();
@@ -1454,6 +1492,53 @@ func check_press()
         current_form := OVERVIEW_FORM;
         disable_all_inputs();
         draw_overall_form();
+      endif
+
+      // Individual Module Buttons
+
+      if(touched_image == iModule1Good_btn || touched_image == iModule1Bad_btn)
+        current_mod := 0;
+        update_shelf_mod(current_mod);
+      endif
+
+      if(touched_image == iModule2Good_btn || touched_image == iModule2Bad_btn)
+        current_mod := 1;
+        update_shelf_mod(current_mod);
+      endif
+
+      if(touched_image == iModule3Good_btn || touched_image == iModule3Bad_btn)
+        current_mod := 2;
+        update_shelf_mod(current_mod);
+      endif
+
+      if(touched_image == iModule4Good_btn || touched_image == iModule4Bad_btn)
+        current_mod := 3;
+        update_shelf_mod(current_mod);
+      endif
+
+      if(touched_image == iModule5Good_btn || touched_image == iModule5Bad_btn)
+        current_mod := 4;
+        update_shelf_mod(current_mod);
+      endif
+
+      if(touched_image == iModule6Good_btn || touched_image == iModule6Bad_btn)
+        current_mod := 5;
+        update_shelf_mod(current_mod);
+      endif
+
+      if(touched_image == iModule7Good_btn || touched_image == iModule7Bad_btn)
+        current_mod := 6;
+        update_shelf_mod(current_mod);
+      endif
+
+      if(touched_image == iModule8Good_btn || touched_image == iModule8Bad_btn)
+        current_mod := 7;
+        update_shelf_mod(current_mod);
+      endif
+
+      if(touched_image == iModule9Good_btn || touched_image == iModule9Bad_btn)
+        current_mod := 8;
+        update_shelf_mod(current_mod);
       endif
 
     endif

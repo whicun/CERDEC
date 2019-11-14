@@ -70,63 +70,63 @@ func check_press()
 
       // Individual Module Buttons
 
-      if(touched_image == iMainModule1Good_btn)
+      if(touched_image == iMainModule1Good_btn || touched_image == iMainModule1Bad_btn)
         current_form := SHELF_FORM;
         current_mod := 0;
         disable_all_inputs();
         draw_shelf_form(current_mod);
       endif
 
-      if(touched_image == iMainModule2Good_btn)
+      if(touched_image == iMainModule2Good_btn || touched_image == iMainModule2Bad_btn)
         current_form := SHELF_FORM;
         current_mod := 1;
         disable_all_inputs();
         draw_shelf_form(current_mod);
       endif
 
-      if(touched_image == iMainModule3Good_btn)
+      if(touched_image == iMainModule3Good_btn || touched_image == iMainModule3Bad_btn)
         current_form := SHELF_FORM;
         current_mod := 2;
         disable_all_inputs();
         draw_shelf_form(current_mod);
       endif
 
-      if(touched_image == iMainModule4Good_btn)
+      if(touched_image == iMainModule4Good_btn || touched_image == iMainModule4Bad_btn)
         current_form := SHELF_FORM;
         current_mod := 3;
         disable_all_inputs();
         draw_shelf_form(current_mod);
       endif
 
-      if(touched_image == iMainModule5Good_btn)
+      if(touched_image == iMainModule5Good_btn || touched_image == iMainModule5Bad_btn)
         current_form := SHELF_FORM;
         current_mod := 4;
         disable_all_inputs();
         draw_shelf_form(current_mod);
       endif
 
-      if(touched_image == iMainModule6Good_btn)
+      if(touched_image == iMainModule6Good_btn || touched_image == iMainModule6Bad_btn)
         current_form := SHELF_FORM;
         current_mod := 5;
         disable_all_inputs();
         draw_shelf_form(current_mod);
       endif
 
-      if(touched_image == iMainModule7Good_btn)
+      if(touched_image == iMainModule7Good_btn || touched_image == iMainModule7Bad_btn)
         current_form := SHELF_FORM;
         current_mod := 6;
         disable_all_inputs();
         draw_shelf_form(current_mod);
       endif
 
-      if(touched_image == iMainModule8Good_btn)
+      if(touched_image == iMainModule8Good_btn || touched_image == iMainModule8Bad_btn)
         current_form := SHELF_FORM;
         current_mod := 7;
         disable_all_inputs();
         draw_shelf_form(current_mod);
       endif
 
-      if(touched_image == iMainModule9Good_btn)
+      if(touched_image == iMainModule9Good_btn || touched_image == iMainModule9Bad_btn)
         current_form := SHELF_FORM;
         current_mod := 8;
         disable_all_inputs();
@@ -142,6 +142,53 @@ func check_press()
         current_form := OVERVIEW_FORM;
         disable_all_inputs();
         draw_overall_form();
+      endif
+
+      // Individual Module Buttons
+
+      if(touched_image == iModule1Good_btn || touched_image == iModule1Bad_btn)
+        current_mod := 0;
+        update_shelf_mod(current_mod);
+      endif
+
+      if(touched_image == iModule2Good_btn || touched_image == iModule2Bad_btn)
+        current_mod := 1;
+        update_shelf_mod(current_mod);
+      endif
+
+      if(touched_image == iModule3Good_btn || touched_image == iModule3Bad_btn)
+        current_mod := 2;
+        update_shelf_mod(current_mod);
+      endif
+
+      if(touched_image == iModule4Good_btn || touched_image == iModule4Bad_btn)
+        current_mod := 3;
+        update_shelf_mod(current_mod);
+      endif
+
+      if(touched_image == iModule5Good_btn || touched_image == iModule5Bad_btn)
+        current_mod := 4;
+        update_shelf_mod(current_mod);
+      endif
+
+      if(touched_image == iModule6Good_btn || touched_image == iModule6Bad_btn)
+        current_mod := 5;
+        update_shelf_mod(current_mod);
+      endif
+
+      if(touched_image == iModule7Good_btn || touched_image == iModule7Bad_btn)
+        current_mod := 6;
+        update_shelf_mod(current_mod);
+      endif
+
+      if(touched_image == iModule8Good_btn || touched_image == iModule8Bad_btn)
+        current_mod := 7;
+        update_shelf_mod(current_mod);
+      endif
+
+      if(touched_image == iModule9Good_btn || touched_image == iModule9Bad_btn)
+        current_mod := 8;
+        update_shelf_mod(current_mod);
       endif
 
     endif
