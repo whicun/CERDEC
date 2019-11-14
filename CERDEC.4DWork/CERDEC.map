@@ -1,242 +1,244 @@
 linked : 54    disable_all_inputs 00005E
  stmt:Offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset
- 1552:00005e 
+ 1564:00005e 
 
 linked : 53    check_press 00006C
  stmt:Offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset
- 1354:00006e  1356:000079  1360:000081  1361:00008f  1362:00009a  1365:0000a5  1368:0000ad  1369:0000b3 
- 1370:0000b9  1371:0000bf  1372:0000c5  1374:0000cb  1375:0000d3  1376:0000d9  1377:0000df  1378:0000e4 
- 1384:0000ec  1385:00011e  1386:00012a  1387:000133  1392:000139  1393:00016b  1394:000177  1395:000180 
- 1400:000186  1401:0001b8  1402:0001c4  1403:0001cd  1408:0001d3  1409:000205  1410:000211  1411:00021a 
- 1416:000220  1417:000228  1418:00022e  1423:000234  1424:000247  1425:00024d  1426:000253  1427:000258 
- 1430:000260  1431:000273  1432:000279  1433:00027f  1434:000284  1437:00028c  1438:00029f  1439:0002a5 
- 1440:0002ab  1441:0002b0  1444:0002b8  1445:0002cb  1446:0002d1  1447:0002d7  1448:0002dc  1451:0002e4 
- 1452:0002f7  1453:0002fd  1454:000303  1455:000308  1458:000310  1459:000323  1460:000329  1461:00032f 
- 1462:000334  1465:00033c  1466:00034f  1467:000355  1468:00035b  1469:000360  1472:000368  1473:00037b 
- 1474:000381  1475:000387  1476:00038c  1479:000394  1480:0003a7  1481:0003ad  1482:0003b3  1483:0003b8 
- 1489:0003c0  1491:0003c8  1492:0003d0  1493:0003d6  1494:0003db  1499:0003e1  1500:0003f4  1501:0003fa 
- 1504:000402  1505:000415  1506:00041b  1509:000423  1510:000436  1511:00043c  1514:000444  1515:000457 
- 1516:00045d  1519:000465  1520:000478  1521:00047e  1524:000486  1525:000499  1526:00049f  1529:0004a7 
- 1530:0004ba  1531:0004c0  1534:0004c8  1535:0004db  1536:0004e1  1539:0004e9  1540:0004fc  1541:000502 
+ 1366:00006e  1368:000079  1372:000081  1373:00008f  1374:00009a  1377:0000a5  1380:0000ad  1381:0000b3 
+ 1382:0000b9  1383:0000bf  1384:0000c5  1386:0000cb  1387:0000d3  1388:0000d9  1389:0000df  1390:0000e4 
+ 1396:0000ec  1397:00011e  1398:00012a  1399:000133  1404:000139  1405:00016b  1406:000177  1407:000180 
+ 1412:000186  1413:0001b8  1414:0001c4  1415:0001cd  1420:0001d3  1421:000205  1422:000211  1423:00021a 
+ 1428:000220  1429:000228  1430:00022e  1435:000234  1436:000247  1437:00024d  1438:000253  1439:000258 
+ 1442:000260  1443:000273  1444:000279  1445:00027f  1446:000284  1449:00028c  1450:00029f  1451:0002a5 
+ 1452:0002ab  1453:0002b0  1456:0002b8  1457:0002cb  1458:0002d1  1459:0002d7  1460:0002dc  1463:0002e4 
+ 1464:0002f7  1465:0002fd  1466:000303  1467:000308  1470:000310  1471:000323  1472:000329  1473:00032f 
+ 1474:000334  1477:00033c  1478:00034f  1479:000355  1480:00035b  1481:000360  1484:000368  1485:00037b 
+ 1486:000381  1487:000387  1488:00038c  1491:000394  1492:0003a7  1493:0003ad  1494:0003b3  1495:0003b8 
+ 1501:0003c0  1503:0003c8  1504:0003d0  1505:0003d6  1506:0003db  1511:0003e1  1512:0003f4  1513:0003fa 
+ 1516:000402  1517:000415  1518:00041b  1521:000423  1522:000436  1523:00043c  1526:000444  1527:000457 
+ 1528:00045d  1531:000465  1532:000478  1533:00047e  1536:000486  1537:000499  1538:00049f  1541:0004a7 
+ 1542:0004ba  1543:0004c0  1546:0004c8  1547:0004db  1548:0004e1  1551:0004e9  1552:0004fc  1553:000502 
 
 skipped: 52    request_all_shelf_mods ----
 linked : 51    request_mod 00050B
  stmt:Offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset
- 1323:00050d  1324:000513  1325:000519  1326:00051f  1327:000525  1328:000531  1329:000537  1332:00053d 
- 1333:000555 
+ 1335:00050d  1336:000513  1337:000519  1338:00051f  1339:000525  1340:000531  1341:000537  1344:00053d 
+ 1345:000555 
 
 skipped: 50    process_input ----
 linked : 49    set_mods 000568
  stmt:Offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset
- 1228:000568  1229:000575  1230:000585  1231:000595  1234:0005a8  1235:0005b5  1238:0005c5  1239:0005d2 
+ 1240:000568  1241:000575  1242:000585  1243:000595  1246:0005a8  1247:0005b5  1250:0005c5  1251:0005d2 
 
 linked : 48    get_mods 0005E3
  stmt:Offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset
- 1218:0005e3  1219:0005e9  1220:0005f9 
+ 1230:0005e3  1231:0005e9  1232:0005f9 
 
 linked : 47    set_shelf 00060D
  stmt:Offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset
- 1202:00060d  1203:00061a  1204:00062a  1205:000637  1206:000644  1207:000651  1208:00065e  1209:00066b 
+ 1214:00060d  1215:00061a  1216:00062a  1217:000637  1218:000644  1219:000651  1220:00065e  1221:00066b 
 
 linked : 46    get_shelf 000679
  stmt:Offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset
- 1195:000679 
+ 1207:000679 
 
 linked : 45    calc_temperature 000680
  stmt:Offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset
- 1179:000680  1180:00068b  1181:000695  1183:0006a1 
+ 1191:000680  1192:00068b  1193:000695  1195:0006a1 
 
 skipped: 44    print_temperature ----
 skipped: 43    calc_mod_voltage ----
 linked : 42    calc_shelf_voltage 0006A4
  stmt:Offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset
- 1125:0006a6  1128:0006ae  1134:0006b8  1137:0006c2  1140:0006cd 
+ 1137:0006a6  1140:0006ae  1146:0006b8  1149:0006c2  1152:0006cd 
 
 skipped: 41    print_shelf_voltage ----
 linked : 40    calc_system_voltage 0006DA
  stmt:Offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset
- 1092:0006da  1096:0006e5  1098:0006fd  1101:000705  1104:000717 
+ 1104:0006da  1108:0006e5  1110:0006fd  1113:000705  1116:000717 
 
 skipped: 39    print_system_voltage ----
 linked : 38    blue_background_font 00071A
  stmt:Offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset
- 1061:00071a  1062:000725  1063:00072f  1064:000737  1065:00073f 
+ 1073:00071a  1074:000725  1075:00072f  1076:000737  1077:00073f 
 
 linked : 37    reset_font 00074A
  stmt:Offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset
- 1053:00074a  1054:000755  1055:00075f  1056:000767  1057:00076f 
+ 1065:00074a  1066:000755  1067:00075f  1068:000767  1069:00076f 
 
 linked : 36    draw_shelf_side_buttons 00077A
  stmt:Offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset
- 1029:00077a  1030:000786  1031:000794  1034:00079e  1035:0007aa  1036:0007b8  1039:0007c2  1040:0007ce 
- 1041:0007dc  1044:0007e6  1045:0007f2  1046:000800 
+ 1041:00077a  1042:000786  1043:000794  1046:00079e  1047:0007aa  1048:0007b8  1051:0007c2  1052:0007ce 
+ 1053:0007dc  1056:0007e6  1057:0007f2  1058:000800 
 
 linked : 35    draw_shelf_system_status 00080B
 linked : 34    update_shelf_mod 00080C
  stmt:Offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset
- 1015:00080c  1016:000814 
+ 1027:00080c  1028:000814 
 
-linked : 33    draw_mod_info_number 00081D
+linked : 33    draw_mod_info_number 000821
  stmt:Offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset
- 1008:00081d  1009:000828 
+ 1020:000821  1021:00082c 
 
-linked : 32    draw_mod_info_fields 000839
+linked : 32    draw_mod_info_fields 00083D
  stmt:Offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset
- 1001:000839  1002:00084d 
+ 1013:00083d  1014:000851 
 
-linked : 31    draw_mod_labels 000862
+linked : 31    draw_mod_labels 000866
  stmt:Offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset
-  973:000862   976:00086c   979:000876   982:000880   985:00088a   988:000894   991:00089e   994:0008a8 
-  995:0008b2 
+  985:000866   988:000870   991:00087a   994:000884   997:00088e  1000:000898  1003:0008a2  1006:0008ac 
+ 1007:0008b6 
 
-linked : 30    draw_mod_alarm_leds 0008C7
+linked : 30    draw_mod_alarm_leds 0008CB
  stmt:Offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset
-  937:0008c7   938:0008cd   941:0008d7   942:0008e2   944:0008f5   948:000905   949:000910   951:000923 
-  955:000933   956:00093e   958:000951   962:000961   963:00096c   965:00097f 
+  943:0008cb   944:0008d1   947:0008db   948:0008ea   949:0008f9   950:000908   953:000917   954:000922 
+  956:000935   960:000945   961:000950   963:000963   967:000973   968:00097e   970:000991   974:0009a1 
+  975:0009ac   977:0009bf 
 
-linked : 29    draw_shelf_mod_info 000990
+linked : 29    draw_shelf_mod_info 0009D0
  stmt:Offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset
-  913:000990   914:000999   915:0009ae   918:0009b6   921:0009c2   924:0009c8   927:0009ce   930:0009d8 
+  919:0009d0   920:0009d9   921:0009ee   924:0009f6   927:000a02   930:000a08   933:000a0e   936:000a18 
 
-linked : 28    draw_shelf_module_buttons 0009E1
+linked : 28    draw_shelf_module_buttons 000A21
  stmt:Offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset
-  787:0009e1   790:0009e7   791:0009f1   792:0009fd   793:000a0b   794:000a15   796:000a24   797:000a30 
-  798:000a3e   799:000a48   803:000a54   804:000a5e   805:000a6a   806:000a78   807:000a82   809:000a91 
-  810:000a9d   811:000aab   812:000ab5   816:000ac1   817:000acb   818:000ad7   819:000ae5   820:000aef 
-  822:000afe   823:000b0a   824:000b18   825:000b22   829:000b2e   830:000b38   831:000b44   832:000b52 
-  833:000b5c   835:000b6b   836:000b77   837:000b85   838:000b8f   842:000b9b   843:000ba5   844:000bb1 
-  845:000bbf   846:000bc9   848:000bd8   849:000be4   850:000bf2   851:000bfc   855:000c08   856:000c12 
-  857:000c1e   858:000c2c   859:000c36   861:000c45   862:000c51   863:000c5f   864:000c69   868:000c75 
-  869:000c7f   870:000c8b   871:000c99   872:000ca3   874:000cb2   875:000cbe   876:000ccc   877:000cd6 
-  881:000ce2   882:000cec   883:000cf8   884:000d06   885:000d10   887:000d1f   888:000d2b   889:000d39 
-  890:000d43   894:000d4f   895:000d59   896:000d65   897:000d73   898:000d7d   900:000d8c   901:000d98 
-  902:000da6   903:000db0 
+  793:000a21   796:000a27   797:000a31   798:000a3d   799:000a4b   800:000a55   802:000a64   803:000a70 
+  804:000a7e   805:000a88   809:000a94   810:000a9e   811:000aaa   812:000ab8   813:000ac2   815:000ad1 
+  816:000add   817:000aeb   818:000af5   822:000b01   823:000b0b   824:000b17   825:000b25   826:000b2f 
+  828:000b3e   829:000b4a   830:000b58   831:000b62   835:000b6e   836:000b78   837:000b84   838:000b92 
+  839:000b9c   841:000bab   842:000bb7   843:000bc5   844:000bcf   848:000bdb   849:000be5   850:000bf1 
+  851:000bff   852:000c09   854:000c18   855:000c24   856:000c32   857:000c3c   861:000c48   862:000c52 
+  863:000c5e   864:000c6c   865:000c76   867:000c85   868:000c91   869:000c9f   870:000ca9   874:000cb5 
+  875:000cbf   876:000ccb   877:000cd9   878:000ce3   880:000cf2   881:000cfe   882:000d0c   883:000d16 
+  887:000d22   888:000d2c   889:000d38   890:000d46   891:000d50   893:000d5f   894:000d6b   895:000d79 
+  896:000d83   900:000d8f   901:000d99   902:000da5   903:000db3   904:000dbd   906:000dcc   907:000dd8 
+  908:000de6   909:000df0 
 
-linked : 27    draw_shelf_modules 000DBD
+linked : 27    draw_shelf_modules 000DFD
  stmt:Offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset
-  773:000dbd   774:000dc6   775:000dda   778:000de2   781:000de8 
+  779:000dfd   780:000e06   781:000e1a   784:000e22   787:000e28 
 
-linked : 26    draw_shelf_readings_fields 000DF3
+linked : 26    draw_shelf_readings_fields 000E33
  stmt:Offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset
-  749:000df3   752:000e07   755:000e1c   758:000e31   761:000e46   764:000e5b 
+  755:000e33   758:000e47   761:000e5c   764:000e71   767:000e86   770:000e9b 
 
-linked : 25    draw_shelf_readings_labels 000E71
+linked : 25    draw_shelf_readings_labels 000EB1
  stmt:Offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset
-  724:000e71   727:000e7b   730:000e85   733:000e8f   736:000e99   739:000ea3   742:000ead 
+  730:000eb1   733:000ebb   736:000ec5   739:000ecf   742:000ed9   745:000ee3   748:000eed 
 
-linked : 24    draw_shelf_readings 000EB8
+linked : 24    draw_shelf_readings 000EF8
  stmt:Offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset
-  706:000eb8   707:000ec1   708:000ed6   711:000ede   714:000ee4   717:000eea 
+  712:000ef8   713:000f01   714:000f16   717:000f1e   720:000f24   723:000f2a 
 
-linked : 23    draw_shelf_alarms_labels 000EF5
+linked : 23    draw_shelf_alarms_labels 000F35
  stmt:Offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset
-  688:000ef5   691:000eff   694:000f09   697:000f13 
+  694:000f35   697:000f3f   700:000f49   703:000f53 
 
-linked : 22    draw_shelf_alarm_leds 000F1E
+linked : 22    draw_shelf_alarm_leds 000F5E
  stmt:Offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset
-  652:000f1e   653:000f24   656:000f2e   657:000f39   659:000f4c   663:000f5c   664:000f67   666:000f7a 
-  670:000f8a   671:000f95   673:000fa8   677:000fb8   678:000fc3   680:000fd6 
+  652:000f5e   653:000f64   656:000f6e   657:000f7d   658:000f8c   659:000f9b   662:000faa   663:000fb5 
+  665:000fc8   669:000fd8   670:000fe3   672:000ff6   676:001006   677:001011   679:001024   683:001034 
+  684:00103f   686:001052 
 
-linked : 21    draw_shelf_alarms 000FE7
+linked : 21    draw_shelf_alarms 001063
  stmt:Offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset
-  631:000fe7   632:000ff0   633:001004   636:00100c   639:001012   642:001018   645:00102c 
+  631:001063   632:00106c   633:001080   636:001088   639:00108e   642:001094   645:0010a8 
 
-linked : 20    draw_shelf_form 001037
+linked : 20    draw_shelf_form 0010B3
  stmt:Offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset
-  609:001037   610:001040   612:001046   614:00104c   616:001054   618:00105a   620:001060   622:001066 
+  609:0010b3   610:0010bc   612:0010c2   614:0010c8   616:0010d0   618:0010d6   620:0010dc   622:0010e2 
 
-linked : 19    any_mod_errors 00106D
+linked : 19    any_mod_errors 0010E9
  stmt:Offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset
-  597:00106d   598:001073   599:00108e   601:001094 
+  597:0010e9   598:0010ef   599:00110a   601:001110 
 
-linked : 18    draw_overall_mods 001097
+linked : 18    draw_overall_mods 001113
  stmt:Offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset
-  456:001097   459:00109d   461:0010a7   462:0010b3   463:0010c1   464:0010cb   467:0010da   468:0010e6 
-  469:0010f4   470:0010fe   474:00110a   476:001114   477:001120   478:00112e   479:001138   482:001147 
-  483:001153   484:001161   485:00116b   489:001177   491:001181   492:00118d   493:00119b   494:0011a5 
-  497:0011b4   498:0011c0   499:0011ce   500:0011d8   504:0011e4   506:0011ee   507:0011fa   508:001208 
-  509:001212   512:001221   513:00122d   514:00123b   515:001245   519:001251   521:00125b   522:001267 
-  523:001275   524:00127f   527:00128e   528:00129a   529:0012a8   530:0012b2   534:0012be   536:0012c8 
-  537:0012d4   538:0012e2   539:0012ec   542:0012fb   543:001307   544:001315   545:00131f   549:00132b 
-  551:001335   552:001341   553:00134f   554:001359   557:001368   558:001374   559:001382   560:00138c 
-  564:001398   566:0013a2   567:0013ae   568:0013bc   569:0013c6   572:0013d5   573:0013e1   574:0013ef 
-  575:0013f9   579:001405   581:00140f   582:00141b   583:001429   584:001433   587:001442   588:00144e 
-  589:00145c   590:001466 
+  456:001113   459:001119   461:001123   462:00112f   463:00113d   464:001147   467:001156   468:001162 
+  469:001170   470:00117a   474:001186   476:001190   477:00119c   478:0011aa   479:0011b4   482:0011c3 
+  483:0011cf   484:0011dd   485:0011e7   489:0011f3   491:0011fd   492:001209   493:001217   494:001221 
+  497:001230   498:00123c   499:00124a   500:001254   504:001260   506:00126a   507:001276   508:001284 
+  509:00128e   512:00129d   513:0012a9   514:0012b7   515:0012c1   519:0012cd   521:0012d7   522:0012e3 
+  523:0012f1   524:0012fb   527:00130a   528:001316   529:001324   530:00132e   534:00133a   536:001344 
+  537:001350   538:00135e   539:001368   542:001377   543:001383   544:001391   545:00139b   549:0013a7 
+  551:0013b1   552:0013bd   553:0013cb   554:0013d5   557:0013e4   558:0013f0   559:0013fe   560:001408 
+  564:001414   566:00141e   567:00142a   568:001438   569:001442   572:001451   573:00145d   574:00146b 
+  575:001475   579:001481   581:00148b   582:001497   583:0014a5   584:0014af   587:0014be   588:0014ca 
+  589:0014d8   590:0014e2 
 
-linked : 17    draw_overall_side_buttons 001473
+linked : 17    draw_overall_side_buttons 0014EF
  stmt:Offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset
-  430:001473   431:00147f   432:00148d   435:001497   436:0014a3   437:0014b1   440:0014bb   441:0014c7 
-  442:0014d5   445:0014df   446:0014eb   447:0014f9   450:001503 
+  430:0014ef   431:0014fb   432:001509   435:001513   436:00151f   437:00152d   440:001537   441:001543 
+  442:001551   445:00155b   446:001567   447:001575   450:00157f 
 
-linked : 16    draw_system_mode_labels 00150A
+linked : 16    draw_system_mode_labels 001586
  stmt:Offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset
-  411:00150a   414:001514   417:00151e   420:001528   423:001532 
+  411:001586   414:001590   417:00159a   420:0015a4   423:0015ae 
 
-linked : 15    draw_system_mode_radios 00153D
+linked : 15    draw_system_mode_radios 0015B9
  stmt:Offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset
-  372:00153f   373:001545   374:00154b   375:001551   376:001557   379:00155d   380:001569   382:00157a 
-  386:001589   387:001595   389:0015a6   393:0015b5   394:0015c1   396:0015d2   400:0015e1   401:0015ed 
-  403:0015fe 
+  372:0015bb   373:0015c1   374:0015c7   375:0015cd   376:0015d3   379:0015d9   380:0015e5   382:0015f6 
+  386:001605   387:001611   389:001622   393:001631   394:00163d   396:00164e   400:00165d   401:001669 
+  403:00167a 
 
-linked : 14    draw_relay_status_led 00160E
+linked : 14    draw_capacitors_voltage 00168A
  stmt:Offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset
-  355:00160e   358:001614   361:001624   362:001630   364:001643 
+  362:00168a   365:00169f 
 
-linked : 13    draw_capacitors_voltage 001654
+linked : 13    draw_output_current 0016AA
  stmt:Offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset
-  345:001654   348:001669 
+  352:0016aa   355:0016bf 
 
-linked : 12    draw_output_current 001674
+linked : 12    draw_bus_voltage 0016CA
  stmt:Offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset
-  335:001674   338:001689 
+  342:0016ca   345:0016df 
 
-linked : 11    draw_bus_voltage 001694
+linked : 11    draw_estimated_runtime 0016EA
  stmt:Offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset
-  325:001694   328:0016a9 
+  332:0016ea   335:0016fe 
 
-linked : 10    draw_estimated_runtime 0016B4
+linked : 10    draw_time_at_max 001709
  stmt:Offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset
-  315:0016b4   318:0016c8 
+  322:001709   325:00171d 
 
-linked : 9     draw_time_at_max 0016D3
+linked : 9     draw_stored_energy 001728
  stmt:Offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset
-  305:0016d3   308:0016e7 
+  312:001728   315:00173c 
 
-linked : 8     draw_stored_energy 0016F2
+linked : 8     draw_num_discharges 001747
  stmt:Offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset
-  295:0016f2   298:001706 
+  293:001747   296:00175b   297:001766   300:001773   301:00177f   302:00178d   305:001797 
 
-linked : 7     draw_num_discharges 001711
+linked : 7     draw_relay_status_led 0017A2
  stmt:Offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset
-  276:001711   279:001725   280:001730   283:00173d   284:001749   285:001757   288:001761 
+  276:0017a2   279:0017a8   282:0017b7   283:0017c3   285:0017d6 
 
-linked : 6     draw_relay_status 00176C
+linked : 6     draw_relay_status 0017E7
  stmt:Offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset
-  266:00176c   269:001776 
+  266:0017e7   269:0017f1 
 
-linked : 5     draw_system_mode 00177D
+linked : 5     draw_system_mode 0017F8
  stmt:Offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset
-  253:00177d   256:001790   259:001796 
+  253:0017f8   256:00180b   259:001811 
 
-linked : 4     draw_system_status 00179D
+linked : 4     draw_system_status 001818
  stmt:Offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset
-  238:00179d   241:0017b0   242:0017bc   243:0017ca   246:0017d4 
+  238:001818   241:00182b   242:001837   243:001845   246:00184f 
 
-linked : 3     draw_overall_form 0017DF
+linked : 3     draw_overall_form 00185A
  stmt:Offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset
-  191:0017df   192:0017e8   195:0017ee   198:0017f8   201:0017fe   204:001804   207:00180a   210:001810 
-  213:001816   216:00181c   219:001822   222:001828   225:00182e   228:001834   231:00183a 
+  191:00185a   192:001863   195:001869   198:001873   201:001879   204:00187f   207:001885   210:00188b 
+  213:001891   216:001897   219:00189d   222:0018a3   225:0018a9   228:0018af   231:0018b5 
 
-linked : 2     draw_logo_screen 001841
+linked : 2     draw_logo_screen 0018BC
  stmt:Offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset
-  181:001841   182:00184a 
+  181:0018bc   182:0018c5 
 
-linked : 1     main 001851
+linked : 1     main 0018CC
  stmt:Offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset
-  116:00185a   117:001860   118:001866 
+  116:0018d5   117:0018db   118:0018e1 
 
  stmt:Offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset  stmt:offset
-  155:00186c   127:001872   128:00187b   129:001884   130:00188d   131:001896   132:00189e   133:0018a4 
-  138:0018af   141:0018c0   142:0018ca   145:0018d2   146:0018d8   147:0018e1   150:0018e7   153:0018e7 
-  165:0018fa 
+  155:0018e7   127:0018ed   128:0018f6   129:0018ff   130:001908   131:001911   132:001919   133:00191f 
+  138:00192a   141:00193b   142:001945   145:00194d   146:001953   147:00195c   150:001962   153:001962 
+  165:001975 
 

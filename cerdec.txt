@@ -270,6 +270,23 @@ func draw_relay_status()
 
 endfunc
 
+func draw_relay_status_led()
+
+  var relay_index;
+  relay_index := 2;
+
+  // Draw the background LED first
+  gfx_CircleFilled(110, 298, 22, BLACK);
+
+  // Draw the Relay Status LED
+  if(system[relay_index] == ACTIVE)
+    gfx_CircleFilled(110, 298, 20, LED_GOOD);
+  else
+    gfx_CircleFilled(110, 298, 20, LED_BAD);
+  endif
+
+endfunc
+
 func draw_num_discharges()
 
   // Draw the Number Discharges Field
@@ -346,23 +363,6 @@ func draw_capacitors_voltage()
 
   // Capacitors' Voltage Label
   img_Show(hndl,iCapacitorVoltage_Label);
-
-endfunc
-
-func draw_relay_status_led()
-
-  var relay_index;
-  relay_index := 2;
-
-  // Draw the background LED first
-  gfx_CircleFilled(111, 298, 18, 0x6B6D);
-
-  // Draw the Relay Status LED
-  if(system[relay_index] == ACTIVE)
-    gfx_CircleFilled(111, 298, 17, LED_GOOD);
-  else
-    gfx_CircleFilled(111, 298, 17, LED_BAD);
-  endif
 
 endfunc
 
@@ -652,32 +652,38 @@ func draw_shelf_alarm_leds()
   alarm_index := 6;
   alarms := shelf0[alarm_index];
 
+  // Draw the LED backgrounds
+  gfx_CircleFilled(50, 265, 22, BLACK);
+  gfx_CircleFilled(50, 317, 22, BLACK);
+  gfx_CircleFilled(50, 368, 22, BLACK);
+  gfx_CircleFilled(50, 425, 22, BLACK);
+
   // Shelf Over Charged
   if(alarms & 0x01 == 0x01)
-    gfx_CircleFilled(50, 265, 20, LED_GOOD);
-  else
     gfx_CircleFilled(50, 265, 20, LED_BAD);
+  else
+    gfx_CircleFilled(50, 265, 20, LED_GOOD);
   endif
 
   // Shelf Over Temp
   if(alarms & 0x04 == 0x04)
-    gfx_CircleFilled(50, 317, 20, LED_GOOD);
-  else
     gfx_CircleFilled(50, 317, 20, LED_BAD);
+  else
+    gfx_CircleFilled(50, 317, 20, LED_GOOD);
   endif
 
   // Shelf Over Disc
   if(alarms & 0x02 == 0x02)
-    gfx_CircleFilled(50, 368, 20, LED_GOOD);
-  else
     gfx_CircleFilled(50, 368, 20, LED_BAD);
+  else
+    gfx_CircleFilled(50, 368, 20, LED_GOOD);
   endif
 
   // Shelf Error
   if(alarms & 0x08 == 0x08)
-    gfx_CircleFilled(50, 425, 20, LED_GOOD);
-  else
     gfx_CircleFilled(50, 425, 20, LED_BAD);
+  else
+    gfx_CircleFilled(50, 425, 20, LED_GOOD);
   endif
 
 endfunc
@@ -927,7 +933,7 @@ func draw_shelf_mod_info(var mod_number)
   img_Show(hndl,iModuleNumber_Title);
 
   // Draw the Module number
-  draw_mod_info_number(current_mod);
+  draw_mod_info_number(mod_number);
 
 endfunc
 
@@ -937,32 +943,38 @@ func draw_mod_alarm_leds(var mod)
   alarm_index := 2;
   alarms := mod[alarm_index];
 
+  // Draw the LED backgrounds first
+  gfx_CircleFilled(324, 140, 12, BLACK);
+  gfx_CircleFilled(500, 140, 12, BLACK);
+  gfx_CircleFilled(324, 172, 12, BLACK);
+  gfx_CircleFilled(500, 172, 12, BLACK);
+
   // Shelf Over Charged
   if(alarms & 0x01 == 0x01)
-    gfx_CircleFilled(324, 140, 10, LED_GOOD);
-  else
     gfx_CircleFilled(324, 140, 10, LED_BAD);
+  else
+    gfx_CircleFilled(324, 140, 10, LED_GOOD);
   endif
 
   // Shelf Over Temp
   if(alarms & 0x04 == 0x04)
-    gfx_CircleFilled(500, 140, 10, LED_GOOD);
-  else
     gfx_CircleFilled(500, 140, 10, LED_BAD);
+  else
+    gfx_CircleFilled(500, 140, 10, LED_GOOD);
   endif
 
   // Shelf Over Disc
   if(alarms & 0x02 == 0x02)
-    gfx_CircleFilled(324, 172, 10, LED_GOOD);
-  else
     gfx_CircleFilled(324, 172, 10, LED_BAD);
+  else
+    gfx_CircleFilled(324, 172, 10, LED_GOOD);
   endif
 
   // Shelf Error
   if(alarms & 0x08 == 0x08)
-    gfx_CircleFilled(500, 172, 10, LED_GOOD);
-  else
     gfx_CircleFilled(500, 172, 10, LED_BAD);
+  else
+    gfx_CircleFilled(500, 172, 10, LED_GOOD);
   endif
 
 endfunc
@@ -1013,7 +1025,7 @@ endfunc
 func update_shelf_mod(var mod_number)
 
   draw_mod_info_number(mod_number);
-  draw_mod_alarm_leds(mod_number);
+  draw_mod_alarm_leds(mods[mod_number]);
   // Print off actual values...
 
 endfunc
