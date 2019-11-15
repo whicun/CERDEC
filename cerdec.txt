@@ -21,6 +21,8 @@
 #constant OFFLINE       1
 #constant ONLINE        0
 #constant START_BYT     0x18
+#constant BUF_SIZE      256
+#constant BAUD          20000
 
 // Colors
 #constant BACKGROUND_COLOR  0xDF5F
@@ -116,6 +118,7 @@ var mod_temp[2];
 var current_form := OVERVIEW_FORM;
 var current_mod := 0;
 var num_discharges := 0;
+var rx_buffer[BUF_SIZE];
 
 // ##################
 // Main
@@ -140,6 +143,7 @@ func main()
   // Basic initialization stuff
   gfx_Set(SCREEN_MODE, LANDSCAPE);
   touch_Set(TOUCH_ENABLE);
+  setup_comms();
 
   // Draw the logo screen then the overall screen
   draw_logo_screen();
@@ -153,7 +157,7 @@ func main()
     if(current_form == SHELF_FORM || current_form == MOD_FORM)
 
       var current_shelf := 0;
-      //request_all_shelf_mods(current_shelf);
+      request_all_shelf_mods(current_shelf);
 
     endif
     // Read Commands
@@ -633,6 +637,9 @@ func draw_shelf_alarms()
   gfx_Panel(PANEL_SUNKEN, 18, 225, 270, 236, 0x8D9C);
   gfx_OutlineColour(BLACK);
 
+  // Draw the LED backgrounds
+  draw_shelf_alarm_leds_backgrounds();
+
   // Draw the LEDs
   draw_shelf_alarm_leds();
 
@@ -647,17 +654,21 @@ func draw_shelf_alarms()
 
 endfunc
 
-func draw_shelf_alarm_leds()
-
-  var alarm_index, alarms;
-  alarm_index := 6;
-  alarms := shelf0[alarm_index];
+func draw_shelf_alarm_leds_backgrounds()
 
   // Draw the LED backgrounds
   gfx_CircleFilled(50, 265, 22, BLACK);
   gfx_CircleFilled(50, 317, 22, BLACK);
   gfx_CircleFilled(50, 368, 22, BLACK);
   gfx_CircleFilled(50, 425, 22, BLACK);
+
+endfunc
+
+func draw_shelf_alarm_leds()
+
+  var alarm_index, alarms;
+  alarm_index := 6;
+  alarms := shelf0[alarm_index];
 
   // Shelf Over Charged
   if(alarms & 0x01 == 0x01)
@@ -1278,6 +1289,17 @@ endfunc
 // Input/Output
 // ##################
 
+// === Initialize ===
+
+func setup_comms()
+
+    com1_Init(rx_buffer, BUF_SIZE, 0);
+    com_SetBaud(COM1, BAUD);
+    COM1_TX_pin(PA4);
+    COM1_RX_pin(PA5);
+
+endfunc
+
 // === Input ===
 
 // Handles input messages
@@ -1373,7 +1395,7 @@ endfunc
 // Sends a request for all the mods on the current shelf
 func request_all_shelf_mods(var shelf)
 
-    var mods_per_shelf := 12;
+    var mods_per_shelf := 9;
 
     var i;
     for(i := 0; i < mods_per_shelf; i += 2)

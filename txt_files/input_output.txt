@@ -2,6 +2,17 @@
 // Input/Output
 // ##################
 
+// === Initialize ===
+
+func setup_comms()
+
+    com1_Init(rx_buffer, BUF_SIZE, 0);
+    com_SetBaud(COM1, BAUD);
+    COM1_TX_pin(PA4);
+    COM1_RX_pin(PA5);
+
+endfunc
+
 // === Input ===
 
 // Handles input messages
@@ -97,7 +108,7 @@ endfunc
 // Sends a request for all the mods on the current shelf
 func request_all_shelf_mods(var shelf)
 
-    var mods_per_shelf := 12;
+    var mods_per_shelf := 9;
 
     var i;
     for(i := 0; i < mods_per_shelf; i += 2)

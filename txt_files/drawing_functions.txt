@@ -461,6 +461,9 @@ func draw_shelf_alarms()
   gfx_Panel(PANEL_SUNKEN, 18, 225, 270, 236, 0x8D9C);
   gfx_OutlineColour(BLACK);
 
+  // Draw the LED backgrounds
+  draw_shelf_alarm_leds_backgrounds();
+
   // Draw the LEDs
   draw_shelf_alarm_leds();
 
@@ -475,17 +478,21 @@ func draw_shelf_alarms()
 
 endfunc
 
-func draw_shelf_alarm_leds()
-
-  var alarm_index, alarms;
-  alarm_index := 6;
-  alarms := shelf0[alarm_index];
+func draw_shelf_alarm_leds_backgrounds()
 
   // Draw the LED backgrounds
   gfx_CircleFilled(50, 265, 22, BLACK);
   gfx_CircleFilled(50, 317, 22, BLACK);
   gfx_CircleFilled(50, 368, 22, BLACK);
   gfx_CircleFilled(50, 425, 22, BLACK);
+
+endfunc
+
+func draw_shelf_alarm_leds()
+
+  var alarm_index, alarms;
+  alarm_index := 6;
+  alarms := shelf0[alarm_index];
 
   // Shelf Over Charged
   if(alarms & 0x01 == 0x01)

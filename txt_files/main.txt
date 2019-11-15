@@ -21,6 +21,7 @@ func main()
   // Basic initialization stuff
   gfx_Set(SCREEN_MODE, LANDSCAPE);
   touch_Set(TOUCH_ENABLE);
+  setup_comms();
 
   // Draw the logo screen then the overall screen
   draw_logo_screen();
@@ -34,7 +35,7 @@ func main()
     if(current_form == SHELF_FORM || current_form == MOD_FORM)
 
       var current_shelf := 0;
-      //request_all_shelf_mods(current_shelf);
+      request_all_shelf_mods(current_shelf);
 
     endif
     // Read Commands

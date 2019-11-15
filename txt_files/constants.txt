@@ -12,6 +12,8 @@
 #constant OFFLINE       1
 #constant ONLINE        0
 #constant START_BYT     0x18
+#constant BUF_SIZE      256
+#constant BAUD          20000
 
 // Colors
 #constant BACKGROUND_COLOR  0xDF5F
