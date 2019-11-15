@@ -283,6 +283,7 @@ func draw_relay_status_led()
     gfx_CircleFilled(110, 298, 20, LED_GOOD);
   else
     gfx_CircleFilled(110, 298, 20, LED_BAD);
+    gfx_CircleFilled(111, 298, 20, LED_BAD);
   endif
 
 endfunc
@@ -661,6 +662,7 @@ func draw_shelf_alarm_leds()
   // Shelf Over Charged
   if(alarms & 0x01 == 0x01)
     gfx_CircleFilled(50, 265, 20, LED_BAD);
+    gfx_CircleFilled(51, 265, 20, LED_BAD);
   else
     gfx_CircleFilled(50, 265, 20, LED_GOOD);
   endif
@@ -668,6 +670,7 @@ func draw_shelf_alarm_leds()
   // Shelf Over Temp
   if(alarms & 0x04 == 0x04)
     gfx_CircleFilled(50, 317, 20, LED_BAD);
+    gfx_CircleFilled(51, 317, 20, LED_BAD);
   else
     gfx_CircleFilled(50, 317, 20, LED_GOOD);
   endif
@@ -675,6 +678,7 @@ func draw_shelf_alarm_leds()
   // Shelf Over Disc
   if(alarms & 0x02 == 0x02)
     gfx_CircleFilled(50, 368, 20, LED_BAD);
+    gfx_CircleFilled(51, 368, 20, LED_BAD);
   else
     gfx_CircleFilled(50, 368, 20, LED_GOOD);
   endif
@@ -682,6 +686,7 @@ func draw_shelf_alarm_leds()
   // Shelf Error
   if(alarms & 0x08 == 0x08)
     gfx_CircleFilled(50, 425, 20, LED_BAD);
+    gfx_CircleFilled(51, 425, 20, LED_BAD);
   else
     gfx_CircleFilled(50, 425, 20, LED_GOOD);
   endif
@@ -959,11 +964,6 @@ endfunc
 
 func draw_mod_alarm_leds(var mod)
 
-    gfx_MoveTo(0, 0);
-    print("       ");
-    gfx_MoveTo(0, 0);
-    print("yay");
-
   var alarm_index, alarms;
   alarm_index := 2;
   alarms := mod[alarm_index];
@@ -971,6 +971,7 @@ func draw_mod_alarm_leds(var mod)
   // Shelf Over Charged
   if(alarms & 0x01 == 0x01)
     gfx_CircleFilled(324, 140, 10, LED_BAD);
+    gfx_CircleFilled(325, 140, 10, LED_BAD);
   else
     gfx_CircleFilled(324, 140, 10, LED_GOOD);
   endif
@@ -978,6 +979,7 @@ func draw_mod_alarm_leds(var mod)
   // Shelf Over Temp
   if(alarms & 0x04 == 0x04)
     gfx_CircleFilled(500, 140, 10, LED_BAD);
+    gfx_CircleFilled(501, 140, 10, LED_BAD);
   else
     gfx_CircleFilled(500, 140, 10, LED_GOOD);
   endif
@@ -985,6 +987,7 @@ func draw_mod_alarm_leds(var mod)
   // Shelf Over Disc
   if(alarms & 0x02 == 0x02)
     gfx_CircleFilled(324, 172, 10, LED_BAD);
+    gfx_CircleFilled(325, 172, 10, LED_BAD);
   else
     gfx_CircleFilled(324, 172, 10, LED_GOOD);
   endif
@@ -992,6 +995,7 @@ func draw_mod_alarm_leds(var mod)
   // Shelf Error
   if(alarms & 0x08 == 0x08)
     gfx_CircleFilled(500, 172, 10, LED_BAD);
+    gfx_CircleFilled(501, 172, 10, LED_BAD);
   else
     gfx_CircleFilled(500, 172, 10, LED_GOOD);
   endif

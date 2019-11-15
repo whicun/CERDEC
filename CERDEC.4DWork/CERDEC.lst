@@ -5567,686 +5567,686 @@ file C:\Users\ebenton\Documents\CERDEC TS\CERDEC.4DWork\CERDECConst.inc
 005555  000283      gfx_CircleFilled(110, 298, 20, LED_GOOD);
 005556  000284    else
 005557  000285      gfx_CircleFilled(110, 298, 20, LED_BAD);
-005558  000286    endif
-005559  000287        
-005560  000288  endfunc
-005561  000289        
-005562  000290  func draw_num_discharges()
-005563  000291        
-005564  000292    // Draw the Number Discharges Field
-005565  000293    gfx_Panel(PANEL_RAISED, 12, 360, 65, 30, WHITE);
-005566  000294        
-005567  000295    // Print the number of Discharges
-005568  000296    reset_font(20, 362);
-005569  000297    print(num_discharges);
-005570  000298        
-005571  000299    // Reset Discharges Button
-005572  000300    img_ClearAttributes(hndl, iResetDischarges_btn, I_TOUCH_DISABLE);
-005573  000301    img_SetWord(hndl, iResetDischarges_btn, IMAGE_INDEX, BTN_UP);
-005574  000302    img_Show(hndl,iResetDischarges_btn);
-005575  000303        
-005576  000304    // Draw the Number Discharges Title
-005577  000305    img_Show(hndl,iNumberDischarges_Label);
-005578  000306        
-005579  000307  endfunc
-005580  000308        
-005581  000309  func draw_stored_energy()
-005582  000310        
-005583  000311    // Stored Energy Field
-005584  000312    gfx_Panel(PANEL_RAISED, 516, 96, 108, 35, WHITE);
-005585  000313        
-005586  000314    // Stored Energy Label
-005587  000315    img_Show(hndl,iStoredEnergy_Label);
-005588  000316        
-005589  000317  endfunc
-005590  000318        
-005591  000319  func draw_time_at_max()
-005592  000320        
-005593  000321    // Time @ Max Field
-005594  000322    gfx_Panel(PANEL_RAISED, 516, 181, 108, 35, WHITE);
-005595  000323        
-005596  000324    // Time @ Max Label
-005597  000325    img_Show(hndl,iMaxTime_Label);
-005598  000326        
-005599  000327  endfunc
-005600  000328        
-005601  000329  func draw_estimated_runtime()
-005602  000330        
-005603  000331    // Estimated Runtime Field
-005604  000332    gfx_Panel(PANEL_RAISED, 516, 222, 108, 35, WHITE);
-005605  000333        
-005606  000334    // Estimated Runtime Label
-005607  000335    img_Show(hndl,iEstimatedRuntime_Label);
-005608  000336        
-005609  000337  endfunc
-005610  000338        
-005611  000339  func draw_bus_voltage()
-005612  000340        
-005613  000341    // Bus Voltage Field
-005614  000342    gfx_Panel(PANEL_RAISED, 516, 275, 108, 35, WHITE);
-005615  000343        
-005616  000344    // Bus Voltage Label
-005617  000345    img_Show(hndl,iBusVoltage_btn);
-005618  000346        
-005619  000347  endfunc
-005620  000348        
-005621  000349  func draw_output_current()
-005622  000350        
-005623  000351    // Output Current Field
-005624  000352    gfx_Panel(PANEL_RAISED, 516, 316, 108, 35, WHITE);
-005625  000353        
-005626  000354    // Output Current Label
-005627  000355    img_Show(hndl,iOutputCurrent_Label);
-005628  000356        
-005629  000357  endfunc
-005630  000358        
-005631  000359  func draw_capacitors_voltage()
-005632  000360        
-005633  000361    // Capacitors' Voltage Field
-005634  000362    gfx_Panel(PANEL_RAISED, 516, 357, 108, 35, WHITE);
-005635  000363        
-005636  000364    // Capacitors' Voltage Label
-005637  000365    img_Show(hndl,iCapacitorVoltage_Label);
-005638  000366        
-005639  000367  endfunc
-005640  000368        
-005641  000369  func draw_system_mode_radios()
-005642  000370        
-005643  000371    var mode_index, off, idle, voltage, power;
-005644  000372    mode_index := 1;
-005645  000373    off := 0;
-005646  000374    idle := 1;
-005647  000375    voltage := 2;
-005648  000376    power := 3;
-005649  000377        
-005650  000378    // System Off Radio Button
-005651  000379    if(system[mode_index] == off)
-005652  000380      gfx_CircleFilled(25, 215, 10, RB_CHKD);
-005653  000381    else
-005654  000382      gfx_CircleFilled(25, 215, 10, RB_UNCHKD);
-005655  000383    endif
-005656  000384        
-005657  000385    // System Idle Radio Button
-005658  000386    if(system[mode_index] == idle)
-005659  000387      gfx_CircleFilled(25, 250, 10, RB_CHKD);
-005660  000388    else
-005661  000389      gfx_CircleFilled(25, 250, 10, RB_UNCHKD);
-005662  000390    endif
-005663  000391        
-005664  000392    // System Power Radio Button
-005665  000393    if(system[mode_index] == power)
-005666  000394      gfx_CircleFilled(100, 250, 10, RB_CHKD);
-005667  000395    else
-005668  000396      gfx_CircleFilled(100, 250, 10, RB_UNCHKD);
-005669  000397    endif
-005670  000398        
-005671  000399    // System Voltage Radio Button
-005672  000400    if(system[mode_index] == voltage)
-005673  000401      gfx_CircleFilled(100, 215, 10, RB_CHKD);
-005674  000402    else
-005675  000403      gfx_CircleFilled(100, 215, 10, RB_UNCHKD);
-005676  000404    endif
-005677  000405        
-005678  000406  endfunc
-005679  000407        
-005680  000408  func draw_system_mode_labels()
-005681  000409        
-005682  000410    // System Mode Title
-005683  000411    img_Show(hndl,iSystemMode_Title);
-005684  000412        
-005685  000413    // System Mode Off Label
-005686  000414    img_Show(hndl,iSystemOff_Label);
-005687  000415        
-005688  000416    // System Mode Idle Label
-005689  000417    img_Show(hndl,iSystemIdle_Label);
-005690  000418        
-005691  000419    // System Mode Voltage Label
-005692  000420    img_Show(hndl,iSystemVoltage_Label);
-005693  000421        
-005694  000422    // System Mode Power Label
-005695  000423    img_Show(hndl,iSystemPower_Label);
-005696  000424        
-005697  000425  endfunc
-005698  000426        
-005699  000427  func draw_overall_side_buttons()
-005700  000428        
-005701  000429      // SystemStart_btn
-005702  000430      img_ClearAttributes(hndl, iSystemStart_btn, I_TOUCH_DISABLE);
-005703  000431      img_SetWord(hndl, iSystemStart_btn, IMAGE_INDEX, BTN_UP);
-005704  000432      img_Show(hndl,iSystemStart_btn);
-005705  000433        
-005706  000434      // SystemStop_btn
-005707  000435      img_ClearAttributes(hndl, iSystemStop_btn, I_TOUCH_DISABLE);
-005708  000436      img_SetWord(hndl, iSystemStop_btn, IMAGE_INDEX, BTN_UP);
-005709  000437      img_Show(hndl,iSystemStop_btn);
-005710  000438        
-005711  000439      // Shelf_btn
-005712  000440      img_ClearAttributes(hndl, iShelf_btn, I_TOUCH_DISABLE);
-005713  000441      img_SetWord(hndl, iShelf_btn, IMAGE_INDEX, BTN_UP);
-005714  000442      img_Show(hndl,iShelf_btn);
-005715  000443        
-005716  000444      // EmergencyStop_btn
-005717  000445      img_ClearAttributes(hndl, iEmergencyStop_btn, I_TOUCH_DISABLE);
-005718  000446      img_SetWord(hndl, iEmergencyStop_btn, IMAGE_INDEX, BTN_UP);
-005719  000447      img_Show(hndl,iEmergencyStop_btn);
-005720  000448        
-005721  000449      // Draw all the module buttons
-005722  000450      draw_overall_mods();
-005723  000451        
-005724  000452  endfunc
-005725  000453        
-005726  000454  func draw_overall_mods()
-005727  000455        
-005728  000456    var alarm_index := 2;
-005729  000457        
-005730  000458    // Main Module 0 Button
-005731  000459    if(any_mod_errors(mod0))
-005732  000460      // MainModule1Good_btn
-005733  000461      img_ClearAttributes(hndl, iMainModule1Good_btn, I_TOUCH_DISABLE);
-005734  000462      img_SetWord(hndl, iMainModule1Good_btn, IMAGE_INDEX, BTN_UP);
-005735  000463      img_Show(hndl,iMainModule1Good_btn);
-005736  000464      img_SetAttributes(hndl, iMainModule1Bad_btn, I_TOUCH_DISABLE);
-005737  000465    else
-005738  000466      // MainModule1Bad_btn
-005739  000467      img_ClearAttributes(hndl, iMainModule1Bad_btn, I_TOUCH_DISABLE);
-005740  000468      img_SetWord(hndl, iMainModule1Bad_btn, IMAGE_INDEX, BTN_UP);
-005741  000469      img_Show(hndl,iMainModule1Bad_btn);
-005742  000470      img_SetAttributes(hndl, iMainModule1Good_btn, I_TOUCH_DISABLE);
-005743  000471    endif
-005744  000472        
-005745  000473    // Main Module 1 Button
-005746  000474    if(any_mod_errors(mod1))
-005747  000475      // MainModule2Good_btn
-005748  000476      img_ClearAttributes(hndl, iMainModule2Good_btn, I_TOUCH_DISABLE);
-005749  000477      img_SetWord(hndl, iMainModule2Good_btn, IMAGE_INDEX, BTN_UP);
-005750  000478      img_Show(hndl,iMainModule2Good_btn);
-005751  000479      img_SetAttributes(hndl, iMainModule2Bad_btn, I_TOUCH_DISABLE);
-005752  000480    else
-005753  000481      // MainModule2Bad_btn
-005754  000482      img_ClearAttributes(hndl, iMainModule2Bad_btn, I_TOUCH_DISABLE);
-005755  000483      img_SetWord(hndl, iMainModule2Bad_btn, IMAGE_INDEX, BTN_UP);
-005756  000484      img_Show(hndl,iMainModule2Bad_btn);
-005757  000485      img_SetAttributes(hndl, iMainModule2Good_btn, I_TOUCH_DISABLE);
-005758  000486    endif
-005759  000487        
-005760  000488    // Main Module 2 Button
-005761  000489    if(any_mod_errors(mod2))
-005762  000490      // MainModule3Good_btn
-005763  000491      img_ClearAttributes(hndl, iMainModule3Good_btn, I_TOUCH_DISABLE);
-005764  000492      img_SetWord(hndl, iMainModule3Good_btn, IMAGE_INDEX, BTN_UP);
-005765  000493      img_Show(hndl,iMainModule3Good_btn);
-005766  000494      img_SetAttributes(hndl, iMainModule3Bad_btn, I_TOUCH_DISABLE);
-005767  000495    else
-005768  000496      // MainModule3Bad_btn
-005769  000497      img_ClearAttributes(hndl, iMainModule3Bad_btn, I_TOUCH_DISABLE);
-005770  000498      img_SetWord(hndl, iMainModule3Bad_btn, IMAGE_INDEX, BTN_UP);
-005771  000499      img_Show(hndl,iMainModule3Bad_btn);
-005772  000500      img_SetAttributes(hndl, iMainModule3Good_btn, I_TOUCH_DISABLE);
-005773  000501    endif
-005774  000502        
-005775  000503    // Main Module 3 Button
-005776  000504    if(any_mod_errors(mod3))
-005777  000505      // MainModule4Good_btn
-005778  000506      img_ClearAttributes(hndl, iMainModule4Good_btn, I_TOUCH_DISABLE);
-005779  000507      img_SetWord(hndl, iMainModule4Good_btn, IMAGE_INDEX, BTN_UP);
-005780  000508      img_Show(hndl,iMainModule4Good_btn);
-005781  000509      img_SetAttributes(hndl, iMainModule4Bad_btn, I_TOUCH_DISABLE);
-005782  000510    else
-005783  000511      // MainModule4Good_btn
-005784  000512      img_ClearAttributes(hndl, iMainModule4Bad_btn, I_TOUCH_DISABLE);
-005785  000513      img_SetWord(hndl, iMainModule4Bad_btn, IMAGE_INDEX, BTN_UP);
-005786  000514      img_Show(hndl,iMainModule4Bad_btn);
-005787  000515      img_SetAttributes(hndl, iMainModule4Good_btn, I_TOUCH_DISABLE);
-005788  000516    endif
-005789  000517        
-005790  000518    // Main Module 4 Button
-005791  000519    if(any_mod_errors(mod4))
-005792  000520      // MainModule5Good_btn
-005793  000521      img_ClearAttributes(hndl, iMainModule5Good_btn, I_TOUCH_DISABLE);
-005794  000522      img_SetWord(hndl, iMainModule5Good_btn, IMAGE_INDEX, BTN_UP);
-005795  000523      img_Show(hndl,iMainModule5Good_btn);
-005796  000524      img_SetAttributes(hndl, iMainModule5Bad_btn, I_TOUCH_DISABLE);
-005797  000525    else
-005798  000526      // MainModule5Good_btn
-005799  000527      img_ClearAttributes(hndl, iMainModule5Bad_btn, I_TOUCH_DISABLE);
-005800  000528      img_SetWord(hndl, iMainModule5Bad_btn, IMAGE_INDEX, BTN_UP);
-005801  000529      img_Show(hndl,iMainModule5Bad_btn);
-005802  000530      img_SetAttributes(hndl, iMainModule5Good_btn, I_TOUCH_DISABLE);
-005803  000531    endif
-005804  000532        
-005805  000533    // Main Module 5 Button
-005806  000534    if(any_mod_errors(mod5))
-005807  000535      // MainModule6Good_btn
-005808  000536      img_ClearAttributes(hndl, iMainModule6Good_btn, I_TOUCH_DISABLE);
-005809  000537      img_SetWord(hndl, iMainModule6Good_btn, IMAGE_INDEX, BTN_UP);
-005810  000538      img_Show(hndl,iMainModule6Good_btn);
-005811  000539      img_SetAttributes(hndl, iMainModule6Bad_btn, I_TOUCH_DISABLE);
-005812  000540    else
-005813  000541      // MainModule6Good_btn
-005814  000542      img_ClearAttributes(hndl, iMainModule6Bad_btn, I_TOUCH_DISABLE);
-005815  000543      img_SetWord(hndl, iMainModule6Bad_btn, IMAGE_INDEX, BTN_UP);
-005816  000544      img_Show(hndl,iMainModule6Bad_btn);
-005817  000545      img_SetAttributes(hndl, iMainModule6Good_btn, I_TOUCH_DISABLE);
-005818  000546    endif
-005819  000547        
-005820  000548    // Main Module 6 Button
-005821  000549    if(any_mod_errors(mod6))
-005822  000550      // MainModule7Good_btn
-005823  000551      img_ClearAttributes(hndl, iMainModule7Good_btn, I_TOUCH_DISABLE);
-005824  000552      img_SetWord(hndl, iMainModule7Good_btn, IMAGE_INDEX, BTN_UP);
-005825  000553      img_Show(hndl,iMainModule7Good_btn);
-005826  000554      img_SetAttributes(hndl, iMainModule7Bad_btn, I_TOUCH_DISABLE);
-005827  000555    else
-005828  000556      // MainModule7Good_btn
-005829  000557      img_ClearAttributes(hndl, iMainModule7Bad_btn, I_TOUCH_DISABLE);
-005830  000558      img_SetWord(hndl, iMainModule7Bad_btn, IMAGE_INDEX, BTN_UP);
-005831  000559      img_Show(hndl,iMainModule7Bad_btn);
-005832  000560      img_SetAttributes(hndl, iMainModule7Good_btn, I_TOUCH_DISABLE);
-005833  000561    endif
-005834  000562        
-005835  000563    // Main Module 7 Button
-005836  000564    if(any_mod_errors(mod7))
-005837  000565      // MainModule8Good_btn
-005838  000566      img_ClearAttributes(hndl, iMainModule8Good_btn, I_TOUCH_DISABLE);
-005839  000567      img_SetWord(hndl, iMainModule8Good_btn, IMAGE_INDEX, BTN_UP);
-005840  000568      img_Show(hndl,iMainModule8Good_btn);
-005841  000569      img_SetAttributes(hndl, iMainModule8Bad_btn, I_TOUCH_DISABLE);
-005842  000570    else
-005843  000571      // MainModule8Good_btn
-005844  000572      img_ClearAttributes(hndl, iMainModule8Bad_btn, I_TOUCH_DISABLE);
-005845  000573      img_SetWord(hndl, iMainModule8Bad_btn, IMAGE_INDEX, BTN_UP);
-005846  000574      img_Show(hndl,iMainModule8Bad_btn);
-005847  000575      img_SetAttributes(hndl, iMainModule8Good_btn, I_TOUCH_DISABLE);
-005848  000576    endif
-005849  000577        
-005850  000578    // Main Module 8 Button
-005851  000579    if(any_mod_errors(mod8))
-005852  000580      // MainModule9Good_btn
-005853  000581      img_ClearAttributes(hndl, iMainModule9Good_btn, I_TOUCH_DISABLE);
-005854  000582      img_SetWord(hndl, iMainModule9Good_btn, IMAGE_INDEX, BTN_UP);
-005855  000583      img_Show(hndl,iMainModule9Good_btn);
-005856  000584      img_SetAttributes(hndl, iMainModule9Bad_btn, I_TOUCH_DISABLE);
-005857  000585    else
-005858  000586      // MainModule9Good_btn
-005859  000587      img_ClearAttributes(hndl, iMainModule9Bad_btn, I_TOUCH_DISABLE);
-005860  000588      img_SetWord(hndl, iMainModule9Bad_btn, IMAGE_INDEX, BTN_UP);
-005861  000589      img_Show(hndl,iMainModule9Bad_btn);
-005862  000590      img_SetAttributes(hndl, iMainModule9Good_btn, I_TOUCH_DISABLE);
-005863  000591    endif
-005864  000592        
-005865  000593  endfunc
-005866  000594        
-005867  000595  func any_mod_errors(var mod)
-005868  000596    var alarm_index;
-005869  000597    alarm_index := 2;
-005870  000598    if(mod[alarm_index] == 0x00 || mod[alarm_index] == 0x00)
-005871  000599      return TRUE;
-005872  000600    else
-005873  000601      return FALSE;
-005874  000602    endif
-005875  000603  endfunc
-005876  000604        
-005877  000605  // === Shelf Form ===
-005878  000606        
-005879  000607  func draw_shelf_form(var mod_number)
-005880  000608        
-005881  000609    gfx_BGcolour(0x8D9C);
-005882  000610    gfx_Cls();
-005883  000611        
-005884  000612    draw_shelf_modules();
-005885  000613        
-005886  000614    draw_shelf_mod_info(mod_number);
-005887  000615        
-005888  000616    draw_shelf_alarms();
-005889  000617        
-005890  000618    draw_shelf_readings();
-005891  000619        
-005892  000620    draw_shelf_system_status();
-005893  000621        
-005894  000622    draw_shelf_side_buttons();
-005895  000623        
-005896  000624  endfunc
-005897  000625        
-005898  000626  // Shelf Alarms
-005899  000627        
-005900  000628  func draw_shelf_alarms()
-005901  000629        
-005902  000630    // Draw the background panel
-005903  000631    gfx_OutlineColour(SILVER);
-005904  000632    gfx_Panel(PANEL_SUNKEN, 18, 225, 270, 236, 0x8D9C);
-005905  000633    gfx_OutlineColour(BLACK);
-005906  000634        
-005907  000635    // Draw the LEDs
-005908  000636    draw_shelf_alarm_leds();
-005909  000637        
-005910  000638    // Draw the labels for the LEDs
-005911  000639    draw_shelf_alarms_labels();
-005912  000640        
-005913  000641    // Draw the "Error" field
-005914  000642    gfx_Panel(PANEL_RAISED, 160, 406, 108, 35, WHITE);
-005915  000643        
-005916  000644    // Draw the title
-005917  000645    img_Show(hndl,iShelfAlarms_Title);
-005918  000646        
-005919  000647  endfunc
-005920  000648        
-005921  000649  func draw_shelf_alarm_leds()
-005922  000650        
-005923  000651    var alarm_index, alarms;
-005924  000652    alarm_index := 6;
-005925  000653    alarms := shelf0[alarm_index];
-005926  000654        
-005927  000655    // Draw the LED backgrounds
-005928  000656    gfx_CircleFilled(50, 265, 22, BLACK);
-005929  000657    gfx_CircleFilled(50, 317, 22, BLACK);
-005930  000658    gfx_CircleFilled(50, 368, 22, BLACK);
-005931  000659    gfx_CircleFilled(50, 425, 22, BLACK);
-005932  000660        
-005933  000661    // Shelf Over Charged
-005934  000662    if(alarms & 0x01 == 0x01)
-005935  000663      gfx_CircleFilled(50, 265, 20, LED_BAD);
-005936  000664    else
-005937  000665      gfx_CircleFilled(50, 265, 20, LED_GOOD);
-005938  000666    endif
-005939  000667        
-005940  000668    // Shelf Over Temp
-005941  000669    if(alarms & 0x04 == 0x04)
-005942  000670      gfx_CircleFilled(50, 317, 20, LED_BAD);
-005943  000671    else
-005944  000672      gfx_CircleFilled(50, 317, 20, LED_GOOD);
-005945  000673    endif
-005946  000674        
-005947  000675    // Shelf Over Disc
-005948  000676    if(alarms & 0x02 == 0x02)
-005949  000677      gfx_CircleFilled(50, 368, 20, LED_BAD);
-005950  000678    else
-005951  000679      gfx_CircleFilled(50, 368, 20, LED_GOOD);
-005952  000680    endif
-005953  000681        
-005954  000682    // Shelf Error
-005955  000683    if(alarms & 0x08 == 0x08)
-005956  000684      gfx_CircleFilled(50, 425, 20, LED_BAD);
-005957  000685    else
-005958  000686      gfx_CircleFilled(50, 425, 20, LED_GOOD);
-005959  000687    endif
-005960  000688        
-005961  000689  endfunc
-005962  000690        
-005963  000691  func draw_shelf_alarms_labels()
-005964  000692        
-005965  000693    // Shelf Over Charge
-005966  000694    img_Show(hndl,iShelfOverCharge_Label);
+005558  000286      gfx_CircleFilled(111, 298, 20, LED_BAD);
+005559  000287    endif
+005560  000288        
+005561  000289  endfunc
+005562  000290        
+005563  000291  func draw_num_discharges()
+005564  000292        
+005565  000293    // Draw the Number Discharges Field
+005566  000294    gfx_Panel(PANEL_RAISED, 12, 360, 65, 30, WHITE);
+005567  000295        
+005568  000296    // Print the number of Discharges
+005569  000297    reset_font(20, 362);
+005570  000298    print(num_discharges);
+005571  000299        
+005572  000300    // Reset Discharges Button
+005573  000301    img_ClearAttributes(hndl, iResetDischarges_btn, I_TOUCH_DISABLE);
+005574  000302    img_SetWord(hndl, iResetDischarges_btn, IMAGE_INDEX, BTN_UP);
+005575  000303    img_Show(hndl,iResetDischarges_btn);
+005576  000304        
+005577  000305    // Draw the Number Discharges Title
+005578  000306    img_Show(hndl,iNumberDischarges_Label);
+005579  000307        
+005580  000308  endfunc
+005581  000309        
+005582  000310  func draw_stored_energy()
+005583  000311        
+005584  000312    // Stored Energy Field
+005585  000313    gfx_Panel(PANEL_RAISED, 516, 96, 108, 35, WHITE);
+005586  000314        
+005587  000315    // Stored Energy Label
+005588  000316    img_Show(hndl,iStoredEnergy_Label);
+005589  000317        
+005590  000318  endfunc
+005591  000319        
+005592  000320  func draw_time_at_max()
+005593  000321        
+005594  000322    // Time @ Max Field
+005595  000323    gfx_Panel(PANEL_RAISED, 516, 181, 108, 35, WHITE);
+005596  000324        
+005597  000325    // Time @ Max Label
+005598  000326    img_Show(hndl,iMaxTime_Label);
+005599  000327        
+005600  000328  endfunc
+005601  000329        
+005602  000330  func draw_estimated_runtime()
+005603  000331        
+005604  000332    // Estimated Runtime Field
+005605  000333    gfx_Panel(PANEL_RAISED, 516, 222, 108, 35, WHITE);
+005606  000334        
+005607  000335    // Estimated Runtime Label
+005608  000336    img_Show(hndl,iEstimatedRuntime_Label);
+005609  000337        
+005610  000338  endfunc
+005611  000339        
+005612  000340  func draw_bus_voltage()
+005613  000341        
+005614  000342    // Bus Voltage Field
+005615  000343    gfx_Panel(PANEL_RAISED, 516, 275, 108, 35, WHITE);
+005616  000344        
+005617  000345    // Bus Voltage Label
+005618  000346    img_Show(hndl,iBusVoltage_btn);
+005619  000347        
+005620  000348  endfunc
+005621  000349        
+005622  000350  func draw_output_current()
+005623  000351        
+005624  000352    // Output Current Field
+005625  000353    gfx_Panel(PANEL_RAISED, 516, 316, 108, 35, WHITE);
+005626  000354        
+005627  000355    // Output Current Label
+005628  000356    img_Show(hndl,iOutputCurrent_Label);
+005629  000357        
+005630  000358  endfunc
+005631  000359        
+005632  000360  func draw_capacitors_voltage()
+005633  000361        
+005634  000362    // Capacitors' Voltage Field
+005635  000363    gfx_Panel(PANEL_RAISED, 516, 357, 108, 35, WHITE);
+005636  000364        
+005637  000365    // Capacitors' Voltage Label
+005638  000366    img_Show(hndl,iCapacitorVoltage_Label);
+005639  000367        
+005640  000368  endfunc
+005641  000369        
+005642  000370  func draw_system_mode_radios()
+005643  000371        
+005644  000372    var mode_index, off, idle, voltage, power;
+005645  000373    mode_index := 1;
+005646  000374    off := 0;
+005647  000375    idle := 1;
+005648  000376    voltage := 2;
+005649  000377    power := 3;
+005650  000378        
+005651  000379    // System Off Radio Button
+005652  000380    if(system[mode_index] == off)
+005653  000381      gfx_CircleFilled(25, 215, 10, RB_CHKD);
+005654  000382    else
+005655  000383      gfx_CircleFilled(25, 215, 10, RB_UNCHKD);
+005656  000384    endif
+005657  000385        
+005658  000386    // System Idle Radio Button
+005659  000387    if(system[mode_index] == idle)
+005660  000388      gfx_CircleFilled(25, 250, 10, RB_CHKD);
+005661  000389    else
+005662  000390      gfx_CircleFilled(25, 250, 10, RB_UNCHKD);
+005663  000391    endif
+005664  000392        
+005665  000393    // System Power Radio Button
+005666  000394    if(system[mode_index] == power)
+005667  000395      gfx_CircleFilled(100, 250, 10, RB_CHKD);
+005668  000396    else
+005669  000397      gfx_CircleFilled(100, 250, 10, RB_UNCHKD);
+005670  000398    endif
+005671  000399        
+005672  000400    // System Voltage Radio Button
+005673  000401    if(system[mode_index] == voltage)
+005674  000402      gfx_CircleFilled(100, 215, 10, RB_CHKD);
+005675  000403    else
+005676  000404      gfx_CircleFilled(100, 215, 10, RB_UNCHKD);
+005677  000405    endif
+005678  000406        
+005679  000407  endfunc
+005680  000408        
+005681  000409  func draw_system_mode_labels()
+005682  000410        
+005683  000411    // System Mode Title
+005684  000412    img_Show(hndl,iSystemMode_Title);
+005685  000413        
+005686  000414    // System Mode Off Label
+005687  000415    img_Show(hndl,iSystemOff_Label);
+005688  000416        
+005689  000417    // System Mode Idle Label
+005690  000418    img_Show(hndl,iSystemIdle_Label);
+005691  000419        
+005692  000420    // System Mode Voltage Label
+005693  000421    img_Show(hndl,iSystemVoltage_Label);
+005694  000422        
+005695  000423    // System Mode Power Label
+005696  000424    img_Show(hndl,iSystemPower_Label);
+005697  000425        
+005698  000426  endfunc
+005699  000427        
+005700  000428  func draw_overall_side_buttons()
+005701  000429        
+005702  000430      // SystemStart_btn
+005703  000431      img_ClearAttributes(hndl, iSystemStart_btn, I_TOUCH_DISABLE);
+005704  000432      img_SetWord(hndl, iSystemStart_btn, IMAGE_INDEX, BTN_UP);
+005705  000433      img_Show(hndl,iSystemStart_btn);
+005706  000434        
+005707  000435      // SystemStop_btn
+005708  000436      img_ClearAttributes(hndl, iSystemStop_btn, I_TOUCH_DISABLE);
+005709  000437      img_SetWord(hndl, iSystemStop_btn, IMAGE_INDEX, BTN_UP);
+005710  000438      img_Show(hndl,iSystemStop_btn);
+005711  000439        
+005712  000440      // Shelf_btn
+005713  000441      img_ClearAttributes(hndl, iShelf_btn, I_TOUCH_DISABLE);
+005714  000442      img_SetWord(hndl, iShelf_btn, IMAGE_INDEX, BTN_UP);
+005715  000443      img_Show(hndl,iShelf_btn);
+005716  000444        
+005717  000445      // EmergencyStop_btn
+005718  000446      img_ClearAttributes(hndl, iEmergencyStop_btn, I_TOUCH_DISABLE);
+005719  000447      img_SetWord(hndl, iEmergencyStop_btn, IMAGE_INDEX, BTN_UP);
+005720  000448      img_Show(hndl,iEmergencyStop_btn);
+005721  000449        
+005722  000450      // Draw all the module buttons
+005723  000451      draw_overall_mods();
+005724  000452        
+005725  000453  endfunc
+005726  000454        
+005727  000455  func draw_overall_mods()
+005728  000456        
+005729  000457    var alarm_index := 2;
+005730  000458        
+005731  000459    // Main Module 0 Button
+005732  000460    if(any_mod_errors(mod0))
+005733  000461      // MainModule1Good_btn
+005734  000462      img_ClearAttributes(hndl, iMainModule1Good_btn, I_TOUCH_DISABLE);
+005735  000463      img_SetWord(hndl, iMainModule1Good_btn, IMAGE_INDEX, BTN_UP);
+005736  000464      img_Show(hndl,iMainModule1Good_btn);
+005737  000465      img_SetAttributes(hndl, iMainModule1Bad_btn, I_TOUCH_DISABLE);
+005738  000466    else
+005739  000467      // MainModule1Bad_btn
+005740  000468      img_ClearAttributes(hndl, iMainModule1Bad_btn, I_TOUCH_DISABLE);
+005741  000469      img_SetWord(hndl, iMainModule1Bad_btn, IMAGE_INDEX, BTN_UP);
+005742  000470      img_Show(hndl,iMainModule1Bad_btn);
+005743  000471      img_SetAttributes(hndl, iMainModule1Good_btn, I_TOUCH_DISABLE);
+005744  000472    endif
+005745  000473        
+005746  000474    // Main Module 1 Button
+005747  000475    if(any_mod_errors(mod1))
+005748  000476      // MainModule2Good_btn
+005749  000477      img_ClearAttributes(hndl, iMainModule2Good_btn, I_TOUCH_DISABLE);
+005750  000478      img_SetWord(hndl, iMainModule2Good_btn, IMAGE_INDEX, BTN_UP);
+005751  000479      img_Show(hndl,iMainModule2Good_btn);
+005752  000480      img_SetAttributes(hndl, iMainModule2Bad_btn, I_TOUCH_DISABLE);
+005753  000481    else
+005754  000482      // MainModule2Bad_btn
+005755  000483      img_ClearAttributes(hndl, iMainModule2Bad_btn, I_TOUCH_DISABLE);
+005756  000484      img_SetWord(hndl, iMainModule2Bad_btn, IMAGE_INDEX, BTN_UP);
+005757  000485      img_Show(hndl,iMainModule2Bad_btn);
+005758  000486      img_SetAttributes(hndl, iMainModule2Good_btn, I_TOUCH_DISABLE);
+005759  000487    endif
+005760  000488        
+005761  000489    // Main Module 2 Button
+005762  000490    if(any_mod_errors(mod2))
+005763  000491      // MainModule3Good_btn
+005764  000492      img_ClearAttributes(hndl, iMainModule3Good_btn, I_TOUCH_DISABLE);
+005765  000493      img_SetWord(hndl, iMainModule3Good_btn, IMAGE_INDEX, BTN_UP);
+005766  000494      img_Show(hndl,iMainModule3Good_btn);
+005767  000495      img_SetAttributes(hndl, iMainModule3Bad_btn, I_TOUCH_DISABLE);
+005768  000496    else
+005769  000497      // MainModule3Bad_btn
+005770  000498      img_ClearAttributes(hndl, iMainModule3Bad_btn, I_TOUCH_DISABLE);
+005771  000499      img_SetWord(hndl, iMainModule3Bad_btn, IMAGE_INDEX, BTN_UP);
+005772  000500      img_Show(hndl,iMainModule3Bad_btn);
+005773  000501      img_SetAttributes(hndl, iMainModule3Good_btn, I_TOUCH_DISABLE);
+005774  000502    endif
+005775  000503        
+005776  000504    // Main Module 3 Button
+005777  000505    if(any_mod_errors(mod3))
+005778  000506      // MainModule4Good_btn
+005779  000507      img_ClearAttributes(hndl, iMainModule4Good_btn, I_TOUCH_DISABLE);
+005780  000508      img_SetWord(hndl, iMainModule4Good_btn, IMAGE_INDEX, BTN_UP);
+005781  000509      img_Show(hndl,iMainModule4Good_btn);
+005782  000510      img_SetAttributes(hndl, iMainModule4Bad_btn, I_TOUCH_DISABLE);
+005783  000511    else
+005784  000512      // MainModule4Good_btn
+005785  000513      img_ClearAttributes(hndl, iMainModule4Bad_btn, I_TOUCH_DISABLE);
+005786  000514      img_SetWord(hndl, iMainModule4Bad_btn, IMAGE_INDEX, BTN_UP);
+005787  000515      img_Show(hndl,iMainModule4Bad_btn);
+005788  000516      img_SetAttributes(hndl, iMainModule4Good_btn, I_TOUCH_DISABLE);
+005789  000517    endif
+005790  000518        
+005791  000519    // Main Module 4 Button
+005792  000520    if(any_mod_errors(mod4))
+005793  000521      // MainModule5Good_btn
+005794  000522      img_ClearAttributes(hndl, iMainModule5Good_btn, I_TOUCH_DISABLE);
+005795  000523      img_SetWord(hndl, iMainModule5Good_btn, IMAGE_INDEX, BTN_UP);
+005796  000524      img_Show(hndl,iMainModule5Good_btn);
+005797  000525      img_SetAttributes(hndl, iMainModule5Bad_btn, I_TOUCH_DISABLE);
+005798  000526    else
+005799  000527      // MainModule5Good_btn
+005800  000528      img_ClearAttributes(hndl, iMainModule5Bad_btn, I_TOUCH_DISABLE);
+005801  000529      img_SetWord(hndl, iMainModule5Bad_btn, IMAGE_INDEX, BTN_UP);
+005802  000530      img_Show(hndl,iMainModule5Bad_btn);
+005803  000531      img_SetAttributes(hndl, iMainModule5Good_btn, I_TOUCH_DISABLE);
+005804  000532    endif
+005805  000533        
+005806  000534    // Main Module 5 Button
+005807  000535    if(any_mod_errors(mod5))
+005808  000536      // MainModule6Good_btn
+005809  000537      img_ClearAttributes(hndl, iMainModule6Good_btn, I_TOUCH_DISABLE);
+005810  000538      img_SetWord(hndl, iMainModule6Good_btn, IMAGE_INDEX, BTN_UP);
+005811  000539      img_Show(hndl,iMainModule6Good_btn);
+005812  000540      img_SetAttributes(hndl, iMainModule6Bad_btn, I_TOUCH_DISABLE);
+005813  000541    else
+005814  000542      // MainModule6Good_btn
+005815  000543      img_ClearAttributes(hndl, iMainModule6Bad_btn, I_TOUCH_DISABLE);
+005816  000544      img_SetWord(hndl, iMainModule6Bad_btn, IMAGE_INDEX, BTN_UP);
+005817  000545      img_Show(hndl,iMainModule6Bad_btn);
+005818  000546      img_SetAttributes(hndl, iMainModule6Good_btn, I_TOUCH_DISABLE);
+005819  000547    endif
+005820  000548        
+005821  000549    // Main Module 6 Button
+005822  000550    if(any_mod_errors(mod6))
+005823  000551      // MainModule7Good_btn
+005824  000552      img_ClearAttributes(hndl, iMainModule7Good_btn, I_TOUCH_DISABLE);
+005825  000553      img_SetWord(hndl, iMainModule7Good_btn, IMAGE_INDEX, BTN_UP);
+005826  000554      img_Show(hndl,iMainModule7Good_btn);
+005827  000555      img_SetAttributes(hndl, iMainModule7Bad_btn, I_TOUCH_DISABLE);
+005828  000556    else
+005829  000557      // MainModule7Good_btn
+005830  000558      img_ClearAttributes(hndl, iMainModule7Bad_btn, I_TOUCH_DISABLE);
+005831  000559      img_SetWord(hndl, iMainModule7Bad_btn, IMAGE_INDEX, BTN_UP);
+005832  000560      img_Show(hndl,iMainModule7Bad_btn);
+005833  000561      img_SetAttributes(hndl, iMainModule7Good_btn, I_TOUCH_DISABLE);
+005834  000562    endif
+005835  000563        
+005836  000564    // Main Module 7 Button
+005837  000565    if(any_mod_errors(mod7))
+005838  000566      // MainModule8Good_btn
+005839  000567      img_ClearAttributes(hndl, iMainModule8Good_btn, I_TOUCH_DISABLE);
+005840  000568      img_SetWord(hndl, iMainModule8Good_btn, IMAGE_INDEX, BTN_UP);
+005841  000569      img_Show(hndl,iMainModule8Good_btn);
+005842  000570      img_SetAttributes(hndl, iMainModule8Bad_btn, I_TOUCH_DISABLE);
+005843  000571    else
+005844  000572      // MainModule8Good_btn
+005845  000573      img_ClearAttributes(hndl, iMainModule8Bad_btn, I_TOUCH_DISABLE);
+005846  000574      img_SetWord(hndl, iMainModule8Bad_btn, IMAGE_INDEX, BTN_UP);
+005847  000575      img_Show(hndl,iMainModule8Bad_btn);
+005848  000576      img_SetAttributes(hndl, iMainModule8Good_btn, I_TOUCH_DISABLE);
+005849  000577    endif
+005850  000578        
+005851  000579    // Main Module 8 Button
+005852  000580    if(any_mod_errors(mod8))
+005853  000581      // MainModule9Good_btn
+005854  000582      img_ClearAttributes(hndl, iMainModule9Good_btn, I_TOUCH_DISABLE);
+005855  000583      img_SetWord(hndl, iMainModule9Good_btn, IMAGE_INDEX, BTN_UP);
+005856  000584      img_Show(hndl,iMainModule9Good_btn);
+005857  000585      img_SetAttributes(hndl, iMainModule9Bad_btn, I_TOUCH_DISABLE);
+005858  000586    else
+005859  000587      // MainModule9Good_btn
+005860  000588      img_ClearAttributes(hndl, iMainModule9Bad_btn, I_TOUCH_DISABLE);
+005861  000589      img_SetWord(hndl, iMainModule9Bad_btn, IMAGE_INDEX, BTN_UP);
+005862  000590      img_Show(hndl,iMainModule9Bad_btn);
+005863  000591      img_SetAttributes(hndl, iMainModule9Good_btn, I_TOUCH_DISABLE);
+005864  000592    endif
+005865  000593        
+005866  000594  endfunc
+005867  000595        
+005868  000596  func any_mod_errors(var mod)
+005869  000597    var alarm_index;
+005870  000598    alarm_index := 2;
+005871  000599    if(mod[alarm_index] == 0x00 || mod[alarm_index] == 0x00)
+005872  000600      return TRUE;
+005873  000601    else
+005874  000602      return FALSE;
+005875  000603    endif
+005876  000604  endfunc
+005877  000605        
+005878  000606  // === Shelf Form ===
+005879  000607        
+005880  000608  func draw_shelf_form(var mod_number)
+005881  000609        
+005882  000610    gfx_BGcolour(0x8D9C);
+005883  000611    gfx_Cls();
+005884  000612        
+005885  000613    draw_shelf_modules();
+005886  000614        
+005887  000615    draw_shelf_mod_info(mod_number);
+005888  000616        
+005889  000617    draw_shelf_alarms();
+005890  000618        
+005891  000619    draw_shelf_readings();
+005892  000620        
+005893  000621    draw_shelf_system_status();
+005894  000622        
+005895  000623    draw_shelf_side_buttons();
+005896  000624        
+005897  000625  endfunc
+005898  000626        
+005899  000627  // Shelf Alarms
+005900  000628        
+005901  000629  func draw_shelf_alarms()
+005902  000630        
+005903  000631    // Draw the background panel
+005904  000632    gfx_OutlineColour(SILVER);
+005905  000633    gfx_Panel(PANEL_SUNKEN, 18, 225, 270, 236, 0x8D9C);
+005906  000634    gfx_OutlineColour(BLACK);
+005907  000635        
+005908  000636    // Draw the LEDs
+005909  000637    draw_shelf_alarm_leds();
+005910  000638        
+005911  000639    // Draw the labels for the LEDs
+005912  000640    draw_shelf_alarms_labels();
+005913  000641        
+005914  000642    // Draw the "Error" field
+005915  000643    gfx_Panel(PANEL_RAISED, 160, 406, 108, 35, WHITE);
+005916  000644        
+005917  000645    // Draw the title
+005918  000646    img_Show(hndl,iShelfAlarms_Title);
+005919  000647        
+005920  000648  endfunc
+005921  000649        
+005922  000650  func draw_shelf_alarm_leds()
+005923  000651        
+005924  000652    var alarm_index, alarms;
+005925  000653    alarm_index := 6;
+005926  000654    alarms := shelf0[alarm_index];
+005927  000655        
+005928  000656    // Draw the LED backgrounds
+005929  000657    gfx_CircleFilled(50, 265, 22, BLACK);
+005930  000658    gfx_CircleFilled(50, 317, 22, BLACK);
+005931  000659    gfx_CircleFilled(50, 368, 22, BLACK);
+005932  000660    gfx_CircleFilled(50, 425, 22, BLACK);
+005933  000661        
+005934  000662    // Shelf Over Charged
+005935  000663    if(alarms & 0x01 == 0x01)
+005936  000664      gfx_CircleFilled(50, 265, 20, LED_BAD);
+005937  000665      gfx_CircleFilled(51, 265, 20, LED_BAD);
+005938  000666    else
+005939  000667      gfx_CircleFilled(50, 265, 20, LED_GOOD);
+005940  000668    endif
+005941  000669        
+005942  000670    // Shelf Over Temp
+005943  000671    if(alarms & 0x04 == 0x04)
+005944  000672      gfx_CircleFilled(50, 317, 20, LED_BAD);
+005945  000673      gfx_CircleFilled(51, 317, 20, LED_BAD);
+005946  000674    else
+005947  000675      gfx_CircleFilled(50, 317, 20, LED_GOOD);
+005948  000676    endif
+005949  000677        
+005950  000678    // Shelf Over Disc
+005951  000679    if(alarms & 0x02 == 0x02)
+005952  000680      gfx_CircleFilled(50, 368, 20, LED_BAD);
+005953  000681      gfx_CircleFilled(51, 368, 20, LED_BAD);
+005954  000682    else
+005955  000683      gfx_CircleFilled(50, 368, 20, LED_GOOD);
+005956  000684    endif
+005957  000685        
+005958  000686    // Shelf Error
+005959  000687    if(alarms & 0x08 == 0x08)
+005960  000688      gfx_CircleFilled(50, 425, 20, LED_BAD);
+005961  000689      gfx_CircleFilled(51, 425, 20, LED_BAD);
+005962  000690    else
+005963  000691      gfx_CircleFilled(50, 425, 20, LED_GOOD);
+005964  000692    endif
+005965  000693        
+005966  000694  endfunc
 005967  000695        
-005968  000696    // Shelf Over Temp
-005969  000697    img_Show(hndl,iShelfOverTemp_Label);
-005970  000698        
-005971  000699    // Over Discharged
-005972  000700    img_Show(hndl,iOverDischarged_Label);
-005973  000701        
-005974  000702    // Shelf Error
-005975  000703    img_Show(hndl,iShelfError_Label);
-005976  000704        
-005977  000705  endfunc
+005968  000696  func draw_shelf_alarms_labels()
+005969  000697        
+005970  000698    // Shelf Over Charge
+005971  000699    img_Show(hndl,iShelfOverCharge_Label);
+005972  000700        
+005973  000701    // Shelf Over Temp
+005974  000702    img_Show(hndl,iShelfOverTemp_Label);
+005975  000703        
+005976  000704    // Over Discharged
+005977  000705    img_Show(hndl,iOverDischarged_Label);
 005978  000706        
-005979  000707  // Shelf Readings
-005980  000708        
-005981  000709  func draw_shelf_readings()
-005982  000710        
-005983  000711    // Draw the background panel
-005984  000712    gfx_OutlineColour(SILVER);
-005985  000713    gfx_Panel(PANEL_SUNKEN, 296, 225, 324, 236, 0x8D9C);
-005986  000714    gfx_OutlineColour(BLACK);
+005979  000707    // Shelf Error
+005980  000708    img_Show(hndl,iShelfError_Label);
+005981  000709        
+005982  000710  endfunc
+005983  000711        
+005984  000712  // Shelf Readings
+005985  000713        
+005986  000714  func draw_shelf_readings()
 005987  000715        
-005988  000716    // Draw the labels
-005989  000717    draw_shelf_readings_labels();
-005990  000718        
-005991  000719    // Draw the fields
-005992  000720    draw_shelf_readings_fields();
-005993  000721        
-005994  000722    // Draw the title
-005995  000723    img_Show(hndl,iShelfReadings_Title);
-005996  000724        
-005997  000725  endfunc
+005988  000716    // Draw the background panel
+005989  000717    gfx_OutlineColour(SILVER);
+005990  000718    gfx_Panel(PANEL_SUNKEN, 296, 225, 324, 236, 0x8D9C);
+005991  000719    gfx_OutlineColour(BLACK);
+005992  000720        
+005993  000721    // Draw the labels
+005994  000722    draw_shelf_readings_labels();
+005995  000723        
+005996  000724    // Draw the fields
+005997  000725    draw_shelf_readings_fields();
 005998  000726        
-005999  000727  func draw_shelf_readings_labels()
-006000  000728        
-006001  000729    // Shelf Total Voltage
-006002  000730    img_Show(hndl,iShelfTotalVoltage_Label);
+005999  000727    // Draw the title
+006000  000728    img_Show(hndl,iShelfReadings_Title);
+006001  000729        
+006002  000730  endfunc
 006003  000731        
-006004  000732    // Shelf Average Temp
-006005  000733    img_Show(hndl,iShelfAverageTemp_Label);
-006006  000734        
-006007  000735    // Shelf Max Temp
-006008  000736    img_Show(hndl,iShelfMaxTemp_Label);
-006009  000737        
-006010  000738    // Shelf Min Temp
-006011  000739    img_Show(hndl,iShelfMinTemp_Label);
-006012  000740        
-006013  000741    // Shelf Total Voltage Units
-006014  000742    img_Show(hndl,iShelfTotalVoltage_Units);
-006015  000743        
-006016  000744    // Shelf Average Temp Units
-006017  000745    img_Show(hndl,iShelfAverageTemp_Units);
-006018  000746        
-006019  000747    // Module ID
-006020  000748    img_Show(hndl,iModuleID_Label);
-006021  000749        
-006022  000750  endfunc
+006004  000732  func draw_shelf_readings_labels()
+006005  000733        
+006006  000734    // Shelf Total Voltage
+006007  000735    img_Show(hndl,iShelfTotalVoltage_Label);
+006008  000736        
+006009  000737    // Shelf Average Temp
+006010  000738    img_Show(hndl,iShelfAverageTemp_Label);
+006011  000739        
+006012  000740    // Shelf Max Temp
+006013  000741    img_Show(hndl,iShelfMaxTemp_Label);
+006014  000742        
+006015  000743    // Shelf Min Temp
+006016  000744    img_Show(hndl,iShelfMinTemp_Label);
+006017  000745        
+006018  000746    // Shelf Total Voltage Units
+006019  000747    img_Show(hndl,iShelfTotalVoltage_Units);
+006020  000748        
+006021  000749    // Shelf Average Temp Units
+006022  000750    img_Show(hndl,iShelfAverageTemp_Units);
 006023  000751        
-006024  000752  func draw_shelf_readings_fields()
-006025  000753        
-006026  000754    // Total Voltage
-006027  000755    gfx_Panel(PANEL_RAISED, 441, 246, 108, 35, WHITE);
+006024  000752    // Module ID
+006025  000753    img_Show(hndl,iModuleID_Label);
+006026  000754        
+006027  000755  endfunc
 006028  000756        
-006029  000757    // Average Temp
-006030  000758    gfx_Panel(PANEL_RAISED, 441, 291, 108, 35, WHITE);
-006031  000759        
-006032  000760    // Max Temp
-006033  000761    gfx_Panel(PANEL_RAISED, 441, 364, 108, 35, WHITE);
-006034  000762        
-006035  000763    // Min Temp
-006036  000764    gfx_Panel(PANEL_RAISED, 441, 416, 108, 35, WHITE);
-006037  000765        
-006038  000766    // Max ID
-006039  000767    gfx_Panel(PANEL_RAISED, 560, 364, 50, 35, WHITE);
-006040  000768        
-006041  000769    // Min ID
-006042  000770    gfx_Panel(PANEL_RAISED, 560, 416, 50, 35, WHITE);
-006043  000771        
-006044  000772  endfunc
+006029  000757  func draw_shelf_readings_fields()
+006030  000758        
+006031  000759    // Total Voltage
+006032  000760    gfx_Panel(PANEL_RAISED, 441, 246, 108, 35, WHITE);
+006033  000761        
+006034  000762    // Average Temp
+006035  000763    gfx_Panel(PANEL_RAISED, 441, 291, 108, 35, WHITE);
+006036  000764        
+006037  000765    // Max Temp
+006038  000766    gfx_Panel(PANEL_RAISED, 441, 364, 108, 35, WHITE);
+006039  000767        
+006040  000768    // Min Temp
+006041  000769    gfx_Panel(PANEL_RAISED, 441, 416, 108, 35, WHITE);
+006042  000770        
+006043  000771    // Max ID
+006044  000772    gfx_Panel(PANEL_RAISED, 560, 364, 50, 35, WHITE);
 006045  000773        
-006046  000774  // Shelf Module Buttons
-006047  000775        
-006048  000776  func draw_shelf_modules()
-006049  000777        
-006050  000778    // Draw the background panel
-006051  000779    gfx_OutlineColour(SILVER);
-006052  000780    gfx_Panel(PANEL_SUNKEN, 18, 29, 270, 166, 0x8D9C);
-006053  000781    gfx_OutlineColour(BLACK);
+006046  000774    // Min ID
+006047  000775    gfx_Panel(PANEL_RAISED, 560, 416, 50, 35, WHITE);
+006048  000776        
+006049  000777  endfunc
+006050  000778        
+006051  000779  // Shelf Module Buttons
+006052  000780        
+006053  000781  func draw_shelf_modules()
 006054  000782        
-006055  000783    // Draw the modules
-006056  000784    draw_shelf_module_buttons();
-006057  000785        
-006058  000786    // Draw the title
-006059  000787    img_Show(hndl,iModules_Title);
-006060  000788        
-006061  000789  endfunc
+006055  000783    // Draw the background panel
+006056  000784    gfx_OutlineColour(SILVER);
+006057  000785    gfx_Panel(PANEL_SUNKEN, 18, 29, 270, 166, 0x8D9C);
+006058  000786    gfx_OutlineColour(BLACK);
+006059  000787        
+006060  000788    // Draw the modules
+006061  000789    draw_shelf_module_buttons();
 006062  000790        
-006063  000791  func draw_shelf_module_buttons()
-006064  000792        
-006065  000793    var alarm_index := 2;
-006066  000794        
-006067  000795    // Main Module 0 Button
-006068  000796    if(any_mod_errors(mod0))
-006069  000797      img_ClearAttributes(hndl, iModule1Good_btn, I_TOUCH_DISABLE);
-006070  000798      img_SetWord(hndl, iModule1Good_btn, IMAGE_INDEX, BTN_UP);
-006071  000799      img_Show(hndl,iModule1Good_btn);
-006072  000800      img_SetAttributes(hndl, iModule1Bad_btn, I_TOUCH_DISABLE);
-006073  000801    else
-006074  000802      img_ClearAttributes(hndl, iModule1Bad_btn, I_TOUCH_DISABLE);
-006075  000803      img_SetWord(hndl, iModule1Bad_btn, IMAGE_INDEX, BTN_UP);
-006076  000804      img_Show(hndl,iModule1Bad_btn);
-006077  000805      img_SetAttributes(hndl, iModule1Good_btn, I_TOUCH_DISABLE);
-006078  000806    endif
-006079  000807        
-006080  000808    // Main Module 1 Button
-006081  000809    if(any_mod_errors(mod1))
-006082  000810      img_ClearAttributes(hndl, iModule2Good_btn, I_TOUCH_DISABLE);
-006083  000811      img_SetWord(hndl, iModule2Good_btn, IMAGE_INDEX, BTN_UP);
-006084  000812      img_Show(hndl,iModule2Good_btn);
-006085  000813      img_SetAttributes(hndl, iModule2Bad_btn, I_TOUCH_DISABLE);
-006086  000814    else
-006087  000815      img_ClearAttributes(hndl, iModule2Bad_btn, I_TOUCH_DISABLE);
-006088  000816      img_SetWord(hndl, iModule2Bad_btn, IMAGE_INDEX, BTN_UP);
-006089  000817      img_Show(hndl,iModule2Bad_btn);
-006090  000818      img_SetAttributes(hndl, iModule2Good_btn, I_TOUCH_DISABLE);
-006091  000819    endif
-006092  000820        
-006093  000821    // Main Module 2 Button
-006094  000822    if(any_mod_errors(mod2))
-006095  000823      img_ClearAttributes(hndl, iModule3Good_btn, I_TOUCH_DISABLE);
-006096  000824      img_SetWord(hndl, iModule3Good_btn, IMAGE_INDEX, BTN_UP);
-006097  000825      img_Show(hndl,iModule3Good_btn);
-006098  000826      img_SetAttributes(hndl, iModule3Bad_btn, I_TOUCH_DISABLE);
-006099  000827    else
-006100  000828      img_ClearAttributes(hndl, iModule3Bad_btn, I_TOUCH_DISABLE);
-006101  000829      img_SetWord(hndl, iModule3Bad_btn, IMAGE_INDEX, BTN_UP);
-006102  000830      img_Show(hndl,iModule3Bad_btn);
-006103  000831      img_SetAttributes(hndl, iModule3Good_btn, I_TOUCH_DISABLE);
-006104  000832    endif
-006105  000833        
-006106  000834    // Main Module 3 Button
-006107  000835    if(any_mod_errors(mod3))
-006108  000836      img_ClearAttributes(hndl, iModule4Good_btn, I_TOUCH_DISABLE);
-006109  000837      img_SetWord(hndl, iModule4Good_btn, IMAGE_INDEX, BTN_UP);
-006110  000838      img_Show(hndl,iModule4Good_btn);
-006111  000839      img_SetAttributes(hndl, iModule4Bad_btn, I_TOUCH_DISABLE);
-006112  000840    else
-006113  000841      img_ClearAttributes(hndl, iModule4Bad_btn, I_TOUCH_DISABLE);
-006114  000842      img_SetWord(hndl, iModule4Bad_btn, IMAGE_INDEX, BTN_UP);
-006115  000843      img_Show(hndl,iModule4Bad_btn);
-006116  000844      img_SetAttributes(hndl, iModule4Good_btn, I_TOUCH_DISABLE);
-006117  000845    endif
-006118  000846        
-006119  000847    // Main Module 4 Button
-006120  000848    if(any_mod_errors(mod4))
-006121  000849      img_ClearAttributes(hndl, iModule5Good_btn, I_TOUCH_DISABLE);
-006122  000850      img_SetWord(hndl, iModule5Good_btn, IMAGE_INDEX, BTN_UP);
-006123  000851      img_Show(hndl,iModule5Good_btn);
-006124  000852      img_SetAttributes(hndl, iModule5Bad_btn, I_TOUCH_DISABLE);
-006125  000853    else
-006126  000854      img_ClearAttributes(hndl, iModule5Bad_btn, I_TOUCH_DISABLE);
-006127  000855      img_SetWord(hndl, iModule5Bad_btn, IMAGE_INDEX, BTN_UP);
-006128  000856      img_Show(hndl,iModule5Bad_btn);
-006129  000857      img_SetAttributes(hndl, iModule5Good_btn, I_TOUCH_DISABLE);
-006130  000858    endif
-006131  000859        
-006132  000860    // Main Module 5 Button
-006133  000861    if(any_mod_errors(mod5))
-006134  000862      img_ClearAttributes(hndl, iModule6Good_btn, I_TOUCH_DISABLE);
-006135  000863      img_SetWord(hndl, iModule6Good_btn, IMAGE_INDEX, BTN_UP);
-006136  000864      img_Show(hndl,iModule6Good_btn);
-006137  000865      img_SetAttributes(hndl, iModule6Bad_btn, I_TOUCH_DISABLE);
-006138  000866    else
-006139  000867      img_ClearAttributes(hndl, iModule6Bad_btn, I_TOUCH_DISABLE);
-006140  000868      img_SetWord(hndl, iModule6Bad_btn, IMAGE_INDEX, BTN_UP);
-006141  000869      img_Show(hndl,iModule6Bad_btn);
-006142  000870      img_SetAttributes(hndl, iModule6Good_btn, I_TOUCH_DISABLE);
-006143  000871    endif
-006144  000872        
-006145  000873    // Main Module 6 Button
-006146  000874    if(any_mod_errors(mod6))
-006147  000875      img_ClearAttributes(hndl, iModule7Good_btn, I_TOUCH_DISABLE);
-006148  000876      img_SetWord(hndl, iModule7Good_btn, IMAGE_INDEX, BTN_UP);
-006149  000877      img_Show(hndl,iModule7Good_btn);
-006150  000878      img_SetAttributes(hndl, iModule7Bad_btn, I_TOUCH_DISABLE);
-006151  000879    else
-006152  000880      img_ClearAttributes(hndl, iModule7Bad_btn, I_TOUCH_DISABLE);
-006153  000881      img_SetWord(hndl, iModule7Bad_btn, IMAGE_INDEX, BTN_UP);
-006154  000882      img_Show(hndl,iModule7Bad_btn);
-006155  000883      img_SetAttributes(hndl, iModule7Good_btn, I_TOUCH_DISABLE);
-006156  000884    endif
-006157  000885        
-006158  000886    // Main Module 7 Button
-006159  000887    if(any_mod_errors(mod7))
-006160  000888      img_ClearAttributes(hndl, iModule8Good_btn, I_TOUCH_DISABLE);
-006161  000889      img_SetWord(hndl, iModule8Good_btn, IMAGE_INDEX, BTN_UP);
-006162  000890      img_Show(hndl,iModule8Good_btn);
-006163  000891      img_SetAttributes(hndl, iModule8Bad_btn, I_TOUCH_DISABLE);
-006164  000892    else
-006165  000893      img_ClearAttributes(hndl, iModule8Bad_btn, I_TOUCH_DISABLE);
-006166  000894      img_SetWord(hndl, iModule8Bad_btn, IMAGE_INDEX, BTN_UP);
-006167  000895      img_Show(hndl,iModule8Bad_btn);
-006168  000896      img_SetAttributes(hndl, iModule8Good_btn, I_TOUCH_DISABLE);
-006169  000897    endif
-006170  000898        
-006171  000899    // Main Module 8 Button
-006172  000900    if(any_mod_errors(mod8))
-006173  000901      img_ClearAttributes(hndl, iModule9Good_btn, I_TOUCH_DISABLE);
-006174  000902      img_SetWord(hndl, iModule9Good_btn, IMAGE_INDEX, BTN_UP);
-006175  000903      img_Show(hndl,iModule9Good_btn);
-006176  000904      img_SetAttributes(hndl, iModule9Bad_btn, I_TOUCH_DISABLE);
-006177  000905    else
-006178  000906      img_ClearAttributes(hndl, iModule9Bad_btn, I_TOUCH_DISABLE);
-006179  000907      img_SetWord(hndl, iModule9Bad_btn, IMAGE_INDEX, BTN_UP);
-006180  000908      img_Show(hndl,iModule9Bad_btn);
-006181  000909      img_SetAttributes(hndl, iModule9Good_btn, I_TOUCH_DISABLE);
-006182  000910    endif
-006183  000911        
-006184  000912  endfunc
-006185  000913        
-006186  000914  // Current Mod Info
-006187  000915        
-006188  000916  func draw_shelf_mod_info(var mod_number)
-006189  000917        
-006190  000918    // Draw the background panel
-006191  000919    gfx_OutlineColour(SILVER);
-006192  000920    gfx_Panel(PANEL_SUNKEN, 296, 29, 324, 166, 0x8D9C);
-006193  000921    gfx_OutlineColour(BLACK);
+006063  000791    // Draw the title
+006064  000792    img_Show(hndl,iModules_Title);
+006065  000793        
+006066  000794  endfunc
+006067  000795        
+006068  000796  func draw_shelf_module_buttons()
+006069  000797        
+006070  000798    var alarm_index := 2;
+006071  000799        
+006072  000800    // Main Module 0 Button
+006073  000801    if(any_mod_errors(mod0))
+006074  000802      img_ClearAttributes(hndl, iModule1Good_btn, I_TOUCH_DISABLE);
+006075  000803      img_SetWord(hndl, iModule1Good_btn, IMAGE_INDEX, BTN_UP);
+006076  000804      img_Show(hndl,iModule1Good_btn);
+006077  000805      img_SetAttributes(hndl, iModule1Bad_btn, I_TOUCH_DISABLE);
+006078  000806    else
+006079  000807      img_ClearAttributes(hndl, iModule1Bad_btn, I_TOUCH_DISABLE);
+006080  000808      img_SetWord(hndl, iModule1Bad_btn, IMAGE_INDEX, BTN_UP);
+006081  000809      img_Show(hndl,iModule1Bad_btn);
+006082  000810      img_SetAttributes(hndl, iModule1Good_btn, I_TOUCH_DISABLE);
+006083  000811    endif
+006084  000812        
+006085  000813    // Main Module 1 Button
+006086  000814    if(any_mod_errors(mod1))
+006087  000815      img_ClearAttributes(hndl, iModule2Good_btn, I_TOUCH_DISABLE);
+006088  000816      img_SetWord(hndl, iModule2Good_btn, IMAGE_INDEX, BTN_UP);
+006089  000817      img_Show(hndl,iModule2Good_btn);
+006090  000818      img_SetAttributes(hndl, iModule2Bad_btn, I_TOUCH_DISABLE);
+006091  000819    else
+006092  000820      img_ClearAttributes(hndl, iModule2Bad_btn, I_TOUCH_DISABLE);
+006093  000821      img_SetWord(hndl, iModule2Bad_btn, IMAGE_INDEX, BTN_UP);
+006094  000822      img_Show(hndl,iModule2Bad_btn);
+006095  000823      img_SetAttributes(hndl, iModule2Good_btn, I_TOUCH_DISABLE);
+006096  000824    endif
+006097  000825        
+006098  000826    // Main Module 2 Button
+006099  000827    if(any_mod_errors(mod2))
+006100  000828      img_ClearAttributes(hndl, iModule3Good_btn, I_TOUCH_DISABLE);
+006101  000829      img_SetWord(hndl, iModule3Good_btn, IMAGE_INDEX, BTN_UP);
+006102  000830      img_Show(hndl,iModule3Good_btn);
+006103  000831      img_SetAttributes(hndl, iModule3Bad_btn, I_TOUCH_DISABLE);
+006104  000832    else
+006105  000833      img_ClearAttributes(hndl, iModule3Bad_btn, I_TOUCH_DISABLE);
+006106  000834      img_SetWord(hndl, iModule3Bad_btn, IMAGE_INDEX, BTN_UP);
+006107  000835      img_Show(hndl,iModule3Bad_btn);
+006108  000836      img_SetAttributes(hndl, iModule3Good_btn, I_TOUCH_DISABLE);
+006109  000837    endif
+006110  000838        
+006111  000839    // Main Module 3 Button
+006112  000840    if(any_mod_errors(mod3))
+006113  000841      img_ClearAttributes(hndl, iModule4Good_btn, I_TOUCH_DISABLE);
+006114  000842      img_SetWord(hndl, iModule4Good_btn, IMAGE_INDEX, BTN_UP);
+006115  000843      img_Show(hndl,iModule4Good_btn);
+006116  000844      img_SetAttributes(hndl, iModule4Bad_btn, I_TOUCH_DISABLE);
+006117  000845    else
+006118  000846      img_ClearAttributes(hndl, iModule4Bad_btn, I_TOUCH_DISABLE);
+006119  000847      img_SetWord(hndl, iModule4Bad_btn, IMAGE_INDEX, BTN_UP);
+006120  000848      img_Show(hndl,iModule4Bad_btn);
+006121  000849      img_SetAttributes(hndl, iModule4Good_btn, I_TOUCH_DISABLE);
+006122  000850    endif
+006123  000851        
+006124  000852    // Main Module 4 Button
+006125  000853    if(any_mod_errors(mod4))
+006126  000854      img_ClearAttributes(hndl, iModule5Good_btn, I_TOUCH_DISABLE);
+006127  000855      img_SetWord(hndl, iModule5Good_btn, IMAGE_INDEX, BTN_UP);
+006128  000856      img_Show(hndl,iModule5Good_btn);
+006129  000857      img_SetAttributes(hndl, iModule5Bad_btn, I_TOUCH_DISABLE);
+006130  000858    else
+006131  000859      img_ClearAttributes(hndl, iModule5Bad_btn, I_TOUCH_DISABLE);
+006132  000860      img_SetWord(hndl, iModule5Bad_btn, IMAGE_INDEX, BTN_UP);
+006133  000861      img_Show(hndl,iModule5Bad_btn);
+006134  000862      img_SetAttributes(hndl, iModule5Good_btn, I_TOUCH_DISABLE);
+006135  000863    endif
+006136  000864        
+006137  000865    // Main Module 5 Button
+006138  000866    if(any_mod_errors(mod5))
+006139  000867      img_ClearAttributes(hndl, iModule6Good_btn, I_TOUCH_DISABLE);
+006140  000868      img_SetWord(hndl, iModule6Good_btn, IMAGE_INDEX, BTN_UP);
+006141  000869      img_Show(hndl,iModule6Good_btn);
+006142  000870      img_SetAttributes(hndl, iModule6Bad_btn, I_TOUCH_DISABLE);
+006143  000871    else
+006144  000872      img_ClearAttributes(hndl, iModule6Bad_btn, I_TOUCH_DISABLE);
+006145  000873      img_SetWord(hndl, iModule6Bad_btn, IMAGE_INDEX, BTN_UP);
+006146  000874      img_Show(hndl,iModule6Bad_btn);
+006147  000875      img_SetAttributes(hndl, iModule6Good_btn, I_TOUCH_DISABLE);
+006148  000876    endif
+006149  000877        
+006150  000878    // Main Module 6 Button
+006151  000879    if(any_mod_errors(mod6))
+006152  000880      img_ClearAttributes(hndl, iModule7Good_btn, I_TOUCH_DISABLE);
+006153  000881      img_SetWord(hndl, iModule7Good_btn, IMAGE_INDEX, BTN_UP);
+006154  000882      img_Show(hndl,iModule7Good_btn);
+006155  000883      img_SetAttributes(hndl, iModule7Bad_btn, I_TOUCH_DISABLE);
+006156  000884    else
+006157  000885      img_ClearAttributes(hndl, iModule7Bad_btn, I_TOUCH_DISABLE);
+006158  000886      img_SetWord(hndl, iModule7Bad_btn, IMAGE_INDEX, BTN_UP);
+006159  000887      img_Show(hndl,iModule7Bad_btn);
+006160  000888      img_SetAttributes(hndl, iModule7Good_btn, I_TOUCH_DISABLE);
+006161  000889    endif
+006162  000890        
+006163  000891    // Main Module 7 Button
+006164  000892    if(any_mod_errors(mod7))
+006165  000893      img_ClearAttributes(hndl, iModule8Good_btn, I_TOUCH_DISABLE);
+006166  000894      img_SetWord(hndl, iModule8Good_btn, IMAGE_INDEX, BTN_UP);
+006167  000895      img_Show(hndl,iModule8Good_btn);
+006168  000896      img_SetAttributes(hndl, iModule8Bad_btn, I_TOUCH_DISABLE);
+006169  000897    else
+006170  000898      img_ClearAttributes(hndl, iModule8Bad_btn, I_TOUCH_DISABLE);
+006171  000899      img_SetWord(hndl, iModule8Bad_btn, IMAGE_INDEX, BTN_UP);
+006172  000900      img_Show(hndl,iModule8Bad_btn);
+006173  000901      img_SetAttributes(hndl, iModule8Good_btn, I_TOUCH_DISABLE);
+006174  000902    endif
+006175  000903        
+006176  000904    // Main Module 8 Button
+006177  000905    if(any_mod_errors(mod8))
+006178  000906      img_ClearAttributes(hndl, iModule9Good_btn, I_TOUCH_DISABLE);
+006179  000907      img_SetWord(hndl, iModule9Good_btn, IMAGE_INDEX, BTN_UP);
+006180  000908      img_Show(hndl,iModule9Good_btn);
+006181  000909      img_SetAttributes(hndl, iModule9Bad_btn, I_TOUCH_DISABLE);
+006182  000910    else
+006183  000911      img_ClearAttributes(hndl, iModule9Bad_btn, I_TOUCH_DISABLE);
+006184  000912      img_SetWord(hndl, iModule9Bad_btn, IMAGE_INDEX, BTN_UP);
+006185  000913      img_Show(hndl,iModule9Bad_btn);
+006186  000914      img_SetAttributes(hndl, iModule9Good_btn, I_TOUCH_DISABLE);
+006187  000915    endif
+006188  000916        
+006189  000917  endfunc
+006190  000918        
+006191  000919  // Current Mod Info
+006192  000920        
+006193  000921  func draw_shelf_mod_info(var mod_number)
 006194  000922        
-006195  000923    // Draw the LEDs for the module's alarms
-006196  000924    draw_mod_alarms(mods[mod_number]);
-006197  000925        
-006198  000926    // Draw the labels for the module's fields
-006199  000927    draw_mod_labels();
-006200  000928        
-006201  000929    // Draw the fields for the module's info
-006202  000930    draw_mod_info_fields();
-006203  000931        
-006204  000932    // Draw the title
-006205  000933    img_Show(hndl,iModuleNumber_Title);
-006206  000934        
-006207  000935    // Draw the Module number
-006208  000936    draw_mod_info_number(mod_number);
-006209  000937        
-006210  000938  endfunc
+006195  000923    // Draw the background panel
+006196  000924    gfx_OutlineColour(SILVER);
+006197  000925    gfx_Panel(PANEL_SUNKEN, 296, 29, 324, 166, 0x8D9C);
+006198  000926    gfx_OutlineColour(BLACK);
+006199  000927        
+006200  000928    // Draw the LEDs for the module's alarms
+006201  000929    draw_mod_alarms(mods[mod_number]);
+006202  000930        
+006203  000931    // Draw the labels for the module's fields
+006204  000932    draw_mod_labels();
+006205  000933        
+006206  000934    // Draw the fields for the module's info
+006207  000935    draw_mod_info_fields();
+006208  000936        
+006209  000937    // Draw the title
+006210  000938    img_Show(hndl,iModuleNumber_Title);
 006211  000939        
-006212  000940  func draw_mod_alarms(var mod)
-006213  000941        
-006214  000942    // Draw the backgrounds
-006215  000943    draw_mod_alarm_leds_background();
+006212  000940    // Draw the Module number
+006213  000941    draw_mod_info_number(mod_number);
+006214  000942        
+006215  000943  endfunc
 006216  000944        
-006217  000945    // Draw the LEDs
-006218  000946    draw_mod_alarm_leds(mod);
-006219  000947        
-006220  000948  endfunc
+006217  000945  func draw_mod_alarms(var mod)
+006218  000946        
+006219  000947    // Draw the backgrounds
+006220  000948    draw_mod_alarm_leds_background();
 006221  000949        
-006222  000950  func draw_mod_alarm_leds_background()
-006223  000951        
-006224  000952    // Draw the LED backgrounds first
-006225  000953    gfx_CircleFilled(324, 140, 12, BLACK);
-006226  000954    gfx_CircleFilled(500, 140, 12, BLACK);
-006227  000955    gfx_CircleFilled(324, 172, 12, BLACK);
-006228  000956    gfx_CircleFilled(500, 172, 12, BLACK);
-006229  000957        
-006230  000958  endfunc
-006231  000959        
-006232  000960  func draw_mod_alarm_leds(var mod)
-006233  000961        
-006234  000962      gfx_MoveTo(0, 0);
-006235  000963      print("       ");
-006236  000964      gfx_MoveTo(0, 0);
-006237  000965      print("yay");
+006222  000950    // Draw the LEDs
+006223  000951    draw_mod_alarm_leds(mod);
+006224  000952        
+006225  000953  endfunc
+006226  000954        
+006227  000955  func draw_mod_alarm_leds_background()
+006228  000956        
+006229  000957    // Draw the LED backgrounds first
+006230  000958    gfx_CircleFilled(324, 140, 12, BLACK);
+006231  000959    gfx_CircleFilled(500, 140, 12, BLACK);
+006232  000960    gfx_CircleFilled(324, 172, 12, BLACK);
+006233  000961    gfx_CircleFilled(500, 172, 12, BLACK);
+006234  000962        
+006235  000963  endfunc
+006236  000964        
+006237  000965  func draw_mod_alarm_leds(var mod)
 006238  000966        
 006239  000967    var alarm_index, alarms;
 006240  000968    alarm_index := 2;
@@ -6255,646 +6255,650 @@ file C:\Users\ebenton\Documents\CERDEC TS\CERDEC.4DWork\CERDECConst.inc
 006243  000971    // Shelf Over Charged
 006244  000972    if(alarms & 0x01 == 0x01)
 006245  000973      gfx_CircleFilled(324, 140, 10, LED_BAD);
-006246  000974    else
-006247  000975      gfx_CircleFilled(324, 140, 10, LED_GOOD);
-006248  000976    endif
-006249  000977        
-006250  000978    // Shelf Over Temp
-006251  000979    if(alarms & 0x04 == 0x04)
-006252  000980      gfx_CircleFilled(500, 140, 10, LED_BAD);
-006253  000981    else
-006254  000982      gfx_CircleFilled(500, 140, 10, LED_GOOD);
-006255  000983    endif
-006256  000984        
-006257  000985    // Shelf Over Disc
-006258  000986    if(alarms & 0x02 == 0x02)
-006259  000987      gfx_CircleFilled(324, 172, 10, LED_BAD);
-006260  000988    else
-006261  000989      gfx_CircleFilled(324, 172, 10, LED_GOOD);
-006262  000990    endif
-006263  000991        
-006264  000992    // Shelf Error
-006265  000993    if(alarms & 0x08 == 0x08)
-006266  000994      gfx_CircleFilled(500, 172, 10, LED_BAD);
-006267  000995    else
-006268  000996      gfx_CircleFilled(500, 172, 10, LED_GOOD);
-006269  000997    endif
-006270  000998        
-006271  000999  endfunc
-006272  001000        
-006273  001001  func draw_mod_labels()
+006246  000974      gfx_CircleFilled(325, 140, 10, LED_BAD);
+006247  000975    else
+006248  000976      gfx_CircleFilled(324, 140, 10, LED_GOOD);
+006249  000977    endif
+006250  000978        
+006251  000979    // Shelf Over Temp
+006252  000980    if(alarms & 0x04 == 0x04)
+006253  000981      gfx_CircleFilled(500, 140, 10, LED_BAD);
+006254  000982      gfx_CircleFilled(501, 140, 10, LED_BAD);
+006255  000983    else
+006256  000984      gfx_CircleFilled(500, 140, 10, LED_GOOD);
+006257  000985    endif
+006258  000986        
+006259  000987    // Shelf Over Disc
+006260  000988    if(alarms & 0x02 == 0x02)
+006261  000989      gfx_CircleFilled(324, 172, 10, LED_BAD);
+006262  000990      gfx_CircleFilled(325, 172, 10, LED_BAD);
+006263  000991    else
+006264  000992      gfx_CircleFilled(324, 172, 10, LED_GOOD);
+006265  000993    endif
+006266  000994        
+006267  000995    // Shelf Error
+006268  000996    if(alarms & 0x08 == 0x08)
+006269  000997      gfx_CircleFilled(500, 172, 10, LED_BAD);
+006270  000998      gfx_CircleFilled(501, 172, 10, LED_BAD);
+006271  000999    else
+006272  001000      gfx_CircleFilled(500, 172, 10, LED_GOOD);
+006273  001001    endif
 006274  001002        
-006275  001003    // Module Voltage
-006276  001004    img_Show(hndl,iModuleVoltage_Label) ;
-006277  001005        
-006278  001006    // Module Temp
-006279  001007    img_Show(hndl,iModuleTemp_Label) ;
-006280  001008        
-006281  001009    // Module Voltage Units
-006282  001010    img_Show(hndl,iModuleVoltage_Unit) ;
-006283  001011        
-006284  001012    // Module Temp Units
-006285  001013    img_Show(hndl,iModuleTemp_Units) ;
-006286  001014        
-006287  001015    // Module Over Charged
-006288  001016    img_Show(hndl,iModuleOverCharged_Label) ;
-006289  001017        
-006290  001018    // Module Over Discharged
-006291  001019    img_Show(hndl,iModuleOverDischarged_Label) ;
-006292  001020        
-006293  001021    // Module Over Temp
-006294  001022    img_Show(hndl,iModuleOverTemp_Label) ;
-006295  001023        
-006296  001024    // Module Error
-006297  001025    img_Show(hndl,iModuleError_Label) ;
-006298  001026    gfx_Panel(PANEL_RAISED, 572, 160, 35, 25, WHITE) ;
+006275  001003  endfunc
+006276  001004        
+006277  001005  func draw_mod_labels()
+006278  001006        
+006279  001007    // Module Voltage
+006280  001008    img_Show(hndl,iModuleVoltage_Label) ;
+006281  001009        
+006282  001010    // Module Temp
+006283  001011    img_Show(hndl,iModuleTemp_Label) ;
+006284  001012        
+006285  001013    // Module Voltage Units
+006286  001014    img_Show(hndl,iModuleVoltage_Unit) ;
+006287  001015        
+006288  001016    // Module Temp Units
+006289  001017    img_Show(hndl,iModuleTemp_Units) ;
+006290  001018        
+006291  001019    // Module Over Charged
+006292  001020    img_Show(hndl,iModuleOverCharged_Label) ;
+006293  001021        
+006294  001022    // Module Over Discharged
+006295  001023    img_Show(hndl,iModuleOverDischarged_Label) ;
+006296  001024        
+006297  001025    // Module Over Temp
+006298  001026    img_Show(hndl,iModuleOverTemp_Label) ;
 006299  001027        
-006300  001028  endfunc
-006301  001029        
-006302  001030  func draw_mod_info_fields()
+006300  001028    // Module Error
+006301  001029    img_Show(hndl,iModuleError_Label) ;
+006302  001030    gfx_Panel(PANEL_RAISED, 572, 160, 35, 25, WHITE) ;
 006303  001031        
-006304  001032    gfx_Panel(PANEL_RAISED, 439, 44, 108, 35, WHITE);
-006305  001033    gfx_Panel(PANEL_RAISED, 439, 82, 108, 35, WHITE);
-006306  001034        
-006307  001035  endfunc
-006308  001036        
-006309  001037  func draw_mod_info_number(var mod_number)
+006304  001032  endfunc
+006305  001033        
+006306  001034  func draw_mod_info_fields()
+006307  001035        
+006308  001036    gfx_Panel(PANEL_RAISED, 439, 44, 108, 35, WHITE);
+006309  001037    gfx_Panel(PANEL_RAISED, 439, 82, 108, 35, WHITE);
 006310  001038        
-006311  001039    blue_background_font(405, 13);
-006312  001040    print(mod_number + 1);
-006313  001041        
-006314  001042  endfunc
-006315  001043        
-006316  001044  func update_shelf_mod(var mod_number)
+006311  001039  endfunc
+006312  001040        
+006313  001041  func draw_mod_info_number(var mod_number)
+006314  001042        
+006315  001043    blue_background_font(405, 13);
+006316  001044    print(mod_number + 1);
 006317  001045        
-006318  001046    draw_mod_info_number(mod_number);
-006319  001047    draw_mod_alarm_leds(mods[mod_number]);
-006320  001048    // Print off actual values...
+006318  001046  endfunc
+006319  001047        
+006320  001048  func update_shelf_mod(var mod_number)
 006321  001049        
-006322  001050  endfunc
-006323  001051        
-006324  001052  // System Status
+006322  001050    draw_mod_info_number(mod_number);
+006323  001051    draw_mod_alarm_leds(mods[mod_number]);
+006324  001052    // Print off actual values...
 006325  001053        
-006326  001054  func draw_shelf_system_status()
-006327  001055  endfunc
-006328  001056        
-006329  001057  func draw_shelf_side_buttons()
-006330  001058        
-006331  001059    // SystemStart_btn
-006332  001060    img_ClearAttributes(hndl, iSystemStart_btn, I_TOUCH_DISABLE);
-006333  001061    img_SetWord(hndl, iSystemStart_btn, IMAGE_INDEX, BTN_UP);
-006334  001062    img_Show(hndl,iSystemStart_btn);
-006335  001063        
-006336  001064    // SystemStop_btn
-006337  001065    img_ClearAttributes(hndl, iSystemStop_btn, I_TOUCH_DISABLE);
-006338  001066    img_SetWord(hndl, iSystemStop_btn, IMAGE_INDEX, BTN_UP);
-006339  001067    img_Show(hndl,iSystemStop_btn);
-006340  001068        
-006341  001069    // Shelf_btn
-006342  001070    img_ClearAttributes(hndl, iShelfToMain_btn, I_TOUCH_DISABLE);
-006343  001071    img_SetWord(hndl, iShelfToMain_btn, IMAGE_INDEX, BTN_UP);
-006344  001072    img_Show(hndl,iShelfToMain_btn);
-006345  001073        
-006346  001074    // EmergencyStop_btn
-006347  001075    img_ClearAttributes(hndl, iEmergencyStop_btn, I_TOUCH_DISABLE);
-006348  001076    img_SetWord(hndl, iEmergencyStop_btn, IMAGE_INDEX, BTN_UP);
-006349  001077    img_Show(hndl,iEmergencyStop_btn);
-006350  001078        
-006351  001079  endfunc
-006352  001080        
-006353  001081  // === Helpers ===
+006326  001054  endfunc
+006327  001055        
+006328  001056  // System Status
+006329  001057        
+006330  001058  func draw_shelf_system_status()
+006331  001059  endfunc
+006332  001060        
+006333  001061  func draw_shelf_side_buttons()
+006334  001062        
+006335  001063    // SystemStart_btn
+006336  001064    img_ClearAttributes(hndl, iSystemStart_btn, I_TOUCH_DISABLE);
+006337  001065    img_SetWord(hndl, iSystemStart_btn, IMAGE_INDEX, BTN_UP);
+006338  001066    img_Show(hndl,iSystemStart_btn);
+006339  001067        
+006340  001068    // SystemStop_btn
+006341  001069    img_ClearAttributes(hndl, iSystemStop_btn, I_TOUCH_DISABLE);
+006342  001070    img_SetWord(hndl, iSystemStop_btn, IMAGE_INDEX, BTN_UP);
+006343  001071    img_Show(hndl,iSystemStop_btn);
+006344  001072        
+006345  001073    // Shelf_btn
+006346  001074    img_ClearAttributes(hndl, iShelfToMain_btn, I_TOUCH_DISABLE);
+006347  001075    img_SetWord(hndl, iShelfToMain_btn, IMAGE_INDEX, BTN_UP);
+006348  001076    img_Show(hndl,iShelfToMain_btn);
+006349  001077        
+006350  001078    // EmergencyStop_btn
+006351  001079    img_ClearAttributes(hndl, iEmergencyStop_btn, I_TOUCH_DISABLE);
+006352  001080    img_SetWord(hndl, iEmergencyStop_btn, IMAGE_INDEX, BTN_UP);
+006353  001081    img_Show(hndl,iEmergencyStop_btn);
 006354  001082        
-006355  001083  func reset_font(var x, var y)
-006356  001084    txt_Set(TEXT_HIGHLIGHT, 0xFFFF);
-006357  001085    txt_Set(TEXT_COLOUR, BLACK);
-006358  001086    txt_Width(2);
-006359  001087    txt_Height(2);
-006360  001088    gfx_MoveTo(x, y);
-006361  001089  endfunc
-006362  001090        
-006363  001091  func blue_background_font(var x, var y)
-006364  001092    txt_Set(TEXT_HIGHLIGHT, 0x8D9C);
-006365  001093    txt_Set(TEXT_COLOUR, BLACK);
-006366  001094    txt_Width(2);
-006367  001095    txt_Height(2);
-006368  001096    gfx_MoveTo(x, y);
-006369  001097  endfunc
-006370  001098        
-006371  001099  // ##################
-006372  001100  // Math
-006373  001101  // ##################
+006355  001083  endfunc
+006356  001084        
+006357  001085  // === Helpers ===
+006358  001086        
+006359  001087  func reset_font(var x, var y)
+006360  001088    txt_Set(TEXT_HIGHLIGHT, 0xFFFF);
+006361  001089    txt_Set(TEXT_COLOUR, BLACK);
+006362  001090    txt_Width(2);
+006363  001091    txt_Height(2);
+006364  001092    gfx_MoveTo(x, y);
+006365  001093  endfunc
+006366  001094        
+006367  001095  func blue_background_font(var x, var y)
+006368  001096    txt_Set(TEXT_HIGHLIGHT, 0x8D9C);
+006369  001097    txt_Set(TEXT_COLOUR, BLACK);
+006370  001098    txt_Width(2);
+006371  001099    txt_Height(2);
+006372  001100    gfx_MoveTo(x, y);
+006373  001101  endfunc
 006374  001102        
-006375  001103  // Prints the system voltage
-006376  001104  // Sums the voltage from each shelf
-006377  001105  func print_system_voltage(var x_pos, var y_pos)
+006375  001103  // ##################
+006376  001104  // Math
+006377  001105  // ##################
 006378  001106        
-006379  001107      var sys_volt[2];
-006380  001108        
-006381  001109      sys_volt := calc_system_voltage();
+006379  001107  // Prints the system voltage
+006380  001108  // Sums the voltage from each shelf
+006381  001109  func print_system_voltage(var x_pos, var y_pos)
 006382  001110        
-006383  001111      gfx_MoveTo(x_pos, y_pos);
-006384  001112      flt_PRINT(sys_volt, "%-.0f");
-006385  001113        
-006386  001114  endfunc
-006387  001115        
-006388  001116  // Calculates the system voltage
-006389  001117  // By summing up each shelf's voltage
-006390  001118  func calc_system_voltage()
+006383  001111      var sys_volt[2];
+006384  001112        
+006385  001113      sys_volt := calc_system_voltage();
+006386  001114        
+006387  001115      gfx_MoveTo(x_pos, y_pos);
+006388  001116      flt_PRINT(sys_volt, "%-.0f");
+006389  001117        
+006390  001118  endfunc
 006391  001119        
-006392  001120      var sys_volt[2];
-006393  001121        
-006394  001122      // Init the system voltage
-006395  001123      flt_VAL(sys_volt, "0.0");
-006396  001124        
-006397  001125      // Sum the voltages
-006398  001126      var i;
-006399  001127      for(i := 0; i < 3; i++)
+006392  001120  // Calculates the system voltage
+006393  001121  // By summing up each shelf's voltage
+006394  001122  func calc_system_voltage()
+006395  001123        
+006396  001124      var sys_volt[2];
+006397  001125        
+006398  001126      // Init the system voltage
+006399  001127      flt_VAL(sys_volt, "0.0");
 006400  001128        
-006401  001129          calc_shelf_voltage(i);
-006402  001130        
-006403  001131          // Add current shelf voltage to system voltage
-006404  001132          flt_ADD(sys_volt, sys_volt, shelf_volt);
-006405  001133      next
+006401  001129      // Sum the voltages
+006402  001130      var i;
+006403  001131      for(i := 0; i < 3; i++)
+006404  001132        
+006405  001133          calc_shelf_voltage(i);
 006406  001134        
-006407  001135      return sys_volt;
-006408  001136        
-006409  001137  endfunc
+006407  001135          // Add current shelf voltage to system voltage
+006408  001136          flt_ADD(sys_volt, sys_volt, shelf_volt);
+006409  001137      next
 006410  001138        
-006411  001139  // Prints off the voltage given a 16 bit int
-006412  001140  func print_shelf_voltage(var shelf, var x_pos, var y_pos)
-006413  001141        
-006414  001142      // Setting up float arrays
-006415  001143      var volt_flt[2];
-006416  001144        
-006417  001145      calc_shelf_voltage(shelf);
-006418  001146        
-006419  001147      // Print it at desired location
-006420  001148      gfx_MoveTo(x_pos, y_pos);
-006421  001149      flt_PRINT(volt_flt, "%-.0f");
+006411  001139      return sys_volt;
+006412  001140        
+006413  001141  endfunc
+006414  001142        
+006415  001143  // Prints off the voltage given a 16 bit int
+006416  001144  func print_shelf_voltage(var shelf, var x_pos, var y_pos)
+006417  001145        
+006418  001146      // Setting up float arrays
+006419  001147      var volt_flt[2];
+006420  001148        
+006421  001149      calc_shelf_voltage(shelf);
 006422  001150        
-006423  001151  endfunc
-006424  001152        
-006425  001153  // Calculates the voltage given a 16 bit int for a shelf
-006426  001154  func calc_shelf_voltage(var shelf)
-006427  001155        
-006428  001156      get_shelf(shelf);
-006429  001157        
-006430  001158      var volt_int;
-006431  001159      volt_int := shelf_ptr[0];
-006432  001160        
-006433  001161      // Setting up float arrays
-006434  001162      var volt_flt[2], temp_flt[2];
-006435  001163        
-006436  001164      // Convert to float
-006437  001165      flt_ITOF(volt_flt, volt_int);
-006438  001166        
-006439  001167      // Create multiplication factor
-006440  001168      flt_VAL(temp_flt, "0.02");
-006441  001169        
-006442  001170      // (voltage = [0xUpperByte,0xLowerByte] * 0.02)
-006443  001171      flt_MUL(shelf_volt, volt_flt, temp_flt);
-006444  001172        
-006445  001173  endfunc
-006446  001174        
-006447  001175  // Calculates the voltage given a 16 bit int for a mod
-006448  001176  func calc_mod_voltage(var volt_int)
-006449  001177        
-006450  001178      // Setting up float arrays
-006451  001179      var volt_flt[2], temp_flt[2];
-006452  001180        
-006453  001181      // Convert to float
-006454  001182      flt_ITOF(volt_flt, volt_int);
-006455  001183        
-006456  001184      // Create multiplication factor
-006457  001185      flt_VAL(temp_flt, "0.02");
-006458  001186        
-006459  001187      // (voltage = [0xUpperByte,0xLowerByte] * 0.02)
-006460  001188      flt_MUL(volt_mod, volt_flt, temp_flt);
-006461  001189        
-006462  001190  endfunc
-006463  001191        
-006464  001192  // Prints off the temperature given a 8+ bit int
-006465  001193  func print_temperature(var temp_int, var x_pos, var y_pos)
-006466  001194        
-006467  001195      var temp_flt[2];
-006468  001196        
-006469  001197      temp_flt := calc_temperature(temp_int);
+006423  001151      // Print it at desired location
+006424  001152      gfx_MoveTo(x_pos, y_pos);
+006425  001153      flt_PRINT(volt_flt, "%-.0f");
+006426  001154        
+006427  001155  endfunc
+006428  001156        
+006429  001157  // Calculates the voltage given a 16 bit int for a shelf
+006430  001158  func calc_shelf_voltage(var shelf)
+006431  001159        
+006432  001160      get_shelf(shelf);
+006433  001161        
+006434  001162      var volt_int;
+006435  001163      volt_int := shelf_ptr[0];
+006436  001164        
+006437  001165      // Setting up float arrays
+006438  001166      var volt_flt[2], temp_flt[2];
+006439  001167        
+006440  001168      // Convert to float
+006441  001169      flt_ITOF(volt_flt, volt_int);
+006442  001170        
+006443  001171      // Create multiplication factor
+006444  001172      flt_VAL(temp_flt, "0.02");
+006445  001173        
+006446  001174      // (voltage = [0xUpperByte,0xLowerByte] * 0.02)
+006447  001175      flt_MUL(shelf_volt, volt_flt, temp_flt);
+006448  001176        
+006449  001177  endfunc
+006450  001178        
+006451  001179  // Calculates the voltage given a 16 bit int for a mod
+006452  001180  func calc_mod_voltage(var volt_int)
+006453  001181        
+006454  001182      // Setting up float arrays
+006455  001183      var volt_flt[2], temp_flt[2];
+006456  001184        
+006457  001185      // Convert to float
+006458  001186      flt_ITOF(volt_flt, volt_int);
+006459  001187        
+006460  001188      // Create multiplication factor
+006461  001189      flt_VAL(temp_flt, "0.02");
+006462  001190        
+006463  001191      // (voltage = [0xUpperByte,0xLowerByte] * 0.02)
+006464  001192      flt_MUL(volt_mod, volt_flt, temp_flt);
+006465  001193        
+006466  001194  endfunc
+006467  001195        
+006468  001196  // Prints off the temperature given a 8+ bit int
+006469  001197  func print_temperature(var temp_int, var x_pos, var y_pos)
 006470  001198        
-006471  001199      gfx_MoveTo(x_pos, y_pos);
-006472  001200      flt_PRINT(temp_flt, "%-.0f");
-006473  001201        
-006474  001202  endfunc
-006475  001203        
-006476  001204  // Calculates the temperature given an 8+ bit int
-006477  001205  func calc_temperature(var temp_int)
-006478  001206        
-006479  001207      var temp_flt_1[2], temp_flt_2[2];
-006480  001208        
-006481  001209      // Get the temperature
-006482  001210      flt_VAL(temp_flt_1, "0.5");
-006483  001211      flt_ITOF(temp_flt_2, temp_int);
-006484  001212      flt_MUL(temp_flt_1, temp_flt_1, temp_flt_2);
-006485  001213        
-006486  001214      return temp_flt_1;
-006487  001215        
-006488  001216  endfunc
+006471  001199      var temp_flt[2];
+006472  001200        
+006473  001201      temp_flt := calc_temperature(temp_int);
+006474  001202        
+006475  001203      gfx_MoveTo(x_pos, y_pos);
+006476  001204      flt_PRINT(temp_flt, "%-.0f");
+006477  001205        
+006478  001206  endfunc
+006479  001207        
+006480  001208  // Calculates the temperature given an 8+ bit int
+006481  001209  func calc_temperature(var temp_int)
+006482  001210        
+006483  001211      var temp_flt_1[2], temp_flt_2[2];
+006484  001212        
+006485  001213      // Get the temperature
+006486  001214      flt_VAL(temp_flt_1, "0.5");
+006487  001215      flt_ITOF(temp_flt_2, temp_int);
+006488  001216      flt_MUL(temp_flt_1, temp_flt_1, temp_flt_2);
 006489  001217        
-006490  001218  // ##################
-006491  001219  // Get/Set
-006492  001220  // ##################
+006490  001218      return temp_flt_1;
+006491  001219        
+006492  001220  endfunc
 006493  001221        
-006494  001222  // Basic Shelf Get/Set
-006495  001223  // Sets the global shelf_ptr to 'shelf'
-006496  001224  func get_shelf(var shelf)
+006494  001222  // ##################
+006495  001223  // Get/Set
+006496  001224  // ##################
 006497  001225        
-006498  001226      shelf_ptr := shelf0;
-006499  001227        
-006500  001228  endfunc
+006498  001226  // Basic Shelf Get/Set
+006499  001227  // Sets the global shelf_ptr to 'shelf'
+006500  001228  func get_shelf(var shelf)
 006501  001229        
-006502  001230  // Updates the shelf_ptr shelf's info
-006503  001231  func set_shelf(var data)
-006504  001232        
-006505  001233      shelf_ptr[0] := data[SHELF_V];
-006506  001234      shelf_ptr[1] := data[SHELF_V + 1];
-006507  001235      shelf_ptr[2] := data[SHELF_T];
-006508  001236      shelf_ptr[3] := data[SHELF_H];
-006509  001237      shelf_ptr[4] := data[SHELF_L];
-006510  001238      shelf_ptr[5] := data[SHELF_ID];
-006511  001239      shelf_ptr[6] := data[SHELF_A];
-006512  001240      shelf_ptr[7] := data[SHELF_E];
-006513  001241        
-006514  001242  endfunc
-006515  001243        
-006516  001244  // Basic Mod Get/Set
-006517  001245  // Sets the global mod_ptr_1 to 'even' mod (0, 2, 4, ...)
-006518  001246  // Sets the global mod_ptr_2 to 'odd' mod (1, 3, 5, ...)
-006519  001247  func get_mods(var shelf, var mod)
-006520  001248        
-006521  001249      var mods_per_shelf := 12;
-006522  001250      mod_ptr_1 := mods[mod + (shelf * mods_per_shelf)];
-006523  001251      mod_ptr_2 := mods[mod + (shelf * mods_per_shelf) + 1];
+006502  001230      shelf_ptr := shelf0;
+006503  001231        
+006504  001232  endfunc
+006505  001233        
+006506  001234  // Updates the shelf_ptr shelf's info
+006507  001235  func set_shelf(var data)
+006508  001236        
+006509  001237      shelf_ptr[0] := data[SHELF_V];
+006510  001238      shelf_ptr[1] := data[SHELF_V + 1];
+006511  001239      shelf_ptr[2] := data[SHELF_T];
+006512  001240      shelf_ptr[3] := data[SHELF_H];
+006513  001241      shelf_ptr[4] := data[SHELF_L];
+006514  001242      shelf_ptr[5] := data[SHELF_ID];
+006515  001243      shelf_ptr[6] := data[SHELF_A];
+006516  001244      shelf_ptr[7] := data[SHELF_E];
+006517  001245        
+006518  001246  endfunc
+006519  001247        
+006520  001248  // Basic Mod Get/Set
+006521  001249  // Sets the global mod_ptr_1 to 'even' mod (0, 2, 4, ...)
+006522  001250  // Sets the global mod_ptr_2 to 'odd' mod (1, 3, 5, ...)
+006523  001251  func get_mods(var shelf, var mod)
 006524  001252        
-006525  001253  endfunc
-006526  001254        
-006527  001255  // Updates the mod_ptr_1 & mod_ptr_2 mods' infos
-006528  001256  func set_mods(var data)
-006529  001257        
-006530  001258      // Get the voltage
-006531  001259      mod_ptr_1[0] := data[MOD_V];
-006532  001260      mod_ptr_1[1] := data[MOD_V + 1];
-006533  001261      mod_ptr_2[0] := data[MOD_V + 4];
-006534  001262      mod_ptr_2[1] := data[MOD_V + 4 + 1];
-006535  001263        
-006536  001264      // Get the temperature
-006537  001265      mod_ptr_1[2] := data[MOD_T];
-006538  001266      mod_ptr_2[2] := data[MOD_T + 4];
+006525  001253      var mods_per_shelf := 12;
+006526  001254      mod_ptr_1 := mods[mod + (shelf * mods_per_shelf)];
+006527  001255      mod_ptr_2 := mods[mod + (shelf * mods_per_shelf) + 1];
+006528  001256        
+006529  001257  endfunc
+006530  001258        
+006531  001259  // Updates the mod_ptr_1 & mod_ptr_2 mods' infos
+006532  001260  func set_mods(var data)
+006533  001261        
+006534  001262      // Get the voltage
+006535  001263      mod_ptr_1[0] := data[MOD_V];
+006536  001264      mod_ptr_1[1] := data[MOD_V + 1];
+006537  001265      mod_ptr_2[0] := data[MOD_V + 4];
+006538  001266      mod_ptr_2[1] := data[MOD_V + 4 + 1];
 006539  001267        
-006540  001268      // Get the Alarm/Error
-006541  001269      mod_ptr_1[3] := data[MOD_A];
-006542  001270      mod_ptr_2[3] := data[MOD_A + 4];
-006543  001271  endfunc
-006544  001272        
-006545  001273  // ##################
-006546  001274  // Input/Output
-006547  001275  // ##################
+006540  001268      // Get the temperature
+006541  001269      mod_ptr_1[2] := data[MOD_T];
+006542  001270      mod_ptr_2[2] := data[MOD_T + 4];
+006543  001271        
+006544  001272      // Get the Alarm/Error
+006545  001273      mod_ptr_1[3] := data[MOD_A];
+006546  001274      mod_ptr_2[3] := data[MOD_A + 4];
+006547  001275  endfunc
 006548  001276        
-006549  001277  // === Input ===
-006550  001278        
-006551  001279  // Handles input messages
-006552  001280  func process_input()
-006553  001281        
-006554  001282      var tmpByte;
-006555  001283      var dataByteCount := 0x0F;
-006556  001284      var temp_vals[15];
-006557  001285      var shelf_number;
-006558  001286      var mod_number;
-006559  001287      var i;
-006560  001288        
-006561  001289      if(com1_Count() > dataByteCount)
-006562  001290        
-006563  001291          // Read in the first byte
-006564  001292          // Should be START BYTE (0xAA)
-006565  001293          tmpByte := serin1();
+006549  001277  // ##################
+006550  001278  // Input/Output
+006551  001279  // ##################
+006552  001280        
+006553  001281  // === Input ===
+006554  001282        
+006555  001283  // Handles input messages
+006556  001284  func process_input()
+006557  001285        
+006558  001286      var tmpByte;
+006559  001287      var dataByteCount := 0x0F;
+006560  001288      var temp_vals[15];
+006561  001289      var shelf_number;
+006562  001290      var mod_number;
+006563  001291      var i;
+006564  001292        
+006565  001293      if(com1_Count() > dataByteCount)
 006566  001294        
-006567  001295          // Looking for the start of a message so...
-006568  001296          // While tmpByte isn't the Start Byte
-006569  001297          while(tmpByte != START_BYT)
+006567  001295          // Read in the first byte
+006568  001296          // Should be START BYTE (0xAA)
+006569  001297          tmpByte := serin1();
 006570  001298        
-006571  001299              // If there isn't enough data
-006572  001300              // in the buffer for a full message
-006573  001301              if(com1_Count() < dataByteCount)
-006574  001302                  return; // Leave function
-006575  001303              endif
-006576  001304        
-006577  001305              // Read in the next byte
-006578  001306              tmpByte := serin1();
-006579  001307        
-006580  001308          wend
-006581  001309        
-006582  001310          // Give it  5msec to breath
-006583  001311          pause(5);
-006584  001312        
-006585  001313          // Read in vals from buffer into temp array
-006586  001314          for(i := 0; i < dataByteCount; i++)
-006587  001315              temp_vals[i] := serin1();
-006588  001316          next
-006589  001317        
-006590  001318          // If it's a shelf update message
-006591  001319          if(temp_vals[TYPE] == 0xA0)
-006592  001320        
-006593  001321              // See who the message is for
-006594  001322              shelf_number := temp_vals[ID];
-006595  001323        
-006596  001324              // Get their attention
-006597  001325              get_shelf(shelf_number);
-006598  001326        
-006599  001327              // Update their info
-006600  001328              set_shelf(temp_vals);
-006601  001329          endif
+006571  001299          // Looking for the start of a message so...
+006572  001300          // While tmpByte isn't the Start Byte
+006573  001301          while(tmpByte != START_BYT)
+006574  001302        
+006575  001303              // If there isn't enough data
+006576  001304              // in the buffer for a full message
+006577  001305              if(com1_Count() < dataByteCount)
+006578  001306                  return; // Leave function
+006579  001307              endif
+006580  001308        
+006581  001309              // Read in the next byte
+006582  001310              tmpByte := serin1();
+006583  001311        
+006584  001312          wend
+006585  001313        
+006586  001314          // Give it  5msec to breath
+006587  001315          pause(5);
+006588  001316        
+006589  001317          // Read in vals from buffer into temp array
+006590  001318          for(i := 0; i < dataByteCount; i++)
+006591  001319              temp_vals[i] := serin1();
+006592  001320          next
+006593  001321        
+006594  001322          // If it's a shelf update message
+006595  001323          if(temp_vals[TYPE] == 0xA0)
+006596  001324        
+006597  001325              // See who the message is for
+006598  001326              shelf_number := temp_vals[ID];
+006599  001327        
+006600  001328              // Get their attention
+006601  001329              get_shelf(shelf_number);
 006602  001330        
-006603  001331          // If it's a mod update message
-006604  001332          if((temp_vals[TYPE] & 0xB0) == 0xB0)
-006605  001333        
-006606  001334              // See who the message is for
-006607  001335              shelf_number := temp_vals[ID];
-006608  001336              mod_number := ((temp_vals[TYPE] | 0xF0) & 0x0F);
+006603  001331              // Update their info
+006604  001332              set_shelf(temp_vals);
+006605  001333          endif
+006606  001334        
+006607  001335          // If it's a mod update message
+006608  001336          if((temp_vals[TYPE] & 0xB0) == 0xB0)
 006609  001337        
-006610  001338              // Get their attention
-006611  001339              get_mods(shelf_number, mod_number);
-006612  001340        
-006613  001341              // Update their info
-006614  001342              set_mods(temp_vals);
-006615  001343          endif
-006616  001344      endif
-006617  001345  endfunc
-006618  001346        
-006619  001347  // === Output ===
-006620  001348        
-006621  001349  // Requests the basic module info
-006622  001350  // Sends out the "B#" command
-006623  001351  func request_mod(var shelf, var mod)
+006610  001338              // See who the message is for
+006611  001339              shelf_number := temp_vals[ID];
+006612  001340              mod_number := ((temp_vals[TYPE] | 0xF0) & 0x0F);
+006613  001341        
+006614  001342              // Get their attention
+006615  001343              get_mods(shelf_number, mod_number);
+006616  001344        
+006617  001345              // Update their info
+006618  001346              set_mods(temp_vals);
+006619  001347          endif
+006620  001348      endif
+006621  001349  endfunc
+006622  001350        
+006623  001351  // === Output ===
 006624  001352        
-006625  001353      var cmd[7];
-006626  001354      cmd[0] := 0x18;
-006627  001355      cmd[1] := 0xEA;
-006628  001356      cmd[2] := shelf;
-006629  001357      cmd[3] := 0x0F;
-006630  001358      cmd[4] := (0xB0) + (mod/2);
-006631  001359      cmd[5] := 0xFF;
-006632  001360      cmd[6] := 0x00;
-006633  001361        
-006634  001362      var i;
-006635  001363      for(i := 0; i < 7; i++)
-006636  001364          serout1(cmd[i]);
-006637  001365      next
-006638  001366        
-006639  001367  endfunc
-006640  001368        
-006641  001369  // Sends a request for all the mods on the current shelf
-006642  001370  func request_all_shelf_mods(var shelf)
-006643  001371        
-006644  001372      var mods_per_shelf := 12;
-006645  001373        
-006646  001374      var i;
-006647  001375      for(i := 0; i < mods_per_shelf; i += 2)
-006648  001376          // Send request for each mod on current shelf
-006649  001377          request_mod(shelf, i);
-006650  001378          // pause(5);
-006651  001379      next
-006652  001380  endfunc
-006653  001381        
-006654  001382  func check_press()
-006655  001383        
-006656  001384    var touch_state;
-006657  001385    touch_state := touch_Get(TOUCH_STATUS);
-006658  001386        
-006659  001387    if(touch_state == TOUCH_RELEASED)
-006660  001388        
-006661  001389      // Get the touched image and location
-006662  001390      var touched_image, x_touch, y_touch;
-006663  001391      touched_image := img_Touched(hndl, -1);
-006664  001392      x_touch := touch_Get(TOUCH_GETX);
-006665  001393      y_touch := touch_Get(TOUCH_GETY);
-006666  001394        
-006667  001395      // If we are looking at the overview screen
-006668  001396      if(current_form == OVERVIEW_FORM)
-006669  001397        
-006670  001398        var mode_index, off, idle, voltage, power;
-006671  001399        mode_index := 1;
-006672  001400        off := 0;
-006673  001401        idle := 1;
-006674  001402        voltage := 2;
-006675  001403        power := 3;
-006676  001404        
-006677  001405        if(touched_image == iShelf_btn)
-006678  001406          current_form := SHELF_FORM;
-006679  001407          current_mod := 0;
-006680  001408          disable_all_inputs();
-006681  001409          draw_shelf_form(current_mod);
-006682  001410        endif
-006683  001411        
-006684  001412        // Radio Buttons for System Mode
-006685  001413        
-006686  001414        // Off
-006687  001415        if((x_touch > 25 - 10) && (x_touch < 25 + 10) && (y_touch > 215 - 10) && (y_touch < 215 + 10))
-006688  001416          if(system[mode_index] != off)
-006689  001417            system[mode_index] := off;
-006690  001418            draw_system_mode_radios();
-006691  001419          endif
-006692  001420        endif
-006693  001421        
-006694  001422        // Idle
-006695  001423        if((x_touch > 25 - 10) && (x_touch < 25 + 10) && (y_touch > 250 - 10) && (y_touch < 250 + 10))
-006696  001424          if(system[mode_index] != idle)
-006697  001425            system[mode_index] := idle;
-006698  001426            draw_system_mode_radios();
-006699  001427          endif
-006700  001428        endif
-006701  001429        
-006702  001430        // Voltage
-006703  001431        if((x_touch > 100 - 10) && (x_touch < 100 + 10) && (y_touch > 215 - 10) && (y_touch < 215 + 10))
-006704  001432          if(system[mode_index] != voltage)
-006705  001433            system[mode_index] := voltage;
-006706  001434            draw_system_mode_radios();
-006707  001435          endif
-006708  001436        endif
-006709  001437        
-006710  001438        // Voltage
-006711  001439        if((x_touch > 100 - 10) && (x_touch < 100 + 10) && (y_touch > 250 - 10) && (y_touch < 250 + 10))
-006712  001440          if(system[mode_index] != power)
-006713  001441            system[mode_index] := power;
-006714  001442            draw_system_mode_radios();
-006715  001443          endif
-006716  001444        endif
-006717  001445        
-006718  001446        // Reset Number of Discharges
-006719  001447        if(touched_image == iResetDischarges_btn)
-006720  001448          num_discharges := 0;
-006721  001449          draw_num_discharges();
-006722  001450        endif
-006723  001451        
-006724  001452        // Individual Module Buttons
-006725  001453        
-006726  001454        if(touched_image == iMainModule1Good_btn || touched_image == iMainModule1Bad_btn)
-006727  001455          current_form := SHELF_FORM;
-006728  001456          current_mod := 0;
-006729  001457          disable_all_inputs();
-006730  001458          draw_shelf_form(current_mod);
-006731  001459        endif
-006732  001460        
-006733  001461        if(touched_image == iMainModule2Good_btn || touched_image == iMainModule2Bad_btn)
-006734  001462          current_form := SHELF_FORM;
-006735  001463          current_mod := 1;
-006736  001464          disable_all_inputs();
-006737  001465          draw_shelf_form(current_mod);
-006738  001466        endif
-006739  001467        
-006740  001468        if(touched_image == iMainModule3Good_btn || touched_image == iMainModule3Bad_btn)
-006741  001469          current_form := SHELF_FORM;
-006742  001470          current_mod := 2;
-006743  001471          disable_all_inputs();
-006744  001472          draw_shelf_form(current_mod);
-006745  001473        endif
-006746  001474        
-006747  001475        if(touched_image == iMainModule4Good_btn || touched_image == iMainModule4Bad_btn)
-006748  001476          current_form := SHELF_FORM;
-006749  001477          current_mod := 3;
-006750  001478          disable_all_inputs();
-006751  001479          draw_shelf_form(current_mod);
-006752  001480        endif
-006753  001481        
-006754  001482        if(touched_image == iMainModule5Good_btn || touched_image == iMainModule5Bad_btn)
-006755  001483          current_form := SHELF_FORM;
-006756  001484          current_mod := 4;
-006757  001485          disable_all_inputs();
-006758  001486          draw_shelf_form(current_mod);
-006759  001487        endif
-006760  001488        
-006761  001489        if(touched_image == iMainModule6Good_btn || touched_image == iMainModule6Bad_btn)
-006762  001490          current_form := SHELF_FORM;
-006763  001491          current_mod := 5;
-006764  001492          disable_all_inputs();
-006765  001493          draw_shelf_form(current_mod);
-006766  001494        endif
-006767  001495        
-006768  001496        if(touched_image == iMainModule7Good_btn || touched_image == iMainModule7Bad_btn)
-006769  001497          current_form := SHELF_FORM;
-006770  001498          current_mod := 6;
-006771  001499          disable_all_inputs();
-006772  001500          draw_shelf_form(current_mod);
-006773  001501        endif
-006774  001502        
-006775  001503        if(touched_image == iMainModule8Good_btn || touched_image == iMainModule8Bad_btn)
-006776  001504          current_form := SHELF_FORM;
-006777  001505          current_mod := 7;
-006778  001506          disable_all_inputs();
-006779  001507          draw_shelf_form(current_mod);
-006780  001508        endif
-006781  001509        
-006782  001510        if(touched_image == iMainModule9Good_btn || touched_image == iMainModule9Bad_btn)
-006783  001511          current_form := SHELF_FORM;
-006784  001512          current_mod := 8;
-006785  001513          disable_all_inputs();
-006786  001514          draw_shelf_form(current_mod);
-006787  001515        endif
-006788  001516        
-006789  001517      endif
-006790  001518        
-006791  001519      // If we are looking at the shelf form
-006792  001520      if(current_form == SHELF_FORM)
-006793  001521        
-006794  001522        if(touched_image == iShelfToMain_btn)
-006795  001523          current_form := OVERVIEW_FORM;
-006796  001524          disable_all_inputs();
-006797  001525          draw_overall_form();
-006798  001526        endif
-006799  001527        
-006800  001528        // Individual Module Buttons
-006801  001529        
-006802  001530        if(touched_image == iModule1Good_btn || touched_image == iModule1Bad_btn)
-006803  001531          current_mod := 0;
-006804  001532          update_shelf_mod(current_mod);
-006805  001533        endif
-006806  001534        
-006807  001535        if(touched_image == iModule2Good_btn || touched_image == iModule2Bad_btn)
-006808  001536          current_mod := 1;
-006809  001537          update_shelf_mod(current_mod);
-006810  001538        endif
-006811  001539        
-006812  001540        if(touched_image == iModule3Good_btn || touched_image == iModule3Bad_btn)
-006813  001541          current_mod := 2;
-006814  001542          update_shelf_mod(current_mod);
-006815  001543        endif
-006816  001544        
-006817  001545        if(touched_image == iModule4Good_btn || touched_image == iModule4Bad_btn)
-006818  001546          current_mod := 3;
-006819  001547          update_shelf_mod(current_mod);
-006820  001548        endif
-006821  001549        
-006822  001550        if(touched_image == iModule5Good_btn || touched_image == iModule5Bad_btn)
-006823  001551          current_mod := 4;
-006824  001552          update_shelf_mod(current_mod);
-006825  001553        endif
-006826  001554        
-006827  001555        if(touched_image == iModule6Good_btn || touched_image == iModule6Bad_btn)
-006828  001556          current_mod := 5;
-006829  001557          update_shelf_mod(current_mod);
-006830  001558        endif
-006831  001559        
-006832  001560        if(touched_image == iModule7Good_btn || touched_image == iModule7Bad_btn)
-006833  001561          current_mod := 6;
-006834  001562          update_shelf_mod(current_mod);
-006835  001563        endif
-006836  001564        
-006837  001565        if(touched_image == iModule8Good_btn || touched_image == iModule8Bad_btn)
-006838  001566          current_mod := 7;
-006839  001567          update_shelf_mod(current_mod);
-006840  001568        endif
-006841  001569        
-006842  001570        if(touched_image == iModule9Good_btn || touched_image == iModule9Bad_btn)
-006843  001571          current_mod := 8;
-006844  001572          update_shelf_mod(current_mod);
-006845  001573        endif
-006846  001574        
-006847  001575      endif
-006848  001576        
-006849  001577    endif
+006625  001353  // Requests the basic module info
+006626  001354  // Sends out the "B#" command
+006627  001355  func request_mod(var shelf, var mod)
+006628  001356        
+006629  001357      var cmd[7];
+006630  001358      cmd[0] := 0x18;
+006631  001359      cmd[1] := 0xEA;
+006632  001360      cmd[2] := shelf;
+006633  001361      cmd[3] := 0x0F;
+006634  001362      cmd[4] := (0xB0) + (mod/2);
+006635  001363      cmd[5] := 0xFF;
+006636  001364      cmd[6] := 0x00;
+006637  001365        
+006638  001366      var i;
+006639  001367      for(i := 0; i < 7; i++)
+006640  001368          serout1(cmd[i]);
+006641  001369      next
+006642  001370        
+006643  001371  endfunc
+006644  001372        
+006645  001373  // Sends a request for all the mods on the current shelf
+006646  001374  func request_all_shelf_mods(var shelf)
+006647  001375        
+006648  001376      var mods_per_shelf := 12;
+006649  001377        
+006650  001378      var i;
+006651  001379      for(i := 0; i < mods_per_shelf; i += 2)
+006652  001380          // Send request for each mod on current shelf
+006653  001381          request_mod(shelf, i);
+006654  001382          // pause(5);
+006655  001383      next
+006656  001384  endfunc
+006657  001385        
+006658  001386  func check_press()
+006659  001387        
+006660  001388    var touch_state;
+006661  001389    touch_state := touch_Get(TOUCH_STATUS);
+006662  001390        
+006663  001391    if(touch_state == TOUCH_RELEASED)
+006664  001392        
+006665  001393      // Get the touched image and location
+006666  001394      var touched_image, x_touch, y_touch;
+006667  001395      touched_image := img_Touched(hndl, -1);
+006668  001396      x_touch := touch_Get(TOUCH_GETX);
+006669  001397      y_touch := touch_Get(TOUCH_GETY);
+006670  001398        
+006671  001399      // If we are looking at the overview screen
+006672  001400      if(current_form == OVERVIEW_FORM)
+006673  001401        
+006674  001402        var mode_index, off, idle, voltage, power;
+006675  001403        mode_index := 1;
+006676  001404        off := 0;
+006677  001405        idle := 1;
+006678  001406        voltage := 2;
+006679  001407        power := 3;
+006680  001408        
+006681  001409        if(touched_image == iShelf_btn)
+006682  001410          current_form := SHELF_FORM;
+006683  001411          current_mod := 0;
+006684  001412          disable_all_inputs();
+006685  001413          draw_shelf_form(current_mod);
+006686  001414        endif
+006687  001415        
+006688  001416        // Radio Buttons for System Mode
+006689  001417        
+006690  001418        // Off
+006691  001419        if((x_touch > 25 - 10) && (x_touch < 25 + 10) && (y_touch > 215 - 10) && (y_touch < 215 + 10))
+006692  001420          if(system[mode_index] != off)
+006693  001421            system[mode_index] := off;
+006694  001422            draw_system_mode_radios();
+006695  001423          endif
+006696  001424        endif
+006697  001425        
+006698  001426        // Idle
+006699  001427        if((x_touch > 25 - 10) && (x_touch < 25 + 10) && (y_touch > 250 - 10) && (y_touch < 250 + 10))
+006700  001428          if(system[mode_index] != idle)
+006701  001429            system[mode_index] := idle;
+006702  001430            draw_system_mode_radios();
+006703  001431          endif
+006704  001432        endif
+006705  001433        
+006706  001434        // Voltage
+006707  001435        if((x_touch > 100 - 10) && (x_touch < 100 + 10) && (y_touch > 215 - 10) && (y_touch < 215 + 10))
+006708  001436          if(system[mode_index] != voltage)
+006709  001437            system[mode_index] := voltage;
+006710  001438            draw_system_mode_radios();
+006711  001439          endif
+006712  001440        endif
+006713  001441        
+006714  001442        // Voltage
+006715  001443        if((x_touch > 100 - 10) && (x_touch < 100 + 10) && (y_touch > 250 - 10) && (y_touch < 250 + 10))
+006716  001444          if(system[mode_index] != power)
+006717  001445            system[mode_index] := power;
+006718  001446            draw_system_mode_radios();
+006719  001447          endif
+006720  001448        endif
+006721  001449        
+006722  001450        // Reset Number of Discharges
+006723  001451        if(touched_image == iResetDischarges_btn)
+006724  001452          num_discharges := 0;
+006725  001453          draw_num_discharges();
+006726  001454        endif
+006727  001455        
+006728  001456        // Individual Module Buttons
+006729  001457        
+006730  001458        if(touched_image == iMainModule1Good_btn || touched_image == iMainModule1Bad_btn)
+006731  001459          current_form := SHELF_FORM;
+006732  001460          current_mod := 0;
+006733  001461          disable_all_inputs();
+006734  001462          draw_shelf_form(current_mod);
+006735  001463        endif
+006736  001464        
+006737  001465        if(touched_image == iMainModule2Good_btn || touched_image == iMainModule2Bad_btn)
+006738  001466          current_form := SHELF_FORM;
+006739  001467          current_mod := 1;
+006740  001468          disable_all_inputs();
+006741  001469          draw_shelf_form(current_mod);
+006742  001470        endif
+006743  001471        
+006744  001472        if(touched_image == iMainModule3Good_btn || touched_image == iMainModule3Bad_btn)
+006745  001473          current_form := SHELF_FORM;
+006746  001474          current_mod := 2;
+006747  001475          disable_all_inputs();
+006748  001476          draw_shelf_form(current_mod);
+006749  001477        endif
+006750  001478        
+006751  001479        if(touched_image == iMainModule4Good_btn || touched_image == iMainModule4Bad_btn)
+006752  001480          current_form := SHELF_FORM;
+006753  001481          current_mod := 3;
+006754  001482          disable_all_inputs();
+006755  001483          draw_shelf_form(current_mod);
+006756  001484        endif
+006757  001485        
+006758  001486        if(touched_image == iMainModule5Good_btn || touched_image == iMainModule5Bad_btn)
+006759  001487          current_form := SHELF_FORM;
+006760  001488          current_mod := 4;
+006761  001489          disable_all_inputs();
+006762  001490          draw_shelf_form(current_mod);
+006763  001491        endif
+006764  001492        
+006765  001493        if(touched_image == iMainModule6Good_btn || touched_image == iMainModule6Bad_btn)
+006766  001494          current_form := SHELF_FORM;
+006767  001495          current_mod := 5;
+006768  001496          disable_all_inputs();
+006769  001497          draw_shelf_form(current_mod);
+006770  001498        endif
+006771  001499        
+006772  001500        if(touched_image == iMainModule7Good_btn || touched_image == iMainModule7Bad_btn)
+006773  001501          current_form := SHELF_FORM;
+006774  001502          current_mod := 6;
+006775  001503          disable_all_inputs();
+006776  001504          draw_shelf_form(current_mod);
+006777  001505        endif
+006778  001506        
+006779  001507        if(touched_image == iMainModule8Good_btn || touched_image == iMainModule8Bad_btn)
+006780  001508          current_form := SHELF_FORM;
+006781  001509          current_mod := 7;
+006782  001510          disable_all_inputs();
+006783  001511          draw_shelf_form(current_mod);
+006784  001512        endif
+006785  001513        
+006786  001514        if(touched_image == iMainModule9Good_btn || touched_image == iMainModule9Bad_btn)
+006787  001515          current_form := SHELF_FORM;
+006788  001516          current_mod := 8;
+006789  001517          disable_all_inputs();
+006790  001518          draw_shelf_form(current_mod);
+006791  001519        endif
+006792  001520        
+006793  001521      endif
+006794  001522        
+006795  001523      // If we are looking at the shelf form
+006796  001524      if(current_form == SHELF_FORM)
+006797  001525        
+006798  001526        if(touched_image == iShelfToMain_btn)
+006799  001527          current_form := OVERVIEW_FORM;
+006800  001528          disable_all_inputs();
+006801  001529          draw_overall_form();
+006802  001530        endif
+006803  001531        
+006804  001532        // Individual Module Buttons
+006805  001533        
+006806  001534        if(touched_image == iModule1Good_btn || touched_image == iModule1Bad_btn)
+006807  001535          current_mod := 0;
+006808  001536          update_shelf_mod(current_mod);
+006809  001537        endif
+006810  001538        
+006811  001539        if(touched_image == iModule2Good_btn || touched_image == iModule2Bad_btn)
+006812  001540          current_mod := 1;
+006813  001541          update_shelf_mod(current_mod);
+006814  001542        endif
+006815  001543        
+006816  001544        if(touched_image == iModule3Good_btn || touched_image == iModule3Bad_btn)
+006817  001545          current_mod := 2;
+006818  001546          update_shelf_mod(current_mod);
+006819  001547        endif
+006820  001548        
+006821  001549        if(touched_image == iModule4Good_btn || touched_image == iModule4Bad_btn)
+006822  001550          current_mod := 3;
+006823  001551          update_shelf_mod(current_mod);
+006824  001552        endif
+006825  001553        
+006826  001554        if(touched_image == iModule5Good_btn || touched_image == iModule5Bad_btn)
+006827  001555          current_mod := 4;
+006828  001556          update_shelf_mod(current_mod);
+006829  001557        endif
+006830  001558        
+006831  001559        if(touched_image == iModule6Good_btn || touched_image == iModule6Bad_btn)
+006832  001560          current_mod := 5;
+006833  001561          update_shelf_mod(current_mod);
+006834  001562        endif
+006835  001563        
+006836  001564        if(touched_image == iModule7Good_btn || touched_image == iModule7Bad_btn)
+006837  001565          current_mod := 6;
+006838  001566          update_shelf_mod(current_mod);
+006839  001567        endif
+006840  001568        
+006841  001569        if(touched_image == iModule8Good_btn || touched_image == iModule8Bad_btn)
+006842  001570          current_mod := 7;
+006843  001571          update_shelf_mod(current_mod);
+006844  001572        endif
+006845  001573        
+006846  001574        if(touched_image == iModule9Good_btn || touched_image == iModule9Bad_btn)
+006847  001575          current_mod := 8;
+006848  001576          update_shelf_mod(current_mod);
+006849  001577        endif
 006850  001578        
-006851  001579  endfunc
+006851  001579      endif
 006852  001580        
-006853  001581  func disable_all_inputs()
+006853  001581    endif
 006854  001582        
-006855  001583    img_SetAttributes(hndl, -1, I_TOUCH_DISABLE);
+006855  001583  endfunc
 006856  001584        
-006857  001585  endfunc
+006857  001585  func disable_all_inputs()
 006858  001586        
-006859  001587        
+006859  001587    img_SetAttributes(hndl, -1, I_TOUCH_DISABLE);
+006860  001588        
+006861  001589  endfunc
+006862  001590        
+006863  001591        
 Notice: no execution path to func 'request_all_shelf_mods'
 Notice: no execution path to func 'process_input'
-Notice: variable 'data' is being indexed (line 1259 file:CERDEC.4dg)
-Notice: variable 'data' is being indexed (line 1260 file:CERDEC.4dg)
-Notice: variable 'data' is being indexed (line 1261 file:CERDEC.4dg)
-Notice: variable 'data' is being indexed (line 1262 file:CERDEC.4dg)
+Notice: variable 'data' is being indexed (line 1263 file:CERDEC.4dg)
+Notice: variable 'data' is being indexed (line 1264 file:CERDEC.4dg)
 Notice: variable 'data' is being indexed (line 1265 file:CERDEC.4dg)
 Notice: variable 'data' is being indexed (line 1266 file:CERDEC.4dg)
 Notice: variable 'data' is being indexed (line 1269 file:CERDEC.4dg)
 Notice: variable 'data' is being indexed (line 1270 file:CERDEC.4dg)
-Notice: variable 'data' is being indexed (line 1233 file:CERDEC.4dg)
-Notice: variable 'data' is being indexed (line 1234 file:CERDEC.4dg)
-Notice: variable 'data' is being indexed (line 1235 file:CERDEC.4dg)
-Notice: variable 'data' is being indexed (line 1236 file:CERDEC.4dg)
+Notice: variable 'data' is being indexed (line 1273 file:CERDEC.4dg)
+Notice: variable 'data' is being indexed (line 1274 file:CERDEC.4dg)
 Notice: variable 'data' is being indexed (line 1237 file:CERDEC.4dg)
 Notice: variable 'data' is being indexed (line 1238 file:CERDEC.4dg)
 Notice: variable 'data' is being indexed (line 1239 file:CERDEC.4dg)
 Notice: variable 'data' is being indexed (line 1240 file:CERDEC.4dg)
-Notice: function argument 'shelf' in func 'get_shelf' is never used (line 1224 file:CERDEC.4dg)
+Notice: variable 'data' is being indexed (line 1241 file:CERDEC.4dg)
+Notice: variable 'data' is being indexed (line 1242 file:CERDEC.4dg)
+Notice: variable 'data' is being indexed (line 1243 file:CERDEC.4dg)
+Notice: variable 'data' is being indexed (line 1244 file:CERDEC.4dg)
+Notice: function argument 'shelf' in func 'get_shelf' is never used (line 1228 file:CERDEC.4dg)
 Notice: no execution path to func 'print_temperature'
 Notice: no execution path to func 'calc_mod_voltage'
 Notice: no execution path to func 'print_shelf_voltage'
 Notice: no execution path to func 'print_system_voltage'
 Notice: variable 'mod' is being indexed (line 969 file:CERDEC.4dg)
-Notice: variable 'mod' is being indexed (line 598 file:CERDEC.4dg)
-Notice: variable 'mod' is being indexed (line 598 file:CERDEC.4dg)
+Notice: variable 'mod' is being indexed (line 599 file:CERDEC.4dg)
+Notice: variable 'mod' is being indexed (line 599 file:CERDEC.4dg)
 
 
 Symbol Table:
@@ -6958,7 +6962,7 @@ ALICEBLUE                          63455  0x0000f7df (const dword)  (not used)
 ALL                                65535  0x0000ffff (const dword)  (not used)
 ana_HS                              -533  0xfffffdeb (PmmC func) args[7] r=0  (not used)
 ANTIQUEWHITE                       65370  0x0000ff5a (const dword)  (not used)
-any_mod_errors                      4399  0x0000112f (User func) args[1] r=0  (usage 54)
+any_mod_errors                      4473  0x00001179 (User func) args[1] r=0  (usage 54)
 APPEND                                 0  0x00000000 (const dword)  (not used)
 AQUA                                2047  0x000007ff (const dword)  (not used)
 AQUAMARINE                         32762  0x00007ffa (const dword)  (not used)
@@ -7045,7 +7049,7 @@ BISQUE                             65336  0x0000ff38 (const dword)  (not used)
 BLACK                                  0  0x00000000 (const dword)  (usage 48)
 BLANCHEDALMOND                     65369  0x0000ff59 (const dword)  (not used)
 BLUE                                  31  0x0000001f (const dword)  (not used)
-blue_background_font                1830  0x00000726 (User func) args[2] r=0  (usage 3)
+blue_background_font                1818  0x0000071a (User func) args[2] r=0  (usage 3)
 BLUEVIOLET                         35164  0x0000895c (const dword)  (not used)
 BOLD                                  16  0x00000010 (const dword)  (not used)
 BOTTOM_POS                             5  0x00000005 (const dword)  (not used)
@@ -7068,13 +7072,13 @@ ByteSwap                             -49  0xffffffcf (PmmC func) args[1] r=1  (n
 C:\Users\ebenton\Documents\CERDEC TS\CERDEC.4dg    2806  0x00000af6 (const ??? 0)  (not used)
 CADETBLUE                          23796  0x00005cf4 (const dword)  (not used)
 calc_mod_voltage                  UNRESOLVED (User func) args[1] r=0  (not used)
-calc_shelf_voltage                  1712  0x000006b0 (User func) args[1] r=0  (usage 5)
-calc_system_voltage                 1766  0x000006e6 (User func) args[0] r=0  (usage 2)
-calc_temperature                    1676  0x0000068c (User func) args[1] r=0  (usage 2)
+calc_shelf_voltage                  1700  0x000006a4 (User func) args[1] r=0  (usage 5)
+calc_system_voltage                 1754  0x000006da (User func) args[0] r=0  (usage 2)
+calc_temperature                    1664  0x00000680 (User func) args[1] r=0  (usage 2)
 charheight                           -12  0xfffffff4 (PmmC func) args[1] r=1  (not used)
 CHARTREUSE                         32736  0x00007fe0 (const dword)  (not used)
 charwidth                            -11  0xfffffff5 (PmmC func) args[1] r=1  (not used)
-check_press                          120  0x00000078 (User func) args[0] r=0  (usage 3)
+check_press                          108  0x0000006c (User func) args[0] r=0  (usage 3)
 CHECKED                                0  0x00000000 (const dword)  (not used)
 CHOCOLATE                          54083  0x0000d343 (const dword)  (not used)
 CHR                                  129  0x00000081 (const dword)  (not used)
@@ -7208,7 +7212,7 @@ DEEPSKYBLUE                         1535  0x000005ff (const dword)  (not used)
 DIABLO                                 3  0x00000003 (const dword)  (usage 3)
 DIMGRAY                            27469  0x00006b4d (const dword)  (not used)
 DISABLE                                0  0x00000000 (const dword)  (not used)
-disable_all_inputs                   106  0x0000006a (User func) args[0] r=0  (usage 33)
+disable_all_inputs                    94  0x0000005e (User func) args[0] r=0  (usage 33)
 DISK_BUF                              15  0x0000000f (const dword)  (not used)
 DISK_DATA_HI                           7  0x00000007 (const dword)  (not used)
 DISK_DATA_LO                           6  0x00000006 (const dword)  (not used)
@@ -7240,41 +7244,41 @@ disp_WriteControl                   -365  0xfffffe93 (PmmC func) args[1] r=0  (n
 disp_WriteWord                      -366  0xfffffe92 (PmmC func) args[1] r=0  (not used)
 DODGERBLUE                          7327  0x00001c9f (const dword)  (not used)
 DOWN                                   0  0x00000000 (const dword)  (not used)
-draw_bus_voltage                    5904  0x00001710 (User func) args[0] r=0  (usage 3)
-draw_capacitors_voltage             5840  0x000016d0 (User func) args[0] r=0  (usage 3)
-draw_estimated_runtime              5936  0x00001730 (User func) args[0] r=0  (usage 3)
-draw_logo_screen                    6402  0x00001902 (User func) args[0] r=0  (usage 3)
-draw_mod_alarm_leds                 2263  0x000008d7 (User func) args[1] r=0  (usage 6)
-draw_mod_alarm_leds_background      2506  0x000009ca (User func) args[0] r=0  (usage 3)
-draw_mod_alarms                     2567  0x00000a07 (User func) args[1] r=0  (usage 3)
-draw_mod_info_fields                2121  0x00000849 (User func) args[0] r=0  (usage 3)
-draw_mod_info_number                2093  0x0000082d (User func) args[1] r=0  (usage 6)
-draw_mod_labels                     2162  0x00000872 (User func) args[0] r=0  (usage 3)
-draw_num_discharges                 6029  0x0000178d (User func) args[0] r=0  (usage 6)
-draw_output_current                 5872  0x000016f0 (User func) args[0] r=0  (usage 3)
-draw_overall_form                   6304  0x000018a0 (User func) args[0] r=0  (usage 6)
-draw_overall_mods                   4441  0x00001159 (User func) args[0] r=0  (usage 6)
-draw_overall_side_buttons           5429  0x00001535 (User func) args[0] r=0  (usage 3)
-draw_relay_status                   6189  0x0000182d (User func) args[0] r=0  (usage 3)
-draw_relay_status_led               6120  0x000017e8 (User func) args[0] r=0  (usage 3)
-draw_shelf_alarm_leds               4004  0x00000fa4 (User func) args[0] r=0  (usage 3)
-draw_shelf_alarms                   4265  0x000010a9 (User func) args[0] r=0  (usage 3)
-draw_shelf_alarms_labels            3963  0x00000f7b (User func) args[0] r=0  (usage 3)
-draw_shelf_form                     4345  0x000010f9 (User func) args[1] r=0  (usage 30)
-draw_shelf_mod_info                 2582  0x00000a16 (User func) args[1] r=0  (usage 3)
-draw_shelf_module_buttons           2663  0x00000a67 (User func) args[0] r=0  (usage 3)
-draw_shelf_modules                  3651  0x00000e43 (User func) args[0] r=0  (usage 3)
-draw_shelf_readings                 3902  0x00000f3e (User func) args[0] r=0  (usage 3)
-draw_shelf_readings_fields          3705  0x00000e79 (User func) args[0] r=0  (usage 3)
-draw_shelf_readings_labels          3831  0x00000ef7 (User func) args[0] r=0  (usage 3)
-draw_shelf_side_buttons             1926  0x00000786 (User func) args[0] r=0  (usage 3)
-draw_shelf_system_status            2071  0x00000817 (User func) args[0] r=0  (usage 3)
-draw_stored_energy                  5998  0x0000176e (User func) args[0] r=0  (usage 3)
-draw_system_mode                    6206  0x0000183e (User func) args[0] r=0  (usage 3)
-draw_system_mode_labels             5580  0x000015cc (User func) args[0] r=0  (usage 3)
-draw_system_mode_radios             5631  0x000015ff (User func) args[0] r=0  (usage 15)
-draw_system_status                  6238  0x0000185e (User func) args[0] r=0  (usage 3)
-draw_time_at_max                    5967  0x0000174f (User func) args[0] r=0  (usage 3)
+draw_bus_voltage                    5978  0x0000175a (User func) args[0] r=0  (usage 3)
+draw_capacitors_voltage             5914  0x0000171a (User func) args[0] r=0  (usage 3)
+draw_estimated_runtime              6010  0x0000177a (User func) args[0] r=0  (usage 3)
+draw_logo_screen                    6492  0x0000195c (User func) args[0] r=0  (usage 3)
+draw_mod_alarm_leds                 2251  0x000008cb (User func) args[1] r=0  (usage 6)
+draw_mod_alarm_leds_background      2516  0x000009d4 (User func) args[0] r=0  (usage 3)
+draw_mod_alarms                     2577  0x00000a11 (User func) args[1] r=0  (usage 3)
+draw_mod_info_fields                2109  0x0000083d (User func) args[0] r=0  (usage 3)
+draw_mod_info_number                2081  0x00000821 (User func) args[1] r=0  (usage 6)
+draw_mod_labels                     2150  0x00000866 (User func) args[0] r=0  (usage 3)
+draw_num_discharges                 6103  0x000017d7 (User func) args[0] r=0  (usage 6)
+draw_output_current                 5946  0x0000173a (User func) args[0] r=0  (usage 3)
+draw_overall_form                   6394  0x000018fa (User func) args[0] r=0  (usage 6)
+draw_overall_mods                   4515  0x000011a3 (User func) args[0] r=0  (usage 6)
+draw_overall_side_buttons           5503  0x0000157f (User func) args[0] r=0  (usage 3)
+draw_relay_status                   6279  0x00001887 (User func) args[0] r=0  (usage 3)
+draw_relay_status_led               6194  0x00001832 (User func) args[0] r=0  (usage 3)
+draw_shelf_alarm_leds               4014  0x00000fae (User func) args[0] r=0  (usage 3)
+draw_shelf_alarms                   4339  0x000010f3 (User func) args[0] r=0  (usage 3)
+draw_shelf_alarms_labels            3973  0x00000f85 (User func) args[0] r=0  (usage 3)
+draw_shelf_form                     4419  0x00001143 (User func) args[1] r=0  (usage 30)
+draw_shelf_mod_info                 2592  0x00000a20 (User func) args[1] r=0  (usage 3)
+draw_shelf_module_buttons           2673  0x00000a71 (User func) args[0] r=0  (usage 3)
+draw_shelf_modules                  3661  0x00000e4d (User func) args[0] r=0  (usage 3)
+draw_shelf_readings                 3912  0x00000f48 (User func) args[0] r=0  (usage 3)
+draw_shelf_readings_fields          3715  0x00000e83 (User func) args[0] r=0  (usage 3)
+draw_shelf_readings_labels          3841  0x00000f01 (User func) args[0] r=0  (usage 3)
+draw_shelf_side_buttons             1914  0x0000077a (User func) args[0] r=0  (usage 3)
+draw_shelf_system_status            2059  0x0000080b (User func) args[0] r=0  (usage 3)
+draw_stored_energy                  6072  0x000017b8 (User func) args[0] r=0  (usage 3)
+draw_system_mode                    6296  0x00001898 (User func) args[0] r=0  (usage 3)
+draw_system_mode_labels             5654  0x00001616 (User func) args[0] r=0  (usage 3)
+draw_system_mode_radios             5705  0x00001649 (User func) args[0] r=0  (usage 15)
+draw_system_status                  6328  0x000018b8 (User func) args[0] r=0  (usage 3)
+draw_time_at_max                    6041  0x00001799 (User func) args[0] r=0  (usage 3)
 DSK                                63490  0x0000f802 (const dword)  (not used)
 ENABLE                                 1  0x00000001 (const dword)  (not used)
 EVE_SP                               -65  0xffffffbf (PmmC func) args[0] r=1  (not used)
@@ -7472,8 +7476,8 @@ FRAME_DELAY                           22  0x00000016 (const dword)  (not used)
 FUCHSIA                            63519  0x0000f81f (const dword)  (not used)
 GAINSBORO                          57083  0x0000defb (const dword)  (not used)
 Gen4_ULCD_70DT_DIABLO16_GFX            0  0x00000000 (const ??? 0)  (not used)
-get_mods                            1519  0x000005ef (User func) args[2] r=0  (usage 2)
-get_shelf                           1669  0x00000685 (User func) args[1] r=0  (usage 5)
+get_mods                            1507  0x000005e3 (User func) args[2] r=0  (usage 2)
+get_shelf                           1657  0x00000679 (User func) args[1] r=0  (usage 5)
 GFX                                63489  0x0000f801 (const dword)  (not used)
 gfx_332to565                        -165  0xffffff5b (PmmC func) args[1] r=1  (not used)
 gfx_565to332                        -166  0xffffff5a (PmmC func) args[1] r=1  (not used)
@@ -7491,7 +7495,7 @@ gfx_Button3                         -157  0xffffff63 (PmmC func) args[8] r=0  (n
 gfx_ChangeColour                    -151  0xffffff69 (PmmC func) args[2] r=0  (not used)
 gfx_CheckBox                        -158  0xffffff62 (PmmC func) args[8] r=0  (not used)
 gfx_Circle                          -136  0xffffff78 (PmmC func) args[4] r=0  (not used)
-gfx_CircleFilled                    -137  0xffffff77 (PmmC func) args[4] r=0  (usage 105)
+gfx_CircleFilled                    -137  0xffffff77 (PmmC func) args[4] r=0  (usage 132)
 GFX_CLIP_BOTTOM                      114  0x00000072 (const dword)  (not used)
 GFX_CLIP_BOTTOM_VAL                  110  0x0000006e (const dword)  (not used)
 GFX_CLIP_LEFT                        111  0x0000006f (const dword)  (not used)
@@ -7525,7 +7529,7 @@ gfx_LinePattern                     -193  0xffffff3f (PmmC func) args[1] r=1  (n
 gfx_LineRel                         -130  0xffffff7e (PmmC func) args[2] r=0  (not used)
 gfx_LineTo                          -129  0xffffff7f (PmmC func) args[2] r=0  (not used)
 gfx_MoveRel                         -128  0xffffff80 (PmmC func) args[2] r=0  (not used)
-gfx_MoveTo                          -127  0xffffff81 (PmmC func) args[2] r=0  (usage 18)
+gfx_MoveTo                          -127  0xffffff81 (PmmC func) args[2] r=0  (usage 12)
 gfx_ObjectColour                    -185  0xffffff47 (PmmC func) args[1] r=1  (not used)
 gfx_Orbit                           -142  0xffffff72 (PmmC func) args[2] r=0  (not used)
 gfx_OrbitInit                       -141  0xffffff73 (PmmC func) args[2] r=0  (not used)
@@ -7854,7 +7858,7 @@ LANDSCAPE_R                            1  0x00000001 (const dword)  (not used)
 LAVENDER                           59199  0x0000e73f (const dword)  (not used)
 LAVENDERBLUSH                      65438  0x0000ff9e (const dword)  (not used)
 LAWNGREEN                          32736  0x00007fe0 (const dword)  (not used)
-LED_BAD                            63488  0x0000f800 (const dword)  (usage 27)
+LED_BAD                            63488  0x0000f800 (const dword)  (usage 54)
 LED_GOOD                           13926  0x00003666 (const dword)  (usage 27)
 LED_IDLE                           13535  0x000034df (const dword)  (not used)
 LEFT_POS                               2  0x00000002 (const dword)  (not used)
@@ -7902,7 +7906,7 @@ M_PA7                                128  0x00000080 (const dword)  (not used)
 M_PA8                                256  0x00000100 (const dword)  (not used)
 M_PA9                                512  0x00000200 (const dword)  (not used)
 MAGENTA                            63519  0x0000f81f (const dword)  (not used)
-main                                6445  0x0000192d (User func) args[0] r=0  (not used)
+main                                6535  0x00001987 (User func) args[0] r=0  (not used)
 MAROON                             32768  0x00008000 (const dword)  (not used)
 MAX                                  -55  0xffffffc9 (PmmC func) args[2] r=1  (not used)
 MDA                                63552  0x0000f840 (const dword)  (not used)
@@ -8169,8 +8173,8 @@ RB_CHKD                                0  0x00000000 (const dword)  (usage 12)
 RB_UNCHKD                          54937  0x0000d699 (const dword)  (usage 12)
 RED                                63488  0x0000f800 (const dword)  (usage 3)
 request_all_shelf_mods            UNRESOLVED (User func) args[1] r=0  (not used)
-request_mod                         1303  0x00000517 (User func) args[2] r=0  (usage 2)
-reset_font                          1878  0x00000756 (User func) args[2] r=0  (usage 3)
+request_mod                         1291  0x0000050b (User func) args[2] r=0  (usage 2)
+reset_font                          1866  0x0000074a (User func) args[2] r=0  (usage 3)
 RIGHT_POS                              4  0x00000004 (const dword)  (not used)
 ROSYBROWN                          48241  0x0000bc71 (const dword)  (not used)
 ROYALBLUE                          17244  0x0000435c (const dword)  (not used)
@@ -8191,8 +8195,8 @@ serout                              -240  0xffffff10 (PmmC func) args[1] r=0  (n
 serout1                             -241  0xffffff0f (PmmC func) args[1] r=0  (usage 3)
 serout2                             -242  0xffffff0e (PmmC func) args[1] r=0  (not used)
 serout3                             -243  0xffffff0d (PmmC func) args[1] r=0  (not used)
-set_mods                            1396  0x00000574 (User func) args[1] r=0  (usage 2)
-set_shelf                           1561  0x00000619 (User func) args[1] r=0  (usage 2)
+set_mods                            1384  0x00000568 (User func) args[1] r=0  (usage 2)
+set_shelf                           1549  0x0000060d (User func) args[1] r=0  (usage 2)
 setbaud                             -224  0xffffff20 (PmmC func) args[1] r=0  (not used)
 shelf0                                34  0x00000022 (mem) word[13] (global)  (usage 6)
 SHELF_A                                0  0x00000000 (const ??? 0)  (usage 3)
@@ -8490,7 +8494,7 @@ UNCHECKED                              1  0x00000001 (const dword)  (not used)
 UNDERLINED                           128  0x00000080 (const dword)  (not used)
 unicode_page                         -15  0xfffffff1 (PmmC func) args[3] r=1  (not used)
 UP                                     1  0x00000001 (const dword)  (not used)
-update_shelf_mod                    2072  0x00000818 (User func) args[1] r=0  (usage 27)
+update_shelf_mod                    2060  0x0000080c (User func) args[1] r=0  (usage 27)
 usub_3232                            -72  0xffffffb8 (PmmC func) args[3] r=1  (not used)
 VIOLET                             60445  0x0000ec1d (const dword)  (not used)
 volt_mod                          UNRESOLVED  (not used)
