@@ -1,15 +1,15 @@
 ;***************************************************************
-;* TMS320C2000 C/C++ Codegen                   PC v15.12.6.LTS *
-;* Date/Time created: Wed Nov 20 10:12:13 2019                 *
+;* TMS320C2000 C/C++ Codegen                   PC v15.12.4.LTS *
+;* Date/Time created: Thu Nov 21 09:47:53 2019                 *
 ;***************************************************************
 	.compiler_opts --abi=coffabi --float_support=softlib --hll_source=on --mem_model:code=flat --mem_model:data=large --object_format=coff --quiet --silicon_version=28 --symdebug:dwarf --symdebug:dwarf_version=3 
 FP	.set	XAR2
 
 $C$DW$CU	.dwtag  DW_TAG_compile_unit
 	.dwattr $C$DW$CU, DW_AT_name("../Source/sci.c")
-	.dwattr $C$DW$CU, DW_AT_producer("TI TMS320C2000 C/C++ Codegen PC v15.12.6.LTS Copyright (c) 1996-2017 Texas Instruments Incorporated")
+	.dwattr $C$DW$CU, DW_AT_producer("TI TMS320C2000 C/C++ Codegen PC v15.12.4.LTS Copyright (c) 1996-2015 Texas Instruments Incorporated")
 	.dwattr $C$DW$CU, DW_AT_TI_version(0x01)
-	.dwattr $C$DW$CU, DW_AT_comp_dir("C:\Users\antons\workspace_v6_1\CANbus\Debug")
+	.dwattr $C$DW$CU, DW_AT_comp_dir("C:\Users\ebenton\Documents\CERDEC TS\Firmware\CANbus\Debug")
 ;**************************************************************
 ;* CINIT RECORDS                                              *
 ;**************************************************************
@@ -163,8 +163,8 @@ $C$DW$17	.dwtag  DW_TAG_variable
 	.dwattr $C$DW$17, DW_AT_type(*$C$DW$T$168)
 	.dwattr $C$DW$17, DW_AT_external
 
-;	C:\ti\ccsv6\tools\compiler\ti-cgt-c2000_15.12.6.LTS\bin\opt2000.exe C:\\Users\\antons\\AppData\\Local\\Temp\\{8FBA0B19-9CA8-4DB5-8159-6E04076E1922} C:\\Users\\antons\\AppData\\Local\\Temp\\{308D2E98-DAC5-49C6-84D2-5AA2B1DF8602} 
-;	C:\ti\ccsv6\tools\compiler\ti-cgt-c2000_15.12.6.LTS\bin\ac2000.exe -@C:\\Users\\antons\\AppData\\Local\\Temp\\{C0D22EF2-BC0E-4108-BEF2-2377F95E4CB1} 
+;	C:\ti\ccsv6\tools\compiler\ti-cgt-c2000_15.12.4.LTS\bin\opt2000.exe C:\\Users\\ebenton\\AppData\\Local\\Temp\\190562 C:\\Users\\ebenton\\AppData\\Local\\Temp\\190564 
+;	C:\ti\ccsv6\tools\compiler\ti-cgt-c2000_15.12.4.LTS\bin\ac2000.exe -@C:\\Users\\ebenton\\AppData\\Local\\Temp\\1905612 
 	.sect	".text"
 	.clink
 	.global	_scia_reset
@@ -1103,13 +1103,13 @@ $C$L24:
         MOVL      ACC,XAR4              ; [CPU_] 
         ADDU      ACC,AR0               ; [CPU_] 
         MOVL      XAR7,ACC              ; [CPU_] 
-	.dwpsn	file "C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.6.LTS/include/ctype.h",line 163,column 4,is_stmt,isa 0
+	.dwpsn	file "C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.4.LTS/include/ctype.h",line 163,column 4,is_stmt,isa 0
         MOV       AH,AR5                ; [CPU_] |163| 
         ADDB      AH,#-97               ; [CPU_] |163| 
         CMPB      AH,#25                ; [CPU_] |163| 
         B         $C$L25,HI             ; [CPU_] |163| 
         ; branchcc occurs ; [] |163| 
-	.dwpsn	file "C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.6.LTS/include/ctype.h",line 166,column 7,is_stmt,isa 0
+	.dwpsn	file "C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.4.LTS/include/ctype.h",line 166,column 7,is_stmt,isa 0
         SUBB      XAR5,#32              ; [CPU_U] |166| 
 $C$L25:    
 	.dwpsn	file "../Source/sci.c",line 171,column 7,is_stmt,isa 0

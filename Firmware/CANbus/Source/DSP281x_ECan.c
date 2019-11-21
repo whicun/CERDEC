@@ -85,8 +85,6 @@ void CAN_Tx_SendInformationRequest(long MC_PGN, long MC_Index) {
 	}
 }
 
-
-
 void processJSRGlobal(int shelf)
 {
 
@@ -282,11 +280,6 @@ void sendModStatus(int shelf, int mod)
 		}
 */
 }
-
-
-
-
-
 
 
 //---------------------------------------------------------------------------

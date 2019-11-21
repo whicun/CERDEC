@@ -1,15 +1,15 @@
 ;***************************************************************
-;* TMS320C2000 C/C++ Codegen                   PC v15.12.6.LTS *
-;* Date/Time created: Thu Nov 14 09:52:15 2019                 *
+;* TMS320C2000 C/C++ Codegen                   PC v15.12.4.LTS *
+;* Date/Time created: Thu Nov 21 09:47:25 2019                 *
 ;***************************************************************
 	.compiler_opts --abi=coffabi --float_support=softlib --hll_source=on --mem_model:code=flat --mem_model:data=large --object_format=coff --quiet --silicon_version=28 --symdebug:dwarf --symdebug:dwarf_version=3 
 FP	.set	XAR2
 
 $C$DW$CU	.dwtag  DW_TAG_compile_unit
 	.dwattr $C$DW$CU, DW_AT_name("../Source/lcd.c")
-	.dwattr $C$DW$CU, DW_AT_producer("TI TMS320C2000 C/C++ Codegen PC v15.12.6.LTS Copyright (c) 1996-2017 Texas Instruments Incorporated")
+	.dwattr $C$DW$CU, DW_AT_producer("TI TMS320C2000 C/C++ Codegen PC v15.12.4.LTS Copyright (c) 1996-2015 Texas Instruments Incorporated")
 	.dwattr $C$DW$CU, DW_AT_TI_version(0x01)
-	.dwattr $C$DW$CU, DW_AT_comp_dir("C:\Users\antons\workspace_v6_1\CANbus\Debug")
+	.dwattr $C$DW$CU, DW_AT_comp_dir("C:\Users\ebenton\Documents\CERDEC TS\Firmware\CANbus\Debug")
 
 $C$DW$1	.dwtag  DW_TAG_subprogram
 	.dwattr $C$DW$1, DW_AT_name("set_lcd_en")
@@ -73,8 +73,8 @@ $C$DW$9	.dwtag  DW_TAG_variable
 	.dwattr $C$DW$9, DW_AT_type(*$C$DW$T$87)
 	.dwattr $C$DW$9, DW_AT_external
 
-;	C:\ti\ccsv6\tools\compiler\ti-cgt-c2000_15.12.6.LTS\bin\opt2000.exe C:\\Users\\antons\\AppData\\Local\\Temp\\{CD4A03B6-6AE4-4809-9AB6-65F2AE25E8C7} C:\\Users\\antons\\AppData\\Local\\Temp\\{12981268-778D-4A0D-974D-D6EB056A061A} 
-;	C:\ti\ccsv6\tools\compiler\ti-cgt-c2000_15.12.6.LTS\bin\ac2000.exe -@C:\\Users\\antons\\AppData\\Local\\Temp\\{60B7091E-F25A-45D8-AD4F-8CD3FF19F1B4} 
+;	C:\ti\ccsv6\tools\compiler\ti-cgt-c2000_15.12.4.LTS\bin\opt2000.exe C:\\Users\\ebenton\\AppData\\Local\\Temp\\098242 C:\\Users\\ebenton\\AppData\\Local\\Temp\\098244 
+;	C:\ti\ccsv6\tools\compiler\ti-cgt-c2000_15.12.4.LTS\bin\ac2000.exe -@C:\\Users\\ebenton\\AppData\\Local\\Temp\\0982412 
 	.sect	".text"
 	.clink
 	.global	_lcd_puts

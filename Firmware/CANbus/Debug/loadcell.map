@@ -1,7 +1,7 @@
 ******************************************************************************
-             TMS320C2000 Linker PC v15.12.6                    
+             TMS320C2000 Linker PC v15.12.4                    
 ******************************************************************************
->> Linked Wed Nov 20 12:08:30 2019
+>> Linked Thu Nov 21 10:01:53 2019
 
 OUTPUT FILE NAME:   <loadcell.out>
 ENTRY POINT SYMBOL: "_c_int00"  address: 003f1b89
@@ -400,7 +400,7 @@ MODULE SUMMARY
     +--+--------------------------------+-------+---------+---------+
        Total:                           21917   0         219593 
                                                                  
-    C:/Users/antons/workspace_v6_1/CANbus/Flash2812_API_V210/lib/Flash2812_API_V210.lib
+    C:/Users/ebenton/Documents/CERDEC TS/Firmware/CANbus/Flash2812_API_V210/lib/Flash2812_API_V210.lib
        Flash28_Erase.obj                290     0         100    
        Flash28_Prog.obj                 328     0         0      
        Flash28_Erase_Pulse.obj          308     0         0      
@@ -419,7 +419,7 @@ MODULE SUMMARY
     +--+--------------------------------+-------+---------+---------+
        Total:                           2622    0         114    
                                                                  
-    C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.6.LTS/lib/rts2800_ml.lib
+    C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.4.LTS/lib/rts2800_ml.lib
        _printfi.obj                     2885    0         66     
        strtod.obj                       328     0         32     
        ll_div.obj                       263     0         0      

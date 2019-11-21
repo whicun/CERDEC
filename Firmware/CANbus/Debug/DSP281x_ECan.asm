@@ -1,15 +1,15 @@
 ;***************************************************************
-;* TMS320C2000 C/C++ Codegen                   PC v15.12.6.LTS *
-;* Date/Time created: Tue Nov 19 12:27:49 2019                 *
+;* TMS320C2000 C/C++ Codegen                   PC v15.12.4.LTS *
+;* Date/Time created: Thu Nov 21 10:01:52 2019                 *
 ;***************************************************************
 	.compiler_opts --abi=coffabi --float_support=softlib --hll_source=on --mem_model:code=flat --mem_model:data=large --object_format=coff --quiet --silicon_version=28 --symdebug:dwarf --symdebug:dwarf_version=3 
 FP	.set	XAR2
 
 $C$DW$CU	.dwtag  DW_TAG_compile_unit
 	.dwattr $C$DW$CU, DW_AT_name("../Source/DSP281x_ECan.c")
-	.dwattr $C$DW$CU, DW_AT_producer("TI TMS320C2000 C/C++ Codegen PC v15.12.6.LTS Copyright (c) 1996-2017 Texas Instruments Incorporated")
+	.dwattr $C$DW$CU, DW_AT_producer("TI TMS320C2000 C/C++ Codegen PC v15.12.4.LTS Copyright (c) 1996-2015 Texas Instruments Incorporated")
 	.dwattr $C$DW$CU, DW_AT_TI_version(0x01)
-	.dwattr $C$DW$CU, DW_AT_comp_dir("C:\Users\antons\workspace_v6_1\CANbus\Debug")
+	.dwattr $C$DW$CU, DW_AT_comp_dir("C:\Users\ebenton\Documents\CERDEC TS\Firmware\CANbus\Debug")
 
 $C$DW$1	.dwtag  DW_TAG_subprogram
 	.dwattr $C$DW$1, DW_AT_name("memset")
@@ -49,8 +49,8 @@ $C$DW$5	.dwtag  DW_TAG_variable
 	.dwattr $C$DW$5, DW_AT_declaration
 	.dwattr $C$DW$5, DW_AT_external
 
-;	C:\ti\ccsv6\tools\compiler\ti-cgt-c2000_15.12.6.LTS\bin\opt2000.exe C:\\Users\\antons\\AppData\\Local\\Temp\\{71456738-9207-4285-AEC0-1CF314E062DB} C:\\Users\\antons\\AppData\\Local\\Temp\\{2C357529-9684-49AE-AD50-87564AEAD782} 
-;	C:\ti\ccsv6\tools\compiler\ti-cgt-c2000_15.12.6.LTS\bin\ac2000.exe -@C:\\Users\\antons\\AppData\\Local\\Temp\\{56E2B51B-7C37-4D81-A65C-8BDA02E505CC} 
+;	C:\ti\ccsv6\tools\compiler\ti-cgt-c2000_15.12.4.LTS\bin\opt2000.exe C:\\Users\\ebenton\\AppData\\Local\\Temp\\069002 C:\\Users\\ebenton\\AppData\\Local\\Temp\\069004 
+;	C:\ti\ccsv6\tools\compiler\ti-cgt-c2000_15.12.4.LTS\bin\ac2000.exe -@C:\\Users\\ebenton\\AppData\\Local\\Temp\\0690012 
 	.sect	".text"
 	.clink
 	.global	_markTxMailboxHandled
@@ -210,14 +210,14 @@ $C$DW$14	.dwtag  DW_TAG_subprogram
 	.dwattr $C$DW$14, DW_AT_TI_symbol_name("_wakeUpMCs")
 	.dwattr $C$DW$14, DW_AT_external
 	.dwattr $C$DW$14, DW_AT_TI_begin_file("../Source/DSP281x_ECan.c")
-	.dwattr $C$DW$14, DW_AT_TI_begin_line(0x23a)
+	.dwattr $C$DW$14, DW_AT_TI_begin_line(0x233)
 	.dwattr $C$DW$14, DW_AT_TI_begin_column(0x06)
 	.dwattr $C$DW$14, DW_AT_TI_max_frame_size(-2)
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 570,column 18,is_stmt,address _wakeUpMCs,isa 0
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 563,column 18,is_stmt,address _wakeUpMCs,isa 0
 
 	.dwfde $C$DW$CIE, _wakeUpMCs
 ;----------------------------------------------------------------------
-; 570 | void wakeUpMCs() {                                                     
+; 563 | void wakeUpMCs() {                                                     
 ;----------------------------------------------------------------------
 
 ;***************************************************************
@@ -233,44 +233,44 @@ _wakeUpMCs:
 ;* AR4   assigned to $O$C1
 	.dwcfi	cfa_offset, -2
 	.dwcfi	save_reg_to_mem, 26, 0
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 572,column 2,is_stmt,isa 0
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 565,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 572 | ECanaMboxes.MBOX12.MDL.word.HI_WORD = 0x10FF & 0xFFFF;                 
+; 565 | ECanaMboxes.MBOX12.MDL.word.HI_WORD = 0x10FF & 0xFFFF;                 
 ;----------------------------------------------------------------------
-        MOVL      XAR4,#_ECanaMboxes    ; [CPU_U] |572| 
-        MOVB      XAR0,#101             ; [CPU_] |572| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 573,column 2,is_stmt,isa 0
+        MOVL      XAR4,#_ECanaMboxes    ; [CPU_U] |565| 
+        MOVB      XAR0,#101             ; [CPU_] |565| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 566,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 573 | ECanaMboxes.MBOX12.MDL.word.LOW_WORD = 0xFFFF & 0xFFFF;                
+; 566 | ECanaMboxes.MBOX12.MDL.word.LOW_WORD = 0xFFFF & 0xFFFF;                
 ;----------------------------------------------------------------------
-        MOVL      XAR5,XAR4             ; [CPU_] |573| 
+        MOVL      XAR5,XAR4             ; [CPU_] |566| 
         MOVW      DP,#_ECanaMboxes+101  ; [CPU_U] 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 572,column 2,is_stmt,isa 0
-        MOV       AL,*+XAR4[AR0]        ; [CPU_] |572| 
-        MOV       @_ECanaMboxes+101,#4351 ; [CPU_] |572| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 573,column 2,is_stmt,isa 0
-        ADDB      XAR5,#100             ; [CPU_] |573| 
-        OR        *+XAR5[0],#0xffff     ; [CPU_] |573| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 574,column 2,is_stmt,isa 0
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 565,column 2,is_stmt,isa 0
+        MOV       AL,*+XAR4[AR0]        ; [CPU_] |565| 
+        MOV       @_ECanaMboxes+101,#4351 ; [CPU_] |565| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 566,column 2,is_stmt,isa 0
+        ADDB      XAR5,#100             ; [CPU_] |566| 
+        OR        *+XAR5[0],#0xffff     ; [CPU_] |566| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 567,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 574 | ECanaMboxes.MBOX12.MDH.word.HI_WORD = 0xFFFF & 0xFFFF;                 
+; 567 | ECanaMboxes.MBOX12.MDH.word.HI_WORD = 0xFFFF & 0xFFFF;                 
 ;----------------------------------------------------------------------
-        MOVL      XAR5,XAR4             ; [CPU_] |574| 
+        MOVL      XAR5,XAR4             ; [CPU_] |567| 
         MOVW      DP,#_ECanaShadow+8    ; [CPU_U] 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 575,column 2,is_stmt,isa 0
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 568,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 575 | ECanaMboxes.MBOX12.MDH.word.LOW_WORD = 0xFFFF & 0xFFFF;                
+; 568 | ECanaMboxes.MBOX12.MDH.word.LOW_WORD = 0xFFFF & 0xFFFF;                
 ;----------------------------------------------------------------------
-        ADDB      XAR4,#102             ; [CPU_] |575| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 574,column 2,is_stmt,isa 0
-        ADDB      XAR5,#103             ; [CPU_] |574| 
-        OR        *+XAR5[0],#0xffff     ; [CPU_] |574| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 575,column 2,is_stmt,isa 0
+        ADDB      XAR4,#102             ; [CPU_] |568| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 567,column 2,is_stmt,isa 0
+        ADDB      XAR5,#103             ; [CPU_] |567| 
+        OR        *+XAR5[0],#0xffff     ; [CPU_] |567| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 568,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 577 | markTxMailboxHandled(12);                                              
-; 579 | setTRSforMailbox(12);                                                  
+; 570 | markTxMailboxHandled(12);                                              
+; 572 | setTRSforMailbox(12);                                                  
 ;----------------------------------------------------------------------
-        OR        *+XAR4[0],#0xffff     ; [CPU_] |575| 
+        OR        *+XAR4[0],#0xffff     ; [CPU_] |568| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 22,column 2,is_stmt,isa 0
         MOVL      XAR4,#4096            ; [CPU_U] |22| 
         MOVL      @_ECanaShadow+8,XAR4  ; [CPU_] |22| 
@@ -290,7 +290,7 @@ $C$DW$15	.dwtag  DW_TAG_TI_branch
         LRETR     ; [CPU_] 
         ; return occurs ; [] 
 	.dwattr $C$DW$14, DW_AT_TI_end_file("../Source/DSP281x_ECan.c")
-	.dwattr $C$DW$14, DW_AT_TI_end_line(0x245)
+	.dwattr $C$DW$14, DW_AT_TI_end_line(0x23e)
 	.dwattr $C$DW$14, DW_AT_TI_end_column(0x01)
 	.dwendentry
 	.dwendtag $C$DW$14
@@ -306,14 +306,14 @@ $C$DW$16	.dwtag  DW_TAG_subprogram
 	.dwattr $C$DW$16, DW_AT_TI_symbol_name("_sleepMCs")
 	.dwattr $C$DW$16, DW_AT_external
 	.dwattr $C$DW$16, DW_AT_TI_begin_file("../Source/DSP281x_ECan.c")
-	.dwattr $C$DW$16, DW_AT_TI_begin_line(0x247)
+	.dwattr $C$DW$16, DW_AT_TI_begin_line(0x240)
 	.dwattr $C$DW$16, DW_AT_TI_begin_column(0x06)
 	.dwattr $C$DW$16, DW_AT_TI_max_frame_size(-2)
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 584,column 1,is_stmt,address _sleepMCs,isa 0
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 577,column 1,is_stmt,address _sleepMCs,isa 0
 
 	.dwfde $C$DW$CIE, _sleepMCs
 ;----------------------------------------------------------------------
-; 583 | void sleepMCs()                                                        
+; 576 | void sleepMCs()                                                        
 ;----------------------------------------------------------------------
 
 ;***************************************************************
@@ -329,44 +329,44 @@ _sleepMCs:
 ;* AR4   assigned to $O$C1
 	.dwcfi	cfa_offset, -2
 	.dwcfi	save_reg_to_mem, 26, 0
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 586,column 2,is_stmt,isa 0
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 579,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 586 | ECanaMboxes.MBOX12.MDL.word.HI_WORD = 0x00FF & 0xFFFF;                 
+; 579 | ECanaMboxes.MBOX12.MDL.word.HI_WORD = 0x00FF & 0xFFFF;                 
 ;----------------------------------------------------------------------
-        MOVL      XAR4,#_ECanaMboxes    ; [CPU_U] |586| 
-        MOVB      XAR0,#101             ; [CPU_] |586| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 587,column 2,is_stmt,isa 0
+        MOVL      XAR4,#_ECanaMboxes    ; [CPU_U] |579| 
+        MOVB      XAR0,#101             ; [CPU_] |579| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 580,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 587 | ECanaMboxes.MBOX12.MDL.word.LOW_WORD = 0xFFFF & 0xFFFF;                
+; 580 | ECanaMboxes.MBOX12.MDL.word.LOW_WORD = 0xFFFF & 0xFFFF;                
 ;----------------------------------------------------------------------
-        MOVL      XAR5,XAR4             ; [CPU_] |587| 
+        MOVL      XAR5,XAR4             ; [CPU_] |580| 
         MOVW      DP,#_ECanaMboxes+101  ; [CPU_U] 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 586,column 2,is_stmt,isa 0
-        MOV       AL,*+XAR4[AR0]        ; [CPU_] |586| 
-        MOVB      @_ECanaMboxes+101,#255,UNC ; [CPU_] |586| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 587,column 2,is_stmt,isa 0
-        ADDB      XAR5,#100             ; [CPU_] |587| 
-        OR        *+XAR5[0],#0xffff     ; [CPU_] |587| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 588,column 2,is_stmt,isa 0
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 579,column 2,is_stmt,isa 0
+        MOV       AL,*+XAR4[AR0]        ; [CPU_] |579| 
+        MOVB      @_ECanaMboxes+101,#255,UNC ; [CPU_] |579| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 580,column 2,is_stmt,isa 0
+        ADDB      XAR5,#100             ; [CPU_] |580| 
+        OR        *+XAR5[0],#0xffff     ; [CPU_] |580| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 581,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 588 | ECanaMboxes.MBOX12.MDH.word.HI_WORD = 0xFFFF & 0xFFFF;                 
+; 581 | ECanaMboxes.MBOX12.MDH.word.HI_WORD = 0xFFFF & 0xFFFF;                 
 ;----------------------------------------------------------------------
-        MOVL      XAR5,XAR4             ; [CPU_] |588| 
+        MOVL      XAR5,XAR4             ; [CPU_] |581| 
         MOVW      DP,#_ECanaShadow+8    ; [CPU_U] 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 589,column 2,is_stmt,isa 0
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 582,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 589 | ECanaMboxes.MBOX12.MDH.word.LOW_WORD = 0xFFFF & 0xFFFF;                
+; 582 | ECanaMboxes.MBOX12.MDH.word.LOW_WORD = 0xFFFF & 0xFFFF;                
 ;----------------------------------------------------------------------
-        ADDB      XAR4,#102             ; [CPU_] |589| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 588,column 2,is_stmt,isa 0
-        ADDB      XAR5,#103             ; [CPU_] |588| 
-        OR        *+XAR5[0],#0xffff     ; [CPU_] |588| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 589,column 2,is_stmt,isa 0
+        ADDB      XAR4,#102             ; [CPU_] |582| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 581,column 2,is_stmt,isa 0
+        ADDB      XAR5,#103             ; [CPU_] |581| 
+        OR        *+XAR5[0],#0xffff     ; [CPU_] |581| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 582,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 591 | markTxMailboxHandled(12);                                              
-; 593 | setTRSforMailbox(12);                                                  
+; 584 | markTxMailboxHandled(12);                                              
+; 586 | setTRSforMailbox(12);                                                  
 ;----------------------------------------------------------------------
-        OR        *+XAR4[0],#0xffff     ; [CPU_] |589| 
+        OR        *+XAR4[0],#0xffff     ; [CPU_] |582| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 22,column 2,is_stmt,isa 0
         MOVL      XAR4,#4096            ; [CPU_U] |22| 
         MOVL      @_ECanaShadow+8,XAR4  ; [CPU_] |22| 
@@ -386,7 +386,7 @@ $C$DW$17	.dwtag  DW_TAG_TI_branch
         LRETR     ; [CPU_] 
         ; return occurs ; [] 
 	.dwattr $C$DW$16, DW_AT_TI_end_file("../Source/DSP281x_ECan.c")
-	.dwattr $C$DW$16, DW_AT_TI_end_line(0x253)
+	.dwattr $C$DW$16, DW_AT_TI_end_line(0x24c)
 	.dwattr $C$DW$16, DW_AT_TI_end_column(0x01)
 	.dwendentry
 	.dwendtag $C$DW$16
@@ -402,10 +402,10 @@ $C$DW$18	.dwtag  DW_TAG_subprogram
 	.dwattr $C$DW$18, DW_AT_TI_symbol_name("_sendModStatus")
 	.dwattr $C$DW$18, DW_AT_external
 	.dwattr $C$DW$18, DW_AT_TI_begin_file("../Source/DSP281x_ECan.c")
-	.dwattr $C$DW$18, DW_AT_TI_begin_line(0xb1)
+	.dwattr $C$DW$18, DW_AT_TI_begin_line(0xaf)
 	.dwattr $C$DW$18, DW_AT_TI_begin_column(0x06)
 	.dwattr $C$DW$18, DW_AT_TI_max_frame_size(-10)
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 178,column 1,is_stmt,address _sendModStatus,isa 0
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 176,column 1,is_stmt,address _sendModStatus,isa 0
 
 	.dwfde $C$DW$CIE, _sendModStatus
 $C$DW$19	.dwtag  DW_TAG_formal_parameter
@@ -421,13 +421,13 @@ $C$DW$20	.dwtag  DW_TAG_formal_parameter
 	.dwattr $C$DW$20, DW_AT_location[DW_OP_reg1]
 
 ;----------------------------------------------------------------------
-; 177 | void sendModStatus(int shelf, int mod)                                 
-; 179 | int code = (shelf << 4) + mod;                                         
-; 180 | volatile int data[8];                                                  
-; 182 | int voltage1;                                                          
-; 183 | int voltage2;                                                          
-; 184 | int temp1;                                                             
-; 185 | int temp2;                                                             
+; 175 | void sendModStatus(int shelf, int mod)                                 
+; 177 | int code = (shelf << 4) + mod;                                         
+; 178 | volatile int data[8];                                                  
+; 180 | int voltage1;                                                          
+; 181 | int voltage2;                                                          
+; 182 | int temp1;                                                             
+; 183 | int temp2;                                                             
 ;----------------------------------------------------------------------
 
 ;***************************************************************
@@ -455,344 +455,344 @@ $C$DW$21	.dwtag  DW_TAG_variable
 	.dwcfi	save_reg_to_mem, 26, 0
         ADDB      SP,#8                 ; [CPU_U] 
 	.dwcfi	cfa_offset, -10
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 187,column 2,is_stmt,isa 0
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 185,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 187 | switch(mod)                                                            
-; 189 |                 case 1:                                                
-; 190 |                 case 2:                                                
-; 192 |                         data[0] = ECanaMboxes.MBOX6.MDL.byte.BYTE0;    
-; 193 |                         data[1] = ECanaMboxes.MBOX6.MDL.byte.BYTE1;    
-; 194 |                         data[2] = ECanaMboxes.MBOX6.MDL.byte.BYTE2;    
-; 195 |                         data[3] = ECanaMboxes.MBOX6.MDL.byte.BYTE3;    
-; 196 |                         data[4] = ECanaMboxes.MBOX6.MDH.byte.BYTE4;    
-; 197 |                         data[5] = ECanaMboxes.MBOX6.MDH.byte.BYTE5;    
-; 198 |                         data[6] = ECanaMboxes.MBOX6.MDH.byte.BYTE6;    
-; 199 |                         data[7] = ECanaMboxes.MBOX6.MDH.byte.BYTE7;    
-; 200 |                         break;                                         
-; 202 |                 case 3:                                                
-; 203 |                 case 4:                                                
-; 205 |                         data[0] = ECanaMboxes.MBOX7.MDL.byte.BYTE0;    
-; 206 |                         data[1] = ECanaMboxes.MBOX7.MDL.byte.BYTE1;    
-; 207 |                         data[2] = ECanaMboxes.MBOX7.MDL.byte.BYTE2;    
-; 208 |                         data[3] = ECanaMboxes.MBOX7.MDL.byte.BYTE3;    
-; 209 |                         data[4] = ECanaMboxes.MBOX7.MDH.byte.BYTE4;    
-; 210 |                         data[5] = ECanaMboxes.MBOX7.MDH.byte.BYTE5;    
-; 211 |                         data[6] = ECanaMboxes.MBOX7.MDH.byte.BYTE6;    
-; 212 |                         data[7] = ECanaMboxes.MBOX7.MDH.byte.BYTE7;    
-; 214 |                         break;                                         
-; 216 |                 case 5:                                                
-; 217 |                 case 6:                                                
-; 219 |                         data[0] = ECanaMboxes.MBOX8.MDL.byte.BYTE0;    
-; 220 |                         data[1] = ECanaMboxes.MBOX8.MDL.byte.BYTE1;    
-; 221 |                         data[2] = ECanaMboxes.MBOX8.MDL.byte.BYTE2;    
-; 222 |                         data[3] = ECanaMboxes.MBOX8.MDL.byte.BYTE3;    
-; 223 |                         data[4] = ECanaMboxes.MBOX8.MDH.byte.BYTE4;    
-; 224 |                         data[5] = ECanaMboxes.MBOX8.MDH.byte.BYTE5;    
-; 225 |                         data[6] = ECanaMboxes.MBOX8.MDH.byte.BYTE6;    
-; 226 |                         data[7] = ECanaMboxes.MBOX8.MDH.byte.BYTE7;    
-; 228 |                         break;                                         
-; 230 |                 case 7:                                                
-; 231 |                 case 8:                                                
-; 233 |                         data[0] = ECanaMboxes.MBOX9.MDL.byte.BYTE0;    
-; 234 |                         data[1] = ECanaMboxes.MBOX9.MDL.byte.BYTE1;    
-; 235 |                         data[2] = ECanaMboxes.MBOX9.MDL.byte.BYTE2;    
-; 236 |                         data[3] = ECanaMboxes.MBOX9.MDL.byte.BYTE3;    
-; 237 |                         data[4] = ECanaMboxes.MBOX9.MDH.byte.BYTE4;    
-; 238 |                         data[5] = ECanaMboxes.MBOX9.MDH.byte.BYTE5;    
-; 239 |                         data[6] = ECanaMboxes.MBOX9.MDH.byte.BYTE6;    
-; 240 |                         data[7] = ECanaMboxes.MBOX9.MDH.byte.BYTE7;    
-; 242 |                         break;                                         
-; 244 |                 case 9:                                                
-; 245 |                 case 10:                                               
+; 185 | switch(mod)                                                            
+; 187 |                 case 1:                                                
+; 188 |                 case 2:                                                
+; 190 |                         data[0] = ECanaMboxes.MBOX6.MDL.byte.BYTE0;    
+; 191 |                         data[1] = ECanaMboxes.MBOX6.MDL.byte.BYTE1;    
+; 192 |                         data[2] = ECanaMboxes.MBOX6.MDL.byte.BYTE2;    
+; 193 |                         data[3] = ECanaMboxes.MBOX6.MDL.byte.BYTE3;    
+; 194 |                         data[4] = ECanaMboxes.MBOX6.MDH.byte.BYTE4;    
+; 195 |                         data[5] = ECanaMboxes.MBOX6.MDH.byte.BYTE5;    
+; 196 |                         data[6] = ECanaMboxes.MBOX6.MDH.byte.BYTE6;    
+; 197 |                         data[7] = ECanaMboxes.MBOX6.MDH.byte.BYTE7;    
+; 198 |                         break;                                         
+; 200 |                 case 3:                                                
+; 201 |                 case 4:                                                
+; 203 |                         data[0] = ECanaMboxes.MBOX7.MDL.byte.BYTE0;    
+; 204 |                         data[1] = ECanaMboxes.MBOX7.MDL.byte.BYTE1;    
+; 205 |                         data[2] = ECanaMboxes.MBOX7.MDL.byte.BYTE2;    
+; 206 |                         data[3] = ECanaMboxes.MBOX7.MDL.byte.BYTE3;    
+; 207 |                         data[4] = ECanaMboxes.MBOX7.MDH.byte.BYTE4;    
+; 208 |                         data[5] = ECanaMboxes.MBOX7.MDH.byte.BYTE5;    
+; 209 |                         data[6] = ECanaMboxes.MBOX7.MDH.byte.BYTE6;    
+; 210 |                         data[7] = ECanaMboxes.MBOX7.MDH.byte.BYTE7;    
+; 212 |                         break;                                         
+; 214 |                 case 5:                                                
+; 215 |                 case 6:                                                
+; 217 |                         data[0] = ECanaMboxes.MBOX8.MDL.byte.BYTE0;    
+; 218 |                         data[1] = ECanaMboxes.MBOX8.MDL.byte.BYTE1;    
+; 219 |                         data[2] = ECanaMboxes.MBOX8.MDL.byte.BYTE2;    
+; 220 |                         data[3] = ECanaMboxes.MBOX8.MDL.byte.BYTE3;    
+; 221 |                         data[4] = ECanaMboxes.MBOX8.MDH.byte.BYTE4;    
+; 222 |                         data[5] = ECanaMboxes.MBOX8.MDH.byte.BYTE5;    
+; 223 |                         data[6] = ECanaMboxes.MBOX8.MDH.byte.BYTE6;    
+; 224 |                         data[7] = ECanaMboxes.MBOX8.MDH.byte.BYTE7;    
+; 226 |                         break;                                         
+; 228 |                 case 7:                                                
+; 229 |                 case 8:                                                
+; 231 |                         data[0] = ECanaMboxes.MBOX9.MDL.byte.BYTE0;    
+; 232 |                         data[1] = ECanaMboxes.MBOX9.MDL.byte.BYTE1;    
+; 233 |                         data[2] = ECanaMboxes.MBOX9.MDL.byte.BYTE2;    
+; 234 |                         data[3] = ECanaMboxes.MBOX9.MDL.byte.BYTE3;    
+; 235 |                         data[4] = ECanaMboxes.MBOX9.MDH.byte.BYTE4;    
+; 236 |                         data[5] = ECanaMboxes.MBOX9.MDH.byte.BYTE5;    
+; 237 |                         data[6] = ECanaMboxes.MBOX9.MDH.byte.BYTE6;    
+; 238 |                         data[7] = ECanaMboxes.MBOX9.MDH.byte.BYTE7;    
+; 240 |                         break;                                         
+; 242 |                 case 9:                                                
+; 243 |                 case 10:                                               
 ;----------------------------------------------------------------------
-        CMPB      AH,#6                 ; [CPU_] |187| 
-        B         $C$L1,GT              ; [CPU_] |187| 
-        ; branchcc occurs ; [] |187| 
-        CMPB      AH,#5                 ; [CPU_] |187| 
-        B         $C$L3,GEQ             ; [CPU_] |187| 
-        ; branchcc occurs ; [] |187| 
-        MOV       AL,AH                 ; [CPU_] |187| 
-        ADDB      AL,#-1                ; [CPU_] |187| 
-        CMPB      AL,#1                 ; [CPU_] |187| 
-        B         $C$L5,LOS             ; [CPU_] |187| 
-        ; branchcc occurs ; [] |187| 
-        ADDB      AH,#-3                ; [CPU_] |187| 
-        CMPB      AH,#1                 ; [CPU_] |187| 
-        B         $C$L4,LOS             ; [CPU_] |187| 
-        ; branchcc occurs ; [] |187| 
-        B         $C$L7,UNC             ; [CPU_] |187| 
-        ; branch occurs ; [] |187| 
+        CMPB      AH,#6                 ; [CPU_] |185| 
+        B         $C$L1,GT              ; [CPU_] |185| 
+        ; branchcc occurs ; [] |185| 
+        CMPB      AH,#5                 ; [CPU_] |185| 
+        B         $C$L3,GEQ             ; [CPU_] |185| 
+        ; branchcc occurs ; [] |185| 
+        MOV       AL,AH                 ; [CPU_] |185| 
+        ADDB      AL,#-1                ; [CPU_] |185| 
+        CMPB      AL,#1                 ; [CPU_] |185| 
+        B         $C$L5,LOS             ; [CPU_] |185| 
+        ; branchcc occurs ; [] |185| 
+        ADDB      AH,#-3                ; [CPU_] |185| 
+        CMPB      AH,#1                 ; [CPU_] |185| 
+        B         $C$L4,LOS             ; [CPU_] |185| 
+        ; branchcc occurs ; [] |185| 
+        B         $C$L7,UNC             ; [CPU_] |185| 
+        ; branch occurs ; [] |185| 
 $C$L1:    
-        MOV       AL,AH                 ; [CPU_] |187| 
-        ADDB      AL,#-7                ; [CPU_] |187| 
-        CMPB      AL,#1                 ; [CPU_] |187| 
-        B         $C$L2,LOS             ; [CPU_] |187| 
-        ; branchcc occurs ; [] |187| 
-        ADDB      AH,#-9                ; [CPU_] |187| 
-        CMPB      AH,#1                 ; [CPU_] |187| 
-        B         $C$L7,HI              ; [CPU_] |187| 
-        ; branchcc occurs ; [] |187| 
+        MOV       AL,AH                 ; [CPU_] |185| 
+        ADDB      AL,#-7                ; [CPU_] |185| 
+        CMPB      AL,#1                 ; [CPU_] |185| 
+        B         $C$L2,LOS             ; [CPU_] |185| 
+        ; branchcc occurs ; [] |185| 
+        ADDB      AH,#-9                ; [CPU_] |185| 
+        CMPB      AH,#1                 ; [CPU_] |185| 
+        B         $C$L7,HI              ; [CPU_] |185| 
+        ; branchcc occurs ; [] |185| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 245,column 5,is_stmt,isa 0
+;----------------------------------------------------------------------
+; 245 | data[0] = ECanaMboxes.MBOX10.MDL.byte.BYTE0;                           
+; 246 | data[1] = ECanaMboxes.MBOX10.MDL.byte.BYTE1;                           
+;----------------------------------------------------------------------
+        MOVL      XAR4,#_ECanaMboxes    ; [CPU_U] |245| 
+        MOVB      XAR0,#85              ; [CPU_] |245| 
+        MOVW      DP,#_ECanaMboxes+85   ; [CPU_U] 
+        MOV       AL,*+XAR4[AR0]        ; [CPU_] |245| 
+        LSR       AL,8                  ; [CPU_] |245| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 247,column 5,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 247 | data[0] = ECanaMboxes.MBOX10.MDL.byte.BYTE0;                           
-; 248 | data[1] = ECanaMboxes.MBOX10.MDL.byte.BYTE1;                           
+; 247 | data[2] = ECanaMboxes.MBOX10.MDL.byte.BYTE2;                           
 ;----------------------------------------------------------------------
-        MOVL      XAR4,#_ECanaMboxes    ; [CPU_U] |247| 
-        MOVB      XAR0,#85              ; [CPU_] |247| 
-        MOVW      DP,#_ECanaMboxes+85   ; [CPU_U] 
+        MOVB      XAR0,#84              ; [CPU_] |247| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 245,column 5,is_stmt,isa 0
+        MOV       *-SP[8],AL            ; [CPU_] |245| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 246,column 5,is_stmt,isa 0
+        MOVB      AL.LSB,@_ECanaMboxes+85 ; [CPU_] |246| 
+        MOV       *-SP[7],AL            ; [CPU_] |246| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 247,column 5,is_stmt,isa 0
+;----------------------------------------------------------------------
+; 248 | data[3] = ECanaMboxes.MBOX10.MDL.byte.BYTE3;                           
+;----------------------------------------------------------------------
         MOV       AL,*+XAR4[AR0]        ; [CPU_] |247| 
         LSR       AL,8                  ; [CPU_] |247| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 249,column 5,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 249 | data[2] = ECanaMboxes.MBOX10.MDL.byte.BYTE2;                           
+; 249 | data[4] = ECanaMboxes.MBOX10.MDH.byte.BYTE4;                           
 ;----------------------------------------------------------------------
-        MOVB      XAR0,#84              ; [CPU_] |249| 
+        MOVB      XAR0,#87              ; [CPU_] |249| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 247,column 5,is_stmt,isa 0
-        MOV       *-SP[8],AL            ; [CPU_] |247| 
+        MOV       *-SP[6],AL            ; [CPU_] |247| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 248,column 5,is_stmt,isa 0
-        MOVB      AL.LSB,@_ECanaMboxes+85 ; [CPU_] |248| 
-        MOV       *-SP[7],AL            ; [CPU_] |248| 
+        MOVB      AL.LSB,@_ECanaMboxes+84 ; [CPU_] |248| 
+        MOV       *-SP[5],AL            ; [CPU_] |248| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 249,column 5,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 250 | data[3] = ECanaMboxes.MBOX10.MDL.byte.BYTE3;                           
+; 250 | data[5] = ECanaMboxes.MBOX10.MDH.byte.BYTE5;                           
 ;----------------------------------------------------------------------
         MOV       AL,*+XAR4[AR0]        ; [CPU_] |249| 
         LSR       AL,8                  ; [CPU_] |249| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 251,column 5,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 251 | data[4] = ECanaMboxes.MBOX10.MDH.byte.BYTE4;                           
+; 251 | data[6] = ECanaMboxes.MBOX10.MDH.byte.BYTE6;                           
 ;----------------------------------------------------------------------
-        MOVB      XAR0,#87              ; [CPU_] |251| 
+        MOVB      XAR0,#86              ; [CPU_] |251| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 249,column 5,is_stmt,isa 0
-        MOV       *-SP[6],AL            ; [CPU_] |249| 
+        MOV       *-SP[4],AL            ; [CPU_] |249| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 250,column 5,is_stmt,isa 0
-        MOVB      AL.LSB,@_ECanaMboxes+84 ; [CPU_] |250| 
-        MOV       *-SP[5],AL            ; [CPU_] |250| 
+        MOVB      AL.LSB,@_ECanaMboxes+87 ; [CPU_] |250| 
+        MOV       *-SP[3],AL            ; [CPU_] |250| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 251,column 5,is_stmt,isa 0
-;----------------------------------------------------------------------
-; 252 | data[5] = ECanaMboxes.MBOX10.MDH.byte.BYTE5;                           
-;----------------------------------------------------------------------
         MOV       AL,*+XAR4[AR0]        ; [CPU_] |251| 
         LSR       AL,8                  ; [CPU_] |251| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 253,column 5,is_stmt,isa 0
-;----------------------------------------------------------------------
-; 253 | data[6] = ECanaMboxes.MBOX10.MDH.byte.BYTE6;                           
-;----------------------------------------------------------------------
-        MOVB      XAR0,#86              ; [CPU_] |253| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 251,column 5,is_stmt,isa 0
-        MOV       *-SP[4],AL            ; [CPU_] |251| 
+        MOV       *-SP[2],AL            ; [CPU_] |251| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 252,column 5,is_stmt,isa 0
-        MOVB      AL.LSB,@_ECanaMboxes+87 ; [CPU_] |252| 
-        MOV       *-SP[3],AL            ; [CPU_] |252| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 253,column 5,is_stmt,isa 0
-        MOV       AL,*+XAR4[AR0]        ; [CPU_] |253| 
-        LSR       AL,8                  ; [CPU_] |253| 
-        MOV       *-SP[2],AL            ; [CPU_] |253| 
+;----------------------------------------------------------------------
+; 252 | data[7] = ECanaMboxes.MBOX10.MDH.byte.BYTE7;                           
+;----------------------------------------------------------------------
+        MOVB      AL.LSB,@_ECanaMboxes+86 ; [CPU_] |252| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 254,column 5,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 254 | data[7] = ECanaMboxes.MBOX10.MDH.byte.BYTE7;                           
+; 254 | break;                                                                 
 ;----------------------------------------------------------------------
-        MOVB      AL.LSB,@_ECanaMboxes+86 ; [CPU_] |254| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 256,column 5,is_stmt,isa 0
-;----------------------------------------------------------------------
-; 256 | break;                                                                 
-;----------------------------------------------------------------------
-        B         $C$L6,UNC             ; [CPU_] |256| 
-        ; branch occurs ; [] |256| 
+        B         $C$L6,UNC             ; [CPU_] |254| 
+        ; branch occurs ; [] |254| 
 $C$L2:    
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 233,column 5,is_stmt,isa 0
-        MOVL      XAR4,#_ECanaMboxes    ; [CPU_U] |233| 
-        MOVB      XAR0,#77              ; [CPU_] |233| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 231,column 5,is_stmt,isa 0
+        MOVL      XAR4,#_ECanaMboxes    ; [CPU_U] |231| 
+        MOVB      XAR0,#77              ; [CPU_] |231| 
         MOVW      DP,#_ECanaMboxes+77   ; [CPU_U] 
+        MOV       AL,*+XAR4[AR0]        ; [CPU_] |231| 
+        LSR       AL,8                  ; [CPU_] |231| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 233,column 5,is_stmt,isa 0
+        MOVB      XAR0,#76              ; [CPU_] |233| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 231,column 5,is_stmt,isa 0
+        MOV       *-SP[8],AL            ; [CPU_] |231| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 232,column 5,is_stmt,isa 0
+        MOVB      AL.LSB,@_ECanaMboxes+77 ; [CPU_] |232| 
+        MOV       *-SP[7],AL            ; [CPU_] |232| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 233,column 5,is_stmt,isa 0
         MOV       AL,*+XAR4[AR0]        ; [CPU_] |233| 
         LSR       AL,8                  ; [CPU_] |233| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 235,column 5,is_stmt,isa 0
-        MOVB      XAR0,#76              ; [CPU_] |235| 
+        MOVB      XAR0,#79              ; [CPU_] |235| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 233,column 5,is_stmt,isa 0
-        MOV       *-SP[8],AL            ; [CPU_] |233| 
+        MOV       *-SP[6],AL            ; [CPU_] |233| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 234,column 5,is_stmt,isa 0
-        MOVB      AL.LSB,@_ECanaMboxes+77 ; [CPU_] |234| 
-        MOV       *-SP[7],AL            ; [CPU_] |234| 
+        MOVB      AL.LSB,@_ECanaMboxes+76 ; [CPU_] |234| 
+        MOV       *-SP[5],AL            ; [CPU_] |234| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 235,column 5,is_stmt,isa 0
         MOV       AL,*+XAR4[AR0]        ; [CPU_] |235| 
         LSR       AL,8                  ; [CPU_] |235| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 237,column 5,is_stmt,isa 0
-        MOVB      XAR0,#79              ; [CPU_] |237| 
+        MOVB      XAR0,#78              ; [CPU_] |237| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 235,column 5,is_stmt,isa 0
-        MOV       *-SP[6],AL            ; [CPU_] |235| 
+        MOV       *-SP[4],AL            ; [CPU_] |235| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 236,column 5,is_stmt,isa 0
-        MOVB      AL.LSB,@_ECanaMboxes+76 ; [CPU_] |236| 
-        MOV       *-SP[5],AL            ; [CPU_] |236| 
+        MOVB      AL.LSB,@_ECanaMboxes+79 ; [CPU_] |236| 
+        MOV       *-SP[3],AL            ; [CPU_] |236| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 237,column 5,is_stmt,isa 0
         MOV       AL,*+XAR4[AR0]        ; [CPU_] |237| 
         LSR       AL,8                  ; [CPU_] |237| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 239,column 5,is_stmt,isa 0
-        MOVB      XAR0,#78              ; [CPU_] |239| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 237,column 5,is_stmt,isa 0
-        MOV       *-SP[4],AL            ; [CPU_] |237| 
+        MOV       *-SP[2],AL            ; [CPU_] |237| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 238,column 5,is_stmt,isa 0
-        MOVB      AL.LSB,@_ECanaMboxes+79 ; [CPU_] |238| 
-        MOV       *-SP[3],AL            ; [CPU_] |238| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 239,column 5,is_stmt,isa 0
-        MOV       AL,*+XAR4[AR0]        ; [CPU_] |239| 
-        LSR       AL,8                  ; [CPU_] |239| 
-        MOV       *-SP[2],AL            ; [CPU_] |239| 
+        MOVB      AL.LSB,@_ECanaMboxes+78 ; [CPU_] |238| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 240,column 5,is_stmt,isa 0
-        MOVB      AL.LSB,@_ECanaMboxes+78 ; [CPU_] |240| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 242,column 5,is_stmt,isa 0
-        B         $C$L6,UNC             ; [CPU_] |242| 
-        ; branch occurs ; [] |242| 
+        B         $C$L6,UNC             ; [CPU_] |240| 
+        ; branch occurs ; [] |240| 
 $C$L3:    
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 219,column 5,is_stmt,isa 0
-        MOVL      XAR4,#_ECanaMboxes    ; [CPU_U] |219| 
-        MOVB      XAR0,#69              ; [CPU_] |219| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 217,column 5,is_stmt,isa 0
+        MOVL      XAR4,#_ECanaMboxes    ; [CPU_U] |217| 
+        MOVB      XAR0,#69              ; [CPU_] |217| 
         MOVW      DP,#_ECanaMboxes+69   ; [CPU_U] 
+        MOV       AL,*+XAR4[AR0]        ; [CPU_] |217| 
+        LSR       AL,8                  ; [CPU_] |217| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 219,column 5,is_stmt,isa 0
+        MOVB      XAR0,#68              ; [CPU_] |219| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 217,column 5,is_stmt,isa 0
+        MOV       *-SP[8],AL            ; [CPU_] |217| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 218,column 5,is_stmt,isa 0
+        MOVB      AL.LSB,@_ECanaMboxes+69 ; [CPU_] |218| 
+        MOV       *-SP[7],AL            ; [CPU_] |218| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 219,column 5,is_stmt,isa 0
         MOV       AL,*+XAR4[AR0]        ; [CPU_] |219| 
         LSR       AL,8                  ; [CPU_] |219| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 221,column 5,is_stmt,isa 0
-        MOVB      XAR0,#68              ; [CPU_] |221| 
+        MOVB      XAR0,#71              ; [CPU_] |221| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 219,column 5,is_stmt,isa 0
-        MOV       *-SP[8],AL            ; [CPU_] |219| 
+        MOV       *-SP[6],AL            ; [CPU_] |219| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 220,column 5,is_stmt,isa 0
-        MOVB      AL.LSB,@_ECanaMboxes+69 ; [CPU_] |220| 
-        MOV       *-SP[7],AL            ; [CPU_] |220| 
+        MOVB      AL.LSB,@_ECanaMboxes+68 ; [CPU_] |220| 
+        MOV       *-SP[5],AL            ; [CPU_] |220| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 221,column 5,is_stmt,isa 0
         MOV       AL,*+XAR4[AR0]        ; [CPU_] |221| 
         LSR       AL,8                  ; [CPU_] |221| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 223,column 5,is_stmt,isa 0
-        MOVB      XAR0,#71              ; [CPU_] |223| 
+        MOVB      XAR0,#70              ; [CPU_] |223| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 221,column 5,is_stmt,isa 0
-        MOV       *-SP[6],AL            ; [CPU_] |221| 
+        MOV       *-SP[4],AL            ; [CPU_] |221| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 222,column 5,is_stmt,isa 0
-        MOVB      AL.LSB,@_ECanaMboxes+68 ; [CPU_] |222| 
-        MOV       *-SP[5],AL            ; [CPU_] |222| 
+        MOVB      AL.LSB,@_ECanaMboxes+71 ; [CPU_] |222| 
+        MOV       *-SP[3],AL            ; [CPU_] |222| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 223,column 5,is_stmt,isa 0
         MOV       AL,*+XAR4[AR0]        ; [CPU_] |223| 
         LSR       AL,8                  ; [CPU_] |223| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 225,column 5,is_stmt,isa 0
-        MOVB      XAR0,#70              ; [CPU_] |225| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 223,column 5,is_stmt,isa 0
-        MOV       *-SP[4],AL            ; [CPU_] |223| 
+        MOV       *-SP[2],AL            ; [CPU_] |223| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 224,column 5,is_stmt,isa 0
-        MOVB      AL.LSB,@_ECanaMboxes+71 ; [CPU_] |224| 
-        MOV       *-SP[3],AL            ; [CPU_] |224| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 225,column 5,is_stmt,isa 0
-        MOV       AL,*+XAR4[AR0]        ; [CPU_] |225| 
-        LSR       AL,8                  ; [CPU_] |225| 
-        MOV       *-SP[2],AL            ; [CPU_] |225| 
+        MOVB      AL.LSB,@_ECanaMboxes+70 ; [CPU_] |224| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 226,column 5,is_stmt,isa 0
-        MOVB      AL.LSB,@_ECanaMboxes+70 ; [CPU_] |226| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 228,column 5,is_stmt,isa 0
-        B         $C$L6,UNC             ; [CPU_] |228| 
-        ; branch occurs ; [] |228| 
+        B         $C$L6,UNC             ; [CPU_] |226| 
+        ; branch occurs ; [] |226| 
 $C$L4:    
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 205,column 5,is_stmt,isa 0
-        MOVL      XAR4,#_ECanaMboxes    ; [CPU_U] |205| 
-        MOVB      XAR0,#61              ; [CPU_] |205| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 203,column 5,is_stmt,isa 0
+        MOVL      XAR4,#_ECanaMboxes    ; [CPU_U] |203| 
+        MOVB      XAR0,#61              ; [CPU_] |203| 
         MOVW      DP,#_ECanaMboxes+61   ; [CPU_U] 
+        MOV       AL,*+XAR4[AR0]        ; [CPU_] |203| 
+        LSR       AL,8                  ; [CPU_] |203| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 205,column 5,is_stmt,isa 0
+        MOVB      XAR0,#60              ; [CPU_] |205| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 203,column 5,is_stmt,isa 0
+        MOV       *-SP[8],AL            ; [CPU_] |203| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 204,column 5,is_stmt,isa 0
+        MOVB      AL.LSB,@_ECanaMboxes+61 ; [CPU_] |204| 
+        MOV       *-SP[7],AL            ; [CPU_] |204| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 205,column 5,is_stmt,isa 0
         MOV       AL,*+XAR4[AR0]        ; [CPU_] |205| 
         LSR       AL,8                  ; [CPU_] |205| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 207,column 5,is_stmt,isa 0
-        MOVB      XAR0,#60              ; [CPU_] |207| 
+        MOVB      XAR0,#63              ; [CPU_] |207| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 205,column 5,is_stmt,isa 0
-        MOV       *-SP[8],AL            ; [CPU_] |205| 
+        MOV       *-SP[6],AL            ; [CPU_] |205| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 206,column 5,is_stmt,isa 0
-        MOVB      AL.LSB,@_ECanaMboxes+61 ; [CPU_] |206| 
-        MOV       *-SP[7],AL            ; [CPU_] |206| 
+        MOVB      AL.LSB,@_ECanaMboxes+60 ; [CPU_] |206| 
+        MOV       *-SP[5],AL            ; [CPU_] |206| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 207,column 5,is_stmt,isa 0
         MOV       AL,*+XAR4[AR0]        ; [CPU_] |207| 
         LSR       AL,8                  ; [CPU_] |207| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 209,column 5,is_stmt,isa 0
-        MOVB      XAR0,#63              ; [CPU_] |209| 
+        MOVB      XAR0,#62              ; [CPU_] |209| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 207,column 5,is_stmt,isa 0
-        MOV       *-SP[6],AL            ; [CPU_] |207| 
+        MOV       *-SP[4],AL            ; [CPU_] |207| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 208,column 5,is_stmt,isa 0
-        MOVB      AL.LSB,@_ECanaMboxes+60 ; [CPU_] |208| 
-        MOV       *-SP[5],AL            ; [CPU_] |208| 
+        MOVB      AL.LSB,@_ECanaMboxes+63 ; [CPU_] |208| 
+        MOV       *-SP[3],AL            ; [CPU_] |208| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 209,column 5,is_stmt,isa 0
         MOV       AL,*+XAR4[AR0]        ; [CPU_] |209| 
         LSR       AL,8                  ; [CPU_] |209| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 211,column 5,is_stmt,isa 0
-        MOVB      XAR0,#62              ; [CPU_] |211| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 209,column 5,is_stmt,isa 0
-        MOV       *-SP[4],AL            ; [CPU_] |209| 
+        MOV       *-SP[2],AL            ; [CPU_] |209| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 210,column 5,is_stmt,isa 0
-        MOVB      AL.LSB,@_ECanaMboxes+63 ; [CPU_] |210| 
-        MOV       *-SP[3],AL            ; [CPU_] |210| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 211,column 5,is_stmt,isa 0
-        MOV       AL,*+XAR4[AR0]        ; [CPU_] |211| 
-        LSR       AL,8                  ; [CPU_] |211| 
-        MOV       *-SP[2],AL            ; [CPU_] |211| 
+        MOVB      AL.LSB,@_ECanaMboxes+62 ; [CPU_] |210| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 212,column 5,is_stmt,isa 0
-        MOVB      AL.LSB,@_ECanaMboxes+62 ; [CPU_] |212| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 214,column 5,is_stmt,isa 0
-        B         $C$L6,UNC             ; [CPU_] |214| 
-        ; branch occurs ; [] |214| 
+        B         $C$L6,UNC             ; [CPU_] |212| 
+        ; branch occurs ; [] |212| 
 $C$L5:    
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 192,column 5,is_stmt,isa 0
-        MOVL      XAR4,#_ECanaMboxes    ; [CPU_U] |192| 
-        MOVB      XAR0,#53              ; [CPU_] |192| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 190,column 5,is_stmt,isa 0
+        MOVL      XAR4,#_ECanaMboxes    ; [CPU_U] |190| 
+        MOVB      XAR0,#53              ; [CPU_] |190| 
         MOVW      DP,#_ECanaMboxes+53   ; [CPU_U] 
+        MOV       AL,*+XAR4[AR0]        ; [CPU_] |190| 
+        LSR       AL,8                  ; [CPU_] |190| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 192,column 5,is_stmt,isa 0
+        MOVB      XAR0,#52              ; [CPU_] |192| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 190,column 5,is_stmt,isa 0
+        MOV       *-SP[8],AL            ; [CPU_] |190| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 191,column 5,is_stmt,isa 0
+        MOVB      AL.LSB,@_ECanaMboxes+53 ; [CPU_] |191| 
+        MOV       *-SP[7],AL            ; [CPU_] |191| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 192,column 5,is_stmt,isa 0
         MOV       AL,*+XAR4[AR0]        ; [CPU_] |192| 
         LSR       AL,8                  ; [CPU_] |192| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 194,column 5,is_stmt,isa 0
-        MOVB      XAR0,#52              ; [CPU_] |194| 
+        MOVB      XAR0,#55              ; [CPU_] |194| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 192,column 5,is_stmt,isa 0
-        MOV       *-SP[8],AL            ; [CPU_] |192| 
+        MOV       *-SP[6],AL            ; [CPU_] |192| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 193,column 5,is_stmt,isa 0
-        MOVB      AL.LSB,@_ECanaMboxes+53 ; [CPU_] |193| 
-        MOV       *-SP[7],AL            ; [CPU_] |193| 
+        MOVB      AL.LSB,@_ECanaMboxes+52 ; [CPU_] |193| 
+        MOV       *-SP[5],AL            ; [CPU_] |193| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 194,column 5,is_stmt,isa 0
         MOV       AL,*+XAR4[AR0]        ; [CPU_] |194| 
         LSR       AL,8                  ; [CPU_] |194| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 196,column 5,is_stmt,isa 0
-        MOVB      XAR0,#55              ; [CPU_] |196| 
+        MOVB      XAR0,#54              ; [CPU_] |196| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 194,column 5,is_stmt,isa 0
-        MOV       *-SP[6],AL            ; [CPU_] |194| 
+        MOV       *-SP[4],AL            ; [CPU_] |194| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 195,column 5,is_stmt,isa 0
-        MOVB      AL.LSB,@_ECanaMboxes+52 ; [CPU_] |195| 
-        MOV       *-SP[5],AL            ; [CPU_] |195| 
+        MOVB      AL.LSB,@_ECanaMboxes+55 ; [CPU_] |195| 
+        MOV       *-SP[3],AL            ; [CPU_] |195| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 196,column 5,is_stmt,isa 0
         MOV       AL,*+XAR4[AR0]        ; [CPU_] |196| 
         LSR       AL,8                  ; [CPU_] |196| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 198,column 5,is_stmt,isa 0
-        MOVB      XAR0,#54              ; [CPU_] |198| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 196,column 5,is_stmt,isa 0
-        MOV       *-SP[4],AL            ; [CPU_] |196| 
+        MOV       *-SP[2],AL            ; [CPU_] |196| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 197,column 5,is_stmt,isa 0
-        MOVB      AL.LSB,@_ECanaMboxes+55 ; [CPU_] |197| 
-        MOV       *-SP[3],AL            ; [CPU_] |197| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 198,column 5,is_stmt,isa 0
-        MOV       AL,*+XAR4[AR0]        ; [CPU_] |198| 
-        LSR       AL,8                  ; [CPU_] |198| 
-        MOV       *-SP[2],AL            ; [CPU_] |198| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 199,column 5,is_stmt,isa 0
-        MOVB      AL.LSB,@_ECanaMboxes+54 ; [CPU_] |199| 
+        MOVB      AL.LSB,@_ECanaMboxes+54 ; [CPU_] |197| 
 $C$L6:    
-        MOV       *-SP[1],AL            ; [CPU_] |199| 
+        MOV       *-SP[1],AL            ; [CPU_] |197| 
 $C$L7:    
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 258,column 3,is_stmt,isa 0
+;----------------------------------------------------------------------
+; 258 | voltage1 = ((data[1] << 8) | data[0])/5;                               
+;----------------------------------------------------------------------
+        MOV       AL,*-SP[7]            ; [CPU_] |258| 
+        MOV       AL,*-SP[8]            ; [CPU_] |258| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 259,column 3,is_stmt,isa 0
+;----------------------------------------------------------------------
+; 259 | temp1 = (data[2] * 10) / 2 - 400;                                      
+;----------------------------------------------------------------------
+        MOV       AL,*-SP[6]            ; [CPU_] |259| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 260,column 3,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 260 | voltage1 = ((data[1] << 8) | data[0])/5;                               
+; 260 | voltage2 = ((data[5] << 8) | data[4])/5;                               
 ;----------------------------------------------------------------------
-        MOV       AL,*-SP[7]            ; [CPU_] |260| 
-        MOV       AL,*-SP[8]            ; [CPU_] |260| 
+        MOV       AL,*-SP[3]            ; [CPU_] |260| 
+        MOV       AL,*-SP[4]            ; [CPU_] |260| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 261,column 3,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 261 | temp1 = (data[2] * 10) / 2 - 400;                                      
+; 261 | temp2 = (data[6] * 10) / 2 - 400;                                      
 ;----------------------------------------------------------------------
-        MOV       AL,*-SP[6]            ; [CPU_] |261| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 262,column 3,is_stmt,isa 0
-;----------------------------------------------------------------------
-; 262 | voltage2 = ((data[5] << 8) | data[4])/5;                               
-;----------------------------------------------------------------------
-        MOV       AL,*-SP[3]            ; [CPU_] |262| 
-        MOV       AL,*-SP[4]            ; [CPU_] |262| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 263,column 3,is_stmt,isa 0
-;----------------------------------------------------------------------
-; 263 | temp2 = (data[6] * 10) / 2 - 400;                                      
-;----------------------------------------------------------------------
-        MOV       AL,*-SP[2]            ; [CPU_] |263| 
+        MOV       AL,*-SP[2]            ; [CPU_] |261| 
         SUBB      SP,#8                 ; [CPU_U] 
 	.dwcfi	cfa_offset, -2
 $C$DW$22	.dwtag  DW_TAG_TI_branch
@@ -802,7 +802,7 @@ $C$DW$22	.dwtag  DW_TAG_TI_branch
         LRETR     ; [CPU_] 
         ; return occurs ; [] 
 	.dwattr $C$DW$18, DW_AT_TI_end_file("../Source/DSP281x_ECan.c")
-	.dwattr $C$DW$18, DW_AT_TI_end_line(0x11c)
+	.dwattr $C$DW$18, DW_AT_TI_end_line(0x11a)
 	.dwattr $C$DW$18, DW_AT_TI_end_column(0x01)
 	.dwendentry
 	.dwendtag $C$DW$18
@@ -818,14 +818,14 @@ $C$DW$23	.dwtag  DW_TAG_subprogram
 	.dwattr $C$DW$23, DW_AT_TI_symbol_name("_resetAlarms")
 	.dwattr $C$DW$23, DW_AT_external
 	.dwattr $C$DW$23, DW_AT_TI_begin_file("../Source/DSP281x_ECan.c")
-	.dwattr $C$DW$23, DW_AT_TI_begin_line(0x255)
+	.dwattr $C$DW$23, DW_AT_TI_begin_line(0x24e)
 	.dwattr $C$DW$23, DW_AT_TI_begin_column(0x06)
 	.dwattr $C$DW$23, DW_AT_TI_max_frame_size(-2)
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 598,column 1,is_stmt,address _resetAlarms,isa 0
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 591,column 1,is_stmt,address _resetAlarms,isa 0
 
 	.dwfde $C$DW$CIE, _resetAlarms
 ;----------------------------------------------------------------------
-; 597 | void resetAlarms()                                                     
+; 590 | void resetAlarms()                                                     
 ;----------------------------------------------------------------------
 
 ;***************************************************************
@@ -841,44 +841,44 @@ _resetAlarms:
 ;* AR4   assigned to $O$C1
 	.dwcfi	cfa_offset, -2
 	.dwcfi	save_reg_to_mem, 26, 0
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 599,column 2,is_stmt,isa 0
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 592,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 599 | ECanaMboxes.MBOX12.MDL.word.HI_WORD = 0x11FF & 0xFFFF;                 
+; 592 | ECanaMboxes.MBOX12.MDL.word.HI_WORD = 0x11FF & 0xFFFF;                 
 ;----------------------------------------------------------------------
-        MOVL      XAR4,#_ECanaMboxes    ; [CPU_U] |599| 
-        MOVB      XAR0,#101             ; [CPU_] |599| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 600,column 2,is_stmt,isa 0
+        MOVL      XAR4,#_ECanaMboxes    ; [CPU_U] |592| 
+        MOVB      XAR0,#101             ; [CPU_] |592| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 593,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 600 | ECanaMboxes.MBOX12.MDL.word.LOW_WORD = 0xFFFF & 0xFFFF;                
+; 593 | ECanaMboxes.MBOX12.MDL.word.LOW_WORD = 0xFFFF & 0xFFFF;                
 ;----------------------------------------------------------------------
-        MOVL      XAR5,XAR4             ; [CPU_] |600| 
+        MOVL      XAR5,XAR4             ; [CPU_] |593| 
         MOVW      DP,#_ECanaMboxes+101  ; [CPU_U] 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 599,column 2,is_stmt,isa 0
-        MOV       AL,*+XAR4[AR0]        ; [CPU_] |599| 
-        MOV       @_ECanaMboxes+101,#4607 ; [CPU_] |599| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 600,column 2,is_stmt,isa 0
-        ADDB      XAR5,#100             ; [CPU_] |600| 
-        OR        *+XAR5[0],#0xffff     ; [CPU_] |600| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 601,column 2,is_stmt,isa 0
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 592,column 2,is_stmt,isa 0
+        MOV       AL,*+XAR4[AR0]        ; [CPU_] |592| 
+        MOV       @_ECanaMboxes+101,#4607 ; [CPU_] |592| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 593,column 2,is_stmt,isa 0
+        ADDB      XAR5,#100             ; [CPU_] |593| 
+        OR        *+XAR5[0],#0xffff     ; [CPU_] |593| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 594,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 601 | ECanaMboxes.MBOX12.MDH.word.HI_WORD = 0xFFFF & 0xFFFF;                 
+; 594 | ECanaMboxes.MBOX12.MDH.word.HI_WORD = 0xFFFF & 0xFFFF;                 
 ;----------------------------------------------------------------------
-        MOVL      XAR5,XAR4             ; [CPU_] |601| 
+        MOVL      XAR5,XAR4             ; [CPU_] |594| 
         MOVW      DP,#_ECanaShadow+8    ; [CPU_U] 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 602,column 2,is_stmt,isa 0
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 595,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 602 | ECanaMboxes.MBOX12.MDH.word.LOW_WORD = 0xFFFF & 0xFFFF;                
+; 595 | ECanaMboxes.MBOX12.MDH.word.LOW_WORD = 0xFFFF & 0xFFFF;                
 ;----------------------------------------------------------------------
-        ADDB      XAR4,#102             ; [CPU_] |602| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 601,column 2,is_stmt,isa 0
-        ADDB      XAR5,#103             ; [CPU_] |601| 
-        OR        *+XAR5[0],#0xffff     ; [CPU_] |601| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 602,column 2,is_stmt,isa 0
+        ADDB      XAR4,#102             ; [CPU_] |595| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 594,column 2,is_stmt,isa 0
+        ADDB      XAR5,#103             ; [CPU_] |594| 
+        OR        *+XAR5[0],#0xffff     ; [CPU_] |594| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 595,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 604 | markTxMailboxHandled(12);                                              
-; 606 | setTRSforMailbox(12);                                                  
+; 597 | markTxMailboxHandled(12);                                              
+; 599 | setTRSforMailbox(12);                                                  
 ;----------------------------------------------------------------------
-        OR        *+XAR4[0],#0xffff     ; [CPU_] |602| 
+        OR        *+XAR4[0],#0xffff     ; [CPU_] |595| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 22,column 2,is_stmt,isa 0
         MOVL      XAR4,#4096            ; [CPU_U] |22| 
         MOVL      @_ECanaShadow+8,XAR4  ; [CPU_] |22| 
@@ -898,7 +898,7 @@ $C$DW$24	.dwtag  DW_TAG_TI_branch
         LRETR     ; [CPU_] 
         ; return occurs ; [] 
 	.dwattr $C$DW$23, DW_AT_TI_end_file("../Source/DSP281x_ECan.c")
-	.dwattr $C$DW$23, DW_AT_TI_end_line(0x25f)
+	.dwattr $C$DW$23, DW_AT_TI_end_line(0x258)
 	.dwattr $C$DW$23, DW_AT_TI_end_column(0x01)
 	.dwendentry
 	.dwendtag $C$DW$23
@@ -914,10 +914,10 @@ $C$DW$25	.dwtag  DW_TAG_subprogram
 	.dwattr $C$DW$25, DW_AT_TI_symbol_name("_processJSRGlobal")
 	.dwattr $C$DW$25, DW_AT_external
 	.dwattr $C$DW$25, DW_AT_TI_begin_file("../Source/DSP281x_ECan.c")
-	.dwattr $C$DW$25, DW_AT_TI_begin_line(0x5a)
+	.dwattr $C$DW$25, DW_AT_TI_begin_line(0x58)
 	.dwattr $C$DW$25, DW_AT_TI_begin_column(0x06)
 	.dwattr $C$DW$25, DW_AT_TI_max_frame_size(-10)
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 91,column 1,is_stmt,address _processJSRGlobal,isa 0
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 89,column 1,is_stmt,address _processJSRGlobal,isa 0
 
 	.dwfde $C$DW$CIE, _processJSRGlobal
 $C$DW$26	.dwtag  DW_TAG_formal_parameter
@@ -927,7 +927,7 @@ $C$DW$26	.dwtag  DW_TAG_formal_parameter
 	.dwattr $C$DW$26, DW_AT_location[DW_OP_reg0]
 
 ;----------------------------------------------------------------------
-;  90 | void processJSRGlobal(int shelf)                                       
+;  88 | void processJSRGlobal(int shelf)                                       
 ;----------------------------------------------------------------------
 
 ;***************************************************************
@@ -954,263 +954,263 @@ $C$DW$27	.dwtag  DW_TAG_variable
 	.dwcfi	save_reg_to_mem, 26, 0
         ADDB      SP,#8                 ; [CPU_U] 
 	.dwcfi	cfa_offset, -10
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 93,column 14,is_stmt,isa 0
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 91,column 14,is_stmt,isa 0
 ;----------------------------------------------------------------------
-;  93 | int data[8] = {0, 0, 0, 0, 0, 0, 0, 0};                                
-;  94 | int mcAddr;                                                            
-;  96 | //Getting the data transmitted from the Master Controllers every 100mse
+;  91 | int data[8] = {0, 0, 0, 0, 0, 0, 0, 0};                                
+;  92 | int mcAddr;                                                            
+;  94 | //Getting the data transmitted from the Master Controllers every 100mse
 ;     | c...                                                                   
 ;----------------------------------------------------------------------
-        MOVZ      AR4,SP                ; [CPU_] |93| 
-        SUBB      XAR4,#8               ; [CPU_U] |93| 
-        MOVZ      AR4,AR4               ; [CPU_] |93| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 97,column 2,is_stmt,isa 0
+        MOVZ      AR4,SP                ; [CPU_] |91| 
+        SUBB      XAR4,#8               ; [CPU_U] |91| 
+        MOVZ      AR4,AR4               ; [CPU_] |91| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 95,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-;  97 | switch(shelf)                                                          
+;  95 | switch(shelf)                                                          
 ;----------------------------------------------------------------------
-        CMPB      AL,#1                 ; [CPU_] |97| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 93,column 14,is_stmt,isa 0
+        CMPB      AL,#1                 ; [CPU_] |95| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 91,column 14,is_stmt,isa 0
         RPT       #7
-||     MOV       *XAR4++,#0            ; [CPU_] |93| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 97,column 2,is_stmt,isa 0
+||     MOV       *XAR4++,#0            ; [CPU_] |91| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 95,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-;  99 | case 1:                                                                
-; 101 |         data[0] = ECanaMboxes.MBOX0.MDL.byte.BYTE0;                    
-; 102 |         data[1] = ECanaMboxes.MBOX0.MDL.byte.BYTE1;                    
-; 103 |         data[2] = ECanaMboxes.MBOX0.MDL.byte.BYTE2;                    
-; 104 |         data[3] = ECanaMboxes.MBOX0.MDL.byte.BYTE3;                    
-; 105 |         data[4] = ECanaMboxes.MBOX0.MDH.byte.BYTE4;                    
-; 106 |         data[5] = ECanaMboxes.MBOX0.MDH.byte.BYTE5;                    
-; 107 |         data[6] = ECanaMboxes.MBOX0.MDH.byte.BYTE6;                    
-; 108 |         data[7] = ECanaMboxes.MBOX0.MDH.byte.BYTE7;                    
-; 109 |         //mcAddr = MC1_ADDR;                                           
-; 111 |         break;                                                         
-; 113 | case 2:                                                                
-; 115 |         data[0] = ECanaMboxes.MBOX1.MDL.byte.BYTE0;                    
-; 116 |         data[1] = ECanaMboxes.MBOX1.MDL.byte.BYTE1;                    
-; 117 |         data[2] = ECanaMboxes.MBOX1.MDL.byte.BYTE2;                    
-; 118 |         data[3] = ECanaMboxes.MBOX1.MDL.byte.BYTE3;                    
-; 119 |         data[4] = ECanaMboxes.MBOX1.MDH.byte.BYTE4;                    
-; 120 |         data[5] = ECanaMboxes.MBOX1.MDH.byte.BYTE5;                    
-; 121 |         data[6] = ECanaMboxes.MBOX1.MDH.byte.BYTE6;                    
-; 122 |         data[7] = ECanaMboxes.MBOX1.MDH.byte.BYTE7;                    
-; 123 |         //mcAddr = MC2_ADDR;                                           
-; 125 |         break;                                                         
-; 127 | case 3:                                                                
-; 129 |         data[0] = ECanaMboxes.MBOX2.MDL.byte.BYTE0;                    
-; 130 |         data[1] = ECanaMboxes.MBOX2.MDL.byte.BYTE1;                    
-; 131 |         data[2] = ECanaMboxes.MBOX2.MDL.byte.BYTE2;                    
-; 132 |         data[3] = ECanaMboxes.MBOX2.MDL.byte.BYTE3;                    
-; 133 |         data[4] = ECanaMboxes.MBOX2.MDH.byte.BYTE4;                    
-; 134 |         data[5] = ECanaMboxes.MBOX2.MDH.byte.BYTE5;                    
-; 135 |         data[6] = ECanaMboxes.MBOX2.MDH.byte.BYTE6;                    
-; 136 |         data[7] = ECanaMboxes.MBOX2.MDH.byte.BYTE7;                    
-; 137 |         //mcAddr = MC3_ADDR;                                           
-; 139 |         break;                                                         
-; 141 | case 4:                                                                
+;  97 | case 1:                                                                
+;  99 |         data[0] = ECanaMboxes.MBOX0.MDL.byte.BYTE0;                    
+; 100 |         data[1] = ECanaMboxes.MBOX0.MDL.byte.BYTE1;                    
+; 101 |         data[2] = ECanaMboxes.MBOX0.MDL.byte.BYTE2;                    
+; 102 |         data[3] = ECanaMboxes.MBOX0.MDL.byte.BYTE3;                    
+; 103 |         data[4] = ECanaMboxes.MBOX0.MDH.byte.BYTE4;                    
+; 104 |         data[5] = ECanaMboxes.MBOX0.MDH.byte.BYTE5;                    
+; 105 |         data[6] = ECanaMboxes.MBOX0.MDH.byte.BYTE6;                    
+; 106 |         data[7] = ECanaMboxes.MBOX0.MDH.byte.BYTE7;                    
+; 107 |         //mcAddr = MC1_ADDR;                                           
+; 109 |         break;                                                         
+; 111 | case 2:                                                                
+; 113 |         data[0] = ECanaMboxes.MBOX1.MDL.byte.BYTE0;                    
+; 114 |         data[1] = ECanaMboxes.MBOX1.MDL.byte.BYTE1;                    
+; 115 |         data[2] = ECanaMboxes.MBOX1.MDL.byte.BYTE2;                    
+; 116 |         data[3] = ECanaMboxes.MBOX1.MDL.byte.BYTE3;                    
+; 117 |         data[4] = ECanaMboxes.MBOX1.MDH.byte.BYTE4;                    
+; 118 |         data[5] = ECanaMboxes.MBOX1.MDH.byte.BYTE5;                    
+; 119 |         data[6] = ECanaMboxes.MBOX1.MDH.byte.BYTE6;                    
+; 120 |         data[7] = ECanaMboxes.MBOX1.MDH.byte.BYTE7;                    
+; 121 |         //mcAddr = MC2_ADDR;                                           
+; 123 |         break;                                                         
+; 125 | case 3:                                                                
+; 127 |         data[0] = ECanaMboxes.MBOX2.MDL.byte.BYTE0;                    
+; 128 |         data[1] = ECanaMboxes.MBOX2.MDL.byte.BYTE1;                    
+; 129 |         data[2] = ECanaMboxes.MBOX2.MDL.byte.BYTE2;                    
+; 130 |         data[3] = ECanaMboxes.MBOX2.MDL.byte.BYTE3;                    
+; 131 |         data[4] = ECanaMboxes.MBOX2.MDH.byte.BYTE4;                    
+; 132 |         data[5] = ECanaMboxes.MBOX2.MDH.byte.BYTE5;                    
+; 133 |         data[6] = ECanaMboxes.MBOX2.MDH.byte.BYTE6;                    
+; 134 |         data[7] = ECanaMboxes.MBOX2.MDH.byte.BYTE7;                    
+; 135 |         //mcAddr = MC3_ADDR;                                           
+; 137 |         break;                                                         
+; 139 | case 4:                                                                
 ;----------------------------------------------------------------------
-        B         $C$L11,EQ             ; [CPU_] |97| 
-        ; branchcc occurs ; [] |97| 
-        CMPB      AL,#2                 ; [CPU_] |97| 
-        B         $C$L10,EQ             ; [CPU_] |97| 
-        ; branchcc occurs ; [] |97| 
-        CMPB      AL,#3                 ; [CPU_] |97| 
-        B         $C$L9,EQ              ; [CPU_] |97| 
-        ; branchcc occurs ; [] |97| 
-        CMPB      AL,#4                 ; [CPU_] |97| 
-        B         $C$L12,NEQ            ; [CPU_] |97| 
-        ; branchcc occurs ; [] |97| 
+        B         $C$L11,EQ             ; [CPU_] |95| 
+        ; branchcc occurs ; [] |95| 
+        CMPB      AL,#2                 ; [CPU_] |95| 
+        B         $C$L10,EQ             ; [CPU_] |95| 
+        ; branchcc occurs ; [] |95| 
+        CMPB      AL,#3                 ; [CPU_] |95| 
+        B         $C$L9,EQ              ; [CPU_] |95| 
+        ; branchcc occurs ; [] |95| 
+        CMPB      AL,#4                 ; [CPU_] |95| 
+        B         $C$L12,NEQ            ; [CPU_] |95| 
+        ; branchcc occurs ; [] |95| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 141,column 5,is_stmt,isa 0
+;----------------------------------------------------------------------
+; 141 | data[0] = ECanaMboxes.MBOX3.MDL.byte.BYTE0;                            
+; 142 | data[1] = ECanaMboxes.MBOX3.MDL.byte.BYTE1;                            
+;----------------------------------------------------------------------
+        MOVL      XAR4,#_ECanaMboxes    ; [CPU_U] |141| 
+        MOVB      XAR0,#29              ; [CPU_] |141| 
+        MOVW      DP,#_ECanaMboxes+29   ; [CPU_U] 
+        MOV       AL,*+XAR4[AR0]        ; [CPU_] |141| 
+        LSR       AL,8                  ; [CPU_] |141| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 143,column 5,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 143 | data[0] = ECanaMboxes.MBOX3.MDL.byte.BYTE0;                            
-; 144 | data[1] = ECanaMboxes.MBOX3.MDL.byte.BYTE1;                            
+; 143 | data[2] = ECanaMboxes.MBOX3.MDL.byte.BYTE2;                            
 ;----------------------------------------------------------------------
-        MOVL      XAR4,#_ECanaMboxes    ; [CPU_U] |143| 
-        MOVB      XAR0,#29              ; [CPU_] |143| 
-        MOVW      DP,#_ECanaMboxes+29   ; [CPU_U] 
+        MOVB      XAR0,#28              ; [CPU_] |143| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 141,column 5,is_stmt,isa 0
+        MOV       *-SP[8],AL            ; [CPU_] |141| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 142,column 5,is_stmt,isa 0
+        MOVB      AL.LSB,@_ECanaMboxes+29 ; [CPU_] |142| 
+        MOV       *-SP[7],AL            ; [CPU_] |142| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 143,column 5,is_stmt,isa 0
+;----------------------------------------------------------------------
+; 144 | data[3] = ECanaMboxes.MBOX3.MDL.byte.BYTE3;                            
+;----------------------------------------------------------------------
         MOV       AL,*+XAR4[AR0]        ; [CPU_] |143| 
         LSR       AL,8                  ; [CPU_] |143| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 145,column 5,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 145 | data[2] = ECanaMboxes.MBOX3.MDL.byte.BYTE2;                            
+; 145 | data[4] = ECanaMboxes.MBOX3.MDH.byte.BYTE4;                            
 ;----------------------------------------------------------------------
-        MOVB      XAR0,#28              ; [CPU_] |145| 
+        MOVB      XAR0,#31              ; [CPU_] |145| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 143,column 5,is_stmt,isa 0
-        MOV       *-SP[8],AL            ; [CPU_] |143| 
+        MOV       *-SP[6],AL            ; [CPU_] |143| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 144,column 5,is_stmt,isa 0
-        MOVB      AL.LSB,@_ECanaMboxes+29 ; [CPU_] |144| 
-        MOV       *-SP[7],AL            ; [CPU_] |144| 
+        MOVB      AL.LSB,@_ECanaMboxes+28 ; [CPU_] |144| 
+        MOV       *-SP[5],AL            ; [CPU_] |144| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 145,column 5,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 146 | data[3] = ECanaMboxes.MBOX3.MDL.byte.BYTE3;                            
+; 146 | data[5] = ECanaMboxes.MBOX3.MDH.byte.BYTE5;                            
 ;----------------------------------------------------------------------
         MOV       AL,*+XAR4[AR0]        ; [CPU_] |145| 
         LSR       AL,8                  ; [CPU_] |145| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 147,column 5,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 147 | data[4] = ECanaMboxes.MBOX3.MDH.byte.BYTE4;                            
+; 147 | data[6] = ECanaMboxes.MBOX3.MDH.byte.BYTE6;                            
 ;----------------------------------------------------------------------
-        MOVB      XAR0,#31              ; [CPU_] |147| 
+        MOVB      XAR0,#30              ; [CPU_] |147| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 145,column 5,is_stmt,isa 0
-        MOV       *-SP[6],AL            ; [CPU_] |145| 
+        MOV       *-SP[4],AL            ; [CPU_] |145| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 146,column 5,is_stmt,isa 0
-        MOVB      AL.LSB,@_ECanaMboxes+28 ; [CPU_] |146| 
-        MOV       *-SP[5],AL            ; [CPU_] |146| 
+        MOVB      AL.LSB,@_ECanaMboxes+31 ; [CPU_] |146| 
+        MOV       *-SP[3],AL            ; [CPU_] |146| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 147,column 5,is_stmt,isa 0
-;----------------------------------------------------------------------
-; 148 | data[5] = ECanaMboxes.MBOX3.MDH.byte.BYTE5;                            
-;----------------------------------------------------------------------
         MOV       AL,*+XAR4[AR0]        ; [CPU_] |147| 
         LSR       AL,8                  ; [CPU_] |147| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 149,column 5,is_stmt,isa 0
-;----------------------------------------------------------------------
-; 149 | data[6] = ECanaMboxes.MBOX3.MDH.byte.BYTE6;                            
-;----------------------------------------------------------------------
-        MOVB      XAR0,#30              ; [CPU_] |149| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 147,column 5,is_stmt,isa 0
-        MOV       *-SP[4],AL            ; [CPU_] |147| 
+        MOV       *-SP[2],AL            ; [CPU_] |147| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 148,column 5,is_stmt,isa 0
-        MOVB      AL.LSB,@_ECanaMboxes+31 ; [CPU_] |148| 
-        MOV       *-SP[3],AL            ; [CPU_] |148| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 149,column 5,is_stmt,isa 0
-        MOV       AL,*+XAR4[AR0]        ; [CPU_] |149| 
-        LSR       AL,8                  ; [CPU_] |149| 
-        MOV       *-SP[2],AL            ; [CPU_] |149| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 150,column 5,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 150 | data[7] = ECanaMboxes.MBOX3.MDH.byte.BYTE7;                            
-; 151 | //mcAddr = MC4_ADDR;                                                   
+; 148 | data[7] = ECanaMboxes.MBOX3.MDH.byte.BYTE7;                            
+; 149 | //mcAddr = MC4_ADDR;                                                   
 ;----------------------------------------------------------------------
-        MOVB      AL.LSB,@_ECanaMboxes+30 ; [CPU_] |150| 
+        MOVB      AL.LSB,@_ECanaMboxes+30 ; [CPU_] |148| 
 $C$L8:    
-        MOV       *-SP[1],AL            ; [CPU_] |150| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 153,column 5,is_stmt,isa 0
+        MOV       *-SP[1],AL            ; [CPU_] |148| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 151,column 5,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 153 | break;                                                                 
-; 156 | //Send the data to the System object                                   
-; 157 | int voltage = (data[1] << 8) | data[0];                                
-; 158 | voltage = voltage / 5;                                                 
-; 160 | int avgTemp = (data[2] * 10) / 2 - 400;                                
-; 161 | int maxTemp = (data[3] * 10) / 2 - 400;                                
-; 162 | int minTemp = (data[4] * 10) / 2 - 400;                                
-; 163 | int maxTempID = data[5] & 0x0F;                                        
-; 164 | int minTempID = data[5] & 0xF0;                                        
-; 166 | //setShelfVoltage(shelf, voltage);                                     
-; 167 | //setShelfAvgTemp(shelf, avgTemp);                                     
-; 168 | //setShelfMaxTemp(shelf, maxTemp);                                     
-; 169 | //setShelfMinTemp(shelf, minTemp);                                     
-; 170 | //setShelfMaxTempID(shelf, maxTempID);                                 
-; 171 | //setShelfMinTempID(shelf, minTempID);                                 
-; 172 | //setShelfAlarms(shelf, data[6]);                                      
-; 173 | //setShelfErrors(shelf, data[7]);                                      
+; 151 | break;                                                                 
+; 154 | //Send the data to the System object                                   
+; 155 | int voltage = (data[1] << 8) | data[0];                                
+; 156 | voltage = voltage / 5;                                                 
+; 158 | int avgTemp = (data[2] * 10) / 2 - 400;                                
+; 159 | int maxTemp = (data[3] * 10) / 2 - 400;                                
+; 160 | int minTemp = (data[4] * 10) / 2 - 400;                                
+; 161 | int maxTempID = data[5] & 0x0F;                                        
+; 162 | int minTempID = data[5] & 0xF0;                                        
+; 164 | //setShelfVoltage(shelf, voltage);                                     
+; 165 | //setShelfAvgTemp(shelf, avgTemp);                                     
+; 166 | //setShelfMaxTemp(shelf, maxTemp);                                     
+; 167 | //setShelfMinTemp(shelf, minTemp);                                     
+; 168 | //setShelfMaxTempID(shelf, maxTempID);                                 
+; 169 | //setShelfMinTempID(shelf, minTempID);                                 
+; 170 | //setShelfAlarms(shelf, data[6]);                                      
+; 171 | //setShelfErrors(shelf, data[7]);                                      
 ;----------------------------------------------------------------------
-        B         $C$L12,UNC            ; [CPU_] |153| 
-        ; branch occurs ; [] |153| 
+        B         $C$L12,UNC            ; [CPU_] |151| 
+        ; branch occurs ; [] |151| 
 $C$L9:    
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 129,column 5,is_stmt,isa 0
-        MOVL      XAR4,#_ECanaMboxes    ; [CPU_U] |129| 
-        MOVB      XAR0,#21              ; [CPU_] |129| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 127,column 5,is_stmt,isa 0
+        MOVL      XAR4,#_ECanaMboxes    ; [CPU_U] |127| 
+        MOVB      XAR0,#21              ; [CPU_] |127| 
         MOVW      DP,#_ECanaMboxes+21   ; [CPU_U] 
+        MOV       AL,*+XAR4[AR0]        ; [CPU_] |127| 
+        LSR       AL,8                  ; [CPU_] |127| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 129,column 5,is_stmt,isa 0
+        MOVB      XAR0,#20              ; [CPU_] |129| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 127,column 5,is_stmt,isa 0
+        MOV       *-SP[8],AL            ; [CPU_] |127| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 128,column 5,is_stmt,isa 0
+        MOVB      AL.LSB,@_ECanaMboxes+21 ; [CPU_] |128| 
+        MOV       *-SP[7],AL            ; [CPU_] |128| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 129,column 5,is_stmt,isa 0
         MOV       AL,*+XAR4[AR0]        ; [CPU_] |129| 
         LSR       AL,8                  ; [CPU_] |129| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 131,column 5,is_stmt,isa 0
-        MOVB      XAR0,#20              ; [CPU_] |131| 
+        MOVB      XAR0,#23              ; [CPU_] |131| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 129,column 5,is_stmt,isa 0
-        MOV       *-SP[8],AL            ; [CPU_] |129| 
+        MOV       *-SP[6],AL            ; [CPU_] |129| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 130,column 5,is_stmt,isa 0
-        MOVB      AL.LSB,@_ECanaMboxes+21 ; [CPU_] |130| 
-        MOV       *-SP[7],AL            ; [CPU_] |130| 
+        MOVB      AL.LSB,@_ECanaMboxes+20 ; [CPU_] |130| 
+        MOV       *-SP[5],AL            ; [CPU_] |130| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 131,column 5,is_stmt,isa 0
         MOV       AL,*+XAR4[AR0]        ; [CPU_] |131| 
         LSR       AL,8                  ; [CPU_] |131| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 133,column 5,is_stmt,isa 0
-        MOVB      XAR0,#23              ; [CPU_] |133| 
+        MOVB      XAR0,#22              ; [CPU_] |133| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 131,column 5,is_stmt,isa 0
-        MOV       *-SP[6],AL            ; [CPU_] |131| 
+        MOV       *-SP[4],AL            ; [CPU_] |131| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 132,column 5,is_stmt,isa 0
-        MOVB      AL.LSB,@_ECanaMboxes+20 ; [CPU_] |132| 
-        MOV       *-SP[5],AL            ; [CPU_] |132| 
+        MOVB      AL.LSB,@_ECanaMboxes+23 ; [CPU_] |132| 
+        MOV       *-SP[3],AL            ; [CPU_] |132| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 133,column 5,is_stmt,isa 0
         MOV       AL,*+XAR4[AR0]        ; [CPU_] |133| 
         LSR       AL,8                  ; [CPU_] |133| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 135,column 5,is_stmt,isa 0
-        MOVB      XAR0,#22              ; [CPU_] |135| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 133,column 5,is_stmt,isa 0
-        MOV       *-SP[4],AL            ; [CPU_] |133| 
+        MOV       *-SP[2],AL            ; [CPU_] |133| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 134,column 5,is_stmt,isa 0
-        MOVB      AL.LSB,@_ECanaMboxes+23 ; [CPU_] |134| 
-        MOV       *-SP[3],AL            ; [CPU_] |134| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 135,column 5,is_stmt,isa 0
-        MOV       AL,*+XAR4[AR0]        ; [CPU_] |135| 
-        LSR       AL,8                  ; [CPU_] |135| 
-        MOV       *-SP[2],AL            ; [CPU_] |135| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 136,column 5,is_stmt,isa 0
-        MOVB      AL.LSB,@_ECanaMboxes+22 ; [CPU_] |136| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 139,column 5,is_stmt,isa 0
-        B         $C$L8,UNC             ; [CPU_] |139| 
-        ; branch occurs ; [] |139| 
+        MOVB      AL.LSB,@_ECanaMboxes+22 ; [CPU_] |134| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 137,column 5,is_stmt,isa 0
+        B         $C$L8,UNC             ; [CPU_] |137| 
+        ; branch occurs ; [] |137| 
 $C$L10:    
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 115,column 5,is_stmt,isa 0
-        MOVL      XAR4,#_ECanaMboxes    ; [CPU_U] |115| 
-        MOVB      XAR0,#13              ; [CPU_] |115| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 113,column 5,is_stmt,isa 0
+        MOVL      XAR4,#_ECanaMboxes    ; [CPU_U] |113| 
+        MOVB      XAR0,#13              ; [CPU_] |113| 
         MOVW      DP,#_ECanaMboxes+13   ; [CPU_U] 
+        MOV       AL,*+XAR4[AR0]        ; [CPU_] |113| 
+        LSR       AL,8                  ; [CPU_] |113| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 115,column 5,is_stmt,isa 0
+        MOVB      XAR0,#12              ; [CPU_] |115| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 113,column 5,is_stmt,isa 0
+        MOV       *-SP[8],AL            ; [CPU_] |113| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 114,column 5,is_stmt,isa 0
+        MOVB      AL.LSB,@_ECanaMboxes+13 ; [CPU_] |114| 
+        MOV       *-SP[7],AL            ; [CPU_] |114| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 115,column 5,is_stmt,isa 0
         MOV       AL,*+XAR4[AR0]        ; [CPU_] |115| 
         LSR       AL,8                  ; [CPU_] |115| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 117,column 5,is_stmt,isa 0
-        MOVB      XAR0,#12              ; [CPU_] |117| 
+        MOVB      XAR0,#15              ; [CPU_] |117| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 115,column 5,is_stmt,isa 0
-        MOV       *-SP[8],AL            ; [CPU_] |115| 
+        MOV       *-SP[6],AL            ; [CPU_] |115| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 116,column 5,is_stmt,isa 0
-        MOVB      AL.LSB,@_ECanaMboxes+13 ; [CPU_] |116| 
-        MOV       *-SP[7],AL            ; [CPU_] |116| 
+        MOVB      AL.LSB,@_ECanaMboxes+12 ; [CPU_] |116| 
+        MOV       *-SP[5],AL            ; [CPU_] |116| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 117,column 5,is_stmt,isa 0
         MOV       AL,*+XAR4[AR0]        ; [CPU_] |117| 
         LSR       AL,8                  ; [CPU_] |117| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 119,column 5,is_stmt,isa 0
-        MOVB      XAR0,#15              ; [CPU_] |119| 
+        MOVB      XAR0,#14              ; [CPU_] |119| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 117,column 5,is_stmt,isa 0
-        MOV       *-SP[6],AL            ; [CPU_] |117| 
+        MOV       *-SP[4],AL            ; [CPU_] |117| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 118,column 5,is_stmt,isa 0
-        MOVB      AL.LSB,@_ECanaMboxes+12 ; [CPU_] |118| 
-        MOV       *-SP[5],AL            ; [CPU_] |118| 
+        MOVB      AL.LSB,@_ECanaMboxes+15 ; [CPU_] |118| 
+        MOV       *-SP[3],AL            ; [CPU_] |118| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 119,column 5,is_stmt,isa 0
         MOV       AL,*+XAR4[AR0]        ; [CPU_] |119| 
         LSR       AL,8                  ; [CPU_] |119| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 121,column 5,is_stmt,isa 0
-        MOVB      XAR0,#14              ; [CPU_] |121| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 119,column 5,is_stmt,isa 0
-        MOV       *-SP[4],AL            ; [CPU_] |119| 
+        MOV       *-SP[2],AL            ; [CPU_] |119| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 120,column 5,is_stmt,isa 0
-        MOVB      AL.LSB,@_ECanaMboxes+15 ; [CPU_] |120| 
-        MOV       *-SP[3],AL            ; [CPU_] |120| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 121,column 5,is_stmt,isa 0
-        MOV       AL,*+XAR4[AR0]        ; [CPU_] |121| 
-        LSR       AL,8                  ; [CPU_] |121| 
-        MOV       *-SP[2],AL            ; [CPU_] |121| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 122,column 5,is_stmt,isa 0
-        MOVB      AL.LSB,@_ECanaMboxes+14 ; [CPU_] |122| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 125,column 5,is_stmt,isa 0
-        B         $C$L8,UNC             ; [CPU_] |125| 
-        ; branch occurs ; [] |125| 
+        MOVB      AL.LSB,@_ECanaMboxes+14 ; [CPU_] |120| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 123,column 5,is_stmt,isa 0
+        B         $C$L8,UNC             ; [CPU_] |123| 
+        ; branch occurs ; [] |123| 
 $C$L11:    
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 101,column 5,is_stmt,isa 0
-        MOVL      XAR4,#_ECanaMboxes    ; [CPU_U] |101| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 99,column 5,is_stmt,isa 0
+        MOVL      XAR4,#_ECanaMboxes    ; [CPU_U] |99| 
         MOVW      DP,#_ECanaMboxes+5    ; [CPU_U] 
-        MOV       AL,*+XAR4[5]          ; [CPU_] |101| 
+        MOV       AL,*+XAR4[5]          ; [CPU_] |99| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 100,column 5,is_stmt,isa 0
+        MOV       AL,@_ECanaMboxes+5    ; [CPU_] |100| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 101,column 5,is_stmt,isa 0
+        MOV       AL,*+XAR4[4]          ; [CPU_] |101| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 102,column 5,is_stmt,isa 0
-        MOV       AL,@_ECanaMboxes+5    ; [CPU_] |102| 
+        MOV       AL,@_ECanaMboxes+4    ; [CPU_] |102| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 103,column 5,is_stmt,isa 0
-        MOV       AL,*+XAR4[4]          ; [CPU_] |103| 
+        MOV       AL,*+XAR4[7]          ; [CPU_] |103| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 104,column 5,is_stmt,isa 0
-        MOV       AL,@_ECanaMboxes+4    ; [CPU_] |104| 
+        MOV       AL,@_ECanaMboxes+7    ; [CPU_] |104| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 105,column 5,is_stmt,isa 0
-        MOV       AL,*+XAR4[7]          ; [CPU_] |105| 
+        MOV       AL,*+XAR4[6]          ; [CPU_] |105| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 106,column 5,is_stmt,isa 0
-        MOV       AL,@_ECanaMboxes+7    ; [CPU_] |106| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 107,column 5,is_stmt,isa 0
-        MOV       AL,*+XAR4[6]          ; [CPU_] |107| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 108,column 5,is_stmt,isa 0
-        MOV       AL,@_ECanaMboxes+6    ; [CPU_] |108| 
+        MOV       AL,@_ECanaMboxes+6    ; [CPU_] |106| 
 $C$L12:    
         SUBB      SP,#8                 ; [CPU_U] 
 	.dwcfi	cfa_offset, -2
@@ -1221,7 +1221,7 @@ $C$DW$28	.dwtag  DW_TAG_TI_branch
         LRETR     ; [CPU_] 
         ; return occurs ; [] 
 	.dwattr $C$DW$25, DW_AT_TI_end_file("../Source/DSP281x_ECan.c")
-	.dwattr $C$DW$25, DW_AT_TI_end_line(0xaf)
+	.dwattr $C$DW$25, DW_AT_TI_end_line(0xad)
 	.dwattr $C$DW$25, DW_AT_TI_end_column(0x01)
 	.dwendentry
 	.dwendtag $C$DW$25
@@ -1237,14 +1237,14 @@ $C$DW$29	.dwtag  DW_TAG_subprogram
 	.dwattr $C$DW$29, DW_AT_TI_symbol_name("_configCAN")
 	.dwattr $C$DW$29, DW_AT_external
 	.dwattr $C$DW$29, DW_AT_TI_begin_file("../Source/DSP281x_ECan.c")
-	.dwattr $C$DW$29, DW_AT_TI_begin_line(0x1df)
+	.dwattr $C$DW$29, DW_AT_TI_begin_line(0x1d8)
 	.dwattr $C$DW$29, DW_AT_TI_begin_column(0x06)
 	.dwattr $C$DW$29, DW_AT_TI_max_frame_size(-2)
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 479,column 18,is_stmt,address _configCAN,isa 0
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 472,column 18,is_stmt,address _configCAN,isa 0
 
 	.dwfde $C$DW$CIE, _configCAN
 ;----------------------------------------------------------------------
-; 479 | void configCAN() {                                                     
+; 472 | void configCAN() {                                                     
 ;----------------------------------------------------------------------
 
 ;***************************************************************
@@ -1261,389 +1261,389 @@ _configCAN:
 ;* AR5   assigned to $O$C2
 	.dwcfi	cfa_offset, -2
 	.dwcfi	save_reg_to_mem, 26, 0
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 482,column 2,is_stmt,isa 0
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 475,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 482 | ECanaMboxes.MBOX0.MSGID.all  = 0x18FFA000;      // Master Controller 1
+; 475 | ECanaMboxes.MBOX0.MSGID.all  = 0x18FFA000;      // Master Controller 1
 ;     | 100 msec status                                                        
 ;----------------------------------------------------------------------
-        MOV       AL,#40960             ; [CPU_] |482| 
-        MOV       AH,#6399              ; [CPU_] |482| 
+        MOV       AL,#40960             ; [CPU_] |475| 
+        MOV       AH,#6399              ; [CPU_] |475| 
         MOVW      DP,#_ECanaMboxes      ; [CPU_U] 
-        MOVL      @_ECanaMboxes,ACC     ; [CPU_] |482| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 483,column 2,is_stmt,isa 0
+        MOVL      @_ECanaMboxes,ACC     ; [CPU_] |475| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 476,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 483 | ECanaMboxes.MBOX1.MSGID.all  = 0x18FFA001;      // Master Controller 2
+; 476 | ECanaMboxes.MBOX1.MSGID.all  = 0x18FFA001;      // Master Controller 2
 ;     | 100 msec status                                                        
 ;----------------------------------------------------------------------
-        MOV       AL,#40961             ; [CPU_] |483| 
-        MOVL      @_ECanaMboxes+8,ACC   ; [CPU_] |483| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 484,column 2,is_stmt,isa 0
+        MOV       AL,#40961             ; [CPU_] |476| 
+        MOVL      @_ECanaMboxes+8,ACC   ; [CPU_] |476| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 477,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 484 | ECanaMboxes.MBOX2.MSGID.all  = 0x18FFA002;      // Master Controller 3
+; 477 | ECanaMboxes.MBOX2.MSGID.all  = 0x18FFA002;      // Master Controller 3
 ;     | 100 msec status                                                        
-; 485 | ECanaMboxes.MBOX3.MSGID.all  = 0x18FFA003;  // Master Controller 4 100
+; 478 | ECanaMboxes.MBOX3.MSGID.all  = 0x18FFA003;  // Master Controller 4 100
 ;     | msec status                                                            
-; 487 | //      Let's configure next 8 mailboxes for message reception..       
-; 488 | ECanaMboxes.MBOX4.MSGID.all = 0x18FFA100;                              
-; 489 | ECanaMboxes.MBOX5.MSGID.all = 0x18FFA200;                              
-; 490 | ECanaMboxes.MBOX6.MSGID.all = 0x18FFB000;                              
-; 491 | ECanaMboxes.MBOX7.MSGID.all = 0x18FFB100;                              
-; 492 | ECanaMboxes.MBOX8.MSGID.all = 0x18FFB200;                              
-; 493 | ECanaMboxes.MBOX9.MSGID.all = 0x18FFB300;                              
-; 494 | ECanaMboxes.MBOX10.MSGID.all = 0x18FFB400;                             
-; 495 | ECanaMboxes.MBOX11.MSGID.all = 0x18FFB500;                             
-; 497 | //      Transmit...                                                    
-; 498 | ECanaMboxes.MBOX12.MSGID.all   = 0x18FFA3FE;            // Used for wak
+; 480 | //      Let's configure next 8 mailboxes for message reception..       
+; 481 | ECanaMboxes.MBOX4.MSGID.all = 0x18FFA100;                              
+; 482 | ECanaMboxes.MBOX5.MSGID.all = 0x18FFA200;                              
+; 483 | ECanaMboxes.MBOX6.MSGID.all = 0x18FFB000;                              
+; 484 | ECanaMboxes.MBOX7.MSGID.all = 0x18FFB100;                              
+; 485 | ECanaMboxes.MBOX8.MSGID.all = 0x18FFB200;                              
+; 486 | ECanaMboxes.MBOX9.MSGID.all = 0x18FFB300;                              
+; 487 | ECanaMboxes.MBOX10.MSGID.all = 0x18FFB400;                             
+; 488 | ECanaMboxes.MBOX11.MSGID.all = 0x18FFB500;                             
+; 490 | //      Transmit...                                                    
+; 491 | ECanaMboxes.MBOX12.MSGID.all   = 0x18FFA3FE;            // Used for wak
 ;     | ing up modules                                                         
-; 499 | ECanaMboxes.MBOX20.MSGID.all   = 0x18EA000F;            // Module volta
+; 492 | ECanaMboxes.MBOX20.MSGID.all   = 0x18EA000F;            // Module volta
 ;     | ge request                                                             
 ;----------------------------------------------------------------------
-        MOV       AL,#40962             ; [CPU_] |484| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 501,column 2,is_stmt,isa 0
-;----------------------------------------------------------------------
-; 501 | ECanaMboxes.MBOX20.MSGID.bit.IDE = 1;                                  
-;----------------------------------------------------------------------
-        MOVL      XAR5,#_ECanaMboxes    ; [CPU_U] |501| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 484,column 2,is_stmt,isa 0
-        MOVL      @_ECanaMboxes+16,ACC  ; [CPU_] |484| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 485,column 2,is_stmt,isa 0
-        MOV       AL,#40963             ; [CPU_] |485| 
-        MOVL      @_ECanaMboxes+24,ACC  ; [CPU_] |485| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 488,column 2,is_stmt,isa 0
-        MOV       AL,#41216             ; [CPU_] |488| 
-        MOVL      @_ECanaMboxes+32,ACC  ; [CPU_] |488| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 489,column 2,is_stmt,isa 0
-        MOV       AL,#41472             ; [CPU_] |489| 
-        MOVL      @_ECanaMboxes+40,ACC  ; [CPU_] |489| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 490,column 2,is_stmt,isa 0
-        MOV       AL,#45056             ; [CPU_] |490| 
-        MOVL      @_ECanaMboxes+48,ACC  ; [CPU_] |490| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 491,column 2,is_stmt,isa 0
-        MOV       AL,#45312             ; [CPU_] |491| 
-        MOVL      @_ECanaMboxes+56,ACC  ; [CPU_] |491| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 492,column 2,is_stmt,isa 0
-        MOV       AL,#45568             ; [CPU_] |492| 
-        MOVW      DP,#_ECanaMboxes+64   ; [CPU_U] 
-        MOVL      @_ECanaMboxes+64,ACC  ; [CPU_] |492| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 493,column 2,is_stmt,isa 0
-        MOV       AL,#45824             ; [CPU_] |493| 
-        MOVL      @_ECanaMboxes+72,ACC  ; [CPU_] |493| 
+        MOV       AL,#40962             ; [CPU_] |477| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 494,column 2,is_stmt,isa 0
-        MOV       AL,#46080             ; [CPU_] |494| 
-        MOVL      @_ECanaMboxes+80,ACC  ; [CPU_] |494| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 495,column 2,is_stmt,isa 0
-        MOV       AL,#46336             ; [CPU_] |495| 
-        MOVL      @_ECanaMboxes+88,ACC  ; [CPU_] |495| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 498,column 2,is_stmt,isa 0
-        MOV       AL,#41982             ; [CPU_] |498| 
-        MOVL      @_ECanaMboxes+96,ACC  ; [CPU_] |498| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 499,column 2,is_stmt,isa 0
-        MOV       AL,#15                ; [CPU_] |499| 
+;----------------------------------------------------------------------
+; 494 | ECanaMboxes.MBOX20.MSGID.bit.IDE = 1;                                  
+;----------------------------------------------------------------------
+        MOVL      XAR5,#_ECanaMboxes    ; [CPU_U] |494| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 477,column 2,is_stmt,isa 0
+        MOVL      @_ECanaMboxes+16,ACC  ; [CPU_] |477| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 478,column 2,is_stmt,isa 0
+        MOV       AL,#40963             ; [CPU_] |478| 
+        MOVL      @_ECanaMboxes+24,ACC  ; [CPU_] |478| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 481,column 2,is_stmt,isa 0
+        MOV       AL,#41216             ; [CPU_] |481| 
+        MOVL      @_ECanaMboxes+32,ACC  ; [CPU_] |481| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 482,column 2,is_stmt,isa 0
+        MOV       AL,#41472             ; [CPU_] |482| 
+        MOVL      @_ECanaMboxes+40,ACC  ; [CPU_] |482| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 483,column 2,is_stmt,isa 0
+        MOV       AL,#45056             ; [CPU_] |483| 
+        MOVL      @_ECanaMboxes+48,ACC  ; [CPU_] |483| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 484,column 2,is_stmt,isa 0
+        MOV       AL,#45312             ; [CPU_] |484| 
+        MOVL      @_ECanaMboxes+56,ACC  ; [CPU_] |484| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 485,column 2,is_stmt,isa 0
+        MOV       AL,#45568             ; [CPU_] |485| 
+        MOVW      DP,#_ECanaMboxes+64   ; [CPU_U] 
+        MOVL      @_ECanaMboxes+64,ACC  ; [CPU_] |485| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 486,column 2,is_stmt,isa 0
+        MOV       AL,#45824             ; [CPU_] |486| 
+        MOVL      @_ECanaMboxes+72,ACC  ; [CPU_] |486| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 487,column 2,is_stmt,isa 0
+        MOV       AL,#46080             ; [CPU_] |487| 
+        MOVL      @_ECanaMboxes+80,ACC  ; [CPU_] |487| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 488,column 2,is_stmt,isa 0
+        MOV       AL,#46336             ; [CPU_] |488| 
+        MOVL      @_ECanaMboxes+88,ACC  ; [CPU_] |488| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 491,column 2,is_stmt,isa 0
+        MOV       AL,#41982             ; [CPU_] |491| 
+        MOVL      @_ECanaMboxes+96,ACC  ; [CPU_] |491| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 492,column 2,is_stmt,isa 0
+        MOV       AL,#15                ; [CPU_] |492| 
         MOVW      DP,#_ECanaMboxes+160  ; [CPU_U] 
-        MOV       AH,#6378              ; [CPU_] |499| 
-        MOVL      @_ECanaMboxes+160,ACC ; [CPU_] |499| 
+        MOV       AH,#6378              ; [CPU_] |492| 
+        MOVL      @_ECanaMboxes+160,ACC ; [CPU_] |492| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 494,column 2,is_stmt,isa 0
+        MOVL      ACC,XAR5              ; [CPU_] |494| 
+        ADDB      ACC,#161              ; [CPU_] |494| 
+        MOVL      XAR4,ACC              ; [CPU_] |494| 
+        OR        *+XAR4[0],#0x8000     ; [CPU_] |494| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 495,column 2,is_stmt,isa 0
+;----------------------------------------------------------------------
+; 495 | ECanaMboxes.MBOX12.MSGID.bit.IDE = 1;                                  
+;----------------------------------------------------------------------
+        MOVL      XAR4,XAR5             ; [CPU_] |495| 
+        ADDB      XAR4,#97              ; [CPU_] |495| 
+        OR        *+XAR4[0],#0x8000     ; [CPU_] |495| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 496,column 2,is_stmt,isa 0
+;----------------------------------------------------------------------
+; 496 | ECanaMboxes.MBOX11.MSGID.bit.IDE = 1;                                  
+;----------------------------------------------------------------------
+        MOVL      XAR4,XAR5             ; [CPU_] |496| 
+        ADDB      XAR4,#89              ; [CPU_] |496| 
+        OR        *+XAR4[0],#0x8000     ; [CPU_] |496| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 497,column 2,is_stmt,isa 0
+;----------------------------------------------------------------------
+; 497 | ECanaMboxes.MBOX10.MSGID.bit.IDE = 1;                                  
+;----------------------------------------------------------------------
+        MOVL      XAR4,XAR5             ; [CPU_] |497| 
+        ADDB      XAR4,#81              ; [CPU_] |497| 
+        OR        *+XAR4[0],#0x8000     ; [CPU_] |497| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 498,column 2,is_stmt,isa 0
+;----------------------------------------------------------------------
+; 498 | ECanaMboxes.MBOX9.MSGID.bit.IDE = 1;                                   
+;----------------------------------------------------------------------
+        MOVL      XAR4,XAR5             ; [CPU_] |498| 
+        ADDB      XAR4,#73              ; [CPU_] |498| 
+        OR        *+XAR4[0],#0x8000     ; [CPU_] |498| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 499,column 2,is_stmt,isa 0
+;----------------------------------------------------------------------
+; 499 | ECanaMboxes.MBOX8.MSGID.bit.IDE = 1;                                   
+;----------------------------------------------------------------------
+        MOVL      XAR4,XAR5             ; [CPU_] |499| 
+        ADDB      XAR4,#65              ; [CPU_] |499| 
+        OR        *+XAR4[0],#0x8000     ; [CPU_] |499| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 500,column 2,is_stmt,isa 0
+;----------------------------------------------------------------------
+; 500 | ECanaMboxes.MBOX7.MSGID.bit.IDE = 1;                                   
+;----------------------------------------------------------------------
+        MOVL      XAR4,XAR5             ; [CPU_] |500| 
+        ADDB      XAR4,#57              ; [CPU_] |500| 
+        OR        *+XAR4[0],#0x8000     ; [CPU_] |500| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 501,column 2,is_stmt,isa 0
-        MOVL      ACC,XAR5              ; [CPU_] |501| 
-        ADDB      ACC,#161              ; [CPU_] |501| 
-        MOVL      XAR4,ACC              ; [CPU_] |501| 
+;----------------------------------------------------------------------
+; 501 | ECanaMboxes.MBOX6.MSGID.bit.IDE = 1;                                   
+;----------------------------------------------------------------------
+        MOVL      XAR4,XAR5             ; [CPU_] |501| 
+        ADDB      XAR4,#49              ; [CPU_] |501| 
         OR        *+XAR4[0],#0x8000     ; [CPU_] |501| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 502,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 502 | ECanaMboxes.MBOX12.MSGID.bit.IDE = 1;                                  
+; 502 | ECanaMboxes.MBOX5.MSGID.bit.IDE = 1;                                   
 ;----------------------------------------------------------------------
         MOVL      XAR4,XAR5             ; [CPU_] |502| 
-        ADDB      XAR4,#97              ; [CPU_] |502| 
+        ADDB      XAR4,#41              ; [CPU_] |502| 
         OR        *+XAR4[0],#0x8000     ; [CPU_] |502| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 503,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 503 | ECanaMboxes.MBOX11.MSGID.bit.IDE = 1;                                  
+; 503 | ECanaMboxes.MBOX4.MSGID.bit.IDE = 1;                                   
 ;----------------------------------------------------------------------
         MOVL      XAR4,XAR5             ; [CPU_] |503| 
-        ADDB      XAR4,#89              ; [CPU_] |503| 
+        ADDB      XAR4,#33              ; [CPU_] |503| 
         OR        *+XAR4[0],#0x8000     ; [CPU_] |503| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 504,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 504 | ECanaMboxes.MBOX10.MSGID.bit.IDE = 1;                                  
+; 504 | ECanaMboxes.MBOX3.MSGID.bit.IDE = 1;                                   
 ;----------------------------------------------------------------------
         MOVL      XAR4,XAR5             ; [CPU_] |504| 
-        ADDB      XAR4,#81              ; [CPU_] |504| 
+        ADDB      XAR4,#25              ; [CPU_] |504| 
         OR        *+XAR4[0],#0x8000     ; [CPU_] |504| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 505,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 505 | ECanaMboxes.MBOX9.MSGID.bit.IDE = 1;                                   
+; 505 | ECanaMboxes.MBOX2.MSGID.bit.IDE = 1;                                   
 ;----------------------------------------------------------------------
         MOVL      XAR4,XAR5             ; [CPU_] |505| 
-        ADDB      XAR4,#73              ; [CPU_] |505| 
+        ADDB      XAR4,#17              ; [CPU_] |505| 
         OR        *+XAR4[0],#0x8000     ; [CPU_] |505| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 506,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 506 | ECanaMboxes.MBOX8.MSGID.bit.IDE = 1;                                   
+; 506 | ECanaMboxes.MBOX1.MSGID.bit.IDE = 1;                                   
+; 507 | ECanaMboxes.MBOX0.MSGID.bit.IDE = 1;                                   
+; 509 | // Specify the total number of bytes contained in data portion of each
+;     | inbound/outbound message                                               
+; 510 | ECanaMboxes.MBOX0.MSGCTRL.bit.DLC = 8;                                 
 ;----------------------------------------------------------------------
         MOVL      XAR4,XAR5             ; [CPU_] |506| 
-        ADDB      XAR4,#65              ; [CPU_] |506| 
-        OR        *+XAR4[0],#0x8000     ; [CPU_] |506| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 507,column 2,is_stmt,isa 0
-;----------------------------------------------------------------------
-; 507 | ECanaMboxes.MBOX7.MSGID.bit.IDE = 1;                                   
-;----------------------------------------------------------------------
-        MOVL      XAR4,XAR5             ; [CPU_] |507| 
-        ADDB      XAR4,#57              ; [CPU_] |507| 
-        OR        *+XAR4[0],#0x8000     ; [CPU_] |507| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 508,column 2,is_stmt,isa 0
-;----------------------------------------------------------------------
-; 508 | ECanaMboxes.MBOX6.MSGID.bit.IDE = 1;                                   
-;----------------------------------------------------------------------
-        MOVL      XAR4,XAR5             ; [CPU_] |508| 
-        ADDB      XAR4,#49              ; [CPU_] |508| 
-        OR        *+XAR4[0],#0x8000     ; [CPU_] |508| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 509,column 2,is_stmt,isa 0
-;----------------------------------------------------------------------
-; 509 | ECanaMboxes.MBOX5.MSGID.bit.IDE = 1;                                   
-;----------------------------------------------------------------------
-        MOVL      XAR4,XAR5             ; [CPU_] |509| 
-        ADDB      XAR4,#41              ; [CPU_] |509| 
-        OR        *+XAR4[0],#0x8000     ; [CPU_] |509| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 510,column 2,is_stmt,isa 0
-;----------------------------------------------------------------------
-; 510 | ECanaMboxes.MBOX4.MSGID.bit.IDE = 1;                                   
-;----------------------------------------------------------------------
-        MOVL      XAR4,XAR5             ; [CPU_] |510| 
-        ADDB      XAR4,#33              ; [CPU_] |510| 
-        OR        *+XAR4[0],#0x8000     ; [CPU_] |510| 
+        MOVW      DP,#_ECanaMboxes+2    ; [CPU_U] 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 511,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 511 | ECanaMboxes.MBOX3.MSGID.bit.IDE = 1;                                   
+; 511 | ECanaMboxes.MBOX1.MSGCTRL.bit.DLC = 8;                                 
 ;----------------------------------------------------------------------
-        MOVL      XAR4,XAR5             ; [CPU_] |511| 
-        ADDB      XAR4,#25              ; [CPU_] |511| 
-        OR        *+XAR4[0],#0x8000     ; [CPU_] |511| 
+        MOVB      XAR0,#10              ; [CPU_] |511| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 506,column 2,is_stmt,isa 0
+        ADDB      XAR4,#9               ; [CPU_] |506| 
+        OR        *+XAR4[0],#0x8000     ; [CPU_] |506| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 507,column 2,is_stmt,isa 0
+        OR        *+XAR5[1],#0x8000     ; [CPU_] |507| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 510,column 2,is_stmt,isa 0
+        AND       AL,*+XAR5[2],#0xfff8  ; [CPU_] |510| 
+        ORB       AL,#0x08              ; [CPU_] |510| 
+        MOV       @_ECanaMboxes+2,AL    ; [CPU_] |510| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 511,column 2,is_stmt,isa 0
+        AND       AL,*+XAR5[AR0],#0xfff8 ; [CPU_] |511| 
+        ORB       AL,#0x08              ; [CPU_] |511| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 512,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 512 | ECanaMboxes.MBOX2.MSGID.bit.IDE = 1;                                   
+; 512 | ECanaMboxes.MBOX2.MSGCTRL.bit.DLC = 8;                                 
 ;----------------------------------------------------------------------
-        MOVL      XAR4,XAR5             ; [CPU_] |512| 
-        ADDB      XAR4,#17              ; [CPU_] |512| 
-        OR        *+XAR4[0],#0x8000     ; [CPU_] |512| 
+        MOVB      XAR0,#18              ; [CPU_] |512| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 511,column 2,is_stmt,isa 0
+        MOV       @_ECanaMboxes+10,AL   ; [CPU_] |511| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 512,column 2,is_stmt,isa 0
+        AND       AL,*+XAR5[AR0],#0xfff8 ; [CPU_] |512| 
+        ORB       AL,#0x08              ; [CPU_] |512| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 513,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 513 | ECanaMboxes.MBOX1.MSGID.bit.IDE = 1;                                   
-; 514 | ECanaMboxes.MBOX0.MSGID.bit.IDE = 1;                                   
-; 516 | // Specify the total number of bytes contained in data portion of each
-;     | inbound/outbound message                                               
-; 517 | ECanaMboxes.MBOX0.MSGCTRL.bit.DLC = 8;                                 
+; 513 | ECanaMboxes.MBOX3.MSGCTRL.bit.DLC = 8;                                 
 ;----------------------------------------------------------------------
-        MOVL      XAR4,XAR5             ; [CPU_] |513| 
-        MOVW      DP,#_ECanaMboxes+2    ; [CPU_U] 
+        MOVB      XAR0,#26              ; [CPU_] |513| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 512,column 2,is_stmt,isa 0
+        MOV       @_ECanaMboxes+18,AL   ; [CPU_] |512| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 513,column 2,is_stmt,isa 0
+        AND       AL,*+XAR5[AR0],#0xfff8 ; [CPU_] |513| 
+        ORB       AL,#0x08              ; [CPU_] |513| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 514,column 2,is_stmt,isa 0
+;----------------------------------------------------------------------
+; 514 | ECanaMboxes.MBOX4.MSGCTRL.bit.DLC = 8;                                 
+;----------------------------------------------------------------------
+        MOVB      XAR0,#34              ; [CPU_] |514| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 513,column 2,is_stmt,isa 0
+        MOV       @_ECanaMboxes+26,AL   ; [CPU_] |513| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 514,column 2,is_stmt,isa 0
+        AND       AL,*+XAR5[AR0],#0xfff8 ; [CPU_] |514| 
+        ORB       AL,#0x08              ; [CPU_] |514| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 515,column 2,is_stmt,isa 0
+;----------------------------------------------------------------------
+; 515 | ECanaMboxes.MBOX5.MSGCTRL.bit.DLC = 8;                                 
+;----------------------------------------------------------------------
+        MOVB      XAR0,#42              ; [CPU_] |515| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 514,column 2,is_stmt,isa 0
+        MOV       @_ECanaMboxes+34,AL   ; [CPU_] |514| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 515,column 2,is_stmt,isa 0
+        AND       AL,*+XAR5[AR0],#0xfff8 ; [CPU_] |515| 
+        ORB       AL,#0x08              ; [CPU_] |515| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 516,column 2,is_stmt,isa 0
+;----------------------------------------------------------------------
+; 516 | ECanaMboxes.MBOX6.MSGCTRL.bit.DLC = 8;                                 
+;----------------------------------------------------------------------
+        MOVB      XAR0,#50              ; [CPU_] |516| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 515,column 2,is_stmt,isa 0
+        MOV       @_ECanaMboxes+42,AL   ; [CPU_] |515| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 516,column 2,is_stmt,isa 0
+        AND       AL,*+XAR5[AR0],#0xfff8 ; [CPU_] |516| 
+        ORB       AL,#0x08              ; [CPU_] |516| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 517,column 2,is_stmt,isa 0
+;----------------------------------------------------------------------
+; 517 | ECanaMboxes.MBOX7.MSGCTRL.bit.DLC = 8;                                 
+;----------------------------------------------------------------------
+        MOVB      XAR0,#58              ; [CPU_] |517| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 516,column 2,is_stmt,isa 0
+        MOV       @_ECanaMboxes+50,AL   ; [CPU_] |516| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 517,column 2,is_stmt,isa 0
+        AND       AL,*+XAR5[AR0],#0xfff8 ; [CPU_] |517| 
+        ORB       AL,#0x08              ; [CPU_] |517| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 518,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 518 | ECanaMboxes.MBOX1.MSGCTRL.bit.DLC = 8;                                 
+; 518 | ECanaMboxes.MBOX8.MSGCTRL.bit.DLC = 8;                                 
 ;----------------------------------------------------------------------
-        MOVB      XAR0,#10              ; [CPU_] |518| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 513,column 2,is_stmt,isa 0
-        ADDB      XAR4,#9               ; [CPU_] |513| 
-        OR        *+XAR4[0],#0x8000     ; [CPU_] |513| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 514,column 2,is_stmt,isa 0
-        OR        *+XAR5[1],#0x8000     ; [CPU_] |514| 
+        MOVB      XAR0,#66              ; [CPU_] |518| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 517,column 2,is_stmt,isa 0
-        AND       AL,*+XAR5[2],#0xfff8  ; [CPU_] |517| 
-        ORB       AL,#0x08              ; [CPU_] |517| 
-        MOV       @_ECanaMboxes+2,AL    ; [CPU_] |517| 
+        MOV       @_ECanaMboxes+58,AL   ; [CPU_] |517| 
+        MOVW      DP,#_ECanaMboxes+66   ; [CPU_U] 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 518,column 2,is_stmt,isa 0
         AND       AL,*+XAR5[AR0],#0xfff8 ; [CPU_] |518| 
         ORB       AL,#0x08              ; [CPU_] |518| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 519,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 519 | ECanaMboxes.MBOX2.MSGCTRL.bit.DLC = 8;                                 
+; 519 | ECanaMboxes.MBOX9.MSGCTRL.bit.DLC = 8;                                 
 ;----------------------------------------------------------------------
-        MOVB      XAR0,#18              ; [CPU_] |519| 
+        MOVB      XAR0,#74              ; [CPU_] |519| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 518,column 2,is_stmt,isa 0
-        MOV       @_ECanaMboxes+10,AL   ; [CPU_] |518| 
+        MOV       @_ECanaMboxes+66,AL   ; [CPU_] |518| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 519,column 2,is_stmt,isa 0
         AND       AL,*+XAR5[AR0],#0xfff8 ; [CPU_] |519| 
         ORB       AL,#0x08              ; [CPU_] |519| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 520,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 520 | ECanaMboxes.MBOX3.MSGCTRL.bit.DLC = 8;                                 
+; 520 | ECanaMboxes.MBOX10.MSGCTRL.bit.DLC = 8;                                
 ;----------------------------------------------------------------------
-        MOVB      XAR0,#26              ; [CPU_] |520| 
+        MOVB      XAR0,#82              ; [CPU_] |520| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 519,column 2,is_stmt,isa 0
-        MOV       @_ECanaMboxes+18,AL   ; [CPU_] |519| 
+        MOV       @_ECanaMboxes+74,AL   ; [CPU_] |519| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 520,column 2,is_stmt,isa 0
         AND       AL,*+XAR5[AR0],#0xfff8 ; [CPU_] |520| 
         ORB       AL,#0x08              ; [CPU_] |520| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 521,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 521 | ECanaMboxes.MBOX4.MSGCTRL.bit.DLC = 8;                                 
+; 521 | ECanaMboxes.MBOX11.MSGCTRL.bit.DLC = 8;                                
 ;----------------------------------------------------------------------
-        MOVB      XAR0,#34              ; [CPU_] |521| 
+        MOVB      XAR0,#90              ; [CPU_] |521| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 520,column 2,is_stmt,isa 0
-        MOV       @_ECanaMboxes+26,AL   ; [CPU_] |520| 
+        MOV       @_ECanaMboxes+82,AL   ; [CPU_] |520| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 521,column 2,is_stmt,isa 0
         AND       AL,*+XAR5[AR0],#0xfff8 ; [CPU_] |521| 
         ORB       AL,#0x08              ; [CPU_] |521| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 522,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 522 | ECanaMboxes.MBOX5.MSGCTRL.bit.DLC = 8;                                 
+; 522 | ECanaMboxes.MBOX12.MSGCTRL.bit.DLC = 8;                                
 ;----------------------------------------------------------------------
-        MOVB      XAR0,#42              ; [CPU_] |522| 
+        MOVB      XAR0,#98              ; [CPU_] |522| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 521,column 2,is_stmt,isa 0
-        MOV       @_ECanaMboxes+34,AL   ; [CPU_] |521| 
+        MOV       @_ECanaMboxes+90,AL   ; [CPU_] |521| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 522,column 2,is_stmt,isa 0
         AND       AL,*+XAR5[AR0],#0xfff8 ; [CPU_] |522| 
         ORB       AL,#0x08              ; [CPU_] |522| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 523,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 523 | ECanaMboxes.MBOX6.MSGCTRL.bit.DLC = 8;                                 
+; 523 | ECanaMboxes.MBOX20.MSGCTRL.bit.DLC = 8;                                
 ;----------------------------------------------------------------------
-        MOVB      XAR0,#50              ; [CPU_] |523| 
+        MOVB      XAR0,#162             ; [CPU_] |523| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 522,column 2,is_stmt,isa 0
-        MOV       @_ECanaMboxes+42,AL   ; [CPU_] |522| 
+        MOV       @_ECanaMboxes+98,AL   ; [CPU_] |522| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 523,column 2,is_stmt,isa 0
         AND       AL,*+XAR5[AR0],#0xfff8 ; [CPU_] |523| 
-        ORB       AL,#0x08              ; [CPU_] |523| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 524,column 2,is_stmt,isa 0
-;----------------------------------------------------------------------
-; 524 | ECanaMboxes.MBOX7.MSGCTRL.bit.DLC = 8;                                 
-;----------------------------------------------------------------------
-        MOVB      XAR0,#58              ; [CPU_] |524| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 523,column 2,is_stmt,isa 0
-        MOV       @_ECanaMboxes+50,AL   ; [CPU_] |523| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 524,column 2,is_stmt,isa 0
-        AND       AL,*+XAR5[AR0],#0xfff8 ; [CPU_] |524| 
-        ORB       AL,#0x08              ; [CPU_] |524| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 525,column 2,is_stmt,isa 0
-;----------------------------------------------------------------------
-; 525 | ECanaMboxes.MBOX8.MSGCTRL.bit.DLC = 8;                                 
-;----------------------------------------------------------------------
-        MOVB      XAR0,#66              ; [CPU_] |525| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 524,column 2,is_stmt,isa 0
-        MOV       @_ECanaMboxes+58,AL   ; [CPU_] |524| 
-        MOVW      DP,#_ECanaMboxes+66   ; [CPU_U] 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 525,column 2,is_stmt,isa 0
-        AND       AL,*+XAR5[AR0],#0xfff8 ; [CPU_] |525| 
-        ORB       AL,#0x08              ; [CPU_] |525| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 526,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 526 | ECanaMboxes.MBOX9.MSGCTRL.bit.DLC = 8;                                 
+; 526 | ECanaShadow.CANMD.bit.MD20 = 0;                                        
 ;----------------------------------------------------------------------
-        MOVB      XAR0,#74              ; [CPU_] |526| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 525,column 2,is_stmt,isa 0
-        MOV       @_ECanaMboxes+66,AL   ; [CPU_] |525| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 526,column 2,is_stmt,isa 0
-        AND       AL,*+XAR5[AR0],#0xfff8 ; [CPU_] |526| 
-        ORB       AL,#0x08              ; [CPU_] |526| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 527,column 2,is_stmt,isa 0
-;----------------------------------------------------------------------
-; 527 | ECanaMboxes.MBOX10.MSGCTRL.bit.DLC = 8;                                
-;----------------------------------------------------------------------
-        MOVB      XAR0,#82              ; [CPU_] |527| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 526,column 2,is_stmt,isa 0
-        MOV       @_ECanaMboxes+74,AL   ; [CPU_] |526| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 527,column 2,is_stmt,isa 0
-        AND       AL,*+XAR5[AR0],#0xfff8 ; [CPU_] |527| 
-        ORB       AL,#0x08              ; [CPU_] |527| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 528,column 2,is_stmt,isa 0
-;----------------------------------------------------------------------
-; 528 | ECanaMboxes.MBOX11.MSGCTRL.bit.DLC = 8;                                
-;----------------------------------------------------------------------
-        MOVB      XAR0,#90              ; [CPU_] |528| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 527,column 2,is_stmt,isa 0
-        MOV       @_ECanaMboxes+82,AL   ; [CPU_] |527| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 528,column 2,is_stmt,isa 0
-        AND       AL,*+XAR5[AR0],#0xfff8 ; [CPU_] |528| 
-        ORB       AL,#0x08              ; [CPU_] |528| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 529,column 2,is_stmt,isa 0
-;----------------------------------------------------------------------
-; 529 | ECanaMboxes.MBOX12.MSGCTRL.bit.DLC = 8;                                
-;----------------------------------------------------------------------
-        MOVB      XAR0,#98              ; [CPU_] |529| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 528,column 2,is_stmt,isa 0
-        MOV       @_ECanaMboxes+90,AL   ; [CPU_] |528| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 529,column 2,is_stmt,isa 0
-        AND       AL,*+XAR5[AR0],#0xfff8 ; [CPU_] |529| 
-        ORB       AL,#0x08              ; [CPU_] |529| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 530,column 2,is_stmt,isa 0
-;----------------------------------------------------------------------
-; 530 | ECanaMboxes.MBOX20.MSGCTRL.bit.DLC = 8;                                
-;----------------------------------------------------------------------
-        MOVB      XAR0,#162             ; [CPU_] |530| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 529,column 2,is_stmt,isa 0
-        MOV       @_ECanaMboxes+98,AL   ; [CPU_] |529| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 530,column 2,is_stmt,isa 0
-        AND       AL,*+XAR5[AR0],#0xfff8 ; [CPU_] |530| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 533,column 2,is_stmt,isa 0
-;----------------------------------------------------------------------
-; 533 | ECanaShadow.CANMD.bit.MD20 = 0;                                        
-;----------------------------------------------------------------------
-        MOVL      XAR5,#_ECanaShadow    ; [CPU_U] |533| 
-        MOVL      XAR4,XAR5             ; [CPU_] |533| 
+        MOVL      XAR5,#_ECanaShadow    ; [CPU_U] |526| 
+        MOVL      XAR4,XAR5             ; [CPU_] |526| 
         MOVW      DP,#_ECanaMboxes+162  ; [CPU_U] 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 530,column 2,is_stmt,isa 0
-        ORB       AL,#0x08              ; [CPU_] |530| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 533,column 2,is_stmt,isa 0
-        ADDB      XAR4,#3               ; [CPU_] |533| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 530,column 2,is_stmt,isa 0
-        MOV       @_ECanaMboxes+162,AL  ; [CPU_] |530| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 523,column 2,is_stmt,isa 0
+        ORB       AL,#0x08              ; [CPU_] |523| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 526,column 2,is_stmt,isa 0
+        ADDB      XAR4,#3               ; [CPU_] |526| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 523,column 2,is_stmt,isa 0
+        MOV       @_ECanaMboxes+162,AL  ; [CPU_] |523| 
         MOVW      DP,#_ECanaShadow+2    ; [CPU_U] 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 533,column 2,is_stmt,isa 0
-        AND       *+XAR4[0],#0xffef     ; [CPU_] |533| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 534,column 2,is_stmt,isa 0
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 526,column 2,is_stmt,isa 0
+        AND       *+XAR4[0],#0xffef     ; [CPU_] |526| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 527,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 534 | ECanaShadow.CANMD.bit.MD12 = 0;                                        
-; 535 | ECanaShadow.CANMD.bit.MD11 = 1;                                        
-; 536 | ECanaShadow.CANMD.bit.MD10 = 1;                                        
-; 537 | ECanaShadow.CANMD.bit.MD9 = 1;                                         
-; 538 | ECanaShadow.CANMD.bit.MD8 = 1;                                         
-; 539 | ECanaShadow.CANMD.bit.MD7 = 1;                                         
-; 540 | ECanaShadow.CANMD.bit.MD6 = 1;                                         
-; 541 | ECanaShadow.CANMD.bit.MD5 = 1;                                         
-; 542 | ECanaShadow.CANMD.bit.MD4 = 1;                                         
-; 543 | ECanaShadow.CANMD.bit.MD3 = 1;                                         
-; 544 | ECanaShadow.CANMD.bit.MD2 = 1;                                         
-; 545 | ECanaShadow.CANMD.bit.MD1 = 1;                                         
-; 546 | ECanaShadow.CANMD.bit.MD0 = 1;                                         
+; 527 | ECanaShadow.CANMD.bit.MD12 = 0;                                        
+; 528 | ECanaShadow.CANMD.bit.MD11 = 1;                                        
+; 529 | ECanaShadow.CANMD.bit.MD10 = 1;                                        
+; 530 | ECanaShadow.CANMD.bit.MD9 = 1;                                         
+; 531 | ECanaShadow.CANMD.bit.MD8 = 1;                                         
+; 532 | ECanaShadow.CANMD.bit.MD7 = 1;                                         
+; 533 | ECanaShadow.CANMD.bit.MD6 = 1;                                         
+; 534 | ECanaShadow.CANMD.bit.MD5 = 1;                                         
+; 535 | ECanaShadow.CANMD.bit.MD4 = 1;                                         
+; 536 | ECanaShadow.CANMD.bit.MD3 = 1;                                         
+; 537 | ECanaShadow.CANMD.bit.MD2 = 1;                                         
+; 538 | ECanaShadow.CANMD.bit.MD1 = 1;                                         
+; 539 | ECanaShadow.CANMD.bit.MD0 = 1;                                         
 ;----------------------------------------------------------------------
-        AND       AL,*+XAR5[2],#0xe000  ; [CPU_] |534| 
-        OR        AL,#0x0fff            ; [CPU_] |534| 
-        MOV       @_ECanaShadow+2,AL    ; [CPU_] |534| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 548,column 2,is_stmt,isa 0
+        AND       AL,*+XAR5[2],#0xe000  ; [CPU_] |527| 
+        OR        AL,#0x0fff            ; [CPU_] |527| 
+        MOV       @_ECanaShadow+2,AL    ; [CPU_] |527| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 541,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 548 | ECanaRegs.CANMD.all = ECanaShadow.CANMD.all;                           
+; 541 | ECanaRegs.CANMD.all = ECanaShadow.CANMD.all;                           
 ;----------------------------------------------------------------------
-        MOVL      ACC,@_ECanaShadow+2   ; [CPU_] |548| 
+        MOVL      ACC,@_ECanaShadow+2   ; [CPU_] |541| 
         MOVW      DP,#_ECanaRegs+2      ; [CPU_U] 
-        MOVL      @_ECanaRegs+2,ACC     ; [CPU_] |548| 
+        MOVL      @_ECanaRegs+2,ACC     ; [CPU_] |541| 
         MOVW      DP,#_ECanaShadow      ; [CPU_U] 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 550,column 2,is_stmt,isa 0
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 543,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 550 | ECanaShadow.CANME.bit.ME20 = 1; // enable mailbox 20                   
+; 543 | ECanaShadow.CANME.bit.ME20 = 1; // enable mailbox 20                   
 ;----------------------------------------------------------------------
-        OR        *+XAR5[1],#0x0010     ; [CPU_] |550| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 551,column 2,is_stmt,isa 0
+        OR        *+XAR5[1],#0x0010     ; [CPU_] |543| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 544,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 551 | ECanaShadow.CANME.bit.ME12 = 1; // enable mailbox 12                   
-; 552 | ECanaShadow.CANME.bit.ME11 = 1; // enable mailbox 11                   
-; 553 | ECanaShadow.CANME.bit.ME10 = 1; // enable mailbox 10                   
-; 554 | ECanaShadow.CANME.bit.ME9 = 1;  // enable mailbox 9                    
-; 555 | ECanaShadow.CANME.bit.ME8 = 1;  // enable mailbox 8                    
-; 556 | ECanaShadow.CANME.bit.ME7 = 1;  // enable mailbox 7                    
-; 557 | ECanaShadow.CANME.bit.ME6 = 1;  // enable mailbox 6                    
-; 558 | ECanaShadow.CANME.bit.ME5 = 1;  // enable mailbox 5                    
-; 559 | ECanaShadow.CANME.bit.ME4 = 1;  // enable mailbox 4                    
-; 560 | ECanaShadow.CANME.bit.ME3 = 1;  // enable mailbox 3                    
-; 561 | ECanaShadow.CANME.bit.ME2 = 1;  // enable mailbox 2                    
-; 562 | ECanaShadow.CANME.bit.ME1 = 1;  // enable mailbox 1                    
-; 563 | ECanaShadow.CANME.bit.ME0 = 1;  // enable mailbox 0                    
+; 544 | ECanaShadow.CANME.bit.ME12 = 1; // enable mailbox 12                   
+; 545 | ECanaShadow.CANME.bit.ME11 = 1; // enable mailbox 11                   
+; 546 | ECanaShadow.CANME.bit.ME10 = 1; // enable mailbox 10                   
+; 547 | ECanaShadow.CANME.bit.ME9 = 1;  // enable mailbox 9                    
+; 548 | ECanaShadow.CANME.bit.ME8 = 1;  // enable mailbox 8                    
+; 549 | ECanaShadow.CANME.bit.ME7 = 1;  // enable mailbox 7                    
+; 550 | ECanaShadow.CANME.bit.ME6 = 1;  // enable mailbox 6                    
+; 551 | ECanaShadow.CANME.bit.ME5 = 1;  // enable mailbox 5                    
+; 552 | ECanaShadow.CANME.bit.ME4 = 1;  // enable mailbox 4                    
+; 553 | ECanaShadow.CANME.bit.ME3 = 1;  // enable mailbox 3                    
+; 554 | ECanaShadow.CANME.bit.ME2 = 1;  // enable mailbox 2                    
+; 555 | ECanaShadow.CANME.bit.ME1 = 1;  // enable mailbox 1                    
+; 556 | ECanaShadow.CANME.bit.ME0 = 1;  // enable mailbox 0                    
 ;----------------------------------------------------------------------
-        OR        @_ECanaShadow,#0x1fff ; [CPU_] |551| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 565,column 2,is_stmt,isa 0
+        OR        @_ECanaShadow,#0x1fff ; [CPU_] |544| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 558,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 565 | ECanaRegs.CANME.all = ECanaShadow.CANME.all;                           
-; 567 | //      InitUART(TOUCH_CH,TOUCH_BAUD);                                 
+; 558 | ECanaRegs.CANME.all = ECanaShadow.CANME.all;                           
+; 560 | //      InitUART(TOUCH_CH,TOUCH_BAUD);                                 
 ;----------------------------------------------------------------------
-        MOVL      ACC,@_ECanaShadow     ; [CPU_] |565| 
+        MOVL      ACC,@_ECanaShadow     ; [CPU_] |558| 
         MOVW      DP,#_ECanaRegs        ; [CPU_U] 
-        MOVL      @_ECanaRegs,ACC       ; [CPU_] |565| 
+        MOVL      @_ECanaRegs,ACC       ; [CPU_] |558| 
 $C$DW$30	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$30, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$30, DW_AT_TI_return
@@ -1651,7 +1651,7 @@ $C$DW$30	.dwtag  DW_TAG_TI_branch
         LRETR     ; [CPU_] 
         ; return occurs ; [] 
 	.dwattr $C$DW$29, DW_AT_TI_end_file("../Source/DSP281x_ECan.c")
-	.dwattr $C$DW$29, DW_AT_TI_end_line(0x238)
+	.dwattr $C$DW$29, DW_AT_TI_end_line(0x231)
 	.dwattr $C$DW$29, DW_AT_TI_end_column(0x01)
 	.dwendentry
 	.dwendtag $C$DW$29
@@ -1667,24 +1667,24 @@ $C$DW$31	.dwtag  DW_TAG_subprogram
 	.dwattr $C$DW$31, DW_AT_TI_symbol_name("_InitECan")
 	.dwattr $C$DW$31, DW_AT_external
 	.dwattr $C$DW$31, DW_AT_TI_begin_file("../Source/DSP281x_ECan.c")
-	.dwattr $C$DW$31, DW_AT_TI_begin_line(0x129)
+	.dwattr $C$DW$31, DW_AT_TI_begin_line(0x122)
 	.dwattr $C$DW$31, DW_AT_TI_begin_column(0x06)
 	.dwattr $C$DW$31, DW_AT_TI_max_frame_size(-2)
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 298,column 1,is_stmt,address _InitECan,isa 0
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 291,column 1,is_stmt,address _InitECan,isa 0
 
 	.dwfde $C$DW$CIE, _InitECan
 ;----------------------------------------------------------------------
-; 297 | void InitECan(void)                                                    
-; 307 | asm("  EALLOW");                                                       
-; 311 | GpioMuxRegs.GPFMUX.bit.CANTXA_GPIOF6 = 1;                              
-; 312 | GpioMuxRegs.GPFMUX.bit.CANRXA_GPIOF7 = 1;                              
-; 314 | // eCAN control registers require 32-bit access.                       
-; 315 | // If you want to write to a single bit, the compiler may break this   
-; 316 | // access into a 16-bit access.  One solution, that is presented here, 
-; 317 | // is to use a shadow register to force the 32-bit access.             
-; 319 | // Read the entire register into a shadow register.  This access       
-; 320 | // will be 32-bits.  Change the desired bit and copy the value back    
-; 321 | // to the eCAN register with a 32-bit write.                           
+; 290 | void InitECan(void)                                                    
+; 300 | asm("  EALLOW");                                                       
+; 304 | GpioMuxRegs.GPFMUX.bit.CANTXA_GPIOF6 = 1;                              
+; 305 | GpioMuxRegs.GPFMUX.bit.CANRXA_GPIOF7 = 1;                              
+; 307 | // eCAN control registers require 32-bit access.                       
+; 308 | // If you want to write to a single bit, the compiler may break this   
+; 309 | // access into a 16-bit access.  One solution, that is presented here, 
+; 310 | // is to use a shadow register to force the 32-bit access.             
+; 312 | // Read the entire register into a shadow register.  This access       
+; 313 | // will be 32-bits.  Change the desired bit and copy the value back    
+; 314 | // to the eCAN register with a 32-bit write.                           
 ;----------------------------------------------------------------------
 
 ;***************************************************************
@@ -1705,346 +1705,346 @@ _InitECan:
 	.dwcfi	save_reg_to_mem, 26, 0
   EALLOW
         MOVW      DP,#_GpioMuxRegs+20   ; [CPU_U] 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 325,column 5,is_stmt,isa 0
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 318,column 5,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 325 | ECanaShadow.CANTIOC.all = ECanaRegs.CANTIOC.all;                       
+; 318 | ECanaShadow.CANTIOC.all = ECanaRegs.CANTIOC.all;                       
 ;----------------------------------------------------------------------
-        MOVL      XAR4,#_ECanaShadow    ; [CPU_U] |325| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 311,column 2,is_stmt,isa 0
-        OR        @_GpioMuxRegs+20,#0x0040 ; [CPU_] |311| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 325,column 5,is_stmt,isa 0
-        MOVB      XAR0,#42              ; [CPU_] |325| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 326,column 5,is_stmt,isa 0
+        MOVL      XAR4,#_ECanaShadow    ; [CPU_U] |318| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 304,column 2,is_stmt,isa 0
+        OR        @_GpioMuxRegs+20,#0x0040 ; [CPU_] |304| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 318,column 5,is_stmt,isa 0
+        MOVB      XAR0,#42              ; [CPU_] |318| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 319,column 5,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 326 | ECanaShadow.CANTIOC.bit.TXFUNC = 1;                                    
+; 319 | ECanaShadow.CANTIOC.bit.TXFUNC = 1;                                    
 ;----------------------------------------------------------------------
-        MOVL      XAR5,XAR4             ; [CPU_] |326| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 312,column 2,is_stmt,isa 0
-        OR        @_GpioMuxRegs+20,#0x0080 ; [CPU_] |312| 
+        MOVL      XAR5,XAR4             ; [CPU_] |319| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 305,column 2,is_stmt,isa 0
+        OR        @_GpioMuxRegs+20,#0x0080 ; [CPU_] |305| 
         MOVW      DP,#_ECanaRegs+42     ; [CPU_U] 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 325,column 5,is_stmt,isa 0
-        MOVL      ACC,@_ECanaRegs+42    ; [CPU_] |325| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 326,column 5,is_stmt,isa 0
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 318,column 5,is_stmt,isa 0
+        MOVL      ACC,@_ECanaRegs+42    ; [CPU_] |318| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 319,column 5,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 327 | ECanaRegs.CANTIOC.all = ECanaShadow.CANTIOC.all;                       
+; 320 | ECanaRegs.CANTIOC.all = ECanaShadow.CANTIOC.all;                       
 ;----------------------------------------------------------------------
-        ADDB      XAR5,#42              ; [CPU_] |326| 
+        ADDB      XAR5,#42              ; [CPU_] |319| 
         MOVW      DP,#_ECanaShadow+42   ; [CPU_U] 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 325,column 5,is_stmt,isa 0
-        MOVL      *+XAR4[AR0],ACC       ; [CPU_] |325| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 329,column 5,is_stmt,isa 0
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 318,column 5,is_stmt,isa 0
+        MOVL      *+XAR4[AR0],ACC       ; [CPU_] |318| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 322,column 5,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 329 | ECanaShadow.CANRIOC.all = ECanaRegs.CANRIOC.all;                       
+; 322 | ECanaShadow.CANRIOC.all = ECanaRegs.CANRIOC.all;                       
 ;----------------------------------------------------------------------
-        MOVB      XAR0,#44              ; [CPU_] |329| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 326,column 5,is_stmt,isa 0
-        OR        *+XAR5[0],#0x0008     ; [CPU_] |326| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 330,column 5,is_stmt,isa 0
+        MOVB      XAR0,#44              ; [CPU_] |322| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 319,column 5,is_stmt,isa 0
+        OR        *+XAR5[0],#0x0008     ; [CPU_] |319| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 323,column 5,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 330 | ECanaShadow.CANRIOC.bit.RXFUNC = 1;                                    
+; 323 | ECanaShadow.CANRIOC.bit.RXFUNC = 1;                                    
 ;----------------------------------------------------------------------
-        MOVL      XAR5,XAR4             ; [CPU_] |330| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 327,column 5,is_stmt,isa 0
-        MOVL      ACC,@_ECanaShadow+42  ; [CPU_] |327| 
+        MOVL      XAR5,XAR4             ; [CPU_] |323| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 320,column 5,is_stmt,isa 0
+        MOVL      ACC,@_ECanaShadow+42  ; [CPU_] |320| 
         MOVW      DP,#_ECanaRegs+42     ; [CPU_U] 
-        MOVL      @_ECanaRegs+42,ACC    ; [CPU_] |327| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 330,column 5,is_stmt,isa 0
+        MOVL      @_ECanaRegs+42,ACC    ; [CPU_] |320| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 323,column 5,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 331 | ECanaRegs.CANRIOC.all = ECanaShadow.CANRIOC.all;                       
-; 334 | // HECC mode also enables time-stamping feature                        
+; 324 | ECanaRegs.CANRIOC.all = ECanaShadow.CANRIOC.all;                       
+; 327 | // HECC mode also enables time-stamping feature                        
 ;----------------------------------------------------------------------
-        ADDB      XAR5,#44              ; [CPU_] |330| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 329,column 5,is_stmt,isa 0
-        MOVL      ACC,@_ECanaRegs+44    ; [CPU_] |329| 
+        ADDB      XAR5,#44              ; [CPU_] |323| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 322,column 5,is_stmt,isa 0
+        MOVL      ACC,@_ECanaRegs+44    ; [CPU_] |322| 
         MOVW      DP,#_ECanaShadow+44   ; [CPU_U] 
-        MOVL      *+XAR4[AR0],ACC       ; [CPU_] |329| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 336,column 2,is_stmt,isa 0
+        MOVL      *+XAR4[AR0],ACC       ; [CPU_] |322| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 329,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 336 | ECanaShadow.CANMC.all = ECanaRegs.CANMC.all;                           
+; 329 | ECanaShadow.CANMC.all = ECanaRegs.CANMC.all;                           
 ;----------------------------------------------------------------------
-        MOVB      XAR0,#20              ; [CPU_] |336| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 330,column 5,is_stmt,isa 0
-        OR        *+XAR5[0],#0x0008     ; [CPU_] |330| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 331,column 5,is_stmt,isa 0
-        MOVL      ACC,@_ECanaShadow+44  ; [CPU_] |331| 
+        MOVB      XAR0,#20              ; [CPU_] |329| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 323,column 5,is_stmt,isa 0
+        OR        *+XAR5[0],#0x0008     ; [CPU_] |323| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 324,column 5,is_stmt,isa 0
+        MOVL      ACC,@_ECanaShadow+44  ; [CPU_] |324| 
         MOVW      DP,#_ECanaRegs+44     ; [CPU_U] 
-        MOVL      @_ECanaRegs+44,ACC    ; [CPU_] |331| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 336,column 2,is_stmt,isa 0
-        MOVL      ACC,@_ECanaRegs+20    ; [CPU_] |336| 
+        MOVL      @_ECanaRegs+44,ACC    ; [CPU_] |324| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 329,column 2,is_stmt,isa 0
+        MOVL      ACC,@_ECanaRegs+20    ; [CPU_] |329| 
         MOVW      DP,#_ECanaShadow+20   ; [CPU_U] 
-        MOVL      *+XAR4[AR0],ACC       ; [CPU_] |336| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 337,column 2,is_stmt,isa 0
+        MOVL      *+XAR4[AR0],ACC       ; [CPU_] |329| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 330,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 337 | ECanaShadow.CANMC.bit.SCB = 1;                                         
+; 330 | ECanaShadow.CANMC.bit.SCB = 1;                                         
 ;----------------------------------------------------------------------
-        ADDB      XAR4,#20              ; [CPU_] |337| 
-        OR        *+XAR4[0],#0x2000     ; [CPU_] |337| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 338,column 2,is_stmt,isa 0
+        ADDB      XAR4,#20              ; [CPU_] |330| 
+        OR        *+XAR4[0],#0x2000     ; [CPU_] |330| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 331,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 338 | ECanaRegs.CANMC.all = ECanaShadow.CANMC.all;                           
-; 341 | // Some bits of MSGCTRL register may come up in an unknown state. For p
+; 331 | ECanaRegs.CANMC.all = ECanaShadow.CANMC.all;                           
+; 334 | // Some bits of MSGCTRL register may come up in an unknown state. For p
 ;     | roper operation,                                                       
-; 342 | // all bits (including reserved bits) of MSGCTRL must be initialized to
+; 335 | // all bits (including reserved bits) of MSGCTRL must be initialized to
 ;     |  zero                                                                  
-; 344 | ECanaMboxes.MBOX0.MSGCTRL.all = 0x00000000;                            
-; 345 | ECanaMboxes.MBOX1.MSGCTRL.all = 0x00000000;                            
-; 346 | ECanaMboxes.MBOX2.MSGCTRL.all = 0x00000000;                            
-; 347 | ECanaMboxes.MBOX3.MSGCTRL.all = 0x00000000;                            
-; 348 | ECanaMboxes.MBOX4.MSGCTRL.all = 0x00000000;                            
-; 349 | ECanaMboxes.MBOX5.MSGCTRL.all = 0x00000000;                            
-; 350 | ECanaMboxes.MBOX6.MSGCTRL.all = 0x00000000;                            
-; 351 | ECanaMboxes.MBOX7.MSGCTRL.all = 0x00000000;                            
-; 352 | ECanaMboxes.MBOX8.MSGCTRL.all = 0x00000000;                            
-; 353 | ECanaMboxes.MBOX9.MSGCTRL.all = 0x00000000;                            
-; 354 | ECanaMboxes.MBOX10.MSGCTRL.all = 0x00000000;                           
-; 355 | ECanaMboxes.MBOX11.MSGCTRL.all = 0x00000000;                           
-; 356 | ECanaMboxes.MBOX12.MSGCTRL.all = 0x00000000;                           
-; 357 | ECanaMboxes.MBOX13.MSGCTRL.all = 0x00000000;                           
-; 358 | ECanaMboxes.MBOX14.MSGCTRL.all = 0x00000000;                           
-; 359 | ECanaMboxes.MBOX15.MSGCTRL.all = 0x00000000;                           
-; 360 | ECanaMboxes.MBOX16.MSGCTRL.all = 0x00000000;                           
-; 361 | ECanaMboxes.MBOX17.MSGCTRL.all = 0x00000000;                           
-; 362 | ECanaMboxes.MBOX18.MSGCTRL.all = 0x00000000;                           
-; 363 | ECanaMboxes.MBOX19.MSGCTRL.all = 0x00000000;                           
-; 364 | ECanaMboxes.MBOX20.MSGCTRL.all = 0x00000000;                           
-; 365 | ECanaMboxes.MBOX21.MSGCTRL.all = 0x00000000;                           
-; 366 | ECanaMboxes.MBOX22.MSGCTRL.all = 0x00000000;                           
-; 367 | ECanaMboxes.MBOX23.MSGCTRL.all = 0x00000000;                           
-; 368 | ECanaMboxes.MBOX24.MSGCTRL.all = 0x00000000;                           
-; 369 | ECanaMboxes.MBOX25.MSGCTRL.all = 0x00000000;                           
-; 370 | ECanaMboxes.MBOX26.MSGCTRL.all = 0x00000000;                           
-; 371 | ECanaMboxes.MBOX27.MSGCTRL.all = 0x00000000;                           
-; 372 | ECanaMboxes.MBOX28.MSGCTRL.all = 0x00000000;                           
-; 373 | ECanaMboxes.MBOX29.MSGCTRL.all = 0x00000000;                           
-; 374 | ECanaMboxes.MBOX30.MSGCTRL.all = 0x00000000;                           
-; 375 | ECanaMboxes.MBOX31.MSGCTRL.all = 0x00000000;                           
-; 377 | // TAn, RMPn, GIFn bits are all zero upon reset and are cleared again  
-; 378 | // as a matter of precaution.                                          
-; 382 | ECanaRegs.CANTA.all     = 0xFFFFFFFF;                                  
-; 386 | ECanaRegs.CANRMP.all = 0xFFFFFFFF;                                     
-; 390 | ECanaRegs.CANGIF0.all = 0xFFFFFFFF;                                    
-; 391 | ECanaRegs.CANGIF1.all = 0xFFFFFFFF;                                    
-; 395 | ECanaShadow.CANMC.all = ECanaRegs.CANMC.all;                           
-; 396 | ECanaShadow.CANMC.bit.CCR = 1 ;                         // Set CCR = 1 
-; 397 | ECanaRegs.CANMC.all = ECanaShadow.CANMC.all;                           
-; 399 | ECanaShadow.CANES.all = ECanaRegs.CANES.all;                           
-; 401 | // Wait until the CPU has been granted permission to change the configu
+; 337 | ECanaMboxes.MBOX0.MSGCTRL.all = 0x00000000;                            
+; 338 | ECanaMboxes.MBOX1.MSGCTRL.all = 0x00000000;                            
+; 339 | ECanaMboxes.MBOX2.MSGCTRL.all = 0x00000000;                            
+; 340 | ECanaMboxes.MBOX3.MSGCTRL.all = 0x00000000;                            
+; 341 | ECanaMboxes.MBOX4.MSGCTRL.all = 0x00000000;                            
+; 342 | ECanaMboxes.MBOX5.MSGCTRL.all = 0x00000000;                            
+; 343 | ECanaMboxes.MBOX6.MSGCTRL.all = 0x00000000;                            
+; 344 | ECanaMboxes.MBOX7.MSGCTRL.all = 0x00000000;                            
+; 345 | ECanaMboxes.MBOX8.MSGCTRL.all = 0x00000000;                            
+; 346 | ECanaMboxes.MBOX9.MSGCTRL.all = 0x00000000;                            
+; 347 | ECanaMboxes.MBOX10.MSGCTRL.all = 0x00000000;                           
+; 348 | ECanaMboxes.MBOX11.MSGCTRL.all = 0x00000000;                           
+; 349 | ECanaMboxes.MBOX12.MSGCTRL.all = 0x00000000;                           
+; 350 | ECanaMboxes.MBOX13.MSGCTRL.all = 0x00000000;                           
+; 351 | ECanaMboxes.MBOX14.MSGCTRL.all = 0x00000000;                           
+; 352 | ECanaMboxes.MBOX15.MSGCTRL.all = 0x00000000;                           
+; 353 | ECanaMboxes.MBOX16.MSGCTRL.all = 0x00000000;                           
+; 354 | ECanaMboxes.MBOX17.MSGCTRL.all = 0x00000000;                           
+; 355 | ECanaMboxes.MBOX18.MSGCTRL.all = 0x00000000;                           
+; 356 | ECanaMboxes.MBOX19.MSGCTRL.all = 0x00000000;                           
+; 357 | ECanaMboxes.MBOX20.MSGCTRL.all = 0x00000000;                           
+; 358 | ECanaMboxes.MBOX21.MSGCTRL.all = 0x00000000;                           
+; 359 | ECanaMboxes.MBOX22.MSGCTRL.all = 0x00000000;                           
+; 360 | ECanaMboxes.MBOX23.MSGCTRL.all = 0x00000000;                           
+; 361 | ECanaMboxes.MBOX24.MSGCTRL.all = 0x00000000;                           
+; 362 | ECanaMboxes.MBOX25.MSGCTRL.all = 0x00000000;                           
+; 363 | ECanaMboxes.MBOX26.MSGCTRL.all = 0x00000000;                           
+; 364 | ECanaMboxes.MBOX27.MSGCTRL.all = 0x00000000;                           
+; 365 | ECanaMboxes.MBOX28.MSGCTRL.all = 0x00000000;                           
+; 366 | ECanaMboxes.MBOX29.MSGCTRL.all = 0x00000000;                           
+; 367 | ECanaMboxes.MBOX30.MSGCTRL.all = 0x00000000;                           
+; 368 | ECanaMboxes.MBOX31.MSGCTRL.all = 0x00000000;                           
+; 370 | // TAn, RMPn, GIFn bits are all zero upon reset and are cleared again  
+; 371 | // as a matter of precaution.                                          
+; 375 | ECanaRegs.CANTA.all     = 0xFFFFFFFF;                                  
+; 379 | ECanaRegs.CANRMP.all = 0xFFFFFFFF;                                     
+; 383 | ECanaRegs.CANGIF0.all = 0xFFFFFFFF;                                    
+; 384 | ECanaRegs.CANGIF1.all = 0xFFFFFFFF;                                    
+; 388 | ECanaShadow.CANMC.all = ECanaRegs.CANMC.all;                           
+; 389 | ECanaShadow.CANMC.bit.CCR = 1 ;                         // Set CCR = 1 
+; 390 | ECanaRegs.CANMC.all = ECanaShadow.CANMC.all;                           
+; 392 | ECanaShadow.CANES.all = ECanaRegs.CANES.all;                           
+; 394 | // Wait until the CPU has been granted permission to change the configu
 ;     | ration registers                                                       
-; 402 | do                                                                     
+; 395 | do                                                                     
 ;----------------------------------------------------------------------
-        MOVL      ACC,@_ECanaShadow+20  ; [CPU_] |338| 
+        MOVL      ACC,@_ECanaShadow+20  ; [CPU_] |331| 
         MOVW      DP,#_ECanaRegs+20     ; [CPU_U] 
-        MOVL      @_ECanaRegs+20,ACC    ; [CPU_] |338| 
+        MOVL      @_ECanaRegs+20,ACC    ; [CPU_] |331| 
         MOVW      DP,#_ECanaMboxes+2    ; [CPU_U] 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 404,column 7,is_stmt,isa 0
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 397,column 7,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 404 | ECanaShadow.CANES.all = ECanaRegs.CANES.all;                           
+; 397 | ECanaShadow.CANES.all = ECanaRegs.CANES.all;                           
 ;----------------------------------------------------------------------
-        MOVL      XAR4,#_ECanaShadow    ; [CPU_U] |404| 
+        MOVL      XAR4,#_ECanaShadow    ; [CPU_U] |397| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 337,column 5,is_stmt,isa 0
+        MOVB      ACC,#0                ; [CPU_] |337| 
+        MOVL      @_ECanaMboxes+2,ACC   ; [CPU_] |337| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 338,column 5,is_stmt,isa 0
+        MOVL      @_ECanaMboxes+10,ACC  ; [CPU_] |338| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 339,column 5,is_stmt,isa 0
+        MOVL      @_ECanaMboxes+18,ACC  ; [CPU_] |339| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 340,column 5,is_stmt,isa 0
+        MOVL      @_ECanaMboxes+26,ACC  ; [CPU_] |340| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 341,column 5,is_stmt,isa 0
+        MOVL      @_ECanaMboxes+34,ACC  ; [CPU_] |341| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 342,column 5,is_stmt,isa 0
+        MOVL      @_ECanaMboxes+42,ACC  ; [CPU_] |342| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 343,column 5,is_stmt,isa 0
+        MOVL      @_ECanaMboxes+50,ACC  ; [CPU_] |343| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 344,column 5,is_stmt,isa 0
-        MOVB      ACC,#0                ; [CPU_] |344| 
-        MOVL      @_ECanaMboxes+2,ACC   ; [CPU_] |344| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 345,column 5,is_stmt,isa 0
-        MOVL      @_ECanaMboxes+10,ACC  ; [CPU_] |345| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 346,column 5,is_stmt,isa 0
-        MOVL      @_ECanaMboxes+18,ACC  ; [CPU_] |346| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 347,column 5,is_stmt,isa 0
-        MOVL      @_ECanaMboxes+26,ACC  ; [CPU_] |347| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 348,column 5,is_stmt,isa 0
-        MOVL      @_ECanaMboxes+34,ACC  ; [CPU_] |348| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 349,column 5,is_stmt,isa 0
-        MOVL      @_ECanaMboxes+42,ACC  ; [CPU_] |349| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 350,column 5,is_stmt,isa 0
-        MOVL      @_ECanaMboxes+50,ACC  ; [CPU_] |350| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 351,column 5,is_stmt,isa 0
-        MOVL      @_ECanaMboxes+58,ACC  ; [CPU_] |351| 
+        MOVL      @_ECanaMboxes+58,ACC  ; [CPU_] |344| 
         MOVW      DP,#_ECanaMboxes+66   ; [CPU_U] 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 345,column 5,is_stmt,isa 0
+        MOVL      @_ECanaMboxes+66,ACC  ; [CPU_] |345| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 346,column 5,is_stmt,isa 0
+        MOVL      @_ECanaMboxes+74,ACC  ; [CPU_] |346| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 347,column 5,is_stmt,isa 0
+        MOVL      @_ECanaMboxes+82,ACC  ; [CPU_] |347| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 348,column 5,is_stmt,isa 0
+        MOVL      @_ECanaMboxes+90,ACC  ; [CPU_] |348| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 349,column 5,is_stmt,isa 0
+        MOVL      @_ECanaMboxes+98,ACC  ; [CPU_] |349| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 350,column 5,is_stmt,isa 0
+        MOVL      @_ECanaMboxes+106,ACC ; [CPU_] |350| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 351,column 5,is_stmt,isa 0
+        MOVL      @_ECanaMboxes+114,ACC ; [CPU_] |351| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 352,column 5,is_stmt,isa 0
-        MOVL      @_ECanaMboxes+66,ACC  ; [CPU_] |352| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 353,column 5,is_stmt,isa 0
-        MOVL      @_ECanaMboxes+74,ACC  ; [CPU_] |353| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 354,column 5,is_stmt,isa 0
-        MOVL      @_ECanaMboxes+82,ACC  ; [CPU_] |354| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 355,column 5,is_stmt,isa 0
-        MOVL      @_ECanaMboxes+90,ACC  ; [CPU_] |355| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 356,column 5,is_stmt,isa 0
-        MOVL      @_ECanaMboxes+98,ACC  ; [CPU_] |356| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 357,column 5,is_stmt,isa 0
-        MOVL      @_ECanaMboxes+106,ACC ; [CPU_] |357| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 358,column 5,is_stmt,isa 0
-        MOVL      @_ECanaMboxes+114,ACC ; [CPU_] |358| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 359,column 5,is_stmt,isa 0
-        MOVL      @_ECanaMboxes+122,ACC ; [CPU_] |359| 
+        MOVL      @_ECanaMboxes+122,ACC ; [CPU_] |352| 
         MOVW      DP,#_ECanaMboxes+130  ; [CPU_U] 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 353,column 5,is_stmt,isa 0
+        MOVL      @_ECanaMboxes+130,ACC ; [CPU_] |353| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 354,column 5,is_stmt,isa 0
+        MOVL      @_ECanaMboxes+138,ACC ; [CPU_] |354| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 355,column 5,is_stmt,isa 0
+        MOVL      @_ECanaMboxes+146,ACC ; [CPU_] |355| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 356,column 5,is_stmt,isa 0
+        MOVL      @_ECanaMboxes+154,ACC ; [CPU_] |356| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 357,column 5,is_stmt,isa 0
+        MOVL      @_ECanaMboxes+162,ACC ; [CPU_] |357| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 358,column 5,is_stmt,isa 0
+        MOVL      @_ECanaMboxes+170,ACC ; [CPU_] |358| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 359,column 5,is_stmt,isa 0
+        MOVL      @_ECanaMboxes+178,ACC ; [CPU_] |359| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 360,column 5,is_stmt,isa 0
-        MOVL      @_ECanaMboxes+130,ACC ; [CPU_] |360| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 361,column 5,is_stmt,isa 0
-        MOVL      @_ECanaMboxes+138,ACC ; [CPU_] |361| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 362,column 5,is_stmt,isa 0
-        MOVL      @_ECanaMboxes+146,ACC ; [CPU_] |362| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 363,column 5,is_stmt,isa 0
-        MOVL      @_ECanaMboxes+154,ACC ; [CPU_] |363| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 364,column 5,is_stmt,isa 0
-        MOVL      @_ECanaMboxes+162,ACC ; [CPU_] |364| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 365,column 5,is_stmt,isa 0
-        MOVL      @_ECanaMboxes+170,ACC ; [CPU_] |365| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 366,column 5,is_stmt,isa 0
-        MOVL      @_ECanaMboxes+178,ACC ; [CPU_] |366| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 367,column 5,is_stmt,isa 0
-        MOVL      @_ECanaMboxes+186,ACC ; [CPU_] |367| 
+        MOVL      @_ECanaMboxes+186,ACC ; [CPU_] |360| 
         MOVW      DP,#_ECanaMboxes+194  ; [CPU_U] 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 361,column 5,is_stmt,isa 0
+        MOVL      @_ECanaMboxes+194,ACC ; [CPU_] |361| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 362,column 5,is_stmt,isa 0
+        MOVL      @_ECanaMboxes+202,ACC ; [CPU_] |362| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 363,column 5,is_stmt,isa 0
+        MOVL      @_ECanaMboxes+210,ACC ; [CPU_] |363| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 364,column 5,is_stmt,isa 0
+        MOVL      @_ECanaMboxes+218,ACC ; [CPU_] |364| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 365,column 5,is_stmt,isa 0
+        MOVL      @_ECanaMboxes+226,ACC ; [CPU_] |365| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 366,column 5,is_stmt,isa 0
+        MOVL      @_ECanaMboxes+234,ACC ; [CPU_] |366| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 367,column 5,is_stmt,isa 0
+        MOVL      @_ECanaMboxes+242,ACC ; [CPU_] |367| 
 	.dwpsn	file "../Source/DSP281x_ECan.c",line 368,column 5,is_stmt,isa 0
-        MOVL      @_ECanaMboxes+194,ACC ; [CPU_] |368| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 369,column 5,is_stmt,isa 0
-        MOVL      @_ECanaMboxes+202,ACC ; [CPU_] |369| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 370,column 5,is_stmt,isa 0
-        MOVL      @_ECanaMboxes+210,ACC ; [CPU_] |370| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 371,column 5,is_stmt,isa 0
-        MOVL      @_ECanaMboxes+218,ACC ; [CPU_] |371| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 372,column 5,is_stmt,isa 0
-        MOVL      @_ECanaMboxes+226,ACC ; [CPU_] |372| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 373,column 5,is_stmt,isa 0
-        MOVL      @_ECanaMboxes+234,ACC ; [CPU_] |373| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 374,column 5,is_stmt,isa 0
-        MOVL      @_ECanaMboxes+242,ACC ; [CPU_] |374| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 375,column 5,is_stmt,isa 0
-        MOVL      @_ECanaMboxes+250,ACC ; [CPU_] |375| 
+        MOVL      @_ECanaMboxes+250,ACC ; [CPU_] |368| 
         MOVW      DP,#_ECanaRegs+8      ; [CPU_U] 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 382,column 2,is_stmt,isa 0
-        SUBB      ACC,#1                ; [CPU_] |382| 
-        MOVL      @_ECanaRegs+8,ACC     ; [CPU_] |382| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 386,column 2,is_stmt,isa 0
-        MOVB      ACC,#0                ; [CPU_] |386| 
-        SUBB      ACC,#1                ; [CPU_] |386| 
-        MOVL      @_ECanaRegs+12,ACC    ; [CPU_] |386| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 390,column 2,is_stmt,isa 0
-        MOVB      ACC,#0                ; [CPU_] |390| 
-        SUBB      ACC,#1                ; [CPU_] |390| 
-        MOVL      @_ECanaRegs+30,ACC    ; [CPU_] |390| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 391,column 2,is_stmt,isa 0
-        MOVB      ACC,#0                ; [CPU_] |391| 
-        SUBB      ACC,#1                ; [CPU_] |391| 
-        MOVL      @_ECanaRegs+34,ACC    ; [CPU_] |391| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 395,column 2,is_stmt,isa 0
-        MOVL      ACC,@_ECanaRegs+20    ; [CPU_] |395| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 375,column 2,is_stmt,isa 0
+        SUBB      ACC,#1                ; [CPU_] |375| 
+        MOVL      @_ECanaRegs+8,ACC     ; [CPU_] |375| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 379,column 2,is_stmt,isa 0
+        MOVB      ACC,#0                ; [CPU_] |379| 
+        SUBB      ACC,#1                ; [CPU_] |379| 
+        MOVL      @_ECanaRegs+12,ACC    ; [CPU_] |379| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 383,column 2,is_stmt,isa 0
+        MOVB      ACC,#0                ; [CPU_] |383| 
+        SUBB      ACC,#1                ; [CPU_] |383| 
+        MOVL      @_ECanaRegs+30,ACC    ; [CPU_] |383| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 384,column 2,is_stmt,isa 0
+        MOVB      ACC,#0                ; [CPU_] |384| 
+        SUBB      ACC,#1                ; [CPU_] |384| 
+        MOVL      @_ECanaRegs+34,ACC    ; [CPU_] |384| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 388,column 2,is_stmt,isa 0
+        MOVL      ACC,@_ECanaRegs+20    ; [CPU_] |388| 
         MOVW      DP,#_ECanaShadow+20   ; [CPU_U] 
-        MOVL      @_ECanaShadow+20,ACC  ; [CPU_] |395| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 396,column 2,is_stmt,isa 0
-        OR        @_ECanaShadow+20,#0x1000 ; [CPU_] |396| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 397,column 5,is_stmt,isa 0
-        MOVL      ACC,@_ECanaShadow+20  ; [CPU_] |397| 
+        MOVL      @_ECanaShadow+20,ACC  ; [CPU_] |388| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 389,column 2,is_stmt,isa 0
+        OR        @_ECanaShadow+20,#0x1000 ; [CPU_] |389| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 390,column 5,is_stmt,isa 0
+        MOVL      ACC,@_ECanaShadow+20  ; [CPU_] |390| 
         MOVW      DP,#_ECanaRegs+20     ; [CPU_U] 
-        MOVL      @_ECanaRegs+20,ACC    ; [CPU_] |397| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 399,column 5,is_stmt,isa 0
-        MOVL      ACC,@_ECanaRegs+24    ; [CPU_] |399| 
+        MOVL      @_ECanaRegs+20,ACC    ; [CPU_] |390| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 392,column 5,is_stmt,isa 0
+        MOVL      ACC,@_ECanaRegs+24    ; [CPU_] |392| 
 $C$L13:    
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 404,column 7,is_stmt,isa 0
-        MOVB      XAR0,#24              ; [CPU_] |404| 
-        MOVL      ACC,@_ECanaRegs+24    ; [CPU_] |404| 
-        MOVL      *+XAR4[AR0],ACC       ; [CPU_] |404| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 405,column 13,is_stmt,isa 0
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 397,column 7,is_stmt,isa 0
+        MOVB      XAR0,#24              ; [CPU_] |397| 
+        MOVL      ACC,@_ECanaRegs+24    ; [CPU_] |397| 
+        MOVL      *+XAR4[AR0],ACC       ; [CPU_] |397| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 398,column 13,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 405 | } while(ECanaShadow.CANES.bit.CCE != 1 );           // Wait for CCE bit
+; 398 | } while(ECanaShadow.CANES.bit.CCE != 1 );           // Wait for CCE bit
 ;     |  to be set..                                                           
 ;----------------------------------------------------------------------
-        MOVB      XAR0,#24              ; [CPU_] |405| 
-        TBIT      *+XAR4[AR0],#4        ; [CPU_] |405| 
-        B         $C$L13,NTC            ; [CPU_] |405| 
-        ; branchcc occurs ; [] |405| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 407,column 5,is_stmt,isa 0
+        MOVB      XAR0,#24              ; [CPU_] |398| 
+        TBIT      *+XAR4[AR0],#4        ; [CPU_] |398| 
+        B         $C$L13,NTC            ; [CPU_] |398| 
+        ; branchcc occurs ; [] |398| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 400,column 5,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 407 | ECanaShadow.CANBTC.all = 0;                                            
-; 408 | //    ECanaShadow.CANBTC.bit.BRPREG = 9;
+; 400 | ECanaShadow.CANBTC.all = 0;                                            
+; 401 | //    ECanaShadow.CANBTC.bit.BRPREG = 9;
 ;     |  // 1 Mbps @ 150 MHz SYSCLKOUT                                         
 ;----------------------------------------------------------------------
-        MOVB      XAR0,#22              ; [CPU_] |407| 
-        MOVB      ACC,#0                ; [CPU_] |407| 
+        MOVB      XAR0,#22              ; [CPU_] |400| 
+        MOVB      ACC,#0                ; [CPU_] |400| 
         MOVW      DP,#_ECanaShadow+23   ; [CPU_U] 
-        MOVL      *+XAR4[AR0],ACC       ; [CPU_] |407| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 409,column 5,is_stmt,isa 0
+        MOVL      *+XAR4[AR0],ACC       ; [CPU_] |400| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 402,column 5,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 409 | ECanaShadow.CANBTC.bit.BRPREG = 39;                         // 0.25 Mbp
+; 402 | ECanaShadow.CANBTC.bit.BRPREG = 39;                         // 0.25 Mbp
 ;     | s @ 150 MHz SYSCLKOUT                                                  
 ;----------------------------------------------------------------------
-        MOVB      XAR0,#23              ; [CPU_] |409| 
-        AND       AL,*+XAR4[AR0],#0xff00 ; [CPU_] |409| 
-        ORB       AL,#0x27              ; [CPU_] |409| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 410,column 5,is_stmt,isa 0
+        MOVB      XAR0,#23              ; [CPU_] |402| 
+        AND       AL,*+XAR4[AR0],#0xff00 ; [CPU_] |402| 
+        ORB       AL,#0x27              ; [CPU_] |402| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 403,column 5,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 410 | ECanaShadow.CANBTC.bit.TSEG2REG = 2;                                   
+; 403 | ECanaShadow.CANBTC.bit.TSEG2REG = 2;                                   
 ;----------------------------------------------------------------------
-        MOVB      XAR0,#22              ; [CPU_] |410| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 409,column 5,is_stmt,isa 0
-        MOV       @_ECanaShadow+23,AL   ; [CPU_] |409| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 410,column 5,is_stmt,isa 0
+        MOVB      XAR0,#22              ; [CPU_] |403| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 402,column 5,is_stmt,isa 0
+        MOV       @_ECanaShadow+23,AL   ; [CPU_] |402| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 403,column 5,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 411 | ECanaShadow.CANBTC.bit.TSEG1REG = 10;                                  
-; 412 | ECanaShadow.CANBTC.bit.SAM = 1;                                        
-; 413 | ECanaRegs.CANBTC.all = ECanaShadow.CANBTC.all;                         
+; 404 | ECanaShadow.CANBTC.bit.TSEG1REG = 10;                                  
+; 405 | ECanaShadow.CANBTC.bit.SAM = 1;                                        
+; 406 | ECanaRegs.CANBTC.all = ECanaShadow.CANBTC.all;                         
 ;----------------------------------------------------------------------
-        AND       AL,*+XAR4[AR0],#0xffc0 ; [CPU_] |410| 
-        ORB       AL,#0xd2              ; [CPU_] |410| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 415,column 5,is_stmt,isa 0
+        AND       AL,*+XAR4[AR0],#0xffc0 ; [CPU_] |403| 
+        ORB       AL,#0xd2              ; [CPU_] |403| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 408,column 5,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 415 | ECanaShadow.CANMC.all = ECanaRegs.CANMC.all;                           
+; 408 | ECanaShadow.CANMC.all = ECanaRegs.CANMC.all;                           
 ;----------------------------------------------------------------------
-        MOVB      XAR0,#20              ; [CPU_] |415| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 410,column 5,is_stmt,isa 0
-        MOV       @_ECanaShadow+22,AL   ; [CPU_] |410| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 413,column 5,is_stmt,isa 0
-        MOVL      ACC,@_ECanaShadow+22  ; [CPU_] |413| 
+        MOVB      XAR0,#20              ; [CPU_] |408| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 403,column 5,is_stmt,isa 0
+        MOV       @_ECanaShadow+22,AL   ; [CPU_] |403| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 406,column 5,is_stmt,isa 0
+        MOVL      ACC,@_ECanaShadow+22  ; [CPU_] |406| 
         MOVW      DP,#_ECanaRegs+22     ; [CPU_U] 
-        MOVL      @_ECanaRegs+22,ACC    ; [CPU_] |413| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 415,column 5,is_stmt,isa 0
-        MOVL      ACC,@_ECanaRegs+20    ; [CPU_] |415| 
+        MOVL      @_ECanaRegs+22,ACC    ; [CPU_] |406| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 408,column 5,is_stmt,isa 0
+        MOVL      ACC,@_ECanaRegs+20    ; [CPU_] |408| 
         MOVW      DP,#_ECanaShadow+20   ; [CPU_U] 
-        MOVL      *+XAR4[AR0],ACC       ; [CPU_] |415| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 416,column 2,is_stmt,isa 0
+        MOVL      *+XAR4[AR0],ACC       ; [CPU_] |408| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 409,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 416 | ECanaShadow.CANMC.bit.CCR = 0 ;                         // Set CCR = 0 
-; 417 | ECanaRegs.CANMC.all = ECanaShadow.CANMC.all;                           
-; 419 | ECanaShadow.CANES.all = ECanaRegs.CANES.all;                           
-; 421 | // Wait until the CPU no longer has permission to change the configurat
+; 409 | ECanaShadow.CANMC.bit.CCR = 0 ;                         // Set CCR = 0 
+; 410 | ECanaRegs.CANMC.all = ECanaShadow.CANMC.all;                           
+; 412 | ECanaShadow.CANES.all = ECanaRegs.CANES.all;                           
+; 414 | // Wait until the CPU no longer has permission to change the configurat
 ;     | ion registers                                                          
-; 422 | do                                                                     
+; 415 | do                                                                     
 ;----------------------------------------------------------------------
-        ADDB      XAR4,#20              ; [CPU_] |416| 
-        AND       *+XAR4[0],#0xefff     ; [CPU_] |416| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 424,column 7,is_stmt,isa 0
+        ADDB      XAR4,#20              ; [CPU_] |409| 
+        AND       *+XAR4[0],#0xefff     ; [CPU_] |409| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 417,column 7,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 424 | ECanaShadow.CANES.all = ECanaRegs.CANES.all;                           
+; 417 | ECanaShadow.CANES.all = ECanaRegs.CANES.all;                           
 ;----------------------------------------------------------------------
-        MOVL      XAR4,#_ECanaShadow    ; [CPU_U] |424| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 417,column 5,is_stmt,isa 0
-        MOVL      ACC,@_ECanaShadow+20  ; [CPU_] |417| 
+        MOVL      XAR4,#_ECanaShadow    ; [CPU_U] |417| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 410,column 5,is_stmt,isa 0
+        MOVL      ACC,@_ECanaShadow+20  ; [CPU_] |410| 
         MOVW      DP,#_ECanaRegs+20     ; [CPU_U] 
-        MOVL      @_ECanaRegs+20,ACC    ; [CPU_] |417| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 419,column 5,is_stmt,isa 0
-        MOVL      ACC,@_ECanaRegs+24    ; [CPU_] |419| 
+        MOVL      @_ECanaRegs+20,ACC    ; [CPU_] |410| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 412,column 5,is_stmt,isa 0
+        MOVL      ACC,@_ECanaRegs+24    ; [CPU_] |412| 
 $C$L14:    
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 424,column 7,is_stmt,isa 0
-        MOVB      XAR0,#24              ; [CPU_] |424| 
-        MOVL      ACC,@_ECanaRegs+24    ; [CPU_] |424| 
-        MOVL      *+XAR4[AR0],ACC       ; [CPU_] |424| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 425,column 13,is_stmt,isa 0
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 417,column 7,is_stmt,isa 0
+        MOVB      XAR0,#24              ; [CPU_] |417| 
+        MOVL      ACC,@_ECanaRegs+24    ; [CPU_] |417| 
+        MOVL      *+XAR4[AR0],ACC       ; [CPU_] |417| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 418,column 13,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 425 | } while(ECanaShadow.CANES.bit.CCE != 0 );           // Wait for CCE bit
+; 418 | } while(ECanaShadow.CANES.bit.CCE != 0 );           // Wait for CCE bit
 ;     |  to be  cleared..                                                      
-; 428 | // Since this write is to the entire register (instead of a bit        
-; 429 | // field) a shadow register is not required.                           
+; 421 | // Since this write is to the entire register (instead of a bit        
+; 422 | // field) a shadow register is not required.                           
 ;----------------------------------------------------------------------
-        MOVB      XAR0,#24              ; [CPU_] |425| 
-        TBIT      *+XAR4[AR0],#4        ; [CPU_] |425| 
-        B         $C$L14,TC             ; [CPU_] |425| 
-        ; branchcc occurs ; [] |425| 
-	.dwpsn	file "../Source/DSP281x_ECan.c",line 431,column 3,is_stmt,isa 0
+        MOVB      XAR0,#24              ; [CPU_] |418| 
+        TBIT      *+XAR4[AR0],#4        ; [CPU_] |418| 
+        B         $C$L14,TC             ; [CPU_] |418| 
+        ; branchcc occurs ; [] |418| 
+	.dwpsn	file "../Source/DSP281x_ECan.c",line 424,column 3,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 431 | ECanaRegs.CANME.all = 0;                // Required before writing the
+; 424 | ECanaRegs.CANME.all = 0;                // Required before writing the
 ;     | MSGIDs                                                                 
 ;----------------------------------------------------------------------
-        MOVB      ACC,#0                ; [CPU_] |431| 
+        MOVB      ACC,#0                ; [CPU_] |424| 
         SPM       #0                    ; [CPU_] 
-        MOVL      @_ECanaRegs,ACC       ; [CPU_] |431| 
+        MOVL      @_ECanaRegs,ACC       ; [CPU_] |424| 
 $C$DW$32	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$32, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$32, DW_AT_TI_return
@@ -2052,7 +2052,7 @@ $C$DW$32	.dwtag  DW_TAG_TI_branch
         LRETR     ; [CPU_] 
         ; return occurs ; [] 
 	.dwattr $C$DW$31, DW_AT_TI_end_file("../Source/DSP281x_ECan.c")
-	.dwattr $C$DW$31, DW_AT_TI_end_line(0x1b0)
+	.dwattr $C$DW$31, DW_AT_TI_end_line(0x1a9)
 	.dwattr $C$DW$31, DW_AT_TI_end_column(0x01)
 	.dwendentry
 	.dwendtag $C$DW$31
