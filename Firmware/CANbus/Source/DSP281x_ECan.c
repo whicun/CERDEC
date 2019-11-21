@@ -15,7 +15,278 @@
 #include "DSP281x_Examples.h"   // DSP28 Examples Include File
 #include "can.h"
 
-	struct ECAN_REGS ECanaShadow;
+struct ECAN_REGS ECanaShadow;
+
+void markTxMailboxHandled(int mailboxBit)
+{
+	ECanaShadow.CANTA.all = (Uint32)1<<mailboxBit;
+	ECanaRegs.CANTA.all = ECanaShadow.CANTA.all;
+}
+
+/*
+ *	Set TRS for mailbox transmission.
+ */
+void setTRSforMailbox(int mailboxBit)
+{
+	ECanaShadow.CANTRS.all = (Uint32)1<<mailboxBit;
+	ECanaRegs.CANTRS.all = ECanaShadow.CANTRS.all;
+}
+
+void CAN_Tx_SendInformationRequest(long MC_PGN, long MC_Index) {
+
+	switch (MC_Index)
+	{
+		case 0:
+
+			ECanaMboxes.MBOX20.MDL.word.HI_WORD = MC_PGN & 0xFFFF;
+			ECanaMboxes.MBOX20.MDL.word.LOW_WORD = 0;
+			ECanaMboxes.MBOX20.MDH.word.HI_WORD = 0;
+			ECanaMboxes.MBOX20.MDH.word.LOW_WORD = 0;
+
+			markTxMailboxHandled(20);
+
+			setTRSforMailbox(20);
+
+		break;
+		case 1:
+
+			ECanaMboxes.MBOX22.MDL.word.HI_WORD = MC_PGN & 0xFFFF;
+			ECanaMboxes.MBOX22.MDL.word.LOW_WORD = 0;
+			ECanaMboxes.MBOX22.MDH.word.HI_WORD = 0;
+			ECanaMboxes.MBOX22.MDH.word.LOW_WORD = 0;
+
+			markTxMailboxHandled(22);
+
+			setTRSforMailbox(22);
+		break;
+		case 2:
+
+			ECanaMboxes.MBOX23.MDL.word.HI_WORD = MC_PGN & 0xFFFF;;
+			ECanaMboxes.MBOX23.MDL.word.LOW_WORD = 0;
+			ECanaMboxes.MBOX23.MDH.word.HI_WORD = 0;
+			ECanaMboxes.MBOX23.MDH.word.LOW_WORD = 0;
+
+			markTxMailboxHandled(23);
+
+
+			setTRSforMailbox(23);
+		break;
+		case 3:
+
+			ECanaMboxes.MBOX24.MDL.word.HI_WORD = MC_PGN & 0xFFFF;
+			ECanaMboxes.MBOX24.MDL.word.LOW_WORD = 0;
+			ECanaMboxes.MBOX24.MDH.word.HI_WORD = 0;
+			ECanaMboxes.MBOX24.MDH.word.LOW_WORD = 0;
+
+			markTxMailboxHandled(24);
+
+			setTRSforMailbox(24);
+		break;
+	}
+}
+
+
+
+void processJSRGlobal(int shelf)
+{
+
+	int data[8] = {0, 0, 0, 0, 0, 0, 0, 0};
+	int mcAddr;
+
+	//Getting the data transmitted from the Master Controllers every 100msec...
+	switch(shelf)
+		{
+			case 1:
+
+				data[0] = ECanaMboxes.MBOX0.MDL.byte.BYTE0;
+				data[1] = ECanaMboxes.MBOX0.MDL.byte.BYTE1;
+				data[2] = ECanaMboxes.MBOX0.MDL.byte.BYTE2;
+				data[3] = ECanaMboxes.MBOX0.MDL.byte.BYTE3;
+				data[4] = ECanaMboxes.MBOX0.MDH.byte.BYTE4;
+				data[5] = ECanaMboxes.MBOX0.MDH.byte.BYTE5;
+				data[6] = ECanaMboxes.MBOX0.MDH.byte.BYTE6;
+				data[7] = ECanaMboxes.MBOX0.MDH.byte.BYTE7;
+				//mcAddr = MC1_ADDR;
+
+				break;
+
+			case 2:
+
+				data[0] = ECanaMboxes.MBOX1.MDL.byte.BYTE0;
+				data[1] = ECanaMboxes.MBOX1.MDL.byte.BYTE1;
+				data[2] = ECanaMboxes.MBOX1.MDL.byte.BYTE2;
+				data[3] = ECanaMboxes.MBOX1.MDL.byte.BYTE3;
+				data[4] = ECanaMboxes.MBOX1.MDH.byte.BYTE4;
+				data[5] = ECanaMboxes.MBOX1.MDH.byte.BYTE5;
+				data[6] = ECanaMboxes.MBOX1.MDH.byte.BYTE6;
+				data[7] = ECanaMboxes.MBOX1.MDH.byte.BYTE7;
+				//mcAddr = MC2_ADDR;
+
+				break;
+
+			case 3:
+
+				data[0] = ECanaMboxes.MBOX2.MDL.byte.BYTE0;
+				data[1] = ECanaMboxes.MBOX2.MDL.byte.BYTE1;
+				data[2] = ECanaMboxes.MBOX2.MDL.byte.BYTE2;
+				data[3] = ECanaMboxes.MBOX2.MDL.byte.BYTE3;
+				data[4] = ECanaMboxes.MBOX2.MDH.byte.BYTE4;
+				data[5] = ECanaMboxes.MBOX2.MDH.byte.BYTE5;
+				data[6] = ECanaMboxes.MBOX2.MDH.byte.BYTE6;
+				data[7] = ECanaMboxes.MBOX2.MDH.byte.BYTE7;
+				//mcAddr = MC3_ADDR;
+
+				break;
+
+			case 4:
+
+				data[0] = ECanaMboxes.MBOX3.MDL.byte.BYTE0;
+				data[1] = ECanaMboxes.MBOX3.MDL.byte.BYTE1;
+				data[2] = ECanaMboxes.MBOX3.MDL.byte.BYTE2;
+				data[3] = ECanaMboxes.MBOX3.MDL.byte.BYTE3;
+				data[4] = ECanaMboxes.MBOX3.MDH.byte.BYTE4;
+				data[5] = ECanaMboxes.MBOX3.MDH.byte.BYTE5;
+				data[6] = ECanaMboxes.MBOX3.MDH.byte.BYTE6;
+				data[7] = ECanaMboxes.MBOX3.MDH.byte.BYTE7;
+				//mcAddr = MC4_ADDR;
+
+				break;
+		}
+
+	//Send the data to the System object
+	int voltage = (data[1] << 8) | data[0];
+	voltage = voltage / 5;
+
+	int avgTemp = (data[2] * 10) / 2 - 400;
+	int maxTemp = (data[3] * 10) / 2 - 400;
+	int minTemp = (data[4] * 10) / 2 - 400;
+	int maxTempID = data[5] & 0x0F;
+	int minTempID = data[5] & 0xF0;
+
+	//setShelfVoltage(shelf, voltage);
+	//setShelfAvgTemp(shelf, avgTemp);
+	//setShelfMaxTemp(shelf, maxTemp);
+	//setShelfMinTemp(shelf, minTemp);
+	//setShelfMaxTempID(shelf, maxTempID);
+	//setShelfMinTempID(shelf, minTempID);
+	//setShelfAlarms(shelf, data[6]);
+	//setShelfErrors(shelf, data[7]);
+
+}
+
+void sendModStatus(int shelf, int mod)
+{
+	int code = (shelf << 4) + mod;
+	volatile int data[8];
+
+	int voltage1;
+	int voltage2;
+	int temp1;
+	int temp2;
+
+	switch(mod)
+		{
+			case 1:
+			case 2:
+
+				data[0] = ECanaMboxes.MBOX6.MDL.byte.BYTE0;
+				data[1] = ECanaMboxes.MBOX6.MDL.byte.BYTE1;
+				data[2] = ECanaMboxes.MBOX6.MDL.byte.BYTE2;
+				data[3] = ECanaMboxes.MBOX6.MDL.byte.BYTE3;
+				data[4] = ECanaMboxes.MBOX6.MDH.byte.BYTE4;
+				data[5] = ECanaMboxes.MBOX6.MDH.byte.BYTE5;
+				data[6] = ECanaMboxes.MBOX6.MDH.byte.BYTE6;
+				data[7] = ECanaMboxes.MBOX6.MDH.byte.BYTE7;
+				break;
+
+			case 3:
+			case 4:
+
+				data[0] = ECanaMboxes.MBOX7.MDL.byte.BYTE0;
+				data[1] = ECanaMboxes.MBOX7.MDL.byte.BYTE1;
+				data[2] = ECanaMboxes.MBOX7.MDL.byte.BYTE2;
+				data[3] = ECanaMboxes.MBOX7.MDL.byte.BYTE3;
+				data[4] = ECanaMboxes.MBOX7.MDH.byte.BYTE4;
+				data[5] = ECanaMboxes.MBOX7.MDH.byte.BYTE5;
+				data[6] = ECanaMboxes.MBOX7.MDH.byte.BYTE6;
+				data[7] = ECanaMboxes.MBOX7.MDH.byte.BYTE7;
+
+				break;
+
+			case 5:
+			case 6:
+
+				data[0] = ECanaMboxes.MBOX8.MDL.byte.BYTE0;
+				data[1] = ECanaMboxes.MBOX8.MDL.byte.BYTE1;
+				data[2] = ECanaMboxes.MBOX8.MDL.byte.BYTE2;
+				data[3] = ECanaMboxes.MBOX8.MDL.byte.BYTE3;
+				data[4] = ECanaMboxes.MBOX8.MDH.byte.BYTE4;
+				data[5] = ECanaMboxes.MBOX8.MDH.byte.BYTE5;
+				data[6] = ECanaMboxes.MBOX8.MDH.byte.BYTE6;
+				data[7] = ECanaMboxes.MBOX8.MDH.byte.BYTE7;
+
+				break;
+
+			case 7:
+			case 8:
+
+				data[0] = ECanaMboxes.MBOX9.MDL.byte.BYTE0;
+				data[1] = ECanaMboxes.MBOX9.MDL.byte.BYTE1;
+				data[2] = ECanaMboxes.MBOX9.MDL.byte.BYTE2;
+				data[3] = ECanaMboxes.MBOX9.MDL.byte.BYTE3;
+				data[4] = ECanaMboxes.MBOX9.MDH.byte.BYTE4;
+				data[5] = ECanaMboxes.MBOX9.MDH.byte.BYTE5;
+				data[6] = ECanaMboxes.MBOX9.MDH.byte.BYTE6;
+				data[7] = ECanaMboxes.MBOX9.MDH.byte.BYTE7;
+
+				break;
+
+			case 9:
+			case 10:
+
+				data[0] = ECanaMboxes.MBOX10.MDL.byte.BYTE0;
+				data[1] = ECanaMboxes.MBOX10.MDL.byte.BYTE1;
+				data[2] = ECanaMboxes.MBOX10.MDL.byte.BYTE2;
+				data[3] = ECanaMboxes.MBOX10.MDL.byte.BYTE3;
+				data[4] = ECanaMboxes.MBOX10.MDH.byte.BYTE4;
+				data[5] = ECanaMboxes.MBOX10.MDH.byte.BYTE5;
+				data[6] = ECanaMboxes.MBOX10.MDH.byte.BYTE6;
+				data[7] = ECanaMboxes.MBOX10.MDH.byte.BYTE7;
+
+				break;
+		}
+
+
+		voltage1 = ((data[1] << 8) | data[0])/5;
+		temp1 = (data[2] * 10) / 2 - 400;
+		voltage2 = ((data[5] << 8) | data[4])/5;
+		temp2 = (data[6] * 10) / 2 - 400;
+/*
+		//Send data to the System object
+		if(mod % 2 == 1) //If it's an odd module (1, 3, 5, ...)
+		{
+			setModVoltage(shelf, mod, voltage1);
+			setModTemp(shelf, mod, temp1);
+
+			setModVoltage(shelf, mod+1, voltage2);
+			setModTemp(shelf, mod+1, temp2);
+
+		}
+		else // It's an even modules (0, 2, 4, ...)
+		{
+			setModVoltage(shelf, mod-1, voltage1);
+			setModTemp(shelf, mod-1, temp1);
+
+			setModVoltage(shelf, mod, voltage2);
+			setModTemp(shelf, mod, temp2);
+		}
+*/
+}
+
+
+
+
+
 
 
 //---------------------------------------------------------------------------
@@ -225,7 +496,9 @@ void configCAN() {
 
 	//	Transmit...
 	ECanaMboxes.MBOX12.MSGID.all   = 0x18FFA3FE;		// Used for waking up modules
+	ECanaMboxes.MBOX20.MSGID.all   = 0x18EA000F;		// Module voltage request
 
+	ECanaMboxes.MBOX20.MSGID.bit.IDE = 1;
 	ECanaMboxes.MBOX12.MSGID.bit.IDE = 1;
 	ECanaMboxes.MBOX11.MSGID.bit.IDE = 1;
 	ECanaMboxes.MBOX10.MSGID.bit.IDE = 1;
@@ -254,8 +527,10 @@ void configCAN() {
 	ECanaMboxes.MBOX10.MSGCTRL.bit.DLC = 8;
 	ECanaMboxes.MBOX11.MSGCTRL.bit.DLC = 8;
 	ECanaMboxes.MBOX12.MSGCTRL.bit.DLC = 8;
+	ECanaMboxes.MBOX20.MSGCTRL.bit.DLC = 8;
 
 
+	ECanaShadow.CANMD.bit.MD20 = 0;
 	ECanaShadow.CANMD.bit.MD12 = 0;
 	ECanaShadow.CANMD.bit.MD11 = 1;
 	ECanaShadow.CANMD.bit.MD10 = 1;
@@ -272,6 +547,7 @@ void configCAN() {
 
 	ECanaRegs.CANMD.all = ECanaShadow.CANMD.all;
 
+	ECanaShadow.CANME.bit.ME20 = 1;	// enable mailbox 20
 	ECanaShadow.CANME.bit.ME12 = 1;	// enable mailbox 12
 	ECanaShadow.CANME.bit.ME11 = 1; // enable mailbox 11
 	ECanaShadow.CANME.bit.ME10 = 1; // enable mailbox 10
@@ -290,3 +566,43 @@ void configCAN() {
 
 //	InitUART(TOUCH_CH,TOUCH_BAUD);
 }
+
+void wakeUpMCs() {
+
+	ECanaMboxes.MBOX12.MDL.word.HI_WORD = 0x10FF & 0xFFFF;
+	ECanaMboxes.MBOX12.MDL.word.LOW_WORD = 0xFFFF & 0xFFFF;
+	ECanaMboxes.MBOX12.MDH.word.HI_WORD = 0xFFFF & 0xFFFF;
+	ECanaMboxes.MBOX12.MDH.word.LOW_WORD = 0xFFFF & 0xFFFF;
+
+	markTxMailboxHandled(12);
+
+	setTRSforMailbox(12);
+
+}
+
+void sleepMCs()
+{
+
+	ECanaMboxes.MBOX12.MDL.word.HI_WORD = 0x00FF & 0xFFFF;
+	ECanaMboxes.MBOX12.MDL.word.LOW_WORD = 0xFFFF & 0xFFFF;
+	ECanaMboxes.MBOX12.MDH.word.HI_WORD = 0xFFFF & 0xFFFF;
+	ECanaMboxes.MBOX12.MDH.word.LOW_WORD = 0xFFFF & 0xFFFF;
+
+	markTxMailboxHandled(12);
+
+	setTRSforMailbox(12);
+
+}
+
+void resetAlarms()
+{
+	ECanaMboxes.MBOX12.MDL.word.HI_WORD = 0x11FF & 0xFFFF;
+	ECanaMboxes.MBOX12.MDL.word.LOW_WORD = 0xFFFF & 0xFFFF;
+	ECanaMboxes.MBOX12.MDH.word.HI_WORD = 0xFFFF & 0xFFFF;
+	ECanaMboxes.MBOX12.MDH.word.LOW_WORD = 0xFFFF & 0xFFFF;
+
+	markTxMailboxHandled(12);
+
+	setTRSforMailbox(12);
+}
+

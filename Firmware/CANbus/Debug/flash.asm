@@ -1,6 +1,6 @@
 ;***************************************************************
 ;* TMS320C2000 C/C++ Codegen                   PC v15.12.6.LTS *
-;* Date/Time created: Thu Nov 14 09:52:13 2019                 *
+;* Date/Time created: Wed Nov 20 10:10:37 2019                 *
 ;***************************************************************
 	.compiler_opts --abi=coffabi --float_support=softlib --hll_source=on --mem_model:code=flat --mem_model:data=large --object_format=coff --quiet --silicon_version=28 --symdebug:dwarf --symdebug:dwarf_version=3 
 FP	.set	XAR2
@@ -119,8 +119,8 @@ $C$DW$21	.dwtag  DW_TAG_variable
 	.dwattr $C$DW$21, DW_AT_declaration
 	.dwattr $C$DW$21, DW_AT_external
 
-;	C:\ti\ccsv6\tools\compiler\ti-cgt-c2000_15.12.6.LTS\bin\opt2000.exe C:\\Users\\antons\\AppData\\Local\\Temp\\{B6066C69-AFBE-4410-8242-ECECF6CF90A3} C:\\Users\\antons\\AppData\\Local\\Temp\\{FB5652AC-A128-4F61-BAFD-62868AFB78FB} 
-;	C:\ti\ccsv6\tools\compiler\ti-cgt-c2000_15.12.6.LTS\bin\ac2000.exe -@C:\\Users\\antons\\AppData\\Local\\Temp\\{D273AC48-4C74-4CCA-8526-98888E19474A} 
+;	C:\ti\ccsv6\tools\compiler\ti-cgt-c2000_15.12.6.LTS\bin\opt2000.exe C:\\Users\\antons\\AppData\\Local\\Temp\\{6520CC67-EA0B-4FF6-93B8-591087ED582A} C:\\Users\\antons\\AppData\\Local\\Temp\\{704C7F39-B001-4118-A77E-F5426FAB2956} 
+;	C:\ti\ccsv6\tools\compiler\ti-cgt-c2000_15.12.6.LTS\bin\ac2000.exe -@C:\\Users\\antons\\AppData\\Local\\Temp\\{50784287-43DD-4649-B2D3-05482322B974} 
 	.sect	".text"
 	.clink
 	.global	_conf_write
@@ -199,7 +199,7 @@ $C$DW$24	.dwtag  DW_TAG_TI_branch
 ;----------------------------------------------------------------------
         MOVL      XAR4,#_ProgStatus     ; [CPU_U] |41| 
         MOVL      XAR1,#_conf_data      ; [CPU_U] |41| 
-        MOVL      XAR6,#3192            ; [CPU_U] |41| 
+        MOVL      XAR6,#3222            ; [CPU_U] |41| 
         MOVL      *-SP[2],XAR4          ; [CPU_] |41| 
         MOVL      XAR5,XAR1             ; [CPU_] |41| 
         MOVL      ACC,XAR6              ; [CPU_] |41| 
@@ -225,7 +225,7 @@ $C$DW$25	.dwtag  DW_TAG_TI_branch
 ;  57 | return ret;                                                            
 ;----------------------------------------------------------------------
         MOVL      XAR4,#_VerifyStatus   ; [CPU_U] |47| 
-        MOVL      XAR6,#3192            ; [CPU_U] |47| 
+        MOVL      XAR6,#3222            ; [CPU_U] |47| 
         MOVL      XAR5,XAR1             ; [CPU_] |47| 
         MOVL      *-SP[2],XAR4          ; [CPU_] |47| 
         MOVL      ACC,XAR6              ; [CPU_] |47| 
@@ -294,7 +294,7 @@ _conf_read:
 ;  21 | memcpy( (void *)&conf_data, (void *)FLASHJ_START, sizeof(struct PROD_CO
 ;     | NF) );                                                                 
 ;----------------------------------------------------------------------
-        MOVL      XAR6,#3192            ; [CPU_U] |21| 
+        MOVL      XAR6,#3222            ; [CPU_U] |21| 
         MOVL      XAR4,#_conf_data      ; [CPU_U] |21| 
         MOVL      XAR5,#4030464         ; [CPU_U] |21| 
         MOVL      ACC,XAR6              ; [CPU_] |21| 
@@ -419,9 +419,9 @@ $C$DW$T$28	.dwtag  DW_TAG_typedef
 $C$DW$T$29	.dwtag  DW_TAG_array_type
 	.dwattr $C$DW$T$29, DW_AT_type(*$C$DW$T$28)
 	.dwattr $C$DW$T$29, DW_AT_language(DW_LANG_C)
-	.dwattr $C$DW$T$29, DW_AT_byte_size(0x0a)
+	.dwattr $C$DW$T$29, DW_AT_byte_size(0x28)
 $C$DW$39	.dwtag  DW_TAG_subrange_type
-	.dwattr $C$DW$39, DW_AT_upper_bound(0x00)
+	.dwattr $C$DW$39, DW_AT_upper_bound(0x03)
 
 	.dwendtag $C$DW$T$29
 
@@ -596,7 +596,7 @@ $C$DW$57	.dwtag  DW_TAG_subrange_type
 
 $C$DW$T$39	.dwtag  DW_TAG_structure_type
 	.dwattr $C$DW$T$39, DW_AT_name("PROD_CONF")
-	.dwattr $C$DW$T$39, DW_AT_byte_size(0xc78)
+	.dwattr $C$DW$T$39, DW_AT_byte_size(0xc96)
 $C$DW$58	.dwtag  DW_TAG_member
 	.dwattr $C$DW$58, DW_AT_type(*$C$DW$T$19)
 	.dwattr $C$DW$58, DW_AT_name("usn")
@@ -664,49 +664,49 @@ $C$DW$67	.dwtag  DW_TAG_member
 	.dwattr $C$DW$67, DW_AT_type(*$C$DW$T$31)
 	.dwattr $C$DW$67, DW_AT_name("sensor")
 	.dwattr $C$DW$67, DW_AT_TI_symbol_name("_sensor")
-	.dwattr $C$DW$67, DW_AT_data_member_location[DW_OP_plus_uconst 0x34]
+	.dwattr $C$DW$67, DW_AT_data_member_location[DW_OP_plus_uconst 0x52]
 	.dwattr $C$DW$67, DW_AT_accessibility(DW_ACCESS_public)
 
 $C$DW$68	.dwtag  DW_TAG_member
 	.dwattr $C$DW$68, DW_AT_type(*$C$DW$T$33)
 	.dwattr $C$DW$68, DW_AT_name("vfd")
 	.dwattr $C$DW$68, DW_AT_TI_symbol_name("_vfd")
-	.dwattr $C$DW$68, DW_AT_data_member_location[DW_OP_plus_uconst 0xc14]
+	.dwattr $C$DW$68, DW_AT_data_member_location[DW_OP_plus_uconst 0xc32]
 	.dwattr $C$DW$68, DW_AT_accessibility(DW_ACCESS_public)
 
 $C$DW$69	.dwtag  DW_TAG_member
 	.dwattr $C$DW$69, DW_AT_type(*$C$DW$T$35)
 	.dwattr $C$DW$69, DW_AT_name("dac")
 	.dwattr $C$DW$69, DW_AT_TI_symbol_name("_dac")
-	.dwattr $C$DW$69, DW_AT_data_member_location[DW_OP_plus_uconst 0xc20]
+	.dwattr $C$DW$69, DW_AT_data_member_location[DW_OP_plus_uconst 0xc3e]
 	.dwattr $C$DW$69, DW_AT_accessibility(DW_ACCESS_public)
 
 $C$DW$70	.dwtag  DW_TAG_member
 	.dwattr $C$DW$70, DW_AT_type(*$C$DW$T$37)
 	.dwattr $C$DW$70, DW_AT_name("lim")
 	.dwattr $C$DW$70, DW_AT_TI_symbol_name("_lim")
-	.dwattr $C$DW$70, DW_AT_data_member_location[DW_OP_plus_uconst 0xc50]
+	.dwattr $C$DW$70, DW_AT_data_member_location[DW_OP_plus_uconst 0xc6e]
 	.dwattr $C$DW$70, DW_AT_accessibility(DW_ACCESS_public)
 
 $C$DW$71	.dwtag  DW_TAG_member
 	.dwattr $C$DW$71, DW_AT_type(*$C$DW$T$20)
 	.dwattr $C$DW$71, DW_AT_name("velfilter")
 	.dwattr $C$DW$71, DW_AT_TI_symbol_name("_velfilter")
-	.dwattr $C$DW$71, DW_AT_data_member_location[DW_OP_plus_uconst 0xc70]
+	.dwattr $C$DW$71, DW_AT_data_member_location[DW_OP_plus_uconst 0xc8e]
 	.dwattr $C$DW$71, DW_AT_accessibility(DW_ACCESS_public)
 
 $C$DW$72	.dwtag  DW_TAG_member
 	.dwattr $C$DW$72, DW_AT_type(*$C$DW$T$38)
 	.dwattr $C$DW$72, DW_AT_name("cntperin")
 	.dwattr $C$DW$72, DW_AT_TI_symbol_name("_cntperin")
-	.dwattr $C$DW$72, DW_AT_data_member_location[DW_OP_plus_uconst 0xc72]
+	.dwattr $C$DW$72, DW_AT_data_member_location[DW_OP_plus_uconst 0xc90]
 	.dwattr $C$DW$72, DW_AT_accessibility(DW_ACCESS_public)
 
 $C$DW$73	.dwtag  DW_TAG_member
 	.dwattr $C$DW$73, DW_AT_type(*$C$DW$T$19)
 	.dwattr $C$DW$73, DW_AT_name("magic")
 	.dwattr $C$DW$73, DW_AT_TI_symbol_name("_magic")
-	.dwattr $C$DW$73, DW_AT_data_member_location[DW_OP_plus_uconst 0xc76]
+	.dwattr $C$DW$73, DW_AT_data_member_location[DW_OP_plus_uconst 0xc94]
 	.dwattr $C$DW$73, DW_AT_accessibility(DW_ACCESS_public)
 
 	.dwendtag $C$DW$T$39

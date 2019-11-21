@@ -3,6 +3,14 @@
 
 #include "data.h"
 
+int getspeedSens();
+void toggleFastDataCollect(int startstop);
+int getStartStop(void);
+float ad7738_getpeakload();
+float ad7738_getDropTime(int k);
+int get_numSensors();
+void set_numSensors(int num);
+
 // init the ad 7738 chips and also the timer0
 void ad7738_init();
 
@@ -31,6 +39,8 @@ void ad7738_monclr();
 
 // get montor data
 adcwt_t* ad7738_getmon();
+float ad7738_getload();
+float ad7738_getpos();
 
 // get peak data
 adcwt_t* ad7738_getpeak();

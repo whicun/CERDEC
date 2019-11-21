@@ -949,6 +949,7 @@ void main(void) {
 			//////////////////////////////////////////////////////////////////////////////////
 
 			// ************  ADDED FOR IMPACT TESTER **********/
+/*
 			case 'A':
 
 				sprintf(buff, "\r\nLoad Cell:            %.2f\r\n",	ad7738_getload());
@@ -1010,7 +1011,7 @@ void main(void) {
 				}
 
 				break;
-
+*/
 			// ************  (end) ADDED FOR IMPACT TESTER **********/
 
 			case 'P':					// print out config
@@ -3591,7 +3592,7 @@ void main(void) {
 			{
 
 			// ************  ADDED FOR IMPACT TESTER **********/
-
+/*
 			case MotorJogCmd:
 				if (cmdlen < 3) {
 					bincmdresult = Error_Invalid;
@@ -3704,7 +3705,7 @@ void main(void) {
 				bincmdresult = OK_SendResult;
 
 				break;
-
+*/
 				// ************  (end) ADDED FOR IMPACT TESTER **********/
 
 			case CheckAddress:

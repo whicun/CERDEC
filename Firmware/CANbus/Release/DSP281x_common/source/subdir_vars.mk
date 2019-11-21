@@ -18,17 +18,17 @@ C:/ESL/ProD/code/GL/Release/DSP281x_PieCtrl.obj \
 C:/ESL/ProD/code/GL/Release/DSP281x_PieVect.obj 
 
 ASM_DEPS += \
-./DSP281x_common/source/DSP281x_CodeStartBranch.pp 
+./DSP281x_common/source/DSP281x_CodeStartBranch.d 
 
 C_DEPS += \
-./DSP281x_common/source/DSP281x_DefaultIsr.pp \
-./DSP281x_common/source/DSP281x_PieCtrl.pp \
-./DSP281x_common/source/DSP281x_PieVect.pp 
+./DSP281x_common/source/DSP281x_DefaultIsr.d \
+./DSP281x_common/source/DSP281x_PieCtrl.d \
+./DSP281x_common/source/DSP281x_PieVect.d 
 
 C_DEPS__QUOTED += \
-"DSP281x_common\source\DSP281x_DefaultIsr.pp" \
-"DSP281x_common\source\DSP281x_PieCtrl.pp" \
-"DSP281x_common\source\DSP281x_PieVect.pp" 
+"DSP281x_common\source\DSP281x_DefaultIsr.d" \
+"DSP281x_common\source\DSP281x_PieCtrl.d" \
+"DSP281x_common\source\DSP281x_PieVect.d" 
 
 OBJS__QUOTED += \
 "C:\ESL\ProD\code\GL\Release\DSP281x_CodeStartBranch.obj" \
@@ -37,7 +37,7 @@ OBJS__QUOTED += \
 "C:\ESL\ProD\code\GL\Release\DSP281x_PieVect.obj" 
 
 ASM_DEPS__QUOTED += \
-"DSP281x_common\source\DSP281x_CodeStartBranch.pp" 
+"DSP281x_common\source\DSP281x_CodeStartBranch.d" 
 
 ASM_SRCS__QUOTED += \
 "../DSP281x_common/source/DSP281x_CodeStartBranch.asm" 

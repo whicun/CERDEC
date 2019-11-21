@@ -4,6 +4,7 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
+../Source/DSP281x_ECan.c \
 ../Source/ad7738.c \
 ../Source/data.c \
 ../Source/diskio.c \
@@ -24,6 +25,7 @@ C_SRCS += \
 ../Source/system.c 
 
 OBJS += \
+C:/ESL/ProD/code/GL/Release/DSP281x_ECan.obj \
 C:/ESL/ProD/code/GL/Release/ad7738.obj \
 C:/ESL/ProD/code/GL/Release/data.obj \
 C:/ESL/ProD/code/GL/Release/diskio.obj \
@@ -44,46 +46,49 @@ C:/ESL/ProD/code/GL/Release/spi.obj \
 C:/ESL/ProD/code/GL/Release/system.obj 
 
 C_DEPS += \
-./Source/ad7738.pp \
-./Source/data.pp \
-./Source/diskio.pp \
-./Source/dl.pp \
-./Source/ds1wire.pp \
-./Source/extio.pp \
-./Source/ff.pp \
-./Source/flash.pp \
-./Source/gpio.pp \
-./Source/lcd.pp \
-./Source/led.pp \
-./Source/mcbsp.pp \
-./Source/motor.pp \
-./Source/prod.pp \
-./Source/qep.pp \
-./Source/sci.pp \
-./Source/spi.pp \
-./Source/system.pp 
+./Source/DSP281x_ECan.d \
+./Source/ad7738.d \
+./Source/data.d \
+./Source/diskio.d \
+./Source/dl.d \
+./Source/ds1wire.d \
+./Source/extio.d \
+./Source/ff.d \
+./Source/flash.d \
+./Source/gpio.d \
+./Source/lcd.d \
+./Source/led.d \
+./Source/mcbsp.d \
+./Source/motor.d \
+./Source/prod.d \
+./Source/qep.d \
+./Source/sci.d \
+./Source/spi.d \
+./Source/system.d 
 
 C_DEPS__QUOTED += \
-"Source\ad7738.pp" \
-"Source\data.pp" \
-"Source\diskio.pp" \
-"Source\dl.pp" \
-"Source\ds1wire.pp" \
-"Source\extio.pp" \
-"Source\ff.pp" \
-"Source\flash.pp" \
-"Source\gpio.pp" \
-"Source\lcd.pp" \
-"Source\led.pp" \
-"Source\mcbsp.pp" \
-"Source\motor.pp" \
-"Source\prod.pp" \
-"Source\qep.pp" \
-"Source\sci.pp" \
-"Source\spi.pp" \
-"Source\system.pp" 
+"Source\DSP281x_ECan.d" \
+"Source\ad7738.d" \
+"Source\data.d" \
+"Source\diskio.d" \
+"Source\dl.d" \
+"Source\ds1wire.d" \
+"Source\extio.d" \
+"Source\ff.d" \
+"Source\flash.d" \
+"Source\gpio.d" \
+"Source\lcd.d" \
+"Source\led.d" \
+"Source\mcbsp.d" \
+"Source\motor.d" \
+"Source\prod.d" \
+"Source\qep.d" \
+"Source\sci.d" \
+"Source\spi.d" \
+"Source\system.d" 
 
 OBJS__QUOTED += \
+"C:\ESL\ProD\code\GL\Release\DSP281x_ECan.obj" \
 "C:\ESL\ProD\code\GL\Release\ad7738.obj" \
 "C:\ESL\ProD\code\GL\Release\data.obj" \
 "C:\ESL\ProD\code\GL\Release\diskio.obj" \
@@ -104,6 +109,7 @@ OBJS__QUOTED += \
 "C:\ESL\ProD\code\GL\Release\system.obj" 
 
 C_SRCS__QUOTED += \
+"../Source/DSP281x_ECan.c" \
 "../Source/ad7738.c" \
 "../Source/data.c" \
 "../Source/diskio.c" \

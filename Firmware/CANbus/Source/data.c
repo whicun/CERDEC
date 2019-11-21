@@ -23,8 +23,8 @@ void conf_default()
 	memcpy((void*) conf_data.uname, "Undefined", 10);
 
 	//conf_data.rxdir = SDIR_ENET;		// serial port direction, Ethernet
-	//conf_data.rxdir = SDIR_RS232;		// serial port direction, USB
-	conf_data.rxdir = SDIR_USB;		// serial port direction, USB
+	conf_data.rxdir = SDIR_RS232;		// serial port direction, USB
+	//conf_data.rxdir = SDIR_USB;		// serial port direction, USB
 	conf_data.baud = 4;			// baud code, 115200
 
 	conf_data.tagiden = 1;		// tagid is not on

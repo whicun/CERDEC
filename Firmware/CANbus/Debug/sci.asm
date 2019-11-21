@@ -1,6 +1,6 @@
 ;***************************************************************
 ;* TMS320C2000 C/C++ Codegen                   PC v15.12.6.LTS *
-;* Date/Time created: Thu Nov 14 09:54:20 2019                 *
+;* Date/Time created: Wed Nov 20 10:12:13 2019                 *
 ;***************************************************************
 	.compiler_opts --abi=coffabi --float_support=softlib --hll_source=on --mem_model:code=flat --mem_model:data=large --object_format=coff --quiet --silicon_version=28 --symdebug:dwarf --symdebug:dwarf_version=3 
 FP	.set	XAR2
@@ -163,8 +163,8 @@ $C$DW$17	.dwtag  DW_TAG_variable
 	.dwattr $C$DW$17, DW_AT_type(*$C$DW$T$168)
 	.dwattr $C$DW$17, DW_AT_external
 
-;	C:\ti\ccsv6\tools\compiler\ti-cgt-c2000_15.12.6.LTS\bin\opt2000.exe C:\\Users\\antons\\AppData\\Local\\Temp\\{14AE640B-D281-4DD0-9962-4DE61BC1AC1B} C:\\Users\\antons\\AppData\\Local\\Temp\\{374DF237-3141-49E5-875A-22C2CE432E83} 
-;	C:\ti\ccsv6\tools\compiler\ti-cgt-c2000_15.12.6.LTS\bin\ac2000.exe -@C:\\Users\\antons\\AppData\\Local\\Temp\\{F5917A70-65EB-445B-BA09-6CD99E962743} 
+;	C:\ti\ccsv6\tools\compiler\ti-cgt-c2000_15.12.6.LTS\bin\opt2000.exe C:\\Users\\antons\\AppData\\Local\\Temp\\{8FBA0B19-9CA8-4DB5-8159-6E04076E1922} C:\\Users\\antons\\AppData\\Local\\Temp\\{308D2E98-DAC5-49C6-84D2-5AA2B1DF8602} 
+;	C:\ti\ccsv6\tools\compiler\ti-cgt-c2000_15.12.6.LTS\bin\ac2000.exe -@C:\\Users\\antons\\AppData\\Local\\Temp\\{C0D22EF2-BC0E-4108-BEF2-2377F95E4CB1} 
 	.sect	".text"
 	.clink
 	.global	_scia_reset

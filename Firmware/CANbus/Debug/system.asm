@@ -1,6 +1,6 @@
 ;***************************************************************
 ;* TMS320C2000 C/C++ Codegen                   PC v15.12.6.LTS *
-;* Date/Time created: Thu Nov 14 09:54:24 2019                 *
+;* Date/Time created: Mon Nov 18 16:22:58 2019                 *
 ;***************************************************************
 	.compiler_opts --abi=coffabi --float_support=softlib --hll_source=on --mem_model:code=flat --mem_model:data=large --object_format=coff --quiet --silicon_version=28 --symdebug:dwarf --symdebug:dwarf_version=3 
 FP	.set	XAR2
@@ -45,8 +45,8 @@ $C$DW$5	.dwtag  DW_TAG_variable
 	.dwattr $C$DW$5, DW_AT_declaration
 	.dwattr $C$DW$5, DW_AT_external
 
-;	C:\ti\ccsv6\tools\compiler\ti-cgt-c2000_15.12.6.LTS\bin\opt2000.exe C:\\Users\\antons\\AppData\\Local\\Temp\\{9B49B48C-9BD0-4EB9-8170-4C1EF8164EEA} C:\\Users\\antons\\AppData\\Local\\Temp\\{CBFB7D70-48B4-47E0-AFC8-55437DD462A6} 
-;	C:\ti\ccsv6\tools\compiler\ti-cgt-c2000_15.12.6.LTS\bin\ac2000.exe -@C:\\Users\\antons\\AppData\\Local\\Temp\\{DE95876A-6343-43A4-898D-07C5AC584D70} 
+;	C:\ti\ccsv6\tools\compiler\ti-cgt-c2000_15.12.6.LTS\bin\opt2000.exe C:\\Users\\antons\\AppData\\Local\\Temp\\{875862AC-504B-4B35-A799-E73AEC6DCEF5} C:\\Users\\antons\\AppData\\Local\\Temp\\{3677795E-D7AD-4BB1-B862-C17FAA68CC2F} 
+;	C:\ti\ccsv6\tools\compiler\ti-cgt-c2000_15.12.6.LTS\bin\ac2000.exe -@C:\\Users\\antons\\AppData\\Local\\Temp\\{64A6C79C-810A-4AEE-B8C6-C10A0771F95D} 
 	.sect	".text"
 	.clink
 	.global	_xintf_init
@@ -58,17 +58,17 @@ $C$DW$6	.dwtag  DW_TAG_subprogram
 	.dwattr $C$DW$6, DW_AT_TI_symbol_name("_xintf_init")
 	.dwattr $C$DW$6, DW_AT_external
 	.dwattr $C$DW$6, DW_AT_TI_begin_file("../Source/system.c")
-	.dwattr $C$DW$6, DW_AT_TI_begin_line(0x66)
+	.dwattr $C$DW$6, DW_AT_TI_begin_line(0x67)
 	.dwattr $C$DW$6, DW_AT_TI_begin_column(0x06)
 	.dwattr $C$DW$6, DW_AT_TI_max_frame_size(-2)
-	.dwpsn	file "../Source/system.c",line 103,column 1,is_stmt,address _xintf_init,isa 0
+	.dwpsn	file "../Source/system.c",line 104,column 1,is_stmt,address _xintf_init,isa 0
 
 	.dwfde $C$DW$CIE, _xintf_init
 ;----------------------------------------------------------------------
-; 102 | void xintf_init()                                                      
-; 105 | // All Zones---------------------------------                          
-; 106 | // XintfRegs.XINTCNF2.all=0x00000003;                                  
-; 108 | // Timing for all zones based on XTIMCLK = SYSCLKOUT (150MHz)          
+; 103 | void xintf_init()                                                      
+; 106 | // All Zones---------------------------------                          
+; 107 | // XintfRegs.XINTCNF2.all=0x00000003;                                  
+; 109 | // Timing for all zones based on XTIMCLK = SYSCLKOUT (150MHz)          
 ;----------------------------------------------------------------------
 
 ;***************************************************************
@@ -85,255 +85,255 @@ _xintf_init:
 ;* AR4   assigned to $O$C2
 	.dwcfi	cfa_offset, -2
 	.dwcfi	save_reg_to_mem, 26, 0
-	.dwpsn	file "../Source/system.c",line 109,column 3,is_stmt,isa 0
+	.dwpsn	file "../Source/system.c",line 110,column 3,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 109 | XintfRegs.XINTCNF2.bit.XTIMCLK = 0;                                    
-; 111 | // XCLKOUT is enabled                                                  
+; 110 | XintfRegs.XINTCNF2.bit.XTIMCLK = 0;                                    
+; 112 | // XCLKOUT is enabled                                                  
 ;----------------------------------------------------------------------
-        MOVL      XAR4,#_XintfRegs      ; [CPU_U] |109| 
-        MOVL      XAR5,XAR4             ; [CPU_] |109| 
+        MOVL      XAR4,#_XintfRegs      ; [CPU_U] |110| 
+        MOVL      XAR5,XAR4             ; [CPU_] |110| 
         MOVW      DP,#_XintfRegs+20     ; [CPU_U] 
-	.dwpsn	file "../Source/system.c",line 112,column 3,is_stmt,isa 0
+	.dwpsn	file "../Source/system.c",line 113,column 3,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 112 | XintfRegs.XINTCNF2.bit.CLKOFF = 0;                                     
+; 113 | XintfRegs.XINTCNF2.bit.CLKOFF = 0;                                     
 ;----------------------------------------------------------------------
-        ADDB      XAR4,#20              ; [CPU_] |112| 
-	.dwpsn	file "../Source/system.c",line 109,column 3,is_stmt,isa 0
-        ADDB      XAR5,#21              ; [CPU_] |109| 
-        AND       *+XAR5[0],#0xfff8     ; [CPU_] |109| 
-	.dwpsn	file "../Source/system.c",line 112,column 3,is_stmt,isa 0
+        ADDB      XAR4,#20              ; [CPU_] |113| 
+	.dwpsn	file "../Source/system.c",line 110,column 3,is_stmt,isa 0
+        ADDB      XAR5,#21              ; [CPU_] |110| 
+        AND       *+XAR5[0],#0xfff8     ; [CPU_] |110| 
+	.dwpsn	file "../Source/system.c",line 113,column 3,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 114 | // XCLKOUT = XTIMCLK / 2 (75MHz)                                       
+; 115 | // XCLKOUT = XTIMCLK / 2 (75MHz)                                       
 ;----------------------------------------------------------------------
-        AND       *+XAR4[0],#0xfff7     ; [CPU_] |112| 
-	.dwpsn	file "../Source/system.c",line 115,column 3,is_stmt,isa 0
+        AND       *+XAR4[0],#0xfff7     ; [CPU_] |113| 
+	.dwpsn	file "../Source/system.c",line 116,column 3,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 115 | XintfRegs.XINTCNF2.bit.CLKMODE = 1;                                    
-; 117 | // Make sure write buffer is empty before configuring buffering depth  
+; 116 | XintfRegs.XINTCNF2.bit.CLKMODE = 1;                                    
+; 118 | // Make sure write buffer is empty before configuring buffering depth  
 ;----------------------------------------------------------------------
-        OR        @_XintfRegs+20,#0x0004 ; [CPU_] |115| 
+        OR        @_XintfRegs+20,#0x0004 ; [CPU_] |116| 
 $C$L1:    
-	.dwpsn	file "../Source/system.c",line 118,column 3,is_stmt,isa 0
+	.dwpsn	file "../Source/system.c",line 119,column 3,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 118 | while( XintfRegs.XINTCNF2.bit.WLEVEL );       // poll the WLEVEL bit   
-; 120 | // Buffer up to 2 writes                                               
+; 119 | while( XintfRegs.XINTCNF2.bit.WLEVEL );       // poll the WLEVEL bit   
+; 121 | // Buffer up to 2 writes                                               
 ;----------------------------------------------------------------------
-        MOV       AL,@_XintfRegs+20     ; [CPU_] |118| 
-        ANDB      AL,#0xc0              ; [CPU_] |118| 
-        B         $C$L1,NEQ             ; [CPU_] |118| 
-        ; branchcc occurs ; [] |118| 
-	.dwpsn	file "../Source/system.c",line 121,column 3,is_stmt,isa 0
+        MOV       AL,@_XintfRegs+20     ; [CPU_] |119| 
+        ANDB      AL,#0xc0              ; [CPU_] |119| 
+        B         $C$L1,NEQ             ; [CPU_] |119| 
+        ; branchcc occurs ; [] |119| 
+	.dwpsn	file "../Source/system.c",line 122,column 3,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 121 | XintfRegs.XINTCNF2.bit.WRBUFF = 2;                                     
-; 126 | // Assume Zone 1 is slow, so add additional BCYC cycles whenever       
-; 127 | // switching from Zone 7 to another Zone.  This will help avoid bus con
+; 122 | XintfRegs.XINTCNF2.bit.WRBUFF = 2;                                     
+; 127 | // Assume Zone 1 is slow, so add additional BCYC cycles whenever       
+; 128 | // switching from Zone 7 to another Zone.  This will help avoid bus con
 ;     | tention.                                                               
 ;----------------------------------------------------------------------
-        MOVL      XAR4,#_XintfRegs      ; [CPU_U] |121| 
-        MOVB      XAR0,#20              ; [CPU_] |121| 
-	.dwpsn	file "../Source/system.c",line 128,column 3,is_stmt,isa 0
-;----------------------------------------------------------------------
-; 128 | XintfRegs.XBANK.bit.BCYC = 7;                 // Add 7 cycles          
-;----------------------------------------------------------------------
-        MOVL      XAR5,XAR4             ; [CPU_] |128| 
-	.dwpsn	file "../Source/system.c",line 121,column 3,is_stmt,isa 0
-        AND       AL,*+XAR4[AR0],#0xfffe ; [CPU_] |121| 
-        ORB       AL,#0x02              ; [CPU_] |121| 
-        MOV       @_XintfRegs+20,AL     ; [CPU_] |121| 
-	.dwpsn	file "../Source/system.c",line 128,column 3,is_stmt,isa 0
-        ADDB      XAR5,#24              ; [CPU_] |128| 
-        OR        *+XAR5[0],#0x0038     ; [CPU_] |128| 
+        MOVL      XAR4,#_XintfRegs      ; [CPU_U] |122| 
+        MOVB      XAR0,#20              ; [CPU_] |122| 
 	.dwpsn	file "../Source/system.c",line 129,column 3,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 129 | XintfRegs.XBANK.bit.BANK = 1;                 // select zone 7         
-; 134 | // Zone 0 (0x0200-0x03ff)-------------------------------               
-; 135 | // Lead must always be 1 or greater                                    
-; 137 | // Zone write timing                                                   
-; 138 | XintfRegs.XTIMING0.bit.XWRLEAD = 1;                                    
-; 139 | XintfRegs.XTIMING0.bit.XWRACTIVE = 3;                                  
-; 140 | XintfRegs.XTIMING0.bit.XWRTRAIL = 0;                                   
-; 142 | // Zone read timing                                                    
-; 143 | XintfRegs.XTIMING0.bit.XRDLEAD = 1;                                    
-; 144 | XintfRegs.XTIMING0.bit.XRDACTIVE = 3;                                  
-; 145 | XintfRegs.XTIMING0.bit.XRDTRAIL = 0;                                   
-; 147 | // do not double all Zone read/write lead/active/trail timing          
-; 148 | XintfRegs.XTIMING0.bit.X2TIMING = 0;                                   
-; 150 | // Zone will not sample READY                                          
-; 151 | XintfRegs.XTIMING0.bit.USEREADY = 0;                                   
-; 152 | XintfRegs.XTIMING0.bit.READYMODE = 0;                                  
-; 157 | // Zone 1 (0x0400-0x05ff)-------------------------------               
-; 158 | // Lead must always be 1 or greater                                    
-; 160 | // Zone write timing                                                   
-; 161 | XintfRegs.XTIMING1.bit.XWRLEAD = 3;                                    
-; 162 | XintfRegs.XTIMING1.bit.XWRACTIVE = 7;                                  
-; 163 | XintfRegs.XTIMING1.bit.XWRTRAIL = 0;                                   
-; 165 | // Zone read timing                                                    
-; 166 | XintfRegs.XTIMING1.bit.XRDLEAD = 3;                                    
-; 167 | XintfRegs.XTIMING1.bit.XRDACTIVE = 7;                                  
-; 168 | XintfRegs.XTIMING1.bit.XRDTRAIL = 0;                                   
-; 170 | // do not double all Zone read/write lead/active/trail timing          
-; 171 | XintfRegs.XTIMING1.bit.X2TIMING = 0;                                   
-; 173 | // Zone will not sample READY                                          
-; 174 | XintfRegs.XTIMING1.bit.USEREADY = 0;                                   
-; 175 | XintfRegs.XTIMING1.bit.READYMODE = 0;                                  
-; 180 | // Zone 2 (0x00080000-0x000fffff)---------------------------           
-; 181 | // Lead must always be 1 or greater                                    
-; 183 | // Zone write timing                                                   
-; 184 | XintfRegs.XTIMING2.bit.XWRLEAD = 2;                                    
-; 185 | XintfRegs.XTIMING2.bit.XWRACTIVE = 4;                                  
-; 186 | XintfRegs.XTIMING2.bit.XWRTRAIL = 1;                                   
-; 188 | // Zone read timing                                                    
-; 189 | XintfRegs.XTIMING2.bit.XRDLEAD = 2;                                    
-; 190 | XintfRegs.XTIMING2.bit.XRDACTIVE = 4;                                  
-; 191 | XintfRegs.XTIMING2.bit.XRDTRAIL = 1;                                   
-; 193 | // do not double all Zone read/write lead/active/trail timing          
-; 194 | XintfRegs.XTIMING2.bit.X2TIMING = 0;                                   
-; 196 | // Zone will not sample READY                                          
-; 197 | XintfRegs.XTIMING2.bit.USEREADY = 0;                                   
-; 198 | XintfRegs.XTIMING2.bit.READYMODE = 0;                                  
-; 201 | // zone 6 (0x00100000-0x0017ffff)------------------------              
-; 202 | // Size must be 1,1 - other values are reserved                        
-; 203 | // XintfRegs.XTIMING6.bit.XSIZE = 3;                                   
+; 129 | XintfRegs.XBANK.bit.BCYC = 7;                 // Add 7 cycles          
 ;----------------------------------------------------------------------
-        AND       AL,@_XintfRegs+24,#0xfff8 ; [CPU_] |129| 
-        ORB       AL,#0x01              ; [CPU_] |129| 
-        MOV       @_XintfRegs+24,AL     ; [CPU_] |129| 
-	.dwpsn	file "../Source/system.c",line 205,column 3,is_stmt,isa 0
+        MOVL      XAR5,XAR4             ; [CPU_] |129| 
+	.dwpsn	file "../Source/system.c",line 122,column 3,is_stmt,isa 0
+        AND       AL,*+XAR4[AR0],#0xfffe ; [CPU_] |122| 
+        ORB       AL,#0x02              ; [CPU_] |122| 
+        MOV       @_XintfRegs+20,AL     ; [CPU_] |122| 
+	.dwpsn	file "../Source/system.c",line 129,column 3,is_stmt,isa 0
+        ADDB      XAR5,#24              ; [CPU_] |129| 
+        OR        *+XAR5[0],#0x0038     ; [CPU_] |129| 
+	.dwpsn	file "../Source/system.c",line 130,column 3,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 205 | XintfRegs.XTIMING6.bit.XWRLEAD = 2;                                    
+; 130 | XintfRegs.XBANK.bit.BANK = 1;                 // select zone 7         
+; 135 | // Zone 0 (0x0200-0x03ff)-------------------------------               
+; 136 | // Lead must always be 1 or greater                                    
+; 138 | // Zone write timing                                                   
+; 139 | XintfRegs.XTIMING0.bit.XWRLEAD = 1;                                    
+; 140 | XintfRegs.XTIMING0.bit.XWRACTIVE = 3;                                  
+; 141 | XintfRegs.XTIMING0.bit.XWRTRAIL = 0;                                   
+; 143 | // Zone read timing                                                    
+; 144 | XintfRegs.XTIMING0.bit.XRDLEAD = 1;                                    
+; 145 | XintfRegs.XTIMING0.bit.XRDACTIVE = 3;                                  
+; 146 | XintfRegs.XTIMING0.bit.XRDTRAIL = 0;                                   
+; 148 | // do not double all Zone read/write lead/active/trail timing          
+; 149 | XintfRegs.XTIMING0.bit.X2TIMING = 0;                                   
+; 151 | // Zone will not sample READY                                          
+; 152 | XintfRegs.XTIMING0.bit.USEREADY = 0;                                   
+; 153 | XintfRegs.XTIMING0.bit.READYMODE = 0;                                  
+; 158 | // Zone 1 (0x0400-0x05ff)-------------------------------               
+; 159 | // Lead must always be 1 or greater                                    
+; 161 | // Zone write timing                                                   
+; 162 | XintfRegs.XTIMING1.bit.XWRLEAD = 3;                                    
+; 163 | XintfRegs.XTIMING1.bit.XWRACTIVE = 7;                                  
+; 164 | XintfRegs.XTIMING1.bit.XWRTRAIL = 0;                                   
+; 166 | // Zone read timing                                                    
+; 167 | XintfRegs.XTIMING1.bit.XRDLEAD = 3;                                    
+; 168 | XintfRegs.XTIMING1.bit.XRDACTIVE = 7;                                  
+; 169 | XintfRegs.XTIMING1.bit.XRDTRAIL = 0;                                   
+; 171 | // do not double all Zone read/write lead/active/trail timing          
+; 172 | XintfRegs.XTIMING1.bit.X2TIMING = 0;                                   
+; 174 | // Zone will not sample READY                                          
+; 175 | XintfRegs.XTIMING1.bit.USEREADY = 0;                                   
+; 176 | XintfRegs.XTIMING1.bit.READYMODE = 0;                                  
+; 181 | // Zone 2 (0x00080000-0x000fffff)---------------------------           
+; 182 | // Lead must always be 1 or greater                                    
+; 184 | // Zone write timing                                                   
+; 185 | XintfRegs.XTIMING2.bit.XWRLEAD = 2;                                    
+; 186 | XintfRegs.XTIMING2.bit.XWRACTIVE = 4;                                  
+; 187 | XintfRegs.XTIMING2.bit.XWRTRAIL = 1;                                   
+; 189 | // Zone read timing                                                    
+; 190 | XintfRegs.XTIMING2.bit.XRDLEAD = 2;                                    
+; 191 | XintfRegs.XTIMING2.bit.XRDACTIVE = 4;                                  
+; 192 | XintfRegs.XTIMING2.bit.XRDTRAIL = 1;                                   
+; 194 | // do not double all Zone read/write lead/active/trail timing          
+; 195 | XintfRegs.XTIMING2.bit.X2TIMING = 0;                                   
+; 197 | // Zone will not sample READY                                          
+; 198 | XintfRegs.XTIMING2.bit.USEREADY = 0;                                   
+; 199 | XintfRegs.XTIMING2.bit.READYMODE = 0;                                  
+; 202 | // zone 6 (0x00100000-0x0017ffff)------------------------              
+; 203 | // Size must be 1,1 - other values are reserved                        
+; 204 | // XintfRegs.XTIMING6.bit.XSIZE = 3;                                   
 ;----------------------------------------------------------------------
-        MOVB      XAR0,#12              ; [CPU_] |205| 
-	.dwpsn	file "../Source/system.c",line 138,column 3,is_stmt,isa 0
-        AND       AL,*+XAR4[0],#0xffbf  ; [CPU_] |138| 
-        ORB       AL,#0x20              ; [CPU_] |138| 
-        MOV       *+XAR4[0],AL          ; [CPU_] |138| 
+        AND       AL,@_XintfRegs+24,#0xfff8 ; [CPU_] |130| 
+        ORB       AL,#0x01              ; [CPU_] |130| 
+        MOV       @_XintfRegs+24,AL     ; [CPU_] |130| 
+	.dwpsn	file "../Source/system.c",line 206,column 3,is_stmt,isa 0
+;----------------------------------------------------------------------
+; 206 | XintfRegs.XTIMING6.bit.XWRLEAD = 2;                                    
+;----------------------------------------------------------------------
+        MOVB      XAR0,#12              ; [CPU_] |206| 
 	.dwpsn	file "../Source/system.c",line 139,column 3,is_stmt,isa 0
-        AND       AL,*+XAR4[0],#0xffef  ; [CPU_] |139| 
-        ORB       AL,#0x0c              ; [CPU_] |139| 
+        AND       AL,*+XAR4[0],#0xffbf  ; [CPU_] |139| 
+        ORB       AL,#0x20              ; [CPU_] |139| 
         MOV       *+XAR4[0],AL          ; [CPU_] |139| 
 	.dwpsn	file "../Source/system.c",line 140,column 3,is_stmt,isa 0
-        AND       *+XAR4[0],#0xfffc     ; [CPU_] |140| 
-	.dwpsn	file "../Source/system.c",line 143,column 3,is_stmt,isa 0
-        AND       AL,*+XAR4[0],#0xdfff  ; [CPU_] |143| 
-        OR        AL,#0x1000            ; [CPU_] |143| 
-        MOV       *+XAR4[0],AL          ; [CPU_] |143| 
+        AND       AL,*+XAR4[0],#0xffef  ; [CPU_] |140| 
+        ORB       AL,#0x0c              ; [CPU_] |140| 
+        MOV       *+XAR4[0],AL          ; [CPU_] |140| 
+	.dwpsn	file "../Source/system.c",line 141,column 3,is_stmt,isa 0
+        AND       *+XAR4[0],#0xfffc     ; [CPU_] |141| 
 	.dwpsn	file "../Source/system.c",line 144,column 3,is_stmt,isa 0
-        AND       AL,*+XAR4[0],#0xf7ff  ; [CPU_] |144| 
-        OR        AL,#0x0600            ; [CPU_] |144| 
+        AND       AL,*+XAR4[0],#0xdfff  ; [CPU_] |144| 
+        OR        AL,#0x1000            ; [CPU_] |144| 
         MOV       *+XAR4[0],AL          ; [CPU_] |144| 
 	.dwpsn	file "../Source/system.c",line 145,column 3,is_stmt,isa 0
-        AND       *+XAR4[0],#0xfe7f     ; [CPU_] |145| 
-	.dwpsn	file "../Source/system.c",line 148,column 3,is_stmt,isa 0
-        AND       *+XAR4[1],#0xffbf     ; [CPU_] |148| 
-	.dwpsn	file "../Source/system.c",line 151,column 3,is_stmt,isa 0
-        AND       *+XAR4[0],#0xbfff     ; [CPU_] |151| 
+        AND       AL,*+XAR4[0],#0xf7ff  ; [CPU_] |145| 
+        OR        AL,#0x0600            ; [CPU_] |145| 
+        MOV       *+XAR4[0],AL          ; [CPU_] |145| 
+	.dwpsn	file "../Source/system.c",line 146,column 3,is_stmt,isa 0
+        AND       *+XAR4[0],#0xfe7f     ; [CPU_] |146| 
+	.dwpsn	file "../Source/system.c",line 149,column 3,is_stmt,isa 0
+        AND       *+XAR4[1],#0xffbf     ; [CPU_] |149| 
 	.dwpsn	file "../Source/system.c",line 152,column 3,is_stmt,isa 0
-        AND       *+XAR4[0],#0x7fff     ; [CPU_] |152| 
-	.dwpsn	file "../Source/system.c",line 161,column 3,is_stmt,isa 0
-        OR        *+XAR4[2],#0x0060     ; [CPU_] |161| 
+        AND       *+XAR4[0],#0xbfff     ; [CPU_] |152| 
+	.dwpsn	file "../Source/system.c",line 153,column 3,is_stmt,isa 0
+        AND       *+XAR4[0],#0x7fff     ; [CPU_] |153| 
 	.dwpsn	file "../Source/system.c",line 162,column 3,is_stmt,isa 0
-        OR        @_XintfRegs+2,#0x001c ; [CPU_] |162| 
+        OR        *+XAR4[2],#0x0060     ; [CPU_] |162| 
 	.dwpsn	file "../Source/system.c",line 163,column 3,is_stmt,isa 0
-        AND       @_XintfRegs+2,#0xfffc ; [CPU_] |163| 
-	.dwpsn	file "../Source/system.c",line 166,column 3,is_stmt,isa 0
-        OR        @_XintfRegs+2,#0x3000 ; [CPU_] |166| 
+        OR        @_XintfRegs+2,#0x001c ; [CPU_] |163| 
+	.dwpsn	file "../Source/system.c",line 164,column 3,is_stmt,isa 0
+        AND       @_XintfRegs+2,#0xfffc ; [CPU_] |164| 
 	.dwpsn	file "../Source/system.c",line 167,column 3,is_stmt,isa 0
-        OR        @_XintfRegs+2,#0x0e00 ; [CPU_] |167| 
+        OR        @_XintfRegs+2,#0x3000 ; [CPU_] |167| 
 	.dwpsn	file "../Source/system.c",line 168,column 3,is_stmt,isa 0
-        AND       @_XintfRegs+2,#0xfe7f ; [CPU_] |168| 
-	.dwpsn	file "../Source/system.c",line 171,column 3,is_stmt,isa 0
-        AND       *+XAR4[3],#0xffbf     ; [CPU_] |171| 
-	.dwpsn	file "../Source/system.c",line 174,column 3,is_stmt,isa 0
-        AND       @_XintfRegs+2,#0xbfff ; [CPU_] |174| 
+        OR        @_XintfRegs+2,#0x0e00 ; [CPU_] |168| 
+	.dwpsn	file "../Source/system.c",line 169,column 3,is_stmt,isa 0
+        AND       @_XintfRegs+2,#0xfe7f ; [CPU_] |169| 
+	.dwpsn	file "../Source/system.c",line 172,column 3,is_stmt,isa 0
+        AND       *+XAR4[3],#0xffbf     ; [CPU_] |172| 
 	.dwpsn	file "../Source/system.c",line 175,column 3,is_stmt,isa 0
-        AND       @_XintfRegs+2,#0x7fff ; [CPU_] |175| 
-	.dwpsn	file "../Source/system.c",line 184,column 3,is_stmt,isa 0
-        AND       AL,*+XAR4[4],#0xffdf  ; [CPU_] |184| 
-        ORB       AL,#0x40              ; [CPU_] |184| 
-        MOV       @_XintfRegs+4,AL      ; [CPU_] |184| 
+        AND       @_XintfRegs+2,#0xbfff ; [CPU_] |175| 
+	.dwpsn	file "../Source/system.c",line 176,column 3,is_stmt,isa 0
+        AND       @_XintfRegs+2,#0x7fff ; [CPU_] |176| 
 	.dwpsn	file "../Source/system.c",line 185,column 3,is_stmt,isa 0
-        AND       AL,@_XintfRegs+4,#0xfff3 ; [CPU_] |185| 
-        ORB       AL,#0x10              ; [CPU_] |185| 
+        AND       AL,*+XAR4[4],#0xffdf  ; [CPU_] |185| 
+        ORB       AL,#0x40              ; [CPU_] |185| 
         MOV       @_XintfRegs+4,AL      ; [CPU_] |185| 
 	.dwpsn	file "../Source/system.c",line 186,column 3,is_stmt,isa 0
-        AND       AL,@_XintfRegs+4,#0xfffc ; [CPU_] |186| 
-        ORB       AL,#0x01              ; [CPU_] |186| 
+        AND       AL,@_XintfRegs+4,#0xfff3 ; [CPU_] |186| 
+        ORB       AL,#0x10              ; [CPU_] |186| 
         MOV       @_XintfRegs+4,AL      ; [CPU_] |186| 
-	.dwpsn	file "../Source/system.c",line 189,column 3,is_stmt,isa 0
-        AND       AL,@_XintfRegs+4,#0xefff ; [CPU_] |189| 
-        OR        AL,#0x2000            ; [CPU_] |189| 
-        MOV       @_XintfRegs+4,AL      ; [CPU_] |189| 
+	.dwpsn	file "../Source/system.c",line 187,column 3,is_stmt,isa 0
+        AND       AL,@_XintfRegs+4,#0xfffc ; [CPU_] |187| 
+        ORB       AL,#0x01              ; [CPU_] |187| 
+        MOV       @_XintfRegs+4,AL      ; [CPU_] |187| 
 	.dwpsn	file "../Source/system.c",line 190,column 3,is_stmt,isa 0
-        AND       AL,@_XintfRegs+4,#0xf9ff ; [CPU_] |190| 
-        OR        AL,#0x0800            ; [CPU_] |190| 
+        AND       AL,@_XintfRegs+4,#0xefff ; [CPU_] |190| 
+        OR        AL,#0x2000            ; [CPU_] |190| 
         MOV       @_XintfRegs+4,AL      ; [CPU_] |190| 
 	.dwpsn	file "../Source/system.c",line 191,column 3,is_stmt,isa 0
-        AND       AL,@_XintfRegs+4,#0xfeff ; [CPU_] |191| 
-        ORB       AL,#0x80              ; [CPU_] |191| 
+        AND       AL,@_XintfRegs+4,#0xf9ff ; [CPU_] |191| 
+        OR        AL,#0x0800            ; [CPU_] |191| 
         MOV       @_XintfRegs+4,AL      ; [CPU_] |191| 
-	.dwpsn	file "../Source/system.c",line 194,column 3,is_stmt,isa 0
-        AND       *+XAR4[5],#0xffbf     ; [CPU_] |194| 
-	.dwpsn	file "../Source/system.c",line 197,column 3,is_stmt,isa 0
-        AND       @_XintfRegs+4,#0xbfff ; [CPU_] |197| 
+	.dwpsn	file "../Source/system.c",line 192,column 3,is_stmt,isa 0
+        AND       AL,@_XintfRegs+4,#0xfeff ; [CPU_] |192| 
+        ORB       AL,#0x80              ; [CPU_] |192| 
+        MOV       @_XintfRegs+4,AL      ; [CPU_] |192| 
+	.dwpsn	file "../Source/system.c",line 195,column 3,is_stmt,isa 0
+        AND       *+XAR4[5],#0xffbf     ; [CPU_] |195| 
 	.dwpsn	file "../Source/system.c",line 198,column 3,is_stmt,isa 0
-        AND       @_XintfRegs+4,#0x7fff ; [CPU_] |198| 
-	.dwpsn	file "../Source/system.c",line 205,column 3,is_stmt,isa 0
-;----------------------------------------------------------------------
-; 206 | XintfRegs.XTIMING6.bit.XWRACTIVE = 4;                                  
-; 207 | XintfRegs.XTIMING6.bit.XWRTRAIL = 1;                                   
-; 209 | // Zone read timing                                                    
-; 210 | XintfRegs.XTIMING6.bit.XRDLEAD = 2;                                    
-; 211 | XintfRegs.XTIMING6.bit.XRDACTIVE = 4;                                  
-; 212 | XintfRegs.XTIMING6.bit.XRDTRAIL = 1;                                   
-; 214 | // do not double all Zone read/write lead/active/trail timing          
-;----------------------------------------------------------------------
-        AND       AL,*+XAR4[AR0],#0xffdf ; [CPU_] |205| 
-        ORB       AL,#0x40              ; [CPU_] |205| 
-	.dwpsn	file "../Source/system.c",line 215,column 3,is_stmt,isa 0
-;----------------------------------------------------------------------
-; 215 | XintfRegs.XTIMING6.bit.X2TIMING = 0;                                   
-;----------------------------------------------------------------------
-        ADDB      XAR4,#13              ; [CPU_] |215| 
-	.dwpsn	file "../Source/system.c",line 205,column 3,is_stmt,isa 0
-        MOV       @_XintfRegs+12,AL     ; [CPU_] |205| 
+        AND       @_XintfRegs+4,#0xbfff ; [CPU_] |198| 
+	.dwpsn	file "../Source/system.c",line 199,column 3,is_stmt,isa 0
+        AND       @_XintfRegs+4,#0x7fff ; [CPU_] |199| 
 	.dwpsn	file "../Source/system.c",line 206,column 3,is_stmt,isa 0
-        AND       AL,@_XintfRegs+12,#0xfff3 ; [CPU_] |206| 
-        ORB       AL,#0x10              ; [CPU_] |206| 
+;----------------------------------------------------------------------
+; 207 | XintfRegs.XTIMING6.bit.XWRACTIVE = 4;                                  
+; 208 | XintfRegs.XTIMING6.bit.XWRTRAIL = 1;                                   
+; 210 | // Zone read timing                                                    
+; 211 | XintfRegs.XTIMING6.bit.XRDLEAD = 2;                                    
+; 212 | XintfRegs.XTIMING6.bit.XRDACTIVE = 4;                                  
+; 213 | XintfRegs.XTIMING6.bit.XRDTRAIL = 1;                                   
+; 215 | // do not double all Zone read/write lead/active/trail timing          
+;----------------------------------------------------------------------
+        AND       AL,*+XAR4[AR0],#0xffdf ; [CPU_] |206| 
+        ORB       AL,#0x40              ; [CPU_] |206| 
+	.dwpsn	file "../Source/system.c",line 216,column 3,is_stmt,isa 0
+;----------------------------------------------------------------------
+; 216 | XintfRegs.XTIMING6.bit.X2TIMING = 0;                                   
+;----------------------------------------------------------------------
+        ADDB      XAR4,#13              ; [CPU_] |216| 
+	.dwpsn	file "../Source/system.c",line 206,column 3,is_stmt,isa 0
         MOV       @_XintfRegs+12,AL     ; [CPU_] |206| 
 	.dwpsn	file "../Source/system.c",line 207,column 3,is_stmt,isa 0
-        AND       AL,@_XintfRegs+12,#0xfffc ; [CPU_] |207| 
-        ORB       AL,#0x01              ; [CPU_] |207| 
+        AND       AL,@_XintfRegs+12,#0xfff3 ; [CPU_] |207| 
+        ORB       AL,#0x10              ; [CPU_] |207| 
         MOV       @_XintfRegs+12,AL     ; [CPU_] |207| 
-	.dwpsn	file "../Source/system.c",line 210,column 3,is_stmt,isa 0
-        AND       AL,@_XintfRegs+12,#0xefff ; [CPU_] |210| 
-        OR        AL,#0x2000            ; [CPU_] |210| 
-        MOV       @_XintfRegs+12,AL     ; [CPU_] |210| 
+	.dwpsn	file "../Source/system.c",line 208,column 3,is_stmt,isa 0
+        AND       AL,@_XintfRegs+12,#0xfffc ; [CPU_] |208| 
+        ORB       AL,#0x01              ; [CPU_] |208| 
+        MOV       @_XintfRegs+12,AL     ; [CPU_] |208| 
 	.dwpsn	file "../Source/system.c",line 211,column 3,is_stmt,isa 0
-        AND       AL,@_XintfRegs+12,#0xf9ff ; [CPU_] |211| 
-        OR        AL,#0x0800            ; [CPU_] |211| 
+        AND       AL,@_XintfRegs+12,#0xefff ; [CPU_] |211| 
+        OR        AL,#0x2000            ; [CPU_] |211| 
         MOV       @_XintfRegs+12,AL     ; [CPU_] |211| 
 	.dwpsn	file "../Source/system.c",line 212,column 3,is_stmt,isa 0
-        AND       AL,@_XintfRegs+12,#0xfeff ; [CPU_] |212| 
-        ORB       AL,#0x80              ; [CPU_] |212| 
+        AND       AL,@_XintfRegs+12,#0xf9ff ; [CPU_] |212| 
+        OR        AL,#0x0800            ; [CPU_] |212| 
         MOV       @_XintfRegs+12,AL     ; [CPU_] |212| 
-	.dwpsn	file "../Source/system.c",line 215,column 3,is_stmt,isa 0
+	.dwpsn	file "../Source/system.c",line 213,column 3,is_stmt,isa 0
+        AND       AL,@_XintfRegs+12,#0xfeff ; [CPU_] |213| 
+        ORB       AL,#0x80              ; [CPU_] |213| 
+        MOV       @_XintfRegs+12,AL     ; [CPU_] |213| 
+	.dwpsn	file "../Source/system.c",line 216,column 3,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 217 | // Zone will not sample READY                                          
+; 218 | // Zone will not sample READY                                          
 ;----------------------------------------------------------------------
-        AND       *+XAR4[0],#0xffbf     ; [CPU_] |215| 
-	.dwpsn	file "../Source/system.c",line 218,column 3,is_stmt,isa 0
-;----------------------------------------------------------------------
-; 218 | XintfRegs.XTIMING6.bit.USEREADY = 0;                                   
-;----------------------------------------------------------------------
-        AND       @_XintfRegs+12,#0xbfff ; [CPU_] |218| 
+        AND       *+XAR4[0],#0xffbf     ; [CPU_] |216| 
 	.dwpsn	file "../Source/system.c",line 219,column 3,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 219 | XintfRegs.XTIMING6.bit.READYMODE = 0;                                  
-; 226 | //Force a pipeline flush to ensure that the write to                   
-; 227 | //the last register configured occurs before returning.                
-; 228 | asm(" RPT #8 || NOP");                                                 
+; 219 | XintfRegs.XTIMING6.bit.USEREADY = 0;                                   
 ;----------------------------------------------------------------------
-        AND       @_XintfRegs+12,#0x7fff ; [CPU_] |219| 
+        AND       @_XintfRegs+12,#0xbfff ; [CPU_] |219| 
+	.dwpsn	file "../Source/system.c",line 220,column 3,is_stmt,isa 0
+;----------------------------------------------------------------------
+; 220 | XintfRegs.XTIMING6.bit.READYMODE = 0;                                  
+; 227 | //Force a pipeline flush to ensure that the write to                   
+; 228 | //the last register configured occurs before returning.                
+; 229 | asm(" RPT #8 || NOP");                                                 
+;----------------------------------------------------------------------
+        AND       @_XintfRegs+12,#0x7fff ; [CPU_] |220| 
  RPT #8 || NOP
         SPM       #0                    ; [CPU_] 
 $C$DW$7	.dwtag  DW_TAG_TI_branch
@@ -343,7 +343,7 @@ $C$DW$7	.dwtag  DW_TAG_TI_branch
         LRETR     ; [CPU_] 
         ; return occurs ; [] 
 	.dwattr $C$DW$6, DW_AT_TI_end_file("../Source/system.c")
-	.dwattr $C$DW$6, DW_AT_TI_end_line(0xe6)
+	.dwattr $C$DW$6, DW_AT_TI_end_line(0xe7)
 	.dwattr $C$DW$6, DW_AT_TI_end_column(0x01)
 	.dwendentry
 	.dwendtag $C$DW$6
@@ -576,34 +576,39 @@ $C$L3:
 ;  86 | SysCtrlRegs.PCLKCR.bit.EVAENCLK = 1;          // HSPCLK to EVA enabled 
 ;----------------------------------------------------------------------
         OR        @_SysCtrlRegs+12,#0x0001 ; [CPU_] |86| 
-	.dwpsn	file "../Source/system.c",line 89,column 3,is_stmt,isa 0
+	.dwpsn	file "../Source/system.c",line 87,column 3,is_stmt,isa 0
 ;----------------------------------------------------------------------
-;  89 | SysCtrlRegs.LPMCR0.all = 0x00FC;              // LPMCR0 set to default
-;     | value                                                                  
+;  87 | SysCtrlRegs.PCLKCR.bit.ECANENCLK = 1;         // HSPCLK to CAN enabled 
 ;----------------------------------------------------------------------
-        MOVB      @_SysCtrlRegs+14,#252,UNC ; [CPU_] |89| 
+        OR        @_SysCtrlRegs+12,#0x4000 ; [CPU_] |87| 
 	.dwpsn	file "../Source/system.c",line 90,column 3,is_stmt,isa 0
 ;----------------------------------------------------------------------
-;  90 | SysCtrlRegs.LPMCR1.all = 0x0000;              // LPMCR1 set to default
+;  90 | SysCtrlRegs.LPMCR0.all = 0x00FC;              // LPMCR0 set to default
 ;     | value                                                                  
-;  92 | EDIS;                                                                  
-;  94 | // init the XINTF                                                      
-;  95 | // use a call to satisfy the requirement to flush the CPU pipeline     
 ;----------------------------------------------------------------------
-        MOV       @_SysCtrlRegs+15,#0   ; [CPU_] |90| 
+        MOVB      @_SysCtrlRegs+14,#252,UNC ; [CPU_] |90| 
+	.dwpsn	file "../Source/system.c",line 91,column 3,is_stmt,isa 0
+;----------------------------------------------------------------------
+;  91 | SysCtrlRegs.LPMCR1.all = 0x0000;              // LPMCR1 set to default
+;     | value                                                                  
+;  93 | EDIS;                                                                  
+;  95 | // init the XINTF                                                      
+;  96 | // use a call to satisfy the requirement to flush the CPU pipeline     
+;----------------------------------------------------------------------
+        MOV       @_SysCtrlRegs+15,#0   ; [CPU_] |91| 
  EDIS
         SPM       #0                    ; [CPU_] 
-	.dwpsn	file "../Source/system.c",line 96,column 3,is_stmt,isa 0
+	.dwpsn	file "../Source/system.c",line 97,column 3,is_stmt,isa 0
 ;----------------------------------------------------------------------
-;  96 | xintf_init();                                                          
+;  97 | xintf_init();                                                          
 ;----------------------------------------------------------------------
 $C$DW$11	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$11, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$11, DW_AT_name("_xintf_init")
 	.dwattr $C$DW$11, DW_AT_TI_call
 
-        LCR       #_xintf_init          ; [CPU_] |96| 
-        ; call occurs [#_xintf_init] ; [] |96| 
+        LCR       #_xintf_init          ; [CPU_] |97| 
+        ; call occurs [#_xintf_init] ; [] |97| 
         SUBB      SP,#2                 ; [CPU_U] 
 	.dwcfi	cfa_offset, -2
 $C$DW$12	.dwtag  DW_TAG_TI_branch
@@ -613,7 +618,7 @@ $C$DW$12	.dwtag  DW_TAG_TI_branch
         LRETR     ; [CPU_] 
         ; return occurs ; [] 
 	.dwattr $C$DW$8, DW_AT_TI_end_file("../Source/system.c")
-	.dwattr $C$DW$8, DW_AT_TI_end_line(0x62)
+	.dwattr $C$DW$8, DW_AT_TI_end_line(0x63)
 	.dwattr $C$DW$8, DW_AT_TI_end_column(0x01)
 	.dwendentry
 	.dwendtag $C$DW$8
@@ -629,15 +634,15 @@ $C$DW$13	.dwtag  DW_TAG_subprogram
 	.dwattr $C$DW$13, DW_AT_TI_symbol_name("_flash_init")
 	.dwattr $C$DW$13, DW_AT_external
 	.dwattr $C$DW$13, DW_AT_TI_begin_file("../Source/system.c")
-	.dwattr $C$DW$13, DW_AT_TI_begin_line(0xfb)
+	.dwattr $C$DW$13, DW_AT_TI_begin_line(0xfc)
 	.dwattr $C$DW$13, DW_AT_TI_begin_column(0x06)
 	.dwattr $C$DW$13, DW_AT_TI_max_frame_size(-2)
-	.dwpsn	file "../Source/system.c",line 252,column 1,is_stmt,address _flash_init,isa 0
+	.dwpsn	file "../Source/system.c",line 253,column 1,is_stmt,address _flash_init,isa 0
 
 	.dwfde $C$DW$CIE, _flash_init
 ;----------------------------------------------------------------------
-; 251 | void flash_init()                                                      
-; 253 | EALLOW;                                       // Enable EALLOW protecte
+; 252 | void flash_init()                                                      
+; 254 | EALLOW;                                       // Enable EALLOW protecte
 ;     | d register access                                                      
 ;----------------------------------------------------------------------
 
@@ -655,69 +660,69 @@ _flash_init:
 	.dwcfi	cfa_offset, -2
 	.dwcfi	save_reg_to_mem, 26, 0
  EALLOW
-	.dwpsn	file "../Source/system.c",line 255,column 3,is_stmt,isa 0
-;----------------------------------------------------------------------
-; 255 | FlashRegs.FPWR.bit.PWR = 3;                   // Pump and bank set to a
-;     | ctive mode                                                             
-;----------------------------------------------------------------------
-        MOVL      XAR5,#_FlashRegs      ; [CPU_U] |255| 
-        MOVL      XAR4,XAR5             ; [CPU_] |255| 
-        MOVW      DP,#_FlashRegs+6      ; [CPU_U] 
-        ADDB      XAR4,#2               ; [CPU_] |255| 
-        OR        *+XAR4[0],#0x0003     ; [CPU_] |255| 
 	.dwpsn	file "../Source/system.c",line 256,column 3,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 256 | FlashRegs.FSTATUS.bit.V3STAT = 1;             // Clear the 3VSTAT bit  
+; 256 | FlashRegs.FPWR.bit.PWR = 3;                   // Pump and bank set to a
+;     | ctive mode                                                             
 ;----------------------------------------------------------------------
-        OR        *+XAR5[3],#0x0100     ; [CPU_] |256| 
+        MOVL      XAR5,#_FlashRegs      ; [CPU_U] |256| 
+        MOVL      XAR4,XAR5             ; [CPU_] |256| 
+        MOVW      DP,#_FlashRegs+6      ; [CPU_U] 
+        ADDB      XAR4,#2               ; [CPU_] |256| 
+        OR        *+XAR4[0],#0x0003     ; [CPU_] |256| 
 	.dwpsn	file "../Source/system.c",line 257,column 3,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 257 | FlashRegs.FSTDBYWAIT.bit.STDBYWAIT = 0x01FF;  // Sleep to standby trans
-;     | ition cycles                                                           
+; 257 | FlashRegs.FSTATUS.bit.V3STAT = 1;             // Clear the 3VSTAT bit  
 ;----------------------------------------------------------------------
-        OR        *+XAR5[4],#0x01ff     ; [CPU_] |257| 
+        OR        *+XAR5[3],#0x0100     ; [CPU_] |257| 
 	.dwpsn	file "../Source/system.c",line 258,column 3,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 258 | FlashRegs.FACTIVEWAIT.bit.ACTIVEWAIT = 0x01FF;// Standby to active tran
-;     | sition cycles                                                          
+; 258 | FlashRegs.FSTDBYWAIT.bit.STDBYWAIT = 0x01FF;  // Sleep to standby trans
+;     | ition cycles                                                           
 ;----------------------------------------------------------------------
-        OR        *+XAR5[5],#0x01ff     ; [CPU_] |258| 
+        OR        *+XAR5[4],#0x01ff     ; [CPU_] |258| 
 	.dwpsn	file "../Source/system.c",line 259,column 3,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 259 | FlashRegs.FBANKWAIT.bit.RANDWAIT = 3;         // Random access waitstat
-;     | es                                                                     
+; 259 | FlashRegs.FACTIVEWAIT.bit.ACTIVEWAIT = 0x01FF;// Standby to active tran
+;     | sition cycles                                                          
 ;----------------------------------------------------------------------
-        AND       AL,*+XAR5[6],#0xfff0  ; [CPU_] |259| 
-        ORB       AL,#0x03              ; [CPU_] |259| 
-        MOV       @_FlashRegs+6,AL      ; [CPU_] |259| 
+        OR        *+XAR5[5],#0x01ff     ; [CPU_] |259| 
 	.dwpsn	file "../Source/system.c",line 260,column 3,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 260 | FlashRegs.FBANKWAIT.bit.PAGEWAIT = 3;         // Paged access waitstate
-;     | s                                                                      
+; 260 | FlashRegs.FBANKWAIT.bit.RANDWAIT = 3;         // Random access waitstat
+;     | es                                                                     
 ;----------------------------------------------------------------------
-        AND       AL,@_FlashRegs+6,#0xf3ff ; [CPU_] |260| 
-        OR        AL,#0x0300            ; [CPU_] |260| 
+        AND       AL,*+XAR5[6],#0xfff0  ; [CPU_] |260| 
+        ORB       AL,#0x03              ; [CPU_] |260| 
         MOV       @_FlashRegs+6,AL      ; [CPU_] |260| 
 	.dwpsn	file "../Source/system.c",line 261,column 3,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 261 | FlashRegs.FOTPWAIT.bit.OTPWAIT = 8;           // OTP waitstates        
+; 261 | FlashRegs.FBANKWAIT.bit.PAGEWAIT = 3;         // Paged access waitstate
+;     | s                                                                      
 ;----------------------------------------------------------------------
-        AND       AL,*+XAR5[7],#0xffe0  ; [CPU_] |261| 
-        ORB       AL,#0x08              ; [CPU_] |261| 
-        MOV       @_FlashRegs+7,AL      ; [CPU_] |261| 
+        AND       AL,@_FlashRegs+6,#0xf3ff ; [CPU_] |261| 
+        OR        AL,#0x0300            ; [CPU_] |261| 
+        MOV       @_FlashRegs+6,AL      ; [CPU_] |261| 
 	.dwpsn	file "../Source/system.c",line 262,column 3,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 262 | FlashRegs.FOPT.bit.ENPIPE = 1;                // Enable the flash pipel
-;     | ine                                                                    
-; 264 | EDIS;                                         // Disable EALLOW protect
-;     | ed register access                                                     
-; 266 | // Force a complete pipeline flush to ensure that the write to the last
-;     |  register                                                              
-; 267 | // configured occurs before returning.  Safest thing is to wait 8 full
-;     | cycles                                                                 
-; 268 | asm(" RPT #7 || NOP");                                                 
+; 262 | FlashRegs.FOTPWAIT.bit.OTPWAIT = 8;           // OTP waitstates        
 ;----------------------------------------------------------------------
-        OR        @_FlashRegs,#0x0001   ; [CPU_] |262| 
+        AND       AL,*+XAR5[7],#0xffe0  ; [CPU_] |262| 
+        ORB       AL,#0x08              ; [CPU_] |262| 
+        MOV       @_FlashRegs+7,AL      ; [CPU_] |262| 
+	.dwpsn	file "../Source/system.c",line 263,column 3,is_stmt,isa 0
+;----------------------------------------------------------------------
+; 263 | FlashRegs.FOPT.bit.ENPIPE = 1;                // Enable the flash pipel
+;     | ine                                                                    
+; 265 | EDIS;                                         // Disable EALLOW protect
+;     | ed register access                                                     
+; 267 | // Force a complete pipeline flush to ensure that the write to the last
+;     |  register                                                              
+; 268 | // configured occurs before returning.  Safest thing is to wait 8 full
+;     | cycles                                                                 
+; 269 | asm(" RPT #7 || NOP");                                                 
+;----------------------------------------------------------------------
+        OR        @_FlashRegs,#0x0001   ; [CPU_] |263| 
  EDIS
  RPT #7 || NOP
         SPM       #0                    ; [CPU_] 
@@ -728,7 +733,7 @@ $C$DW$14	.dwtag  DW_TAG_TI_branch
         LRETR     ; [CPU_] 
         ; return occurs ; [] 
 	.dwattr $C$DW$13, DW_AT_TI_end_file("../Source/system.c")
-	.dwattr $C$DW$13, DW_AT_TI_end_line(0x10d)
+	.dwattr $C$DW$13, DW_AT_TI_end_line(0x10e)
 	.dwattr $C$DW$13, DW_AT_TI_end_column(0x01)
 	.dwendentry
 	.dwendtag $C$DW$13

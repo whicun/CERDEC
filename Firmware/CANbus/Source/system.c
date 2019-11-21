@@ -84,6 +84,7 @@ void sys_init()
   SysCtrlRegs.PCLKCR.bit.ADCENCLK = 0;		// HSPCLK to ADC enabled
   SysCtrlRegs.PCLKCR.bit.EVBENCLK = 1;		// HSPCLK to EVB enabled
   SysCtrlRegs.PCLKCR.bit.EVAENCLK = 1;		// HSPCLK to EVA enabled
+  SysCtrlRegs.PCLKCR.bit.ECANENCLK = 1;		// HSPCLK to CAN enabled
 
   /*** Configure the low-power modes ***/
   SysCtrlRegs.LPMCR0.all = 0x00FC;		// LPMCR0 set to default value

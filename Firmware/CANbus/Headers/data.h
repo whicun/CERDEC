@@ -1,7 +1,7 @@
 #ifndef PRO_D_DATA_H
 #define PRO_D_DATA_H
 
-#define CHS_MAX		1		// load channel numbers
+#define CHS_MAX		4		// load channel numbers
 
 #define ENC_MAX		2		// enocder channels
 
@@ -23,7 +23,7 @@
 //#define BUFFSIZE	0x00008000	// 32k (struct) x 16 word
 //#define BUFFSIZE	0x0000fc00	// 63k (struct) x 16 word
 //#define BUFFSIZE	0x0000f600	// 61k (struct) x 16 word
-#define BUFFSIZE	60000
+#define BUFFSIZE	10000
 
 #define ADCDIFF		0.001		// default window ratio
 
