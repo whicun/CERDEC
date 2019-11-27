@@ -1,0 +1,45 @@
+Basic Flow for the Touchscreen GUI
+
+## Start Up ##
+- Mount files
+- Load index/linker files
+- Init screen
+  - Orientation
+  - Enable touch
+- Init Comms
+  - Setup comm pins 7 (Tx) and 8 (Rx)
+  - Set up comms Tx/Rx buffers (256 Bytes)
+- Draw Logo screen (1.5 secs)
+
+## Enter Main Loop ##
+- Send commands based on which screen user is on
+  - Every "refresh"
+    - Converter Status (TS -> BMS)
+  - Overall Shelf Screen
+    - Converter Status (TS -> BMS/ProD -> Converter)
+      - Bus Voltage Set Point
+      - Bus Voltage (DC) Actual
+      - Bus Voltage (ESD) Actual
+      - Actual Source Current
+      - Actual Load Current
+      - Actual Converter DC Current
+      - Actual ESD Current
+      - Temps (0 - 7)
+    - Shelf Status (TS -> BMS -> Master Controllers)
+      - Voltages
+      - Temps
+      - Alarms/Errors
+  - Shelf Screen
+    - Shelf Readings (TS -> BMS -> Master Controllers)
+      - Total Voltage
+      - Average Temperature
+      - Max Temp and Module ID
+      - Min Temp and Module ID
+      - Alarms/Errors
+    - Selected Module Readings (TS -> BMS -> Master Controllers)
+      - Total Voltage
+      - Temperature
+      - Alarms/Errors
+- Processes any received data based on which screen user is on
+  - Receive readings/updates -> Print to screen
+- Check for touchscreen presses based on which screen user is on
