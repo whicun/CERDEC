@@ -21,6 +21,7 @@ Source/DSP281x_ECan.obj: C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/D
 Source/DSP281x_ECan.obj: C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/DSP281x_common/include/DSP281x_SWPrioritizedIsrLevels.h
 Source/DSP281x_ECan.obj: C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/DSP281x_common/include/DSP281x_DefaultISR.h
 Source/DSP281x_ECan.obj: C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/can.h
+Source/DSP281x_ECan.obj: C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/system_object.h
 
 ../Source/DSP281x_ECan.c: 
 C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/DSP281x_headers/include/DSP281x_Device.h: 
@@ -43,3 +44,4 @@ C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/DSP281x_common/include/DSP
 C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/DSP281x_common/include/DSP281x_SWPrioritizedIsrLevels.h: 
 C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/DSP281x_common/include/DSP281x_DefaultISR.h: 
 C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/can.h: 
+C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/system_object.h: 

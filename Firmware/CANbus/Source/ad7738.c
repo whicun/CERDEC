@@ -10,6 +10,9 @@
 #include "diskio.h"
 #include "dl.h"
 #include "can.h"
+#include "CAN_PCKA.h"
+#include "System_Object.h"
+
 
 #define ADCREG_COMM	0x00			// (W)   Communications
 #define ADCREG_IOPORT	0x01			// (R/W) I/O Port
@@ -652,8 +655,146 @@ void ad7738_settemp( double tempv )
   EINT;
 }
 
+#define MAXCAPVOLTFAULT	310.0
+#define MAXCAPVOLTALARM	305.0
+#define MINCAPVOLTFAULT	238.0
+#define MINCAPVOLTALARM	250.0
+
+#define MAXCURRFAULT	1000.0
+#define MAXCURRALARM	300.0
+
+#define MAXCAPTEMPFAULT	70.0
+#define MAXCAPTEMPALARM	50.0
+
+#define ALARMOVERVOLT		0x0001
+#define ALARMUNDERVOLT		0x0002
+#define ALARMOVERCURR		0x0004
+#define ALARMOVERTEMP		0x0008
+#define FAULTOVERVOLT		0x0010
+#define FAULTUNDERVOLT		0x0020
+#define FAULTOVERCURR		0x0040
+#define FAULTOVERTEMP		0x0080
+#define FAULTMCOVERVOLT		0x0100
+#define FAULTMCUNDERVOLT	0x0200
+#define FAULTMCERROR		0x0400
+#define FAULTMCOVERTEMP		0x0800
+#define FAULTCONTACTOR		0x1000
 
 
+int checkFaults(void) {
+	float capVolt1, capVolt2, outCurr, maxTemp;
+	int fault=0;
+
+	capVolt1 = getSystemCapVoltageF();
+	//capVolt2 = ((float)System.capVoltage)/10.0;
+
+	//outCurr = System.outCurrentF;
+	//maxTemp = (float)(System.shelves[0].maxTemp/10.0);
+
+	if(capVolt1 > MAXCAPVOLTFAULT || capVolt2 > MAXCAPVOLTFAULT) {
+		fault |= FAULTOVERVOLT;
+	}
+	else if(capVolt1 > MAXCAPVOLTALARM || capVolt2 > MAXCAPVOLTALARM) {
+		fault |= ALARMOVERVOLT;
+	}
+	if(capVolt1 < MINCAPVOLTFAULT || capVolt2 < MINCAPVOLTFAULT) {
+		fault |= FAULTUNDERVOLT;
+	}
+	else if(capVolt1 < MINCAPVOLTALARM || capVolt2 < MINCAPVOLTALARM) {
+		fault |= ALARMUNDERVOLT;
+	}
+	if(outCurr > MAXCURRFAULT) {
+		fault |= FAULTOVERCURR;
+	}
+	else if(outCurr > MAXCURRALARM) {
+		fault |= ALARMOVERCURR;
+	}
+	if(maxTemp > MAXCAPTEMPFAULT) {
+		fault |= FAULTOVERCURR;
+	}
+	else if(maxTemp > MAXCAPTEMPALARM) {
+		fault |= ALARMOVERCURR;
+	}
+
+	return fault;
+
+}
+
+#define sOFF 		0
+#define sINIT		1
+#define sSTANDBY	2
+#define sON			3
+#define sFAULT		7
+
+int sysState = 0;
+int prevSysState = 0;
+
+void stateMachine(void) {
+	int faults;
+
+	faults = checkFaults()&0xFFF0;
+
+	switch(sysState) {
+		case sOFF:
+			if(prevSysState != sOFF) {
+			}
+			prevSysState = sOFF;
+			sysState = sINIT;
+		break;
+		case sINIT:
+			if(prevSysState != sINIT) {
+				// TODO: verify contactor is open
+				wakeUpMCs();
+
+			}
+			prevSysState = sINIT;
+
+			if(faults == 0 && bms_cmd.bit.MODE == 1) {
+				sysState = sSTANDBY;
+			}
+
+		break;
+		case sSTANDBY:
+			if(prevSysState != sSTANDBY) {
+			}
+			prevSysState = sSTANDBY;
+
+			if(faults) {
+				sysState = sFAULT;
+			}
+			else if(faults == 0 && bms_cmd.bit.MODE == 2) {
+				sysState = sON;
+			}
+
+
+
+		break;
+		case sON:
+			if(prevSysState != sON) {
+				// TODO: Close contactor
+			}
+			prevSysState = sON;
+
+			if(faults) {
+				sysState = sFAULT;
+			}
+			else if(faults == 0 && bms_cmd.bit.MODE == 1) {
+				sysState = sSTANDBY;
+			}
+
+		break;
+		case sFAULT:
+			if(prevSysState != sFAULT) {
+			}
+			prevSysState = sFAULT;
+
+		break;
+
+		default:
+		break;
+	}
+
+}
 
 
 // isr for cpu timer0 for adc data read and processing
@@ -669,15 +810,27 @@ interrupt void cpu_timer0_isr()
 
   // GpioDataRegs.GPBCLEAR.bit.GPIOB3 = 1;	// DEBUG: TAG_TX
   
+	processJSRGlobal(1);		// Shelf 1
 
-	if(cccp >= 200) {
+	if(cccp == 100) {
+		sendModStatus(1, 1);	// Shelf 1 Module 1+2
+		sendModStatus(1, 3);
+		sendModStatus(1, 5);
+		sendModStatus(1, 7);
+		sendModStatus(1, 9);
+	}
+	else if(cccp >= 200) {
 		cccp = 0;
-		CAN_Tx_SendInformationRequest(MOD_1_2, (long)0);
-		sendModStatus(0, 1);
+		CAN_Tx_SendInformationRequest(MOD_1_2, (long)0);		// Shelf 1 Module 1+2
+		CAN_Tx_SendInformationRequest(MOD_3_4, (long)0);
+		CAN_Tx_SendInformationRequest(MOD_5_6, (long)0);
+		CAN_Tx_SendInformationRequest(MOD_7_8, (long)0);
+		CAN_Tx_SendInformationRequest(MOD_9_10, (long)0);
 
 		//wakeUpMCs();
 	}
 	cccp++;
+
 
 
 
@@ -757,7 +910,7 @@ interrupt void cpu_timer0_isr()
 
 			GpioDataRegs.GPBSET.bit.GPIOB4 = 1;	// A1CSn high
 		}
-
+/*
 		// ***** read the encoders *****
 
 		// channel 1
@@ -767,7 +920,7 @@ interrupt void cpu_timer0_isr()
 		// channel 2
 		enccnt[1] += (int) EvbRegs.T4CNT;	// add the count for the interval
 		EvbRegs.T4CNT = 0;				// reset the count
-
+*/
 	} else						// phase 1
 	{
 
@@ -871,9 +1024,8 @@ interrupt void cpu_timer0_isr()
 	// ****** processing data ******
 
 	if (0 == ad7738_ph) {
-		// --- phase 0 ---
-		// processing encoder data
-
+		// --- phase 0 ---		// processing encoder data
+/*
 		// convert encoder count to inch
 		for (i = 0; i < ENC_MAX; i++) {
 			ad7738_load.pos[i] = enccnt[i] * slope[0].pos[i];
@@ -909,7 +1061,8 @@ interrupt void cpu_timer0_isr()
 				}
 			}
 		}
-
+*/
+/*
 		// velocity calculation
 		for (i = 0; i < ENC_MAX; i++) {
 			temp = enccnt[i] - velpbuf[i][velidx];
@@ -955,7 +1108,8 @@ interrupt void cpu_timer0_isr()
 		if (velidx >= conf_data.velfilter) {
 			velidx = 0;
 		}
-
+*/
+/*
 		// *** limit ***
 		for (i = 0; i < LIM_MAX; i++) {
 			j = 0;
@@ -1010,7 +1164,8 @@ interrupt void cpu_timer0_isr()
 				}
 			}
 		}
-
+*/
+/*
 		// *** DAC out ***
 		if (!dacsetvolt) {
 			for (i = 0; i < DAC_MAX; i++) {
@@ -1072,6 +1227,7 @@ interrupt void cpu_timer0_isr()
 			// *** DAC out, latch out new value ***
 			latch_dac();
 		}
+*/
 
 		// ***** temperature reading count *****
 		tempcnt++;					// increase temperature count
@@ -1178,7 +1334,7 @@ interrupt void cpu_timer0_isr()
 			{
 				ad7738_load.adw[i] -= ad7738_tare.adw[i];
 			}
-
+/*
 			// *** peak ***
 			if (peak_reset & BITMAP[i]) {
 				peak_reset &= ~BITMAP[i];
@@ -1198,6 +1354,7 @@ interrupt void cpu_timer0_isr()
 					ad7738_vall.adw[i] = ad7738_load.adw[i];
 				}
 			}
+*/
 		}
 
 		rawrdy = 1;
@@ -1221,9 +1378,11 @@ interrupt void cpu_timer0_isr()
 		ad7738_ph = 0;
 	}
 
+	setSystemCapVoltageF(ad7738_load.adw[0]);
+	setSystemOutCurrentF(ad7738_load.adw[1]);
+
 	// GpioDataRegs.GPBSET.bit.GPIOB3 = 1;	// DEBUG: TAG_TX
 
 	// Acknowledge this interrupt to receive more interrupts from group 1
-	PieCtrlRegs.PIEACK.all = PIEACK_GROUP1
-	;
+	PieCtrlRegs.PIEACK.all = PIEACK_GROUP1;
 }

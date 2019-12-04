@@ -33,6 +33,8 @@ Source/ad7738.obj: C:/Users/antons/workspace_v6_1/CANbus/Headers/common.h
 Source/ad7738.obj: C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.6.LTS/include/string.h
 Source/ad7738.obj: C:/Users/antons/workspace_v6_1/CANbus/Headers/sci.h
 Source/ad7738.obj: C:/Users/antons/workspace_v6_1/CANbus/Headers/can.h
+Source/ad7738.obj: C:/Users/antons/workspace_v6_1/CANbus/Headers/CAN_PCKA.h
+Source/ad7738.obj: C:/Users/antons/workspace_v6_1/CANbus/Headers/System_Object.h
 
 ../Source/ad7738.c: 
 C:/Users/antons/workspace_v6_1/CANbus/DSP281x_headers/include/DSP281x_Device.h: 
@@ -67,3 +69,5 @@ C:/Users/antons/workspace_v6_1/CANbus/Headers/common.h:
 C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.6.LTS/include/string.h: 
 C:/Users/antons/workspace_v6_1/CANbus/Headers/sci.h: 
 C:/Users/antons/workspace_v6_1/CANbus/Headers/can.h: 
+C:/Users/antons/workspace_v6_1/CANbus/Headers/CAN_PCKA.h: 
+C:/Users/antons/workspace_v6_1/CANbus/Headers/System_Object.h: 

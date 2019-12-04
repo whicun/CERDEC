@@ -14,6 +14,7 @@
 #include "DSP281x_Device.h"     // DSP28 Headerfile Include File
 #include "DSP281x_Examples.h"   // DSP28 Examples Include File
 #include "can.h"
+#include "system_object.h"
 
 struct ECAN_REGS ECanaShadow;
 
@@ -84,6 +85,8 @@ void CAN_Tx_SendInformationRequest(long MC_PGN, long MC_Index) {
 		break;
 	}
 }
+
+
 
 void processJSRGlobal(int shelf)
 {
@@ -161,14 +164,14 @@ void processJSRGlobal(int shelf)
 	int maxTempID = data[5] & 0x0F;
 	int minTempID = data[5] & 0xF0;
 
-	//setShelfVoltage(shelf, voltage);
-	//setShelfAvgTemp(shelf, avgTemp);
-	//setShelfMaxTemp(shelf, maxTemp);
-	//setShelfMinTemp(shelf, minTemp);
-	//setShelfMaxTempID(shelf, maxTempID);
-	//setShelfMinTempID(shelf, minTempID);
-	//setShelfAlarms(shelf, data[6]);
-	//setShelfErrors(shelf, data[7]);
+	setShelfVoltage(shelf, voltage);
+	setShelfAvgTemp(shelf, avgTemp);
+	setShelfMaxTemp(shelf, maxTemp);
+	setShelfMinTemp(shelf, minTemp);
+	setShelfMaxTempID(shelf, maxTempID);
+	setShelfMinTempID(shelf, minTempID);
+	setShelfAlarms(shelf, data[6]);
+	setShelfErrors(shelf, data[7]);
 
 }
 
@@ -259,7 +262,7 @@ void sendModStatus(int shelf, int mod)
 		temp1 = (data[2] * 10) / 2 - 400;
 		voltage2 = ((data[5] << 8) | data[4])/5;
 		temp2 = (data[6] * 10) / 2 - 400;
-/*
+
 		//Send data to the System object
 		if(mod % 2 == 1) //If it's an odd module (1, 3, 5, ...)
 		{
@@ -278,8 +281,13 @@ void sendModStatus(int shelf, int mod)
 			setModVoltage(shelf, mod, voltage2);
 			setModTemp(shelf, mod, temp2);
 		}
-*/
+
 }
+
+
+
+
+
 
 
 //---------------------------------------------------------------------------

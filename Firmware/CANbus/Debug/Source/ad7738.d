@@ -33,6 +33,8 @@ Source/ad7738.obj: C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers
 Source/ad7738.obj: C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.4.LTS/include/string.h
 Source/ad7738.obj: C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/sci.h
 Source/ad7738.obj: C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/can.h
+Source/ad7738.obj: C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/CAN_PCKA.h
+Source/ad7738.obj: C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/System_Object.h
 
 ../Source/ad7738.c: 
 C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/DSP281x_headers/include/DSP281x_Device.h: 
@@ -67,3 +69,5 @@ C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/common.h:
 C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.4.LTS/include/string.h: 
 C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/sci.h: 
 C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/can.h: 
+C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/CAN_PCKA.h: 
+C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/System_Object.h: 

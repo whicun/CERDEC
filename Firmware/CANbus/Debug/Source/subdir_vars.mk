@@ -4,7 +4,9 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
+../Source/CAN_PCKA.c \
 ../Source/DSP281x_ECan.c \
+../Source/System_Object.c \
 ../Source/ad7738.c \
 ../Source/data.c \
 ../Source/diskio.c \
@@ -24,7 +26,9 @@ C_SRCS += \
 ../Source/system.c 
 
 OBJS += \
+./Source/CAN_PCKA.obj \
 ./Source/DSP281x_ECan.obj \
+./Source/System_Object.obj \
 ./Source/ad7738.obj \
 ./Source/data.obj \
 ./Source/diskio.obj \
@@ -44,7 +48,9 @@ OBJS += \
 ./Source/system.obj 
 
 C_DEPS += \
+./Source/CAN_PCKA.d \
 ./Source/DSP281x_ECan.d \
+./Source/System_Object.d \
 ./Source/ad7738.d \
 ./Source/data.d \
 ./Source/diskio.d \
@@ -64,7 +70,9 @@ C_DEPS += \
 ./Source/system.d 
 
 C_DEPS__QUOTED += \
+"Source\CAN_PCKA.d" \
 "Source\DSP281x_ECan.d" \
+"Source\System_Object.d" \
 "Source\ad7738.d" \
 "Source\data.d" \
 "Source\diskio.d" \
@@ -84,7 +92,9 @@ C_DEPS__QUOTED += \
 "Source\system.d" 
 
 OBJS__QUOTED += \
+"Source\CAN_PCKA.obj" \
 "Source\DSP281x_ECan.obj" \
+"Source\System_Object.obj" \
 "Source\ad7738.obj" \
 "Source\data.obj" \
 "Source\diskio.obj" \
@@ -104,7 +114,9 @@ OBJS__QUOTED += \
 "Source\system.obj" 
 
 C_SRCS__QUOTED += \
+"../Source/CAN_PCKA.c" \
 "../Source/DSP281x_ECan.c" \
+"../Source/System_Object.c" \
 "../Source/ad7738.c" \
 "../Source/data.c" \
 "../Source/diskio.c" \

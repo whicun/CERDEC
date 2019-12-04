@@ -20,7 +20,9 @@ ORDERED_OBJS += \
 "./DSP281x_common/source/DSP281x_PieCtrl.obj" \
 "./DSP281x_common/source/DSP281x_PieVect.obj" \
 "./DSP281x_headers/source/DSP281x_GlobalVariableDefs.obj" \
+"./Source/CAN_PCKA.obj" \
 "./Source/DSP281x_ECan.obj" \
+"./Source/System_Object.obj" \
 "./Source/ad7738.obj" \
 "./Source/data.obj" \
 "./Source/diskio.obj" \
@@ -194,8 +196,8 @@ m4359.hex: $(EXE_OUTPUTS)
 # Other Targets
 clean:
 	-$(RM) $(EXE_OUTPUTS__QUOTED)$(BIN_OUTPUTS__QUOTED)
-	-$(RM) "DSP281x_common\source\DSP281x_DefaultIsr.d" "DSP281x_common\source\DSP281x_PieCtrl.d" "DSP281x_common\source\DSP281x_PieVect.d" "DSP281x_headers\source\DSP281x_GlobalVariableDefs.d" "Source\DSP281x_ECan.d" "Source\ad7738.d" "Source\data.d" "Source\diskio.d" "Source\ds1wire.d" "Source\extio.d" "Source\ff.d" "Source\flash.d" "Source\gpio.d" "Source\lcd.d" "Source\led.d" "Source\mcbsp.d" "Source\motor.d" "Source\prod.d" "Source\qep.d" "Source\sci.d" "Source\spi.d" "Source\system.d" 
-	-$(RM) "ASM\SetDBGIER.obj" "ASM\delay_us.obj" "ASM\passwords.obj" "ASM\reboot.obj" "DSP281x_common\source\DSP281x_CodeStartBranch.obj" "DSP281x_common\source\DSP281x_DefaultIsr.obj" "DSP281x_common\source\DSP281x_PieCtrl.obj" "DSP281x_common\source\DSP281x_PieVect.obj" "DSP281x_headers\source\DSP281x_GlobalVariableDefs.obj" "Source\DSP281x_ECan.obj" "Source\ad7738.obj" "Source\data.obj" "Source\diskio.obj" "Source\ds1wire.obj" "Source\extio.obj" "Source\ff.obj" "Source\flash.obj" "Source\gpio.obj" "Source\lcd.obj" "Source\led.obj" "Source\mcbsp.obj" "Source\motor.obj" "Source\prod.obj" "Source\qep.obj" "Source\sci.obj" "Source\spi.obj" "Source\system.obj" 
+	-$(RM) "DSP281x_common\source\DSP281x_DefaultIsr.d" "DSP281x_common\source\DSP281x_PieCtrl.d" "DSP281x_common\source\DSP281x_PieVect.d" "DSP281x_headers\source\DSP281x_GlobalVariableDefs.d" "Source\CAN_PCKA.d" "Source\DSP281x_ECan.d" "Source\System_Object.d" "Source\ad7738.d" "Source\data.d" "Source\diskio.d" "Source\ds1wire.d" "Source\extio.d" "Source\ff.d" "Source\flash.d" "Source\gpio.d" "Source\lcd.d" "Source\led.d" "Source\mcbsp.d" "Source\motor.d" "Source\prod.d" "Source\qep.d" "Source\sci.d" "Source\spi.d" "Source\system.d" 
+	-$(RM) "ASM\SetDBGIER.obj" "ASM\delay_us.obj" "ASM\passwords.obj" "ASM\reboot.obj" "DSP281x_common\source\DSP281x_CodeStartBranch.obj" "DSP281x_common\source\DSP281x_DefaultIsr.obj" "DSP281x_common\source\DSP281x_PieCtrl.obj" "DSP281x_common\source\DSP281x_PieVect.obj" "DSP281x_headers\source\DSP281x_GlobalVariableDefs.obj" "Source\CAN_PCKA.obj" "Source\DSP281x_ECan.obj" "Source\System_Object.obj" "Source\ad7738.obj" "Source\data.obj" "Source\diskio.obj" "Source\ds1wire.obj" "Source\extio.obj" "Source\ff.obj" "Source\flash.obj" "Source\gpio.obj" "Source\lcd.obj" "Source\led.obj" "Source\mcbsp.obj" "Source\motor.obj" "Source\prod.obj" "Source\qep.obj" "Source\sci.obj" "Source\spi.obj" "Source\system.obj" 
 	-$(RM) "ASM\SetDBGIER.d" "ASM\delay_us.d" "ASM\passwords.d" "ASM\reboot.d" "DSP281x_common\source\DSP281x_CodeStartBranch.d" 
 	-@echo 'Finished clean'
 	-@echo ' '
