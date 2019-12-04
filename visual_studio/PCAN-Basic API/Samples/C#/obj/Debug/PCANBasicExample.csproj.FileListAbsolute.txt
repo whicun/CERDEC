@@ -1,0 +1,8 @@
+C:\Users\ebenton\Documents\CERDEC TS\visual_studio\PCAN-Basic API\Samples\C#\bin\Debug (Any CPU)\PCANBasicExample.exe
+C:\Users\ebenton\Documents\CERDEC TS\visual_studio\PCAN-Basic API\Samples\C#\bin\Debug (Any CPU)\PCANBasicExample.pdb
+C:\Users\ebenton\Documents\CERDEC TS\visual_studio\PCAN-Basic API\Samples\C#\obj\Debug\PCANBasicExample.csprojResolveAssemblyReference.cache
+C:\Users\ebenton\Documents\CERDEC TS\visual_studio\PCAN-Basic API\Samples\C#\obj\Debug\ICDIBasic.Form1.resources
+C:\Users\ebenton\Documents\CERDEC TS\visual_studio\PCAN-Basic API\Samples\C#\obj\Debug\PCANBasicExample.Properties.Resources.resources
+C:\Users\ebenton\Documents\CERDEC TS\visual_studio\PCAN-Basic API\Samples\C#\obj\Debug\PCANBasicExample.csproj.GenerateResource.Cache
+C:\Users\ebenton\Documents\CERDEC TS\visual_studio\PCAN-Basic API\Samples\C#\obj\Debug\PCANBasicExample.exe
+C:\Users\ebenton\Documents\CERDEC TS\visual_studio\PCAN-Basic API\Samples\C#\obj\Debug\PCANBasicExample.pdb
