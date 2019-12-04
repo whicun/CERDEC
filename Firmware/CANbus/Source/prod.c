@@ -596,13 +596,6 @@ void main(void) {
 //	spi_init();
 	for (;;) {
 
-		int spi_buf[12], g;
-		for(g = 0; g < 12; g++)
-		{
-			spi_buf[g] = spi_recv();
-		}
-		spi_buf[0] = spi_buf[0];
-
 		// check SW2 for reset command
 		if (!(0x0010 & INBTTN)) {
 

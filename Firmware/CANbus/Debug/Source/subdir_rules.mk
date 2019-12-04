@@ -17,6 +17,13 @@ Source/DSP281x_ECan.obj: ../Source/DSP281x_ECan.c $(GEN_OPTS) $(GEN_HDRS)
 	@echo 'Finished building: $<'
 	@echo ' '
 
+Source/SPICAN.obj: ../Source/SPICAN.c $(GEN_OPTS) $(GEN_HDRS)
+	@echo 'Building file: $<'
+	@echo 'Invoking: C2000 Compiler'
+	"C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.4.LTS/bin/cl2000" -v28 -ml -mt -O3 --include_path="C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.4.LTS/include" --include_path="C:/Users/ebenton/Documents/CERDEC TS/Firmware/CANbus/Flash2812_API_V210/include" --include_path="C:/Users/ebenton/Documents/CERDEC TS/Firmware/CANbus/DSP281x_common/include" --include_path="C:/Users/ebenton/Documents/CERDEC TS/Firmware/CANbus/DSP281x_headers/include" --include_path="C:/Users/ebenton/Documents/CERDEC TS/Firmware/CANbus/Headers" -g --define="_DEBUG" --define="LARGE_MODEL" --quiet --diag_warning=225 --issue_remarks -k --c_src_interlist --preproc_with_compile --preproc_dependency="Source/SPICAN.d" --obj_directory="Source" $(GEN_OPTS__FLAG) "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
 Source/System_Object.obj: ../Source/System_Object.c $(GEN_OPTS) $(GEN_HDRS)
 	@echo 'Building file: $<'
 	@echo 'Invoking: C2000 Compiler'

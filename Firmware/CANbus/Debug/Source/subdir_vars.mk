@@ -6,6 +6,7 @@
 C_SRCS += \
 ../Source/CAN_PCKA.c \
 ../Source/DSP281x_ECan.c \
+../Source/SPICAN.c \
 ../Source/System_Object.c \
 ../Source/ad7738.c \
 ../Source/data.c \
@@ -28,6 +29,7 @@ C_SRCS += \
 OBJS += \
 ./Source/CAN_PCKA.obj \
 ./Source/DSP281x_ECan.obj \
+./Source/SPICAN.obj \
 ./Source/System_Object.obj \
 ./Source/ad7738.obj \
 ./Source/data.obj \
@@ -50,6 +52,7 @@ OBJS += \
 C_DEPS += \
 ./Source/CAN_PCKA.d \
 ./Source/DSP281x_ECan.d \
+./Source/SPICAN.d \
 ./Source/System_Object.d \
 ./Source/ad7738.d \
 ./Source/data.d \
@@ -72,6 +75,7 @@ C_DEPS += \
 C_DEPS__QUOTED += \
 "Source\CAN_PCKA.d" \
 "Source\DSP281x_ECan.d" \
+"Source\SPICAN.d" \
 "Source\System_Object.d" \
 "Source\ad7738.d" \
 "Source\data.d" \
@@ -94,6 +98,7 @@ C_DEPS__QUOTED += \
 OBJS__QUOTED += \
 "Source\CAN_PCKA.obj" \
 "Source\DSP281x_ECan.obj" \
+"Source\SPICAN.obj" \
 "Source\System_Object.obj" \
 "Source\ad7738.obj" \
 "Source\data.obj" \
@@ -116,6 +121,7 @@ OBJS__QUOTED += \
 C_SRCS__QUOTED += \
 "../Source/CAN_PCKA.c" \
 "../Source/DSP281x_ECan.c" \
+"../Source/SPICAN.c" \
 "../Source/System_Object.c" \
 "../Source/ad7738.c" \
 "../Source/data.c" \
