@@ -44,6 +44,7 @@
 #include "lcd.h"
 #include "sci.h"
 #include "spi.h"
+#include "SPICAN.h"
 
 #include "data.h"
 #include "flash.h"
@@ -593,8 +594,35 @@ void main(void) {
 	//==========================================================================//
 	// main loop
 	//==========================================================================//
-//	spi_init();
+	int counter = 0;
+	Uint32 data[8];
+	Uint32 data2[8];
+	int n;
 	for (;;) {
+
+//		counter = counter % 3;
+		Uint32 res;
+		res = SPICANReadBuf1();
+		data[0] = res;
+		res = SPICANReadBuf1();
+		data[1] = res;
+		res = SPICANReadBuf1();
+		data[2] = res;
+		res = SPICANReadBuf1();
+		data[3] = res;
+		res = SPICANReadBuf1();
+		data[4] = res;
+		res = SPICANReadBuf1();
+		data[5] = res;
+		res = SPICANReadBuf1();
+		data[6] = res;
+		res = SPICANReadBuf1();
+		data[7] = res;
+		for(n = 0; n < 8; n++)
+		{
+			data2[n] = data[n];
+		}
+//		counter++;
 
 		// check SW2 for reset command
 		if (!(0x0010 & INBTTN)) {
