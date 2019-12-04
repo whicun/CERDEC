@@ -802,7 +802,7 @@ void stateMachine(void) {
 interrupt void cpu_timer0_isr()
 {
   
-  int i, j;
+  int i, j, g;
   long temp;
   int status;
   double limld;
@@ -831,8 +831,12 @@ interrupt void cpu_timer0_isr()
 	}
 	cccp++;
 
-
-
+	int spi_buf[12];
+	for(g = 0; g < 12; g++)
+	{
+		spi_buf[g] = spi_recv();
+	}
+	spi_buf[0] = spi_buf[0];
 
 
 	//  ***** read the converted data *****

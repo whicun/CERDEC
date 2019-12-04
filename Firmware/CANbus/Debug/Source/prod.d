@@ -35,6 +35,7 @@ Source/prod.obj: C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/g
 Source/prod.obj: C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/led.h
 Source/prod.obj: C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/lcd.h
 Source/prod.obj: C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/sci.h
+Source/prod.obj: C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/spi.h
 Source/prod.obj: C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/data.h
 Source/prod.obj: C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/flash.h
 Source/prod.obj: C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/ad7738.h
@@ -85,6 +86,7 @@ C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/gpio.h:
 C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/led.h: 
 C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/lcd.h: 
 C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/sci.h: 
+C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/spi.h: 
 C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/data.h: 
 C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/flash.h: 
 C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/ad7738.h: 
