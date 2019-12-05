@@ -599,6 +599,17 @@ void main(void) {
 	Uint16 data2[8];
 	int n;
 	SPICANReset();
+	delay_us(1000);
+	SPICANReadStat();								//Make sure we're in config mode
+	SPICANWrite(0x2A, 0x44);
+	delay_us(10);
+	SPICANWrite(0x29, 0x98);
+	delay_us(10);
+	SPICANWrite(0x28, 0x01);
+	delay_us(10);
+	SPICANWrite(0x2B, 0x00);
+
+	SPICANWrite(0x0F, 0x60);							//Read Only Mode
 	for (;;) {
 
 //		counter = counter % 3;

@@ -10,6 +10,9 @@ void SPICANReset (void)
 	GpioDataRegs.GPADAT.bit.GPIOA0	= 1;		//Release chip select
 }
 
+// Responsible for reading the status of a
+// register address on the SPICAN Control Register
+// See Pg. 61 in (Table 11-2) for list of addresses
 Uint16 SPICANRead (Uint16 Input)
 {
 	Uint16	RetVal;
@@ -21,6 +24,9 @@ Uint16 SPICANRead (Uint16 Input)
 	return(RetVal);
 }
 
+// Responsible for writing the status of a
+// register address on the SPICAN Control Register
+// See Pg. 61 in (Table 11-2) for list of addresses
 void SPICANWrite (Uint16 ADDR, Uint16 Input)
 {
 	GpioDataRegs.GPADAT.bit.GPIOA0	= 0;		//Chip Select Low
@@ -30,6 +36,8 @@ void SPICANWrite (Uint16 ADDR, Uint16 Input)
 	GpioDataRegs.GPADAT.bit.GPIOA0	= 1;
 }
 
+// Quick polling command that reads several status bits for transmit
+// and receive functions.
 Uint16 SPICANReadStat (void)
 {
 	Uint16	RetVal;
@@ -95,4 +103,26 @@ Uint32 SPICANReadBuf1 (void)
 	spi_recv();
 	GpioDataRegs.GPADAT.bit.GPIOA0	= 1;		//Release chip select
 	return(RetVal);
+}
+
+// Refer to Table 11-2 and pages 19 - 21 for formatting message
+void SPICANReadSetT0Message(Uint16 canAddress, Uint16 numBytes, char *buf)
+{
+	Uint16 k;
+
+	// First set up the ID (X - unused, H - Hi, L - Lo)
+	// ID: XXXXX HHHHHHHH LLL
+	SPICANWrite(SPICAN_TXB0SIDH, ((canAddress >> 3) & 0xF) ); // (SID10 - SID3)
+	SPICANWrite(SPICAN_TXB0SIDL, ((canAddress & 0x7) << 5) ); // (SID2 - SID0)
+
+	// Send how much data content there is
+	SPICANWrite(SPICAN_TXB0DLC, numBytes);
+
+	// Fill in the data buffer
+	for(k = 0; k < numBytes; k++)
+	{
+		SPICANWrite(SPICAN_TXB0D0 + k, buf[k]);
+	}
+
+
 }
