@@ -595,34 +595,35 @@ void main(void) {
 	// main loop
 	//==========================================================================//
 	int counter = 0;
-	Uint32 data[8];
-	Uint32 data2[8];
+	Uint16 data[8];
+	Uint16 data2[8];
 	int n;
+	SPICANReset();
 	for (;;) {
 
 //		counter = counter % 3;
-		Uint32 res;
-		res = SPICANReadBuf1();
-		data[0] = res;
-		res = SPICANReadBuf1();
-		data[1] = res;
-		res = SPICANReadBuf1();
-		data[2] = res;
-		res = SPICANReadBuf1();
-		data[3] = res;
-		res = SPICANReadBuf1();
-		data[4] = res;
-		res = SPICANReadBuf1();
-		data[5] = res;
-		res = SPICANReadBuf1();
-		data[6] = res;
-		res = SPICANReadBuf1();
-		data[7] = res;
+		Uint16 res;
+		res = SPICANReadStat();
+		data[(0 + counter) % 8] = res;
+		res = SPICANRead(0x00);
+		data[(1 + counter) % 8] = res;
+		res = SPICANRead(0x01);
+		data[(2 + counter) % 8] = res;
+		res = SPICANRead(0x30);
+		data[(3 + counter) % 8] = res;
+		res = SPICANRead(0x40);
+		data[(4 + counter) % 8] = res;
+		res = SPICANRead(0x04);
+		data[(5 + counter) % 8] = res;
+		res = SPICANRead(0x06);
+		data[(6 + counter) % 8] = res;
+		res = SPICANRead(0x16);
+		data[(7 + counter) % 8] = res;
 		for(n = 0; n < 8; n++)
 		{
 			data2[n] = data[n];
 		}
-//		counter++;
+		counter++;
 
 		// check SW2 for reset command
 		if (!(0x0010 & INBTTN)) {
