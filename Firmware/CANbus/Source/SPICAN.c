@@ -108,12 +108,28 @@ Uint32 SPICANReadBuf1 (void)
 // Refer to Table 11-2 and pages 19 - 21 for formatting message
 void SPICANReadSetT0Message(Uint16 canAddress, Uint16 numBytes, char *buf)
 {
-	Uint16 k;
+	// Set the new address
+	SPICAN_SetT0Addr(canAddress);
 
-	// First set up the ID (X - unused, H - Hi, L - Lo)
-	// ID: XXXXX HHHHHHHH LLL
-	SPICANWrite(SPICAN_TXB0SIDH, ((canAddress >> 3) & 0xF) ); // (SID10 - SID3)
-	SPICANWrite(SPICAN_TXB0SIDL, ((canAddress & 0x7) << 5) ); // (SID2 - SID0)
+	// Set the data
+	SPICAN_SetT0Data(numBytes, &buf);
+}
+
+// For specifics on format look at Pg 19/20 in the SPI CAN documentation
+void SPICAN_SetT0Addr(Uint16 canAddress)
+{
+	// Set up the ID (X - unused, H - Hi, L - Lo)
+	// canAddress -> XXXXX HHHHHHHH LLL
+	// Want to first send 0bHHHHHHHH
+	SPICANWrite(SPICAN_TXB0SIDH, ((canAddress >> 3) & 0xFF) ); // H (SID10 - SID3)
+	// Then want to send 0bLLL00000
+	SPICANWrite(SPICAN_TXB0SIDL, ((canAddress & 0x7) << 5) ); // L (SID2 - SID0)
+}
+
+// For specifics on format look at Pg 21 in the SPI CAN documentation
+void SPICAN_SetT0Data(Uint16 numBytes, char *buf)
+{
+	Uint16 k;
 
 	// Send how much data content there is
 	SPICANWrite(SPICAN_TXB0DLC, numBytes);
@@ -123,6 +139,4 @@ void SPICANReadSetT0Message(Uint16 canAddress, Uint16 numBytes, char *buf)
 	{
 		SPICANWrite(SPICAN_TXB0D0 + k, buf[k]);
 	}
-
-
 }

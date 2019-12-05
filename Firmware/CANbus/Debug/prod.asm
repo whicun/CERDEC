@@ -1,6 +1,6 @@
 ;***************************************************************
 ;* TMS320C2000 C/C++ Codegen                   PC v15.12.4.LTS *
-;* Date/Time created: Thu Dec 05 15:49:41 2019                 *
+;* Date/Time created: Thu Dec 05 16:10:21 2019                 *
 ;***************************************************************
 	.compiler_opts --abi=coffabi --float_support=softlib --hll_source=on --mem_model:code=flat --mem_model:data=large --object_format=coff --quiet --silicon_version=28 --symdebug:dwarf --symdebug:dwarf_version=3 
 FP	.set	XAR2
@@ -994,8 +994,8 @@ $C$DW$146	.dwtag  DW_TAG_variable
 	.dwattr $C$DW$146, DW_AT_declaration
 	.dwattr $C$DW$146, DW_AT_external
 
-;	C:\ti\ccsv6\tools\compiler\ti-cgt-c2000_15.12.4.LTS\bin\opt2000.exe C:\\Users\\ebenton\\AppData\\Local\\Temp\\182802 C:\\Users\\ebenton\\AppData\\Local\\Temp\\182804 
-;	C:\ti\ccsv6\tools\compiler\ti-cgt-c2000_15.12.4.LTS\bin\ac2000.exe -@C:\\Users\\ebenton\\AppData\\Local\\Temp\\1828012 
+;	C:\ti\ccsv6\tools\compiler\ti-cgt-c2000_15.12.4.LTS\bin\opt2000.exe C:\\Users\\ebenton\\AppData\\Local\\Temp\\101082 C:\\Users\\ebenton\\AppData\\Local\\Temp\\101084 
+;	C:\ti\ccsv6\tools\compiler\ti-cgt-c2000_15.12.4.LTS\bin\ac2000.exe -@C:\\Users\\ebenton\\AppData\\Local\\Temp\\1010812 
 	.sect	".text"
 	.clink
 	.global	_update_units
@@ -32283,7 +32283,7 @@ $C$FSL60:	.string	"%s %s",0
 	.align	2
 $C$FSL61:	.string	"Dec  5 2019",0
 	.align	2
-$C$FSL62:	.string	"15:49:38",0
+$C$FSL62:	.string	"16:10:18",0
 	.align	2
 $C$FSL63:	.string	34,"SW2",34," TO CHANGE PORT",0
 	.align	2
