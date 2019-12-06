@@ -595,8 +595,8 @@ void main(void) {
 	// main loop
 	//==========================================================================//
 	int counter = 0;
-	Uint16 data[8];
-	Uint16 data2[8];
+	char data[8];
+	char data2[8];
 	int n;
 	SPICANReset();
 	delay_us(1000);
@@ -608,33 +608,19 @@ void main(void) {
 	SPICANWrite(0x28, 0x01);
 	delay_us(10);
 	SPICANWrite(0x2B, 0x00);
+	delay_us(10);
+	SPICANSetNorm();							//POR/RST Values
 
-	SPICANWrite(0x0F, 0x60);							//Read Only Mode
+	for(n = 0; n < 8; n++)
+	{
+		data[n] = (char)(0x00 + n);
+	}
+
 	for (;;) {
 
-//		counter = counter % 3;
-		Uint16 res;
-		res = SPICANReadStat();
-		data[(0 + counter) % 8] = res;
-		res = SPICANRead(0x00);
-		data[(1 + counter) % 8] = res;
-		res = SPICANRead(0x01);
-		data[(2 + counter) % 8] = res;
-		res = SPICANRead(0x30);
-		data[(3 + counter) % 8] = res;
-		res = SPICANRead(0x40);
-		data[(4 + counter) % 8] = res;
-		res = SPICANRead(0x04);
-		data[(5 + counter) % 8] = res;
-		res = SPICANRead(0x06);
-		data[(6 + counter) % 8] = res;
-		res = SPICANRead(0x16);
-		data[(7 + counter) % 8] = res;
-		for(n = 0; n < 8; n++)
-		{
-			data2[n] = data[n];
-		}
-		counter++;
+		SPICANReadSetT0Message(0xA1, 8, data);
+		SPICAN_T0_RTS();
+
 
 		// check SW2 for reset command
 		if (!(0x0010 & INBTTN)) {

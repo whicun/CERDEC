@@ -50,5 +50,6 @@ void SPICANWrite (Uint16 ADDR, Uint16 Input);
 void SPICANReadSetT0Message (Uint16 canAddress, Uint16 numBytes, char *buf);
 void SPICAN_SetT0Addr(Uint16 canAddress);
 void SPICAN_SetT0Data(Uint16 numBytes, char *buf);
+void SPICAN_T0_RTS (void);
 
 #endif

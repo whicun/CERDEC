@@ -112,18 +112,28 @@ void SPICANReadSetT0Message(Uint16 canAddress, Uint16 numBytes, char *buf)
 	SPICAN_SetT0Addr(canAddress);
 
 	// Set the data
-	SPICAN_SetT0Data(numBytes, &buf);
+	SPICAN_SetT0Data(numBytes, buf);
 }
 
 // For specifics on format look at Pg 19/20 in the SPI CAN documentation
+// canAddress -> XXXXX HHHHHHHH LLL
 void SPICAN_SetT0Addr(Uint16 canAddress)
 {
+	Uint16 addrHi, addrLo;
+
+	// First grab the important bits
+	addrHi = canAddress & 0x7F8;
+	addrLo = canAddress & 0x7;
+
+	// Now shift them to the right places
+	addrHi = addrHi >> 3;
+	addrLo = addrLo << 5;
+
 	// Set up the ID (X - unused, H - Hi, L - Lo)
-	// canAddress -> XXXXX HHHHHHHH LLL
 	// Want to first send 0bHHHHHHHH
-	SPICANWrite(SPICAN_TXB0SIDH, ((canAddress >> 3) & 0xFF) ); // H (SID10 - SID3)
+	SPICANWrite(SPICAN_TXB0SIDH, addrHi); // H (SID10 - SID3)
 	// Then want to send 0bLLL00000
-	SPICANWrite(SPICAN_TXB0SIDL, ((canAddress & 0x7) << 5) ); // L (SID2 - SID0)
+	SPICANWrite(SPICAN_TXB0SIDL, addrLo); // L (SID2 - SID0)
 }
 
 // For specifics on format look at Pg 21 in the SPI CAN documentation
@@ -139,4 +149,11 @@ void SPICAN_SetT0Data(Uint16 numBytes, char *buf)
 	{
 		SPICANWrite(SPICAN_TXB0D0 + k, buf[k]);
 	}
+}
+
+void SPICAN_T0_RTS (void)
+{
+	GpioDataRegs.GPADAT.bit.GPIOA0	= 0;		//Chip Select Low
+	spi_xmit(SPICAN_RTS + 0x1);
+	GpioDataRegs.GPADAT.bit.GPIOA0	= 1;		//Release chip select
 }
