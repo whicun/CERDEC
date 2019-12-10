@@ -37,7 +37,7 @@
 #define SPICAN_CANSTAT	0x0E	//first byte is dont care
 #define SPICAN_CANCTRL	0x0F	//first byte is dont care
 
-
+void SPICANInit (void);
 void SPICANReset (void);
 Uint16 SPICANReadStat (void);
 void SPICANSetNorm (void);

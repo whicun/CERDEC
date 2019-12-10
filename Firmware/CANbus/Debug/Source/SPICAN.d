@@ -18,6 +18,9 @@ Source/SPICAN.obj: C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/DSP281x
 Source/SPICAN.obj: C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/DSP281x_headers/include/DSP281x_Adc.h
 Source/SPICAN.obj: C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/DSP281x_headers/include/DSP281x_XIntrupt.h
 Source/SPICAN.obj: C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/spi.h
+Source/SPICAN.obj: C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/common.h
+Source/SPICAN.obj: C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.4.LTS/include/string.h
+Source/SPICAN.obj: C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.4.LTS/include/linkage.h
 
 ../Source/SPICAN.c: 
 C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/SPICAN.h: 
@@ -37,3 +40,6 @@ C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/DSP281x_headers/include/DS
 C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/DSP281x_headers/include/DSP281x_Adc.h: 
 C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/DSP281x_headers/include/DSP281x_XIntrupt.h: 
 C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/spi.h: 
+C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/common.h: 
+C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.4.LTS/include/string.h: 
+C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.4.LTS/include/linkage.h: 

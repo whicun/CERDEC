@@ -594,40 +594,22 @@ void main(void) {
 	//==========================================================================//
 	// main loop
 	//==========================================================================//
-	int counter = 0;
-	Uint16 res;
 	char data[8];
-	Uint16 data2[8];
 	int n;
-	SPICANReset();
-	delay_us(1000);
-//	SPICANReadStat();								//Make sure we're in config mode
-	SPICANWrite(0x2A, 0x44);
-	delay_us(10);
-	res = SPICANRead(0x2A);
-	delay_us(10);
-	SPICANWrite(0x29, 0x98);
-	delay_us(10);
-	res = SPICANRead(0x29);
-	delay_us(10);
-	SPICANWrite(0x28, 0x01);
-	delay_us(10);
-	res = SPICANRead(0x28);
-	delay_us(10);
-	SPICANWrite(0x2B, 0x00);
-	delay_us(10);
-	res = SPICANRead(0x2B);
-	delay_us(10);
-	SPICANSetNorm();							//POR/RST Values
-	delay_us(10);
-	res = SPICANRead(0xF);
-	delay_us(10);
 
+	SPICANInit();
 	for(n = 0; n < 8; n++)
 	{
-		data2[n] = res;
-		data[n] = (char)(0x00 + n);
+		data[n] = 0xFF;
 	}
+	
+	data[0] = SPICANReadStat();
+	data[1] = SPICANRead(0x2A);
+	data[2] = SPICANRead(0x29);
+	data[3] = SPICANRead(0x28);
+	data[4] = SPICANRead(0x2B);
+	data[5] = SPICANRead(0x60);
+	data[6] = SPICANRead(0x70);
 
 	for (;;) {
 
