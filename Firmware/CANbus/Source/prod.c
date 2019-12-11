@@ -596,6 +596,7 @@ void main(void) {
 	//==========================================================================//
 	char data[8];
 	int n;
+	Uint16 res;
 
 	SPICANInit();
 	for(n = 0; n < 8; n++)
@@ -610,11 +611,31 @@ void main(void) {
 	data[4] = SPICANRead(0x2B);
 	data[5] = SPICANRead(0x60);
 	data[6] = SPICANRead(0x70);
+	data[7] = SPICANRead(0x30);
+	
+	SPICANReadSetT0Message(0xA1, 8, data);
+	SPICAN_T0_RTS();
+
+	data[0] = data[0] + 1;
+	data[1] = data[1] + 1;
+	data[2] = data[2] + 1;
+	data[3] = data[3] + 1;
+	data[4] = data[4] + 1;
+	data[5] = data[5] + 1;
+	data[6] = data[6] + 1;
+
+	data[0] = SPICANRead(0x30);
+	data[1] = SPICANRead(0x40);
+	data[2] = SPICANRead(SPICAN_TXB0D0 + 2);
+	data[3] = SPICANRead(SPICAN_TXB0D0 + 3);
+	data[4] = SPICANRead(SPICAN_TXB0D0 + 4);
+	data[5] = SPICANRead(SPICAN_TXB0D0 + 5);
+	data[6] = SPICANRead(SPICAN_TXB0D0 + 6);
 
 	for (;;) {
 
-		SPICANReadSetT0Message(0xA1, 8, data);
-		SPICAN_T0_RTS();
+		// data[7] = SPICANRXStatus();
+
 
 
 		// check SW2 for reset command

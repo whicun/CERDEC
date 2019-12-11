@@ -6,16 +6,17 @@
 
 void SPICANInit(void)
 {
-	SPICANReset();							// Reset Command
-	SPICANReadStat();						// Make sure we're in config mode
-	delay_us(10);								// Need some form of delay
+	SPICANReset();					// Reset Command
+	SPICANReadStat();				// Make sure we're in config mode
+	delay_us(10);					// Need some form of delay
 	SPICANWrite(0x2A, 0x44);		// Setting up CNF1
 	SPICANWrite(0x29, 0x98);		// Setting up CNF2
 	SPICANWrite(0x28, 0x01);		// Setting up CNF3
 	SPICANWrite(0x2B, 0x00);		// Clearing all interrupts
-	SPICANSetNorm();						// Allow for Normal Mode
 	SPICANWrite(0x60, 0x60);		// Setup up RXB0 to receive all messages
 	SPICANWrite(0x70, 0x60);		// Setup up RXB1 to receive all messages
+	SPICANSetNorm();				// Allow for Normal Mode
+	SPICANReadStat();				// Confirm we are in Normal Mode
 	return;
 }
 
@@ -99,7 +100,7 @@ Uint16 SPICANRXStatus (void)
 	GpioDataRegs.GPADAT.bit.GPIOA0	= 0;		//Chip Select Low
 	spi_xmit(SPICAN_RXSTAT);
 	RetVal = spi_recv();
-	RetVal = spi_recv();
+	spi_recv();
 	GpioDataRegs.GPADAT.bit.GPIOA0	= 1;		//Release chip select
 	return(RetVal);
 }
