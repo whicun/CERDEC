@@ -611,7 +611,7 @@ void main(void) {
 	data[4] = SPICANRead(0x2B);
 	data[5] = SPICANRead(0x60);
 	data[6] = SPICANRead(0x70);
-	data[7] = SPICANRead(0x30);
+//	data[7] = SPICANRead(0x30);
 	
 	SPICANReadSetT0Message(0xA1, 8, data);
 	SPICAN_T0_RTS();
