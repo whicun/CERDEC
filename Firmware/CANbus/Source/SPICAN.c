@@ -20,7 +20,7 @@ void SPICANInit(void)
 	// For configuration details, see note at bottom
 	SPICANWrite(0x2A, 0x44);		// Setting up CNF1
 	SPICANWrite(0x29, 0xEA);		// Setting up CNF2
-	SPICANWrite(0x28, 0x01);		// Setting up CNF3	
+	SPICANWrite(0x28, 0xC7);		// Setting up CNF3	
 
 	SPICANWrite(0x2B, 0x00);		// Clearing all interrupts
 	SPICANWrite(0x60, 0x60);		// Setup up RXB0 to receive all messages
@@ -259,7 +259,7 @@ void SPICAN_T0_RTS (void)
 
 	// They say an SJW of 1 tq is usually enough, but IDK if that's kinda arbitrary
 	// or if I should just max it out at 4 tq, or if a number like 3 tq is "bad"
-	// There's no easy to see logic here so I'll go with 1 for now(?)
+	// There's no easy to see logic here so I'll go with 2 for now(?)
 
 	// Setting up CNF1 (0x2A) for:
 	//  [SJW 7:6, BRP 5:0]
