@@ -192,86 +192,75 @@ void SPICAN_T0_RTS (void)
 
 	// Trying to configure the SPI CAN module for use with ESL ProD
 	// ProD SPI is 9.375MHz
+	// SPICAN Oscillator is 16MHz
 	// CAN Bus is 500kHz
 
 	// Following the manual on Pg. 41
 	// https://microcontrollershop.com/download/21801F.pdf
+	// And this one helped a lot with understanding everything
+	// http://ww1.microchip.com/downloads/en/Appnotes/00754.pdf
 
+	Logic behind configuration
+	Necessary pieces:
+		SJW - Synchronization Jump Width
+		BRP - Baud Rate Prescalar
+		BTLMODE - Mode for determining PHSEG2
+		SAM - Sample Point Configuration
+		PRSEG - Propagation Segment
+		PHSEG1 - Phase Segment 1 (PS1)
+		PHSEG2 - Phase Segment 2 (PS2)
 
-	SECS2NANO = 1*10**9
+		I used the second link
+		(http://ww1.microchip.com/downloads/en/Appnotes/00754.pdf)
+		to calculate the maximum SJW I want to use, which was 3 TQs in this case:
+		Code below is in Javascript and can be run in an internet browser
+			// Inits
+			SEC2NANO = 1 * 10 ** 9;
+			f_osc = 500 * 10 ** 3; // 500 kHz
+			t_bit = 1.0 / f_osc;
 
-	// Oscillation freq. of the SPI on ProD
-	f_osc = 9.375*10**6 //9.375MHz
-	t_osc = 1/f_osc
-	t_osc_ns = t_osc * SECS2NANO
+			console.log("t_bit is: " + (t_bit * SEC2NANO) + " ns");
 
-	// Baud Rate Prescaler
-	brp = 4
+			t_bit_min = t_bit * (1 - .0125);
+			t_bit_max = t_bit * (1 + .0125);
 
-	// Time Quanta (tq)
-	t_q = 2 * brp * t_osc_ns
+			console.log("t_bit_min is: " + (t_bit_min * SEC2NANO) + " ns");
+			console.log("t_bit_max is: " + (t_bit_max * SEC2NANO) + " ns");
 
-	// Oscillation for CAN bus
-	can_osc = 500000 // 500kHz
-	t_can = 1/can_osc
-	t_can_ns = t_can * SECS2NANO
+			t_q_per_bit = 8.0;
+			t_q_min = t_bit_min / t_q_per_bit;
+			t_q_max = t_bit_max / t_q_per_bit;
 
-	// Bit Time in tq
-	bit_time = t_can / t_osc // 18.75
+			console.log("t_q_min is: " + (t_q_min * SEC2NANO) + " ns");
+			console.log("t_q_max is: " + (t_q_max * SEC2NANO) + " ns");
 
-	// Nominal Bit Time in tq
-	nom_bit_time = Math.ceil(bit_time) // 19
+			t_diff = 10 * t_bit_max - 10 * t_bit_min
+			console.log("t_diff is: " + (t_diff * SEC2NANO) + " ns");
 
-	// Phase Segment 2 should happen at
-	// ~60-70% bit_time
-	ps2_time_min = nom_bit_time * 0.6 // 11.4
-	ps2_time_max = nom_bit_time * 0.7 // 13.3
+			t_q_sjw = Math.ceil(t_diff / t_q_min);
+			console.log("t_q_sjw is: " + (t_q_sjw) + " TQs");
+		
+		I then looked at all the examples, and in the second link it said max
+		oscillator tolerance is found when the length of PS1 == PS2 == SJW (pg. 8)
+		(Although that was if SJW is the max of 4 TQs)
 
-	// Go with 12 then I guess
+		So I set the length of SJW == PS1 == PS2 == 3
 
-	// Phase Segment 2 (PS2) tq
-	ps2_tq = nom_bit_time - 12 // 7
+		Since I am using 8 TQ per 1 bit, that leaves me with 8 - 3 - 3 == 2 TQ
+		for the Sync Segment and the Propagation Segment, so 1 TQ for each
 
-	// Sync Segment tq
-	sync_seg_tq = 1
+		THUS
 
-	// Propagation Segment tq
-	prop_seg_tq = 2
+		Setting up CNF1 (0x2A) for:
+		 [SJW 7:6, BRP 5:0]
+		 0b 10 000001 => 0x81
 
-	// PS1 tq
-	ps1_tq = nom_bit_time- ps2_tq - sync_seg_tq - prop_seg_tq // 9
+		Setting up CNF2 (0x29) for:
+		 [BTLMODE, SAM, PHSEG1 5:3, PRSEG 2:0]
+		 0b 1 1 010 000 => 0xD0
 
-	// So, we have all the important pieces now for this, except SJW
-	// SJW looks like it helps with unstable clocks in the CAN nodes?
-	// Let's go read about it
-	// ...
-	// First off, it looks to stand for "Synchronization Jump Width (SJW)" Pg. 38
-	// ...
-	// Okay, after reading through all that, it seems that SJW
-	// works to help with giving flexibility to parsing the message in the
-	// Phase Segments PS1 and PS2 (Pg. 39-40)
-	// First, there is no clock encoded into a CAN message using NRZ bit coding 
-	// This means that the clock must be derived from the shape of the signal itself
-	// To ensure synchronization can be easily obtained, the SJW appears to be
-	// a sort of "buffer" that allows the module to borrow/give to either
-	// PS1 or PS2 depending on how the bits align.
-	// Look at Pg. 39 of manual for Geek Speak
-	// Look at Pg. 40 of manual for Pretty Pics
-
-	// They say an SJW of 1 tq is usually enough, but IDK if that's kinda arbitrary
-	// or if I should just max it out at 4 tq, or if a number like 3 tq is "bad"
-	// There's no easy to see logic here so I'll go with 2 for now(?)
-
-	// Setting up CNF1 (0x2A) for:
-	//  [SJW 7:6, BRP 5:0]
-	//  0b 01 000100 => 0x44
-
-	// Setting up CNF2 (0x29) for:
-	//  [BTLMODE, SAM, PHSEG1 5:3, PRSEG 2:0]
-	//  0b 1 1 101 010 => 0xEA
-
-	// Setting up CNF3 (0x28) for:
-	//  [SOF, WAKFIL, NA 5:3, PHSEG2 2:0]
-	//  0b 1 1 000 111 => 0xC7
+		Setting up CNF3 (0x28) for:
+		 [SOF, WAKFIL, NA 5:3, PHSEG2 2:0]
+		 0b 1 1 000 010 => 0xC2		
 
 */
