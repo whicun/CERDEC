@@ -14,13 +14,14 @@ void SPICANInit(void)
 	
 	// Factory Settings
 	// SPICANWrite(0x2A, 0x44);		// Setting up CNF1
+	// SPICANWrite(0x2A, 0x40);		// Setting up CNF1
 	// SPICANWrite(0x29, 0x98);		// Setting up CNF2
 	// SPICANWrite(0x28, 0x01);		// Setting up CNF3
 
 	// For configuration details, see note at bottom
-	SPICANWrite(0x2A, 0x44);		// Setting up CNF1
-	SPICANWrite(0x29, 0xEA);		// Setting up CNF2
-	SPICANWrite(0x28, 0xC7);		// Setting up CNF3	
+	SPICANWrite(0x2A, 0x81);		// Setting up CNF1
+	SPICANWrite(0x29, 0xD0);		// Setting up CNF2
+	SPICANWrite(0x28, 0xC2);		// Setting up CNF3	
 
 	SPICANWrite(0x2B, 0x00);		// Clearing all interrupts
 	SPICANWrite(0x60, 0x60);		// Setup up RXB0 to receive all messages

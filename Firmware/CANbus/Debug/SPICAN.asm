@@ -1,6 +1,6 @@
 ;***************************************************************
 ;* TMS320C2000 C/C++ Codegen                   PC v15.12.4.LTS *
-;* Date/Time created: Thu Dec 12 11:56:51 2019                 *
+;* Date/Time created: Mon Dec 16 15:15:11 2019                 *
 ;***************************************************************
 	.compiler_opts --abi=coffabi --float_support=softlib --hll_source=on --mem_model:code=flat --mem_model:data=large --object_format=coff --quiet --silicon_version=28 --symdebug:dwarf --symdebug:dwarf_version=3 
 FP	.set	XAR2
@@ -48,8 +48,8 @@ $C$DW$6	.dwtag  DW_TAG_variable
 	.dwattr $C$DW$6, DW_AT_declaration
 	.dwattr $C$DW$6, DW_AT_external
 
-;	C:\ti\ccsv6\tools\compiler\ti-cgt-c2000_15.12.4.LTS\bin\opt2000.exe C:\\Users\\ebenton\\AppData\\Local\\Temp\\147882 C:\\Users\\ebenton\\AppData\\Local\\Temp\\147884 
-;	C:\ti\ccsv6\tools\compiler\ti-cgt-c2000_15.12.4.LTS\bin\ac2000.exe -@C:\\Users\\ebenton\\AppData\\Local\\Temp\\1478812 
+;	C:\ti\ccsv6\tools\compiler\ti-cgt-c2000_15.12.4.LTS\bin\opt2000.exe C:\\Users\\ebenton\\AppData\\Local\\Temp\\105802 C:\\Users\\ebenton\\AppData\\Local\\Temp\\105804 
+;	C:\ti\ccsv6\tools\compiler\ti-cgt-c2000_15.12.4.LTS\bin\ac2000.exe -@C:\\Users\\ebenton\\AppData\\Local\\Temp\\1058012 
 	.sect	".text"
 	.clink
 	.global	_SPICAN_T0_RTS
@@ -61,15 +61,15 @@ $C$DW$7	.dwtag  DW_TAG_subprogram
 	.dwattr $C$DW$7, DW_AT_TI_symbol_name("_SPICAN_T0_RTS")
 	.dwattr $C$DW$7, DW_AT_external
 	.dwattr $C$DW$7, DW_AT_TI_begin_file("../Source/SPICAN.c")
-	.dwattr $C$DW$7, DW_AT_TI_begin_line(0xb5)
+	.dwattr $C$DW$7, DW_AT_TI_begin_line(0xb6)
 	.dwattr $C$DW$7, DW_AT_TI_begin_column(0x06)
 	.dwattr $C$DW$7, DW_AT_TI_max_frame_size(-2)
-	.dwpsn	file "../Source/SPICAN.c",line 182,column 1,is_stmt,address _SPICAN_T0_RTS,isa 0
+	.dwpsn	file "../Source/SPICAN.c",line 183,column 1,is_stmt,address _SPICAN_T0_RTS,isa 0
 
 	.dwfde $C$DW$CIE, _SPICAN_T0_RTS
 ;----------------------------------------------------------------------
-; 181 | void SPICAN_T0_RTS (void)                                              
-; 183 | GpioDataRegs.GPADAT.bit.GPIOA0  = 0;            //Chip Select Low      
+; 182 | void SPICAN_T0_RTS (void)                                              
+; 184 | GpioDataRegs.GPADAT.bit.GPIOA0  = 0;            //Chip Select Low      
 ;----------------------------------------------------------------------
 
 ;***************************************************************
@@ -85,27 +85,27 @@ _SPICAN_T0_RTS:
 	.dwcfi	cfa_offset, -2
 	.dwcfi	save_reg_to_mem, 26, 0
         MOVW      DP,#_GpioDataRegs     ; [CPU_U] 
-	.dwpsn	file "../Source/SPICAN.c",line 184,column 2,is_stmt,isa 0
+	.dwpsn	file "../Source/SPICAN.c",line 185,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 184 | spi_xmit(SPICAN_RTS + 0x1);                                            
+; 185 | spi_xmit(SPICAN_RTS + 0x1);                                            
 ;----------------------------------------------------------------------
-        MOVB      AL,#129               ; [CPU_] |184| 
-	.dwpsn	file "../Source/SPICAN.c",line 183,column 2,is_stmt,isa 0
-        AND       @_GpioDataRegs,#0xfffe ; [CPU_] |183| 
+        MOVB      AL,#129               ; [CPU_] |185| 
 	.dwpsn	file "../Source/SPICAN.c",line 184,column 2,is_stmt,isa 0
+        AND       @_GpioDataRegs,#0xfffe ; [CPU_] |184| 
+	.dwpsn	file "../Source/SPICAN.c",line 185,column 2,is_stmt,isa 0
 $C$DW$8	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$8, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$8, DW_AT_name("_spi_xmit")
 	.dwattr $C$DW$8, DW_AT_TI_call
 
-        LCR       #_spi_xmit            ; [CPU_] |184| 
-        ; call occurs [#_spi_xmit] ; [] |184| 
+        LCR       #_spi_xmit            ; [CPU_] |185| 
+        ; call occurs [#_spi_xmit] ; [] |185| 
         MOVW      DP,#_GpioDataRegs     ; [CPU_U] 
-	.dwpsn	file "../Source/SPICAN.c",line 185,column 2,is_stmt,isa 0
+	.dwpsn	file "../Source/SPICAN.c",line 186,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 185 | GpioDataRegs.GPADAT.bit.GPIOA0  = 1;            //Release chip select  
+; 186 | GpioDataRegs.GPADAT.bit.GPIOA0  = 1;            //Release chip select  
 ;----------------------------------------------------------------------
-        OR        @_GpioDataRegs,#0x0001 ; [CPU_] |185| 
+        OR        @_GpioDataRegs,#0x0001 ; [CPU_] |186| 
 $C$DW$9	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$9, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$9, DW_AT_TI_return
@@ -113,7 +113,7 @@ $C$DW$9	.dwtag  DW_TAG_TI_branch
         LRETR     ; [CPU_] 
         ; return occurs ; [] 
 	.dwattr $C$DW$7, DW_AT_TI_end_file("../Source/SPICAN.c")
-	.dwattr $C$DW$7, DW_AT_TI_end_line(0xba)
+	.dwattr $C$DW$7, DW_AT_TI_end_line(0xbb)
 	.dwattr $C$DW$7, DW_AT_TI_end_column(0x01)
 	.dwendentry
 	.dwendtag $C$DW$7
@@ -129,10 +129,10 @@ $C$DW$10	.dwtag  DW_TAG_subprogram
 	.dwattr $C$DW$10, DW_AT_TI_symbol_name("_SPICANWrite")
 	.dwattr $C$DW$10, DW_AT_external
 	.dwattr $C$DW$10, DW_AT_TI_begin_file("../Source/SPICAN.c")
-	.dwattr $C$DW$10, DW_AT_TI_begin_line(0x39)
+	.dwattr $C$DW$10, DW_AT_TI_begin_line(0x3a)
 	.dwattr $C$DW$10, DW_AT_TI_begin_column(0x06)
 	.dwattr $C$DW$10, DW_AT_TI_max_frame_size(-6)
-	.dwpsn	file "../Source/SPICAN.c",line 58,column 1,is_stmt,address _SPICANWrite,isa 0
+	.dwpsn	file "../Source/SPICAN.c",line 59,column 1,is_stmt,address _SPICANWrite,isa 0
 
 	.dwfde $C$DW$CIE, _SPICANWrite
 $C$DW$11	.dwtag  DW_TAG_formal_parameter
@@ -148,7 +148,7 @@ $C$DW$12	.dwtag  DW_TAG_formal_parameter
 	.dwattr $C$DW$12, DW_AT_location[DW_OP_reg1]
 
 ;----------------------------------------------------------------------
-;  57 | void SPICANWrite (Uint16 ADDR, Uint16 Input)                           
+;  58 | void SPICANWrite (Uint16 ADDR, Uint16 Input)                           
 ;----------------------------------------------------------------------
 
 ;***************************************************************
@@ -181,62 +181,62 @@ $C$DW$14	.dwtag  DW_TAG_variable
 	.dwcfi	save_reg_to_mem, 7, 2
 	.dwcfi	cfa_offset, -4
         MOVW      DP,#_GpioDataRegs     ; [CPU_U] 
-        MOVZ      AR1,AH                ; [CPU_] |58| 
-	.dwpsn	file "../Source/SPICAN.c",line 59,column 2,is_stmt,isa 0
+        MOVZ      AR1,AH                ; [CPU_] |59| 
+	.dwpsn	file "../Source/SPICAN.c",line 60,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-;  59 | GpioDataRegs.GPADAT.bit.GPIOA0  = 0;            //Chip Select Low      
+;  60 | GpioDataRegs.GPADAT.bit.GPIOA0  = 0;            //Chip Select Low      
 ;----------------------------------------------------------------------
-        AND       @_GpioDataRegs,#0xfffe ; [CPU_] |59| 
+        AND       @_GpioDataRegs,#0xfffe ; [CPU_] |60| 
         MOVL      *SP++,XAR2            ; [CPU_] 
 	.dwcfi	save_reg_to_mem, 9, 4
 	.dwcfi	cfa_offset, -6
-	.dwpsn	file "../Source/SPICAN.c",line 58,column 1,is_stmt,isa 0
-        MOVZ      AR2,AL                ; [CPU_] |58| 
-	.dwpsn	file "../Source/SPICAN.c",line 60,column 2,is_stmt,isa 0
+	.dwpsn	file "../Source/SPICAN.c",line 59,column 1,is_stmt,isa 0
+        MOVZ      AR2,AL                ; [CPU_] |59| 
+	.dwpsn	file "../Source/SPICAN.c",line 61,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-;  60 | spi_xmit(SPICAN_WRITE);                                         //Write
+;  61 | spi_xmit(SPICAN_WRITE);                                         //Write
 ;     |  command                                                               
 ;----------------------------------------------------------------------
-        MOVB      AL,#2                 ; [CPU_] |60| 
+        MOVB      AL,#2                 ; [CPU_] |61| 
 $C$DW$15	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$15, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$15, DW_AT_name("_spi_xmit")
 	.dwattr $C$DW$15, DW_AT_TI_call
 
-        LCR       #_spi_xmit            ; [CPU_] |60| 
-        ; call occurs [#_spi_xmit] ; [] |60| 
-	.dwpsn	file "../Source/SPICAN.c",line 61,column 2,is_stmt,isa 0
+        LCR       #_spi_xmit            ; [CPU_] |61| 
+        ; call occurs [#_spi_xmit] ; [] |61| 
+	.dwpsn	file "../Source/SPICAN.c",line 62,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-;  61 | spi_xmit(ADDR);
+;  62 | spi_xmit(ADDR);
 ;     |  //Write location                                                      
 ;----------------------------------------------------------------------
-        MOV       AL,AR2                ; [CPU_] |61| 
+        MOV       AL,AR2                ; [CPU_] |62| 
 $C$DW$16	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$16, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$16, DW_AT_name("_spi_xmit")
 	.dwattr $C$DW$16, DW_AT_TI_call
 
-        LCR       #_spi_xmit            ; [CPU_] |61| 
-        ; call occurs [#_spi_xmit] ; [] |61| 
-	.dwpsn	file "../Source/SPICAN.c",line 62,column 2,is_stmt,isa 0
+        LCR       #_spi_xmit            ; [CPU_] |62| 
+        ; call occurs [#_spi_xmit] ; [] |62| 
+	.dwpsn	file "../Source/SPICAN.c",line 63,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-;  62 | spi_xmit(Input);
+;  63 | spi_xmit(Input);
 ;     |  //Write Info                                                          
 ;----------------------------------------------------------------------
-        MOV       AL,AR1                ; [CPU_] |62| 
+        MOV       AL,AR1                ; [CPU_] |63| 
 $C$DW$17	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$17, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$17, DW_AT_name("_spi_xmit")
 	.dwattr $C$DW$17, DW_AT_TI_call
 
-        LCR       #_spi_xmit            ; [CPU_] |62| 
-        ; call occurs [#_spi_xmit] ; [] |62| 
+        LCR       #_spi_xmit            ; [CPU_] |63| 
+        ; call occurs [#_spi_xmit] ; [] |63| 
         MOVW      DP,#_GpioDataRegs     ; [CPU_U] 
-	.dwpsn	file "../Source/SPICAN.c",line 63,column 2,is_stmt,isa 0
+	.dwpsn	file "../Source/SPICAN.c",line 64,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-;  63 | GpioDataRegs.GPADAT.bit.GPIOA0  = 1;                                   
+;  64 | GpioDataRegs.GPADAT.bit.GPIOA0  = 1;                                   
 ;----------------------------------------------------------------------
-        OR        @_GpioDataRegs,#0x0001 ; [CPU_] |63| 
+        OR        @_GpioDataRegs,#0x0001 ; [CPU_] |64| 
         MOVL      XAR2,*--SP            ; [CPU_] 
 	.dwcfi	cfa_offset, -4
 	.dwcfi	restore_reg, 9
@@ -250,7 +250,7 @@ $C$DW$18	.dwtag  DW_TAG_TI_branch
         LRETR     ; [CPU_] 
         ; return occurs ; [] 
 	.dwattr $C$DW$10, DW_AT_TI_end_file("../Source/SPICAN.c")
-	.dwattr $C$DW$10, DW_AT_TI_end_line(0x40)
+	.dwattr $C$DW$10, DW_AT_TI_end_line(0x41)
 	.dwattr $C$DW$10, DW_AT_TI_end_column(0x01)
 	.dwendentry
 	.dwendtag $C$DW$10
@@ -266,10 +266,10 @@ $C$DW$19	.dwtag  DW_TAG_subprogram
 	.dwattr $C$DW$19, DW_AT_TI_symbol_name("_SPICAN_SetT0Data")
 	.dwattr $C$DW$19, DW_AT_external
 	.dwattr $C$DW$19, DW_AT_TI_begin_file("../Source/SPICAN.c")
-	.dwattr $C$DW$19, DW_AT_TI_begin_line(0xa7)
+	.dwattr $C$DW$19, DW_AT_TI_begin_line(0xa8)
 	.dwattr $C$DW$19, DW_AT_TI_begin_column(0x06)
 	.dwattr $C$DW$19, DW_AT_TI_max_frame_size(-10)
-	.dwpsn	file "../Source/SPICAN.c",line 168,column 1,is_stmt,address _SPICAN_SetT0Data,isa 0
+	.dwpsn	file "../Source/SPICAN.c",line 169,column 1,is_stmt,address _SPICAN_SetT0Data,isa 0
 
 	.dwfde $C$DW$CIE, _SPICAN_SetT0Data
 $C$DW$20	.dwtag  DW_TAG_formal_parameter
@@ -285,7 +285,7 @@ $C$DW$21	.dwtag  DW_TAG_formal_parameter
 	.dwattr $C$DW$21, DW_AT_location[DW_OP_reg12]
 
 ;----------------------------------------------------------------------
-; 167 | void SPICAN_SetT0Data(Uint16 numBytes, char *buf)                      
+; 168 | void SPICAN_SetT0Data(Uint16 numBytes, char *buf)                      
 ;----------------------------------------------------------------------
 
 ;***************************************************************
@@ -334,100 +334,100 @@ $C$DW$24	.dwtag  DW_TAG_variable
 	.dwcfi	cfa_offset, -10
         MOVW      DP,#_GpioDataRegs     ; [CPU_U] 
 ;----------------------------------------------------------------------
-; 169 | Uint16 k;                                                              
-; 171 | // Send how much data content there is                                 
-; 172 | SPICANWrite(SPICAN_TXB0DLC, numBytes);                                 
-; 174 | // Fill in the data buffer                                             
+; 170 | Uint16 k;                                                              
+; 172 | // Send how much data content there is                                 
+; 173 | SPICANWrite(SPICAN_TXB0DLC, numBytes);                                 
+; 175 | // Fill in the data buffer                                             
 ;----------------------------------------------------------------------
-        MOVZ      AR2,AL                ; [CPU_] |168| 
-        MOVL      XAR3,XAR4             ; [CPU_] |168| 
-	.dwpsn	file "../Source/SPICAN.c",line 59,column 2,is_stmt,isa 0
-        AND       @_GpioDataRegs,#0xfffe ; [CPU_] |59| 
+        MOVZ      AR2,AL                ; [CPU_] |169| 
+        MOVL      XAR3,XAR4             ; [CPU_] |169| 
 	.dwpsn	file "../Source/SPICAN.c",line 60,column 2,is_stmt,isa 0
-        MOVB      AL,#2                 ; [CPU_] |60| 
+        AND       @_GpioDataRegs,#0xfffe ; [CPU_] |60| 
+	.dwpsn	file "../Source/SPICAN.c",line 61,column 2,is_stmt,isa 0
+        MOVB      AL,#2                 ; [CPU_] |61| 
 $C$DW$25	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$25, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$25, DW_AT_name("_spi_xmit")
 	.dwattr $C$DW$25, DW_AT_TI_call
 
-        LCR       #_spi_xmit            ; [CPU_] |60| 
-        ; call occurs [#_spi_xmit] ; [] |60| 
-	.dwpsn	file "../Source/SPICAN.c",line 61,column 2,is_stmt,isa 0
-        MOVB      AL,#53                ; [CPU_] |61| 
+        LCR       #_spi_xmit            ; [CPU_] |61| 
+        ; call occurs [#_spi_xmit] ; [] |61| 
+	.dwpsn	file "../Source/SPICAN.c",line 62,column 2,is_stmt,isa 0
+        MOVB      AL,#53                ; [CPU_] |62| 
 $C$DW$26	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$26, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$26, DW_AT_name("_spi_xmit")
 	.dwattr $C$DW$26, DW_AT_TI_call
 
-        LCR       #_spi_xmit            ; [CPU_] |61| 
-        ; call occurs [#_spi_xmit] ; [] |61| 
-        MOV       AL,AR2                ; [CPU_] |61| 
-	.dwpsn	file "../Source/SPICAN.c",line 62,column 2,is_stmt,isa 0
+        LCR       #_spi_xmit            ; [CPU_] |62| 
+        ; call occurs [#_spi_xmit] ; [] |62| 
+        MOV       AL,AR2                ; [CPU_] |62| 
+	.dwpsn	file "../Source/SPICAN.c",line 63,column 2,is_stmt,isa 0
 $C$DW$27	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$27, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$27, DW_AT_name("_spi_xmit")
 	.dwattr $C$DW$27, DW_AT_TI_call
 
-        LCR       #_spi_xmit            ; [CPU_] |62| 
-        ; call occurs [#_spi_xmit] ; [] |62| 
+        LCR       #_spi_xmit            ; [CPU_] |63| 
+        ; call occurs [#_spi_xmit] ; [] |63| 
         MOVW      DP,#_GpioDataRegs     ; [CPU_U] 
-	.dwpsn	file "../Source/SPICAN.c",line 63,column 2,is_stmt,isa 0
-        OR        @_GpioDataRegs,#0x0001 ; [CPU_] |63| 
-        MOV       AL,AR2                ; [CPU_] |63| 
-	.dwpsn	file "../Source/SPICAN.c",line 175,column 13,is_stmt,isa 0
+	.dwpsn	file "../Source/SPICAN.c",line 64,column 2,is_stmt,isa 0
+        OR        @_GpioDataRegs,#0x0001 ; [CPU_] |64| 
+        MOV       AL,AR2                ; [CPU_] |64| 
+	.dwpsn	file "../Source/SPICAN.c",line 176,column 13,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 175 | for(k = 0; k < numBytes; k++)                                          
+; 176 | for(k = 0; k < numBytes; k++)                                          
 ;----------------------------------------------------------------------
-        B         $C$L2,EQ              ; [CPU_] |175| 
-        ; branchcc occurs ; [] |175| 
+        B         $C$L2,EQ              ; [CPU_] |176| 
+        ; branchcc occurs ; [] |176| 
         SUBB      XAR2,#1               ; [CPU_U] 
-	.dwpsn	file "../Source/SPICAN.c",line 175,column 6,is_stmt,isa 0
-        MOVB      XAR1,#0               ; [CPU_] |175| 
+	.dwpsn	file "../Source/SPICAN.c",line 176,column 6,is_stmt,isa 0
+        MOVB      XAR1,#0               ; [CPU_] |176| 
 $C$L1:    
-	.dwpsn	file "../Source/SPICAN.c",line 177,column 3,is_stmt,isa 0
+	.dwpsn	file "../Source/SPICAN.c",line 178,column 3,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 177 | SPICANWrite(SPICAN_TXB0D0 + k, buf[k]);                                
+; 178 | SPICANWrite(SPICAN_TXB0D0 + k, buf[k]);                                
 ;----------------------------------------------------------------------
-        MOV       AL,*XAR3++            ; [CPU_] |177| 
-        MOV       *-SP[1],AL            ; [CPU_] |177| 
-	.dwpsn	file "../Source/SPICAN.c",line 59,column 2,is_stmt,isa 0
-        AND       @_GpioDataRegs,#0xfffe ; [CPU_] |59| 
+        MOV       AL,*XAR3++            ; [CPU_] |178| 
+        MOV       *-SP[1],AL            ; [CPU_] |178| 
 	.dwpsn	file "../Source/SPICAN.c",line 60,column 2,is_stmt,isa 0
-        MOVB      AL,#2                 ; [CPU_] |60| 
+        AND       @_GpioDataRegs,#0xfffe ; [CPU_] |60| 
+	.dwpsn	file "../Source/SPICAN.c",line 61,column 2,is_stmt,isa 0
+        MOVB      AL,#2                 ; [CPU_] |61| 
 $C$DW$28	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$28, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$28, DW_AT_name("_spi_xmit")
 	.dwattr $C$DW$28, DW_AT_TI_call
 
-        LCR       #_spi_xmit            ; [CPU_] |60| 
-        ; call occurs [#_spi_xmit] ; [] |60| 
-	.dwpsn	file "../Source/SPICAN.c",line 61,column 2,is_stmt,isa 0
-        MOVB      AL,#54                ; [CPU_] |61| 
-        ADD       AL,AR1                ; [CPU_] |61| 
+        LCR       #_spi_xmit            ; [CPU_] |61| 
+        ; call occurs [#_spi_xmit] ; [] |61| 
+	.dwpsn	file "../Source/SPICAN.c",line 62,column 2,is_stmt,isa 0
+        MOVB      AL,#54                ; [CPU_] |62| 
+        ADD       AL,AR1                ; [CPU_] |62| 
 $C$DW$29	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$29, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$29, DW_AT_name("_spi_xmit")
 	.dwattr $C$DW$29, DW_AT_TI_call
 
-        LCR       #_spi_xmit            ; [CPU_] |61| 
-        ; call occurs [#_spi_xmit] ; [] |61| 
-        MOV       AL,*-SP[1]            ; [CPU_] |61| 
-	.dwpsn	file "../Source/SPICAN.c",line 62,column 2,is_stmt,isa 0
+        LCR       #_spi_xmit            ; [CPU_] |62| 
+        ; call occurs [#_spi_xmit] ; [] |62| 
+        MOV       AL,*-SP[1]            ; [CPU_] |62| 
+	.dwpsn	file "../Source/SPICAN.c",line 63,column 2,is_stmt,isa 0
 $C$DW$30	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$30, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$30, DW_AT_name("_spi_xmit")
 	.dwattr $C$DW$30, DW_AT_TI_call
 
-        LCR       #_spi_xmit            ; [CPU_] |62| 
-        ; call occurs [#_spi_xmit] ; [] |62| 
-	.dwpsn	file "../Source/SPICAN.c",line 175,column 13,is_stmt,isa 0
-        ADDB      XAR1,#1               ; [CPU_] |175| 
+        LCR       #_spi_xmit            ; [CPU_] |63| 
+        ; call occurs [#_spi_xmit] ; [] |63| 
+	.dwpsn	file "../Source/SPICAN.c",line 176,column 13,is_stmt,isa 0
+        ADDB      XAR1,#1               ; [CPU_] |176| 
         MOVW      DP,#_GpioDataRegs     ; [CPU_U] 
-	.dwpsn	file "../Source/SPICAN.c",line 63,column 2,is_stmt,isa 0
-        OR        @_GpioDataRegs,#0x0001 ; [CPU_] |63| 
-	.dwpsn	file "../Source/SPICAN.c",line 175,column 13,is_stmt,isa 0
-        BANZ      $C$L1,AR2--           ; [CPU_] |175| 
-        ; branchcc occurs ; [] |175| 
+	.dwpsn	file "../Source/SPICAN.c",line 64,column 2,is_stmt,isa 0
+        OR        @_GpioDataRegs,#0x0001 ; [CPU_] |64| 
+	.dwpsn	file "../Source/SPICAN.c",line 176,column 13,is_stmt,isa 0
+        BANZ      $C$L1,AR2--           ; [CPU_] |176| 
+        ; branchcc occurs ; [] |176| 
 $C$L2:    
         SUBB      SP,#2                 ; [CPU_U] 
 	.dwcfi	cfa_offset, -8
@@ -447,7 +447,7 @@ $C$DW$31	.dwtag  DW_TAG_TI_branch
         LRETR     ; [CPU_] 
         ; return occurs ; [] 
 	.dwattr $C$DW$19, DW_AT_TI_end_file("../Source/SPICAN.c")
-	.dwattr $C$DW$19, DW_AT_TI_end_line(0xb3)
+	.dwattr $C$DW$19, DW_AT_TI_end_line(0xb4)
 	.dwattr $C$DW$19, DW_AT_TI_end_column(0x01)
 	.dwendentry
 	.dwendtag $C$DW$19
@@ -463,10 +463,10 @@ $C$DW$32	.dwtag  DW_TAG_subprogram
 	.dwattr $C$DW$32, DW_AT_TI_symbol_name("_SPICAN_SetT0Addr")
 	.dwattr $C$DW$32, DW_AT_external
 	.dwattr $C$DW$32, DW_AT_TI_begin_file("../Source/SPICAN.c")
-	.dwattr $C$DW$32, DW_AT_TI_begin_line(0x93)
+	.dwattr $C$DW$32, DW_AT_TI_begin_line(0x94)
 	.dwattr $C$DW$32, DW_AT_TI_begin_column(0x06)
 	.dwattr $C$DW$32, DW_AT_TI_max_frame_size(-6)
-	.dwpsn	file "../Source/SPICAN.c",line 148,column 1,is_stmt,address _SPICAN_SetT0Addr,isa 0
+	.dwpsn	file "../Source/SPICAN.c",line 149,column 1,is_stmt,address _SPICAN_SetT0Addr,isa 0
 
 	.dwfde $C$DW$CIE, _SPICAN_SetT0Addr
 $C$DW$33	.dwtag  DW_TAG_formal_parameter
@@ -476,7 +476,7 @@ $C$DW$33	.dwtag  DW_TAG_formal_parameter
 	.dwattr $C$DW$33, DW_AT_location[DW_OP_reg0]
 
 ;----------------------------------------------------------------------
-; 147 | void SPICAN_SetT0Addr(Uint16 canAddress)                               
+; 148 | void SPICAN_SetT0Addr(Uint16 canAddress)                               
 ;----------------------------------------------------------------------
 
 ;***************************************************************
@@ -516,105 +516,105 @@ $C$DW$36	.dwtag  DW_TAG_variable
 	.dwcfi	save_reg_to_mem, 7, 2
 	.dwcfi	cfa_offset, -4
 ;----------------------------------------------------------------------
-; 149 | Uint16 addrHi, addrLo;                                                 
-; 151 | // First grab the important bits                                       
+; 150 | Uint16 addrHi, addrLo;                                                 
+; 152 | // First grab the important bits                                       
 ;----------------------------------------------------------------------
-        MOVZ      AR1,AL                ; [CPU_] |148| 
+        MOVZ      AR1,AL                ; [CPU_] |149| 
         MOVW      DP,#_GpioDataRegs     ; [CPU_U] 
         MOVL      *SP++,XAR2            ; [CPU_] 
 	.dwcfi	save_reg_to_mem, 9, 4
 	.dwcfi	cfa_offset, -6
-	.dwpsn	file "../Source/SPICAN.c",line 152,column 2,is_stmt,isa 0
-;----------------------------------------------------------------------
-; 152 | addrHi = canAddress & 0x7F8;                                           
-;----------------------------------------------------------------------
-        AND       AH,AR1,#0x07f8        ; [CPU_] |152| 
-	.dwpsn	file "../Source/SPICAN.c",line 59,column 2,is_stmt,isa 0
-        AND       @_GpioDataRegs,#0xfffe ; [CPU_] |59| 
 	.dwpsn	file "../Source/SPICAN.c",line 153,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 153 | addrLo = canAddress & 0x7;                                             
+; 153 | addrHi = canAddress & 0x7F8;                                           
 ;----------------------------------------------------------------------
-        AND       AL,AR1,#0x0007        ; [CPU_] |153| 
-	.dwpsn	file "../Source/SPICAN.c",line 152,column 2,is_stmt,isa 0
-        MOVZ      AR2,AH                ; [CPU_] |152| 
-	.dwpsn	file "../Source/SPICAN.c",line 153,column 2,is_stmt,isa 0
-;----------------------------------------------------------------------
-; 155 | // Now shift them to the right places                                  
-; 156 | addrHi = addrHi >> 3;                                                  
-; 157 | addrLo = addrLo << 5;                                                  
-; 159 | // Set up the ID (X - unused, H - Hi, L - Lo)                          
-; 160 | // Want to first send 0bHHHHHHHH                                       
-; 161 | SPICANWrite(SPICAN_TXB0SIDH, addrHi); // H (SID10 - SID3)              
-; 162 | // Then want to send 0bLLL00000                                        
-; 163 | SPICANWrite(SPICAN_TXB0SIDL, addrLo); // L (SID2 - SID0)               
-;----------------------------------------------------------------------
-        MOVZ      AR1,AL                ; [CPU_] |153| 
+        AND       AH,AR1,#0x07f8        ; [CPU_] |153| 
 	.dwpsn	file "../Source/SPICAN.c",line 60,column 2,is_stmt,isa 0
-        MOVB      AL,#2                 ; [CPU_] |60| 
+        AND       @_GpioDataRegs,#0xfffe ; [CPU_] |60| 
+	.dwpsn	file "../Source/SPICAN.c",line 154,column 2,is_stmt,isa 0
+;----------------------------------------------------------------------
+; 154 | addrLo = canAddress & 0x7;                                             
+;----------------------------------------------------------------------
+        AND       AL,AR1,#0x0007        ; [CPU_] |154| 
+	.dwpsn	file "../Source/SPICAN.c",line 153,column 2,is_stmt,isa 0
+        MOVZ      AR2,AH                ; [CPU_] |153| 
+	.dwpsn	file "../Source/SPICAN.c",line 154,column 2,is_stmt,isa 0
+;----------------------------------------------------------------------
+; 156 | // Now shift them to the right places                                  
+; 157 | addrHi = addrHi >> 3;                                                  
+; 158 | addrLo = addrLo << 5;                                                  
+; 160 | // Set up the ID (X - unused, H - Hi, L - Lo)                          
+; 161 | // Want to first send 0bHHHHHHHH                                       
+; 162 | SPICANWrite(SPICAN_TXB0SIDH, addrHi); // H (SID10 - SID3)              
+; 163 | // Then want to send 0bLLL00000                                        
+; 164 | SPICANWrite(SPICAN_TXB0SIDL, addrLo); // L (SID2 - SID0)               
+;----------------------------------------------------------------------
+        MOVZ      AR1,AL                ; [CPU_] |154| 
+	.dwpsn	file "../Source/SPICAN.c",line 61,column 2,is_stmt,isa 0
+        MOVB      AL,#2                 ; [CPU_] |61| 
 $C$DW$37	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$37, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$37, DW_AT_name("_spi_xmit")
 	.dwattr $C$DW$37, DW_AT_TI_call
 
-        LCR       #_spi_xmit            ; [CPU_] |60| 
-        ; call occurs [#_spi_xmit] ; [] |60| 
-	.dwpsn	file "../Source/SPICAN.c",line 61,column 2,is_stmt,isa 0
-        MOVB      AL,#49                ; [CPU_] |61| 
+        LCR       #_spi_xmit            ; [CPU_] |61| 
+        ; call occurs [#_spi_xmit] ; [] |61| 
+	.dwpsn	file "../Source/SPICAN.c",line 62,column 2,is_stmt,isa 0
+        MOVB      AL,#49                ; [CPU_] |62| 
 $C$DW$38	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$38, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$38, DW_AT_name("_spi_xmit")
 	.dwattr $C$DW$38, DW_AT_TI_call
 
-        LCR       #_spi_xmit            ; [CPU_] |61| 
-        ; call occurs [#_spi_xmit] ; [] |61| 
-        MOV       AL,AR2                ; [CPU_] |61| 
-	.dwpsn	file "../Source/SPICAN.c",line 62,column 2,is_stmt,isa 0
-        LSR       AL,3                  ; [CPU_] |62| 
+        LCR       #_spi_xmit            ; [CPU_] |62| 
+        ; call occurs [#_spi_xmit] ; [] |62| 
+        MOV       AL,AR2                ; [CPU_] |62| 
+	.dwpsn	file "../Source/SPICAN.c",line 63,column 2,is_stmt,isa 0
+        LSR       AL,3                  ; [CPU_] |63| 
 $C$DW$39	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$39, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$39, DW_AT_name("_spi_xmit")
 	.dwattr $C$DW$39, DW_AT_TI_call
 
-        LCR       #_spi_xmit            ; [CPU_] |62| 
-        ; call occurs [#_spi_xmit] ; [] |62| 
+        LCR       #_spi_xmit            ; [CPU_] |63| 
+        ; call occurs [#_spi_xmit] ; [] |63| 
         MOVW      DP,#_GpioDataRegs     ; [CPU_U] 
+	.dwpsn	file "../Source/SPICAN.c",line 61,column 2,is_stmt,isa 0
+        MOVB      AL,#2                 ; [CPU_] |61| 
+	.dwpsn	file "../Source/SPICAN.c",line 64,column 2,is_stmt,isa 0
+        OR        @_GpioDataRegs,#0x0001 ; [CPU_] |64| 
 	.dwpsn	file "../Source/SPICAN.c",line 60,column 2,is_stmt,isa 0
-        MOVB      AL,#2                 ; [CPU_] |60| 
-	.dwpsn	file "../Source/SPICAN.c",line 63,column 2,is_stmt,isa 0
-        OR        @_GpioDataRegs,#0x0001 ; [CPU_] |63| 
-	.dwpsn	file "../Source/SPICAN.c",line 59,column 2,is_stmt,isa 0
-        AND       @_GpioDataRegs,#0xfffe ; [CPU_] |59| 
-	.dwpsn	file "../Source/SPICAN.c",line 60,column 2,is_stmt,isa 0
+        AND       @_GpioDataRegs,#0xfffe ; [CPU_] |60| 
+	.dwpsn	file "../Source/SPICAN.c",line 61,column 2,is_stmt,isa 0
 $C$DW$40	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$40, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$40, DW_AT_name("_spi_xmit")
 	.dwattr $C$DW$40, DW_AT_TI_call
 
-        LCR       #_spi_xmit            ; [CPU_] |60| 
-        ; call occurs [#_spi_xmit] ; [] |60| 
-	.dwpsn	file "../Source/SPICAN.c",line 61,column 2,is_stmt,isa 0
-        MOVB      AL,#50                ; [CPU_] |61| 
+        LCR       #_spi_xmit            ; [CPU_] |61| 
+        ; call occurs [#_spi_xmit] ; [] |61| 
+	.dwpsn	file "../Source/SPICAN.c",line 62,column 2,is_stmt,isa 0
+        MOVB      AL,#50                ; [CPU_] |62| 
 $C$DW$41	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$41, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$41, DW_AT_name("_spi_xmit")
 	.dwattr $C$DW$41, DW_AT_TI_call
 
-        LCR       #_spi_xmit            ; [CPU_] |61| 
-        ; call occurs [#_spi_xmit] ; [] |61| 
-        MOV       AL,AR1                ; [CPU_] |61| 
-	.dwpsn	file "../Source/SPICAN.c",line 62,column 2,is_stmt,isa 0
-        LSL       AL,5                  ; [CPU_] |62| 
+        LCR       #_spi_xmit            ; [CPU_] |62| 
+        ; call occurs [#_spi_xmit] ; [] |62| 
+        MOV       AL,AR1                ; [CPU_] |62| 
+	.dwpsn	file "../Source/SPICAN.c",line 63,column 2,is_stmt,isa 0
+        LSL       AL,5                  ; [CPU_] |63| 
 $C$DW$42	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$42, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$42, DW_AT_name("_spi_xmit")
 	.dwattr $C$DW$42, DW_AT_TI_call
 
-        LCR       #_spi_xmit            ; [CPU_] |62| 
-        ; call occurs [#_spi_xmit] ; [] |62| 
+        LCR       #_spi_xmit            ; [CPU_] |63| 
+        ; call occurs [#_spi_xmit] ; [] |63| 
         MOVW      DP,#_GpioDataRegs     ; [CPU_U] 
-	.dwpsn	file "../Source/SPICAN.c",line 63,column 2,is_stmt,isa 0
-        OR        @_GpioDataRegs,#0x0001 ; [CPU_] |63| 
+	.dwpsn	file "../Source/SPICAN.c",line 64,column 2,is_stmt,isa 0
+        OR        @_GpioDataRegs,#0x0001 ; [CPU_] |64| 
         MOVL      XAR2,*--SP            ; [CPU_] 
 	.dwcfi	cfa_offset, -4
 	.dwcfi	restore_reg, 9
@@ -628,7 +628,7 @@ $C$DW$43	.dwtag  DW_TAG_TI_branch
         LRETR     ; [CPU_] 
         ; return occurs ; [] 
 	.dwattr $C$DW$32, DW_AT_TI_end_file("../Source/SPICAN.c")
-	.dwattr $C$DW$32, DW_AT_TI_end_line(0xa4)
+	.dwattr $C$DW$32, DW_AT_TI_end_line(0xa5)
 	.dwattr $C$DW$32, DW_AT_TI_end_column(0x01)
 	.dwendentry
 	.dwendtag $C$DW$32
@@ -644,15 +644,15 @@ $C$DW$44	.dwtag  DW_TAG_subprogram
 	.dwattr $C$DW$44, DW_AT_TI_symbol_name("_SPICANSetNorm")
 	.dwattr $C$DW$44, DW_AT_external
 	.dwattr $C$DW$44, DW_AT_TI_begin_file("../Source/SPICAN.c")
-	.dwattr $C$DW$44, DW_AT_TI_begin_line(0x4f)
+	.dwattr $C$DW$44, DW_AT_TI_begin_line(0x50)
 	.dwattr $C$DW$44, DW_AT_TI_begin_column(0x06)
 	.dwattr $C$DW$44, DW_AT_TI_max_frame_size(-2)
-	.dwpsn	file "../Source/SPICAN.c",line 80,column 1,is_stmt,address _SPICANSetNorm,isa 0
+	.dwpsn	file "../Source/SPICAN.c",line 81,column 1,is_stmt,address _SPICANSetNorm,isa 0
 
 	.dwfde $C$DW$CIE, _SPICANSetNorm
 ;----------------------------------------------------------------------
-;  79 | void SPICANSetNorm (void)                                              
-;  81 | GpioDataRegs.GPADAT.bit.GPIOA0  = 0;            //Chip Select Low      
+;  80 | void SPICANSetNorm (void)                                              
+;  82 | GpioDataRegs.GPADAT.bit.GPIOA0  = 0;            //Chip Select Low      
 ;----------------------------------------------------------------------
 
 ;***************************************************************
@@ -668,52 +668,52 @@ _SPICANSetNorm:
 	.dwcfi	cfa_offset, -2
 	.dwcfi	save_reg_to_mem, 26, 0
         MOVW      DP,#_GpioDataRegs     ; [CPU_U] 
-	.dwpsn	file "../Source/SPICAN.c",line 82,column 2,is_stmt,isa 0
+	.dwpsn	file "../Source/SPICAN.c",line 83,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-;  82 | spi_xmit(SPICAN_WRITE);                                                
+;  83 | spi_xmit(SPICAN_WRITE);                                                
 ;----------------------------------------------------------------------
-        MOVB      AL,#2                 ; [CPU_] |82| 
-	.dwpsn	file "../Source/SPICAN.c",line 81,column 2,is_stmt,isa 0
-        AND       @_GpioDataRegs,#0xfffe ; [CPU_] |81| 
+        MOVB      AL,#2                 ; [CPU_] |83| 
 	.dwpsn	file "../Source/SPICAN.c",line 82,column 2,is_stmt,isa 0
+        AND       @_GpioDataRegs,#0xfffe ; [CPU_] |82| 
+	.dwpsn	file "../Source/SPICAN.c",line 83,column 2,is_stmt,isa 0
 $C$DW$45	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$45, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$45, DW_AT_name("_spi_xmit")
 	.dwattr $C$DW$45, DW_AT_TI_call
 
-        LCR       #_spi_xmit            ; [CPU_] |82| 
-        ; call occurs [#_spi_xmit] ; [] |82| 
-	.dwpsn	file "../Source/SPICAN.c",line 83,column 2,is_stmt,isa 0
+        LCR       #_spi_xmit            ; [CPU_] |83| 
+        ; call occurs [#_spi_xmit] ; [] |83| 
+	.dwpsn	file "../Source/SPICAN.c",line 84,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-;  83 | spi_xmit(SPICAN_CANCTRL);                                              
+;  84 | spi_xmit(SPICAN_CANCTRL);                                              
 ;----------------------------------------------------------------------
-        MOVB      AL,#15                ; [CPU_] |83| 
+        MOVB      AL,#15                ; [CPU_] |84| 
 $C$DW$46	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$46, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$46, DW_AT_name("_spi_xmit")
 	.dwattr $C$DW$46, DW_AT_TI_call
 
-        LCR       #_spi_xmit            ; [CPU_] |83| 
-        ; call occurs [#_spi_xmit] ; [] |83| 
-	.dwpsn	file "../Source/SPICAN.c",line 84,column 2,is_stmt,isa 0
+        LCR       #_spi_xmit            ; [CPU_] |84| 
+        ; call occurs [#_spi_xmit] ; [] |84| 
+	.dwpsn	file "../Source/SPICAN.c",line 85,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-;  84 | spi_xmit(0x00);
+;  85 | spi_xmit(0x00);
 ;     |  //Normal Mode, No Abort, No One Shot, No CLK En, No Clock Pre         
 ;----------------------------------------------------------------------
-        MOVB      AL,#0                 ; [CPU_] |84| 
+        MOVB      AL,#0                 ; [CPU_] |85| 
 $C$DW$47	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$47, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$47, DW_AT_name("_spi_xmit")
 	.dwattr $C$DW$47, DW_AT_TI_call
 
-        LCR       #_spi_xmit            ; [CPU_] |84| 
-        ; call occurs [#_spi_xmit] ; [] |84| 
+        LCR       #_spi_xmit            ; [CPU_] |85| 
+        ; call occurs [#_spi_xmit] ; [] |85| 
         MOVW      DP,#_GpioDataRegs     ; [CPU_U] 
-	.dwpsn	file "../Source/SPICAN.c",line 85,column 2,is_stmt,isa 0
+	.dwpsn	file "../Source/SPICAN.c",line 86,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-;  85 | GpioDataRegs.GPADAT.bit.GPIOA0  = 1;            //Release chip select  
+;  86 | GpioDataRegs.GPADAT.bit.GPIOA0  = 1;            //Release chip select  
 ;----------------------------------------------------------------------
-        OR        @_GpioDataRegs,#0x0001 ; [CPU_] |85| 
+        OR        @_GpioDataRegs,#0x0001 ; [CPU_] |86| 
 $C$DW$48	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$48, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$48, DW_AT_TI_return
@@ -721,7 +721,7 @@ $C$DW$48	.dwtag  DW_TAG_TI_branch
         LRETR     ; [CPU_] 
         ; return occurs ; [] 
 	.dwattr $C$DW$44, DW_AT_TI_end_file("../Source/SPICAN.c")
-	.dwattr $C$DW$44, DW_AT_TI_end_line(0x56)
+	.dwattr $C$DW$44, DW_AT_TI_end_line(0x57)
 	.dwattr $C$DW$44, DW_AT_TI_end_column(0x01)
 	.dwendentry
 	.dwendtag $C$DW$44
@@ -737,15 +737,15 @@ $C$DW$49	.dwtag  DW_TAG_subprogram
 	.dwattr $C$DW$49, DW_AT_TI_symbol_name("_SPICANReset")
 	.dwattr $C$DW$49, DW_AT_external
 	.dwattr $C$DW$49, DW_AT_TI_begin_file("../Source/SPICAN.c")
-	.dwattr $C$DW$49, DW_AT_TI_begin_line(0x21)
+	.dwattr $C$DW$49, DW_AT_TI_begin_line(0x22)
 	.dwattr $C$DW$49, DW_AT_TI_begin_column(0x06)
 	.dwattr $C$DW$49, DW_AT_TI_max_frame_size(-2)
-	.dwpsn	file "../Source/SPICAN.c",line 34,column 1,is_stmt,address _SPICANReset,isa 0
+	.dwpsn	file "../Source/SPICAN.c",line 35,column 1,is_stmt,address _SPICANReset,isa 0
 
 	.dwfde $C$DW$CIE, _SPICANReset
 ;----------------------------------------------------------------------
-;  33 | void SPICANReset (void)                                                
-;  35 | GpioDataRegs.GPADAT.bit.GPIOA0  = 0;            //Chip Select Low      
+;  34 | void SPICANReset (void)                                                
+;  36 | GpioDataRegs.GPADAT.bit.GPIOA0  = 0;            //Chip Select Low      
 ;----------------------------------------------------------------------
 
 ;***************************************************************
@@ -761,28 +761,28 @@ _SPICANReset:
 	.dwcfi	cfa_offset, -2
 	.dwcfi	save_reg_to_mem, 26, 0
         MOVW      DP,#_GpioDataRegs     ; [CPU_U] 
-	.dwpsn	file "../Source/SPICAN.c",line 36,column 2,is_stmt,isa 0
+	.dwpsn	file "../Source/SPICAN.c",line 37,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-;  36 | spi_xmit(SPICAN_RESET);                                         //Trans
+;  37 | spi_xmit(SPICAN_RESET);                                         //Trans
 ;     | mit Reset command                                                      
 ;----------------------------------------------------------------------
-        MOVB      AL,#192               ; [CPU_] |36| 
-	.dwpsn	file "../Source/SPICAN.c",line 35,column 2,is_stmt,isa 0
-        AND       @_GpioDataRegs,#0xfffe ; [CPU_] |35| 
+        MOVB      AL,#192               ; [CPU_] |37| 
 	.dwpsn	file "../Source/SPICAN.c",line 36,column 2,is_stmt,isa 0
+        AND       @_GpioDataRegs,#0xfffe ; [CPU_] |36| 
+	.dwpsn	file "../Source/SPICAN.c",line 37,column 2,is_stmt,isa 0
 $C$DW$50	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$50, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$50, DW_AT_name("_spi_xmit")
 	.dwattr $C$DW$50, DW_AT_TI_call
 
-        LCR       #_spi_xmit            ; [CPU_] |36| 
-        ; call occurs [#_spi_xmit] ; [] |36| 
+        LCR       #_spi_xmit            ; [CPU_] |37| 
+        ; call occurs [#_spi_xmit] ; [] |37| 
         MOVW      DP,#_GpioDataRegs     ; [CPU_U] 
-	.dwpsn	file "../Source/SPICAN.c",line 37,column 2,is_stmt,isa 0
+	.dwpsn	file "../Source/SPICAN.c",line 38,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-;  37 | GpioDataRegs.GPADAT.bit.GPIOA0  = 1;            //Release chip select  
+;  38 | GpioDataRegs.GPADAT.bit.GPIOA0  = 1;            //Release chip select  
 ;----------------------------------------------------------------------
-        OR        @_GpioDataRegs,#0x0001 ; [CPU_] |37| 
+        OR        @_GpioDataRegs,#0x0001 ; [CPU_] |38| 
 $C$DW$51	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$51, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$51, DW_AT_TI_return
@@ -790,7 +790,7 @@ $C$DW$51	.dwtag  DW_TAG_TI_branch
         LRETR     ; [CPU_] 
         ; return occurs ; [] 
 	.dwattr $C$DW$49, DW_AT_TI_end_file("../Source/SPICAN.c")
-	.dwattr $C$DW$49, DW_AT_TI_end_line(0x26)
+	.dwattr $C$DW$49, DW_AT_TI_end_line(0x27)
 	.dwattr $C$DW$49, DW_AT_TI_end_column(0x01)
 	.dwendentry
 	.dwendtag $C$DW$49
@@ -807,16 +807,16 @@ $C$DW$52	.dwtag  DW_TAG_subprogram
 	.dwattr $C$DW$52, DW_AT_external
 	.dwattr $C$DW$52, DW_AT_type(*$C$DW$T$19)
 	.dwattr $C$DW$52, DW_AT_TI_begin_file("../Source/SPICAN.c")
-	.dwattr $C$DW$52, DW_AT_TI_begin_line(0x44)
+	.dwattr $C$DW$52, DW_AT_TI_begin_line(0x45)
 	.dwattr $C$DW$52, DW_AT_TI_begin_column(0x08)
 	.dwattr $C$DW$52, DW_AT_TI_max_frame_size(-2)
-	.dwpsn	file "../Source/SPICAN.c",line 69,column 1,is_stmt,address _SPICANReadStat,isa 0
+	.dwpsn	file "../Source/SPICAN.c",line 70,column 1,is_stmt,address _SPICANReadStat,isa 0
 
 	.dwfde $C$DW$CIE, _SPICANReadStat
 ;----------------------------------------------------------------------
-;  68 | Uint16 SPICANReadStat (void)                                           
-;  70 | Uint16  RetVal;                                                        
-;  71 | GpioDataRegs.GPADAT.bit.GPIOA0  = 0;            //Chip Select Low      
+;  69 | Uint16 SPICANReadStat (void)                                           
+;  71 | Uint16  RetVal;                                                        
+;  72 | GpioDataRegs.GPADAT.bit.GPIOA0  = 0;            //Chip Select Low      
 ;----------------------------------------------------------------------
 
 ;***************************************************************
@@ -832,51 +832,51 @@ _SPICANReadStat:
 	.dwcfi	cfa_offset, -2
 	.dwcfi	save_reg_to_mem, 26, 0
         MOVW      DP,#_GpioDataRegs     ; [CPU_U] 
-	.dwpsn	file "../Source/SPICAN.c",line 72,column 2,is_stmt,isa 0
+	.dwpsn	file "../Source/SPICAN.c",line 73,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-;  72 | spi_xmit(SPICAN_READ);                                                 
+;  73 | spi_xmit(SPICAN_READ);                                                 
 ;----------------------------------------------------------------------
-        MOVB      AL,#3                 ; [CPU_] |72| 
-	.dwpsn	file "../Source/SPICAN.c",line 71,column 2,is_stmt,isa 0
-        AND       @_GpioDataRegs,#0xfffe ; [CPU_] |71| 
+        MOVB      AL,#3                 ; [CPU_] |73| 
 	.dwpsn	file "../Source/SPICAN.c",line 72,column 2,is_stmt,isa 0
+        AND       @_GpioDataRegs,#0xfffe ; [CPU_] |72| 
+	.dwpsn	file "../Source/SPICAN.c",line 73,column 2,is_stmt,isa 0
 $C$DW$53	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$53, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$53, DW_AT_name("_spi_xmit")
 	.dwattr $C$DW$53, DW_AT_TI_call
 
-        LCR       #_spi_xmit            ; [CPU_] |72| 
-        ; call occurs [#_spi_xmit] ; [] |72| 
-	.dwpsn	file "../Source/SPICAN.c",line 73,column 2,is_stmt,isa 0
+        LCR       #_spi_xmit            ; [CPU_] |73| 
+        ; call occurs [#_spi_xmit] ; [] |73| 
+	.dwpsn	file "../Source/SPICAN.c",line 74,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-;  73 | spi_xmit(SPICAN_CANSTAT);                                              
+;  74 | spi_xmit(SPICAN_CANSTAT);                                              
 ;----------------------------------------------------------------------
-        MOVB      AL,#14                ; [CPU_] |73| 
+        MOVB      AL,#14                ; [CPU_] |74| 
 $C$DW$54	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$54, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$54, DW_AT_name("_spi_xmit")
 	.dwattr $C$DW$54, DW_AT_TI_call
 
-        LCR       #_spi_xmit            ; [CPU_] |73| 
-        ; call occurs [#_spi_xmit] ; [] |73| 
-	.dwpsn	file "../Source/SPICAN.c",line 74,column 2,is_stmt,isa 0
+        LCR       #_spi_xmit            ; [CPU_] |74| 
+        ; call occurs [#_spi_xmit] ; [] |74| 
+	.dwpsn	file "../Source/SPICAN.c",line 75,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-;  74 | RetVal = spi_recv();                                                   
+;  75 | RetVal = spi_recv();                                                   
 ;----------------------------------------------------------------------
 $C$DW$55	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$55, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$55, DW_AT_name("_spi_recv")
 	.dwattr $C$DW$55, DW_AT_TI_call
 
-        LCR       #_spi_recv            ; [CPU_] |74| 
-        ; call occurs [#_spi_recv] ; [] |74| 
+        LCR       #_spi_recv            ; [CPU_] |75| 
+        ; call occurs [#_spi_recv] ; [] |75| 
         MOVW      DP,#_GpioDataRegs     ; [CPU_U] 
-	.dwpsn	file "../Source/SPICAN.c",line 75,column 2,is_stmt,isa 0
+	.dwpsn	file "../Source/SPICAN.c",line 76,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-;  75 | GpioDataRegs.GPADAT.bit.GPIOA0  = 1;            //Release chip select  
-;  76 | return(RetVal);                                                        
+;  76 | GpioDataRegs.GPADAT.bit.GPIOA0  = 1;            //Release chip select  
+;  77 | return(RetVal);                                                        
 ;----------------------------------------------------------------------
-        OR        @_GpioDataRegs,#0x0001 ; [CPU_] |75| 
+        OR        @_GpioDataRegs,#0x0001 ; [CPU_] |76| 
 $C$DW$56	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$56, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$56, DW_AT_TI_return
@@ -884,7 +884,7 @@ $C$DW$56	.dwtag  DW_TAG_TI_branch
         LRETR     ; [CPU_] 
         ; return occurs ; [] 
 	.dwattr $C$DW$52, DW_AT_TI_end_file("../Source/SPICAN.c")
-	.dwattr $C$DW$52, DW_AT_TI_end_line(0x4d)
+	.dwattr $C$DW$52, DW_AT_TI_end_line(0x4e)
 	.dwattr $C$DW$52, DW_AT_TI_end_column(0x01)
 	.dwendentry
 	.dwendtag $C$DW$52
@@ -900,10 +900,10 @@ $C$DW$57	.dwtag  DW_TAG_subprogram
 	.dwattr $C$DW$57, DW_AT_TI_symbol_name("_SPICANReadSetT0Message")
 	.dwattr $C$DW$57, DW_AT_external
 	.dwattr $C$DW$57, DW_AT_TI_begin_file("../Source/SPICAN.c")
-	.dwattr $C$DW$57, DW_AT_TI_begin_line(0x88)
+	.dwattr $C$DW$57, DW_AT_TI_begin_line(0x89)
 	.dwattr $C$DW$57, DW_AT_TI_begin_column(0x06)
 	.dwattr $C$DW$57, DW_AT_TI_max_frame_size(-6)
-	.dwpsn	file "../Source/SPICAN.c",line 137,column 1,is_stmt,address _SPICANReadSetT0Message,isa 0
+	.dwpsn	file "../Source/SPICAN.c",line 138,column 1,is_stmt,address _SPICANReadSetT0Message,isa 0
 
 	.dwfde $C$DW$CIE, _SPICANReadSetT0Message
 $C$DW$58	.dwtag  DW_TAG_formal_parameter
@@ -925,7 +925,7 @@ $C$DW$60	.dwtag  DW_TAG_formal_parameter
 	.dwattr $C$DW$60, DW_AT_location[DW_OP_reg12]
 
 ;----------------------------------------------------------------------
-; 136 | void SPICANReadSetT0Message(Uint16 canAddress, Uint16 numBytes, char *b
+; 137 | void SPICANReadSetT0Message(Uint16 canAddress, Uint16 numBytes, char *b
 ;     | uf)                                                                    
 ;----------------------------------------------------------------------
 
@@ -959,38 +959,38 @@ $C$DW$62	.dwtag  DW_TAG_variable
 	.dwcfi	save_reg_to_mem, 7, 2
 	.dwcfi	cfa_offset, -4
 ;----------------------------------------------------------------------
-; 138 | // Set the new address                                                 
+; 139 | // Set the new address                                                 
 ;----------------------------------------------------------------------
-        MOVZ      AR1,AH                ; [CPU_] |137| 
+        MOVZ      AR1,AH                ; [CPU_] |138| 
         MOVL      *SP++,XAR2            ; [CPU_] 
 	.dwcfi	save_reg_to_mem, 9, 4
 	.dwcfi	cfa_offset, -6
-        MOVL      XAR2,XAR4             ; [CPU_] |137| 
-	.dwpsn	file "../Source/SPICAN.c",line 139,column 2,is_stmt,isa 0
+        MOVL      XAR2,XAR4             ; [CPU_] |138| 
+	.dwpsn	file "../Source/SPICAN.c",line 140,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 139 | SPICAN_SetT0Addr(canAddress);                                          
-; 141 | // Set the data                                                        
+; 140 | SPICAN_SetT0Addr(canAddress);                                          
+; 142 | // Set the data                                                        
 ;----------------------------------------------------------------------
 $C$DW$63	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$63, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$63, DW_AT_name("_SPICAN_SetT0Addr")
 	.dwattr $C$DW$63, DW_AT_TI_call
 
-        LCR       #_SPICAN_SetT0Addr    ; [CPU_] |139| 
-        ; call occurs [#_SPICAN_SetT0Addr] ; [] |139| 
-	.dwpsn	file "../Source/SPICAN.c",line 142,column 2,is_stmt,isa 0
+        LCR       #_SPICAN_SetT0Addr    ; [CPU_] |140| 
+        ; call occurs [#_SPICAN_SetT0Addr] ; [] |140| 
+	.dwpsn	file "../Source/SPICAN.c",line 143,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 142 | SPICAN_SetT0Data(numBytes, buf);                                       
+; 143 | SPICAN_SetT0Data(numBytes, buf);                                       
 ;----------------------------------------------------------------------
-        MOV       AL,AR1                ; [CPU_] |142| 
-        MOVL      XAR4,XAR2             ; [CPU_] |142| 
+        MOV       AL,AR1                ; [CPU_] |143| 
+        MOVL      XAR4,XAR2             ; [CPU_] |143| 
 $C$DW$64	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$64, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$64, DW_AT_name("_SPICAN_SetT0Data")
 	.dwattr $C$DW$64, DW_AT_TI_call
 
-        LCR       #_SPICAN_SetT0Data    ; [CPU_] |142| 
-        ; call occurs [#_SPICAN_SetT0Data] ; [] |142| 
+        LCR       #_SPICAN_SetT0Data    ; [CPU_] |143| 
+        ; call occurs [#_SPICAN_SetT0Data] ; [] |143| 
         MOVL      XAR2,*--SP            ; [CPU_] 
 	.dwcfi	cfa_offset, -4
 	.dwcfi	restore_reg, 9
@@ -1004,7 +1004,7 @@ $C$DW$65	.dwtag  DW_TAG_TI_branch
         LRETR     ; [CPU_] 
         ; return occurs ; [] 
 	.dwattr $C$DW$57, DW_AT_TI_end_file("../Source/SPICAN.c")
-	.dwattr $C$DW$57, DW_AT_TI_end_line(0x8f)
+	.dwattr $C$DW$57, DW_AT_TI_end_line(0x90)
 	.dwattr $C$DW$57, DW_AT_TI_end_column(0x01)
 	.dwendentry
 	.dwendtag $C$DW$57
@@ -1021,16 +1021,16 @@ $C$DW$66	.dwtag  DW_TAG_subprogram
 	.dwattr $C$DW$66, DW_AT_external
 	.dwattr $C$DW$66, DW_AT_type(*$C$DW$T$19)
 	.dwattr $C$DW$66, DW_AT_TI_begin_file("../Source/SPICAN.c")
-	.dwattr $C$DW$66, DW_AT_TI_begin_line(0x61)
+	.dwattr $C$DW$66, DW_AT_TI_begin_line(0x62)
 	.dwattr $C$DW$66, DW_AT_TI_begin_column(0x08)
 	.dwattr $C$DW$66, DW_AT_TI_max_frame_size(-2)
-	.dwpsn	file "../Source/SPICAN.c",line 98,column 1,is_stmt,address _SPICANReadInt,isa 0
+	.dwpsn	file "../Source/SPICAN.c",line 99,column 1,is_stmt,address _SPICANReadInt,isa 0
 
 	.dwfde $C$DW$CIE, _SPICANReadInt
 ;----------------------------------------------------------------------
-;  97 | Uint16 SPICANReadInt (void)                                            
-;  99 | Uint16 RetVal;                                                         
-; 100 | GpioDataRegs.GPADAT.bit.GPIOA0  = 0;            //Chip Select Low      
+;  98 | Uint16 SPICANReadInt (void)                                            
+; 100 | Uint16 RetVal;                                                         
+; 101 | GpioDataRegs.GPADAT.bit.GPIOA0  = 0;            //Chip Select Low      
 ;----------------------------------------------------------------------
 
 ;***************************************************************
@@ -1046,50 +1046,50 @@ _SPICANReadInt:
 	.dwcfi	cfa_offset, -2
 	.dwcfi	save_reg_to_mem, 26, 0
         MOVW      DP,#_GpioDataRegs     ; [CPU_U] 
-	.dwpsn	file "../Source/SPICAN.c",line 101,column 2,is_stmt,isa 0
+	.dwpsn	file "../Source/SPICAN.c",line 102,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 101 | spi_xmit(SPICAN_READ);                                                 
+; 102 | spi_xmit(SPICAN_READ);                                                 
 ;----------------------------------------------------------------------
-        MOVB      AL,#3                 ; [CPU_] |101| 
-	.dwpsn	file "../Source/SPICAN.c",line 100,column 2,is_stmt,isa 0
-        AND       @_GpioDataRegs,#0xfffe ; [CPU_] |100| 
+        MOVB      AL,#3                 ; [CPU_] |102| 
 	.dwpsn	file "../Source/SPICAN.c",line 101,column 2,is_stmt,isa 0
+        AND       @_GpioDataRegs,#0xfffe ; [CPU_] |101| 
+	.dwpsn	file "../Source/SPICAN.c",line 102,column 2,is_stmt,isa 0
 $C$DW$67	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$67, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$67, DW_AT_name("_spi_xmit")
 	.dwattr $C$DW$67, DW_AT_TI_call
 
-        LCR       #_spi_xmit            ; [CPU_] |101| 
-        ; call occurs [#_spi_xmit] ; [] |101| 
-	.dwpsn	file "../Source/SPICAN.c",line 102,column 2,is_stmt,isa 0
+        LCR       #_spi_xmit            ; [CPU_] |102| 
+        ; call occurs [#_spi_xmit] ; [] |102| 
+	.dwpsn	file "../Source/SPICAN.c",line 103,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 102 | spi_xmit(0x2B);                                                        
+; 103 | spi_xmit(0x2B);                                                        
 ;----------------------------------------------------------------------
-        MOVB      AL,#43                ; [CPU_] |102| 
+        MOVB      AL,#43                ; [CPU_] |103| 
 $C$DW$68	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$68, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$68, DW_AT_name("_spi_xmit")
 	.dwattr $C$DW$68, DW_AT_TI_call
 
-        LCR       #_spi_xmit            ; [CPU_] |102| 
-        ; call occurs [#_spi_xmit] ; [] |102| 
-	.dwpsn	file "../Source/SPICAN.c",line 103,column 2,is_stmt,isa 0
+        LCR       #_spi_xmit            ; [CPU_] |103| 
+        ; call occurs [#_spi_xmit] ; [] |103| 
+	.dwpsn	file "../Source/SPICAN.c",line 104,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 103 | RetVal = spi_recv();                                                   
+; 104 | RetVal = spi_recv();                                                   
 ;----------------------------------------------------------------------
 $C$DW$69	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$69, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$69, DW_AT_name("_spi_recv")
 	.dwattr $C$DW$69, DW_AT_TI_call
 
-        LCR       #_spi_recv            ; [CPU_] |103| 
-        ; call occurs [#_spi_recv] ; [] |103| 
+        LCR       #_spi_recv            ; [CPU_] |104| 
+        ; call occurs [#_spi_recv] ; [] |104| 
         MOVW      DP,#_GpioDataRegs     ; [CPU_U] 
-	.dwpsn	file "../Source/SPICAN.c",line 104,column 2,is_stmt,isa 0
+	.dwpsn	file "../Source/SPICAN.c",line 105,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 104 | GpioDataRegs.GPADAT.bit.GPIOA0  = 1;            //Release chip select  
+; 105 | GpioDataRegs.GPADAT.bit.GPIOA0  = 1;            //Release chip select  
 ;----------------------------------------------------------------------
-        OR        @_GpioDataRegs,#0x0001 ; [CPU_] |104| 
+        OR        @_GpioDataRegs,#0x0001 ; [CPU_] |105| 
 $C$DW$70	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$70, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$70, DW_AT_TI_return
@@ -1097,7 +1097,7 @@ $C$DW$70	.dwtag  DW_TAG_TI_branch
         LRETR     ; [CPU_] 
         ; return occurs ; [] 
 	.dwattr $C$DW$66, DW_AT_TI_end_file("../Source/SPICAN.c")
-	.dwattr $C$DW$66, DW_AT_TI_end_line(0x69)
+	.dwattr $C$DW$66, DW_AT_TI_end_line(0x6a)
 	.dwattr $C$DW$66, DW_AT_TI_end_column(0x01)
 	.dwendentry
 	.dwendtag $C$DW$66
@@ -1114,16 +1114,16 @@ $C$DW$71	.dwtag  DW_TAG_subprogram
 	.dwattr $C$DW$71, DW_AT_external
 	.dwattr $C$DW$71, DW_AT_type(*$C$DW$T$94)
 	.dwattr $C$DW$71, DW_AT_TI_begin_file("../Source/SPICAN.c")
-	.dwattr $C$DW$71, DW_AT_TI_begin_line(0x76)
+	.dwattr $C$DW$71, DW_AT_TI_begin_line(0x77)
 	.dwattr $C$DW$71, DW_AT_TI_begin_column(0x08)
 	.dwattr $C$DW$71, DW_AT_TI_max_frame_size(-4)
-	.dwpsn	file "../Source/SPICAN.c",line 119,column 1,is_stmt,address _SPICANReadBuf1,isa 0
+	.dwpsn	file "../Source/SPICAN.c",line 120,column 1,is_stmt,address _SPICANReadBuf1,isa 0
 
 	.dwfde $C$DW$CIE, _SPICANReadBuf1
 ;----------------------------------------------------------------------
-; 118 | Uint32 SPICANReadBuf1 (void)                                           
-; 120 | Uint32  RetVal;                                                        
-; 121 | GpioDataRegs.GPADAT.bit.GPIOA0  = 0;            //Chip Select Low      
+; 119 | Uint32 SPICANReadBuf1 (void)                                           
+; 121 | Uint32  RetVal;                                                        
+; 122 | GpioDataRegs.GPADAT.bit.GPIOA0  = 0;            //Chip Select Low      
 ;----------------------------------------------------------------------
 
 ;***************************************************************
@@ -1149,90 +1149,79 @@ $C$DW$72	.dwtag  DW_TAG_variable
         MOVL      *SP++,XAR1            ; [CPU_] 
 	.dwcfi	save_reg_to_mem, 7, 2
 	.dwcfi	cfa_offset, -4
-	.dwpsn	file "../Source/SPICAN.c",line 122,column 2,is_stmt,isa 0
+	.dwpsn	file "../Source/SPICAN.c",line 123,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 122 | spi_xmit(SPICAN_RXBUF1);                                               
+; 123 | spi_xmit(SPICAN_RXBUF1);                                               
 ;----------------------------------------------------------------------
-        MOVB      AL,#146               ; [CPU_] |122| 
-	.dwpsn	file "../Source/SPICAN.c",line 121,column 2,is_stmt,isa 0
-        AND       @_GpioDataRegs,#0xfffe ; [CPU_] |121| 
+        MOVB      AL,#146               ; [CPU_] |123| 
 	.dwpsn	file "../Source/SPICAN.c",line 122,column 2,is_stmt,isa 0
+        AND       @_GpioDataRegs,#0xfffe ; [CPU_] |122| 
+	.dwpsn	file "../Source/SPICAN.c",line 123,column 2,is_stmt,isa 0
 $C$DW$73	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$73, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$73, DW_AT_name("_spi_xmit")
 	.dwattr $C$DW$73, DW_AT_TI_call
 
-        LCR       #_spi_xmit            ; [CPU_] |122| 
-        ; call occurs [#_spi_xmit] ; [] |122| 
-	.dwpsn	file "../Source/SPICAN.c",line 123,column 2,is_stmt,isa 0
+        LCR       #_spi_xmit            ; [CPU_] |123| 
+        ; call occurs [#_spi_xmit] ; [] |123| 
+	.dwpsn	file "../Source/SPICAN.c",line 124,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 123 | RetVal = spi_recv() << 24;                                             
+; 124 | RetVal = spi_recv() << 24;                                             
 ;----------------------------------------------------------------------
 $C$DW$74	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$74, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$74, DW_AT_name("_spi_recv")
 	.dwattr $C$DW$74, DW_AT_TI_call
 
-        LCR       #_spi_recv            ; [CPU_] |123| 
-        ; call occurs [#_spi_recv] ; [] |123| 
-	.dwpsn	file "../Source/SPICAN.c",line 124,column 2,is_stmt,isa 0
+        LCR       #_spi_recv            ; [CPU_] |124| 
+        ; call occurs [#_spi_recv] ; [] |124| 
+	.dwpsn	file "../Source/SPICAN.c",line 125,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 124 | RetVal |= spi_recv() << 16;                                            
+; 125 | RetVal |= spi_recv() << 16;                                            
 ;----------------------------------------------------------------------
 $C$DW$75	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$75, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$75, DW_AT_name("_spi_recv")
 	.dwattr $C$DW$75, DW_AT_TI_call
 
-        LCR       #_spi_recv            ; [CPU_] |124| 
-        ; call occurs [#_spi_recv] ; [] |124| 
-	.dwpsn	file "../Source/SPICAN.c",line 125,column 2,is_stmt,isa 0
+        LCR       #_spi_recv            ; [CPU_] |125| 
+        ; call occurs [#_spi_recv] ; [] |125| 
+	.dwpsn	file "../Source/SPICAN.c",line 126,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 125 | RetVal |= spi_recv() << 8;                                             
+; 126 | RetVal |= spi_recv() << 8;                                             
 ;----------------------------------------------------------------------
 $C$DW$76	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$76, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$76, DW_AT_name("_spi_recv")
 	.dwattr $C$DW$76, DW_AT_TI_call
 
-        LCR       #_spi_recv            ; [CPU_] |125| 
-        ; call occurs [#_spi_recv] ; [] |125| 
-        MOV       ACC,AL << #8          ; [CPU_] |125| 
-        MOVZ      AR1,AL                ; [CPU_] |125| 
-	.dwpsn	file "../Source/SPICAN.c",line 126,column 2,is_stmt,isa 0
+        LCR       #_spi_recv            ; [CPU_] |126| 
+        ; call occurs [#_spi_recv] ; [] |126| 
+        MOV       ACC,AL << #8          ; [CPU_] |126| 
+        MOVZ      AR1,AL                ; [CPU_] |126| 
+	.dwpsn	file "../Source/SPICAN.c",line 127,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 126 | RetVal |= spi_recv();                                                  
+; 127 | RetVal |= spi_recv();                                                  
 ;----------------------------------------------------------------------
 $C$DW$77	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$77, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$77, DW_AT_name("_spi_recv")
 	.dwattr $C$DW$77, DW_AT_TI_call
 
-        LCR       #_spi_recv            ; [CPU_] |126| 
-        ; call occurs [#_spi_recv] ; [] |126| 
-        MOVZ      AR6,AL                ; [CPU_] |126| 
-        MOVL      ACC,XAR1              ; [CPU_] |126| 
-        OR        ACC,AR6               ; [CPU_] |126| 
-        MOVL      XAR1,ACC              ; [CPU_] |126| 
-	.dwpsn	file "../Source/SPICAN.c",line 127,column 2,is_stmt,isa 0
+        LCR       #_spi_recv            ; [CPU_] |127| 
+        ; call occurs [#_spi_recv] ; [] |127| 
+        MOVZ      AR6,AL                ; [CPU_] |127| 
+        MOVL      ACC,XAR1              ; [CPU_] |127| 
+        OR        ACC,AR6               ; [CPU_] |127| 
+        MOVL      XAR1,ACC              ; [CPU_] |127| 
+	.dwpsn	file "../Source/SPICAN.c",line 128,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 127 | spi_recv();                                                            
+; 128 | spi_recv();                                                            
 ;----------------------------------------------------------------------
 $C$DW$78	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$78, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$78, DW_AT_name("_spi_recv")
 	.dwattr $C$DW$78, DW_AT_TI_call
-
-        LCR       #_spi_recv            ; [CPU_] |127| 
-        ; call occurs [#_spi_recv] ; [] |127| 
-	.dwpsn	file "../Source/SPICAN.c",line 128,column 2,is_stmt,isa 0
-;----------------------------------------------------------------------
-; 128 | spi_recv();                                                            
-;----------------------------------------------------------------------
-$C$DW$79	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$79, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$79, DW_AT_name("_spi_recv")
-	.dwattr $C$DW$79, DW_AT_TI_call
 
         LCR       #_spi_recv            ; [CPU_] |128| 
         ; call occurs [#_spi_recv] ; [] |128| 
@@ -1240,10 +1229,10 @@ $C$DW$79	.dwtag  DW_TAG_TI_branch
 ;----------------------------------------------------------------------
 ; 129 | spi_recv();                                                            
 ;----------------------------------------------------------------------
-$C$DW$80	.dwtag  DW_TAG_TI_branch
-	.dwattr $C$DW$80, DW_AT_low_pc(0x00)
-	.dwattr $C$DW$80, DW_AT_name("_spi_recv")
-	.dwattr $C$DW$80, DW_AT_TI_call
+$C$DW$79	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$79, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$79, DW_AT_name("_spi_recv")
+	.dwattr $C$DW$79, DW_AT_TI_call
 
         LCR       #_spi_recv            ; [CPU_] |129| 
         ; call occurs [#_spi_recv] ; [] |129| 
@@ -1251,25 +1240,36 @@ $C$DW$80	.dwtag  DW_TAG_TI_branch
 ;----------------------------------------------------------------------
 ; 130 | spi_recv();                                                            
 ;----------------------------------------------------------------------
+$C$DW$80	.dwtag  DW_TAG_TI_branch
+	.dwattr $C$DW$80, DW_AT_low_pc(0x00)
+	.dwattr $C$DW$80, DW_AT_name("_spi_recv")
+	.dwattr $C$DW$80, DW_AT_TI_call
+
+        LCR       #_spi_recv            ; [CPU_] |130| 
+        ; call occurs [#_spi_recv] ; [] |130| 
+	.dwpsn	file "../Source/SPICAN.c",line 131,column 2,is_stmt,isa 0
+;----------------------------------------------------------------------
+; 131 | spi_recv();                                                            
+;----------------------------------------------------------------------
 $C$DW$81	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$81, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$81, DW_AT_name("_spi_recv")
 	.dwattr $C$DW$81, DW_AT_TI_call
 
-        LCR       #_spi_recv            ; [CPU_] |130| 
-        ; call occurs [#_spi_recv] ; [] |130| 
+        LCR       #_spi_recv            ; [CPU_] |131| 
+        ; call occurs [#_spi_recv] ; [] |131| 
         MOVW      DP,#_GpioDataRegs     ; [CPU_U] 
-	.dwpsn	file "../Source/SPICAN.c",line 131,column 2,is_stmt,isa 0
-;----------------------------------------------------------------------
-; 131 | GpioDataRegs.GPADAT.bit.GPIOA0  = 1;            //Release chip select  
-;----------------------------------------------------------------------
-        OR        @_GpioDataRegs,#0x0001 ; [CPU_] |131| 
 	.dwpsn	file "../Source/SPICAN.c",line 132,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 132 | return(RetVal);                                                        
+; 132 | GpioDataRegs.GPADAT.bit.GPIOA0  = 1;            //Release chip select  
 ;----------------------------------------------------------------------
-        MOVL      ACC,XAR1              ; [CPU_] |132| 
-        MOVL      XAR1,*--SP            ; [CPU_] |132| 
+        OR        @_GpioDataRegs,#0x0001 ; [CPU_] |132| 
+	.dwpsn	file "../Source/SPICAN.c",line 133,column 2,is_stmt,isa 0
+;----------------------------------------------------------------------
+; 133 | return(RetVal);                                                        
+;----------------------------------------------------------------------
+        MOVL      ACC,XAR1              ; [CPU_] |133| 
+        MOVL      XAR1,*--SP            ; [CPU_] |133| 
 	.dwcfi	cfa_offset, -2
 	.dwcfi	restore_reg, 7
 $C$DW$82	.dwtag  DW_TAG_TI_branch
@@ -1279,7 +1279,7 @@ $C$DW$82	.dwtag  DW_TAG_TI_branch
         LRETR     ; [CPU_] 
         ; return occurs ; [] 
 	.dwattr $C$DW$71, DW_AT_TI_end_file("../Source/SPICAN.c")
-	.dwattr $C$DW$71, DW_AT_TI_end_line(0x85)
+	.dwattr $C$DW$71, DW_AT_TI_end_line(0x86)
 	.dwattr $C$DW$71, DW_AT_TI_end_column(0x01)
 	.dwendentry
 	.dwendtag $C$DW$71
@@ -1296,10 +1296,10 @@ $C$DW$83	.dwtag  DW_TAG_subprogram
 	.dwattr $C$DW$83, DW_AT_external
 	.dwattr $C$DW$83, DW_AT_type(*$C$DW$T$19)
 	.dwattr $C$DW$83, DW_AT_TI_begin_file("../Source/SPICAN.c")
-	.dwattr $C$DW$83, DW_AT_TI_begin_line(0x2b)
+	.dwattr $C$DW$83, DW_AT_TI_begin_line(0x2c)
 	.dwattr $C$DW$83, DW_AT_TI_begin_column(0x08)
 	.dwattr $C$DW$83, DW_AT_TI_max_frame_size(-4)
-	.dwpsn	file "../Source/SPICAN.c",line 44,column 1,is_stmt,address _SPICANRead,isa 0
+	.dwpsn	file "../Source/SPICAN.c",line 45,column 1,is_stmt,address _SPICANRead,isa 0
 
 	.dwfde $C$DW$CIE, _SPICANRead
 $C$DW$84	.dwtag  DW_TAG_formal_parameter
@@ -1309,7 +1309,7 @@ $C$DW$84	.dwtag  DW_TAG_formal_parameter
 	.dwattr $C$DW$84, DW_AT_location[DW_OP_reg0]
 
 ;----------------------------------------------------------------------
-;  43 | Uint16 SPICANRead (Uint16 Input)                                       
+;  44 | Uint16 SPICANRead (Uint16 Input)                                       
 ;----------------------------------------------------------------------
 
 ;***************************************************************
@@ -1336,56 +1336,56 @@ $C$DW$85	.dwtag  DW_TAG_variable
 	.dwcfi	cfa_offset, -4
         MOVW      DP,#_GpioDataRegs     ; [CPU_U] 
 ;----------------------------------------------------------------------
-;  45 | Uint16  RetVal;                                                        
+;  46 | Uint16  RetVal;                                                        
 ;----------------------------------------------------------------------
-        MOVZ      AR1,AL                ; [CPU_] |44| 
-	.dwpsn	file "../Source/SPICAN.c",line 46,column 2,is_stmt,isa 0
-;----------------------------------------------------------------------
-;  46 | GpioDataRegs.GPADAT.bit.GPIOA0  = 0;            //Chip Select Low      
-;----------------------------------------------------------------------
-        AND       @_GpioDataRegs,#0xfffe ; [CPU_] |46| 
+        MOVZ      AR1,AL                ; [CPU_] |45| 
 	.dwpsn	file "../Source/SPICAN.c",line 47,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-;  47 | spi_xmit(SPICAN_READ);                                                 
+;  47 | GpioDataRegs.GPADAT.bit.GPIOA0  = 0;            //Chip Select Low      
 ;----------------------------------------------------------------------
-        MOVB      AL,#3                 ; [CPU_] |47| 
+        AND       @_GpioDataRegs,#0xfffe ; [CPU_] |47| 
+	.dwpsn	file "../Source/SPICAN.c",line 48,column 2,is_stmt,isa 0
+;----------------------------------------------------------------------
+;  48 | spi_xmit(SPICAN_READ);                                                 
+;----------------------------------------------------------------------
+        MOVB      AL,#3                 ; [CPU_] |48| 
 $C$DW$86	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$86, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$86, DW_AT_name("_spi_xmit")
 	.dwattr $C$DW$86, DW_AT_TI_call
 
-        LCR       #_spi_xmit            ; [CPU_] |47| 
-        ; call occurs [#_spi_xmit] ; [] |47| 
-	.dwpsn	file "../Source/SPICAN.c",line 48,column 2,is_stmt,isa 0
+        LCR       #_spi_xmit            ; [CPU_] |48| 
+        ; call occurs [#_spi_xmit] ; [] |48| 
+	.dwpsn	file "../Source/SPICAN.c",line 49,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-;  48 | spi_xmit(Input);                                                       
+;  49 | spi_xmit(Input);                                                       
 ;----------------------------------------------------------------------
-        MOV       AL,AR1                ; [CPU_] |48| 
+        MOV       AL,AR1                ; [CPU_] |49| 
 $C$DW$87	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$87, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$87, DW_AT_name("_spi_xmit")
 	.dwattr $C$DW$87, DW_AT_TI_call
 
-        LCR       #_spi_xmit            ; [CPU_] |48| 
-        ; call occurs [#_spi_xmit] ; [] |48| 
-	.dwpsn	file "../Source/SPICAN.c",line 49,column 2,is_stmt,isa 0
+        LCR       #_spi_xmit            ; [CPU_] |49| 
+        ; call occurs [#_spi_xmit] ; [] |49| 
+	.dwpsn	file "../Source/SPICAN.c",line 50,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-;  49 | RetVal = spi_recv();                                                   
+;  50 | RetVal = spi_recv();                                                   
 ;----------------------------------------------------------------------
 $C$DW$88	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$88, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$88, DW_AT_name("_spi_recv")
 	.dwattr $C$DW$88, DW_AT_TI_call
 
-        LCR       #_spi_recv            ; [CPU_] |49| 
-        ; call occurs [#_spi_recv] ; [] |49| 
+        LCR       #_spi_recv            ; [CPU_] |50| 
+        ; call occurs [#_spi_recv] ; [] |50| 
         MOVW      DP,#_GpioDataRegs     ; [CPU_U] 
-	.dwpsn	file "../Source/SPICAN.c",line 50,column 2,is_stmt,isa 0
+	.dwpsn	file "../Source/SPICAN.c",line 51,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-;  50 | GpioDataRegs.GPADAT.bit.GPIOA0  = 1;            //Release chip select  
-;  51 | return(RetVal);                                                        
+;  51 | GpioDataRegs.GPADAT.bit.GPIOA0  = 1;            //Release chip select  
+;  52 | return(RetVal);                                                        
 ;----------------------------------------------------------------------
-        OR        @_GpioDataRegs,#0x0001 ; [CPU_] |50| 
+        OR        @_GpioDataRegs,#0x0001 ; [CPU_] |51| 
         MOVL      XAR1,*--SP            ; [CPU_] 
 	.dwcfi	cfa_offset, -2
 	.dwcfi	restore_reg, 7
@@ -1396,7 +1396,7 @@ $C$DW$89	.dwtag  DW_TAG_TI_branch
         LRETR     ; [CPU_] 
         ; return occurs ; [] 
 	.dwattr $C$DW$83, DW_AT_TI_end_file("../Source/SPICAN.c")
-	.dwattr $C$DW$83, DW_AT_TI_end_line(0x34)
+	.dwattr $C$DW$83, DW_AT_TI_end_line(0x35)
 	.dwattr $C$DW$83, DW_AT_TI_end_column(0x01)
 	.dwendentry
 	.dwendtag $C$DW$83
@@ -1413,16 +1413,16 @@ $C$DW$90	.dwtag  DW_TAG_subprogram
 	.dwattr $C$DW$90, DW_AT_external
 	.dwattr $C$DW$90, DW_AT_type(*$C$DW$T$19)
 	.dwattr $C$DW$90, DW_AT_TI_begin_file("../Source/SPICAN.c")
-	.dwattr $C$DW$90, DW_AT_TI_begin_line(0x6b)
+	.dwattr $C$DW$90, DW_AT_TI_begin_line(0x6c)
 	.dwattr $C$DW$90, DW_AT_TI_begin_column(0x08)
 	.dwattr $C$DW$90, DW_AT_TI_max_frame_size(-4)
-	.dwpsn	file "../Source/SPICAN.c",line 108,column 1,is_stmt,address _SPICANRXStatus,isa 0
+	.dwpsn	file "../Source/SPICAN.c",line 109,column 1,is_stmt,address _SPICANRXStatus,isa 0
 
 	.dwfde $C$DW$CIE, _SPICANRXStatus
 ;----------------------------------------------------------------------
-; 107 | Uint16 SPICANRXStatus (void)                                           
-; 109 | Uint16  RetVal;                                                        
-; 110 | GpioDataRegs.GPADAT.bit.GPIOA0  = 0;            //Chip Select Low      
+; 108 | Uint16 SPICANRXStatus (void)                                           
+; 110 | Uint16  RetVal;                                                        
+; 111 | GpioDataRegs.GPADAT.bit.GPIOA0  = 0;            //Chip Select Low      
 ;----------------------------------------------------------------------
 
 ;***************************************************************
@@ -1448,55 +1448,55 @@ $C$DW$91	.dwtag  DW_TAG_variable
         MOVL      *SP++,XAR1            ; [CPU_] 
 	.dwcfi	save_reg_to_mem, 7, 2
 	.dwcfi	cfa_offset, -4
-	.dwpsn	file "../Source/SPICAN.c",line 111,column 2,is_stmt,isa 0
+	.dwpsn	file "../Source/SPICAN.c",line 112,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 111 | spi_xmit(SPICAN_RXSTAT);                                               
+; 112 | spi_xmit(SPICAN_RXSTAT);                                               
 ;----------------------------------------------------------------------
-        MOVB      AL,#176               ; [CPU_] |111| 
-	.dwpsn	file "../Source/SPICAN.c",line 110,column 2,is_stmt,isa 0
-        AND       @_GpioDataRegs,#0xfffe ; [CPU_] |110| 
+        MOVB      AL,#176               ; [CPU_] |112| 
 	.dwpsn	file "../Source/SPICAN.c",line 111,column 2,is_stmt,isa 0
+        AND       @_GpioDataRegs,#0xfffe ; [CPU_] |111| 
+	.dwpsn	file "../Source/SPICAN.c",line 112,column 2,is_stmt,isa 0
 $C$DW$92	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$92, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$92, DW_AT_name("_spi_xmit")
 	.dwattr $C$DW$92, DW_AT_TI_call
 
-        LCR       #_spi_xmit            ; [CPU_] |111| 
-        ; call occurs [#_spi_xmit] ; [] |111| 
-	.dwpsn	file "../Source/SPICAN.c",line 112,column 2,is_stmt,isa 0
+        LCR       #_spi_xmit            ; [CPU_] |112| 
+        ; call occurs [#_spi_xmit] ; [] |112| 
+	.dwpsn	file "../Source/SPICAN.c",line 113,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 112 | RetVal = spi_recv();                                                   
+; 113 | RetVal = spi_recv();                                                   
 ;----------------------------------------------------------------------
 $C$DW$93	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$93, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$93, DW_AT_name("_spi_recv")
 	.dwattr $C$DW$93, DW_AT_TI_call
 
-        LCR       #_spi_recv            ; [CPU_] |112| 
-        ; call occurs [#_spi_recv] ; [] |112| 
-        MOVZ      AR1,AL                ; [CPU_] |112| 
-	.dwpsn	file "../Source/SPICAN.c",line 113,column 2,is_stmt,isa 0
+        LCR       #_spi_recv            ; [CPU_] |113| 
+        ; call occurs [#_spi_recv] ; [] |113| 
+        MOVZ      AR1,AL                ; [CPU_] |113| 
+	.dwpsn	file "../Source/SPICAN.c",line 114,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 113 | spi_recv();                                                            
+; 114 | spi_recv();                                                            
 ;----------------------------------------------------------------------
 $C$DW$94	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$94, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$94, DW_AT_name("_spi_recv")
 	.dwattr $C$DW$94, DW_AT_TI_call
 
-        LCR       #_spi_recv            ; [CPU_] |113| 
-        ; call occurs [#_spi_recv] ; [] |113| 
+        LCR       #_spi_recv            ; [CPU_] |114| 
+        ; call occurs [#_spi_recv] ; [] |114| 
         MOVW      DP,#_GpioDataRegs     ; [CPU_U] 
-	.dwpsn	file "../Source/SPICAN.c",line 114,column 2,is_stmt,isa 0
-;----------------------------------------------------------------------
-; 114 | GpioDataRegs.GPADAT.bit.GPIOA0  = 1;            //Release chip select  
-;----------------------------------------------------------------------
-        OR        @_GpioDataRegs,#0x0001 ; [CPU_] |114| 
 	.dwpsn	file "../Source/SPICAN.c",line 115,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-; 115 | return(RetVal);                                                        
+; 115 | GpioDataRegs.GPADAT.bit.GPIOA0  = 1;            //Release chip select  
 ;----------------------------------------------------------------------
-        MOV       AL,AR1                ; [CPU_] |115| 
+        OR        @_GpioDataRegs,#0x0001 ; [CPU_] |115| 
+	.dwpsn	file "../Source/SPICAN.c",line 116,column 2,is_stmt,isa 0
+;----------------------------------------------------------------------
+; 116 | return(RetVal);                                                        
+;----------------------------------------------------------------------
+        MOV       AL,AR1                ; [CPU_] |116| 
         MOVL      XAR1,*--SP            ; [CPU_] 
 	.dwcfi	cfa_offset, -2
 	.dwcfi	restore_reg, 7
@@ -1507,7 +1507,7 @@ $C$DW$95	.dwtag  DW_TAG_TI_branch
         LRETR     ; [CPU_] 
         ; return occurs ; [] 
 	.dwattr $C$DW$90, DW_AT_TI_end_file("../Source/SPICAN.c")
-	.dwattr $C$DW$90, DW_AT_TI_end_line(0x74)
+	.dwattr $C$DW$90, DW_AT_TI_end_line(0x75)
 	.dwattr $C$DW$90, DW_AT_TI_end_column(0x01)
 	.dwendentry
 	.dwendtag $C$DW$90
@@ -1523,16 +1523,16 @@ $C$DW$96	.dwtag  DW_TAG_subprogram
 	.dwattr $C$DW$96, DW_AT_TI_symbol_name("_SPICANIntEn")
 	.dwattr $C$DW$96, DW_AT_external
 	.dwattr $C$DW$96, DW_AT_TI_begin_file("../Source/SPICAN.c")
-	.dwattr $C$DW$96, DW_AT_TI_begin_line(0x58)
+	.dwattr $C$DW$96, DW_AT_TI_begin_line(0x59)
 	.dwattr $C$DW$96, DW_AT_TI_begin_column(0x06)
 	.dwattr $C$DW$96, DW_AT_TI_max_frame_size(-2)
-	.dwpsn	file "../Source/SPICAN.c",line 89,column 1,is_stmt,address _SPICANIntEn,isa 0
+	.dwpsn	file "../Source/SPICAN.c",line 90,column 1,is_stmt,address _SPICANIntEn,isa 0
 
 	.dwfde $C$DW$CIE, _SPICANIntEn
 ;----------------------------------------------------------------------
-;  88 | void SPICANIntEn (void)
+;  89 | void SPICANIntEn (void)
 ;     |  //Enables RX interupts for now                                        
-;  90 | GpioDataRegs.GPADAT.bit.GPIOA0  = 0;            //Chip Select Low      
+;  91 | GpioDataRegs.GPADAT.bit.GPIOA0  = 0;            //Chip Select Low      
 ;----------------------------------------------------------------------
 
 ;***************************************************************
@@ -1548,52 +1548,52 @@ _SPICANIntEn:
 	.dwcfi	cfa_offset, -2
 	.dwcfi	save_reg_to_mem, 26, 0
         MOVW      DP,#_GpioDataRegs     ; [CPU_U] 
-	.dwpsn	file "../Source/SPICAN.c",line 91,column 2,is_stmt,isa 0
+	.dwpsn	file "../Source/SPICAN.c",line 92,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-;  91 | spi_xmit(SPICAN_WRITE);                                                
+;  92 | spi_xmit(SPICAN_WRITE);                                                
 ;----------------------------------------------------------------------
-        MOVB      AL,#2                 ; [CPU_] |91| 
-	.dwpsn	file "../Source/SPICAN.c",line 90,column 2,is_stmt,isa 0
-        AND       @_GpioDataRegs,#0xfffe ; [CPU_] |90| 
+        MOVB      AL,#2                 ; [CPU_] |92| 
 	.dwpsn	file "../Source/SPICAN.c",line 91,column 2,is_stmt,isa 0
+        AND       @_GpioDataRegs,#0xfffe ; [CPU_] |91| 
+	.dwpsn	file "../Source/SPICAN.c",line 92,column 2,is_stmt,isa 0
 $C$DW$97	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$97, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$97, DW_AT_name("_spi_xmit")
 	.dwattr $C$DW$97, DW_AT_TI_call
 
-        LCR       #_spi_xmit            ; [CPU_] |91| 
-        ; call occurs [#_spi_xmit] ; [] |91| 
-	.dwpsn	file "../Source/SPICAN.c",line 92,column 2,is_stmt,isa 0
+        LCR       #_spi_xmit            ; [CPU_] |92| 
+        ; call occurs [#_spi_xmit] ; [] |92| 
+	.dwpsn	file "../Source/SPICAN.c",line 93,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-;  92 | spi_xmit(0x2B);                                                        
+;  93 | spi_xmit(0x2B);                                                        
 ;----------------------------------------------------------------------
-        MOVB      AL,#43                ; [CPU_] |92| 
+        MOVB      AL,#43                ; [CPU_] |93| 
 $C$DW$98	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$98, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$98, DW_AT_name("_spi_xmit")
 	.dwattr $C$DW$98, DW_AT_TI_call
 
-        LCR       #_spi_xmit            ; [CPU_] |92| 
-        ; call occurs [#_spi_xmit] ; [] |92| 
-	.dwpsn	file "../Source/SPICAN.c",line 93,column 2,is_stmt,isa 0
+        LCR       #_spi_xmit            ; [CPU_] |93| 
+        ; call occurs [#_spi_xmit] ; [] |93| 
+	.dwpsn	file "../Source/SPICAN.c",line 94,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-;  93 | spi_xmit(0x03);
+;  94 | spi_xmit(0x03);
 ;     |  //Enable RX Interupts                                                 
 ;----------------------------------------------------------------------
-        MOVB      AL,#3                 ; [CPU_] |93| 
+        MOVB      AL,#3                 ; [CPU_] |94| 
 $C$DW$99	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$99, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$99, DW_AT_name("_spi_xmit")
 	.dwattr $C$DW$99, DW_AT_TI_call
 
-        LCR       #_spi_xmit            ; [CPU_] |93| 
-        ; call occurs [#_spi_xmit] ; [] |93| 
+        LCR       #_spi_xmit            ; [CPU_] |94| 
+        ; call occurs [#_spi_xmit] ; [] |94| 
         MOVW      DP,#_GpioDataRegs     ; [CPU_U] 
-	.dwpsn	file "../Source/SPICAN.c",line 94,column 2,is_stmt,isa 0
+	.dwpsn	file "../Source/SPICAN.c",line 95,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-;  94 | GpioDataRegs.GPADAT.bit.GPIOA0  = 1;            //Release chip select  
+;  95 | GpioDataRegs.GPADAT.bit.GPIOA0  = 1;            //Release chip select  
 ;----------------------------------------------------------------------
-        OR        @_GpioDataRegs,#0x0001 ; [CPU_] |94| 
+        OR        @_GpioDataRegs,#0x0001 ; [CPU_] |95| 
 $C$DW$100	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$100, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$100, DW_AT_TI_return
@@ -1601,7 +1601,7 @@ $C$DW$100	.dwtag  DW_TAG_TI_branch
         LRETR     ; [CPU_] 
         ; return occurs ; [] 
 	.dwattr $C$DW$96, DW_AT_TI_end_file("../Source/SPICAN.c")
-	.dwattr $C$DW$96, DW_AT_TI_end_line(0x5f)
+	.dwattr $C$DW$96, DW_AT_TI_end_line(0x60)
 	.dwattr $C$DW$96, DW_AT_TI_end_column(0x01)
 	.dwendentry
 	.dwendtag $C$DW$96
@@ -1632,24 +1632,25 @@ $C$DW$101	.dwtag  DW_TAG_subprogram
 ;     | lay                                                                    
 ;  15 | // Factory Settings                                                    
 ;  16 | // SPICANWrite(0x2A, 0x44);             // Setting up CNF1             
-;  17 | // SPICANWrite(0x29, 0x98);             // Setting up CNF2             
-;  18 | // SPICANWrite(0x28, 0x01);             // Setting up CNF3             
-;  20 | // For configuration details, see note at bottom                       
-;  21 | SPICANWrite(0x2A, 0x44);                // Setting up CNF1             
-;  22 | SPICANWrite(0x29, 0xEA);                // Setting up CNF2             
-;  23 | SPICANWrite(0x28, 0x01);                // Setting up CNF3             
-;  25 | SPICANWrite(0x2B, 0x00);                // Clearing all interrupts     
-;  26 | SPICANWrite(0x60, 0x60);                // Setup up RXB0 to receive all
+;  17 | // SPICANWrite(0x2A, 0x40);             // Setting up CNF1             
+;  18 | // SPICANWrite(0x29, 0x98);             // Setting up CNF2             
+;  19 | // SPICANWrite(0x28, 0x01);             // Setting up CNF3             
+;  21 | // For configuration details, see note at bottom                       
+;  22 | SPICANWrite(0x2A, 0x81);                // Setting up CNF1             
+;  23 | SPICANWrite(0x29, 0xD0);                // Setting up CNF2             
+;  24 | SPICANWrite(0x28, 0xC2);                // Setting up CNF3             
+;  26 | SPICANWrite(0x2B, 0x00);                // Clearing all interrupts     
+;  27 | SPICANWrite(0x60, 0x60);                // Setup up RXB0 to receive all
 ;     |  messages                                                              
-;  27 | SPICANWrite(0x70, 0x60);                // Setup up RXB1 to receive all
+;  28 | SPICANWrite(0x70, 0x60);                // Setup up RXB1 to receive all
 ;     |  messages                                                              
-;  28 | SPICANSetNorm();                                // Allow for Normal Mod
+;  29 | SPICANSetNorm();                                // Allow for Normal Mod
 ;     | e                                                                      
-;  29 | SPICANReadStat();                               // Confirm we are in No
+;  30 | SPICANReadStat();                               // Confirm we are in No
 ;     | rmal Mode                                                              
-;  30 | return;                                                                
-;  33 | void SPICANReset (void)                                                
-;  35 | GpioDataRegs.GPADAT.bit.GPIOA0  = 0;            //Chip Select Low      
+;  31 | return;                                                                
+;  34 | void SPICANReset (void)                                                
+;  36 | GpioDataRegs.GPADAT.bit.GPIOA0  = 0;            //Chip Select Low      
 ;----------------------------------------------------------------------
 
 ;***************************************************************
@@ -1665,105 +1666,105 @@ _SPICANInit:
 	.dwcfi	cfa_offset, -2
 	.dwcfi	save_reg_to_mem, 26, 0
         MOVW      DP,#_GpioDataRegs     ; [CPU_U] 
-	.dwpsn	file "../Source/SPICAN.c",line 36,column 2,is_stmt,isa 0
+	.dwpsn	file "../Source/SPICAN.c",line 37,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-;  36 | spi_xmit(SPICAN_RESET);                                         //Trans
+;  37 | spi_xmit(SPICAN_RESET);                                         //Trans
 ;     | mit Reset command                                                      
 ;----------------------------------------------------------------------
-        MOVB      AL,#192               ; [CPU_] |36| 
-	.dwpsn	file "../Source/SPICAN.c",line 35,column 2,is_stmt,isa 0
-        AND       @_GpioDataRegs,#0xfffe ; [CPU_] |35| 
+        MOVB      AL,#192               ; [CPU_] |37| 
 	.dwpsn	file "../Source/SPICAN.c",line 36,column 2,is_stmt,isa 0
+        AND       @_GpioDataRegs,#0xfffe ; [CPU_] |36| 
+	.dwpsn	file "../Source/SPICAN.c",line 37,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-;  37 | GpioDataRegs.GPADAT.bit.GPIOA0  = 1;            //Release chip select  
-;  40 | // Responsible for reading the status of a                             
-;  41 | // register address on the SPICAN Control Register                     
-;  42 | // See Pg. 61 in (Table 11-2) for list of addresses                    
-;  43 | Uint16 SPICANRead (Uint16 Input)                                       
-;  45 | Uint16  RetVal;                                                        
-;  46 | GpioDataRegs.GPADAT.bit.GPIOA0  = 0;            //Chip Select Low      
-;  47 | spi_xmit(SPICAN_READ);                                                 
-;  48 | spi_xmit(Input);                                                       
-;  49 | RetVal = spi_recv();                                                   
-;  50 | GpioDataRegs.GPADAT.bit.GPIOA0  = 1;            //Release chip select  
-;  51 | return(RetVal);                                                        
-;  54 | // Responsible for writing the status of a                             
-;  55 | // register address on the SPICAN Control Register                     
-;  56 | // See Pg. 61 in (Table 11-2) for list of addresses                    
-;  57 | void SPICANWrite (Uint16 ADDR, Uint16 Input)                           
-;  59 | GpioDataRegs.GPADAT.bit.GPIOA0  = 0;            //Chip Select Low      
-;  60 | spi_xmit(SPICAN_WRITE);                                         //Write
+;  38 | GpioDataRegs.GPADAT.bit.GPIOA0  = 1;            //Release chip select  
+;  41 | // Responsible for reading the status of a                             
+;  42 | // register address on the SPICAN Control Register                     
+;  43 | // See Pg. 61 in (Table 11-2) for list of addresses                    
+;  44 | Uint16 SPICANRead (Uint16 Input)                                       
+;  46 | Uint16  RetVal;                                                        
+;  47 | GpioDataRegs.GPADAT.bit.GPIOA0  = 0;            //Chip Select Low      
+;  48 | spi_xmit(SPICAN_READ);                                                 
+;  49 | spi_xmit(Input);                                                       
+;  50 | RetVal = spi_recv();                                                   
+;  51 | GpioDataRegs.GPADAT.bit.GPIOA0  = 1;            //Release chip select  
+;  52 | return(RetVal);                                                        
+;  55 | // Responsible for writing the status of a                             
+;  56 | // register address on the SPICAN Control Register                     
+;  57 | // See Pg. 61 in (Table 11-2) for list of addresses                    
+;  58 | void SPICANWrite (Uint16 ADDR, Uint16 Input)                           
+;  60 | GpioDataRegs.GPADAT.bit.GPIOA0  = 0;            //Chip Select Low      
+;  61 | spi_xmit(SPICAN_WRITE);                                         //Write
 ;     |  command                                                               
-;  61 | spi_xmit(ADDR);
+;  62 | spi_xmit(ADDR);
 ;     |  //Write location                                                      
-;  62 | spi_xmit(Input);
+;  63 | spi_xmit(Input);
 ;     |  //Write Info                                                          
-;  63 | GpioDataRegs.GPADAT.bit.GPIOA0  = 1;                                   
-;  66 | // Quick polling command that reads several status bits for transmit   
-;  67 | // and receive functions.                                              
-;  68 | Uint16 SPICANReadStat (void)                                           
-;  70 | Uint16  RetVal;                                                        
-;  71 | GpioDataRegs.GPADAT.bit.GPIOA0  = 0;            //Chip Select Low      
+;  64 | GpioDataRegs.GPADAT.bit.GPIOA0  = 1;                                   
+;  67 | // Quick polling command that reads several status bits for transmit   
+;  68 | // and receive functions.                                              
+;  69 | Uint16 SPICANReadStat (void)                                           
+;  71 | Uint16  RetVal;                                                        
+;  72 | GpioDataRegs.GPADAT.bit.GPIOA0  = 0;            //Chip Select Low      
 ;----------------------------------------------------------------------
 $C$DW$102	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$102, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$102, DW_AT_name("_spi_xmit")
 	.dwattr $C$DW$102, DW_AT_TI_call
 
-        LCR       #_spi_xmit            ; [CPU_] |36| 
-        ; call occurs [#_spi_xmit] ; [] |36| 
+        LCR       #_spi_xmit            ; [CPU_] |37| 
+        ; call occurs [#_spi_xmit] ; [] |37| 
         MOVW      DP,#_GpioDataRegs     ; [CPU_U] 
-	.dwpsn	file "../Source/SPICAN.c",line 72,column 2,is_stmt,isa 0
+	.dwpsn	file "../Source/SPICAN.c",line 73,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-;  72 | spi_xmit(SPICAN_READ);                                                 
+;  73 | spi_xmit(SPICAN_READ);                                                 
 ;----------------------------------------------------------------------
-        MOVB      AL,#3                 ; [CPU_] |72| 
-	.dwpsn	file "../Source/SPICAN.c",line 37,column 2,is_stmt,isa 0
-        OR        @_GpioDataRegs,#0x0001 ; [CPU_] |37| 
-	.dwpsn	file "../Source/SPICAN.c",line 71,column 2,is_stmt,isa 0
-        AND       @_GpioDataRegs,#0xfffe ; [CPU_] |71| 
+        MOVB      AL,#3                 ; [CPU_] |73| 
+	.dwpsn	file "../Source/SPICAN.c",line 38,column 2,is_stmt,isa 0
+        OR        @_GpioDataRegs,#0x0001 ; [CPU_] |38| 
 	.dwpsn	file "../Source/SPICAN.c",line 72,column 2,is_stmt,isa 0
+        AND       @_GpioDataRegs,#0xfffe ; [CPU_] |72| 
+	.dwpsn	file "../Source/SPICAN.c",line 73,column 2,is_stmt,isa 0
 $C$DW$103	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$103, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$103, DW_AT_name("_spi_xmit")
 	.dwattr $C$DW$103, DW_AT_TI_call
 
-        LCR       #_spi_xmit            ; [CPU_] |72| 
-        ; call occurs [#_spi_xmit] ; [] |72| 
-	.dwpsn	file "../Source/SPICAN.c",line 73,column 2,is_stmt,isa 0
+        LCR       #_spi_xmit            ; [CPU_] |73| 
+        ; call occurs [#_spi_xmit] ; [] |73| 
+	.dwpsn	file "../Source/SPICAN.c",line 74,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-;  73 | spi_xmit(SPICAN_CANSTAT);                                              
+;  74 | spi_xmit(SPICAN_CANSTAT);                                              
 ;----------------------------------------------------------------------
-        MOVB      AL,#14                ; [CPU_] |73| 
+        MOVB      AL,#14                ; [CPU_] |74| 
 $C$DW$104	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$104, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$104, DW_AT_name("_spi_xmit")
 	.dwattr $C$DW$104, DW_AT_TI_call
 
-        LCR       #_spi_xmit            ; [CPU_] |73| 
-        ; call occurs [#_spi_xmit] ; [] |73| 
-	.dwpsn	file "../Source/SPICAN.c",line 74,column 2,is_stmt,isa 0
+        LCR       #_spi_xmit            ; [CPU_] |74| 
+        ; call occurs [#_spi_xmit] ; [] |74| 
+	.dwpsn	file "../Source/SPICAN.c",line 75,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-;  74 | RetVal = spi_recv();                                                   
+;  75 | RetVal = spi_recv();                                                   
 ;----------------------------------------------------------------------
 $C$DW$105	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$105, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$105, DW_AT_name("_spi_recv")
 	.dwattr $C$DW$105, DW_AT_TI_call
 
-        LCR       #_spi_recv            ; [CPU_] |74| 
-        ; call occurs [#_spi_recv] ; [] |74| 
+        LCR       #_spi_recv            ; [CPU_] |75| 
+        ; call occurs [#_spi_recv] ; [] |75| 
         MOVW      DP,#_GpioDataRegs     ; [CPU_U] 
 	.dwpsn	file "../Source/SPICAN.c",line 13,column 2,is_stmt,isa 0
         MOVB      AL,#10                ; [CPU_] |13| 
-	.dwpsn	file "../Source/SPICAN.c",line 75,column 2,is_stmt,isa 0
+	.dwpsn	file "../Source/SPICAN.c",line 76,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-;  75 | GpioDataRegs.GPADAT.bit.GPIOA0  = 1;            //Release chip select  
-;  76 | return(RetVal);                                                        
-;  79 | void SPICANSetNorm (void)                                              
-;  81 | GpioDataRegs.GPADAT.bit.GPIOA0  = 0;            //Chip Select Low      
+;  76 | GpioDataRegs.GPADAT.bit.GPIOA0  = 1;            //Release chip select  
+;  77 | return(RetVal);                                                        
+;  80 | void SPICANSetNorm (void)                                              
+;  82 | GpioDataRegs.GPADAT.bit.GPIOA0  = 0;            //Chip Select Low      
 ;----------------------------------------------------------------------
-        OR        @_GpioDataRegs,#0x0001 ; [CPU_] |75| 
+        OR        @_GpioDataRegs,#0x0001 ; [CPU_] |76| 
 	.dwpsn	file "../Source/SPICAN.c",line 13,column 2,is_stmt,isa 0
 $C$DW$106	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$106, DW_AT_low_pc(0x00)
@@ -1773,279 +1774,279 @@ $C$DW$106	.dwtag  DW_TAG_TI_branch
         LCR       #_delay_us            ; [CPU_] |13| 
         ; call occurs [#_delay_us] ; [] |13| 
         MOVW      DP,#_GpioDataRegs     ; [CPU_U] 
+	.dwpsn	file "../Source/SPICAN.c",line 61,column 2,is_stmt,isa 0
+        MOVB      AL,#2                 ; [CPU_] |61| 
 	.dwpsn	file "../Source/SPICAN.c",line 60,column 2,is_stmt,isa 0
-        MOVB      AL,#2                 ; [CPU_] |60| 
-	.dwpsn	file "../Source/SPICAN.c",line 59,column 2,is_stmt,isa 0
-        AND       @_GpioDataRegs,#0xfffe ; [CPU_] |59| 
-	.dwpsn	file "../Source/SPICAN.c",line 60,column 2,is_stmt,isa 0
+        AND       @_GpioDataRegs,#0xfffe ; [CPU_] |60| 
+	.dwpsn	file "../Source/SPICAN.c",line 61,column 2,is_stmt,isa 0
 $C$DW$107	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$107, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$107, DW_AT_name("_spi_xmit")
 	.dwattr $C$DW$107, DW_AT_TI_call
 
-        LCR       #_spi_xmit            ; [CPU_] |60| 
-        ; call occurs [#_spi_xmit] ; [] |60| 
-	.dwpsn	file "../Source/SPICAN.c",line 61,column 2,is_stmt,isa 0
-        MOVB      AL,#42                ; [CPU_] |61| 
+        LCR       #_spi_xmit            ; [CPU_] |61| 
+        ; call occurs [#_spi_xmit] ; [] |61| 
+	.dwpsn	file "../Source/SPICAN.c",line 62,column 2,is_stmt,isa 0
+        MOVB      AL,#42                ; [CPU_] |62| 
 $C$DW$108	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$108, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$108, DW_AT_name("_spi_xmit")
 	.dwattr $C$DW$108, DW_AT_TI_call
 
-        LCR       #_spi_xmit            ; [CPU_] |61| 
-        ; call occurs [#_spi_xmit] ; [] |61| 
-	.dwpsn	file "../Source/SPICAN.c",line 62,column 2,is_stmt,isa 0
-        MOVB      AL,#68                ; [CPU_] |62| 
+        LCR       #_spi_xmit            ; [CPU_] |62| 
+        ; call occurs [#_spi_xmit] ; [] |62| 
+	.dwpsn	file "../Source/SPICAN.c",line 63,column 2,is_stmt,isa 0
+        MOVB      AL,#129               ; [CPU_] |63| 
 $C$DW$109	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$109, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$109, DW_AT_name("_spi_xmit")
 	.dwattr $C$DW$109, DW_AT_TI_call
 
-        LCR       #_spi_xmit            ; [CPU_] |62| 
-        ; call occurs [#_spi_xmit] ; [] |62| 
+        LCR       #_spi_xmit            ; [CPU_] |63| 
+        ; call occurs [#_spi_xmit] ; [] |63| 
         MOVW      DP,#_GpioDataRegs     ; [CPU_U] 
+	.dwpsn	file "../Source/SPICAN.c",line 61,column 2,is_stmt,isa 0
+        MOVB      AL,#2                 ; [CPU_] |61| 
+	.dwpsn	file "../Source/SPICAN.c",line 64,column 2,is_stmt,isa 0
+        OR        @_GpioDataRegs,#0x0001 ; [CPU_] |64| 
 	.dwpsn	file "../Source/SPICAN.c",line 60,column 2,is_stmt,isa 0
-        MOVB      AL,#2                 ; [CPU_] |60| 
-	.dwpsn	file "../Source/SPICAN.c",line 63,column 2,is_stmt,isa 0
-        OR        @_GpioDataRegs,#0x0001 ; [CPU_] |63| 
-	.dwpsn	file "../Source/SPICAN.c",line 59,column 2,is_stmt,isa 0
-        AND       @_GpioDataRegs,#0xfffe ; [CPU_] |59| 
-	.dwpsn	file "../Source/SPICAN.c",line 60,column 2,is_stmt,isa 0
+        AND       @_GpioDataRegs,#0xfffe ; [CPU_] |60| 
+	.dwpsn	file "../Source/SPICAN.c",line 61,column 2,is_stmt,isa 0
 $C$DW$110	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$110, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$110, DW_AT_name("_spi_xmit")
 	.dwattr $C$DW$110, DW_AT_TI_call
 
-        LCR       #_spi_xmit            ; [CPU_] |60| 
-        ; call occurs [#_spi_xmit] ; [] |60| 
-	.dwpsn	file "../Source/SPICAN.c",line 61,column 2,is_stmt,isa 0
-        MOVB      AL,#41                ; [CPU_] |61| 
+        LCR       #_spi_xmit            ; [CPU_] |61| 
+        ; call occurs [#_spi_xmit] ; [] |61| 
+	.dwpsn	file "../Source/SPICAN.c",line 62,column 2,is_stmt,isa 0
+        MOVB      AL,#41                ; [CPU_] |62| 
 $C$DW$111	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$111, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$111, DW_AT_name("_spi_xmit")
 	.dwattr $C$DW$111, DW_AT_TI_call
 
-        LCR       #_spi_xmit            ; [CPU_] |61| 
-        ; call occurs [#_spi_xmit] ; [] |61| 
-	.dwpsn	file "../Source/SPICAN.c",line 62,column 2,is_stmt,isa 0
-        MOVB      AL,#234               ; [CPU_] |62| 
+        LCR       #_spi_xmit            ; [CPU_] |62| 
+        ; call occurs [#_spi_xmit] ; [] |62| 
+	.dwpsn	file "../Source/SPICAN.c",line 63,column 2,is_stmt,isa 0
+        MOVB      AL,#208               ; [CPU_] |63| 
 $C$DW$112	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$112, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$112, DW_AT_name("_spi_xmit")
 	.dwattr $C$DW$112, DW_AT_TI_call
 
-        LCR       #_spi_xmit            ; [CPU_] |62| 
-        ; call occurs [#_spi_xmit] ; [] |62| 
+        LCR       #_spi_xmit            ; [CPU_] |63| 
+        ; call occurs [#_spi_xmit] ; [] |63| 
         MOVW      DP,#_GpioDataRegs     ; [CPU_U] 
-	.dwpsn	file "../Source/SPICAN.c",line 63,column 2,is_stmt,isa 0
-        OR        @_GpioDataRegs,#0x0001 ; [CPU_] |63| 
+	.dwpsn	file "../Source/SPICAN.c",line 64,column 2,is_stmt,isa 0
+        OR        @_GpioDataRegs,#0x0001 ; [CPU_] |64| 
+	.dwpsn	file "../Source/SPICAN.c",line 61,column 2,is_stmt,isa 0
+        MOVB      AL,#2                 ; [CPU_] |61| 
 	.dwpsn	file "../Source/SPICAN.c",line 60,column 2,is_stmt,isa 0
-        MOVB      AL,#2                 ; [CPU_] |60| 
-	.dwpsn	file "../Source/SPICAN.c",line 59,column 2,is_stmt,isa 0
-        AND       @_GpioDataRegs,#0xfffe ; [CPU_] |59| 
-	.dwpsn	file "../Source/SPICAN.c",line 60,column 2,is_stmt,isa 0
+        AND       @_GpioDataRegs,#0xfffe ; [CPU_] |60| 
+	.dwpsn	file "../Source/SPICAN.c",line 61,column 2,is_stmt,isa 0
 $C$DW$113	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$113, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$113, DW_AT_name("_spi_xmit")
 	.dwattr $C$DW$113, DW_AT_TI_call
 
-        LCR       #_spi_xmit            ; [CPU_] |60| 
-        ; call occurs [#_spi_xmit] ; [] |60| 
-	.dwpsn	file "../Source/SPICAN.c",line 61,column 2,is_stmt,isa 0
-        MOVB      AL,#40                ; [CPU_] |61| 
+        LCR       #_spi_xmit            ; [CPU_] |61| 
+        ; call occurs [#_spi_xmit] ; [] |61| 
+	.dwpsn	file "../Source/SPICAN.c",line 62,column 2,is_stmt,isa 0
+        MOVB      AL,#40                ; [CPU_] |62| 
 $C$DW$114	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$114, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$114, DW_AT_name("_spi_xmit")
 	.dwattr $C$DW$114, DW_AT_TI_call
 
-        LCR       #_spi_xmit            ; [CPU_] |61| 
-        ; call occurs [#_spi_xmit] ; [] |61| 
-	.dwpsn	file "../Source/SPICAN.c",line 62,column 2,is_stmt,isa 0
-        MOVB      AL,#1                 ; [CPU_] |62| 
+        LCR       #_spi_xmit            ; [CPU_] |62| 
+        ; call occurs [#_spi_xmit] ; [] |62| 
+	.dwpsn	file "../Source/SPICAN.c",line 63,column 2,is_stmt,isa 0
+        MOVB      AL,#194               ; [CPU_] |63| 
 $C$DW$115	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$115, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$115, DW_AT_name("_spi_xmit")
 	.dwattr $C$DW$115, DW_AT_TI_call
 
-        LCR       #_spi_xmit            ; [CPU_] |62| 
-        ; call occurs [#_spi_xmit] ; [] |62| 
+        LCR       #_spi_xmit            ; [CPU_] |63| 
+        ; call occurs [#_spi_xmit] ; [] |63| 
         MOVW      DP,#_GpioDataRegs     ; [CPU_U] 
+	.dwpsn	file "../Source/SPICAN.c",line 61,column 2,is_stmt,isa 0
+        MOVB      AL,#2                 ; [CPU_] |61| 
+	.dwpsn	file "../Source/SPICAN.c",line 64,column 2,is_stmt,isa 0
+        OR        @_GpioDataRegs,#0x0001 ; [CPU_] |64| 
 	.dwpsn	file "../Source/SPICAN.c",line 60,column 2,is_stmt,isa 0
-        MOVB      AL,#2                 ; [CPU_] |60| 
-	.dwpsn	file "../Source/SPICAN.c",line 63,column 2,is_stmt,isa 0
-        OR        @_GpioDataRegs,#0x0001 ; [CPU_] |63| 
-	.dwpsn	file "../Source/SPICAN.c",line 59,column 2,is_stmt,isa 0
-        AND       @_GpioDataRegs,#0xfffe ; [CPU_] |59| 
-	.dwpsn	file "../Source/SPICAN.c",line 60,column 2,is_stmt,isa 0
+        AND       @_GpioDataRegs,#0xfffe ; [CPU_] |60| 
+	.dwpsn	file "../Source/SPICAN.c",line 61,column 2,is_stmt,isa 0
 $C$DW$116	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$116, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$116, DW_AT_name("_spi_xmit")
 	.dwattr $C$DW$116, DW_AT_TI_call
 
-        LCR       #_spi_xmit            ; [CPU_] |60| 
-        ; call occurs [#_spi_xmit] ; [] |60| 
-	.dwpsn	file "../Source/SPICAN.c",line 61,column 2,is_stmt,isa 0
-        MOVB      AL,#43                ; [CPU_] |61| 
+        LCR       #_spi_xmit            ; [CPU_] |61| 
+        ; call occurs [#_spi_xmit] ; [] |61| 
+	.dwpsn	file "../Source/SPICAN.c",line 62,column 2,is_stmt,isa 0
+        MOVB      AL,#43                ; [CPU_] |62| 
 $C$DW$117	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$117, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$117, DW_AT_name("_spi_xmit")
 	.dwattr $C$DW$117, DW_AT_TI_call
 
-        LCR       #_spi_xmit            ; [CPU_] |61| 
-        ; call occurs [#_spi_xmit] ; [] |61| 
-	.dwpsn	file "../Source/SPICAN.c",line 62,column 2,is_stmt,isa 0
-        MOVB      AL,#0                 ; [CPU_] |62| 
+        LCR       #_spi_xmit            ; [CPU_] |62| 
+        ; call occurs [#_spi_xmit] ; [] |62| 
+	.dwpsn	file "../Source/SPICAN.c",line 63,column 2,is_stmt,isa 0
+        MOVB      AL,#0                 ; [CPU_] |63| 
 $C$DW$118	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$118, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$118, DW_AT_name("_spi_xmit")
 	.dwattr $C$DW$118, DW_AT_TI_call
 
-        LCR       #_spi_xmit            ; [CPU_] |62| 
-        ; call occurs [#_spi_xmit] ; [] |62| 
+        LCR       #_spi_xmit            ; [CPU_] |63| 
+        ; call occurs [#_spi_xmit] ; [] |63| 
         MOVW      DP,#_GpioDataRegs     ; [CPU_U] 
+	.dwpsn	file "../Source/SPICAN.c",line 61,column 2,is_stmt,isa 0
+        MOVB      AL,#2                 ; [CPU_] |61| 
+	.dwpsn	file "../Source/SPICAN.c",line 64,column 2,is_stmt,isa 0
+        OR        @_GpioDataRegs,#0x0001 ; [CPU_] |64| 
 	.dwpsn	file "../Source/SPICAN.c",line 60,column 2,is_stmt,isa 0
-        MOVB      AL,#2                 ; [CPU_] |60| 
-	.dwpsn	file "../Source/SPICAN.c",line 63,column 2,is_stmt,isa 0
-        OR        @_GpioDataRegs,#0x0001 ; [CPU_] |63| 
-	.dwpsn	file "../Source/SPICAN.c",line 59,column 2,is_stmt,isa 0
-        AND       @_GpioDataRegs,#0xfffe ; [CPU_] |59| 
-	.dwpsn	file "../Source/SPICAN.c",line 60,column 2,is_stmt,isa 0
+        AND       @_GpioDataRegs,#0xfffe ; [CPU_] |60| 
+	.dwpsn	file "../Source/SPICAN.c",line 61,column 2,is_stmt,isa 0
 $C$DW$119	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$119, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$119, DW_AT_name("_spi_xmit")
 	.dwattr $C$DW$119, DW_AT_TI_call
 
-        LCR       #_spi_xmit            ; [CPU_] |60| 
-        ; call occurs [#_spi_xmit] ; [] |60| 
-	.dwpsn	file "../Source/SPICAN.c",line 61,column 2,is_stmt,isa 0
-        MOVB      AL,#96                ; [CPU_] |61| 
+        LCR       #_spi_xmit            ; [CPU_] |61| 
+        ; call occurs [#_spi_xmit] ; [] |61| 
+	.dwpsn	file "../Source/SPICAN.c",line 62,column 2,is_stmt,isa 0
+        MOVB      AL,#96                ; [CPU_] |62| 
 $C$DW$120	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$120, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$120, DW_AT_name("_spi_xmit")
 	.dwattr $C$DW$120, DW_AT_TI_call
 
-        LCR       #_spi_xmit            ; [CPU_] |61| 
-        ; call occurs [#_spi_xmit] ; [] |61| 
-	.dwpsn	file "../Source/SPICAN.c",line 62,column 2,is_stmt,isa 0
-        MOVB      AL,#96                ; [CPU_] |62| 
+        LCR       #_spi_xmit            ; [CPU_] |62| 
+        ; call occurs [#_spi_xmit] ; [] |62| 
+	.dwpsn	file "../Source/SPICAN.c",line 63,column 2,is_stmt,isa 0
+        MOVB      AL,#96                ; [CPU_] |63| 
 $C$DW$121	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$121, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$121, DW_AT_name("_spi_xmit")
 	.dwattr $C$DW$121, DW_AT_TI_call
 
-        LCR       #_spi_xmit            ; [CPU_] |62| 
-        ; call occurs [#_spi_xmit] ; [] |62| 
+        LCR       #_spi_xmit            ; [CPU_] |63| 
+        ; call occurs [#_spi_xmit] ; [] |63| 
         MOVW      DP,#_GpioDataRegs     ; [CPU_U] 
-	.dwpsn	file "../Source/SPICAN.c",line 63,column 2,is_stmt,isa 0
-        OR        @_GpioDataRegs,#0x0001 ; [CPU_] |63| 
+	.dwpsn	file "../Source/SPICAN.c",line 64,column 2,is_stmt,isa 0
+        OR        @_GpioDataRegs,#0x0001 ; [CPU_] |64| 
+	.dwpsn	file "../Source/SPICAN.c",line 61,column 2,is_stmt,isa 0
+        MOVB      AL,#2                 ; [CPU_] |61| 
 	.dwpsn	file "../Source/SPICAN.c",line 60,column 2,is_stmt,isa 0
-        MOVB      AL,#2                 ; [CPU_] |60| 
-	.dwpsn	file "../Source/SPICAN.c",line 59,column 2,is_stmt,isa 0
-        AND       @_GpioDataRegs,#0xfffe ; [CPU_] |59| 
-	.dwpsn	file "../Source/SPICAN.c",line 60,column 2,is_stmt,isa 0
+        AND       @_GpioDataRegs,#0xfffe ; [CPU_] |60| 
+	.dwpsn	file "../Source/SPICAN.c",line 61,column 2,is_stmt,isa 0
 $C$DW$122	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$122, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$122, DW_AT_name("_spi_xmit")
 	.dwattr $C$DW$122, DW_AT_TI_call
 
-        LCR       #_spi_xmit            ; [CPU_] |60| 
-        ; call occurs [#_spi_xmit] ; [] |60| 
-	.dwpsn	file "../Source/SPICAN.c",line 61,column 2,is_stmt,isa 0
-        MOVB      AL,#112               ; [CPU_] |61| 
+        LCR       #_spi_xmit            ; [CPU_] |61| 
+        ; call occurs [#_spi_xmit] ; [] |61| 
+	.dwpsn	file "../Source/SPICAN.c",line 62,column 2,is_stmt,isa 0
+        MOVB      AL,#112               ; [CPU_] |62| 
 $C$DW$123	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$123, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$123, DW_AT_name("_spi_xmit")
 	.dwattr $C$DW$123, DW_AT_TI_call
 
-        LCR       #_spi_xmit            ; [CPU_] |61| 
-        ; call occurs [#_spi_xmit] ; [] |61| 
-	.dwpsn	file "../Source/SPICAN.c",line 62,column 2,is_stmt,isa 0
-        MOVB      AL,#96                ; [CPU_] |62| 
+        LCR       #_spi_xmit            ; [CPU_] |62| 
+        ; call occurs [#_spi_xmit] ; [] |62| 
+	.dwpsn	file "../Source/SPICAN.c",line 63,column 2,is_stmt,isa 0
+        MOVB      AL,#96                ; [CPU_] |63| 
 $C$DW$124	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$124, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$124, DW_AT_name("_spi_xmit")
 	.dwattr $C$DW$124, DW_AT_TI_call
 
-        LCR       #_spi_xmit            ; [CPU_] |62| 
-        ; call occurs [#_spi_xmit] ; [] |62| 
+        LCR       #_spi_xmit            ; [CPU_] |63| 
+        ; call occurs [#_spi_xmit] ; [] |63| 
         MOVW      DP,#_GpioDataRegs     ; [CPU_U] 
-	.dwpsn	file "../Source/SPICAN.c",line 82,column 2,is_stmt,isa 0
+	.dwpsn	file "../Source/SPICAN.c",line 83,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-;  82 | spi_xmit(SPICAN_WRITE);                                                
+;  83 | spi_xmit(SPICAN_WRITE);                                                
 ;----------------------------------------------------------------------
-        MOVB      AL,#2                 ; [CPU_] |82| 
-	.dwpsn	file "../Source/SPICAN.c",line 63,column 2,is_stmt,isa 0
-        OR        @_GpioDataRegs,#0x0001 ; [CPU_] |63| 
-	.dwpsn	file "../Source/SPICAN.c",line 81,column 2,is_stmt,isa 0
-        AND       @_GpioDataRegs,#0xfffe ; [CPU_] |81| 
+        MOVB      AL,#2                 ; [CPU_] |83| 
+	.dwpsn	file "../Source/SPICAN.c",line 64,column 2,is_stmt,isa 0
+        OR        @_GpioDataRegs,#0x0001 ; [CPU_] |64| 
 	.dwpsn	file "../Source/SPICAN.c",line 82,column 2,is_stmt,isa 0
+        AND       @_GpioDataRegs,#0xfffe ; [CPU_] |82| 
+	.dwpsn	file "../Source/SPICAN.c",line 83,column 2,is_stmt,isa 0
 $C$DW$125	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$125, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$125, DW_AT_name("_spi_xmit")
 	.dwattr $C$DW$125, DW_AT_TI_call
 
-        LCR       #_spi_xmit            ; [CPU_] |82| 
-        ; call occurs [#_spi_xmit] ; [] |82| 
-	.dwpsn	file "../Source/SPICAN.c",line 83,column 2,is_stmt,isa 0
+        LCR       #_spi_xmit            ; [CPU_] |83| 
+        ; call occurs [#_spi_xmit] ; [] |83| 
+	.dwpsn	file "../Source/SPICAN.c",line 84,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-;  83 | spi_xmit(SPICAN_CANCTRL);                                              
+;  84 | spi_xmit(SPICAN_CANCTRL);                                              
 ;----------------------------------------------------------------------
-        MOVB      AL,#15                ; [CPU_] |83| 
+        MOVB      AL,#15                ; [CPU_] |84| 
 $C$DW$126	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$126, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$126, DW_AT_name("_spi_xmit")
 	.dwattr $C$DW$126, DW_AT_TI_call
 
-        LCR       #_spi_xmit            ; [CPU_] |83| 
-        ; call occurs [#_spi_xmit] ; [] |83| 
-	.dwpsn	file "../Source/SPICAN.c",line 84,column 2,is_stmt,isa 0
+        LCR       #_spi_xmit            ; [CPU_] |84| 
+        ; call occurs [#_spi_xmit] ; [] |84| 
+	.dwpsn	file "../Source/SPICAN.c",line 85,column 2,is_stmt,isa 0
 ;----------------------------------------------------------------------
-;  84 | spi_xmit(0x00);
+;  85 | spi_xmit(0x00);
 ;     |  //Normal Mode, No Abort, No One Shot, No CLK En, No Clock Pre         
 ;----------------------------------------------------------------------
-        MOVB      AL,#0                 ; [CPU_] |84| 
+        MOVB      AL,#0                 ; [CPU_] |85| 
 $C$DW$127	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$127, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$127, DW_AT_name("_spi_xmit")
 	.dwattr $C$DW$127, DW_AT_TI_call
 
-        LCR       #_spi_xmit            ; [CPU_] |84| 
-        ; call occurs [#_spi_xmit] ; [] |84| 
+        LCR       #_spi_xmit            ; [CPU_] |85| 
+        ; call occurs [#_spi_xmit] ; [] |85| 
         MOVW      DP,#_GpioDataRegs     ; [CPU_U] 
+	.dwpsn	file "../Source/SPICAN.c",line 73,column 2,is_stmt,isa 0
+        MOVB      AL,#3                 ; [CPU_] |73| 
+	.dwpsn	file "../Source/SPICAN.c",line 86,column 2,is_stmt,isa 0
+        OR        @_GpioDataRegs,#0x0001 ; [CPU_] |86| 
 	.dwpsn	file "../Source/SPICAN.c",line 72,column 2,is_stmt,isa 0
-        MOVB      AL,#3                 ; [CPU_] |72| 
-	.dwpsn	file "../Source/SPICAN.c",line 85,column 2,is_stmt,isa 0
-        OR        @_GpioDataRegs,#0x0001 ; [CPU_] |85| 
-	.dwpsn	file "../Source/SPICAN.c",line 71,column 2,is_stmt,isa 0
-        AND       @_GpioDataRegs,#0xfffe ; [CPU_] |71| 
-	.dwpsn	file "../Source/SPICAN.c",line 72,column 2,is_stmt,isa 0
+        AND       @_GpioDataRegs,#0xfffe ; [CPU_] |72| 
+	.dwpsn	file "../Source/SPICAN.c",line 73,column 2,is_stmt,isa 0
 $C$DW$128	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$128, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$128, DW_AT_name("_spi_xmit")
 	.dwattr $C$DW$128, DW_AT_TI_call
 
-        LCR       #_spi_xmit            ; [CPU_] |72| 
-        ; call occurs [#_spi_xmit] ; [] |72| 
-	.dwpsn	file "../Source/SPICAN.c",line 73,column 2,is_stmt,isa 0
-        MOVB      AL,#14                ; [CPU_] |73| 
+        LCR       #_spi_xmit            ; [CPU_] |73| 
+        ; call occurs [#_spi_xmit] ; [] |73| 
+	.dwpsn	file "../Source/SPICAN.c",line 74,column 2,is_stmt,isa 0
+        MOVB      AL,#14                ; [CPU_] |74| 
 $C$DW$129	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$129, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$129, DW_AT_name("_spi_xmit")
 	.dwattr $C$DW$129, DW_AT_TI_call
 
-        LCR       #_spi_xmit            ; [CPU_] |73| 
-        ; call occurs [#_spi_xmit] ; [] |73| 
-	.dwpsn	file "../Source/SPICAN.c",line 74,column 2,is_stmt,isa 0
+        LCR       #_spi_xmit            ; [CPU_] |74| 
+        ; call occurs [#_spi_xmit] ; [] |74| 
+	.dwpsn	file "../Source/SPICAN.c",line 75,column 2,is_stmt,isa 0
 $C$DW$130	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$130, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$130, DW_AT_name("_spi_recv")
 	.dwattr $C$DW$130, DW_AT_TI_call
 
-        LCR       #_spi_recv            ; [CPU_] |74| 
-        ; call occurs [#_spi_recv] ; [] |74| 
+        LCR       #_spi_recv            ; [CPU_] |75| 
+        ; call occurs [#_spi_recv] ; [] |75| 
         MOVW      DP,#_GpioDataRegs     ; [CPU_U] 
-	.dwpsn	file "../Source/SPICAN.c",line 75,column 2,is_stmt,isa 0
-        OR        @_GpioDataRegs,#0x0001 ; [CPU_] |75| 
+	.dwpsn	file "../Source/SPICAN.c",line 76,column 2,is_stmt,isa 0
+        OR        @_GpioDataRegs,#0x0001 ; [CPU_] |76| 
 $C$DW$131	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$131, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$131, DW_AT_TI_return
@@ -2053,7 +2054,7 @@ $C$DW$131	.dwtag  DW_TAG_TI_branch
         LRETR     ; [CPU_] 
         ; return occurs ; [] 
 	.dwattr $C$DW$101, DW_AT_TI_end_file("../Source/SPICAN.c")
-	.dwattr $C$DW$101, DW_AT_TI_end_line(0x1f)
+	.dwattr $C$DW$101, DW_AT_TI_end_line(0x20)
 	.dwattr $C$DW$101, DW_AT_TI_end_column(0x01)
 	.dwendentry
 	.dwendtag $C$DW$101
