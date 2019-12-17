@@ -9,14 +9,9 @@
 void SPICANInit(void)
 {
 	SPICANReset();					// Reset Command
+	delay_us(10);
 	SPICANReadStat();				// Make sure we're in config mode
 	delay_us(10);					// Need some form of delay
-	
-	// Factory Settings
-	// SPICANWrite(0x2A, 0x44);		// Setting up CNF1
-	// SPICANWrite(0x2A, 0x40);		// Setting up CNF1
-	// SPICANWrite(0x29, 0x98);		// Setting up CNF2
-	// SPICANWrite(0x28, 0x01);		// Setting up CNF3
 
 	// For configuration details, see note at bottom
 	SPICANWrite(0x2A, 0x81);		// Setting up CNF1
@@ -24,10 +19,11 @@ void SPICANInit(void)
 	SPICANWrite(0x28, 0xC2);		// Setting up CNF3	
 
 	SPICANWrite(0x2B, 0x00);		// Clearing all interrupts
-	SPICANWrite(0x60, 0x04);		// Setup up RXB0 to receive all messages
+	
+	// Set up buffers to receive all valid messages
+	SPICANWrite(0x60, 0x04);		// Set BUKT to be 1
 	SPICANWrite(0x70, 0x00);		// Setup up RXB1 to receive all messages
-	// SPICANWrite(0x60, 0x60);		// Setup up RXB0 to receive all messages
-	// SPICANWrite(0x70, 0x60);		// Setup up RXB1 to receive all messages
+	
 	SPICANSetNorm();				// Allow for Normal Mode
 	SPICANReadStat();				// Confirm we are in Normal Mode
 	return;
@@ -133,6 +129,18 @@ Uint32 SPICANReadBuf1 (void)
 	spi_recv();
 	GpioDataRegs.GPADAT.bit.GPIOA0	= 1;		//Release chip select
 	return(RetVal);
+}
+
+void SPICANReadBuf_Array (Uint16 data[], Uint16 whichBuf)
+{
+	int k;
+	GpioDataRegs.GPADAT.bit.GPIOA0	= 0;		//Chip Select Low
+	spi_xmit(SPICAN_RXBUF0 + 4 * whichBuf);
+	for(k = 0; k < 8; k++)
+	{
+		data[k] = spi_recv();
+	}
+	GpioDataRegs.GPADAT.bit.GPIOA0	= 1;		//Release chip select
 }
 
 // Refer to Table 11-2 and pages 19 - 21 for formatting message

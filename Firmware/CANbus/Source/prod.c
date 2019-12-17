@@ -595,6 +595,8 @@ void main(void) {
 	// main loop
 	//==========================================================================//
 	char data[8];
+	Uint16 data2[8];
+	Uint16 data3[8];
 	int n;
 	Uint16 res;
 
@@ -635,10 +637,30 @@ void main(void) {
 
 	for (;;) {
 
+		// Get the status of the RX buffers
 		data[7] = SPICANRXStatus();
-		delay_us(10);
-		data[6] = SPICANRead(0x2D);
 
+		// Check if there's a message in the RX Buffers
+		if((data[7] & 0xC0) != 0x00)
+		{
+			// First RX Buffer 0
+			if((data[7] & 0x40) == 0x40)
+			{
+				SPICANReadBuf_Array(data2, 0);
+				SPICAN_T0_RTS();
+			}
+
+			// Second RX Buffer 1
+			if((data[7] & 0x80) == 0x80)
+			{
+				SPICANReadBuf_Array(data3, 1);
+			}
+		}
+
+		delay_us(10);
+
+		// Check for any errors
+		data[6] = SPICANRead(0x2D);
 
 		// check SW2 for reset command
 		if (!(0x0010 & INBTTN)) {

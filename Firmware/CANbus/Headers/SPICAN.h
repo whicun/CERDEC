@@ -9,8 +9,8 @@
 //Commands
 #define SPICAN_RESET	0xC0
 #define	SPICAN_READ		0x03
-#define	SPICAN_RXBUF1	0x92
-#define SPICAN_RXBUF2	0x96
+#define	SPICAN_RXBUF0	0x92
+#define SPICAN_RXBUF1	0x96
 #define	SPICAN_WRITE	0x02
 #define	SPICAN_TXBUF	0x40	//needs modification
 #define	SPICAN_RTS		0x80	//needs modification
@@ -43,6 +43,7 @@ Uint16 SPICANReadStat (void);
 void SPICANSetNorm (void);
 Uint16 SPICANRXStatus (void);
 Uint32 SPICANReadBuf1 (void);
+void SPICANReadBuf_Array (Uint16 data[], Uint16 whichBuf);
 void SPICANIntEn (void);
 Uint16 SPICANReadInt (void);
 Uint16 SPICANRead (Uint16 Input);
