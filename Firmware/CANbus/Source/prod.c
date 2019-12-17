@@ -614,6 +614,7 @@ void main(void) {
 	data[7] = SPICANRead(0x0F);
 	
 	SPICANReadSetT0Message(0xA1, 8, data);
+	delay_us(10);
 	SPICAN_T0_RTS();
 
 	data[0] = data[0] + 1;
@@ -634,8 +635,9 @@ void main(void) {
 
 	for (;;) {
 
-		// data[7] = SPICANRXStatus();
-
+		data[7] = SPICANRXStatus();
+		delay_us(10);
+		data[6] = SPICANRead(0x2D);
 
 
 		// check SW2 for reset command
