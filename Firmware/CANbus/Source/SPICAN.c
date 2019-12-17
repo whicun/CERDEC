@@ -144,7 +144,7 @@ void SPICANReadBuf_Array (Uint16 data[], Uint16 whichBuf)
 }
 
 // Refer to Table 11-2 and pages 19 - 21 for formatting message
-void SPICANReadSetT0Message(Uint16 canAddress, Uint16 numBytes, char *buf)
+void SPICANReadSetT0Message(Uint16 canAddress, Uint16 numBytes, Uint16 *buf)
 {
 	// Set the new address
 	SPICAN_SetT0Addr(canAddress);
@@ -175,7 +175,7 @@ void SPICAN_SetT0Addr(Uint16 canAddress)
 }
 
 // For specifics on format look at Pg 21 in the SPI CAN documentation
-void SPICAN_SetT0Data(Uint16 numBytes, char *buf)
+void SPICAN_SetT0Data(Uint16 numBytes, Uint16 *buf)
 {
 	Uint16 k;
 
@@ -194,6 +194,57 @@ void SPICAN_T0_RTS (void)
 	GpioDataRegs.GPADAT.bit.GPIOA0	= 0;		//Chip Select Low
 	spi_xmit(SPICAN_RTS + 0x1);
 	GpioDataRegs.GPADAT.bit.GPIOA0	= 1;		//Release chip select
+}
+
+Uint16 SPICANRXBufReady(void)
+{
+	return (SPICANRXStatus() & 0xC0) >> 6;
+}
+
+Uint16 SPICANReadBufs(Uint16 buf1[], Uint16 buf2[])
+{
+	Uint16 buf_status;
+	Uint16 res = 0x00;
+
+	// Get the status of the RX Buffs
+	buf_status = SPICANRXBufReady();
+	delay_us(100);
+
+	// Check if there's a message in the RX Buffers
+	if(buf_status != 0x00)
+	{
+		delay_us(10);
+		// First RX Buffer 0
+		if((buf_status & 0x01) == 0x01)
+		{
+			SPICANReadBuf_Array(buf1, 0);
+			res |= 0x01;
+		}
+
+		// Second RX Buffer 1
+		if((buf_status & 0x02) == 0x02)
+		{
+			if(res > 0x00)
+				delay_us(10);
+			SPICANReadBuf_Array(buf2, 1);
+			res |= 0x02;
+		}
+	}
+	return res;
+}
+
+int SPICANVerifyTXBuf(Uint16 buf, Uint16 data_check[])
+{
+	Uint16 data[8];
+	int k;
+	for(k = 0; k < 8; k++)
+	{
+		if(data_check[k] != SPICANRead(SPICAN_TXB0D0 + k))
+		{
+			return 0;
+		}
+	}
+	return 1;
 }
 
 // CONFIGURATION NOTE

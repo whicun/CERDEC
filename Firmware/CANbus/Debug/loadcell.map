@@ -1,10 +1,10 @@
 ******************************************************************************
              TMS320C2000 Linker PC v15.12.4                    
 ******************************************************************************
->> Linked Tue Dec 17 12:31:54 2019
+>> Linked Tue Dec 17 16:26:54 2019
 
 OUTPUT FILE NAME:   <loadcell.out>
-ENTRY POINT SYMBOL: "_c_int00"  address: 003f2433
+ENTRY POINT SYMBOL: "_c_int00"  address: 003f24d6
 
 
 MEMORY CONFIGURATION
@@ -16,7 +16,7 @@ PAGE 0:
   FLASH_I               003da000   00002000  00000000  00002000  RWIX
   FLASH_GH              003dc000   00008000  000023b7  00005c49  RWIX
   FLASH_EF              003e4000   00008000  00000000  00008000  RWIX
-  FLASH_CD              003ec000   00008000  0000699d  00001663  RWIX
+  FLASH_CD              003ec000   00008000  00006a40  000015c0  RWIX
   FLASH_B               003f4000   00001f80  000008fc  00001684  RWIX
   CSM_RSVD              003f5f80   00000076  00000076  00000000  RWIX
   BEGIN_FLASH           003f5ff6   00000002  00000002  00000000  RWIX
@@ -97,84 +97,84 @@ section   page    origin      length       input sections
                   003de3b1    00000004     rts2800_ml.lib : errno.obj (.cinit)
                   003de3b5    00000002     --HOLE-- [fill = 0]
 
-.text      0    003ec000    0000699d     
-                  003ec000    000038c3     prod.obj (.text)
-                  003ef8c3    00000b45     rts2800_ml.lib : _printfi.obj (.text)
-                  003f0408    0000043e     DSP281x_ECan.obj (.text)
-                  003f0846    000003ee     ad7738.obj (.text)
-                  003f0c34    000002f7     sci.obj (.text)
-                  003f0f2b    000002e6     ds1wire.obj (.text)
-                  003f1211    000001e9     SPICAN.obj (.text)
-                  003f13fa    000001a0     data.obj (.text)
-                  003f159a    0000018b     lcd.obj (.text)
-                  003f1725    0000014f     DSP281x_DefaultIsr.obj (.text:retain)
-                  003f1874    0000014d     System_Object.obj (.text)
-                  003f19c1    00000148     rts2800_ml.lib : strtod.obj (.text)
-                  003f1b09    00000107     gpio.obj (.text)
-                  003f1c10    00000107     rts2800_ml.lib : ll_div.obj (.text)
-                  003f1d17    000000e4     system.obj (.text)
-                  003f1dfb    000000bd     rts2800_ml.lib : s_scalbn.obj (.text)
-                  003f1eb8    000000a6     led.obj (.text)
-                  003f1f5e    000000a4     spi.obj (.text)
-                  003f2002    0000009c     rts2800_ml.lib : fd_add.obj (.text)
-                  003f209e    0000008b                    : fd_div.obj (.text)
-                  003f2129    00000083                    : fd_mpy.obj (.text)
-                  003f21ac    00000083                    : fs_div.obj (.text)
-                  003f222f    0000007a     extio.obj (.text)
-                  003f22a9    00000078     rts2800_ml.lib : fs_add.obj (.text)
-                  003f2321    0000005c     mcbsp.obj (.text)
-                  003f237d    0000005c     rts2800_ml.lib : s_frexp.obj (.text)
-                  003f23d9    0000005a                    : fs_mpy.obj (.text)
-                  003f2433    00000054                    : boot.obj (.text)
-                  003f2487    00000046                    : cpy_tbl.obj (.text)
-                  003f24cd    00000035                    : atol.obj (.text)
-                  003f2502    00000032     flash.obj (.text)
-                  003f2534    00000032     rts2800_ml.lib : sprintf.obj (.text)
-                  003f2566    00000031                    : atoi.obj (.text)
-                  003f2597    0000002e                    : ltoa.obj (.text)
-                  003f25c5    0000002b     qep.obj (.text)
-                  003f25f0    0000002a     rts2800_ml.lib : fd_cmp.obj (.text)
-                  003f261a    0000002a                    : l_div.obj (.text)
-                  003f2644    00000029                    : exit.obj (.text)
-                  003f266d    00000029                    : fs_tol.obj (.text)
-                  003f2696    00000028     DSP281x_PieCtrl.obj (.text)
-                  003f26be    00000025     rts2800_ml.lib : fs_toi.obj (.text)
-                  003f26e3    00000024                    : fs_toll.obj (.text)
-                  003f2707    00000023                    : s_copysign.obj (.text)
-                  003f272a    00000022                    : i_div.obj (.text)
-                  003f274c    00000022                    : ll_tofs.obj (.text)
-                  003f276e    00000021                    : fd_toi.obj (.text)
-                  003f278f    0000001f                    : fd_tol.obj (.text)
-                  003f27ae    0000001e                    : ll_cmp.obj (.text)
-                  003f27cc    0000001d                    : fs_tou.obj (.text)
-                  003f27e9    0000001d                    : i_tofd.obj (.text)
-                  003f2806    0000001d                    : memcpy.obj (.text)
-                  003f2823    0000001c                    : fs_tofd.obj (.text)
-                  003f283f    0000001c                    : l_tofd.obj (.text)
-                  003f285b    0000001a                    : cpy_utils.obj (.text)
-                  003f2875    0000001a                    : i_tofs.obj (.text)
-                  003f288f    0000001a                    : l_tofs.obj (.text)
-                  003f28a9    00000019                    : args_main.obj (.text)
-                  003f28c2    00000018                    : ll_aox.obj (.text)
-                  003f28da    00000017                    : fs_cmp.obj (.text)
-                  003f28f1    00000015                    : memcmp.obj (.text)
-                  003f2906    00000011     DSP281x_PieVect.obj (.text)
-                  003f2917    00000010     delay_us.obj (.text)
-                  003f2927    00000010     rts2800_ml.lib : u_tofs.obj (.text)
-                  003f2937    0000000e                    : fd_sub.obj (.text)
-                  003f2945    0000000d                    : memccpy.obj (.text)
-                  003f2952    0000000c                    : memset.obj (.text)
-                  003f295e    0000000b                    : strchr.obj (.text)
-                  003f2969    00000009                    : _lock.obj (.text)
-                  003f2972    00000009                    : fd_neg.obj (.text)
-                  003f297b    00000008     DSP281x_CodeStartBranch.obj (.text)
-                  003f2983    00000008     rts2800_ml.lib : strlen.obj (.text)
-                  003f298b    00000005                    : fs_neg.obj (.text)
-                  003f2990    00000005                    : strcpy.obj (.text)
-                  003f2995    00000003     SetDBGIER.obj (.text)
-                  003f2998    00000002     reboot.obj (.text)
-                  003f299a    00000002     rts2800_ml.lib : pre_init.obj (.text)
-                  003f299c    00000001                    : startup.obj (.text)
+.text      0    003ec000    00006a40     
+                  003ec000    000038ec     prod.obj (.text)
+                  003ef8ec    00000b45     rts2800_ml.lib : _printfi.obj (.text)
+                  003f0431    0000043e     DSP281x_ECan.obj (.text)
+                  003f086f    000003ee     ad7738.obj (.text)
+                  003f0c5d    000002f7     sci.obj (.text)
+                  003f0f54    000002e6     ds1wire.obj (.text)
+                  003f123a    00000263     SPICAN.obj (.text)
+                  003f149d    000001a0     data.obj (.text)
+                  003f163d    0000018b     lcd.obj (.text)
+                  003f17c8    0000014f     DSP281x_DefaultIsr.obj (.text:retain)
+                  003f1917    0000014d     System_Object.obj (.text)
+                  003f1a64    00000148     rts2800_ml.lib : strtod.obj (.text)
+                  003f1bac    00000107     gpio.obj (.text)
+                  003f1cb3    00000107     rts2800_ml.lib : ll_div.obj (.text)
+                  003f1dba    000000e4     system.obj (.text)
+                  003f1e9e    000000bd     rts2800_ml.lib : s_scalbn.obj (.text)
+                  003f1f5b    000000a6     led.obj (.text)
+                  003f2001    000000a4     spi.obj (.text)
+                  003f20a5    0000009c     rts2800_ml.lib : fd_add.obj (.text)
+                  003f2141    0000008b                    : fd_div.obj (.text)
+                  003f21cc    00000083                    : fd_mpy.obj (.text)
+                  003f224f    00000083                    : fs_div.obj (.text)
+                  003f22d2    0000007a     extio.obj (.text)
+                  003f234c    00000078     rts2800_ml.lib : fs_add.obj (.text)
+                  003f23c4    0000005c     mcbsp.obj (.text)
+                  003f2420    0000005c     rts2800_ml.lib : s_frexp.obj (.text)
+                  003f247c    0000005a                    : fs_mpy.obj (.text)
+                  003f24d6    00000054                    : boot.obj (.text)
+                  003f252a    00000046                    : cpy_tbl.obj (.text)
+                  003f2570    00000035                    : atol.obj (.text)
+                  003f25a5    00000032     flash.obj (.text)
+                  003f25d7    00000032     rts2800_ml.lib : sprintf.obj (.text)
+                  003f2609    00000031                    : atoi.obj (.text)
+                  003f263a    0000002e                    : ltoa.obj (.text)
+                  003f2668    0000002b     qep.obj (.text)
+                  003f2693    0000002a     rts2800_ml.lib : fd_cmp.obj (.text)
+                  003f26bd    0000002a                    : l_div.obj (.text)
+                  003f26e7    00000029                    : exit.obj (.text)
+                  003f2710    00000029                    : fs_tol.obj (.text)
+                  003f2739    00000028     DSP281x_PieCtrl.obj (.text)
+                  003f2761    00000025     rts2800_ml.lib : fs_toi.obj (.text)
+                  003f2786    00000024                    : fs_toll.obj (.text)
+                  003f27aa    00000023                    : s_copysign.obj (.text)
+                  003f27cd    00000022                    : i_div.obj (.text)
+                  003f27ef    00000022                    : ll_tofs.obj (.text)
+                  003f2811    00000021                    : fd_toi.obj (.text)
+                  003f2832    0000001f                    : fd_tol.obj (.text)
+                  003f2851    0000001e                    : ll_cmp.obj (.text)
+                  003f286f    0000001d                    : fs_tou.obj (.text)
+                  003f288c    0000001d                    : i_tofd.obj (.text)
+                  003f28a9    0000001d                    : memcpy.obj (.text)
+                  003f28c6    0000001c                    : fs_tofd.obj (.text)
+                  003f28e2    0000001c                    : l_tofd.obj (.text)
+                  003f28fe    0000001a                    : cpy_utils.obj (.text)
+                  003f2918    0000001a                    : i_tofs.obj (.text)
+                  003f2932    0000001a                    : l_tofs.obj (.text)
+                  003f294c    00000019                    : args_main.obj (.text)
+                  003f2965    00000018                    : ll_aox.obj (.text)
+                  003f297d    00000017                    : fs_cmp.obj (.text)
+                  003f2994    00000015                    : memcmp.obj (.text)
+                  003f29a9    00000011     DSP281x_PieVect.obj (.text)
+                  003f29ba    00000010     delay_us.obj (.text)
+                  003f29ca    00000010     rts2800_ml.lib : u_tofs.obj (.text)
+                  003f29da    0000000e                    : fd_sub.obj (.text)
+                  003f29e8    0000000d                    : memccpy.obj (.text)
+                  003f29f5    0000000c                    : memset.obj (.text)
+                  003f2a01    0000000b                    : strchr.obj (.text)
+                  003f2a0c    00000009                    : _lock.obj (.text)
+                  003f2a15    00000009                    : fd_neg.obj (.text)
+                  003f2a1e    00000008     DSP281x_CodeStartBranch.obj (.text)
+                  003f2a26    00000008     rts2800_ml.lib : strlen.obj (.text)
+                  003f2a2e    00000005                    : fs_neg.obj (.text)
+                  003f2a33    00000005                    : strcpy.obj (.text)
+                  003f2a38    00000003     SetDBGIER.obj (.text)
+                  003f2a3b    00000002     reboot.obj (.text)
+                  003f2a3d    00000002     rts2800_ml.lib : pre_init.obj (.text)
+                  003f2a3f    00000001                    : startup.obj (.text)
 
 .pinit     0    003dc000    00000000     UNINITIALIZED
 
@@ -386,12 +386,12 @@ MODULE SUMMARY
     .\Source\
        data.obj                         480     0         163562 
        ad7738.obj                       2470    0         41620  
-       prod.obj                         14531   0         11715  
+       prod.obj                         14572   0         11715  
        sci.obj                          1039    0         2120   
        DSP281x_ECan.obj                 1086    0         52     
        ds1wire.obj                      742     0         258    
+       SPICAN.obj                       611     0         0      
        lcd.obj                          395     0         144    
-       SPICAN.obj                       489     0         0      
        System_Object.obj                333     0         152    
        system.obj                       298     0         0      
        gpio.obj                         263     0         0      
@@ -406,7 +406,7 @@ MODULE SUMMARY
        diskio.obj                       0       0         8      
        CAN_PCKA.obj                     0       0         6      
     +--+--------------------------------+-------+---------+---------+
-       Total:                           22763   0         219759 
+       Total:                           22926   0         219759 
                                                                  
     C:/Users/ebenton/Documents/CERDEC TS/Firmware/CANbus/Flash2812_API_V210/lib/Flash2812_API_V210.lib
        Flash28_Erase.obj                290     0         100    
@@ -488,7 +488,7 @@ MODULE SUMMARY
                                                                  
        Stack:                           0       0         1024   
     +--+--------------------------------+-------+---------+---------+
-       Grand Total:                     31539   0         223110 
+       Grand Total:                     31702   0         223110 
 
 
 GLOBAL DATA SYMBOLS: SORTED BY DATA PAGE
@@ -606,10 +606,10 @@ address     data page           name
 
 003f7ff8    fdff (003f7fc0)     _CsmPwl
 
-003f8000    fe00 (003f8000)     _cmd_mode
-003f8001    fe00 (003f8000)     _autoidchanged
-003f8002    fe00 (003f8000)     _VEL_U
-003f8004    fe00 (003f8000)     _POS_U
+003f8000    fe00 (003f8000)     _autoidchanged
+003f8001    fe00 (003f8000)     _cmd_mode
+003f8002    fe00 (003f8000)     _POS_U
+003f8004    fe00 (003f8000)     _VEL_U
 003f8006    fe00 (003f8000)     _autoid
 003f800a    fe00 (003f8000)     _tagwasthere
 003f800e    fe00 (003f8000)     _rtc
@@ -727,83 +727,83 @@ page  address   name
 ----  -------   ----                            
 1     003f8000  .bss                            
 0     003ec000  .text                           
-0     003f2644  C$$EXIT                         
-0     003f2002  FD$$ADD                         
-0     003f25f0  FD$$CMP                         
-0     003f209e  FD$$DIV                         
-0     003f2129  FD$$MPY                         
-0     003f2972  FD$$NEG                         
-0     003f2937  FD$$SUB                         
-0     003f276e  FD$$TOI                         
-0     003f278f  FD$$TOL                         
-0     003f22ae  FS$$ADD                         
-0     003f28da  FS$$CMP                         
-0     003f21ac  FS$$DIV                         
-0     003f23d9  FS$$MPY                         
-0     003f298b  FS$$NEG                         
-0     003f22a9  FS$$SUB                         
-0     003f2823  FS$$TOFD                        
-0     003f26be  FS$$TOI                         
-0     003f266d  FS$$TOL                         
-0     003f26e3  FS$$TOLL                        
-0     003f27cc  FS$$TOU                         
-0     003f272a  I$$DIV                          
-0     003f273b  I$$MOD                          
-0     003f27e9  I$$TOFD                         
-0     003f2875  I$$TOFS                         
-0     003f261a  L$$DIV                          
-0     003f2629  L$$MOD                          
-0     003f283f  L$$TOFD                         
-0     003f288f  L$$TOFS                         
-0     003f28c2  LL$$AND                         
-0     003f27ae  LL$$CMP                         
-0     003f1c10  LL$$DIV                         
-0     003f1c4c  LL$$MOD                         
-0     003f28ca  LL$$OR                          
-0     003f274c  LL$$TOFS                        
-0     003f28d2  LL$$XOR                         
-0     003f2927  U$$TOFS                         
-0     003f2637  UL$$DIV                         
-0     003f263e  UL$$MOD                         
-0     003f27c0  ULL$$CMP                        
-0     003f1c86  ULL$$DIV                        
-0     003f1cb5  ULL$$MOD                        
-0     003f186f  _ADCINT_ISR                     
+0     003f26e7  C$$EXIT                         
+0     003f20a5  FD$$ADD                         
+0     003f2693  FD$$CMP                         
+0     003f2141  FD$$DIV                         
+0     003f21cc  FD$$MPY                         
+0     003f2a15  FD$$NEG                         
+0     003f29da  FD$$SUB                         
+0     003f2811  FD$$TOI                         
+0     003f2832  FD$$TOL                         
+0     003f2351  FS$$ADD                         
+0     003f297d  FS$$CMP                         
+0     003f224f  FS$$DIV                         
+0     003f247c  FS$$MPY                         
+0     003f2a2e  FS$$NEG                         
+0     003f234c  FS$$SUB                         
+0     003f28c6  FS$$TOFD                        
+0     003f2761  FS$$TOI                         
+0     003f2710  FS$$TOL                         
+0     003f2786  FS$$TOLL                        
+0     003f286f  FS$$TOU                         
+0     003f27cd  I$$DIV                          
+0     003f27de  I$$MOD                          
+0     003f288c  I$$TOFD                         
+0     003f2918  I$$TOFS                         
+0     003f26bd  L$$DIV                          
+0     003f26cc  L$$MOD                          
+0     003f28e2  L$$TOFD                         
+0     003f2932  L$$TOFS                         
+0     003f2965  LL$$AND                         
+0     003f2851  LL$$CMP                         
+0     003f1cb3  LL$$DIV                         
+0     003f1cef  LL$$MOD                         
+0     003f296d  LL$$OR                          
+0     003f27ef  LL$$TOFS                        
+0     003f2975  LL$$XOR                         
+0     003f29ca  U$$TOFS                         
+0     003f26da  UL$$DIV                         
+0     003f26e1  UL$$MOD                         
+0     003f2863  ULL$$CMP                        
+0     003f1d29  ULL$$DIV                        
+0     003f1d58  ULL$$MOD                        
+0     003f1912  _ADCINT_ISR                     
 1     00007100  _AdcRegs                        
 0     003de2bc  _BAUD                           
 0     003de2d8  _BITMAP                         
-0     003f07a3  _CAN_Tx_SendInformationRequest  
-0     003f186a  _CAPINT1_ISR                    
-0     003f1865  _CAPINT2_ISR                    
-0     003f1860  _CAPINT3_ISR                    
-0     003f185b  _CAPINT4_ISR                    
-0     003f1856  _CAPINT5_ISR                    
-0     003f1851  _CAPINT6_ISR                    
-0     003f184c  _CMP1INT_ISR                    
-0     003f1847  _CMP2INT_ISR                    
-0     003f1842  _CMP3INT_ISR                    
-0     003f183d  _CMP4INT_ISR                    
-0     003f1838  _CMP5INT_ISR                    
-0     003f1833  _CMP6INT_ISR                    
-0     003f0b01  _ConfigCpuTimer0                
+0     003f07cc  _CAN_Tx_SendInformationRequest  
+0     003f190d  _CAPINT1_ISR                    
+0     003f1908  _CAPINT2_ISR                    
+0     003f1903  _CAPINT3_ISR                    
+0     003f18fe  _CAPINT4_ISR                    
+0     003f18f9  _CAPINT5_ISR                    
+0     003f18f4  _CAPINT6_ISR                    
+0     003f18ef  _CMP1INT_ISR                    
+0     003f18ea  _CMP2INT_ISR                    
+0     003f18e5  _CMP3INT_ISR                    
+0     003f18e0  _CMP4INT_ISR                    
+0     003f18db  _CMP5INT_ISR                    
+0     003f18d6  _CMP6INT_ISR                    
+0     003f0b2a  _ConfigCpuTimer0                
 1     00000c00  _CpuTimer0Regs                  
 1     00000c08  _CpuTimer1Regs                  
 1     00000c10  _CpuTimer2Regs                  
 1     003f7ff8  _CsmPwl                         
 1     00000ae0  _CsmRegs                        
-0     003f182e  _DATALOG_ISR                    
+0     003f18d1  _DATALOG_ISR                    
 1     00000880  _DevEmuRegs                     
-0     003f1829  _ECAN0INTA_ISR                  
-0     003f1824  _ECAN1INTA_ISR                  
+0     003f18cc  _ECAN0INTA_ISR                  
+0     003f18c7  _ECAN1INTA_ISR                  
 1     00006040  _ECanaLAMRegs                   
 1     000060c0  _ECanaMOTORegs                  
 1     00006080  _ECanaMOTSRegs                  
 1     00006100  _ECanaMboxes                    
 1     00006000  _ECanaRegs                      
 1     003f9c00  _ECanaShadow                    
-0     003f181f  _EMPTY_ISR                      
-0     003f181a  _EMUINT_ISR                     
-0     003f26b5  _EnableInterrupts               
+0     003f18c2  _EMPTY_ISR                      
+0     003f18bd  _EMUINT_ISR                     
+0     003f2758  _EnableInterrupts               
 1     003f99f0  _EraseStatus                    
 1     00007400  _EvaRegs                        
 1     00007500  _EvbRegs                        
@@ -841,91 +841,94 @@ page  address   name
 1     003f99fc  _Flash_CallbackPtr              
 1     000070e0  _GpioDataRegs                   
 1     000070c0  _GpioMuxRegs                    
-0     003f1815  _ILLEGAL_ISR                    
-0     003f1810  _INT13_ISR                      
-0     003f180b  _INT14_ISR                      
+0     003f18b8  _ILLEGAL_ISR                    
+0     003f18b3  _INT13_ISR                      
+0     003f18ae  _INT14_ISR                      
 1     003f9b84  _INTERFACE                      
-0     003f0ae7  _InitCpuTimer0                  
-0     003f06fd  _InitECan                       
-0     003f2696  _InitPieCtrl                    
-0     003f2906  _InitPieVectTable               
+0     003f0b10  _InitCpuTimer0                  
+0     003f0726  _InitECan                       
+0     003f2739  _InitPieCtrl                    
+0     003f29a9  _InitPieVectTable               
 1     003f9b94  _LPV                            
 1     003f9b8c  _METHOD                         
-0     003f1806  _MRINTA_ISR                     
-0     003f1801  _MXINTA_ISR                     
+0     003f18a9  _MRINTA_ISR                     
+0     003f18a4  _MXINTA_ISR                     
 1     00007800  _McbspaRegs                     
-0     003f17fc  _NMI_ISR                        
-0     003f17f7  _PDPINTA_ISR                    
-0     003f17f2  _PDPINTB_ISR                    
-0     003f17ed  _PIE_RESERVED                   
-1     003f8004  _POS_U                          
+0     003f189f  _NMI_ISR                        
+0     003f189a  _PDPINTA_ISR                    
+0     003f1895  _PDPINTB_ISR                    
+0     003f1890  _PIE_RESERVED                   
+1     003f8002  _POS_U                          
 1     00000ce0  _PieCtrlRegs                    
 1     00000d00  _PieVectTable                   
 0     003ddf76  _PieVectTableInit               
 1     003f99f8  _ProgStatus                     
-0     003f17e8  _RTOSINT_ISR                    
-0     003f17e3  _SCIRXINTA_ISR                  
-0     003f17de  _SCIRXINTB_ISR                  
-0     003f17d9  _SCITXINTA_ISR                  
-0     003f17d4  _SCITXINTB_ISR                  
-0     003f135f  _SPICANInit                     
-0     003f134d  _SPICANIntEn                    
-0     003f1339  _SPICANRXStatus                 
-0     003f1325  _SPICANRead                     
-0     003f12ff  _SPICANReadBuf1                 
-0     003f12e5  _SPICANReadBuf_Array            
-0     003f12d4  _SPICANReadInt                  
-0     003f12c7  _SPICANReadSetT0Message         
-0     003f12b6  _SPICANReadStat                 
-0     003f12aa  _SPICANReset                    
-0     003f1298  _SPICANSetNorm                  
-0     003f121d  _SPICANWrite                    
-0     003f126a  _SPICAN_SetT0Addr               
-0     003f1235  _SPICAN_SetT0Data               
-0     003f1211  _SPICAN_T0_RTS                  
-0     003f17cf  _SPIRXINTA_ISR                  
-0     003f17ca  _SPITXINTA_ISR                  
+0     003f188b  _RTOSINT_ISR                    
+0     003f1886  _SCIRXINTA_ISR                  
+0     003f1881  _SCIRXINTB_ISR                  
+0     003f187c  _SCITXINTA_ISR                  
+0     003f1877  _SCITXINTB_ISR                  
+0     003f1402  _SPICANInit                     
+0     003f13f0  _SPICANIntEn                    
+0     003f135a  _SPICANRXBufReady               
+0     003f1346  _SPICANRXStatus                 
+0     003f12c1  _SPICANRead                     
+0     003f13ca  _SPICANReadBuf1                 
+0     003f1370  _SPICANReadBuf_Array            
+0     003f138a  _SPICANReadBufs                 
+0     003f1335  _SPICANReadInt                  
+0     003f1328  _SPICANReadSetT0Message         
+0     003f1317  _SPICANReadStat                 
+0     003f130b  _SPICANReset                    
+0     003f12f9  _SPICANSetNorm                  
+0     003f12d5  _SPICANVerifyTXBuf              
+0     003f1246  _SPICANWrite                    
+0     003f1293  _SPICAN_SetT0Addr               
+0     003f125e  _SPICAN_SetT0Data               
+0     003f123a  _SPICAN_T0_RTS                  
+0     003f1872  _SPIRXINTA_ISR                  
+0     003f186d  _SPITXINTA_ISR                  
 1     00007050  _SciaRegs                       
 1     00007750  _ScibRegs                       
-0     003f2995  _SetDBGIER                      
+0     003f2a38  _SetDBGIER                      
 1     00007040  _SpiaRegs                       
 1     00007010  _SysCtrlRegs                    
 1     003f9a00  _System                         
-0     003f17c5  _T1CINT_ISR                     
-0     003f17c0  _T1OFINT_ISR                    
-0     003f17bb  _T1PINT_ISR                     
-0     003f17b6  _T1UFINT_ISR                    
-0     003f17b1  _T2CINT_ISR                     
-0     003f17ac  _T2OFINT_ISR                    
-0     003f17a7  _T2PINT_ISR                     
-0     003f17a2  _T2UFINT_ISR                    
-0     003f179d  _T3CINT_ISR                     
-0     003f1798  _T3OFINT_ISR                    
-0     003f1793  _T3PINT_ISR                     
-0     003f178e  _T3UFINT_ISR                    
-0     003f1789  _T4CINT_ISR                     
-0     003f1784  _T4OFINT_ISR                    
-0     003f177f  _T4PINT_ISR                     
-0     003f177a  _T4UFINT_ISR                    
-0     003f1775  _TINT0_ISR                      
+0     003f1868  _T1CINT_ISR                     
+0     003f1863  _T1OFINT_ISR                    
+0     003f185e  _T1PINT_ISR                     
+0     003f1859  _T1UFINT_ISR                    
+0     003f1854  _T2CINT_ISR                     
+0     003f184f  _T2OFINT_ISR                    
+0     003f184a  _T2PINT_ISR                     
+0     003f1845  _T2UFINT_ISR                    
+0     003f1840  _T3CINT_ISR                     
+0     003f183b  _T3OFINT_ISR                    
+0     003f1836  _T3PINT_ISR                     
+0     003f1831  _T3UFINT_ISR                    
+0     003f182c  _T4CINT_ISR                     
+0     003f1827  _T4OFINT_ISR                    
+0     003f1822  _T4PINT_ISR                     
+0     003f181d  _T4UFINT_ISR                    
+0     003f1818  _TINT0_ISR                      
 1     003f9bc0  _UNITS                          
-0     003f1770  _USER10_ISR                     
-0     003f176b  _USER11_ISR                     
-0     003f1766  _USER12_ISR                     
-0     003f1761  _USER1_ISR                      
-0     003f175c  _USER2_ISR                      
-0     003f1757  _USER3_ISR                      
-0     003f1752  _USER4_ISR                      
-0     003f174d  _USER5_ISR                      
-0     003f1748  _USER6_ISR                      
-0     003f1743  _USER7_ISR                      
-0     003f173e  _USER8_ISR                      
-0     003f1739  _USER9_ISR                      
-1     003f8002  _VEL_U                          
+0     003f1813  _USER10_ISR                     
+0     003f180e  _USER11_ISR                     
+0     003f1809  _USER12_ISR                     
+0     003f1804  _USER1_ISR                      
+0     003f17ff  _USER2_ISR                      
+0     003f17fa  _USER3_ISR                      
+0     003f17f5  _USER4_ISR                      
+0     003f17f0  _USER5_ISR                      
+0     003f17eb  _USER6_ISR                      
+0     003f17e6  _USER7_ISR                      
+0     003f17e1  _USER8_ISR                      
+0     003f17dc  _USER9_ISR                      
+1     003f8004  _VEL_U                          
 1     003f99f4  _VerifyStatus                   
-0     003f1734  _WAKEINT_ISR                    
-0     003f172f  _XINT1_ISR                      
-0     003f172a  _XINT2_ISR                      
+0     003f17d7  _WAKEINT_ISR                    
+0     003f17d2  _XINT1_ISR                      
+0     003f17cd  _XINT2_ISR                      
 1     00007070  _XIntruptRegs                   
 1     00000b20  _XintfRegs                      
 1     00000400  __STACK_END                     
@@ -934,7 +937,7 @@ abs   00000400  __STACK_SIZE
 1     003f9aa8  ___TI_dtors_ptr                 
 1     003f9aa4  ___TI_enable_exit_profile_output
 abs   ffffffff  ___TI_pprof_out_hndl            
-0     003f02f1  ___TI_printfi                   
+0     003f031a  ___TI_printfi                   
 abs   ffffffff  ___TI_prof_data_size            
 abs   ffffffff  ___TI_prof_data_start           
 abs   ffffffff  ___binit__                      
@@ -942,216 +945,216 @@ abs   ffffffff  ___binit__
 abs   ffffffff  ___c_args__                     
 0     003de2e8  ___cinit__                      
 1     003f8000  ___end__                        
-0     003f299d  ___etext__                      
+0     003f2a40  ___etext__                      
 abs   ffffffff  ___pinit__                      
 0     003ec000  ___text__                       
-0     003f28a9  __args_main                     
+0     003f294c  __args_main                     
 0     003dde75  __ctypes_                       
 1     003f9ab6  __lock                          
-0     003f2971  __nop                           
-0     003f296d  __register_lock                 
-0     003f2969  __register_unlock               
+0     003f2a14  __nop                           
+0     003f2a10  __register_lock                 
+0     003f2a0c  __register_unlock               
 1     00000000  __stack                         
-0     003f299c  __system_post_cinit             
-0     003f299a  __system_pre_init               
+0     003f2a3f  __system_post_cinit             
+0     003f2a3d  __system_pre_init               
 1     003f9ab8  __unlock                        
-0     003f2644  _abort                          
+0     003f26e7  _abort                          
 1     003f97b2  _ad7738_cnt                     
 1     003f97a2  _ad7738_err                     
-0     003f0c27  _ad7738_getlimitchgd            
-0     003f0c12  _ad7738_getlimitst              
-0     003f0c0f  _ad7738_getmon                  
-0     003f0c0c  _ad7738_getpeak                 
-0     003f0c06  _ad7738_getraw                  
-0     003f0c03  _ad7738_getvall                 
-0     003f0b19  _ad7738_init                    
+0     003f0c50  _ad7738_getlimitchgd            
+0     003f0c3b  _ad7738_getlimitst              
+0     003f0c38  _ad7738_getmon                  
+0     003f0c35  _ad7738_getpeak                 
+0     003f0c2f  _ad7738_getraw                  
+0     003f0c2c  _ad7738_getvall                 
+0     003f0b42  _ad7738_init                    
 1     003f97e8  _ad7738_load                    
 1     003f9800  _ad7738_mon                     
-0     003f0ae3  _ad7738_monclr                  
-0     003f0adf  _ad7738_monrdy                  
+0     003f0b0c  _ad7738_monclr                  
+0     003f0b08  _ad7738_monrdy                  
 1     003f9820  _ad7738_peak                    
 1     003f978a  _ad7738_ph                      
 1     003f97c0  _ad7738_raw                     
-0     003f0adb  _ad7738_rawrdy                  
-0     003f0a9e  _ad7738_resetlimit              
-0     003f0a9a  _ad7738_resetpeak               
-0     003f0a96  _ad7738_resettare               
-0     003f0a92  _ad7738_resetvall               
+0     003f0b04  _ad7738_rawrdy                  
+0     003f0ac7  _ad7738_resetlimit              
+0     003f0ac3  _ad7738_resetpeak               
+0     003f0abf  _ad7738_resettare               
+0     003f0abb  _ad7738_resetvall               
 1     003f9792  _ad7738_rev                     
-0     003f09c0  _ad7738_setcal                  
-0     003f09bb  _ad7738_setlimitchgd            
-0     003f0983  _ad7738_settemp                 
-0     003f097a  _ad7738_tagsdetect              
+0     003f09e9  _ad7738_setcal                  
+0     003f09e4  _ad7738_setlimitchgd            
+0     003f09ac  _ad7738_settemp                 
+0     003f09a3  _ad7738_tagsdetect              
 1     003f9850  _ad7738_tare                    
-0     003f0971  _ad7738_tempread                
-0     003f0968  _ad7738_tempstart               
+0     003f099a  _ad7738_tempread                
+0     003f0991  _ad7738_tempstart               
 1     003f9830  _ad7738_vall                    
 1     003f9794  _adcdiff                        
-0     003f2295  _anaen_set                      
+0     003f2338  _anaen_set                      
 1     003f9ab2  _analogen                       
 1     003f9ab4  _analogout                      
-0     003f2566  _atoi                           
-0     003f24cd  _atol                           
+0     003f2609  _atoi                           
+0     003f2570  _atol                           
 1     003f9aa2  _autoHeight                     
 1     003f9a9f  _autoHeightEnable               
 1     003f8006  _autoid                         
-1     003f8001  _autoidchanged                  
-0     003f1533  _bigbufftest                    
+1     003f8000  _autoidchanged                  
+0     003f15d6  _bigbufftest                    
 1     003f9a98  _bms_cmd                        
 1     003f9a9a  _bms_status                     
-0     003f2433  _c_int00                        
-0     003f086a  _checkFaults                    
-1     003f8000  _cmd_mode                       
+0     003f24d6  _c_int00                        
+0     003f0893  _checkFaults                    
+1     003f8001  _cmd_mode                       
 1     00009000  _conf_data                      
-0     003f141b  _conf_default                   
-0     003f2529  _conf_read                      
-0     003f2502  _conf_write                     
-0     003f062a  _configCAN                      
-0     003f2487  _copy_in                        
-0     003f2707  _copysignl                      
+0     003f14be  _conf_default                   
+0     003f25cc  _conf_read                      
+0     003f25a5  _conf_write                     
+0     003f0653  _configCAN                      
+0     003f252a  _copy_in                        
+0     003f27aa  _copysignl                      
 0     00008551  _cpu_timer0_isr                 
-0     003f0964  _dac_setmode                    
+0     003f098d  _dac_setmode                    
 1     003f97c8  _daci                           
 1     003f97d8  _dacs                           
 1     003f978f  _dacsetvolt                     
 1     003f978e  _dacvalue                       
-0     003f285b  _ddcopy                         
-0     003f2917  _delay_us                       
+0     003f28fe  _ddcopy                         
+0     003f29ba  _delay_us                       
 1     003f9ab3  _digictrl                       
-0     003f285b  _dpcopy                         
-0     003f1111  _ds1820getbit                   
-0     003f113f  _ds1820getbyte                  
-0     003f11c4  _ds1820id                       
-0     003f10ae  _ds1820putbit                   
-0     003f10df  _ds1820putbyte                  
-0     003f1154  _ds1820read                     
-0     003f1080  _ds1820rst                      
-0     003f10f0  _ds1820start                    
+0     003f28fe  _dpcopy                         
+0     003f113a  _ds1820getbit                   
+0     003f1168  _ds1820getbyte                  
+0     003f11ed  _ds1820id                       
+0     003f10d7  _ds1820putbit                   
+0     003f1108  _ds1820putbyte                  
+0     003f117d  _ds1820read                     
+0     003f10a9  _ds1820rst                      
+0     003f1119  _ds1820start                    
 0     003de076  _dscrctable                     
 1     003f97a6  _enccnt                         
 1     003f9ab5  _errno                          
-0     003f2646  _exit                           
-0     003f228e  _extio_init                     
+0     003f26e9  _exit                           
+0     003f2331  _extio_init                     
 1     003f82c0  _fileOb                         
 0     000088b9  _flash_init                     
-0     003f237d  _frexpl                         
-0     003f19b2  _getModAlarms                   
-0     003f19a3  _getModTemp                     
-0     003f1994  _getModVoltage                  
-0     003f198a  _getShelfAlarms                 
-0     003f1980  _getShelfAvgTemp                
-0     003f1976  _getShelfErrors                 
-0     003f196c  _getShelfMaxTemp                
-0     003f1962  _getShelfMaxTempID              
-0     003f1958  _getShelfMinTemp                
-0     003f194e  _getShelfMinTempID              
-0     003f1944  _getShelfVoltage                
-0     003f1940  _getSystemAvailEnergy           
-0     003f193e  _getSystemBusVoltage            
-0     003f193a  _getSystemCapVoltage            
-0     003f1936  _getSystemCapVoltageF           
-0     003f1932  _getSystemIsRelay               
-0     003f192e  _getSystemMode                  
-0     003f192d  _getSystemNumDischarges         
-0     003f1929  _getSystemOutCurrent            
-0     003f1925  _getSystemOutCurrentF           
-0     003f1924  _getSystemRuntimeEst            
-0     003f1923  _getSystemRuntimeFL             
-0     003f1922  _getSystemSSRelay               
-0     003f191e  _getSystemStatus                
-0     003ef8ab  _get_fattime                    
-0     003f1b09  _gpio_init                      
+0     003f2420  _frexpl                         
+0     003f1a55  _getModAlarms                   
+0     003f1a46  _getModTemp                     
+0     003f1a37  _getModVoltage                  
+0     003f1a2d  _getShelfAlarms                 
+0     003f1a23  _getShelfAvgTemp                
+0     003f1a19  _getShelfErrors                 
+0     003f1a0f  _getShelfMaxTemp                
+0     003f1a05  _getShelfMaxTempID              
+0     003f19fb  _getShelfMinTemp                
+0     003f19f1  _getShelfMinTempID              
+0     003f19e7  _getShelfVoltage                
+0     003f19e3  _getSystemAvailEnergy           
+0     003f19e1  _getSystemBusVoltage            
+0     003f19dd  _getSystemCapVoltage            
+0     003f19d9  _getSystemCapVoltageF           
+0     003f19d5  _getSystemIsRelay               
+0     003f19d1  _getSystemMode                  
+0     003f19d0  _getSystemNumDischarges         
+0     003f19cc  _getSystemOutCurrent            
+0     003f19c8  _getSystemOutCurrentF           
+0     003f19c7  _getSystemRuntimeEst            
+0     003f19c6  _getSystemRuntimeFL             
+0     003f19c5  _getSystemSSRelay               
+0     003f19c1  _getSystemStatus                
+0     003ef8d4  _get_fattime                    
+0     003f1bac  _gpio_init                      
 1     003f9810  _hfactor                        
 1     003f9880  _intercept                      
-0     003f2370  _latch_dac                      
-0     003f171b  _lcd_clear                      
-0     003f16c3  _lcd_dputs                      
-0     003f1611  _lcd_init                       
-0     003f15bb  _lcd_next                       
-0     003f15b1  _lcd_putchar                    
-0     003f159a  _lcd_puts                       
+0     003f2413  _latch_dac                      
+0     003f17be  _lcd_clear                      
+0     003f1766  _lcd_dputs                      
+0     003f16b4  _lcd_init                       
+0     003f165e  _lcd_next                       
+0     003f1654  _lcd_putchar                    
+0     003f163d  _lcd_puts                       
 1     003f9b00  _lcdbuff                        
 1     003f9ac1  _lcdidx                         
 1     003f9ac0  _lcdpos                         
-0     003f1dfb  _ldexpl                         
-0     003f1f4e  _led_init                       
-0     003f1efa  _led_set                        
-0     003f1ee7  _led_toggle                     
-0     003f1eb8  _led_turnon                     
+0     003f1e9e  _ldexpl                         
+0     003f1ff1  _led_init                       
+0     003f1f9d  _led_set                        
+0     003f1f8a  _led_toggle                     
+0     003f1f5b  _led_turnon                     
 1     003f97ae  _limit                          
 1     003f9796  _limitchgd                      
-0     003f2597  _ltoa                           
-0     003f0943  _maf_rst                        
+0     003f263a  _ltoa                           
+0     003f096c  _maf_rst                        
 1     000a9100  _mafbuf                         
 1     003f97d0  _mafdiff                        
 1     003f979e  _mafidx                         
 1     003f979a  _mafsize                        
 1     003f9840  _mafsum                         
 0     003ec3fe  _main                           
-0     003f0408  _markTxMailboxHandled           
+0     003f0431  _markTxMailboxHandled           
 0     003ec3af  _matchTag                       
-0     003f233a  _mcbsp_init                     
-0     003f2321  _mcbsp_xmit                     
-0     003f2945  _memccpy                        
-0     003f28f1  _memcmp                         
-0     003f2806  _memcpy                         
-0     003f2952  _memset                         
+0     003f23dd  _mcbsp_init                     
+0     003f23c4  _mcbsp_xmit                     
+0     003f29e8  _memccpy                        
+0     003f2994  _memcmp                         
+0     003f28a9  _memcpy                         
+0     003f29f5  _memset                         
 1     003f9790  _mon_cnt                        
 1     003f9786  _monrdy                         
 1     003f9aa0  _motorJog                       
 1     003f9a9e  _motorJogDir                    
-0     003f285b  _pdcopy                         
+0     003f28fe  _pdcopy                         
 1     003f9781  _peak_reset                     
-0     003f285b  _ppcopy                         
+0     003f28fe  _ppcopy                         
 1     003f9785  _prevSysState                   
 0     003ec36d  _print_channel                  
 0     003ec302  _print_dac                      
 0     003ec261  _print_limits                   
 0     003ec0d8  _print_sensor                   
 0     003ec089  _print_vfd                      
-0     003f056a  _processJSRGlobal               
+0     003f0593  _processJSRGlobal               
 1     00080000  _prodData                       
 0     000088dc  _prod_add                       
 1     003f9b82  _prod_avail                     
-0     003f1417  _prod_getavail                  
-0     003f1401  _prod_getnext                   
+0     003f14ba  _prod_getavail                  
+0     003f14a4  _prod_getnext                   
 1     003f9b80  _prod_head                      
-0     003f13fa  _prod_init                      
+0     003f149d  _prod_init                      
 1     003f9b81  _prod_tail                      
-0     003f25ec  _qep_getCountA                  
-0     003f25e8  _qep_getCountB                  
-0     003f25cd  _qep_init                       
-0     003f25c9  _qep_rstCountA                  
-0     003f25c5  _qep_rstCountB                  
+0     003f268f  _qep_getCountA                  
+0     003f268b  _qep_getCountB                  
+0     003f2670  _qep_init                       
+0     003f266c  _qep_rstCountA                  
+0     003f2668  _qep_rstCountB                  
 1     003f9791  _rawrdy                         
-0     003f2998  _reboot                         
-0     003f0548  _resetAlarms                    
-0     003f1725  _rsvd_ISR                       
+0     003f2a3b  _reboot                         
+0     003f0571  _resetAlarms                    
+0     003f17c8  _rsvd_ISR                       
 1     003f800e  _rtc                            
-0     003f1dfb  _scalbnl                        
+0     003f1e9e  _scalbnl                        
 0     0000886c  _sciaRxFifoIsr                  
 0     0000882d  _sciaTxFifoIsr                  
 1     003f8f43  _scia_cmd_mode                  
-0     003f0f27  _scia_get_cmd_mode              
-0     003f0f12  _scia_getparam                  
-0     003f0ec2  _scia_init                      
-0     003f0ea1  _scia_putchar                   
-0     003f0e7a  _scia_puts                      
-0     003f0e3d  _scia_putword                   
-0     003f0df6  _scia_putwordarray              
-0     003f0c34  _scia_reset                     
+0     003f0f50  _scia_get_cmd_mode              
+0     003f0f3b  _scia_getparam                  
+0     003f0eeb  _scia_init                      
+0     003f0eca  _scia_putchar                   
+0     003f0ea3  _scia_puts                      
+0     003f0e66  _scia_putword                   
+0     003f0e1f  _scia_putwordarray              
+0     003f0c5d  _scia_reset                     
 1     003f8f41  _scia_rx_avail                  
 1     003f8f80  _scia_rx_buff                   
 1     003f8f48  _scia_rx_cmds                   
-0     003f0df2  _scia_rx_getavail               
-0     003f0dd5  _scia_rx_getchar                
-0     003f0d5c  _scia_rx_getcmd                 
-0     003f0d58  _scia_rx_getcmds                
+0     003f0e1b  _scia_rx_getavail               
+0     003f0dfe  _scia_rx_getchar                
+0     003f0d85  _scia_rx_getcmd                 
+0     003f0d81  _scia_rx_getcmds                
 1     003f8f42  _scia_rx_head                   
 1     003f8f40  _scia_rx_tail                   
-0     003f0d2b  _scia_send                      
-0     003f0c46  _scia_send_bin                  
-0     003f0c3f  _scia_set_cmd_mode              
+0     003f0d54  _scia_send                      
+0     003f0c6f  _scia_send_bin                  
+0     003f0c68  _scia_set_cmd_mode              
 1     003f9380  _scia_tx_buff                   
 1     003f8f46  _scia_tx_head                   
 1     003f8f45  _scia_tx_left                   
@@ -1159,59 +1162,59 @@ abs   ffffffff  ___pinit__
 0     003f48fc  _secureRamFuncs_loadend         
 0     003f4551  _secureRamFuncs_loadstart       
 0     00008551  _secureRamFuncs_runstart        
-0     003f0460  _sendModStatus                  
-0     003f190f  _setModAlarms                   
-0     003f1900  _setModTemp                     
-0     003f18f1  _setModVoltage                  
-0     003f18f0  _setSSRelay                     
-0     003f18e5  _setShelfAlarms                 
-0     003f18da  _setShelfAvgTemp                
-0     003f18cf  _setShelfErrors                 
-0     003f18c4  _setShelfMaxTemp                
-0     003f18b9  _setShelfMaxTempID              
-0     003f18ae  _setShelfMinTemp                
-0     003f18a3  _setShelfMinTempID              
-0     003f1898  _setShelfVoltage                
-0     003f1894  _setSystemAvailEnergy           
-0     003f1893  _setSystemBusVoltage            
-0     003f188f  _setSystemCapVoltage            
-0     003f188b  _setSystemCapVoltageF           
-0     003f1887  _setSystemIsoRelay              
-0     003f1883  _setSystemMode                  
-0     003f1882  _setSystemNumDischarges         
-0     003f187e  _setSystemOutCurrent            
-0     003f187a  _setSystemOutCurrentF           
-0     003f1879  _setSystemRuntimeFL             
-0     003f1875  _setSystemStatus                
-0     003f1874  _setSytemRuntimeEst             
-0     003f0412  _setTRSforMailbox               
-0     003f2280  _set_lcd_en                     
-0     003f2272  _set_sd_en                      
-0     003f2264  _set_sd_spd                     
-0     003f224c  _shunt_switch                   
-0     003f043e  _sleepMCs                       
+0     003f0489  _sendModStatus                  
+0     003f19b2  _setModAlarms                   
+0     003f19a3  _setModTemp                     
+0     003f1994  _setModVoltage                  
+0     003f1993  _setSSRelay                     
+0     003f1988  _setShelfAlarms                 
+0     003f197d  _setShelfAvgTemp                
+0     003f1972  _setShelfErrors                 
+0     003f1967  _setShelfMaxTemp                
+0     003f195c  _setShelfMaxTempID              
+0     003f1951  _setShelfMinTemp                
+0     003f1946  _setShelfMinTempID              
+0     003f193b  _setShelfVoltage                
+0     003f1937  _setSystemAvailEnergy           
+0     003f1936  _setSystemBusVoltage            
+0     003f1932  _setSystemCapVoltage            
+0     003f192e  _setSystemCapVoltageF           
+0     003f192a  _setSystemIsoRelay              
+0     003f1926  _setSystemMode                  
+0     003f1925  _setSystemNumDischarges         
+0     003f1921  _setSystemOutCurrent            
+0     003f191d  _setSystemOutCurrentF           
+0     003f191c  _setSystemRuntimeFL             
+0     003f1918  _setSystemStatus                
+0     003f1917  _setSytemRuntimeEst             
+0     003f043b  _setTRSforMailbox               
+0     003f2323  _set_lcd_en                     
+0     003f2315  _set_sd_en                      
+0     003f2307  _set_sd_spd                     
+0     003f22ef  _shunt_switch                   
+0     003f0467  _sleepMCs                       
 1     003f9940  _slope                          
-0     003f1ff5  _spi_init                       
-0     003f1fed  _spi_recv                       
-0     003f1fe4  _spi_xmit                       
-0     003f2534  _sprintf                        
-0     003f2238  _ssr_set                        
-0     003f08f9  _stateMachine                   
-0     003f295e  _strchr                         
-0     003f2990  _strcpy                         
-0     003f2983  _strlen                         
-0     003f19c1  _strtod                         
-0     003f19c1  _strtof                         
+0     003f2098  _spi_init                       
+0     003f2090  _spi_recv                       
+0     003f2087  _spi_xmit                       
+0     003f25d7  _sprintf                        
+0     003f22db  _ssr_set                        
+0     003f0922  _stateMachine                   
+0     003f2a01  _strchr                         
+0     003f2a33  _strcpy                         
+0     003f2a26  _strlen                         
+0     003f1a64  _strtod                         
+0     003f1a64  _strtof                         
 1     003f8f44  _stx_received                   
 1     003f9789  _sysState                       
-0     003f1daa  _sys_init                       
-0     003f1046  _tagdetect                      
-0     003f0fa0  _taggetbit                      
-0     003f0fd6  _taggetbyte                     
-0     003f0fef  _tagid                          
-0     003f0f6f  _tagputbit                      
-0     003f0f8f  _tagputbyte                     
-0     003f0f2b  _tagrst                         
+0     003f1e4d  _sys_init                       
+0     003f106f  _tagdetect                      
+0     003f0fc9  _taggetbit                      
+0     003f0fff  _taggetbyte                     
+0     003f1018  _tagid                          
+0     003f0f98  _tagputbit                      
+0     003f0fb8  _tagputbyte                     
+0     003f0f54  _tagrst                         
 1     003f9787  _tagscnt                        
 1     003f978b  _tagsdetect                     
 1     003f800a  _tagwasthere                    
@@ -1220,22 +1223,22 @@ abs   ffffffff  ___pinit__
 1     003f9784  _tempread                       
 1     003f978c  _tempstart                      
 1     003f8200  _tsensor                        
-0     003f222f  _uart_set_dir                   
+0     003f22d2  _uart_set_dir                   
 0     003ec000  _update_units                   
 1     003f9783  _vall_reset                     
 1     000a8100  _veldbuf                        
 1     003f97aa  _veldsum                        
-0     003f0846  _velf_rst                       
+0     003f086f  _velf_rst                       
 1     003f9782  _velidx                         
 1     000a7100  _velpbuf                        
-0     003f041c  _wakeUpMCs                      
-0     003f1d17  _xintf_init                     
-0     003f1f8b  _xpi_adcdataread                
-0     003f1f5e  _xpi_xmit2                      
+0     003f0445  _wakeUpMCs                      
+0     003f1dba  _xintf_init                     
+0     003f202e  _xpi_adcdataread                
+0     003f2001  _xpi_xmit2                      
 abs   ffffffff  binit                           
 0     003de2e8  cinit                           
 1     003f8000  end                             
-0     003f299d  etext                           
+0     003f2a40  etext                           
 abs   ffffffff  pinit                           
 
 
@@ -1292,326 +1295,329 @@ page  address   name
 0     003ec36d  _print_channel                  
 0     003ec3af  _matchTag                       
 0     003ec3fe  _main                           
-0     003ef8ab  _get_fattime                    
-0     003f02f1  ___TI_printfi                   
-0     003f0408  _markTxMailboxHandled           
-0     003f0412  _setTRSforMailbox               
-0     003f041c  _wakeUpMCs                      
-0     003f043e  _sleepMCs                       
-0     003f0460  _sendModStatus                  
-0     003f0548  _resetAlarms                    
-0     003f056a  _processJSRGlobal               
-0     003f062a  _configCAN                      
-0     003f06fd  _InitECan                       
-0     003f07a3  _CAN_Tx_SendInformationRequest  
-0     003f0846  _velf_rst                       
-0     003f086a  _checkFaults                    
-0     003f08f9  _stateMachine                   
-0     003f0943  _maf_rst                        
-0     003f0964  _dac_setmode                    
-0     003f0968  _ad7738_tempstart               
-0     003f0971  _ad7738_tempread                
-0     003f097a  _ad7738_tagsdetect              
-0     003f0983  _ad7738_settemp                 
-0     003f09bb  _ad7738_setlimitchgd            
-0     003f09c0  _ad7738_setcal                  
-0     003f0a92  _ad7738_resetvall               
-0     003f0a96  _ad7738_resettare               
-0     003f0a9a  _ad7738_resetpeak               
-0     003f0a9e  _ad7738_resetlimit              
-0     003f0adb  _ad7738_rawrdy                  
-0     003f0adf  _ad7738_monrdy                  
-0     003f0ae3  _ad7738_monclr                  
-0     003f0ae7  _InitCpuTimer0                  
-0     003f0b01  _ConfigCpuTimer0                
-0     003f0b19  _ad7738_init                    
-0     003f0c03  _ad7738_getvall                 
-0     003f0c06  _ad7738_getraw                  
-0     003f0c0c  _ad7738_getpeak                 
-0     003f0c0f  _ad7738_getmon                  
-0     003f0c12  _ad7738_getlimitst              
-0     003f0c27  _ad7738_getlimitchgd            
-0     003f0c34  _scia_reset                     
-0     003f0c3f  _scia_set_cmd_mode              
-0     003f0c46  _scia_send_bin                  
-0     003f0d2b  _scia_send                      
-0     003f0d58  _scia_rx_getcmds                
-0     003f0d5c  _scia_rx_getcmd                 
-0     003f0dd5  _scia_rx_getchar                
-0     003f0df2  _scia_rx_getavail               
-0     003f0df6  _scia_putwordarray              
-0     003f0e3d  _scia_putword                   
-0     003f0e7a  _scia_puts                      
-0     003f0ea1  _scia_putchar                   
-0     003f0ec2  _scia_init                      
-0     003f0f12  _scia_getparam                  
-0     003f0f27  _scia_get_cmd_mode              
-0     003f0f2b  _tagrst                         
-0     003f0f6f  _tagputbit                      
-0     003f0f8f  _tagputbyte                     
-0     003f0fa0  _taggetbit                      
-0     003f0fd6  _taggetbyte                     
-0     003f0fef  _tagid                          
-0     003f1046  _tagdetect                      
-0     003f1080  _ds1820rst                      
-0     003f10ae  _ds1820putbit                   
-0     003f10df  _ds1820putbyte                  
-0     003f10f0  _ds1820start                    
-0     003f1111  _ds1820getbit                   
-0     003f113f  _ds1820getbyte                  
-0     003f1154  _ds1820read                     
-0     003f11c4  _ds1820id                       
-0     003f1211  _SPICAN_T0_RTS                  
-0     003f121d  _SPICANWrite                    
-0     003f1235  _SPICAN_SetT0Data               
-0     003f126a  _SPICAN_SetT0Addr               
-0     003f1298  _SPICANSetNorm                  
-0     003f12aa  _SPICANReset                    
-0     003f12b6  _SPICANReadStat                 
-0     003f12c7  _SPICANReadSetT0Message         
-0     003f12d4  _SPICANReadInt                  
-0     003f12e5  _SPICANReadBuf_Array            
-0     003f12ff  _SPICANReadBuf1                 
-0     003f1325  _SPICANRead                     
-0     003f1339  _SPICANRXStatus                 
-0     003f134d  _SPICANIntEn                    
-0     003f135f  _SPICANInit                     
-0     003f13fa  _prod_init                      
-0     003f1401  _prod_getnext                   
-0     003f1417  _prod_getavail                  
-0     003f141b  _conf_default                   
-0     003f1533  _bigbufftest                    
-0     003f159a  _lcd_puts                       
-0     003f15b1  _lcd_putchar                    
-0     003f15bb  _lcd_next                       
-0     003f1611  _lcd_init                       
-0     003f16c3  _lcd_dputs                      
-0     003f171b  _lcd_clear                      
-0     003f1725  _rsvd_ISR                       
-0     003f172a  _XINT2_ISR                      
-0     003f172f  _XINT1_ISR                      
-0     003f1734  _WAKEINT_ISR                    
-0     003f1739  _USER9_ISR                      
-0     003f173e  _USER8_ISR                      
-0     003f1743  _USER7_ISR                      
-0     003f1748  _USER6_ISR                      
-0     003f174d  _USER5_ISR                      
-0     003f1752  _USER4_ISR                      
-0     003f1757  _USER3_ISR                      
-0     003f175c  _USER2_ISR                      
-0     003f1761  _USER1_ISR                      
-0     003f1766  _USER12_ISR                     
-0     003f176b  _USER11_ISR                     
-0     003f1770  _USER10_ISR                     
-0     003f1775  _TINT0_ISR                      
-0     003f177a  _T4UFINT_ISR                    
-0     003f177f  _T4PINT_ISR                     
-0     003f1784  _T4OFINT_ISR                    
-0     003f1789  _T4CINT_ISR                     
-0     003f178e  _T3UFINT_ISR                    
-0     003f1793  _T3PINT_ISR                     
-0     003f1798  _T3OFINT_ISR                    
-0     003f179d  _T3CINT_ISR                     
-0     003f17a2  _T2UFINT_ISR                    
-0     003f17a7  _T2PINT_ISR                     
-0     003f17ac  _T2OFINT_ISR                    
-0     003f17b1  _T2CINT_ISR                     
-0     003f17b6  _T1UFINT_ISR                    
-0     003f17bb  _T1PINT_ISR                     
-0     003f17c0  _T1OFINT_ISR                    
-0     003f17c5  _T1CINT_ISR                     
-0     003f17ca  _SPITXINTA_ISR                  
-0     003f17cf  _SPIRXINTA_ISR                  
-0     003f17d4  _SCITXINTB_ISR                  
-0     003f17d9  _SCITXINTA_ISR                  
-0     003f17de  _SCIRXINTB_ISR                  
-0     003f17e3  _SCIRXINTA_ISR                  
-0     003f17e8  _RTOSINT_ISR                    
-0     003f17ed  _PIE_RESERVED                   
-0     003f17f2  _PDPINTB_ISR                    
-0     003f17f7  _PDPINTA_ISR                    
-0     003f17fc  _NMI_ISR                        
-0     003f1801  _MXINTA_ISR                     
-0     003f1806  _MRINTA_ISR                     
-0     003f180b  _INT14_ISR                      
-0     003f1810  _INT13_ISR                      
-0     003f1815  _ILLEGAL_ISR                    
-0     003f181a  _EMUINT_ISR                     
-0     003f181f  _EMPTY_ISR                      
-0     003f1824  _ECAN1INTA_ISR                  
-0     003f1829  _ECAN0INTA_ISR                  
-0     003f182e  _DATALOG_ISR                    
-0     003f1833  _CMP6INT_ISR                    
-0     003f1838  _CMP5INT_ISR                    
-0     003f183d  _CMP4INT_ISR                    
-0     003f1842  _CMP3INT_ISR                    
-0     003f1847  _CMP2INT_ISR                    
-0     003f184c  _CMP1INT_ISR                    
-0     003f1851  _CAPINT6_ISR                    
-0     003f1856  _CAPINT5_ISR                    
-0     003f185b  _CAPINT4_ISR                    
-0     003f1860  _CAPINT3_ISR                    
-0     003f1865  _CAPINT2_ISR                    
-0     003f186a  _CAPINT1_ISR                    
-0     003f186f  _ADCINT_ISR                     
-0     003f1874  _setSytemRuntimeEst             
-0     003f1875  _setSystemStatus                
-0     003f1879  _setSystemRuntimeFL             
-0     003f187a  _setSystemOutCurrentF           
-0     003f187e  _setSystemOutCurrent            
-0     003f1882  _setSystemNumDischarges         
-0     003f1883  _setSystemMode                  
-0     003f1887  _setSystemIsoRelay              
-0     003f188b  _setSystemCapVoltageF           
-0     003f188f  _setSystemCapVoltage            
-0     003f1893  _setSystemBusVoltage            
-0     003f1894  _setSystemAvailEnergy           
-0     003f1898  _setShelfVoltage                
-0     003f18a3  _setShelfMinTempID              
-0     003f18ae  _setShelfMinTemp                
-0     003f18b9  _setShelfMaxTempID              
-0     003f18c4  _setShelfMaxTemp                
-0     003f18cf  _setShelfErrors                 
-0     003f18da  _setShelfAvgTemp                
-0     003f18e5  _setShelfAlarms                 
-0     003f18f0  _setSSRelay                     
-0     003f18f1  _setModVoltage                  
-0     003f1900  _setModTemp                     
-0     003f190f  _setModAlarms                   
-0     003f191e  _getSystemStatus                
-0     003f1922  _getSystemSSRelay               
-0     003f1923  _getSystemRuntimeFL             
-0     003f1924  _getSystemRuntimeEst            
-0     003f1925  _getSystemOutCurrentF           
-0     003f1929  _getSystemOutCurrent            
-0     003f192d  _getSystemNumDischarges         
-0     003f192e  _getSystemMode                  
-0     003f1932  _getSystemIsRelay               
-0     003f1936  _getSystemCapVoltageF           
-0     003f193a  _getSystemCapVoltage            
-0     003f193e  _getSystemBusVoltage            
-0     003f1940  _getSystemAvailEnergy           
-0     003f1944  _getShelfVoltage                
-0     003f194e  _getShelfMinTempID              
-0     003f1958  _getShelfMinTemp                
-0     003f1962  _getShelfMaxTempID              
-0     003f196c  _getShelfMaxTemp                
-0     003f1976  _getShelfErrors                 
-0     003f1980  _getShelfAvgTemp                
-0     003f198a  _getShelfAlarms                 
-0     003f1994  _getModVoltage                  
-0     003f19a3  _getModTemp                     
-0     003f19b2  _getModAlarms                   
-0     003f19c1  _strtod                         
-0     003f19c1  _strtof                         
-0     003f1b09  _gpio_init                      
-0     003f1c10  LL$$DIV                         
-0     003f1c4c  LL$$MOD                         
-0     003f1c86  ULL$$DIV                        
-0     003f1cb5  ULL$$MOD                        
-0     003f1d17  _xintf_init                     
-0     003f1daa  _sys_init                       
-0     003f1dfb  _ldexpl                         
-0     003f1dfb  _scalbnl                        
-0     003f1eb8  _led_turnon                     
-0     003f1ee7  _led_toggle                     
-0     003f1efa  _led_set                        
-0     003f1f4e  _led_init                       
-0     003f1f5e  _xpi_xmit2                      
-0     003f1f8b  _xpi_adcdataread                
-0     003f1fe4  _spi_xmit                       
-0     003f1fed  _spi_recv                       
-0     003f1ff5  _spi_init                       
-0     003f2002  FD$$ADD                         
-0     003f209e  FD$$DIV                         
-0     003f2129  FD$$MPY                         
-0     003f21ac  FS$$DIV                         
-0     003f222f  _uart_set_dir                   
-0     003f2238  _ssr_set                        
-0     003f224c  _shunt_switch                   
-0     003f2264  _set_sd_spd                     
-0     003f2272  _set_sd_en                      
-0     003f2280  _set_lcd_en                     
-0     003f228e  _extio_init                     
-0     003f2295  _anaen_set                      
-0     003f22a9  FS$$SUB                         
-0     003f22ae  FS$$ADD                         
-0     003f2321  _mcbsp_xmit                     
-0     003f233a  _mcbsp_init                     
-0     003f2370  _latch_dac                      
-0     003f237d  _frexpl                         
-0     003f23d9  FS$$MPY                         
-0     003f2433  _c_int00                        
-0     003f2487  _copy_in                        
-0     003f24cd  _atol                           
-0     003f2502  _conf_write                     
-0     003f2529  _conf_read                      
-0     003f2534  _sprintf                        
-0     003f2566  _atoi                           
-0     003f2597  _ltoa                           
-0     003f25c5  _qep_rstCountB                  
-0     003f25c9  _qep_rstCountA                  
-0     003f25cd  _qep_init                       
-0     003f25e8  _qep_getCountB                  
-0     003f25ec  _qep_getCountA                  
-0     003f25f0  FD$$CMP                         
-0     003f261a  L$$DIV                          
-0     003f2629  L$$MOD                          
-0     003f2637  UL$$DIV                         
-0     003f263e  UL$$MOD                         
-0     003f2644  C$$EXIT                         
-0     003f2644  _abort                          
-0     003f2646  _exit                           
-0     003f266d  FS$$TOL                         
-0     003f2696  _InitPieCtrl                    
-0     003f26b5  _EnableInterrupts               
-0     003f26be  FS$$TOI                         
-0     003f26e3  FS$$TOLL                        
-0     003f2707  _copysignl                      
-0     003f272a  I$$DIV                          
-0     003f273b  I$$MOD                          
-0     003f274c  LL$$TOFS                        
-0     003f276e  FD$$TOI                         
-0     003f278f  FD$$TOL                         
-0     003f27ae  LL$$CMP                         
-0     003f27c0  ULL$$CMP                        
-0     003f27cc  FS$$TOU                         
-0     003f27e9  I$$TOFD                         
-0     003f2806  _memcpy                         
-0     003f2823  FS$$TOFD                        
-0     003f283f  L$$TOFD                         
-0     003f285b  _ddcopy                         
-0     003f285b  _dpcopy                         
-0     003f285b  _pdcopy                         
-0     003f285b  _ppcopy                         
-0     003f2875  I$$TOFS                         
-0     003f288f  L$$TOFS                         
-0     003f28a9  __args_main                     
-0     003f28c2  LL$$AND                         
-0     003f28ca  LL$$OR                          
-0     003f28d2  LL$$XOR                         
-0     003f28da  FS$$CMP                         
-0     003f28f1  _memcmp                         
-0     003f2906  _InitPieVectTable               
-0     003f2917  _delay_us                       
-0     003f2927  U$$TOFS                         
-0     003f2937  FD$$SUB                         
-0     003f2945  _memccpy                        
-0     003f2952  _memset                         
-0     003f295e  _strchr                         
-0     003f2969  __register_unlock               
-0     003f296d  __register_lock                 
-0     003f2971  __nop                           
-0     003f2972  FD$$NEG                         
-0     003f2983  _strlen                         
-0     003f298b  FS$$NEG                         
-0     003f2990  _strcpy                         
-0     003f2995  _SetDBGIER                      
-0     003f2998  _reboot                         
-0     003f299a  __system_pre_init               
-0     003f299c  __system_post_cinit             
-0     003f299d  ___etext__                      
-0     003f299d  etext                           
+0     003ef8d4  _get_fattime                    
+0     003f031a  ___TI_printfi                   
+0     003f0431  _markTxMailboxHandled           
+0     003f043b  _setTRSforMailbox               
+0     003f0445  _wakeUpMCs                      
+0     003f0467  _sleepMCs                       
+0     003f0489  _sendModStatus                  
+0     003f0571  _resetAlarms                    
+0     003f0593  _processJSRGlobal               
+0     003f0653  _configCAN                      
+0     003f0726  _InitECan                       
+0     003f07cc  _CAN_Tx_SendInformationRequest  
+0     003f086f  _velf_rst                       
+0     003f0893  _checkFaults                    
+0     003f0922  _stateMachine                   
+0     003f096c  _maf_rst                        
+0     003f098d  _dac_setmode                    
+0     003f0991  _ad7738_tempstart               
+0     003f099a  _ad7738_tempread                
+0     003f09a3  _ad7738_tagsdetect              
+0     003f09ac  _ad7738_settemp                 
+0     003f09e4  _ad7738_setlimitchgd            
+0     003f09e9  _ad7738_setcal                  
+0     003f0abb  _ad7738_resetvall               
+0     003f0abf  _ad7738_resettare               
+0     003f0ac3  _ad7738_resetpeak               
+0     003f0ac7  _ad7738_resetlimit              
+0     003f0b04  _ad7738_rawrdy                  
+0     003f0b08  _ad7738_monrdy                  
+0     003f0b0c  _ad7738_monclr                  
+0     003f0b10  _InitCpuTimer0                  
+0     003f0b2a  _ConfigCpuTimer0                
+0     003f0b42  _ad7738_init                    
+0     003f0c2c  _ad7738_getvall                 
+0     003f0c2f  _ad7738_getraw                  
+0     003f0c35  _ad7738_getpeak                 
+0     003f0c38  _ad7738_getmon                  
+0     003f0c3b  _ad7738_getlimitst              
+0     003f0c50  _ad7738_getlimitchgd            
+0     003f0c5d  _scia_reset                     
+0     003f0c68  _scia_set_cmd_mode              
+0     003f0c6f  _scia_send_bin                  
+0     003f0d54  _scia_send                      
+0     003f0d81  _scia_rx_getcmds                
+0     003f0d85  _scia_rx_getcmd                 
+0     003f0dfe  _scia_rx_getchar                
+0     003f0e1b  _scia_rx_getavail               
+0     003f0e1f  _scia_putwordarray              
+0     003f0e66  _scia_putword                   
+0     003f0ea3  _scia_puts                      
+0     003f0eca  _scia_putchar                   
+0     003f0eeb  _scia_init                      
+0     003f0f3b  _scia_getparam                  
+0     003f0f50  _scia_get_cmd_mode              
+0     003f0f54  _tagrst                         
+0     003f0f98  _tagputbit                      
+0     003f0fb8  _tagputbyte                     
+0     003f0fc9  _taggetbit                      
+0     003f0fff  _taggetbyte                     
+0     003f1018  _tagid                          
+0     003f106f  _tagdetect                      
+0     003f10a9  _ds1820rst                      
+0     003f10d7  _ds1820putbit                   
+0     003f1108  _ds1820putbyte                  
+0     003f1119  _ds1820start                    
+0     003f113a  _ds1820getbit                   
+0     003f1168  _ds1820getbyte                  
+0     003f117d  _ds1820read                     
+0     003f11ed  _ds1820id                       
+0     003f123a  _SPICAN_T0_RTS                  
+0     003f1246  _SPICANWrite                    
+0     003f125e  _SPICAN_SetT0Data               
+0     003f1293  _SPICAN_SetT0Addr               
+0     003f12c1  _SPICANRead                     
+0     003f12d5  _SPICANVerifyTXBuf              
+0     003f12f9  _SPICANSetNorm                  
+0     003f130b  _SPICANReset                    
+0     003f1317  _SPICANReadStat                 
+0     003f1328  _SPICANReadSetT0Message         
+0     003f1335  _SPICANReadInt                  
+0     003f1346  _SPICANRXStatus                 
+0     003f135a  _SPICANRXBufReady               
+0     003f1370  _SPICANReadBuf_Array            
+0     003f138a  _SPICANReadBufs                 
+0     003f13ca  _SPICANReadBuf1                 
+0     003f13f0  _SPICANIntEn                    
+0     003f1402  _SPICANInit                     
+0     003f149d  _prod_init                      
+0     003f14a4  _prod_getnext                   
+0     003f14ba  _prod_getavail                  
+0     003f14be  _conf_default                   
+0     003f15d6  _bigbufftest                    
+0     003f163d  _lcd_puts                       
+0     003f1654  _lcd_putchar                    
+0     003f165e  _lcd_next                       
+0     003f16b4  _lcd_init                       
+0     003f1766  _lcd_dputs                      
+0     003f17be  _lcd_clear                      
+0     003f17c8  _rsvd_ISR                       
+0     003f17cd  _XINT2_ISR                      
+0     003f17d2  _XINT1_ISR                      
+0     003f17d7  _WAKEINT_ISR                    
+0     003f17dc  _USER9_ISR                      
+0     003f17e1  _USER8_ISR                      
+0     003f17e6  _USER7_ISR                      
+0     003f17eb  _USER6_ISR                      
+0     003f17f0  _USER5_ISR                      
+0     003f17f5  _USER4_ISR                      
+0     003f17fa  _USER3_ISR                      
+0     003f17ff  _USER2_ISR                      
+0     003f1804  _USER1_ISR                      
+0     003f1809  _USER12_ISR                     
+0     003f180e  _USER11_ISR                     
+0     003f1813  _USER10_ISR                     
+0     003f1818  _TINT0_ISR                      
+0     003f181d  _T4UFINT_ISR                    
+0     003f1822  _T4PINT_ISR                     
+0     003f1827  _T4OFINT_ISR                    
+0     003f182c  _T4CINT_ISR                     
+0     003f1831  _T3UFINT_ISR                    
+0     003f1836  _T3PINT_ISR                     
+0     003f183b  _T3OFINT_ISR                    
+0     003f1840  _T3CINT_ISR                     
+0     003f1845  _T2UFINT_ISR                    
+0     003f184a  _T2PINT_ISR                     
+0     003f184f  _T2OFINT_ISR                    
+0     003f1854  _T2CINT_ISR                     
+0     003f1859  _T1UFINT_ISR                    
+0     003f185e  _T1PINT_ISR                     
+0     003f1863  _T1OFINT_ISR                    
+0     003f1868  _T1CINT_ISR                     
+0     003f186d  _SPITXINTA_ISR                  
+0     003f1872  _SPIRXINTA_ISR                  
+0     003f1877  _SCITXINTB_ISR                  
+0     003f187c  _SCITXINTA_ISR                  
+0     003f1881  _SCIRXINTB_ISR                  
+0     003f1886  _SCIRXINTA_ISR                  
+0     003f188b  _RTOSINT_ISR                    
+0     003f1890  _PIE_RESERVED                   
+0     003f1895  _PDPINTB_ISR                    
+0     003f189a  _PDPINTA_ISR                    
+0     003f189f  _NMI_ISR                        
+0     003f18a4  _MXINTA_ISR                     
+0     003f18a9  _MRINTA_ISR                     
+0     003f18ae  _INT14_ISR                      
+0     003f18b3  _INT13_ISR                      
+0     003f18b8  _ILLEGAL_ISR                    
+0     003f18bd  _EMUINT_ISR                     
+0     003f18c2  _EMPTY_ISR                      
+0     003f18c7  _ECAN1INTA_ISR                  
+0     003f18cc  _ECAN0INTA_ISR                  
+0     003f18d1  _DATALOG_ISR                    
+0     003f18d6  _CMP6INT_ISR                    
+0     003f18db  _CMP5INT_ISR                    
+0     003f18e0  _CMP4INT_ISR                    
+0     003f18e5  _CMP3INT_ISR                    
+0     003f18ea  _CMP2INT_ISR                    
+0     003f18ef  _CMP1INT_ISR                    
+0     003f18f4  _CAPINT6_ISR                    
+0     003f18f9  _CAPINT5_ISR                    
+0     003f18fe  _CAPINT4_ISR                    
+0     003f1903  _CAPINT3_ISR                    
+0     003f1908  _CAPINT2_ISR                    
+0     003f190d  _CAPINT1_ISR                    
+0     003f1912  _ADCINT_ISR                     
+0     003f1917  _setSytemRuntimeEst             
+0     003f1918  _setSystemStatus                
+0     003f191c  _setSystemRuntimeFL             
+0     003f191d  _setSystemOutCurrentF           
+0     003f1921  _setSystemOutCurrent            
+0     003f1925  _setSystemNumDischarges         
+0     003f1926  _setSystemMode                  
+0     003f192a  _setSystemIsoRelay              
+0     003f192e  _setSystemCapVoltageF           
+0     003f1932  _setSystemCapVoltage            
+0     003f1936  _setSystemBusVoltage            
+0     003f1937  _setSystemAvailEnergy           
+0     003f193b  _setShelfVoltage                
+0     003f1946  _setShelfMinTempID              
+0     003f1951  _setShelfMinTemp                
+0     003f195c  _setShelfMaxTempID              
+0     003f1967  _setShelfMaxTemp                
+0     003f1972  _setShelfErrors                 
+0     003f197d  _setShelfAvgTemp                
+0     003f1988  _setShelfAlarms                 
+0     003f1993  _setSSRelay                     
+0     003f1994  _setModVoltage                  
+0     003f19a3  _setModTemp                     
+0     003f19b2  _setModAlarms                   
+0     003f19c1  _getSystemStatus                
+0     003f19c5  _getSystemSSRelay               
+0     003f19c6  _getSystemRuntimeFL             
+0     003f19c7  _getSystemRuntimeEst            
+0     003f19c8  _getSystemOutCurrentF           
+0     003f19cc  _getSystemOutCurrent            
+0     003f19d0  _getSystemNumDischarges         
+0     003f19d1  _getSystemMode                  
+0     003f19d5  _getSystemIsRelay               
+0     003f19d9  _getSystemCapVoltageF           
+0     003f19dd  _getSystemCapVoltage            
+0     003f19e1  _getSystemBusVoltage            
+0     003f19e3  _getSystemAvailEnergy           
+0     003f19e7  _getShelfVoltage                
+0     003f19f1  _getShelfMinTempID              
+0     003f19fb  _getShelfMinTemp                
+0     003f1a05  _getShelfMaxTempID              
+0     003f1a0f  _getShelfMaxTemp                
+0     003f1a19  _getShelfErrors                 
+0     003f1a23  _getShelfAvgTemp                
+0     003f1a2d  _getShelfAlarms                 
+0     003f1a37  _getModVoltage                  
+0     003f1a46  _getModTemp                     
+0     003f1a55  _getModAlarms                   
+0     003f1a64  _strtod                         
+0     003f1a64  _strtof                         
+0     003f1bac  _gpio_init                      
+0     003f1cb3  LL$$DIV                         
+0     003f1cef  LL$$MOD                         
+0     003f1d29  ULL$$DIV                        
+0     003f1d58  ULL$$MOD                        
+0     003f1dba  _xintf_init                     
+0     003f1e4d  _sys_init                       
+0     003f1e9e  _ldexpl                         
+0     003f1e9e  _scalbnl                        
+0     003f1f5b  _led_turnon                     
+0     003f1f8a  _led_toggle                     
+0     003f1f9d  _led_set                        
+0     003f1ff1  _led_init                       
+0     003f2001  _xpi_xmit2                      
+0     003f202e  _xpi_adcdataread                
+0     003f2087  _spi_xmit                       
+0     003f2090  _spi_recv                       
+0     003f2098  _spi_init                       
+0     003f20a5  FD$$ADD                         
+0     003f2141  FD$$DIV                         
+0     003f21cc  FD$$MPY                         
+0     003f224f  FS$$DIV                         
+0     003f22d2  _uart_set_dir                   
+0     003f22db  _ssr_set                        
+0     003f22ef  _shunt_switch                   
+0     003f2307  _set_sd_spd                     
+0     003f2315  _set_sd_en                      
+0     003f2323  _set_lcd_en                     
+0     003f2331  _extio_init                     
+0     003f2338  _anaen_set                      
+0     003f234c  FS$$SUB                         
+0     003f2351  FS$$ADD                         
+0     003f23c4  _mcbsp_xmit                     
+0     003f23dd  _mcbsp_init                     
+0     003f2413  _latch_dac                      
+0     003f2420  _frexpl                         
+0     003f247c  FS$$MPY                         
+0     003f24d6  _c_int00                        
+0     003f252a  _copy_in                        
+0     003f2570  _atol                           
+0     003f25a5  _conf_write                     
+0     003f25cc  _conf_read                      
+0     003f25d7  _sprintf                        
+0     003f2609  _atoi                           
+0     003f263a  _ltoa                           
+0     003f2668  _qep_rstCountB                  
+0     003f266c  _qep_rstCountA                  
+0     003f2670  _qep_init                       
+0     003f268b  _qep_getCountB                  
+0     003f268f  _qep_getCountA                  
+0     003f2693  FD$$CMP                         
+0     003f26bd  L$$DIV                          
+0     003f26cc  L$$MOD                          
+0     003f26da  UL$$DIV                         
+0     003f26e1  UL$$MOD                         
+0     003f26e7  C$$EXIT                         
+0     003f26e7  _abort                          
+0     003f26e9  _exit                           
+0     003f2710  FS$$TOL                         
+0     003f2739  _InitPieCtrl                    
+0     003f2758  _EnableInterrupts               
+0     003f2761  FS$$TOI                         
+0     003f2786  FS$$TOLL                        
+0     003f27aa  _copysignl                      
+0     003f27cd  I$$DIV                          
+0     003f27de  I$$MOD                          
+0     003f27ef  LL$$TOFS                        
+0     003f2811  FD$$TOI                         
+0     003f2832  FD$$TOL                         
+0     003f2851  LL$$CMP                         
+0     003f2863  ULL$$CMP                        
+0     003f286f  FS$$TOU                         
+0     003f288c  I$$TOFD                         
+0     003f28a9  _memcpy                         
+0     003f28c6  FS$$TOFD                        
+0     003f28e2  L$$TOFD                         
+0     003f28fe  _ddcopy                         
+0     003f28fe  _dpcopy                         
+0     003f28fe  _pdcopy                         
+0     003f28fe  _ppcopy                         
+0     003f2918  I$$TOFS                         
+0     003f2932  L$$TOFS                         
+0     003f294c  __args_main                     
+0     003f2965  LL$$AND                         
+0     003f296d  LL$$OR                          
+0     003f2975  LL$$XOR                         
+0     003f297d  FS$$CMP                         
+0     003f2994  _memcmp                         
+0     003f29a9  _InitPieVectTable               
+0     003f29ba  _delay_us                       
+0     003f29ca  U$$TOFS                         
+0     003f29da  FD$$SUB                         
+0     003f29e8  _memccpy                        
+0     003f29f5  _memset                         
+0     003f2a01  _strchr                         
+0     003f2a0c  __register_unlock               
+0     003f2a10  __register_lock                 
+0     003f2a14  __nop                           
+0     003f2a15  FD$$NEG                         
+0     003f2a26  _strlen                         
+0     003f2a2e  FS$$NEG                         
+0     003f2a33  _strcpy                         
+0     003f2a38  _SetDBGIER                      
+0     003f2a3b  _reboot                         
+0     003f2a3d  __system_pre_init               
+0     003f2a3f  __system_post_cinit             
+0     003f2a40  ___etext__                      
+0     003f2a40  etext                           
 0     003f4000  _Flash28_API_LoadStart          
 0     003f4551  _Flash28_API_LoadEnd            
 0     003f4551  _secureRamFuncs_loadstart       
@@ -1652,11 +1658,11 @@ page  address   name
 1     003f8000  .bss                            
 1     003f8000  ___bss__                        
 1     003f8000  ___end__                        
-1     003f8000  _cmd_mode                       
+1     003f8000  _autoidchanged                  
 1     003f8000  end                             
-1     003f8001  _autoidchanged                  
-1     003f8002  _VEL_U                          
-1     003f8004  _POS_U                          
+1     003f8001  _cmd_mode                       
+1     003f8002  _POS_U                          
+1     003f8004  _VEL_U                          
 1     003f8006  _autoid                         
 1     003f800a  _tagwasthere                    
 1     003f800e  _rtc                            
@@ -1756,4 +1762,4 @@ abs   ffffffff  ___pinit__
 abs   ffffffff  binit                           
 abs   ffffffff  pinit                           
 
-[512 symbols]
+[515 symbols]
