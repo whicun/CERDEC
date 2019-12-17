@@ -24,8 +24,10 @@ void SPICANInit(void)
 	SPICANWrite(0x28, 0xC2);		// Setting up CNF3	
 
 	SPICANWrite(0x2B, 0x00);		// Clearing all interrupts
-	SPICANWrite(0x60, 0x60);		// Setup up RXB0 to receive all messages
-	SPICANWrite(0x70, 0x60);		// Setup up RXB1 to receive all messages
+	SPICANWrite(0x60, 0x04);		// Setup up RXB0 to receive all messages
+	SPICANWrite(0x70, 0x00);		// Setup up RXB1 to receive all messages
+	// SPICANWrite(0x60, 0x60);		// Setup up RXB0 to receive all messages
+	// SPICANWrite(0x70, 0x60);		// Setup up RXB1 to receive all messages
 	SPICANSetNorm();				// Allow for Normal Mode
 	SPICANReadStat();				// Confirm we are in Normal Mode
 	return;
