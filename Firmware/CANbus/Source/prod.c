@@ -616,11 +616,7 @@ void main(void) {
 	data[7] = SPICANRead(0x0F);
 	
 	SPICANReadSetT0Message(0xA1, 8, data);
-	// delay_us(10);
-	while(SPICANVerifyTXBuf(0, data) == 0 && res < 100000)
-	{
-		res++;
-	}
+	SPICANWaitForTXBuf(0);
 	SPICAN_T0_RTS();
 
 	data[0] = res;
@@ -642,49 +638,20 @@ void main(void) {
 
 	for (;;) {
 
-		// Get the status of the RX buffers
-//		data[7] = SPICANRXStatus();
-//		delay_us(10);
 		data[7] = SPICANReadBufs(data2, data3);
-
-		// // Check if there's a message in the RX Buffers
-		// if(data[7] != 0x00)
-		// {
-		// 	// First RX Buffer 0
-		// 	if((data[7] & 0x02) == 0x02)
-		// 	{
-		// 		SPICANReadBuf_Array(data2, 0);
-		// 		delay_us(10);
-		// 		SPICAN_T0_RTS();
-		// 	}
-
-		// 	// Second RX Buffer 1
-		// 	if((data[7] & 0x01) == 0x01)
-		// 	{
-		// 		SPICANReadBuf_Array(data3, 1);
-		// 	}
-		// }
 
 		if(data[7] > 1)
 		{
-			delay_us(10);
+			SPICANWaitForTXBuf(0);
 			SPICANReadSetT0Message(0xA2, 8, data2);
-			res = 0;
-			while(SPICANVerifyTXBuf(0, data2) == 0 && res < 100000)
-			{
-				res++;
-			}
+			SPICANWaitForTXBuf(0);
 			SPICAN_T0_RTS();
 		}
 		else if(data[7] > 0)
 		{
-			delay_us(10);
+			SPICANWaitForTXBuf(0);
 			SPICANReadSetT0Message(0xA3, 8, data3);
-			res = 0;
-			while(SPICANVerifyTXBuf(0, data3) == 0 && res < 100000)
-			{
-				res++;
-			}
+			SPICANWaitForTXBuf(0);
 			SPICAN_T0_RTS();
 		}
 

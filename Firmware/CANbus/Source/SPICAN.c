@@ -23,9 +23,37 @@ void SPICANInit(void)
 	// Set up buffers to receive all valid messages
 	SPICANWrite(0x60, 0x04);		// Set BUKT to be 1
 	SPICANWrite(0x70, 0x00);		// Setup up RXB1 to receive all messages
+
+	// Set up filters for RX buffs
+	SPICANWrite(0x00, 0x80);
+	SPICANWrite(0x01, 0x00);
+
+	// Set up masks for RX buffs
+	SPICANWrite(0x20, 0xF9);
+	SPICANWrite(0x21, 0x00);
+
+	// MASK: 111 1100 1000
+	// FILT: 100 0000 0000
+	// RSLT: 100 00XX 0XXX (X is don't care)
 	
 	SPICANSetNorm();				// Allow for Normal Mode
 	SPICANReadStat();				// Confirm we are in Normal Mode
+	return;
+}
+
+void SPICANMasksFilts(void)
+{
+	// Set up filters for RX buffs
+	SPICANWrite(0x00, 0x80);
+	SPICANWrite(0x01, 0x00);
+
+	// Set up masks for RX buffs
+	SPICANWrite(0x20, 0xF9);
+	SPICANWrite(0x21, 0x00);
+
+	// MASK: 111 1100 1000
+	// FILT: 100 0000 0000
+	// RSLT: 100 00XX 0XXX (X is don't care)
 	return;
 }
 
@@ -208,12 +236,10 @@ Uint16 SPICANReadBufs(Uint16 buf1[], Uint16 buf2[])
 
 	// Get the status of the RX Buffs
 	buf_status = SPICANRXBufReady();
-	delay_us(100);
 
 	// Check if there's a message in the RX Buffers
 	if(buf_status != 0x00)
 	{
-		delay_us(10);
 		// First RX Buffer 0
 		if((buf_status & 0x01) == 0x01)
 		{
@@ -224,8 +250,6 @@ Uint16 SPICANReadBufs(Uint16 buf1[], Uint16 buf2[])
 		// Second RX Buffer 1
 		if((buf_status & 0x02) == 0x02)
 		{
-			if(res > 0x00)
-				delay_us(10);
 			SPICANReadBuf_Array(buf2, 1);
 			res |= 0x02;
 		}
@@ -245,6 +269,16 @@ int SPICANVerifyTXBuf(Uint16 buf, Uint16 data_check[])
 		}
 	}
 	return 1;
+}
+
+void SPICANWaitForTXBuf(Uint16 buf_num)
+{
+	Uint16 res;
+	res = SPICANRead(0x30 + (buf_num << 8));
+	while((res & 0x08) == 0x08)
+	{
+		res = SPICANRead(0x30 + (buf_num << 8));
+	}
 }
 
 // CONFIGURATION NOTE

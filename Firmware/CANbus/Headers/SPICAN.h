@@ -55,5 +55,7 @@ void SPICAN_T0_RTS (void);
 Uint16 SPICANRXBufReady(void);
 Uint16 SPICANReadBufs(Uint16 buf1[], Uint16 buf2[]);
 int SPICANVerifyTXBuf(Uint16 buf, Uint16 data_check[]);
+void SPICANWaitForTXBuf(Uint16 buf_num);
+void SPICANMasksFilts(void);
 
 #endif
