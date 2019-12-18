@@ -57,5 +57,8 @@ Uint16 SPICANReadBufs(Uint16 buf1[], Uint16 buf2[]);
 int SPICANVerifyTXBuf(Uint16 buf, Uint16 data_check[]);
 void SPICANWaitForTXBuf(Uint16 buf_num);
 void SPICANMasksFilts(void);
+void SPICANBitModify(Uint16 address, Uint16 mask, Uint16 data_byte);
+void SPICANConfigure(void);
+Uint16 SPICANReadInts(void);
 
 #endif

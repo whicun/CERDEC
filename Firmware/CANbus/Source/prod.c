@@ -598,8 +598,9 @@ void main(void) {
 	Uint16 data2[8];
 	Uint16 data3[8];
 	int n;
-	Uint16 res;
-	res = 0;
+	Uint16 res_1;
+	volatile Uint16 res_2;
+	res_1 = 0;
 	SPICANInit();
 	for(n = 0; n < 8; n++)
 	{
@@ -617,9 +618,9 @@ void main(void) {
 	
 	SPICANReadSetT0Message(0xA1, 8, data);
 	SPICANWaitForTXBuf(0);
-	SPICAN_T0_RTS();
+//	SPICAN_T0_RTS();
 
-	data[0] = res;
+	data[0] = res_1;
 	data[0] = data[0] + 1;
 	data[1] = data[1] + 1;
 	data[2] = data[2] + 1;
@@ -630,24 +631,36 @@ void main(void) {
 
 	data[0] = SPICANRead(0x30);
 	data[1] = SPICANRead(0x40);
-	data[2] = SPICANRead(SPICAN_TXB0D0 + 2);
-	data[3] = SPICANRead(SPICAN_TXB0D0 + 3);
+	data[2] = SPICANRead(0x2B);
+	data[3] = SPICANRead(0x2C);
 	data[4] = SPICANRead(SPICAN_TXB0D0 + 4);
 	data[5] = SPICANRead(SPICAN_TXB0D0 + 5);
 	data[6] = SPICANRead(SPICAN_TXB0D0 + 6);
 
 	for (;;) {
 
-		data[7] = SPICANReadBufs(data2, data3);
+		Uint16 should_send;
+		// data[7] = SPICANReadBufs(data2, data3);
+//		should_send = SPICANReadBufs(data2, data3);
 
-		if(data[7] > 1)
+//		res_1 = SPICANRead(0x2C);
+//		delay_us(10);
+//		res_2 = (res_1 & 0xFC);
+		SPICANBitModify(0x2C, 0x03, 0x00);
+		delay_us(10);
+		res_2 = SPICANReadInts();
+		// SPICANWrite(0x2C, res_2);
+//		res_2 = SPICANRead(0x2C);
+//		res_2 = 0x00;
+		if((res_2 & 0x01) == 0x01)
 		{
 			SPICANWaitForTXBuf(0);
 			SPICANReadSetT0Message(0xA2, 8, data2);
 			SPICANWaitForTXBuf(0);
 			SPICAN_T0_RTS();
+			res_2 = SPICANRead(0x2C);
 		}
-		else if(data[7] > 0)
+		else if((res_2 & 0x02) == 0x02)
 		{
 			SPICANWaitForTXBuf(0);
 			SPICANReadSetT0Message(0xA3, 8, data3);

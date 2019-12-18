@@ -13,29 +13,17 @@ void SPICANInit(void)
 	SPICANReadStat();				// Make sure we're in config mode
 	delay_us(10);					// Need some form of delay
 
-	// For configuration details, see note at bottom
-	SPICANWrite(0x2A, 0x81);		// Setting up CNF1
-	SPICANWrite(0x29, 0xD0);		// Setting up CNF2
-	SPICANWrite(0x28, 0xC2);		// Setting up CNF3	
+	SPICANConfigure();	
 
 	SPICANWrite(0x2B, 0x00);		// Clearing all interrupts
+	// SPICANWrite(0x2B, 0xFF); // Enabling all interrupts
 	
 	// Set up buffers to receive all valid messages
 	SPICANWrite(0x60, 0x04);		// Set BUKT to be 1
 	SPICANWrite(0x70, 0x00);		// Setup up RXB1 to receive all messages
 
-	// Set up filters for RX buffs
-	SPICANWrite(0x00, 0x80);
-	SPICANWrite(0x01, 0x00);
+	SPICANMasksFilts();
 
-	// Set up masks for RX buffs
-	SPICANWrite(0x20, 0xF9);
-	SPICANWrite(0x21, 0x00);
-
-	// MASK: 111 1100 1000
-	// FILT: 100 0000 0000
-	// RSLT: 100 00XX 0XXX (X is don't care)
-	
 	SPICANSetNorm();				// Allow for Normal Mode
 	SPICANReadStat();				// Confirm we are in Normal Mode
 	return;
@@ -236,6 +224,9 @@ Uint16 SPICANReadBufs(Uint16 buf1[], Uint16 buf2[])
 
 	// Get the status of the RX Buffs
 	buf_status = SPICANRXBufReady();
+	// buf_status = SPICANRead(0x2C); // Get the interrupt status
+	// SPICANWrite(0x2C, (buf_status & 0xFC)); // Reset the RX interrupts
+	// buf_status = (buf_status & 0x03);
 
 	// Check if there's a message in the RX Buffers
 	if(buf_status != 0x00)
@@ -281,9 +272,39 @@ void SPICANWaitForTXBuf(Uint16 buf_num)
 	}
 }
 
-// CONFIGURATION NOTE
+void SPICANBitModify(Uint16 address, Uint16 mask, Uint16 data_byte)
+{
+	GpioDataRegs.GPADAT.bit.GPIOA0	= 0;		//Chip Select Low
+	spi_xmit(0x05);						//Bit modify command
+	spi_xmit(address);								//Write location
+	spi_xmit(mask);							//Write Info
+	spi_xmit(data_byte);							//Write Info
+	GpioDataRegs.GPADAT.bit.GPIOA0	= 1;
+}
 
-/*
+Uint16 SPICANReadInts(void)
+{
+	Uint16 count, res;
+	count = 0;
+	res = SPICANRead(0x2C);
+	while(res == 0xFF)
+	{
+		delay_us(5);
+		res = SPICANRead(0x2C);
+	}
+	return res;
+}
+
+void SPICANConfigure(void)
+{
+
+	// For configuration details, see note at bottom
+	SPICANWrite(0x2A, 0x81);		// Setting up CNF1
+	SPICANWrite(0x29, 0xD0);		// Setting up CNF2
+	SPICANWrite(0x28, 0xC2);		// Setting up CNF3
+	return;
+
+	/*
 
 	// Trying to configure the SPI CAN module for use with ESL ProD
 	// ProD SPI is 9.375MHz
@@ -359,3 +380,4 @@ void SPICANWaitForTXBuf(Uint16 buf_num)
 		 0b 1 1 000 010 => 0xC2		
 
 */
+}
