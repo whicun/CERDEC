@@ -647,7 +647,7 @@ void main(void) {
 //		delay_us(10);
 //		res_2 = (res_1 & 0xFC);
 		SPICANBitModify(0x2C, 0x03, 0x00);
-		delay_us(10);
+		// delay_us(10);
 		res_2 = SPICANReadInts();
 		// SPICANWrite(0x2C, res_2);
 //		res_2 = SPICANRead(0x2C);

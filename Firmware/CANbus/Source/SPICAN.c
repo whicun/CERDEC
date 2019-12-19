@@ -289,7 +289,7 @@ Uint16 SPICANReadInts(void)
 	res = SPICANRead(0x2C);
 	while(res == 0xFF)
 	{
-		delay_us(5);
+		// delay_us(1);
 		res = SPICANRead(0x2C);
 	}
 	return res;
