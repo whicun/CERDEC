@@ -61,5 +61,7 @@ void SPICANBitModify(Uint16 address, Uint16 mask, Uint16 data_byte);
 void SPICANConfigure(void);
 Uint16 SPICANReadInts(void);
 void SPICANRoutine(void);
+void SPICANReadyConfig(void);
+void SPICANCheckInts(int line);
 
 #endif

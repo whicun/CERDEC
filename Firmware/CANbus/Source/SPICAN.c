@@ -1,5 +1,9 @@
 //This file contains code for the SPI to CAN converter used in the CERDEC System
 
+#include <stdlib.h>
+#include <stdio.h>
+#include <ctype.h>
+
 #include "SPICAN.h"
 #include "spi.h"
 #include "common.h"
@@ -9,43 +13,52 @@
 void SPICANInit(void)
 {
 	SPICANReset();					// Reset Command
-	delay_us(10);
-	SPICANReadStat();				// Make sure we're in config mode
-	delay_us(10);					// Need some form of delay
-
-	SPICANConfigure();	
-	delay_us(10);
-	SPICANWrite(0x2B, 0x00);		// Clearing all interrupts
-	delay_us(10);
-	// SPICANWrite(0x2B, 0xFF); // Enabling all interrupts
+	SPICANReadyConfig();
 	
-	// Set up buffers to receive all valid messages
-	SPICANWrite(0x60, 0x04);		// Set BUKT to be 1
-	delay_us(10);
-	SPICANWrite(0x70, 0x00);		// Setup up RXB1 to receive all messages
-	delay_us(10);
-
+	SPICANBitModify(0x0C, 0xFF, 0x0F); // Enable the BFPCTRL bits
+	// SPICANBitModify(0x0C, 0xFF, 0x0F); // Enable the BFPCTRL bits
 	SPICANMasksFilts();
-	delay_us(10);
+	SPICANWrite(0x60, 0x04);
+	SPICANWrite(0x70, 0x00);
+	SPICANWrite(0x0D, 0x00);
+	// SPICANBitModify(0x60, 0xFF, 0x04);		// Set BUKT to be 1
+	// SPICANBitModify(0x70, 0xFF, 0x00);		// Setup up RXB1 to receive all messages
+	// SPICANBitModify(0x0C, 0xFF, 0x00); // Set TXRTSCTRL to 0x00
+	
+	SPICANConfigure();	
+	SPICANWrite(0x2C, 0x00);		// Clearing all interrupts
+	SPICANWrite(0x2B, 0x3F);		// Clearing all interrupts
 
-	SPICANSetNorm();				// Allow for Normal Mode
-	delay_us(10);
+	SPICANWrite(0x0F, 0x00); // Set CANCTRL to 0x00
+	// SPICANBitModify(0x0F, 0xFF, 0x00); // Set TXRTSCTRL to 0x00
 	SPICANReadStat();				// Confirm we are in Normal Mode
+	return;
+}
+
+void SPICANReadyConfig(void)
+{
+	Uint16 res;
+	res = SPICANRead(SPICAN_CANSTAT);
+	while((res & 0xE0) != 0x80)
+		res = SPICANRead(SPICAN_CANSTAT);
 	return;
 }
 
 void SPICANMasksFilts(void)
 {
 	// Set up filters for RX buffs
-	SPICANWrite(0x00, 0x80);
-	delay_us(10);
-	SPICANWrite(0x01, 0x00);
-	delay_us(10);
+	while(SPICANRead(0x00) != 0x80)
+		SPICANWrite(0x00, 0x80);
+	
+	while(SPICANRead(0x01) != 0x00)
+		SPICANWrite(0x01, 0x00);
 
 	// Set up masks for RX buffs
-	SPICANWrite(0x20, 0xF9);
-	delay_us(10);
-	SPICANWrite(0x21, 0x80);
+	while(SPICANRead(0x20) != 0xF9)
+		SPICANWrite(0x20, 0xF9);
+
+	while(SPICANRead(0x21) != 0x80)
+		SPICANWrite(0x21, 0x00);
 
 	// MASK: 111 1100 1000
 	// FILT: 100 0000 0000
@@ -58,6 +71,7 @@ void SPICANReset (void)
 	GpioDataRegs.GPADAT.bit.GPIOA0	= 0;		//Chip Select Low
 	spi_xmit(SPICAN_RESET);						//Transmit Reset command
 	GpioDataRegs.GPADAT.bit.GPIOA0	= 1;		//Release chip select
+	return;
 }
 
 // Responsible for reading the status of a
@@ -308,7 +322,10 @@ void SPICANConfigure(void)
 {
 
 	// For configuration details, see note at bottom
-	SPICANWrite(0x2A, 0x81);		// Setting up CNF1
+	// SPICANWrite(0x2A, 0x81);		// Setting up CNF1
+	// SPICANWrite(0x29, 0xD0);		// Setting up CNF2
+	// SPICANWrite(0x28, 0xC2);		// Setting up CNF3
+	SPICANWrite(0x2A, 0x01);		// Setting up CNF1
 	SPICANWrite(0x29, 0xD0);		// Setting up CNF2
 	SPICANWrite(0x28, 0xC2);		// Setting up CNF3
 	return;
@@ -403,35 +420,61 @@ void SPICANRoutine(void)
 	if((interrupts & 0x03) > 0x00)
 	{
 
-		Uint16 arr[] = {0, 1, 2, 3, 4, 5, 6, 7};
+		Uint16 arr[8];
+		char bits_to_flip = 0x00;
+
 		// RX1 Interrupt
 		if((interrupts & 0x02) == 0x02)
 		{
+			SPICANReadBuf_Array(arr, 0);
 			// For now, send back dummy data
 			// Wait for the TX Buffer to be ready
 			SPICANWaitForTXBuf(0);
 			// Set the message on the buffer
-			SPICANReadSetT0Message(0xA2, 8, arr);
+			SPICANReadSetT0Message(0x32, 8, arr);
 			SPICANWaitForTXBuf(0);
 			// Signal that the message is ready to send
-			SPICAN_T0_RTS();
+			// SPICAN_T0_RTS();
+			bits_to_flip |= 0x02;
 		}
 		// RX0 Interrupt
 		if((interrupts & 0x01) == 0x01)
 		{
+			SPICANReadBuf_Array(arr, 1);
 			// For now, send back dummy data
 			// Wait for the TX Buffer to be ready
 			SPICANWaitForTXBuf(0);
 			// Set the message on the buffer
-			SPICANReadSetT0Message(0xB3, 8, arr);
+			SPICANReadSetT0Message(0x43, 8, arr);
 			SPICANWaitForTXBuf(0);
 			// Signal that the message is ready to send
-			SPICAN_T0_RTS();
+			// SPICAN_T0_RTS();
+			bits_to_flip |= 0x01;
 		}
+		SPICANBitModify(0x2C, bits_to_flip, 0x00);
 	}
 
 	// Clear the interrupts
 	// SPICANWrite(0x0E, 0x00);
-	SPICANBitModify(0x2C, 0xFF, 0x00);
+	// SPICANWrite(0x2C, 0x00);
+//	SPICANCheckInts(447);
+	return;
+}
+
+void SPICANCheckInts(int line)
+{
+	volatile Uint16 interrupts;
+	char buff[80];
+	// Check interrupts for what all happened
+	interrupts = SPICANRead(0x2C);
+
+	// TX Interrupts
+	buff[0] = interrupts;
+	// RX Interrupts
+	if((interrupts & 0x03) > 0x00)
+	{
+		sprintf( buff, "There was an interrupt on line: %d", line);
+//		printf("%s", buff);
+	}
 	return;
 }

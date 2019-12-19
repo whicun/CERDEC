@@ -601,7 +601,9 @@ void main(void) {
 	Uint16 res_1;
 	volatile Uint16 res_2;
 	res_1 = 0;
+	SPICANCheckInts(604);
 	SPICANInit();
+	SPICANCheckInts(606);
 	for(n = 0; n < 8; n++)
 	{
 		data[n] = 0xFF;
