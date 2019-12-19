@@ -14,17 +14,22 @@ void SPICANInit(void)
 	delay_us(10);					// Need some form of delay
 
 	SPICANConfigure();	
-
+	delay_us(10);
 	SPICANWrite(0x2B, 0x00);		// Clearing all interrupts
+	delay_us(10);
 	// SPICANWrite(0x2B, 0xFF); // Enabling all interrupts
 	
 	// Set up buffers to receive all valid messages
 	SPICANWrite(0x60, 0x04);		// Set BUKT to be 1
+	delay_us(10);
 	SPICANWrite(0x70, 0x00);		// Setup up RXB1 to receive all messages
+	delay_us(10);
 
 	SPICANMasksFilts();
+	delay_us(10);
 
 	SPICANSetNorm();				// Allow for Normal Mode
+	delay_us(10);
 	SPICANReadStat();				// Confirm we are in Normal Mode
 	return;
 }
@@ -33,11 +38,14 @@ void SPICANMasksFilts(void)
 {
 	// Set up filters for RX buffs
 	SPICANWrite(0x00, 0x80);
+	delay_us(10);
 	SPICANWrite(0x01, 0x00);
+	delay_us(10);
 
 	// Set up masks for RX buffs
 	SPICANWrite(0x20, 0xF9);
-	SPICANWrite(0x21, 0x00);
+	delay_us(10);
+	SPICANWrite(0x21, 0x80);
 
 	// MASK: 111 1100 1000
 	// FILT: 100 0000 0000
@@ -268,6 +276,7 @@ void SPICANWaitForTXBuf(Uint16 buf_num)
 	res = SPICANRead(0x30 + (buf_num << 8));
 	while((res & 0x08) == 0x08)
 	{
+		delay_us(1);
 		res = SPICANRead(0x30 + (buf_num << 8));
 	}
 }
@@ -380,4 +389,49 @@ void SPICANConfigure(void)
 		 0b 1 1 000 010 => 0xC2		
 
 */
+}
+
+void SPICANRoutine(void)
+{
+	Uint16 interrupts;
+	// Check interrupts for what all happened
+	interrupts = SPICANRead(0x2C);
+
+	// TX Interrupts
+
+	// RX Interrupts
+	if((interrupts & 0x03) > 0x00)
+	{
+
+		Uint16 arr[] = {0, 1, 2, 3, 4, 5, 6, 7};
+		// RX1 Interrupt
+		if((interrupts & 0x02) == 0x02)
+		{
+			// For now, send back dummy data
+			// Wait for the TX Buffer to be ready
+			SPICANWaitForTXBuf(0);
+			// Set the message on the buffer
+			SPICANReadSetT0Message(0xA2, 8, arr);
+			SPICANWaitForTXBuf(0);
+			// Signal that the message is ready to send
+			SPICAN_T0_RTS();
+		}
+		// RX0 Interrupt
+		if((interrupts & 0x01) == 0x01)
+		{
+			// For now, send back dummy data
+			// Wait for the TX Buffer to be ready
+			SPICANWaitForTXBuf(0);
+			// Set the message on the buffer
+			SPICANReadSetT0Message(0xB3, 8, arr);
+			SPICANWaitForTXBuf(0);
+			// Signal that the message is ready to send
+			SPICAN_T0_RTS();
+		}
+	}
+
+	// Clear the interrupts
+	// SPICANWrite(0x0E, 0x00);
+	SPICANBitModify(0x2C, 0xFF, 0x00);
+	return;
 }

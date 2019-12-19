@@ -640,33 +640,34 @@ void main(void) {
 	for (;;) {
 
 		Uint16 should_send;
+		SPICANRoutine();
 		// data[7] = SPICANReadBufs(data2, data3);
 //		should_send = SPICANReadBufs(data2, data3);
 
 //		res_1 = SPICANRead(0x2C);
 //		delay_us(10);
 //		res_2 = (res_1 & 0xFC);
-		SPICANBitModify(0x2C, 0x03, 0x00);
-		// delay_us(10);
-		res_2 = SPICANReadInts();
-		// SPICANWrite(0x2C, res_2);
-//		res_2 = SPICANRead(0x2C);
-//		res_2 = 0x00;
-		if((res_2 & 0x01) == 0x01)
-		{
-			SPICANWaitForTXBuf(0);
-			SPICANReadSetT0Message(0xA2, 8, data2);
-			SPICANWaitForTXBuf(0);
-			SPICAN_T0_RTS();
-			res_2 = SPICANRead(0x2C);
-		}
-		else if((res_2 & 0x02) == 0x02)
-		{
-			SPICANWaitForTXBuf(0);
-			SPICANReadSetT0Message(0xA3, 8, data3);
-			SPICANWaitForTXBuf(0);
-			SPICAN_T0_RTS();
-		}
+// 		SPICANBitModify(0x2C, 0x03, 0x00);
+// 		// delay_us(10);
+// 		res_2 = SPICANReadInts();
+// 		// SPICANWrite(0x2C, res_2);
+// //		res_2 = SPICANRead(0x2C);
+// //		res_2 = 0x00;
+// 		if((res_2 & 0x01) == 0x01)
+// 		{
+// 			SPICANWaitForTXBuf(0);
+// 			SPICANReadSetT0Message(0xA2, 8, data2);
+// 			SPICANWaitForTXBuf(0);
+// 			SPICAN_T0_RTS();
+// 			res_2 = SPICANRead(0x2C);
+// 		}
+// 		else if((res_2 & 0x02) == 0x02)
+// 		{
+// 			SPICANWaitForTXBuf(0);
+// 			SPICANReadSetT0Message(0xA3, 8, data3);
+// 			SPICANWaitForTXBuf(0);
+// 			SPICAN_T0_RTS();
+// 		}
 
 		// Check for any errors
 		data[6] = SPICANRead(0x2D);
