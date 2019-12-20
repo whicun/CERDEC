@@ -63,5 +63,6 @@ Uint16 SPICANReadInts(void);
 void SPICANRoutine(void);
 void SPICANReadyConfig(void);
 void SPICANCheckInts(int line);
+void SPICANISR(void);
 
 #endif

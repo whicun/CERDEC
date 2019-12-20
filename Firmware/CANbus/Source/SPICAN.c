@@ -433,7 +433,7 @@ void SPICANRoutine(void)
 {
 	volatile Uint16 interrupts;
 	// Check interrupts for what all happened
-	interrupts = SPICANRead(0x2C);
+	interrupts = SPICANRead(0x2B);
 
 	if(interrupts == 0xFF)
 		return;
@@ -447,27 +447,27 @@ void SPICANRoutine(void)
 		Uint16 arr[8];
 		char bits_to_flip = 0x00;
 
-//		// RX1 Interrupt
-//		if((interrupts & 0x02) == 0x02)
-//		{
-//			SPICANReadBuf_Array(arr, 0);
-//			// For now, send back dummy data
-//			// Wait for the TX Buffer to be ready
-//			SPICANWaitForTXBuf(0);
-//			// Set the message on the buffer
-//			SPICANReadSetT0Message(0x32, 8, arr);
-//			SPICANWaitForTXBuf(0);
-//			// Signal that the message is ready to send
-//			SPICAN_T0_RTS();
-//			bits_to_flip |= 0x02;
-//		}
+		// RX1 Interrupt
+		if((interrupts & 0x02) == 0x02)
+		{
+			SPICANReadBuf_Array(arr, 1);
+			// // For now, send back dummy data
+			// // Wait for the TX Buffer to be ready
+			// SPICANWaitForTXBuf(0);
+			// // Set the message on the buffer
+			// SPICANReadSetT0Message(0x32, 8, arr);
+			// SPICANWaitForTXBuf(0);
+			// // Signal that the message is ready to send
+			// SPICAN_T0_RTS();
+			// bits_to_flip |= 0x02;
+		}
 		// RX0 Interrupt
 		if((interrupts & 0x01) == 0x01)
 		{
 			if(bits_to_flip > 0x00)
 				delay_us(5);
 			
-			SPICANReadBuf_Array(arr, 1);
+			SPICANReadBuf_Array(arr, 0);
 			// For now, send back dummy data
 			// Wait for the TX Buffer to be ready
 			SPICANWaitForTXBuf(0);
@@ -479,12 +479,12 @@ void SPICANRoutine(void)
 			bits_to_flip |= 0x01;
 		}
 		volatile Uint16 res;
-		res = SPICANRead(0x2C);
+		res = SPICANRead(0x2B);
 		// Set up filters for RX buffs
 		while((res & 0x03) > 0x00)
 		{
-			SPICANBitModify(0x2C, bits_to_flip, 0x00);
-			res = SPICANRead(0x2C);
+			SPICANBitModify(0x2B, bits_to_flip, 0x00);
+			res = SPICANRead(0x2B);
 		}
 	}
 
@@ -512,3 +512,157 @@ void SPICANCheckInts(int line)
 	}
 	return;
 }
+
+void SPICANISR(void)
+{
+	volatile Uint16 res;
+	volatile Uint16 inters;
+	Uint16 arr[8];
+	// Read the CANSTAT to get the Interrupt code
+	res = SPICANReadStat();
+	inters = (res & 0x0E) >> 1;
+	
+	// RX1 Buf is full
+	if(inters == 0x08)
+	{
+		SPICANReadBuf_Array(arr, 1);
+		SPICANBitModify(0x2C, 0x02, 0x00);
+	}
+
+	// RX1 Buf is full
+	if(inters == 0x07)
+	{
+		SPICANReadBuf_Array(arr, 0);
+		// For now, send back dummy data
+		// Wait for the TX Buffer to be ready
+		SPICANWaitForTXBuf(0);
+		// Set the message on the buffer
+		SPICANReadSetT0Message(0x43, 8, arr);
+		SPICANWaitForTXBuf(0);
+		// Signal that the message is ready to send
+		SPICAN_T0_RTS();
+		SPICANBitModify(0x2C, 0x01, 0x00);
+	}
+	return;
+}
+
+/*
+
+I know, the title sounds like a lot, but I've been struggling with this a lot for the past few weeks and could really use some guidance. I don't normally do this type of work, but it was put on my table none the less.
+
+
+
+Some issues I'm experiencing:
+
+My filter+mask only seem to apply to RX0, even though it looks like the MCP2515 is set for RX0 and RX1 to use RXF0 and RXM0
+If I try to read the CANINTF register, most times I will receive 0xFF back. I know this can happen if I try to read it at the wrong times, but I can't figure out a better way to determine when to check than to just loop/poll(?) until it's not 0xFF (real good work there...)
+If I send a single message, it will set the RXnIF pin, but then when I try to clear it using the WRITE command or the Bit Modify command, it will keep resetting itself even though no more messages are being sent
+As a simple debug: I send one message, check the interrupts, see the MCU set the RXnIF pin, read the message using the Read Rx Buffer command, load that message into TX0 using Load Tx Buffer command, then TX/echo back the message to my USB/CAN sniffer using RTS command, hit a breakpoint in my code, check and see the message show up on my USB/CAN sniffer SW, then disconnect sniffer from PC (in software, not physically unplugged), resume the code, and I'm still getting RXnIF bits flipped every 100 - 1000us. I've tried clearing the bits using the WRITE command and the Bit Modify command (even though I shouldn't have to since I'm using the Read Rx Buffer command) but they still get flipped.
+If I set any interrupts to be enabled in CANINTE, those bits will always (or extremely often?) be 1 in CANINTF
+
+
+This whole things has been driving me up a wall.
+
+
+
+I'm attempting to configure an MCP2515 (16Mhz osc) to work @ 500kbps using an SPI channel @ 9.375MHz
+
+And I need to filter out messages of the form:
+
+0b100 00XX 0XXX (X is don't care)
+
+So I read this:
+http://ww1.microchip.com/downloads/en/Appnotes/00754.pdf
+
+And came up with this for my configuration settings
+(the "logic" comment is in javascript cause scripting in browser while reading PDF):
+[code]void SPICANConfigure(void)
+{
+
+ // For configuration details, see note at bottom
+ SPICANWrite(0x2A, 0x81); // Setting up CNF1
+ SPICANWrite(0x29, 0xD0); // Setting up CNF2
+ SPICANWrite(0x28, 0xC2); // Setting up CNF3
+ return;
+
+ 
+
+ // Trying to configure the SPI CAN module for use with ESL ProD
+ // SPI is 9.375MHz
+ // SPICAN Oscillator is 16MHz
+ // CAN Bus is 500kHz
+
+ // Following the manual on Pg. 41
+ // https://microcontrollershop.com/download/21801F.pdf
+ // And this one helped a lot with understanding everything
+ // http://ww1.microchip.com/downloads/en/Appnotes/00754.pdf
+
+ Logic behind configuration
+ Necessary pieces:
+  SJW - Synchronization Jump Width
+  BRP - Baud Rate Prescalar
+  BTLMODE - Mode for determining PHSEG2
+  SAM - Sample Point Configuration
+  PRSEG - Propagation Segment
+  PHSEG1 - Phase Segment 1 (PS1)
+  PHSEG2 - Phase Segment 2 (PS2)
+
+  I used the second link
+  (http://ww1.microchip.com/downloads/en/Appnotes/00754.pdf)
+  to calculate the maximum SJW I want to use, which was 3 TQs in this case:
+  Code below is in Javascript and can be run in an internet browser
+   // Inits
+   SEC2NANO = 1 * 10 ** 9;
+   f_osc = 500 * 10 ** 3; // 500 kHz
+   t_bit = 1.0 / f_osc;
+
+   console.log("t_bit is: " + (t_bit * SEC2NANO) + " ns");
+
+   t_bit_min = t_bit * (1 - .0125);
+   t_bit_max = t_bit * (1 + .0125);
+
+   console.log("t_bit_min is: " + (t_bit_min * SEC2NANO) + " ns");
+   console.log("t_bit_max is: " + (t_bit_max * SEC2NANO) + " ns");
+
+   t_q_per_bit = 8.0;
+   t_q_min = t_bit_min / t_q_per_bit;
+   t_q_max = t_bit_max / t_q_per_bit;
+
+   console.log("t_q_min is: " + (t_q_min * SEC2NANO) + " ns");
+   console.log("t_q_max is: " + (t_q_max * SEC2NANO) + " ns");
+
+   t_diff = 10 * t_bit_max - 10 * t_bit_min
+   console.log("t_diff is: " + (t_diff * SEC2NANO) + " ns");
+
+   t_q_sjw = Math.ceil(t_diff / t_q_min);
+   console.log("t_q_sjw is: " + (t_q_sjw) + " TQs");
+  
+  I then looked at all the examples, and in the second link it said max
+  oscillator tolerance is found when the length of PS1 == PS2 == SJW (pg. 8)
+  (Although that was if SJW is the max of 4 TQs)
+
+  So I set the length of SJW == PS1 == PS2 == 3
+
+  Since I am using 8 TQ per 1 bit, that leaves me with 8 - 3 - 3 == 2 TQ
+  for the Sync Segment and the Propagation Segment, so 1 TQ for each
+
+  THUS
+
+  Setting up CNF1 (0x2A) for:
+   [SJW 7:6, BRP 5:0]
+   0b 10 000001 => 0x81
+
+  Setting up CNF2 (0x29) for:
+   [BTLMODE, SAM, PHSEG1 5:3, PRSEG 2:0]
+   0b 1 1 010 000 => 0xD0
+
+  Setting up CNF3 (0x28) for:
+   [SOF, WAKFIL, NA 5:3, PHSEG2 2:0]
+   0b 1 1 000 010 => 0xC2 
+
+
+}[/code]
+
+
+
+*/

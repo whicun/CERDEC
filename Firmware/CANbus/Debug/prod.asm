@@ -1,6 +1,6 @@
 ;***************************************************************
 ;* TMS320C2000 C/C++ Codegen                   PC v15.12.7.LTS *
-;* Date/Time created: Fri Dec 20 10:38:40 2019                 *
+;* Date/Time created: Fri Dec 20 12:47:17 2019                 *
 ;***************************************************************
 	.compiler_opts --abi=coffabi --float_support=softlib --hll_source=on --mem_model:code=flat --mem_model:data=large --object_format=coff --quiet --silicon_version=28 --symdebug:dwarf --symdebug:dwarf_version=3 
 FP	.set	XAR2
@@ -1027,8 +1027,8 @@ $C$DW$152	.dwtag  DW_TAG_variable
 	.dwattr $C$DW$152, DW_AT_declaration
 	.dwattr $C$DW$152, DW_AT_external
 
-;	C:\ti\ccsv6\tools\compiler\ti-cgt-c2000_15.12.7.LTS\bin\opt2000.exe C:\\Users\\ebenton\\AppData\\Local\\Temp\\{919B7CFF-E4B2-4D8D-95C3-1DCBA4CFAE0D} C:\\Users\\ebenton\\AppData\\Local\\Temp\\{E672C15E-18AB-49EC-8944-4360491245FC} 
-;	C:\ti\ccsv6\tools\compiler\ti-cgt-c2000_15.12.7.LTS\bin\ac2000.exe -@C:\\Users\\ebenton\\AppData\\Local\\Temp\\{25271AB3-06BF-47EA-9552-3B6E7CF99EBF} 
+;	C:\ti\ccsv6\tools\compiler\ti-cgt-c2000_15.12.7.LTS\bin\opt2000.exe C:\\Users\\ebenton\\AppData\\Local\\Temp\\{6D578659-0B67-47DC-A9D9-B36218DB7270} C:\\Users\\ebenton\\AppData\\Local\\Temp\\{72B3F413-75C5-4683-B017-15BDED2A8CB2} 
+;	C:\ti\ccsv6\tools\compiler\ti-cgt-c2000_15.12.7.LTS\bin\ac2000.exe -@C:\\Users\\ebenton\\AppData\\Local\\Temp\\{F5AD91A2-8E50-4452-A990-51F80F5ED58B} 
 	.sect	".text"
 	.clink
 	.global	_update_units
@@ -31567,7 +31567,7 @@ $C$FSL60:	.string	"%s %s",0
 	.align	2
 $C$FSL61:	.string	"Dec 20 2019",0
 	.align	2
-$C$FSL62:	.string	"10:38:37",0
+$C$FSL62:	.string	"12:47:14",0
 	.align	2
 $C$FSL63:	.string	34,"SW2",34," TO CHANGE PORT",0
 	.align	2
