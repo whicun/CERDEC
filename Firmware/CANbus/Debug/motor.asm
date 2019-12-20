@@ -1,13 +1,13 @@
 ;***************************************************************
-;* TMS320C2000 C/C++ Codegen                   PC v15.12.4.LTS *
-;* Date/Time created: Thu Dec 19 12:24:12 2019                 *
+;* TMS320C2000 C/C++ Codegen                   PC v15.12.7.LTS *
+;* Date/Time created: Fri Dec 20 09:02:06 2019                 *
 ;***************************************************************
 	.compiler_opts --abi=coffabi --float_support=softlib --hll_source=on --mem_model:code=flat --mem_model:data=large --object_format=coff --quiet --silicon_version=28 --symdebug:dwarf --symdebug:dwarf_version=3 
 FP	.set	XAR2
 
 $C$DW$CU	.dwtag  DW_TAG_compile_unit
 	.dwattr $C$DW$CU, DW_AT_name("../Source/motor.c")
-	.dwattr $C$DW$CU, DW_AT_producer("TI TMS320C2000 C/C++ Codegen PC v15.12.4.LTS Copyright (c) 1996-2015 Texas Instruments Incorporated")
+	.dwattr $C$DW$CU, DW_AT_producer("TI TMS320C2000 C/C++ Codegen PC v15.12.7.LTS Copyright (c) 1996-2017 Texas Instruments Incorporated")
 	.dwattr $C$DW$CU, DW_AT_TI_version(0x01)
 	.dwattr $C$DW$CU, DW_AT_comp_dir("C:\Users\ebenton\Documents\CERDEC TS\Firmware\CANbus\Debug")
 ;**************************************************************
@@ -87,8 +87,8 @@ $C$DW$7	.dwtag  DW_TAG_variable
 	.dwattr $C$DW$7, DW_AT_type(*$C$DW$T$16)
 	.dwattr $C$DW$7, DW_AT_external
 
-;	C:\ti\ccsv6\tools\compiler\ti-cgt-c2000_15.12.4.LTS\bin\opt2000.exe C:\\Users\\ebenton\\AppData\\Local\\Temp\\301762 C:\\Users\\ebenton\\AppData\\Local\\Temp\\301764 
-;	C:\ti\ccsv6\tools\compiler\ti-cgt-c2000_15.12.4.LTS\bin\ac2000.exe -@C:\\Users\\ebenton\\AppData\\Local\\Temp\\3017612 
+;	C:\ti\ccsv6\tools\compiler\ti-cgt-c2000_15.12.7.LTS\bin\opt2000.exe C:\\Users\\ebenton\\AppData\\Local\\Temp\\{760AC186-5AA9-4E4D-964A-BA297ED22758} C:\\Users\\ebenton\\AppData\\Local\\Temp\\{B8C249B8-8848-4A2C-BA5B-5DE930FEBCB4} 
+;	C:\ti\ccsv6\tools\compiler\ti-cgt-c2000_15.12.7.LTS\bin\ac2000.exe -@C:\\Users\\ebenton\\AppData\\Local\\Temp\\{176109B2-4A95-4675-BEA4-22A77F928B25} 
 	.sect	".text"
 	.clink
 	.global	_setautoHeightEnable

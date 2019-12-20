@@ -1,13 +1,13 @@
 ;***************************************************************
-;* TMS320C2000 C/C++ Codegen                   PC v15.12.4.LTS *
-;* Date/Time created: Thu Dec 19 12:23:48 2019                 *
+;* TMS320C2000 C/C++ Codegen                   PC v15.12.7.LTS *
+;* Date/Time created: Fri Dec 20 09:01:44 2019                 *
 ;***************************************************************
 	.compiler_opts --abi=coffabi --float_support=softlib --hll_source=on --mem_model:code=flat --mem_model:data=large --object_format=coff --quiet --silicon_version=28 --symdebug:dwarf --symdebug:dwarf_version=3 
 FP	.set	XAR2
 
 $C$DW$CU	.dwtag  DW_TAG_compile_unit
 	.dwattr $C$DW$CU, DW_AT_name("../Source/DSP281x_ECan.c")
-	.dwattr $C$DW$CU, DW_AT_producer("TI TMS320C2000 C/C++ Codegen PC v15.12.4.LTS Copyright (c) 1996-2015 Texas Instruments Incorporated")
+	.dwattr $C$DW$CU, DW_AT_producer("TI TMS320C2000 C/C++ Codegen PC v15.12.7.LTS Copyright (c) 1996-2017 Texas Instruments Incorporated")
 	.dwattr $C$DW$CU, DW_AT_TI_version(0x01)
 	.dwattr $C$DW$CU, DW_AT_comp_dir("C:\Users\ebenton\Documents\CERDEC TS\Firmware\CANbus\Debug")
 
@@ -195,8 +195,8 @@ $C$DW$37	.dwtag  DW_TAG_variable
 	.dwattr $C$DW$37, DW_AT_declaration
 	.dwattr $C$DW$37, DW_AT_external
 
-;	C:\ti\ccsv6\tools\compiler\ti-cgt-c2000_15.12.4.LTS\bin\opt2000.exe C:\\Users\\ebenton\\AppData\\Local\\Temp\\252202 C:\\Users\\ebenton\\AppData\\Local\\Temp\\252204 
-;	C:\ti\ccsv6\tools\compiler\ti-cgt-c2000_15.12.4.LTS\bin\ac2000.exe -@C:\\Users\\ebenton\\AppData\\Local\\Temp\\2522012 
+;	C:\ti\ccsv6\tools\compiler\ti-cgt-c2000_15.12.7.LTS\bin\opt2000.exe C:\\Users\\ebenton\\AppData\\Local\\Temp\\{1877ED74-4121-422E-BCCF-38126DB2BC59} C:\\Users\\ebenton\\AppData\\Local\\Temp\\{5B7DCCD6-5824-4F68-B14F-92414F895BC1} 
+;	C:\ti\ccsv6\tools\compiler\ti-cgt-c2000_15.12.7.LTS\bin\ac2000.exe -@C:\\Users\\ebenton\\AppData\\Local\\Temp\\{498B781C-5078-40EB-9C53-313D1CC555C9} 
 	.sect	".text"
 	.clink
 	.global	_markTxMailboxHandled

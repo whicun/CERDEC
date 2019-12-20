@@ -18,8 +18,8 @@ Source/flash.obj: C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/DSP281x_
 Source/flash.obj: C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/DSP281x_headers/include/DSP281x_XIntrupt.h
 Source/flash.obj: C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Flash2812_API_V210/include/Flash281x_API_Library.h
 Source/flash.obj: C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Flash2812_API_V210/include/Flash281x_API_Config.h
-Source/flash.obj: C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.4.LTS/include/string.h
-Source/flash.obj: C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.4.LTS/include/linkage.h
+Source/flash.obj: C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.7.LTS/include/string.h
+Source/flash.obj: C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.7.LTS/include/linkage.h
 Source/flash.obj: C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/flash.h
 Source/flash.obj: C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/data.h
 
@@ -41,7 +41,7 @@ C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/DSP281x_headers/include/DS
 C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/DSP281x_headers/include/DSP281x_XIntrupt.h: 
 C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Flash2812_API_V210/include/Flash281x_API_Library.h: 
 C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Flash2812_API_V210/include/Flash281x_API_Config.h: 
-C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.4.LTS/include/string.h: 
-C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.4.LTS/include/linkage.h: 
+C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.7.LTS/include/string.h: 
+C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.7.LTS/include/linkage.h: 
 C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/flash.h: 
 C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/data.h: 

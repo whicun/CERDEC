@@ -4,7 +4,7 @@
 
 SHELL = cmd.exe
 
-CG_TOOL_ROOT := C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.4.LTS
+CG_TOOL_ROOT := C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.7.LTS
 
 GEN_OPTS__FLAG := 
 GEN_CMDS__FLAG := 
@@ -183,13 +183,13 @@ all: loadcell.out secondary-outputs
 loadcell.out: $(OBJS) $(CMD_SRCS) $(LIB_SRCS) $(GEN_CMDS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: C2000 Linker'
-	"C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.4.LTS/bin/cl2000" -v28 -ml -mt -O3 -g --define="_DEBUG" --define="LARGE_MODEL" --quiet --diag_warning=225 --issue_remarks -k --c_src_interlist -z -m"loadcell.map" --stack_size=0x400 --heap_size=0x400 --warn_sections -i"C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.4.LTS/lib" -i"C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.4.LTS/include" -i"C:/Users/ebenton/Documents/CERDEC TS/Firmware/CANbus" -i"C:/Users/ebenton/Documents/CERDEC TS/Firmware/CANbus/Flash2812_API_V210/lib" --reread_libs --xml_link_info="loadcell_linkInfo.xml" --rom_model -o "loadcell.out" $(ORDERED_OBJS)
+	"C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.7.LTS/bin/cl2000" -v28 -ml -mt -O3 --advice:performance=all -g --define="_DEBUG" --define="LARGE_MODEL" --quiet --diag_warning=225 --issue_remarks -k --c_src_interlist -z -m"loadcell.map" --stack_size=0x400 --heap_size=0x400 --warn_sections -i"C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.7.LTS/lib" -i"C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.7.LTS/include" -i"C:/Users/ebenton/Documents/CERDEC TS/Firmware/CANbus" -i"C:/Users/ebenton/Documents/CERDEC TS/Firmware/CANbus/Flash2812_API_V210/lib" --reread_libs --xml_link_info="loadcell_linkInfo.xml" --rom_model -o "loadcell.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
 m4359.hex: $(EXE_OUTPUTS)
 	@echo 'Invoking: C2000 Hex Utility'
-	"C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.4.LTS/bin/hex2000" --memwidth=16 --romwidth=16 --motorola=2 -o "m4359.hex" $(EXE_OUTPUTS__QUOTED)
+	"C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.7.LTS/bin/hex2000" --memwidth=16 --romwidth=16 --motorola=2 -o "m4359.hex" $(EXE_OUTPUTS__QUOTED)
 	@echo 'Finished building: $@'
 	@echo ' '
 	@$(MAKE) --no-print-directory post-build
@@ -205,7 +205,7 @@ clean:
 
 post-build:
 	-@echo 'Create flash image: Intel-HEX'
-	-"C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.4.LTS/bin/hex2000.exe" -i "loadcell.out" -o "loadcell.hex" -order MS -romwidth 16
+	-"C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.7.LTS/bin/hex2000.exe" -i "loadcell.out" -o "loadcell.hex" -order MS -romwidth 16
 	-@echo ' '
 
 secondary-outputs: $(BIN_OUTPUTS)

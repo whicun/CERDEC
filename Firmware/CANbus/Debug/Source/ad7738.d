@@ -26,11 +26,11 @@ Source/ad7738.obj: C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers
 Source/ad7738.obj: C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/diskio.h
 Source/ad7738.obj: C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/integer.h
 Source/ad7738.obj: C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/dl.h
-Source/ad7738.obj: C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.4.LTS/include/stdio.h
-Source/ad7738.obj: C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.4.LTS/include/linkage.h
-Source/ad7738.obj: C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.4.LTS/include/stdarg.h
+Source/ad7738.obj: C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.7.LTS/include/stdio.h
+Source/ad7738.obj: C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.7.LTS/include/linkage.h
+Source/ad7738.obj: C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.7.LTS/include/stdarg.h
 Source/ad7738.obj: C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/common.h
-Source/ad7738.obj: C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.4.LTS/include/string.h
+Source/ad7738.obj: C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.7.LTS/include/string.h
 Source/ad7738.obj: C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/sci.h
 Source/ad7738.obj: C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/can.h
 Source/ad7738.obj: C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/CAN_PCKA.h
@@ -62,11 +62,11 @@ C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/qep.h:
 C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/diskio.h: 
 C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/integer.h: 
 C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/dl.h: 
-C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.4.LTS/include/stdio.h: 
-C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.4.LTS/include/linkage.h: 
-C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.4.LTS/include/stdarg.h: 
+C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.7.LTS/include/stdio.h: 
+C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.7.LTS/include/linkage.h: 
+C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.7.LTS/include/stdarg.h: 
 C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/common.h: 
-C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.4.LTS/include/string.h: 
+C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.7.LTS/include/string.h: 
 C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/sci.h: 
 C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/can.h: 
 C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/CAN_PCKA.h: 

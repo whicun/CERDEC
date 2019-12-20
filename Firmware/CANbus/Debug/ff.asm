@@ -1,13 +1,13 @@
 ;***************************************************************
-;* TMS320C2000 C/C++ Codegen                   PC v15.12.4.LTS *
-;* Date/Time created: Thu Dec 19 12:24:01 2019                 *
+;* TMS320C2000 C/C++ Codegen                   PC v15.12.7.LTS *
+;* Date/Time created: Fri Dec 20 09:01:56 2019                 *
 ;***************************************************************
 	.compiler_opts --abi=coffabi --float_support=softlib --hll_source=on --mem_model:code=flat --mem_model:data=large --object_format=coff --quiet --silicon_version=28 --symdebug:dwarf --symdebug:dwarf_version=3 
 FP	.set	XAR2
 
 $C$DW$CU	.dwtag  DW_TAG_compile_unit
 	.dwattr $C$DW$CU, DW_AT_name("../Source/ff.c")
-	.dwattr $C$DW$CU, DW_AT_producer("TI TMS320C2000 C/C++ Codegen PC v15.12.4.LTS Copyright (c) 1996-2015 Texas Instruments Incorporated")
+	.dwattr $C$DW$CU, DW_AT_producer("TI TMS320C2000 C/C++ Codegen PC v15.12.7.LTS Copyright (c) 1996-2017 Texas Instruments Incorporated")
 	.dwattr $C$DW$CU, DW_AT_TI_version(0x01)
 	.dwattr $C$DW$CU, DW_AT_comp_dir("C:\Users\ebenton\Documents\CERDEC TS\Firmware\CANbus\Debug")
 _Fsid:	.usect	".ebss",1,1,0
@@ -156,8 +156,8 @@ _vst$1:
 	.bits	2,16			; _vst$1[9] @ 144
 	.bits	0,16			; _vst$1[10] @ 160
 
-;	C:\ti\ccsv6\tools\compiler\ti-cgt-c2000_15.12.4.LTS\bin\opt2000.exe C:\\Users\\ebenton\\AppData\\Local\\Temp\\095922 C:\\Users\\ebenton\\AppData\\Local\\Temp\\095924 
-;	C:\ti\ccsv6\tools\compiler\ti-cgt-c2000_15.12.4.LTS\bin\ac2000.exe -@C:\\Users\\ebenton\\AppData\\Local\\Temp\\0959212 
+;	C:\ti\ccsv6\tools\compiler\ti-cgt-c2000_15.12.7.LTS\bin\opt2000.exe C:\\Users\\ebenton\\AppData\\Local\\Temp\\{9B207920-8F15-4065-BF81-FC4786110DCB} C:\\Users\\ebenton\\AppData\\Local\\Temp\\{F91BB333-7ADC-4C0B-B305-94DAAC2E40D9} 
+;	C:\ti\ccsv6\tools\compiler\ti-cgt-c2000_15.12.7.LTS\bin\ac2000.exe -@C:\\Users\\ebenton\\AppData\\Local\\Temp\\{168BB451-340D-41C2-A0D8-813F7145B14B} 
 	.sect	".text"
 	.clink
 
@@ -2661,7 +2661,7 @@ $C$DW$125	.dwtag  DW_TAG_subprogram
 	.dwattr $C$DW$125, DW_AT_TI_begin_file("../Source/ff.c")
 	.dwattr $C$DW$125, DW_AT_TI_begin_line(0x6ff)
 	.dwattr $C$DW$125, DW_AT_TI_begin_column(0x06)
-	.dwattr $C$DW$125, DW_AT_TI_max_frame_size(-6)
+	.dwattr $C$DW$125, DW_AT_TI_max_frame_size(-8)
 	.dwpsn	file "../Source/ff.c",line 1795,column 1,is_stmt,address _check_fs,isa 0
 
 	.dwfde $C$DW$CIE, _check_fs
@@ -2687,30 +2687,33 @@ $C$DW$127	.dwtag  DW_TAG_formal_parameter
 ;----------------------------------------------------------------------
 
 ;***************************************************************
-;* FNAME: _check_fs                     FR SIZE:   4           *
+;* FNAME: _check_fs                     FR SIZE:   6           *
 ;*                                                             *
 ;* FUNCTION ENVIRONMENT                                        *
 ;*                                                             *
 ;* FUNCTION PROPERTIES                                         *
-;*                            1 Parameter,  0 Auto,  2 SOE     *
+;*                            1 Parameter,  0 Auto,  4 SOE     *
 ;***************************************************************
 
 _check_fs:
-;* AR1   assigned to _fs
+;* AR2   assigned to _fs
 $C$DW$128	.dwtag  DW_TAG_variable
 	.dwattr $C$DW$128, DW_AT_name("fs")
 	.dwattr $C$DW$128, DW_AT_TI_symbol_name("_fs")
 	.dwattr $C$DW$128, DW_AT_type(*$C$DW$T$133)
-	.dwattr $C$DW$128, DW_AT_location[DW_OP_reg6]
+	.dwattr $C$DW$128, DW_AT_location[DW_OP_reg8]
 
 	.dwcfi	cfa_offset, -2
 	.dwcfi	save_reg_to_mem, 26, 0
         MOVL      *SP++,XAR1            ; [CPU_] 
 	.dwcfi	save_reg_to_mem, 7, 2
 	.dwcfi	cfa_offset, -4
-        ADDB      SP,#2                 ; [CPU_U] 
+        MOVL      *SP++,XAR2            ; [CPU_] 
+	.dwcfi	save_reg_to_mem, 9, 4
 	.dwcfi	cfa_offset, -6
-        MOVL      XAR1,XAR4             ; [CPU_] |1795| 
+        ADDB      SP,#2                 ; [CPU_U] 
+	.dwcfi	cfa_offset, -8
+        MOVL      XAR2,XAR4             ; [CPU_] |1795| 
 	.dwpsn	file "../Source/ff.c",line 1796,column 3,is_stmt,isa 0
 ;----------------------------------------------------------------------
 ; 1796 | if (disk_read(fs->drv, fs->win, sect, 1) != RES_OK)   /* Load boot reco
@@ -2718,7 +2721,7 @@ $C$DW$128	.dwtag  DW_TAG_variable
 ;----------------------------------------------------------------------
         MOVB      *-SP[1],#1,UNC        ; [CPU_] |1796| 
         ADDB      XAR4,#28              ; [CPU_] |1796| 
-        MOVZ      AR5,*+XAR1[1]         ; [CPU_] |1796| 
+        MOVZ      AR5,*+XAR2[1]         ; [CPU_] |1796| 
 $C$DW$129	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$129, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$129, DW_AT_name("_disk_read")
@@ -2741,15 +2744,10 @@ $C$L69:
 ;----------------------------------------------------------------------
 ; 1800 | if (LD_WORD(&fs->win[BS_55AA]) != 0xAA55)                              
 ;----------------------------------------------------------------------
-        MOVL      ACC,XAR1              ; [CPU_] |1800| 
-        ADD       ACC,#269 << 1         ; [CPU_] |1800| 
-        MOVL      XAR6,ACC              ; [CPU_] |1800| 
-        MOVL      ACC,XAR1              ; [CPU_] |1800| 
-        ADD       ACC,#539 << 0         ; [CPU_] |1800| 
-        MOVL      XAR4,ACC              ; [CPU_] |1800| 
-        MOV       ACC,*+XAR4[0] << #8   ; [CPU_] |1800| 
-        MOVL      XAR4,XAR6             ; [CPU_] |1800| 
-        OR        AL,*+XAR4[0]          ; [CPU_] |1800| 
+        MOVL      XAR1,#539             ; [CPU_] |1800| 
+        MOVL      XAR0,#538             ; [CPU_] |1800| 
+        MOV       ACC,*+XAR2[AR1] << #8 ; [CPU_] |1800| 
+        OR        AL,*+XAR2[AR0]        ; [CPU_] |1800| 
         MOVZ      AR6,AL                ; [CPU_] |1800| 
         MOVL      XAR4,#43605           ; [CPU_U] |1800| 
         MOVL      ACC,XAR4              ; [CPU_] |1800| 
@@ -2773,29 +2771,29 @@ $C$L70:
 ; 1809 | return 1;                                                              
 ;----------------------------------------------------------------------
         MOVB      XAR0,#83              ; [CPU_] |1807| 
-        MOV       ACC,*+XAR1[AR0] << #8 ; [CPU_] |1807| 
+        MOV       ACC,*+XAR2[AR0] << #8 ; [CPU_] |1807| 
         CLRC      SXM                   ; [CPU_] 
         MOVZ      AR7,AL                ; [CPU_] |1807| 
         MOVB      XAR0,#84              ; [CPU_] |1807| 
         MOV       PL,#16710             ; [CPU_] |1807| 
         MOV       PH,#84                ; [CPU_] |1807| 
         MOVB      XAR6,#0               ; [CPU_] |1807| 
-        MOV       ACC,*+XAR1[AR0] << 16 ; [CPU_] |1807| 
+        MOV       ACC,*+XAR2[AR0] << 16 ; [CPU_] |1807| 
         MOVB      XAR0,#82              ; [CPU_] |1807| 
         OR        ACC,AR7               ; [CPU_] |1807| 
-        OR        ACC,*+XAR1[AR0]       ; [CPU_] |1807| 
+        OR        ACC,*+XAR2[AR0]       ; [CPU_] |1807| 
         ANDB      AH,#255               ; [CPU_] |1807| 
         CMPL      ACC,P                 ; [CPU_] |1807| 
         B         $C$L71,EQ             ; [CPU_] |1807| 
         ; branchcc occurs ; [] |1807| 
         MOVB      XAR0,#111             ; [CPU_] |1807| 
-        MOV       ACC,*+XAR1[AR0] << #8 ; [CPU_] |1807| 
+        MOV       ACC,*+XAR2[AR0] << #8 ; [CPU_] |1807| 
         MOVZ      AR7,AL                ; [CPU_] |1807| 
         MOVB      XAR0,#112             ; [CPU_] |1807| 
-        MOV       ACC,*+XAR1[AR0] << 16 ; [CPU_] |1807| 
+        MOV       ACC,*+XAR2[AR0] << 16 ; [CPU_] |1807| 
         MOVB      XAR0,#110             ; [CPU_] |1807| 
         OR        ACC,AR7               ; [CPU_] |1807| 
-        OR        ACC,*+XAR1[AR0]       ; [CPU_] |1807| 
+        OR        ACC,*+XAR2[AR0]       ; [CPU_] |1807| 
         ANDB      AH,#255               ; [CPU_] |1807| 
         CMPL      ACC,P                 ; [CPU_] |1807| 
         MOVB      XAR6,#1,NEQ           ; [CPU_] |1807| 
@@ -2803,7 +2801,10 @@ $C$L71:
         MOV       AL,AR6                ; [CPU_] |1807| 
 $C$L72:    
         SUBB      SP,#2                 ; [CPU_U] 
+	.dwcfi	cfa_offset, -6
+        MOVL      XAR2,*--SP            ; [CPU_] 
 	.dwcfi	cfa_offset, -4
+	.dwcfi	restore_reg, 9
         MOVL      XAR1,*--SP            ; [CPU_] 
 	.dwcfi	cfa_offset, -2
 	.dwcfi	restore_reg, 7
@@ -2970,12 +2971,12 @@ $C$DW$146	.dwtag  DW_TAG_variable
 	.dwattr $C$DW$146, DW_AT_type(*$C$DW$T$25)
 	.dwattr $C$DW$146, DW_AT_location[DW_OP_reg8]
 
-;* AR6   assigned to _fmt
+;* AL    assigned to _fmt
 $C$DW$147	.dwtag  DW_TAG_variable
 	.dwattr $C$DW$147, DW_AT_name("fmt")
 	.dwattr $C$DW$147, DW_AT_TI_symbol_name("_fmt")
 	.dwattr $C$DW$147, DW_AT_type(*$C$DW$T$19)
-	.dwattr $C$DW$147, DW_AT_location[DW_OP_reg16]
+	.dwattr $C$DW$147, DW_AT_location[DW_OP_reg0]
 
 $C$DW$148	.dwtag  DW_TAG_variable
 	.dwattr $C$DW$148, DW_AT_name("fmt")
@@ -3250,7 +3251,6 @@ $C$DW$155	.dwtag  DW_TAG_TI_branch
 
         LCR       #_check_fs            ; [CPU_] |1887| 
         ; call occurs [#_check_fs] ; [] |1887| 
-        MOVZ      AR6,AL                ; [CPU_] |1887| 
         MOVB      XAR3,#0               ; [CPU_] |1887| 
 	.dwpsn	file "../Source/ff.c",line 1888,column 3,is_stmt,isa 0
 ;----------------------------------------------------------------------
@@ -3263,43 +3263,30 @@ $C$DW$155	.dwtag  DW_TAG_TI_branch
         CMPB      AL,#1                 ; [CPU_] |1888| 
         B         $C$L81,NEQ            ; [CPU_] |1888| 
         ; branchcc occurs ; [] |1888| 
-        MOVL      ACC,XAR2              ; [CPU_] 
-        ADD       ACC,#239 << 1         ; [CPU_] |1888| 
-        MOVL      XAR4,ACC              ; [CPU_] |1888| 
-        MOV       AH,*+XAR4[0]          ; [CPU_] |1888| 
+        MOVL      XAR0,#478             ; [CPU_] |1888| 
+        MOV       AH,*+XAR2[AR0]        ; [CPU_] |1888| 
         B         $C$L81,EQ             ; [CPU_] |1888| 
         ; branchcc occurs ; [] |1888| 
-        MOVL      ACC,XAR2              ; [CPU_] 
 	.dwpsn	file "../Source/ff.c",line 1894,column 7,is_stmt,isa 0
 ;----------------------------------------------------------------------
 ; 1894 | bsect = LD_DWORD(&tbl[8]);        /* Partition offset in LBA */        
 ;----------------------------------------------------------------------
-        ADD       ACC,#121 << 2         ; [CPU_] |1894| 
-        MOVL      XAR6,ACC              ; [CPU_] |1894| 
-        MOVL      ACC,XAR2              ; [CPU_] |1894| 
-        ADD       ACC,#485 << 0         ; [CPU_] |1894| 
-        MOVL      XAR4,ACC              ; [CPU_] |1894| 
+        MOVL      XAR1,#485             ; [CPU_] |1894| 
         CLRC      SXM                   ; [CPU_] 
-        MOV       ACC,*+XAR4[0] << 8    ; [CPU_] |1894| 
-        MOVL      XAR4,XAR6             ; [CPU_] |1894| 
-        OR        ACC,*+XAR4[0]         ; [CPU_] |1894| 
+        MOVL      XAR0,#484             ; [CPU_] |1894| 
+        MOV       ACC,*+XAR2[AR1] << 8  ; [CPU_] |1894| 
+        OR        ACC,*+XAR2[AR0]       ; [CPU_] |1894| 
+        MOVL      XAR0,#483             ; [CPU_] |1894| 
         LSL       ACC,16                ; [CPU_] |1894| 
         MOVL      XAR7,ACC              ; [CPU_] |1894| 
-        MOVL      ACC,XAR2              ; [CPU_] |1894| 
-        ADD       ACC,#483 << 0         ; [CPU_] |1894| 
-        MOVL      XAR4,ACC              ; [CPU_] |1894| 
-        MOV       ACC,*+XAR4[0] << #8   ; [CPU_] |1894| 
+        MOV       ACC,*+XAR2[AR0] << #8 ; [CPU_] |1894| 
         MOVZ      AR6,AL                ; [CPU_] |1894| 
+        MOVL      XAR4,XAR2             ; [CPU_] |1894| 
+        MOVL      XAR0,#482             ; [CPU_] |1894| 
         MOVL      ACC,XAR7              ; [CPU_] |1894| 
         OR        ACC,AR6               ; [CPU_] |1894| 
-        MOVL      XAR7,ACC              ; [CPU_] |1894| 
-        MOVL      ACC,XAR2              ; [CPU_] |1894| 
-        ADD       ACC,#241 << 1         ; [CPU_] |1894| 
-        MOVL      XAR4,ACC              ; [CPU_] |1894| 
-        MOVL      ACC,XAR7              ; [CPU_] |1894| 
-        OR        ACC,*+XAR4[0]         ; [CPU_] |1894| 
+        OR        ACC,*+XAR2[AR0]       ; [CPU_] |1894| 
         MOVL      XAR3,ACC              ; [CPU_] |1894| 
-        MOVL      XAR4,XAR2             ; [CPU_] |1894| 
 	.dwpsn	file "../Source/ff.c",line 1895,column 7,is_stmt,isa 0
 ;----------------------------------------------------------------------
 ; 1895 | fmt = check_fs(fs, bsect);        /* Check the partition */            
@@ -3311,9 +3298,7 @@ $C$DW$156	.dwtag  DW_TAG_TI_branch
 
         LCR       #_check_fs            ; [CPU_] |1895| 
         ; call occurs [#_check_fs] ; [] |1895| 
-        MOVZ      AR6,AL                ; [CPU_] |1895| 
 $C$L81:    
-        MOV       AL,AR6                ; [CPU_] 
 	.dwpsn	file "../Source/ff.c",line 1898,column 3,is_stmt,isa 0
 ;----------------------------------------------------------------------
 ; 1898 | if (fmt == 3) return FR_DISK_ERR;                                      
@@ -3772,15 +3757,10 @@ $C$DW$157	.dwtag  DW_TAG_TI_branch
         CMPB      AL,#0                 ; [CPU_] |1961| 
         B         $C$L95,NEQ            ; [CPU_] |1961| 
         ; branchcc occurs ; [] |1961| 
-        MOVL      ACC,XAR2              ; [CPU_] 
-        ADD       ACC,#269 << 1         ; [CPU_] |1961| 
-        MOVL      XAR6,ACC              ; [CPU_] |1961| 
-        MOVL      ACC,XAR2              ; [CPU_] |1961| 
-        ADD       ACC,#539 << 0         ; [CPU_] |1961| 
-        MOVL      XAR4,ACC              ; [CPU_] |1961| 
-        MOV       ACC,*+XAR4[0] << #8   ; [CPU_] |1961| 
-        MOVL      XAR4,XAR6             ; [CPU_] |1961| 
-        OR        AL,*+XAR4[0]          ; [CPU_] |1961| 
+        MOVL      XAR1,#539             ; [CPU_] |1961| 
+        MOVL      XAR0,#538             ; [CPU_] |1961| 
+        MOV       ACC,*+XAR2[AR1] << #8 ; [CPU_] |1961| 
+        OR        AL,*+XAR2[AR0]        ; [CPU_] |1961| 
         MOVZ      AR6,AL                ; [CPU_] |1961| 
         MOVL      XAR4,#43605           ; [CPU_U] |1961| 
         MOVL      ACC,XAR4              ; [CPU_] |1961| 
@@ -3806,95 +3786,66 @@ $C$DW$157	.dwtag  DW_TAG_TI_branch
         CMPL      ACC,P                 ; [CPU_] |1961| 
         B         $C$L95,NEQ            ; [CPU_] |1961| 
         ; branchcc occurs ; [] |1961| 
-        MOVL      ACC,XAR2              ; [CPU_] 
-        ADD       ACC,#257 << 1         ; [CPU_] |1961| 
-        MOVL      XAR6,ACC              ; [CPU_] |1961| 
-        MOVL      ACC,XAR2              ; [CPU_] |1961| 
-        ADD       ACC,#515 << 0         ; [CPU_] |1961| 
-        MOVL      XAR4,ACC              ; [CPU_] |1961| 
-        MOV       ACC,*+XAR4[0] << 8    ; [CPU_] |1961| 
-        MOVL      XAR4,XAR6             ; [CPU_] |1961| 
-        OR        ACC,*+XAR4[0]         ; [CPU_] |1961| 
+        MOVL      XAR1,#515             ; [CPU_] |1961| 
+        MOVL      XAR0,#514             ; [CPU_] |1961| 
+        MOV       ACC,*+XAR2[AR1] << 8  ; [CPU_] |1961| 
+        MOV       PL,#29298             ; [CPU_] |1961| 
+        OR        ACC,*+XAR2[AR0]       ; [CPU_] |1961| 
+        MOVL      XAR0,#513             ; [CPU_] |1961| 
         LSL       ACC,16                ; [CPU_] |1961| 
         MOVL      XAR7,ACC              ; [CPU_] |1961| 
-        MOVL      ACC,XAR2              ; [CPU_] |1961| 
-        ADD       ACC,#513 << 0         ; [CPU_] |1961| 
-        MOVL      XAR4,ACC              ; [CPU_] |1961| 
-        MOV       ACC,*+XAR4[0] << #8   ; [CPU_] |1961| 
+        MOV       ACC,*+XAR2[AR0] << #8 ; [CPU_] |1961| 
         MOVZ      AR6,AL                ; [CPU_] |1961| 
+        MOV       PH,#24897             ; [CPU_] |1961| 
+        MOVL      XAR0,#512             ; [CPU_] |1961| 
         MOVL      ACC,XAR7              ; [CPU_] |1961| 
         OR        ACC,AR6               ; [CPU_] |1961| 
-        MOVL      XAR7,ACC              ; [CPU_] |1961| 
-        MOVL      ACC,XAR2              ; [CPU_] |1961| 
-        ADD       ACC,#1 << 9           ; [CPU_] |1961| 
-        MOVL      XAR4,ACC              ; [CPU_] |1961| 
-        MOV       PL,#29298             ; [CPU_] |1961| 
-        MOV       PH,#24897             ; [CPU_] |1961| 
-        MOVL      ACC,XAR7              ; [CPU_] |1961| 
-        OR        ACC,*+XAR4[0]         ; [CPU_] |1961| 
+        OR        ACC,*+XAR2[AR0]       ; [CPU_] |1961| 
         CMPL      ACC,P                 ; [CPU_] |1961| 
         B         $C$L95,NEQ            ; [CPU_] |1961| 
         ; branchcc occurs ; [] |1961| 
-        MOVL      ACC,XAR2              ; [CPU_] 
 	.dwpsn	file "../Source/ff.c",line 1965,column 7,is_stmt,isa 0
 ;----------------------------------------------------------------------
 ; 1965 | fs->last_clust = LD_DWORD(fs->win+FSI_Nxt_Free);                       
 ;----------------------------------------------------------------------
-        ADD       ACC,#261 << 1         ; [CPU_] |1965| 
-        MOVL      XAR6,ACC              ; [CPU_] |1965| 
-        MOVL      ACC,XAR2              ; [CPU_] |1965| 
-        ADD       ACC,#523 << 0         ; [CPU_] |1965| 
-        MOVL      XAR4,ACC              ; [CPU_] |1965| 
-        MOV       ACC,*+XAR4[0] << 8    ; [CPU_] |1965| 
-        MOVL      XAR4,XAR6             ; [CPU_] |1965| 
-        OR        ACC,*+XAR4[0]         ; [CPU_] |1965| 
+        MOVL      XAR1,#523             ; [CPU_] |1965| 
+        MOVL      XAR0,#522             ; [CPU_] |1965| 
+        MOV       ACC,*+XAR2[AR1] << 8  ; [CPU_] |1965| 
+        OR        ACC,*+XAR2[AR0]       ; [CPU_] |1965| 
+        MOVL      XAR0,#521             ; [CPU_] |1965| 
         LSL       ACC,16                ; [CPU_] |1965| 
         MOVL      XAR7,ACC              ; [CPU_] |1965| 
-        MOVL      ACC,XAR2              ; [CPU_] |1965| 
-        ADD       ACC,#521 << 0         ; [CPU_] |1965| 
-        MOVL      XAR4,ACC              ; [CPU_] |1965| 
-        MOV       ACC,*+XAR4[0] << #8   ; [CPU_] |1965| 
+        MOV       ACC,*+XAR2[AR0] << #8 ; [CPU_] |1965| 
         MOVZ      AR6,AL                ; [CPU_] |1965| 
-        MOVL      ACC,XAR7              ; [CPU_] |1965| 
-        OR        ACC,AR6               ; [CPU_] |1965| 
-        MOVL      XAR7,ACC              ; [CPU_] |1965| 
-        MOVL      ACC,XAR2              ; [CPU_] |1965| 
-        ADD       ACC,#65 << 3          ; [CPU_] |1965| 
-        MOVL      XAR4,ACC              ; [CPU_] |1965| 
-        MOVB      XAR0,#8               ; [CPU_] |1965| 
-        MOVL      ACC,XAR7              ; [CPU_] |1965| 
-        OR        ACC,*+XAR4[0]         ; [CPU_] |1965| 
-        MOVL      *+XAR2[AR0],ACC       ; [CPU_] |1965| 
-        MOVL      ACC,XAR2              ; [CPU_] |1965| 
 	.dwpsn	file "../Source/ff.c",line 1966,column 7,is_stmt,isa 0
 ;----------------------------------------------------------------------
 ; 1966 | fs->free_clust = LD_DWORD(fs->win+FSI_Free_Count);                     
+;----------------------------------------------------------------------
+        MOVL      XAR1,#519             ; [CPU_] |1966| 
+	.dwpsn	file "../Source/ff.c",line 1965,column 7,is_stmt,isa 0
+        MOVL      XAR0,#520             ; [CPU_] |1965| 
+        MOVL      ACC,XAR7              ; [CPU_] |1965| 
+        OR        ACC,AR6               ; [CPU_] |1965| 
+        OR        ACC,*+XAR2[AR0]       ; [CPU_] |1965| 
+        MOVB      XAR0,#8               ; [CPU_] |1965| 
+        MOVL      *+XAR2[AR0],ACC       ; [CPU_] |1965| 
+	.dwpsn	file "../Source/ff.c",line 1966,column 7,is_stmt,isa 0
+;----------------------------------------------------------------------
 ; 1969 | #endif                                                                 
 ;----------------------------------------------------------------------
-        ADD       ACC,#259 << 1         ; [CPU_] |1966| 
-        MOVL      XAR6,ACC              ; [CPU_] |1966| 
-        MOVL      ACC,XAR2              ; [CPU_] |1966| 
-        ADD       ACC,#519 << 0         ; [CPU_] |1966| 
-        MOVL      XAR4,ACC              ; [CPU_] |1966| 
-        MOV       ACC,*+XAR4[0] << 8    ; [CPU_] |1966| 
-        MOVL      XAR4,XAR6             ; [CPU_] |1966| 
-        OR        ACC,*+XAR4[0]         ; [CPU_] |1966| 
+        MOVL      XAR0,#518             ; [CPU_] |1966| 
+        MOV       ACC,*+XAR2[AR1] << 8  ; [CPU_] |1966| 
+        OR        ACC,*+XAR2[AR0]       ; [CPU_] |1966| 
+        MOVL      XAR0,#517             ; [CPU_] |1966| 
         LSL       ACC,16                ; [CPU_] |1966| 
         MOVL      XAR7,ACC              ; [CPU_] |1966| 
-        MOVL      ACC,XAR2              ; [CPU_] |1966| 
-        ADD       ACC,#517 << 0         ; [CPU_] |1966| 
-        MOVL      XAR4,ACC              ; [CPU_] |1966| 
-        MOV       ACC,*+XAR4[0] << #8   ; [CPU_] |1966| 
+        MOV       ACC,*+XAR2[AR0] << #8 ; [CPU_] |1966| 
         MOVZ      AR6,AL                ; [CPU_] |1966| 
+        MOVL      XAR0,#516             ; [CPU_] |1966| 
         MOVL      ACC,XAR7              ; [CPU_] |1966| 
         OR        ACC,AR6               ; [CPU_] |1966| 
-        MOVL      XAR7,ACC              ; [CPU_] |1966| 
-        MOVL      ACC,XAR2              ; [CPU_] |1966| 
-        ADD       ACC,#129 << 2         ; [CPU_] |1966| 
-        MOVL      XAR4,ACC              ; [CPU_] |1966| 
+        OR        ACC,*+XAR2[AR0]       ; [CPU_] |1966| 
         MOVB      XAR0,#10              ; [CPU_] |1966| 
-        MOVL      ACC,XAR7              ; [CPU_] |1966| 
-        OR        ACC,*+XAR4[0]         ; [CPU_] |1966| 
         MOVL      *+XAR2[AR0],ACC       ; [CPU_] |1966| 
 $C$L95:    
         MOV       AL,*-SP[2]            ; [CPU_] 
@@ -6058,6 +6009,11 @@ $C$DW$234	.dwtag  DW_TAG_TI_branch
 	.dwpsn	file "../Source/ff.c",line 572,column 7,is_stmt,isa 0
         MOVL      *+XAR1[AR0],ACC       ; [CPU_] |572| 
 	.dwpsn	file "../Source/ff.c",line 573,column 7,is_stmt,isa 0
+;----------------------------------------------------------------------
+; 574 | ST_WORD(fs->win+BS_55AA, 0xAA55);                                      
+; 575 | ST_DWORD(fs->win+FSI_LeadSig, 0x41615252);                             
+; 576 | ST_DWORD(fs->win+FSI_StrucSig, 0x61417272);                            
+;----------------------------------------------------------------------
         MOVB      AL,#0                 ; [CPU_] |573| 
         MOV       AH,#512               ; [CPU_] |573| 
         ADDB      XAR4,#28              ; [CPU_] |573| 
@@ -6068,142 +6024,95 @@ $C$DW$235	.dwtag  DW_TAG_TI_branch
 
         LCR       #_mem_set             ; [CPU_] |573| 
         ; call occurs [#_mem_set] ; [] |573| 
-	.dwpsn	file "../Source/ff.c",line 574,column 7,is_stmt,isa 0
-;----------------------------------------------------------------------
-; 574 | ST_WORD(fs->win+BS_55AA, 0xAA55);                                      
-;----------------------------------------------------------------------
-        MOVL      ACC,XAR1              ; [CPU_] |574| 
-        ADD       ACC,#269 << 1         ; [CPU_] |574| 
-        MOVL      XAR4,ACC              ; [CPU_] |574| 
-        MOVL      ACC,XAR1              ; [CPU_] |574| 
-        MOV       *+XAR4[0],#43605      ; [CPU_] |574| 
-        ADD       ACC,#539 << 0         ; [CPU_] |574| 
-        MOVL      XAR4,ACC              ; [CPU_] |574| 
-	.dwpsn	file "../Source/ff.c",line 575,column 7,is_stmt,isa 0
-;----------------------------------------------------------------------
-; 575 | ST_DWORD(fs->win+FSI_LeadSig, 0x41615252);                             
-;----------------------------------------------------------------------
-        MOVB      XAR0,#28              ; [CPU_] |575| 
-	.dwpsn	file "../Source/ff.c",line 576,column 7,is_stmt,isa 0
-;----------------------------------------------------------------------
-; 576 | ST_DWORD(fs->win+FSI_StrucSig, 0x61417272);                            
-;----------------------------------------------------------------------
-        MOVL      ACC,XAR1              ; [CPU_] |576| 
-	.dwpsn	file "../Source/ff.c",line 574,column 7,is_stmt,isa 0
-        MOVB      *+XAR4[0],#170,UNC    ; [CPU_] |574| 
-	.dwpsn	file "../Source/ff.c",line 576,column 7,is_stmt,isa 0
-        ADD       ACC,#1 << 9           ; [CPU_] |576| 
-	.dwpsn	file "../Source/ff.c",line 575,column 7,is_stmt,isa 0
-        MOV       *+XAR1[AR0],#21074    ; [CPU_] |575| 
-	.dwpsn	file "../Source/ff.c",line 576,column 7,is_stmt,isa 0
-        MOVL      XAR4,ACC              ; [CPU_] |576| 
-	.dwpsn	file "../Source/ff.c",line 575,column 7,is_stmt,isa 0
-        MOVB      XAR0,#29              ; [CPU_] |575| 
-	.dwpsn	file "../Source/ff.c",line 576,column 7,is_stmt,isa 0
-        MOVL      ACC,XAR1              ; [CPU_] |576| 
-	.dwpsn	file "../Source/ff.c",line 575,column 7,is_stmt,isa 0
-        MOVB      *+XAR1[AR0],#82,UNC   ; [CPU_] |575| 
-        MOVB      XAR0,#30              ; [CPU_] |575| 
-	.dwpsn	file "../Source/ff.c",line 576,column 7,is_stmt,isa 0
-        ADD       ACC,#513 << 0         ; [CPU_] |576| 
-	.dwpsn	file "../Source/ff.c",line 575,column 7,is_stmt,isa 0
-        MOV       *+XAR1[AR0],#16737    ; [CPU_] |575| 
-        MOVB      XAR0,#31              ; [CPU_] |575| 
-        MOVB      *+XAR1[AR0],#65,UNC   ; [CPU_] |575| 
-	.dwpsn	file "../Source/ff.c",line 576,column 7,is_stmt,isa 0
-        MOV       *+XAR4[0],#29298      ; [CPU_] |576| 
-        MOVL      XAR4,ACC              ; [CPU_] |576| 
-        MOVL      ACC,XAR1              ; [CPU_] |576| 
-        ADD       ACC,#257 << 1         ; [CPU_] |576| 
-        MOVB      *+XAR4[0],#114,UNC    ; [CPU_] |576| 
-        MOVL      XAR4,ACC              ; [CPU_] |576| 
-        MOVL      ACC,XAR1              ; [CPU_] |576| 
-        ADD       ACC,#515 << 0         ; [CPU_] |576| 
-        MOV       *+XAR4[0],#24897      ; [CPU_] |576| 
-        MOVL      XAR4,ACC              ; [CPU_] |576| 
 	.dwpsn	file "../Source/ff.c",line 577,column 7,is_stmt,isa 0
 ;----------------------------------------------------------------------
 ; 577 | ST_DWORD(fs->win+FSI_Free_Count, fs->free_clust);                      
 ;----------------------------------------------------------------------
         MOVL      XAR7,XAR1             ; [CPU_] |577| 
-        MOVL      ACC,XAR1              ; [CPU_] |577| 
-        ADD       ACC,#129 << 2         ; [CPU_] |577| 
-	.dwpsn	file "../Source/ff.c",line 576,column 7,is_stmt,isa 0
-        MOVB      *+XAR4[0],#97,UNC     ; [CPU_] |576| 
+	.dwpsn	file "../Source/ff.c",line 574,column 7,is_stmt,isa 0
+        MOVL      XAR0,#538             ; [CPU_] |574| 
 	.dwpsn	file "../Source/ff.c",line 577,column 7,is_stmt,isa 0
-        MOVL      XAR4,ACC              ; [CPU_] |577| 
-        ADDB      XAR7,#10              ; [CPU_] |577| 
-        MOVB      XAR0,#10              ; [CPU_] |577| 
-        MOV       AL,*XAR7              ; [CPU_] |577| 
-        MOV       *+XAR4[0],AL          ; [CPU_] |577| 
-        MOV       AL,*+XAR1[AR0]        ; [CPU_] |577| 
-        LSR       AL,8                  ; [CPU_] |577| 
-        MOVZ      AR6,AL                ; [CPU_] |577| 
-        MOVL      ACC,XAR1              ; [CPU_] |577| 
-        ADD       ACC,#517 << 0         ; [CPU_] |577| 
-        MOVL      XAR4,ACC              ; [CPU_] |577| 
-        MOVB      XAR0,#10              ; [CPU_] |577| 
-        MOV       *+XAR4[0],AR6         ; [CPU_] |577| 
-        MOVL      ACC,*+XAR1[AR0]       ; [CPU_] |577| 
-        MOVU      ACC,AH                ; [CPU_] |577| 
-        MOVL      XAR6,ACC              ; [CPU_] |577| 
-        MOVL      ACC,XAR1              ; [CPU_] |577| 
-        ADD       ACC,#259 << 1         ; [CPU_] |577| 
-        MOVL      XAR4,ACC              ; [CPU_] |577| 
-        MOVB      XAR0,#10              ; [CPU_] |577| 
-        MOV       T,#24                 ; [CPU_] |577| 
-        MOV       *+XAR4[0],AR6         ; [CPU_] |577| 
-        MOVL      ACC,*+XAR1[AR0]       ; [CPU_] |577| 
-        LSRL      ACC,T                 ; [CPU_] |577| 
-        MOVL      XAR6,ACC              ; [CPU_] |577| 
-        MOVL      ACC,XAR1              ; [CPU_] |577| 
-        ADD       ACC,#519 << 0         ; [CPU_] |577| 
-        MOVL      XAR4,ACC              ; [CPU_] |577| 
-	.dwpsn	file "../Source/ff.c",line 578,column 7,is_stmt,isa 0
 ;----------------------------------------------------------------------
 ; 578 | ST_DWORD(fs->win+FSI_Nxt_Free, fs->last_clust);                        
 ;----------------------------------------------------------------------
-        MOVL      XAR7,XAR1             ; [CPU_] |578| 
-        MOVL      ACC,XAR1              ; [CPU_] |578| 
-        ADD       ACC,#65 << 3          ; [CPU_] |578| 
+        MOV       T,#24                 ; [CPU_] |577| 
+	.dwpsn	file "../Source/ff.c",line 574,column 7,is_stmt,isa 0
+        MOV       *+XAR1[AR0],#43605    ; [CPU_] |574| 
 	.dwpsn	file "../Source/ff.c",line 577,column 7,is_stmt,isa 0
-        MOV       *+XAR4[0],AR6         ; [CPU_] |577| 
-	.dwpsn	file "../Source/ff.c",line 578,column 7,is_stmt,isa 0
-        MOVL      XAR4,ACC              ; [CPU_] |578| 
-        ADDB      XAR7,#8               ; [CPU_] |578| 
-        MOVB      XAR0,#8               ; [CPU_] |578| 
-        MOV       AL,*XAR7              ; [CPU_] |578| 
-        MOV       *+XAR4[0],AL          ; [CPU_] |578| 
-        MOV       AL,*+XAR1[AR0]        ; [CPU_] |578| 
-        LSR       AL,8                  ; [CPU_] |578| 
-        MOVZ      AR6,AL                ; [CPU_] |578| 
-        MOVL      ACC,XAR1              ; [CPU_] |578| 
-        ADD       ACC,#521 << 0         ; [CPU_] |578| 
-        MOVL      XAR4,ACC              ; [CPU_] |578| 
-        MOVB      XAR0,#8               ; [CPU_] |578| 
-        MOV       *+XAR4[0],AR6         ; [CPU_] |578| 
-        MOVL      ACC,*+XAR1[AR0]       ; [CPU_] |578| 
-        MOVU      ACC,AH                ; [CPU_] |578| 
-        MOVL      XAR6,ACC              ; [CPU_] |578| 
-        MOVL      ACC,XAR1              ; [CPU_] |578| 
-        ADD       ACC,#261 << 1         ; [CPU_] |578| 
-        MOVL      XAR4,ACC              ; [CPU_] |578| 
-        MOVB      XAR0,#8               ; [CPU_] |578| 
-        MOV       *+XAR4[0],AR6         ; [CPU_] |578| 
-        MOVL      ACC,*+XAR1[AR0]       ; [CPU_] |578| 
-        LSRL      ACC,T                 ; [CPU_] |578| 
-        MOVL      XAR6,ACC              ; [CPU_] |578| 
-        MOVL      ACC,XAR1              ; [CPU_] |578| 
-        ADD       ACC,#523 << 0         ; [CPU_] |578| 
-        MOVL      XAR4,ACC              ; [CPU_] |578| 
-        MOV       *+XAR4[0],AR6         ; [CPU_] |578| 
+        ADDB      XAR7,#10              ; [CPU_] |577| 
+	.dwpsn	file "../Source/ff.c",line 574,column 7,is_stmt,isa 0
+        MOVL      XAR0,#539             ; [CPU_] |574| 
+        MOVB      *+XAR1[AR0],#170,UNC  ; [CPU_] |574| 
+	.dwpsn	file "../Source/ff.c",line 575,column 7,is_stmt,isa 0
+        MOVB      XAR0,#28              ; [CPU_] |575| 
 	.dwpsn	file "../Source/ff.c",line 579,column 7,is_stmt,isa 0
 ;----------------------------------------------------------------------
 ; 579 | disk_write(fs->drv, fs->win, fs->fsi_sector, 1);                       
 ;----------------------------------------------------------------------
         MOVL      XAR4,XAR1             ; [CPU_] |579| 
-        MOVB      XAR0,#12              ; [CPU_] |579| 
+	.dwpsn	file "../Source/ff.c",line 575,column 7,is_stmt,isa 0
+        MOV       *+XAR1[AR0],#21074    ; [CPU_] |575| 
+        MOVB      XAR0,#29              ; [CPU_] |575| 
+        MOVB      *+XAR1[AR0],#82,UNC   ; [CPU_] |575| 
+        MOVB      XAR0,#30              ; [CPU_] |575| 
+        MOV       *+XAR1[AR0],#16737    ; [CPU_] |575| 
+        MOVB      XAR0,#31              ; [CPU_] |575| 
+        MOVB      *+XAR1[AR0],#65,UNC   ; [CPU_] |575| 
+	.dwpsn	file "../Source/ff.c",line 576,column 7,is_stmt,isa 0
+        MOVL      XAR0,#512             ; [CPU_] |576| 
+        MOV       *+XAR1[AR0],#29298    ; [CPU_] |576| 
+        MOVL      XAR0,#513             ; [CPU_] |576| 
+        MOVB      *+XAR1[AR0],#114,UNC  ; [CPU_] |576| 
+        MOVL      XAR0,#514             ; [CPU_] |576| 
+        MOV       *+XAR1[AR0],#24897    ; [CPU_] |576| 
+        MOVL      XAR0,#515             ; [CPU_] |576| 
+        MOVB      *+XAR1[AR0],#97,UNC   ; [CPU_] |576| 
+	.dwpsn	file "../Source/ff.c",line 577,column 7,is_stmt,isa 0
+        MOVL      XAR0,#516             ; [CPU_] |577| 
+        MOV       AL,*XAR7              ; [CPU_] |577| 
+	.dwpsn	file "../Source/ff.c",line 578,column 7,is_stmt,isa 0
+        MOVL      XAR7,XAR1             ; [CPU_] |578| 
+	.dwpsn	file "../Source/ff.c",line 579,column 7,is_stmt,isa 0
         ADDB      XAR4,#28              ; [CPU_] |579| 
+	.dwpsn	file "../Source/ff.c",line 577,column 7,is_stmt,isa 0
+        MOV       *+XAR1[AR0],AL        ; [CPU_] |577| 
+        MOVB      XAR0,#10              ; [CPU_] |577| 
+	.dwpsn	file "../Source/ff.c",line 578,column 7,is_stmt,isa 0
+        ADDB      XAR7,#8               ; [CPU_] |578| 
+	.dwpsn	file "../Source/ff.c",line 577,column 7,is_stmt,isa 0
+        MOV       AL,*+XAR1[AR0]        ; [CPU_] |577| 
+        MOVL      XAR0,#517             ; [CPU_] |577| 
+        LSR       AL,8                  ; [CPU_] |577| 
+        MOV       *+XAR1[AR0],AL        ; [CPU_] |577| 
+        MOVB      XAR0,#10              ; [CPU_] |577| 
+        MOVL      ACC,*+XAR1[AR0]       ; [CPU_] |577| 
+        MOVL      XAR0,#518             ; [CPU_] |577| 
+        MOVH      *+XAR1[AR0],ACC << 0  ; [CPU_] |577| 
+        MOVB      XAR0,#10              ; [CPU_] |577| 
+        MOVL      ACC,*+XAR1[AR0]       ; [CPU_] |577| 
+        MOVL      XAR0,#519             ; [CPU_] |577| 
+        LSRL      ACC,T                 ; [CPU_] |577| 
+        MOV       *+XAR1[AR0],AL        ; [CPU_] |577| 
+	.dwpsn	file "../Source/ff.c",line 578,column 7,is_stmt,isa 0
+        MOVL      XAR0,#520             ; [CPU_] |578| 
+        MOV       AL,*XAR7              ; [CPU_] |578| 
+        MOV       *+XAR1[AR0],AL        ; [CPU_] |578| 
+        MOVB      XAR0,#8               ; [CPU_] |578| 
+        MOV       AL,*+XAR1[AR0]        ; [CPU_] |578| 
+        MOVL      XAR0,#521             ; [CPU_] |578| 
+        LSR       AL,8                  ; [CPU_] |578| 
+        MOV       *+XAR1[AR0],AL        ; [CPU_] |578| 
+        MOVB      XAR0,#8               ; [CPU_] |578| 
+        MOVL      ACC,*+XAR1[AR0]       ; [CPU_] |578| 
+        MOVL      XAR0,#522             ; [CPU_] |578| 
+        MOVH      *+XAR1[AR0],ACC << 0  ; [CPU_] |578| 
+        MOVB      XAR0,#8               ; [CPU_] |578| 
+        MOVL      ACC,*+XAR1[AR0]       ; [CPU_] |578| 
+        MOVL      XAR0,#523             ; [CPU_] |578| 
+        LSRL      ACC,T                 ; [CPU_] |578| 
+        MOV       *+XAR1[AR0],AL        ; [CPU_] |578| 
+	.dwpsn	file "../Source/ff.c",line 579,column 7,is_stmt,isa 0
+        MOVB      XAR0,#12              ; [CPU_] |579| 
         MOVB      *-SP[1],#1,UNC        ; [CPU_] |579| 
         MOVZ      AR5,*+XAR1[1]         ; [CPU_] |579| 
         MOVL      ACC,*+XAR1[AR0]       ; [CPU_] |579| 
@@ -12471,7 +12380,8 @@ $C$DW$498	.dwtag  DW_TAG_formal_parameter
 ;***************************************************************
 
 _f_mkfs:
-;* AR6   assigned to $O$C16
+;* AR6   assigned to $O$C15
+;* AL    assigned to $O$C16
 ;* AR4   assigned to $O$U55
 ;* AR2   assigned to $O$U134
 ;* PL    assigned to _n_disk
@@ -13137,6 +13047,9 @@ $C$L324:
         ADDL      ACC,*-SP[4]           ; [CPU_] |3553| 
         MOVL      P,ACC                 ; [CPU_] |3553| 
 	.dwpsn	file "../Source/ff.c",line 3555,column 5,is_stmt,isa 0
+;----------------------------------------------------------------------
+; 3556 | tbl = fs->win+MBR_Table;                                               
+;----------------------------------------------------------------------
         MOVB      AL,#0                 ; [CPU_] |3555| 
         MOV       AH,#512               ; [CPU_] |3555| 
         ADDB      XAR4,#28              ; [CPU_] |3555| 
@@ -13147,46 +13060,38 @@ $C$DW$527	.dwtag  DW_TAG_TI_branch
 
         LCR       #_mem_set             ; [CPU_] |3555| 
         ; call occurs [#_mem_set] ; [] |3555| 
-        MOVL      ACC,XAR3              ; [CPU_] |3555| 
-	.dwpsn	file "../Source/ff.c",line 3556,column 5,is_stmt,isa 0
-;----------------------------------------------------------------------
-; 3556 | tbl = fs->win+MBR_Table;                                               
-;----------------------------------------------------------------------
-        ADD       ACC,#239 << 1         ; [CPU_] |3556| 
-        MOVL      XAR4,ACC              ; [CPU_] |3556| 
-        MOVL      ACC,XAR3              ; [CPU_] |3556| 
+	.dwpsn	file "../Source/ff.c",line 3553,column 18,is_stmt,isa 0
+        MOVL      XAR2,XAR3             ; [CPU_] |3553| 
 	.dwpsn	file "../Source/ff.c",line 3557,column 5,is_stmt,isa 0
 ;----------------------------------------------------------------------
 ; 3557 | ST_DWORD(tbl, 0x00010180);                  /* Partition start in CHS *
 ;     | /                                                                      
 ;----------------------------------------------------------------------
-        ADD       ACC,#237 << 1         ; [CPU_] |3557| 
-        MOVL      XAR5,ACC              ; [CPU_] |3557| 
-        MOVL      ACC,XAR3              ; [CPU_] |3557| 
-        MOV       *+XAR5[0],#384        ; [CPU_] |3557| 
-        ADD       ACC,#475 << 0         ; [CPU_] |3557| 
-        MOVL      XAR5,ACC              ; [CPU_] |3557| 
-        MOVB      XAR6,#1               ; [CPU_] |3557| 
-        MOVL      ACC,XAR3              ; [CPU_] |3557| 
-        ADD       ACC,#119 << 2         ; [CPU_] |3557| 
-        MOV       *+XAR5[0],AR6         ; [CPU_] |3557| 
-        MOVL      XAR5,ACC              ; [CPU_] |3557| 
-	.dwpsn	file "../Source/ff.c",line 3553,column 18,is_stmt,isa 0
-        MOVL      XAR2,XAR3             ; [CPU_] |3553| 
-	.dwpsn	file "../Source/ff.c",line 3557,column 5,is_stmt,isa 0
-        MOVL      ACC,XAR3              ; [CPU_] |3557| 
-        ADD       ACC,#477 << 0         ; [CPU_] |3557| 
-        MOV       *+XAR5[0],AR6         ; [CPU_] |3557| 
-        MOVL      XAR5,ACC              ; [CPU_] |3557| 
+        MOVL      XAR0,#474             ; [CPU_] |3557| 
 	.dwpsn	file "../Source/ff.c",line 3555,column 5,is_stmt,isa 0
         ADDB      XAR2,#28              ; [CPU_] |3555| 
+	.dwpsn	file "../Source/ff.c",line 3557,column 5,is_stmt,isa 0
+        MOV       *+XAR3[AR0],#384      ; [CPU_] |3557| 
+	.dwpsn	file "../Source/ff.c",line 3555,column 5,is_stmt,isa 0
+        MOVL      ACC,XAR3              ; [CPU_] |3555| 
+	.dwpsn	file "../Source/ff.c",line 3557,column 5,is_stmt,isa 0
+        MOVL      XAR0,#475             ; [CPU_] |3557| 
+	.dwpsn	file "../Source/ff.c",line 3556,column 5,is_stmt,isa 0
+        ADD       ACC,#239 << 1         ; [CPU_] |3556| 
+        MOVL      XAR4,ACC              ; [CPU_] |3556| 
+	.dwpsn	file "../Source/ff.c",line 3557,column 5,is_stmt,isa 0
+        MOVB      AL,#1                 ; [CPU_] |3557| 
+        MOV       *+XAR3[AR0],AL        ; [CPU_] |3557| 
+        MOVL      XAR0,#476             ; [CPU_] |3557| 
+        MOV       *+XAR3[AR0],AL        ; [CPU_] |3557| 
+        MOVL      XAR0,#477             ; [CPU_] |3557| 
 	.dwpsn	file "../Source/ff.c",line 3558,column 5,is_stmt,isa 0
 ;----------------------------------------------------------------------
 ; 3558 | if (n_disk < 63UL * 255 * 1024) {           /* Partition end in CHS */ 
 ;----------------------------------------------------------------------
         MOV       ACC,#16065 << 10      ; [CPU_] |3558| 
 	.dwpsn	file "../Source/ff.c",line 3557,column 5,is_stmt,isa 0
-        MOV       *+XAR5[0],#0          ; [CPU_] |3557| 
+        MOV       *+XAR3[AR0],#0        ; [CPU_] |3557| 
 	.dwpsn	file "../Source/ff.c",line 3558,column 5,is_stmt,isa 0
 ;----------------------------------------------------------------------
 ; 3559 | n_disk = n_disk / 63 / 255;                                            
@@ -13197,18 +13102,14 @@ $C$DW$527	.dwtag  DW_TAG_TI_branch
         CMPL      ACC,P                 ; [CPU_] |3558| 
         B         $C$L325,HI            ; [CPU_] |3558| 
         ; branchcc occurs ; [] |3558| 
-        MOVL      ACC,XAR3              ; [CPU_] 
 	.dwpsn	file "../Source/ff.c",line 3563,column 7,is_stmt,isa 0
 ;----------------------------------------------------------------------
 ; 3563 | ST_WORD(&tbl[6], 0xFFFF);                                              
 ;----------------------------------------------------------------------
-        ADD       ACC,#15 << 5          ; [CPU_] |3563| 
-        MOVL      XAR5,ACC              ; [CPU_] |3563| 
-        MOVL      ACC,XAR3              ; [CPU_] |3563| 
-        MOV       *+XAR5[0],#65535      ; [CPU_] |3563| 
-        ADD       ACC,#481 << 0         ; [CPU_] |3563| 
-        MOVL      XAR5,ACC              ; [CPU_] |3563| 
-        MOVB      *+XAR5[0],#255,UNC    ; [CPU_] |3563| 
+        MOVL      XAR0,#480             ; [CPU_] |3563| 
+        MOV       *+XAR3[AR0],#65535    ; [CPU_] |3563| 
+        MOVL      XAR0,#481             ; [CPU_] |3563| 
+        MOVB      *+XAR3[AR0],#255,UNC  ; [CPU_] |3563| 
         B         $C$L326,UNC           ; [CPU_] |3563| 
         ; branch occurs ; [] |3563| 
 $C$L325:    
@@ -13678,22 +13579,22 @@ $C$DW$532	.dwtag  DW_TAG_TI_branch
 ; 3615 | ST_WORD(tbl+BS_55AA, 0xAA55);                 /* Signature (Offset is f
 ;     | ixed here regardless of sector size) */                                
 ;----------------------------------------------------------------------
-        MOVL      ACC,XAR2              ; [CPU_] |3615| 
-        ADD       ACC,#255 << 1         ; [CPU_] |3615| 
-        MOVL      XAR4,ACC              ; [CPU_] |3615| 
-        MOVL      ACC,XAR2              ; [CPU_] |3615| 
-        MOV       *+XAR4[0],#43605      ; [CPU_] |3615| 
-        ADD       ACC,#511 << 0         ; [CPU_] |3615| 
-        MOVL      XAR4,ACC              ; [CPU_] |3615| 
-        MOVB      *+XAR4[0],#170,UNC    ; [CPU_] |3615| 
+        MOVL      XAR0,#510             ; [CPU_] |3615| 
+        MOV       *+XAR2[AR0],#43605    ; [CPU_] |3615| 
+        MOVL      XAR0,#511             ; [CPU_] |3615| 
 	.dwpsn	file "../Source/ff.c",line 3616,column 3,is_stmt,isa 0
 ;----------------------------------------------------------------------
 ; 3616 | if (disk_write(drv, tbl, b_vol, 1) != RES_OK) /* Write original (VBR) *
 ;     | /                                                                      
-; 3617 |   return FR_DISK_ERR;                                                  
+;----------------------------------------------------------------------
+        MOVL      XAR4,XAR2             ; [CPU_] |3616| 
+	.dwpsn	file "../Source/ff.c",line 3615,column 3,is_stmt,isa 0
+        MOVB      *+XAR2[AR0],#170,UNC  ; [CPU_] |3615| 
+	.dwpsn	file "../Source/ff.c",line 3616,column 3,is_stmt,isa 0
+;----------------------------------------------------------------------
+; 3617 | return FR_DISK_ERR;                                                    
 ;----------------------------------------------------------------------
         MOVB      *-SP[1],#1,UNC        ; [CPU_] |3616| 
-        MOVL      XAR4,XAR2             ; [CPU_] |3616| 
         MOVZ      AR5,*-SP[9]           ; [CPU_] |3616| 
         MOVL      ACC,*-SP[22]          ; [CPU_] |3616| 
 $C$DW$533	.dwtag  DW_TAG_TI_branch
@@ -13983,109 +13884,71 @@ $C$L347:
 	.dwpsn	file "../Source/ff.c",line 3662,column 5,is_stmt,isa 0
 ;----------------------------------------------------------------------
 ; 3662 | ST_WORD(tbl+BS_55AA, 0xAA55);                                          
+;----------------------------------------------------------------------
+        MOVL      XAR0,#510             ; [CPU_] |3662| 
+        MOV       *+XAR2[AR0],#43605    ; [CPU_] |3662| 
+        MOVL      XAR0,#511             ; [CPU_] |3662| 
+        MOVB      *+XAR2[AR0],#170,UNC  ; [CPU_] |3662| 
+	.dwpsn	file "../Source/ff.c",line 3663,column 5,is_stmt,isa 0
+;----------------------------------------------------------------------
 ; 3663 | ST_DWORD(tbl+FSI_LeadSig, 0x41615252);                                 
 ;----------------------------------------------------------------------
-        MOVL      ACC,XAR2              ; [CPU_] |3662| 
-        ADD       ACC,#255 << 1         ; [CPU_] |3662| 
-        MOVL      XAR4,ACC              ; [CPU_] |3662| 
-        MOVL      ACC,XAR2              ; [CPU_] |3662| 
-        MOV       *+XAR4[0],#43605      ; [CPU_] |3662| 
-        ADD       ACC,#511 << 0         ; [CPU_] |3662| 
-        MOVL      XAR4,ACC              ; [CPU_] |3662| 
+        MOV       *+XAR2[0],#21074      ; [CPU_] |3663| 
 	.dwpsn	file "../Source/ff.c",line 3664,column 5,is_stmt,isa 0
 ;----------------------------------------------------------------------
 ; 3664 | ST_DWORD(tbl+FSI_StrucSig, 0x61417272);                                
 ;----------------------------------------------------------------------
-        MOVL      ACC,XAR2              ; [CPU_] |3664| 
-	.dwpsn	file "../Source/ff.c",line 3662,column 5,is_stmt,isa 0
-        MOVB      *+XAR4[0],#170,UNC    ; [CPU_] |3662| 
-	.dwpsn	file "../Source/ff.c",line 3664,column 5,is_stmt,isa 0
-        ADD       ACC,#121 << 2         ; [CPU_] |3664| 
+        MOVL      XAR0,#484             ; [CPU_] |3664| 
 	.dwpsn	file "../Source/ff.c",line 3663,column 5,is_stmt,isa 0
-        MOV       *+XAR2[0],#21074      ; [CPU_] |3663| 
         MOVB      *+XAR2[1],#82,UNC     ; [CPU_] |3663| 
-	.dwpsn	file "../Source/ff.c",line 3664,column 5,is_stmt,isa 0
-        MOVL      XAR4,ACC              ; [CPU_] |3664| 
-        MOVL      ACC,XAR2              ; [CPU_] |3664| 
-	.dwpsn	file "../Source/ff.c",line 3663,column 5,is_stmt,isa 0
         MOV       *+XAR2[2],#16737      ; [CPU_] |3663| 
-	.dwpsn	file "../Source/ff.c",line 3664,column 5,is_stmt,isa 0
-        ADD       ACC,#485 << 0         ; [CPU_] |3664| 
-	.dwpsn	file "../Source/ff.c",line 3663,column 5,is_stmt,isa 0
         MOVB      *+XAR2[3],#65,UNC     ; [CPU_] |3663| 
 	.dwpsn	file "../Source/ff.c",line 3664,column 5,is_stmt,isa 0
-        MOV       *+XAR4[0],#29298      ; [CPU_] |3664| 
-        MOVL      XAR4,ACC              ; [CPU_] |3664| 
-        MOVL      ACC,XAR2              ; [CPU_] |3664| 
-        ADD       ACC,#243 << 1         ; [CPU_] |3664| 
-        MOVB      *+XAR4[0],#114,UNC    ; [CPU_] |3664| 
-        MOVL      XAR4,ACC              ; [CPU_] |3664| 
-        MOVL      ACC,XAR2              ; [CPU_] |3664| 
-        ADD       ACC,#487 << 0         ; [CPU_] |3664| 
-        MOV       *+XAR4[0],#24897      ; [CPU_] |3664| 
-        MOVL      XAR4,ACC              ; [CPU_] |3664| 
+        MOV       *+XAR2[AR0],#29298    ; [CPU_] |3664| 
+        MOVL      XAR0,#485             ; [CPU_] |3664| 
+        MOVB      *+XAR2[AR0],#114,UNC  ; [CPU_] |3664| 
+        MOVL      XAR0,#486             ; [CPU_] |3664| 
+        MOV       *+XAR2[AR0],#24897    ; [CPU_] |3664| 
+        MOVL      XAR0,#487             ; [CPU_] |3664| 
+        MOVB      *+XAR2[AR0],#97,UNC   ; [CPU_] |3664| 
+        MOVL      XAR6,*-SP[18]         ; [CPU_] |3664| 
 	.dwpsn	file "../Source/ff.c",line 3665,column 5,is_stmt,isa 0
 ;----------------------------------------------------------------------
 ; 3665 | ST_DWORD(tbl+FSI_Free_Count, n_clst - 1);                              
-;----------------------------------------------------------------------
-        MOVL      ACC,XAR2              ; [CPU_] |3665| 
-        ADD       ACC,#61 << 3          ; [CPU_] |3665| 
-	.dwpsn	file "../Source/ff.c",line 3664,column 5,is_stmt,isa 0
-        MOVB      *+XAR4[0],#97,UNC     ; [CPU_] |3664| 
-        MOVL      XAR6,*-SP[18]         ; [CPU_] |3664| 
-	.dwpsn	file "../Source/ff.c",line 3665,column 5,is_stmt,isa 0
-        MOVL      XAR4,ACC              ; [CPU_] |3665| 
-        MOVL      ACC,XAR2              ; [CPU_] |3665| 
-        ADD       ACC,#489 << 0         ; [CPU_] |3665| 
-        SUBB      XAR6,#1               ; [CPU_] |3665| 
-        MOV       *+XAR4[0],AR6         ; [CPU_] |3665| 
-        MOVL      XAR4,ACC              ; [CPU_] |3665| 
-        MOV       T,#24                 ; [CPU_] |3665| 
-        MOV       AL,AR6                ; [CPU_] |3665| 
-        LSR       AL,8                  ; [CPU_] |3665| 
-        MOV       *+XAR4[0],AL          ; [CPU_] |3665| 
-        MOVL      ACC,XAR6              ; [CPU_] |3665| 
-        MOVU      ACC,AH                ; [CPU_] |3665| 
-        MOVL      XAR7,ACC              ; [CPU_] |3665| 
-        MOVL      ACC,XAR2              ; [CPU_] |3665| 
-        ADD       ACC,#245 << 1         ; [CPU_] |3665| 
-        MOVL      XAR4,ACC              ; [CPU_] |3665| 
-        MOVL      ACC,XAR6              ; [CPU_] |3665| 
-        LSRL      ACC,T                 ; [CPU_] |3665| 
-        MOVL      XAR6,ACC              ; [CPU_] |3665| 
-        MOVL      ACC,XAR2              ; [CPU_] |3665| 
-        MOV       *+XAR4[0],AR7         ; [CPU_] |3665| 
-        ADD       ACC,#491 << 0         ; [CPU_] |3665| 
-        MOVL      XAR4,ACC              ; [CPU_] |3665| 
-	.dwpsn	file "../Source/ff.c",line 3666,column 5,is_stmt,isa 0
-;----------------------------------------------------------------------
 ; 3666 | ST_DWORD(tbl+FSI_Nxt_Free, 0xFFFFFFFF);                                
 ;----------------------------------------------------------------------
-        MOVL      ACC,XAR2              ; [CPU_] |3666| 
-        ADD       ACC,#123 << 2         ; [CPU_] |3666| 
-	.dwpsn	file "../Source/ff.c",line 3665,column 5,is_stmt,isa 0
-        MOV       *+XAR4[0],AR6         ; [CPU_] |3665| 
-	.dwpsn	file "../Source/ff.c",line 3666,column 5,is_stmt,isa 0
-        MOVL      XAR4,ACC              ; [CPU_] |3666| 
-        MOVL      ACC,XAR2              ; [CPU_] |3666| 
-        ADD       ACC,#493 << 0         ; [CPU_] |3666| 
-        MOV       *+XAR4[0],#65535      ; [CPU_] |3666| 
-        MOVL      XAR4,ACC              ; [CPU_] |3666| 
-        MOVL      ACC,XAR2              ; [CPU_] |3666| 
-        ADD       ACC,#247 << 1         ; [CPU_] |3666| 
-        MOVB      *+XAR4[0],#255,UNC    ; [CPU_] |3666| 
-        MOVL      XAR4,ACC              ; [CPU_] |3666| 
-        MOVL      ACC,XAR2              ; [CPU_] |3666| 
-        ADD       ACC,#495 << 0         ; [CPU_] |3666| 
-        MOV       *+XAR4[0],#65535      ; [CPU_] |3666| 
-        MOVL      XAR4,ACC              ; [CPU_] |3666| 
-        MOVB      *+XAR4[0],#255,UNC    ; [CPU_] |3666| 
+        MOVL      XAR0,#488             ; [CPU_] |3665| 
+        MOV       T,#24                 ; [CPU_] |3665| 
 	.dwpsn	file "../Source/ff.c",line 3667,column 5,is_stmt,isa 0
 ;----------------------------------------------------------------------
 ; 3667 | disk_write(drv, tbl, b_vol + 1, 1);         /* Write original (VBR+1) *
 ;     | /                                                                      
 ;----------------------------------------------------------------------
         MOVL      XAR4,XAR2             ; [CPU_] |3667| 
+	.dwpsn	file "../Source/ff.c",line 3665,column 5,is_stmt,isa 0
+        SUBB      XAR6,#1               ; [CPU_] |3665| 
+        MOV       AL,AR6                ; [CPU_] |3665| 
+        LSR       AL,8                  ; [CPU_] |3665| 
+        MOV       *+XAR2[AR0],AR6       ; [CPU_] |3665| 
+        MOVL      XAR0,#489             ; [CPU_] |3665| 
+        MOV       *+XAR2[AR0],AL        ; [CPU_] |3665| 
+        MOVL      XAR0,#490             ; [CPU_] |3665| 
+        MOVL      ACC,XAR6              ; [CPU_] |3665| 
+        MOVH      *+XAR2[AR0],ACC << 0  ; [CPU_] |3665| 
+        MOVL      XAR0,#491             ; [CPU_] |3665| 
+        MOVL      ACC,XAR6              ; [CPU_] |3665| 
+        LSRL      ACC,T                 ; [CPU_] |3665| 
+        MOV       *+XAR2[AR0],AL        ; [CPU_] |3665| 
+	.dwpsn	file "../Source/ff.c",line 3666,column 5,is_stmt,isa 0
+        MOVL      XAR0,#492             ; [CPU_] |3666| 
+        MOV       *+XAR2[AR0],#65535    ; [CPU_] |3666| 
+        MOVL      XAR0,#493             ; [CPU_] |3666| 
+        MOVB      *+XAR2[AR0],#255,UNC  ; [CPU_] |3666| 
+        MOVL      XAR0,#494             ; [CPU_] |3666| 
+        MOV       *+XAR2[AR0],#65535    ; [CPU_] |3666| 
+        MOVL      XAR0,#495             ; [CPU_] |3666| 
+        MOVB      *+XAR2[AR0],#255,UNC  ; [CPU_] |3666| 
+	.dwpsn	file "../Source/ff.c",line 3667,column 5,is_stmt,isa 0
         MOVB      *-SP[1],#1,UNC        ; [CPU_] |3667| 
         MOVZ      AR5,*-SP[9]           ; [CPU_] |3667| 
         MOVL      ACC,*-SP[22]          ; [CPU_] |3667| 

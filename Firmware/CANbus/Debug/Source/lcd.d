@@ -17,8 +17,8 @@ Source/lcd.obj: C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/DSP281x_he
 Source/lcd.obj: C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/DSP281x_headers/include/DSP281x_Adc.h
 Source/lcd.obj: C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/DSP281x_headers/include/DSP281x_XIntrupt.h
 Source/lcd.obj: C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/common.h
-Source/lcd.obj: C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.4.LTS/include/string.h
-Source/lcd.obj: C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.4.LTS/include/linkage.h
+Source/lcd.obj: C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.7.LTS/include/string.h
+Source/lcd.obj: C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.7.LTS/include/linkage.h
 Source/lcd.obj: C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/extio.h
 Source/lcd.obj: C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/lcd.h
 
@@ -39,7 +39,7 @@ C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/DSP281x_headers/include/DS
 C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/DSP281x_headers/include/DSP281x_Adc.h: 
 C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/DSP281x_headers/include/DSP281x_XIntrupt.h: 
 C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/common.h: 
-C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.4.LTS/include/string.h: 
-C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.4.LTS/include/linkage.h: 
+C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.7.LTS/include/string.h: 
+C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.7.LTS/include/linkage.h: 
 C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/extio.h: 
 C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/lcd.h: 

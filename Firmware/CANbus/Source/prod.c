@@ -639,9 +639,24 @@ void main(void) {
 	data[5] = SPICANRead(SPICAN_TXB0D0 + 5);
 	data[6] = SPICANRead(SPICAN_TXB0D0 + 6);
 
+	volatile Uint16 interrupts;
+	char buff_ints[80];
+
 	for (;;) {
 
-		Uint16 should_send;
+// 		Uint16 should_send;
+// 		// Check interrupts for what all happened
+// 		interrupts = SPICANRead(0x2C);
+// 		delay_us(10);
+
+// 		// TX Interrupts
+// 		buff_ints[0] = interrupts;
+// 		// RX Interrupts
+// 		if(interrupts > 0x00 && interrupts != 0xFF)
+// 		{
+// 			sprintf(buff_ints, "There were interrupts %d", interrupts);
+// //			printf("%s", buff_ints);
+// 		}
 		SPICANRoutine();
 		// data[7] = SPICANReadBufs(data2, data3);
 //		should_send = SPICANReadBufs(data2, data3);

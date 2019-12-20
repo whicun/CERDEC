@@ -18,7 +18,7 @@ void SPICANInit(void)
 	SPICANBitModify(0x0C, 0xFF, 0x0F); // Enable the BFPCTRL bits
 	// SPICANBitModify(0x0C, 0xFF, 0x0F); // Enable the BFPCTRL bits
 	SPICANMasksFilts();
-	SPICANWrite(0x60, 0x04);
+	SPICANWrite(0x60, 0x06);
 	SPICANWrite(0x70, 0x00);
 	SPICANWrite(0x0D, 0x00);
 	// SPICANBitModify(0x60, 0xFF, 0x04);		// Set BUKT to be 1
@@ -27,7 +27,7 @@ void SPICANInit(void)
 	
 	SPICANConfigure();	
 	SPICANWrite(0x2C, 0x00);		// Clearing all interrupts
-	SPICANWrite(0x2B, 0x3F);		// Clearing all interrupts
+	SPICANWrite(0x2B, 0x00);		// Clearing all interrupts
 
 	SPICANWrite(0x0F, 0x00); // Set CANCTRL to 0x00
 	// SPICANBitModify(0x0F, 0xFF, 0x00); // Set TXRTSCTRL to 0x00
@@ -46,20 +46,41 @@ void SPICANReadyConfig(void)
 
 void SPICANMasksFilts(void)
 {
+	volatile Uint16 res;
+	res = SPICANRead(0x00);
 	// Set up filters for RX buffs
-	while(SPICANRead(0x00) != 0x80)
+	while(res != 0x80)
+	{
 		SPICANWrite(0x00, 0x80);
+		res = SPICANRead(0x00);
+	}
 	
-	while(SPICANRead(0x01) != 0x00)
+	res = SPICANRead(0x01);
+	while(res != 0x00)
+	{
 		SPICANWrite(0x01, 0x00);
+		res = SPICANRead(0x01);
+	}
 
 	// Set up masks for RX buffs
-	while(SPICANRead(0x20) != 0xF9)
+	res = SPICANRead(0x20);
+	while(res != 0xF9)
+	{
 		SPICANWrite(0x20, 0xF9);
+		res = SPICANRead(0x20);
+	}
 
-	while(SPICANRead(0x21) != 0x80)
+	res = SPICANRead(0x21);
+	while(res != 0x00)
+	{
 		SPICANWrite(0x21, 0x00);
+		res = SPICANRead(0x21);
+	}
 
+	res = SPICANRead(0x00);
+	res = SPICANRead(0x01);
+	res = SPICANRead(0x20);
+	res = SPICANRead(0x21);
 	// MASK: 111 1100 1000
 	// FILT: 100 0000 0000
 	// RSLT: 100 00XX 0XXX (X is don't care)
@@ -410,9 +431,12 @@ void SPICANConfigure(void)
 
 void SPICANRoutine(void)
 {
-	Uint16 interrupts;
+	volatile Uint16 interrupts;
 	// Check interrupts for what all happened
 	interrupts = SPICANRead(0x2C);
+
+	if(interrupts == 0xFF)
+		return;
 
 	// TX Interrupts
 
@@ -423,23 +447,26 @@ void SPICANRoutine(void)
 		Uint16 arr[8];
 		char bits_to_flip = 0x00;
 
-		// RX1 Interrupt
-		if((interrupts & 0x02) == 0x02)
-		{
-			SPICANReadBuf_Array(arr, 0);
-			// For now, send back dummy data
-			// Wait for the TX Buffer to be ready
-			SPICANWaitForTXBuf(0);
-			// Set the message on the buffer
-			SPICANReadSetT0Message(0x32, 8, arr);
-			SPICANWaitForTXBuf(0);
-			// Signal that the message is ready to send
-			// SPICAN_T0_RTS();
-			bits_to_flip |= 0x02;
-		}
+//		// RX1 Interrupt
+//		if((interrupts & 0x02) == 0x02)
+//		{
+//			SPICANReadBuf_Array(arr, 0);
+//			// For now, send back dummy data
+//			// Wait for the TX Buffer to be ready
+//			SPICANWaitForTXBuf(0);
+//			// Set the message on the buffer
+//			SPICANReadSetT0Message(0x32, 8, arr);
+//			SPICANWaitForTXBuf(0);
+//			// Signal that the message is ready to send
+//			SPICAN_T0_RTS();
+//			bits_to_flip |= 0x02;
+//		}
 		// RX0 Interrupt
 		if((interrupts & 0x01) == 0x01)
 		{
+			if(bits_to_flip > 0x00)
+				delay_us(5);
+			
 			SPICANReadBuf_Array(arr, 1);
 			// For now, send back dummy data
 			// Wait for the TX Buffer to be ready
@@ -448,10 +475,17 @@ void SPICANRoutine(void)
 			SPICANReadSetT0Message(0x43, 8, arr);
 			SPICANWaitForTXBuf(0);
 			// Signal that the message is ready to send
-			// SPICAN_T0_RTS();
+			SPICAN_T0_RTS();
 			bits_to_flip |= 0x01;
 		}
-		SPICANBitModify(0x2C, bits_to_flip, 0x00);
+		volatile Uint16 res;
+		res = SPICANRead(0x2C);
+		// Set up filters for RX buffs
+		while((res & 0x03) > 0x00)
+		{
+			SPICANBitModify(0x2C, bits_to_flip, 0x00);
+			res = SPICANRead(0x2C);
+		}
 	}
 
 	// Clear the interrupts

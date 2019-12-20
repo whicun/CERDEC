@@ -17,8 +17,8 @@ Source/ds1wire.obj: C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/DSP281
 Source/ds1wire.obj: C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/DSP281x_headers/include/DSP281x_Adc.h
 Source/ds1wire.obj: C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/DSP281x_headers/include/DSP281x_XIntrupt.h
 Source/ds1wire.obj: C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/common.h
-Source/ds1wire.obj: C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.4.LTS/include/string.h
-Source/ds1wire.obj: C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.4.LTS/include/linkage.h
+Source/ds1wire.obj: C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.7.LTS/include/string.h
+Source/ds1wire.obj: C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.7.LTS/include/linkage.h
 Source/ds1wire.obj: C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/ds1wire.h
 
 ../Source/ds1wire.c: 
@@ -38,6 +38,6 @@ C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/DSP281x_headers/include/DS
 C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/DSP281x_headers/include/DSP281x_Adc.h: 
 C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/DSP281x_headers/include/DSP281x_XIntrupt.h: 
 C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/common.h: 
-C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.4.LTS/include/string.h: 
-C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.4.LTS/include/linkage.h: 
+C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.7.LTS/include/string.h: 
+C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.7.LTS/include/linkage.h: 
 C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/ds1wire.h: 

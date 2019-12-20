@@ -1,13 +1,13 @@
 ;***************************************************************
-;* TMS320C2000 C/C++ Codegen                   PC v15.12.4.LTS *
-;* Date/Time created: Thu Dec 19 12:23:53 2019                 *
+;* TMS320C2000 C/C++ Codegen                   PC v15.12.7.LTS *
+;* Date/Time created: Fri Dec 20 09:01:48 2019                 *
 ;***************************************************************
 	.compiler_opts --abi=coffabi --float_support=softlib --hll_source=on --mem_model:code=flat --mem_model:data=large --object_format=coff --quiet --silicon_version=28 --symdebug:dwarf --symdebug:dwarf_version=3 
 FP	.set	XAR2
 
 $C$DW$CU	.dwtag  DW_TAG_compile_unit
 	.dwattr $C$DW$CU, DW_AT_name("../Source/ad7738.c")
-	.dwattr $C$DW$CU, DW_AT_producer("TI TMS320C2000 C/C++ Codegen PC v15.12.4.LTS Copyright (c) 1996-2015 Texas Instruments Incorporated")
+	.dwattr $C$DW$CU, DW_AT_producer("TI TMS320C2000 C/C++ Codegen PC v15.12.7.LTS Copyright (c) 1996-2017 Texas Instruments Incorporated")
 	.dwattr $C$DW$CU, DW_AT_TI_version(0x01)
 	.dwattr $C$DW$CU, DW_AT_comp_dir("C:\Users\ebenton\Documents\CERDEC TS\Firmware\CANbus\Debug")
 ;**************************************************************
@@ -711,8 +711,8 @@ $C$DW$86	.dwtag  DW_TAG_variable
 	.dwattr $C$DW$86, DW_AT_type(*$C$DW$T$219)
 	.dwattr $C$DW$86, DW_AT_external
 
-;	C:\ti\ccsv6\tools\compiler\ti-cgt-c2000_15.12.4.LTS\bin\opt2000.exe C:\\Users\\ebenton\\AppData\\Local\\Temp\\203802 C:\\Users\\ebenton\\AppData\\Local\\Temp\\203804 
-;	C:\ti\ccsv6\tools\compiler\ti-cgt-c2000_15.12.4.LTS\bin\ac2000.exe -@C:\\Users\\ebenton\\AppData\\Local\\Temp\\2038012 
+;	C:\ti\ccsv6\tools\compiler\ti-cgt-c2000_15.12.7.LTS\bin\opt2000.exe C:\\Users\\ebenton\\AppData\\Local\\Temp\\{E12FB43E-9979-4530-A8E5-121A7EDADC97} C:\\Users\\ebenton\\AppData\\Local\\Temp\\{0967BFDD-ED3A-4514-9B1E-D6137DBCA08F} 
+;	C:\ti\ccsv6\tools\compiler\ti-cgt-c2000_15.12.7.LTS\bin\ac2000.exe -@C:\\Users\\ebenton\\AppData\\Local\\Temp\\{B1CB67CE-2C58-4EE7-AB76-E5ADCA823E41} 
 	.sect	".text"
 	.clink
 	.global	_velf_rst
@@ -4017,11 +4017,9 @@ $C$DW$202	.dwtag  DW_TAG_TI_branch
 
         LCR       #U$$TOFS              ; [CPU_] |565| 
         ; call occurs [#U$$TOFS] ; [] |565| 
+        MOVL      XAR0,#3214            ; [CPU_] |565| 
         MOVL      *-SP[6],ACC           ; [CPU_] |565| 
-        MOVL      ACC,XAR1              ; [CPU_] |565| 
-        ADD       ACC,#1607 << 1        ; [CPU_] |565| 
-        MOVL      XAR4,ACC              ; [CPU_] |565| 
-        MOV       AL,*+XAR4[0]          ; [CPU_] |565| 
+        MOV       AL,*+XAR1[AR0]        ; [CPU_] |565| 
 $C$DW$203	.dwtag  DW_TAG_TI_branch
 	.dwattr $C$DW$203, DW_AT_low_pc(0x00)
 	.dwattr $C$DW$203, DW_AT_name("U$$TOFS")

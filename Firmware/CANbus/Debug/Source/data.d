@@ -16,10 +16,10 @@ Source/data.obj: C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/DSP281x_h
 Source/data.obj: C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/DSP281x_headers/include/DSP281x_Ev.h
 Source/data.obj: C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/DSP281x_headers/include/DSP281x_Adc.h
 Source/data.obj: C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/DSP281x_headers/include/DSP281x_XIntrupt.h
-Source/data.obj: C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.4.LTS/include/string.h
-Source/data.obj: C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.4.LTS/include/linkage.h
+Source/data.obj: C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.7.LTS/include/string.h
+Source/data.obj: C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.7.LTS/include/linkage.h
 Source/data.obj: C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/common.h
-Source/data.obj: C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.4.LTS/include/string.h
+Source/data.obj: C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.7.LTS/include/string.h
 Source/data.obj: C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/data.h
 
 ../Source/data.c: 
@@ -38,8 +38,8 @@ C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/DSP281x_headers/include/DS
 C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/DSP281x_headers/include/DSP281x_Ev.h: 
 C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/DSP281x_headers/include/DSP281x_Adc.h: 
 C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/DSP281x_headers/include/DSP281x_XIntrupt.h: 
-C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.4.LTS/include/string.h: 
-C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.4.LTS/include/linkage.h: 
+C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.7.LTS/include/string.h: 
+C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.7.LTS/include/linkage.h: 
 C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/common.h: 
-C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.4.LTS/include/string.h: 
+C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.7.LTS/include/string.h: 
 C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/data.h: 
