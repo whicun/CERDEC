@@ -451,15 +451,15 @@ void SPICANRoutine(void)
 		if((interrupts & 0x02) == 0x02)
 		{
 			SPICANReadBuf_Array(arr, 1);
-			// // For now, send back dummy data
-			// // Wait for the TX Buffer to be ready
-			// SPICANWaitForTXBuf(0);
-			// // Set the message on the buffer
-			// SPICANReadSetT0Message(0x32, 8, arr);
-			// SPICANWaitForTXBuf(0);
-			// // Signal that the message is ready to send
-			// SPICAN_T0_RTS();
-			// bits_to_flip |= 0x02;
+			// For now, send back dummy data
+			// Wait for the TX Buffer to be ready
+			SPICANWaitForTXBuf(0);
+			// Set the message on the buffer
+			SPICANReadSetT0Message(0x32, 8, arr);
+			SPICANWaitForTXBuf(0);
+			// Signal that the message is ready to send
+			SPICAN_T0_RTS();
+			bits_to_flip |= 0x02;
 		}
 		// RX0 Interrupt
 		if((interrupts & 0x01) == 0x01)
@@ -548,20 +548,24 @@ void SPICANISR(void)
 
 /*
 
-I know, the title sounds like a lot, but I've been struggling with this a lot for the past few weeks and could really use some guidance. I don't normally do this type of work, but it was put on my table none the less.
+I know, the title sounds like a lot, but I've been struggling with this quite a bit for the past few weeks and could really use some guidance. I don't normally do this type of work, but it was put on my desk none the less.
 
 
 
-Some issues I'm experiencing:
+Some (obvious) issues I'm experiencing:
 
 My filter+mask only seem to apply to RX0, even though it looks like the MCP2515 is set for RX0 and RX1 to use RXF0 and RXM0
-If I try to read the CANINTF register, most times I will receive 0xFF back. I know this can happen if I try to read it at the wrong times, but I can't figure out a better way to determine when to check than to just loop/poll(?) until it's not 0xFF (real good work there...)
-If I send a single message, it will set the RXnIF pin, but then when I try to clear it using the WRITE command or the Bit Modify command, it will keep resetting itself even though no more messages are being sent
-As a simple debug: I send one message, check the interrupts, see the MCU set the RXnIF pin, read the message using the Read Rx Buffer command, load that message into TX0 using Load Tx Buffer command, then TX/echo back the message to my USB/CAN sniffer using RTS command, hit a breakpoint in my code, check and see the message show up on my USB/CAN sniffer SW, then disconnect sniffer from PC (in software, not physically unplugged), resume the code, and I'm still getting RXnIF bits flipped every 100 - 1000us. I've tried clearing the bits using the WRITE command and the Bit Modify command (even though I shouldn't have to since I'm using the Read Rx Buffer command) but they still get flipped.
-If I set any interrupts to be enabled in CANINTE, those bits will always (or extremely often?) be 1 in CANINTF
+If I try to read the CANINTF register, most times I will receive 0xFF back. I know this can happen if I try to read it at the wrong times, but I can't figure out a better way to determine when to check than to just loop/poll(?) until it's not 0xFF (real good work on my part there...)
+If I send a single message, it will set the RXnIF bit in CANINTF, but then when I try to clear it using the WRITE command or the Bit Modify command, it will keep resetting itself even though no more messages are being sent
+As a simple debug: I send one message, check the interrupts, see the MCU set the RXnIF pin in CANINTF, read the message using the Read Rx Buffer command, load that message into TX0 using Load Tx Buffer command, then TX/echo back the message to my USB/CAN sniffer using RTS command, hit a breakpoint in my code, check and see the message show up on my USB/CAN sniffer software, then disconnect sniffer from PC (in the software, not physically unplugged from my computer). I then resume the code, and I'm still getting RXnIF bits flipped every 100 - 1000us. I've tried clearing the bits using the WRITE command and the Bit Modify command (even though I shouldn't have to since I'm using the Read Rx Buffer command) but they still get flipped.
+If I set any interrupts to be enabled in CANINTE, those bits will always (or extremely often?) be a 1 when I read CANINTF
 
 
-This whole things has been driving me up a wall.
+This whole thing has been driving me up a wall.
+
+
+
+To start from the beginning, here is how I configure the MCP2515.
 
 
 
@@ -586,8 +590,7 @@ And came up with this for my configuration settings
  return;
 
  
-
- // Trying to configure the SPI CAN module for use with ESL ProD
+ // ========== LOGIC =============
  // SPI is 9.375MHz
  // SPICAN Oscillator is 16MHz
  // CAN Bus is 500kHz
@@ -661,8 +664,216 @@ And came up with this for my configuration settings
    0b 1 1 000 010 => 0xC2 
 
 
+}
+
+void SPICANMasksFilts(void)
+{
+  volatile Uint16 res;
+  res = SPICANRead(0x00);
+  // Set up filters for RX buffs
+  while(res != 0x80)
+  {
+    SPICANWrite(0x00, 0x80);
+    res = SPICANRead(0x00);
+  }
+  
+  res = SPICANRead(0x01);
+  while(res != 0x00)
+  {
+    SPICANWrite(0x01, 0x00);
+    res = SPICANRead(0x01);
+  }
+
+  // Set up masks for RX buffs
+  res = SPICANRead(0x20);
+  while(res != 0xF9)
+  {
+    SPICANWrite(0x20, 0xF9);
+    res = SPICANRead(0x20);
+  }
+
+  res = SPICANRead(0x21);
+  while(res != 0x00)
+  {
+    SPICANWrite(0x21, 0x00);
+    res = SPICANRead(0x21);
+  }
+
+  res = SPICANRead(0x00);
+  res = SPICANRead(0x01);
+  res = SPICANRead(0x20);
+  res = SPICANRead(0x21);
+  // MASK: 111 1100 1000
+  // FILT: 100 0000 0000
+  // RSLT: 100 00XX 0XXX (X is don't care)
+  return;
 }[/code]
 
+Does this look like it should be configuring everything correctly? Or am I missing something important?
+
+And below is my simple routine right now. It's main purpose is to:
+See if there was a message received in either RX0 or RX1 (read CANINTF)
+Read the message and load it into the TX0 buffer
+If there was a message in RX1 Buffer, send the same message back with address 0x32
+If there was a message in RX0 Buffer, send the same message back with address 0x43
+Poll the MCP2515 until CANINTF says that the RXn buffers with messages are set to 0 for empty
+In theory I shouldn't have to do this since the Read RX Buffer command that I use should clear that bit
 
 
+Here is the code for my routine.
+
+
+
+[code]void SPICANRoutine(void)
+{
+ volatile Uint16 interrupts;
+ // Check interrupts for what all happened
+ interrupts = SPICANRead(0x2B);
+
+ if(interrupts == 0xFF)
+  return;
+
+ // TX Interrupts
+
+ // RX Interrupts
+ if((interrupts & 0x03) > 0x00)
+ {
+
+  Uint16 arr[8];
+  char bits_to_flip = 0x00;
+
+  // RX1 Interrupt
+  if((interrupts & 0x02) == 0x02)
+  {
+   SPICANReadBuf_Array(arr, 1);
+   // For now, send back dummy data
+   // Wait for the TX Buffer to be ready
+   SPICANWaitForTXBuf(0);
+   // Set the message on the buffer
+   SPICANReadSetT0Message(0x32, 8, arr);
+   SPICANWaitForTXBuf(0);
+   // Signal that the message is ready to send
+   SPICAN_T0_RTS();
+   bits_to_flip |= 0x02;
+  }
+  // RX0 Interrupt
+  if((interrupts & 0x01) == 0x01)
+  {
+   if(bits_to_flip > 0x00)
+    delay_us(5);
+   
+   SPICANReadBuf_Array(arr, 0);
+   // For now, send back dummy data
+   // Wait for the TX Buffer to be ready
+   SPICANWaitForTXBuf(0);
+   // Set the message on the buffer
+   SPICANReadSetT0Message(0x43, 8, arr);
+   SPICANWaitForTXBuf(0);
+   // Signal that the message is ready to send
+   SPICAN_T0_RTS();
+   bits_to_flip |= 0x01;
+  }
+  volatile Uint16 res;
+  res = SPICANRead(0x2B);
+  // Set up filters for RX buffs
+  while((res & 0x03) > 0x00)
+  {
+   SPICANBitModify(0x2B, bits_to_flip, 0x00);
+   res = SPICANRead(0x2B);
+  }
+ }
+
+
+
+void SPICANReadBuf_Array (Uint16 data[], Uint16 whichBuf)
+{
+  int k;
+  GpioDataRegs.GPADAT.bit.GPIOA0  = 0;    //Chip Select Low
+  spi_xmit(SPICAN_RXBUF0 + 4 * whichBuf);
+  for(k = 0; k < 8; k++)
+  {
+    data[k] = spi_recv();
+  }
+  GpioDataRegs.GPADAT.bit.GPIOA0  = 1;    //Release chip select
+}
+
+
+// Refer to Table 11-2 and pages 19 - 21 for formatting message
+void SPICANReadSetT0Message(Uint16 canAddress, Uint16 numBytes, Uint16 *buf)
+{
+  // Set the new address
+  SPICAN_SetT0Addr(canAddress);
+
+  // Set the data
+  SPICAN_SetT0Data(numBytes, buf);
+}
+
+// For specifics on format look at Pg 19/20 in the SPI CAN documentation
+// canAddress -> XXXXX HHHHHHHH LLL
+void SPICAN_SetT0Addr(Uint16 canAddress)
+{
+  Uint16 addrHi, addrLo;
+
+  // First grab the important bits
+  addrHi = canAddress & 0x7F8;
+  addrLo = canAddress & 0x7;
+
+  // Now shift them to the right places
+  addrHi = addrHi >> 3;
+  addrLo = addrLo << 5;
+
+  // Set up the ID (X - unused, H - Hi, L - Lo)
+  // Want to first send 0bHHHHHHHH
+  SPICANWrite(SPICAN_TXB0SIDH, addrHi); // H (SID10 - SID3)
+  // Then want to send 0bLLL00000
+  SPICANWrite(SPICAN_TXB0SIDL, addrLo); // L (SID2 - SID0)
+}
+
+// For specifics on format look at Pg 21 in the SPI CAN documentation
+void SPICAN_SetT0Data(Uint16 numBytes, Uint16 *buf)
+{
+  Uint16 k;
+
+  // Send how much data content there is
+  SPICANWrite(SPICAN_TXB0DLC, numBytes);
+
+  // Fill in the data buffer
+  for(k = 0; k < numBytes; k++)
+  {
+    SPICANWrite(SPICAN_TXB0D0 + k, buf[k]);
+  }
+}
+
+void SPICAN_T0_RTS (void)
+{
+  GpioDataRegs.GPADAT.bit.GPIOA0  = 0;    //Chip Select Low
+  spi_xmit(SPICAN_RTS + 0x1);
+  GpioDataRegs.GPADAT.bit.GPIOA0  = 1;    //Release chip select
+}
+
+Uint16 SPICANRXBufReady(void)
+{
+  return (SPICANRXStatus() & 0xC0) >> 6;
+}
+
+void SPICANBitModify(Uint16 address, Uint16 mask, Uint16 data_byte)
+{
+  GpioDataRegs.GPADAT.bit.GPIOA0  = 0;    //Chip Select Low
+  spi_xmit(0x05);           //Bit modify command
+  spi_xmit(address);                //Write location
+  spi_xmit(mask);             //Write Info
+  spi_xmit(data_byte);              //Write Info
+  GpioDataRegs.GPADAT.bit.GPIOA0  = 1;
+}
+[/code]
+
+As I said in my bullet points at the top, I can see that I sent the message to the MCP2515, I can see that message get sent back to me, I can then see the register in the MCP2515 for CANINTF showing that RX1 or RX0 is empty, but when I resume code, I still keep receiving/sending messages even though I don't send anymore to the MCP2515.
+
+I think my main problem with everything is that the filters+masks don't seem to be working correctly and that I don't really know how to handle interrupts appropriately.
+
+Again, I know that there is a lot to look at. I was just hoping to see if anyone could see anything clearly out of the ordinary or something? I'm more than happy to provide more information. Or if you have any guidance on resources I can read, please let me know.
+
+Thanks!
+
+(I can also attach my SPICAN.c/SPICAN.h files for all the code relating to this if that makes it easier to read through, I'd just have to clean up a few comments)
 */
