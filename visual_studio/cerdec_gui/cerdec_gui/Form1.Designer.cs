@@ -138,8 +138,8 @@
             this.OfflineLabel = new System.Windows.Forms.Label();
             this.ConnectTrackbar = new System.Windows.Forms.TrackBar();
             this.ClearNumDischargesButton = new System.Windows.Forms.Button();
-            this.RelayLED = new M4359_GUI.LEDPanel();
             this.ConnectedLED = new M4359_GUI.LEDPanel();
+            this.RelayLED = new M4359_GUI.LEDPanel();
             this.SystemGB.SuspendLayout();
             this.ModeGB.SuspendLayout();
             this.ShelfGB.SuspendLayout();
@@ -169,11 +169,11 @@
             this.SystemGB.Controls.Add(this.StatusField);
             this.SystemGB.Controls.Add(this.StatusLabel);
             this.SystemGB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SystemGB.Location = new System.Drawing.Point(536, 111);
+            this.SystemGB.Location = new System.Drawing.Point(536, 104);
             this.SystemGB.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.SystemGB.Name = "SystemGB";
             this.SystemGB.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.SystemGB.Size = new System.Drawing.Size(256, 271);
+            this.SystemGB.Size = new System.Drawing.Size(256, 275);
             this.SystemGB.TabIndex = 0;
             this.SystemGB.TabStop = false;
             this.SystemGB.Text = "System";
@@ -182,7 +182,7 @@
             // 
             this.NumDischargesField.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.NumDischargesField.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NumDischargesField.Location = new System.Drawing.Point(110, 222);
+            this.NumDischargesField.Location = new System.Drawing.Point(110, 224);
             this.NumDischargesField.Name = "NumDischargesField";
             this.NumDischargesField.Size = new System.Drawing.Size(55, 26);
             this.NumDischargesField.TabIndex = 12;
@@ -192,7 +192,7 @@
             this.NumDischargesLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.NumDischargesLabel.AutoSize = true;
             this.NumDischargesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NumDischargesLabel.Location = new System.Drawing.Point(16, 225);
+            this.NumDischargesLabel.Location = new System.Drawing.Point(16, 227);
             this.NumDischargesLabel.Name = "NumDischargesLabel";
             this.NumDischargesLabel.Size = new System.Drawing.Size(95, 20);
             this.NumDischargesLabel.TabIndex = 11;
@@ -203,7 +203,7 @@
             this.RelaysLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.RelaysLabel.AutoSize = true;
             this.RelaysLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RelaysLabel.Location = new System.Drawing.Point(16, 184);
+            this.RelaysLabel.Location = new System.Drawing.Point(16, 186);
             this.RelaysLabel.Name = "RelaysLabel";
             this.RelaysLabel.Size = new System.Drawing.Size(57, 20);
             this.RelaysLabel.TabIndex = 10;
@@ -217,7 +217,7 @@
             this.ModeGB.Controls.Add(this.VoltageModeRB);
             this.ModeGB.Controls.Add(this.OffModeRB);
             this.ModeGB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ModeGB.Location = new System.Drawing.Point(19, 70);
+            this.ModeGB.Location = new System.Drawing.Point(19, 72);
             this.ModeGB.Name = "ModeGB";
             this.ModeGB.Size = new System.Drawing.Size(218, 93);
             this.ModeGB.TabIndex = 9;
@@ -280,7 +280,7 @@
             // 
             this.ClearStatusButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.ClearStatusButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ClearStatusButton.Location = new System.Drawing.Point(172, 26);
+            this.ClearStatusButton.Location = new System.Drawing.Point(172, 28);
             this.ClearStatusButton.Name = "ClearStatusButton";
             this.ClearStatusButton.Size = new System.Drawing.Size(65, 26);
             this.ClearStatusButton.TabIndex = 8;
@@ -291,7 +291,7 @@
             // 
             this.StatusField.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.StatusField.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.StatusField.Location = new System.Drawing.Point(76, 26);
+            this.StatusField.Location = new System.Drawing.Point(76, 28);
             this.StatusField.Name = "StatusField";
             this.StatusField.Size = new System.Drawing.Size(89, 26);
             this.StatusField.TabIndex = 6;
@@ -301,7 +301,7 @@
             this.StatusLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.StatusLabel.AutoSize = true;
             this.StatusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.StatusLabel.Location = new System.Drawing.Point(16, 29);
+            this.StatusLabel.Location = new System.Drawing.Point(16, 31);
             this.StatusLabel.Name = "StatusLabel";
             this.StatusLabel.Size = new System.Drawing.Size(56, 20);
             this.StatusLabel.TabIndex = 7;
@@ -1393,7 +1393,7 @@
             this.ConnectGB.Controls.Add(this.OfflineLabel);
             this.ConnectGB.Controls.Add(this.ConnectTrackbar);
             this.ConnectGB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ConnectGB.Location = new System.Drawing.Point(536, 12);
+            this.ConnectGB.Location = new System.Drawing.Point(536, 5);
             this.ConnectGB.Name = "ConnectGB";
             this.ConnectGB.Size = new System.Drawing.Size(256, 91);
             this.ConnectGB.TabIndex = 8;
@@ -1436,27 +1436,12 @@
             // 
             this.ClearNumDischargesButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.ClearNumDischargesButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ClearNumDischargesButton.Location = new System.Drawing.Point(172, 222);
+            this.ClearNumDischargesButton.Location = new System.Drawing.Point(172, 224);
             this.ClearNumDischargesButton.Name = "ClearNumDischargesButton";
             this.ClearNumDischargesButton.Size = new System.Drawing.Size(65, 26);
             this.ClearNumDischargesButton.TabIndex = 13;
             this.ClearNumDischargesButton.Text = "Clear";
             this.ClearNumDischargesButton.UseVisualStyleBackColor = true;
-            // 
-            // RelayLED
-            // 
-            this.RelayLED.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.RelayLED.BlinkTime = 500;
-            this.RelayLED.IsBlinking = false;
-            this.RelayLED.Location = new System.Drawing.Point(90, 182);
-            this.RelayLED.Name = "RelayLED";
-            this.RelayLED.OffColor = System.Drawing.Color.LightGray;
-            this.RelayLED.OffEdgeColor = System.Drawing.Color.DimGray;
-            this.RelayLED.OnColor = System.Drawing.Color.LimeGreen;
-            this.RelayLED.OnEdgeColor = System.Drawing.Color.DarkGreen;
-            this.RelayLED.Size = new System.Drawing.Size(25, 25);
-            this.RelayLED.TabIndex = 9;
-            this.RelayLED.Value = false;
             // 
             // ConnectedLED
             // 
@@ -1472,6 +1457,21 @@
             this.ConnectedLED.Size = new System.Drawing.Size(25, 25);
             this.ConnectedLED.TabIndex = 10;
             this.ConnectedLED.Value = false;
+            // 
+            // RelayLED
+            // 
+            this.RelayLED.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.RelayLED.BlinkTime = 500;
+            this.RelayLED.IsBlinking = false;
+            this.RelayLED.Location = new System.Drawing.Point(90, 184);
+            this.RelayLED.Name = "RelayLED";
+            this.RelayLED.OffColor = System.Drawing.Color.LightGray;
+            this.RelayLED.OffEdgeColor = System.Drawing.Color.DimGray;
+            this.RelayLED.OnColor = System.Drawing.Color.LimeGreen;
+            this.RelayLED.OnEdgeColor = System.Drawing.Color.DarkGreen;
+            this.RelayLED.Size = new System.Drawing.Size(25, 25);
+            this.RelayLED.TabIndex = 9;
+            this.RelayLED.Value = false;
             // 
             // MainForm
             // 
