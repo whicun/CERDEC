@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.SystemGB = new System.Windows.Forms.GroupBox();
+            this.ClearNumDischargesButton = new System.Windows.Forms.Button();
             this.NumDischargesField = new System.Windows.Forms.TextBox();
             this.NumDischargesLabel = new System.Windows.Forms.Label();
             this.RelaysLabel = new System.Windows.Forms.Label();
@@ -137,7 +138,6 @@
             this.ConnectedLabel = new System.Windows.Forms.Label();
             this.OfflineLabel = new System.Windows.Forms.Label();
             this.ConnectTrackbar = new System.Windows.Forms.TrackBar();
-            this.ClearNumDischargesButton = new System.Windows.Forms.Button();
             this.ConnectedLED = new M4359_GUI.LEDPanel();
             this.RelayLED = new M4359_GUI.LEDPanel();
             this.SystemGB.SuspendLayout();
@@ -177,6 +177,17 @@
             this.SystemGB.TabIndex = 0;
             this.SystemGB.TabStop = false;
             this.SystemGB.Text = "System";
+            // 
+            // ClearNumDischargesButton
+            // 
+            this.ClearNumDischargesButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ClearNumDischargesButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ClearNumDischargesButton.Location = new System.Drawing.Point(172, 224);
+            this.ClearNumDischargesButton.Name = "ClearNumDischargesButton";
+            this.ClearNumDischargesButton.Size = new System.Drawing.Size(65, 26);
+            this.ClearNumDischargesButton.TabIndex = 13;
+            this.ClearNumDischargesButton.Text = "Clear";
+            this.ClearNumDischargesButton.UseVisualStyleBackColor = true;
             // 
             // NumDischargesField
             // 
@@ -1431,17 +1442,6 @@
             this.ConnectTrackbar.Name = "ConnectTrackbar";
             this.ConnectTrackbar.Size = new System.Drawing.Size(51, 45);
             this.ConnectTrackbar.TabIndex = 9;
-            // 
-            // ClearNumDischargesButton
-            // 
-            this.ClearNumDischargesButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.ClearNumDischargesButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ClearNumDischargesButton.Location = new System.Drawing.Point(172, 224);
-            this.ClearNumDischargesButton.Name = "ClearNumDischargesButton";
-            this.ClearNumDischargesButton.Size = new System.Drawing.Size(65, 26);
-            this.ClearNumDischargesButton.TabIndex = 13;
-            this.ClearNumDischargesButton.Text = "Clear";
-            this.ClearNumDischargesButton.UseVisualStyleBackColor = true;
             // 
             // ConnectedLED
             // 
