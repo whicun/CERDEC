@@ -104,14 +104,14 @@ namespace cerdec_gui
         // ===== Parsers =====
         // ===================
 
-        public float parse_voltage(byte[] volt_data)
+        public static float parse_voltage(byte[] volt_data)
         {
             float res = 0x00;
             res = ((volt_data[1] << 8) + (volt_data[0])) * 0.02F;
             return res;
         }
 
-        public float parse_temp(byte temp_data)
+        public static float parse_temp(byte temp_data)
         {
             float res = 0x00;
             res = temp_data * 0.5F - 40F;

@@ -8,6 +8,9 @@ namespace cerdec_gui
 {
     public class CmdCodes
     {
+        public const byte GetShelfInfo = 0x70;
+        public const byte GetModInfo = 0xD0;
+
         public const byte CheckAddress = 0x10;
         public const byte SetAddress = 0x11;
 
