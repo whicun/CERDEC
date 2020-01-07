@@ -1249,20 +1249,23 @@
             // 
             this.ModRB9.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.ModRB9.AutoSize = true;
-            this.ModRB9.Location = new System.Drawing.Point(272, 46);
+            this.ModRB9.BackColor = System.Drawing.SystemColors.Control;
+            this.ModRB9.Location = new System.Drawing.Point(269, 44);
             this.ModRB9.Name = "ModRB9";
-            this.ModRB9.Size = new System.Drawing.Size(14, 13);
+            this.ModRB9.Padding = new System.Windows.Forms.Padding(4, 3, 3, 3);
+            this.ModRB9.Size = new System.Drawing.Size(21, 19);
             this.ModRB9.TabIndex = 15;
             this.ModRB9.TabStop = true;
-            this.ModRB9.UseVisualStyleBackColor = true;
+            this.ModRB9.UseVisualStyleBackColor = false;
             // 
             // ModRB8
             // 
             this.ModRB8.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.ModRB8.AutoSize = true;
-            this.ModRB8.Location = new System.Drawing.Point(240, 46);
+            this.ModRB8.Location = new System.Drawing.Point(237, 44);
             this.ModRB8.Name = "ModRB8";
-            this.ModRB8.Size = new System.Drawing.Size(14, 13);
+            this.ModRB8.Padding = new System.Windows.Forms.Padding(4, 3, 3, 3);
+            this.ModRB8.Size = new System.Drawing.Size(21, 19);
             this.ModRB8.TabIndex = 14;
             this.ModRB8.TabStop = true;
             this.ModRB8.UseVisualStyleBackColor = true;
@@ -1271,9 +1274,10 @@
             // 
             this.ModRB7.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.ModRB7.AutoSize = true;
-            this.ModRB7.Location = new System.Drawing.Point(208, 46);
+            this.ModRB7.Location = new System.Drawing.Point(205, 44);
             this.ModRB7.Name = "ModRB7";
-            this.ModRB7.Size = new System.Drawing.Size(14, 13);
+            this.ModRB7.Padding = new System.Windows.Forms.Padding(4, 3, 3, 3);
+            this.ModRB7.Size = new System.Drawing.Size(21, 19);
             this.ModRB7.TabIndex = 13;
             this.ModRB7.TabStop = true;
             this.ModRB7.UseVisualStyleBackColor = true;
@@ -1282,9 +1286,10 @@
             // 
             this.ModRB6.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.ModRB6.AutoSize = true;
-            this.ModRB6.Location = new System.Drawing.Point(176, 46);
+            this.ModRB6.Location = new System.Drawing.Point(173, 44);
             this.ModRB6.Name = "ModRB6";
-            this.ModRB6.Size = new System.Drawing.Size(14, 13);
+            this.ModRB6.Padding = new System.Windows.Forms.Padding(4, 3, 3, 3);
+            this.ModRB6.Size = new System.Drawing.Size(21, 19);
             this.ModRB6.TabIndex = 12;
             this.ModRB6.TabStop = true;
             this.ModRB6.UseVisualStyleBackColor = true;
@@ -1293,9 +1298,10 @@
             // 
             this.ModRB5.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.ModRB5.AutoSize = true;
-            this.ModRB5.Location = new System.Drawing.Point(144, 46);
+            this.ModRB5.Location = new System.Drawing.Point(141, 44);
             this.ModRB5.Name = "ModRB5";
-            this.ModRB5.Size = new System.Drawing.Size(14, 13);
+            this.ModRB5.Padding = new System.Windows.Forms.Padding(4, 3, 3, 3);
+            this.ModRB5.Size = new System.Drawing.Size(21, 19);
             this.ModRB5.TabIndex = 11;
             this.ModRB5.TabStop = true;
             this.ModRB5.UseVisualStyleBackColor = true;
@@ -1304,9 +1310,10 @@
             // 
             this.ModRB4.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.ModRB4.AutoSize = true;
-            this.ModRB4.Location = new System.Drawing.Point(112, 46);
+            this.ModRB4.Location = new System.Drawing.Point(109, 44);
             this.ModRB4.Name = "ModRB4";
-            this.ModRB4.Size = new System.Drawing.Size(14, 13);
+            this.ModRB4.Padding = new System.Windows.Forms.Padding(4, 3, 3, 3);
+            this.ModRB4.Size = new System.Drawing.Size(21, 19);
             this.ModRB4.TabIndex = 10;
             this.ModRB4.TabStop = true;
             this.ModRB4.UseVisualStyleBackColor = true;
@@ -1315,9 +1322,10 @@
             // 
             this.ModRB3.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.ModRB3.AutoSize = true;
-            this.ModRB3.Location = new System.Drawing.Point(80, 46);
+            this.ModRB3.Location = new System.Drawing.Point(77, 44);
             this.ModRB3.Name = "ModRB3";
-            this.ModRB3.Size = new System.Drawing.Size(14, 13);
+            this.ModRB3.Padding = new System.Windows.Forms.Padding(4, 3, 3, 3);
+            this.ModRB3.Size = new System.Drawing.Size(21, 19);
             this.ModRB3.TabIndex = 9;
             this.ModRB3.TabStop = true;
             this.ModRB3.UseVisualStyleBackColor = true;
@@ -1326,9 +1334,10 @@
             // 
             this.ModRB2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.ModRB2.AutoSize = true;
-            this.ModRB2.Location = new System.Drawing.Point(48, 46);
+            this.ModRB2.Location = new System.Drawing.Point(45, 44);
             this.ModRB2.Name = "ModRB2";
-            this.ModRB2.Size = new System.Drawing.Size(14, 13);
+            this.ModRB2.Padding = new System.Windows.Forms.Padding(4, 3, 3, 3);
+            this.ModRB2.Size = new System.Drawing.Size(21, 19);
             this.ModRB2.TabIndex = 8;
             this.ModRB2.TabStop = true;
             this.ModRB2.UseVisualStyleBackColor = true;
@@ -1337,9 +1346,10 @@
             // 
             this.ModRB1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.ModRB1.AutoSize = true;
-            this.ModRB1.Location = new System.Drawing.Point(16, 46);
+            this.ModRB1.Location = new System.Drawing.Point(13, 44);
             this.ModRB1.Name = "ModRB1";
-            this.ModRB1.Size = new System.Drawing.Size(14, 13);
+            this.ModRB1.Padding = new System.Windows.Forms.Padding(4, 3, 3, 3);
+            this.ModRB1.Size = new System.Drawing.Size(21, 19);
             this.ModRB1.TabIndex = 7;
             this.ModRB1.TabStop = true;
             this.ModRB1.UseVisualStyleBackColor = true;
