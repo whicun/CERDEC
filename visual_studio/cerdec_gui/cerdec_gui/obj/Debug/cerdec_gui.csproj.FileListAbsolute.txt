@@ -17,3 +17,4 @@ C:\Users\ebenton\Documents\CERDEC TS\visual_studio\cerdec_gui\cerdec_gui\obj\Deb
 C:\Users\ebenton\Documents\CERDEC TS\visual_studio\cerdec_gui\cerdec_gui\obj\Debug\cerdec_gui.csproj.GenerateResource.Cache
 C:\Users\ebenton\Documents\CERDEC TS\visual_studio\cerdec_gui\cerdec_gui\obj\Debug\cerdec_gui.exe
 C:\Users\ebenton\Documents\CERDEC TS\visual_studio\cerdec_gui\cerdec_gui\obj\Debug\cerdec_gui.pdb
+C:\Users\ebenton\Documents\CERDEC TS\visual_studio\cerdec_gui\cerdec_gui\obj\Debug\cerdec_gui.CommsSetup.resources

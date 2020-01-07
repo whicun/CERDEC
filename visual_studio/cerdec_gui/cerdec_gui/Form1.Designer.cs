@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.SystemGB = new System.Windows.Forms.GroupBox();
+            this.RelayLED = new M4359_GUI.LEDPanel();
             this.ClearNumDischargesButton = new System.Windows.Forms.Button();
             this.NumDischargesField = new System.Windows.Forms.TextBox();
             this.NumDischargesLabel = new System.Windows.Forms.Label();
@@ -135,6 +136,7 @@
             this.StopButton = new System.Windows.Forms.Button();
             this.StartButton = new System.Windows.Forms.Button();
             this.ConnectGB = new System.Windows.Forms.GroupBox();
+            this.ConnectedLED = new M4359_GUI.LEDPanel();
             this.ConnectedLabel = new System.Windows.Forms.Label();
             this.OfflineLabel = new System.Windows.Forms.Label();
             this.ConnectTrackbar = new System.Windows.Forms.TrackBar();
@@ -142,10 +144,8 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.commsSetupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ConnectedLED = new M4359_GUI.LEDPanel();
-            this.RelayLED = new M4359_GUI.LEDPanel();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SystemGB.SuspendLayout();
             this.ModeGB.SuspendLayout();
             this.ShelfGB.SuspendLayout();
@@ -184,6 +184,21 @@
             this.SystemGB.TabIndex = 0;
             this.SystemGB.TabStop = false;
             this.SystemGB.Text = "System";
+            // 
+            // RelayLED
+            // 
+            this.RelayLED.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.RelayLED.BlinkTime = 500;
+            this.RelayLED.IsBlinking = false;
+            this.RelayLED.Location = new System.Drawing.Point(90, 184);
+            this.RelayLED.Name = "RelayLED";
+            this.RelayLED.OffColor = System.Drawing.Color.LightGray;
+            this.RelayLED.OffEdgeColor = System.Drawing.Color.DimGray;
+            this.RelayLED.OnColor = System.Drawing.Color.LimeGreen;
+            this.RelayLED.OnEdgeColor = System.Drawing.Color.DarkGreen;
+            this.RelayLED.Size = new System.Drawing.Size(25, 25);
+            this.RelayLED.TabIndex = 9;
+            this.RelayLED.Value = false;
             // 
             // ClearNumDischargesButton
             // 
@@ -1428,6 +1443,21 @@
             this.ConnectGB.TabStop = false;
             this.ConnectGB.Text = "Connect";
             // 
+            // ConnectedLED
+            // 
+            this.ConnectedLED.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.ConnectedLED.BlinkTime = 500;
+            this.ConnectedLED.IsBlinking = false;
+            this.ConnectedLED.Location = new System.Drawing.Point(212, 35);
+            this.ConnectedLED.Name = "ConnectedLED";
+            this.ConnectedLED.OffColor = System.Drawing.Color.LightGray;
+            this.ConnectedLED.OffEdgeColor = System.Drawing.Color.DimGray;
+            this.ConnectedLED.OnColor = System.Drawing.Color.LimeGreen;
+            this.ConnectedLED.OnEdgeColor = System.Drawing.Color.DarkGreen;
+            this.ConnectedLED.Size = new System.Drawing.Size(25, 25);
+            this.ConnectedLED.TabIndex = 10;
+            this.ConnectedLED.Value = false;
+            // 
             // ConnectedLabel
             // 
             this.ConnectedLabel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
@@ -1498,48 +1528,19 @@
             this.toolsToolStripMenuItem.Size = new System.Drawing.Size(59, 25);
             this.toolsToolStripMenuItem.Text = "Tools";
             // 
+            // commsSetupToolStripMenuItem
+            // 
+            this.commsSetupToolStripMenuItem.Name = "commsSetupToolStripMenuItem";
+            this.commsSetupToolStripMenuItem.Size = new System.Drawing.Size(178, 26);
+            this.commsSetupToolStripMenuItem.Text = "Comms Setup";
+            this.commsSetupToolStripMenuItem.Click += new System.EventHandler(this.commsSetupToolStripMenuItem_Click);
+            // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(54, 25);
             this.helpToolStripMenuItem.Text = "Help";
-            // 
-            // commsSetupToolStripMenuItem
-            // 
-            this.commsSetupToolStripMenuItem.Name = "commsSetupToolStripMenuItem";
-            this.commsSetupToolStripMenuItem.Size = new System.Drawing.Size(178, 26);
-            this.commsSetupToolStripMenuItem.Text = "Comms Setup";
-            // 
-            // ConnectedLED
-            // 
-            this.ConnectedLED.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.ConnectedLED.BlinkTime = 500;
-            this.ConnectedLED.IsBlinking = false;
-            this.ConnectedLED.Location = new System.Drawing.Point(212, 35);
-            this.ConnectedLED.Name = "ConnectedLED";
-            this.ConnectedLED.OffColor = System.Drawing.Color.LightGray;
-            this.ConnectedLED.OffEdgeColor = System.Drawing.Color.DimGray;
-            this.ConnectedLED.OnColor = System.Drawing.Color.LimeGreen;
-            this.ConnectedLED.OnEdgeColor = System.Drawing.Color.DarkGreen;
-            this.ConnectedLED.Size = new System.Drawing.Size(25, 25);
-            this.ConnectedLED.TabIndex = 10;
-            this.ConnectedLED.Value = false;
-            // 
-            // RelayLED
-            // 
-            this.RelayLED.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.RelayLED.BlinkTime = 500;
-            this.RelayLED.IsBlinking = false;
-            this.RelayLED.Location = new System.Drawing.Point(90, 184);
-            this.RelayLED.Name = "RelayLED";
-            this.RelayLED.OffColor = System.Drawing.Color.LightGray;
-            this.RelayLED.OffEdgeColor = System.Drawing.Color.DimGray;
-            this.RelayLED.OnColor = System.Drawing.Color.LimeGreen;
-            this.RelayLED.OnEdgeColor = System.Drawing.Color.DarkGreen;
-            this.RelayLED.Size = new System.Drawing.Size(25, 25);
-            this.RelayLED.TabIndex = 9;
-            this.RelayLED.Value = false;
             // 
             // MainForm
             // 

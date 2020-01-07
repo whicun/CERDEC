@@ -14,7 +14,7 @@ namespace cerdec_gui
         private float temp_avg;
         private float temp_max;
         private float temp_min;
-        
+
         private int temp_max_id;
         private int temp_min_id;
 
@@ -50,6 +50,12 @@ namespace cerdec_gui
         {
             get { return volt_total; }
             set { volt_total = value; }
+        }
+
+        public float Temp_min
+        {
+            get { return temp_min; }
+            set { temp_min = value; }
         }
 
         public int Temp_min_id

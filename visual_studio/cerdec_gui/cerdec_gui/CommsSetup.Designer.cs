@@ -43,6 +43,7 @@
             this.COMPortCB.Name = "COMPortCB";
             this.COMPortCB.Size = new System.Drawing.Size(112, 28);
             this.COMPortCB.TabIndex = 0;
+            this.COMPortCB.SelectedIndexChanged += new System.EventHandler(this.COMPortCB_SelectedIndexChanged);
             // 
             // COMPortSaveButton
             // 
@@ -53,6 +54,7 @@
             this.COMPortSaveButton.TabIndex = 1;
             this.COMPortSaveButton.Text = "Save";
             this.COMPortSaveButton.UseVisualStyleBackColor = true;
+            this.COMPortSaveButton.Click += new System.EventHandler(this.COMPortSaveButton_Click);
             // 
             // COMPortLabel
             // 
@@ -73,6 +75,7 @@
             this.COMPortCancelButton.TabIndex = 3;
             this.COMPortCancelButton.Text = "Cancel";
             this.COMPortCancelButton.UseVisualStyleBackColor = true;
+            this.COMPortCancelButton.Click += new System.EventHandler(this.COMPortCancelButton_Click);
             // 
             // CommsSetup
             // 

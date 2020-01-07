@@ -259,7 +259,7 @@ namespace M4359_GUI
                 // Fill the ellipse
                 gfx.FillPath(pthGrBrush, path);
             }
-            catch(Exception exc)
+            catch
             {
             }
         }
