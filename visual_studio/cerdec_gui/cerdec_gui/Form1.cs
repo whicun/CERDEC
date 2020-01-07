@@ -29,6 +29,7 @@ namespace cerdec_gui
 
         // Variables for handling incoming/outgoing data
         private byte data_index;
+        private CommsLib comms_lib;
 
         public MainForm()
         {
@@ -38,6 +39,35 @@ namespace cerdec_gui
             res = shelf_one.parse_voltage(datas);
             res = shelf_one.parse_temp(0x80);
             res = res;
+        }
+
+        private void ConnectTrackbar_Scroll(object sender, EventArgs e)
+        {
+            // Cast to a trackbar to use methods
+            TrackBar trackbar_sender = ((TrackBar)sender);
+
+            // Based on the requested connection status
+            switch (trackbar_sender.Value)
+            {
+                case 0: // Offline
+
+                    if(comms_lib != null)
+                    {
+                        comms_lib.close();
+                        comms_lib = null;
+                    }
+
+                    connection_status = trackbar_sender.Value;
+
+                    break;
+
+                case 1: // Connect
+
+                    break;
+
+                default:
+                    break;
+            }
         }
         /*
         private void processRecData(byte[] buff, int offset, int length, int bytes_in_buff, int buff_cap)

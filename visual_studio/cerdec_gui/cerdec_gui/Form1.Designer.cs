@@ -138,6 +138,12 @@
             this.ConnectedLabel = new System.Windows.Forms.Label();
             this.OfflineLabel = new System.Windows.Forms.Label();
             this.ConnectTrackbar = new System.Windows.Forms.TrackBar();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.commsSetupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ConnectedLED = new M4359_GUI.LEDPanel();
             this.RelayLED = new M4359_GUI.LEDPanel();
             this.SystemGB.SuspendLayout();
@@ -154,11 +160,12 @@
             this.ControlsGB.SuspendLayout();
             this.ConnectGB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ConnectTrackbar)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // SystemGB
             // 
-            this.SystemGB.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.SystemGB.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.SystemGB.Controls.Add(this.RelayLED);
             this.SystemGB.Controls.Add(this.ClearNumDischargesButton);
             this.SystemGB.Controls.Add(this.NumDischargesField);
@@ -169,7 +176,7 @@
             this.SystemGB.Controls.Add(this.StatusField);
             this.SystemGB.Controls.Add(this.StatusLabel);
             this.SystemGB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SystemGB.Location = new System.Drawing.Point(536, 104);
+            this.SystemGB.Location = new System.Drawing.Point(536, 135);
             this.SystemGB.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.SystemGB.Name = "SystemGB";
             this.SystemGB.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -180,7 +187,7 @@
             // 
             // ClearNumDischargesButton
             // 
-            this.ClearNumDischargesButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ClearNumDischargesButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.ClearNumDischargesButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ClearNumDischargesButton.Location = new System.Drawing.Point(172, 224);
             this.ClearNumDischargesButton.Name = "ClearNumDischargesButton";
@@ -191,7 +198,7 @@
             // 
             // NumDischargesField
             // 
-            this.NumDischargesField.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.NumDischargesField.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.NumDischargesField.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.NumDischargesField.Location = new System.Drawing.Point(110, 224);
             this.NumDischargesField.Name = "NumDischargesField";
@@ -200,7 +207,7 @@
             // 
             // NumDischargesLabel
             // 
-            this.NumDischargesLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.NumDischargesLabel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.NumDischargesLabel.AutoSize = true;
             this.NumDischargesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.NumDischargesLabel.Location = new System.Drawing.Point(16, 227);
@@ -211,7 +218,7 @@
             // 
             // RelaysLabel
             // 
-            this.RelaysLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.RelaysLabel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.RelaysLabel.AutoSize = true;
             this.RelaysLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RelaysLabel.Location = new System.Drawing.Point(16, 186);
@@ -222,7 +229,7 @@
             // 
             // ModeGB
             // 
-            this.ModeGB.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ModeGB.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.ModeGB.Controls.Add(this.PowerModeRB);
             this.ModeGB.Controls.Add(this.IdleModeRB);
             this.ModeGB.Controls.Add(this.VoltageModeRB);
@@ -237,7 +244,7 @@
             // 
             // PowerModeRB
             // 
-            this.PowerModeRB.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.PowerModeRB.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.PowerModeRB.AutoSize = true;
             this.PowerModeRB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PowerModeRB.Location = new System.Drawing.Point(112, 58);
@@ -250,7 +257,7 @@
             // 
             // IdleModeRB
             // 
-            this.IdleModeRB.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.IdleModeRB.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.IdleModeRB.AutoSize = true;
             this.IdleModeRB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.IdleModeRB.Location = new System.Drawing.Point(24, 58);
@@ -263,7 +270,7 @@
             // 
             // VoltageModeRB
             // 
-            this.VoltageModeRB.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.VoltageModeRB.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.VoltageModeRB.AutoSize = true;
             this.VoltageModeRB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.VoltageModeRB.Location = new System.Drawing.Point(112, 28);
@@ -276,7 +283,7 @@
             // 
             // OffModeRB
             // 
-            this.OffModeRB.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.OffModeRB.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.OffModeRB.AutoSize = true;
             this.OffModeRB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.OffModeRB.Location = new System.Drawing.Point(24, 29);
@@ -289,7 +296,7 @@
             // 
             // ClearStatusButton
             // 
-            this.ClearStatusButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ClearStatusButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.ClearStatusButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ClearStatusButton.Location = new System.Drawing.Point(172, 28);
             this.ClearStatusButton.Name = "ClearStatusButton";
@@ -300,7 +307,7 @@
             // 
             // StatusField
             // 
-            this.StatusField.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.StatusField.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.StatusField.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.StatusField.Location = new System.Drawing.Point(76, 28);
             this.StatusField.Name = "StatusField";
@@ -309,7 +316,7 @@
             // 
             // StatusLabel
             // 
-            this.StatusLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.StatusLabel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.StatusLabel.AutoSize = true;
             this.StatusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.StatusLabel.Location = new System.Drawing.Point(16, 31);
@@ -320,11 +327,11 @@
             // 
             // ShelfGB
             // 
-            this.ShelfGB.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ShelfGB.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.ShelfGB.Controls.Add(this.ShelfAlarmsGB);
             this.ShelfGB.Controls.Add(this.ShelfInfoGB);
             this.ShelfGB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ShelfGB.Location = new System.Drawing.Point(5, 5);
+            this.ShelfGB.Location = new System.Drawing.Point(5, 36);
             this.ShelfGB.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ShelfGB.Name = "ShelfGB";
             this.ShelfGB.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -335,7 +342,7 @@
             // 
             // ShelfAlarmsGB
             // 
-            this.ShelfAlarmsGB.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ShelfAlarmsGB.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.ShelfAlarmsGB.Controls.Add(this.ShelfErrorField);
             this.ShelfAlarmsGB.Controls.Add(this.ShelfErrorRB);
             this.ShelfAlarmsGB.Controls.Add(this.ShelfOverTempRB);
@@ -351,7 +358,7 @@
             // 
             // ShelfErrorField
             // 
-            this.ShelfErrorField.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ShelfErrorField.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.ShelfErrorField.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.ShelfErrorField.Location = new System.Drawing.Point(204, 57);
             this.ShelfErrorField.Name = "ShelfErrorField";
@@ -360,7 +367,7 @@
             // 
             // ShelfErrorRB
             // 
-            this.ShelfErrorRB.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ShelfErrorRB.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.ShelfErrorRB.AutoSize = true;
             this.ShelfErrorRB.Location = new System.Drawing.Point(140, 58);
             this.ShelfErrorRB.Name = "ShelfErrorRB";
@@ -372,7 +379,7 @@
             // 
             // ShelfOverTempRB
             // 
-            this.ShelfOverTempRB.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ShelfOverTempRB.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.ShelfOverTempRB.AutoSize = true;
             this.ShelfOverTempRB.Location = new System.Drawing.Point(12, 58);
             this.ShelfOverTempRB.Name = "ShelfOverTempRB";
@@ -384,7 +391,7 @@
             // 
             // ShelfOverDischargedRB
             // 
-            this.ShelfOverDischargedRB.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ShelfOverDischargedRB.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.ShelfOverDischargedRB.AutoSize = true;
             this.ShelfOverDischargedRB.Location = new System.Drawing.Point(140, 29);
             this.ShelfOverDischargedRB.Name = "ShelfOverDischargedRB";
@@ -396,7 +403,7 @@
             // 
             // ShelfOverChargedRB
             // 
-            this.ShelfOverChargedRB.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ShelfOverChargedRB.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.ShelfOverChargedRB.AutoSize = true;
             this.ShelfOverChargedRB.Location = new System.Drawing.Point(12, 29);
             this.ShelfOverChargedRB.Name = "ShelfOverChargedRB";
@@ -408,7 +415,7 @@
             // 
             // ShelfInfoGB
             // 
-            this.ShelfInfoGB.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ShelfInfoGB.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.ShelfInfoGB.Controls.Add(this.MinTempUnits);
             this.ShelfInfoGB.Controls.Add(this.MaxTempUnits);
             this.ShelfInfoGB.Controls.Add(this.AvgTempUnits);
@@ -434,7 +441,7 @@
             // 
             // MinTempUnits
             // 
-            this.MinTempUnits.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.MinTempUnits.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.MinTempUnits.AutoSize = true;
             this.MinTempUnits.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.75F);
             this.MinTempUnits.Location = new System.Drawing.Point(195, 108);
@@ -446,7 +453,7 @@
             // 
             // MaxTempUnits
             // 
-            this.MaxTempUnits.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.MaxTempUnits.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.MaxTempUnits.AutoSize = true;
             this.MaxTempUnits.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.75F);
             this.MaxTempUnits.Location = new System.Drawing.Point(195, 81);
@@ -458,7 +465,7 @@
             // 
             // AvgTempUnits
             // 
-            this.AvgTempUnits.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.AvgTempUnits.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.AvgTempUnits.AutoSize = true;
             this.AvgTempUnits.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.75F);
             this.AvgTempUnits.Location = new System.Drawing.Point(195, 54);
@@ -470,7 +477,7 @@
             // 
             // TotalVoltUnits
             // 
-            this.TotalVoltUnits.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.TotalVoltUnits.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.TotalVoltUnits.AutoSize = true;
             this.TotalVoltUnits.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.75F);
             this.TotalVoltUnits.Location = new System.Drawing.Point(195, 27);
@@ -482,7 +489,7 @@
             // 
             // MinTempIDField
             // 
-            this.MinTempIDField.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.MinTempIDField.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.MinTempIDField.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.MinTempIDField.Location = new System.Drawing.Point(227, 104);
             this.MinTempIDField.Name = "MinTempIDField";
@@ -491,7 +498,7 @@
             // 
             // MaxTempIDField
             // 
-            this.MaxTempIDField.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.MaxTempIDField.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.MaxTempIDField.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.MaxTempIDField.Location = new System.Drawing.Point(227, 77);
             this.MaxTempIDField.Name = "MaxTempIDField";
@@ -500,7 +507,7 @@
             // 
             // ModTempIDLabel
             // 
-            this.ModTempIDLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ModTempIDLabel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.ModTempIDLabel.AutoSize = true;
             this.ModTempIDLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.ModTempIDLabel.Location = new System.Drawing.Point(243, 52);
@@ -511,7 +518,7 @@
             // 
             // MinTempField
             // 
-            this.MinTempField.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.MinTempField.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.MinTempField.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.MinTempField.Location = new System.Drawing.Point(89, 104);
             this.MinTempField.Name = "MinTempField";
@@ -520,7 +527,7 @@
             // 
             // MinTempLabel
             // 
-            this.MinTempLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.MinTempLabel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.MinTempLabel.AutoSize = true;
             this.MinTempLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.MinTempLabel.Location = new System.Drawing.Point(9, 107);
@@ -531,7 +538,7 @@
             // 
             // MaxTempField
             // 
-            this.MaxTempField.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.MaxTempField.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.MaxTempField.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.MaxTempField.Location = new System.Drawing.Point(89, 77);
             this.MaxTempField.Name = "MaxTempField";
@@ -540,7 +547,7 @@
             // 
             // AvgTempField
             // 
-            this.AvgTempField.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.AvgTempField.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.AvgTempField.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.AvgTempField.Location = new System.Drawing.Point(89, 50);
             this.AvgTempField.Name = "AvgTempField";
@@ -549,7 +556,7 @@
             // 
             // TotalVoltField
             // 
-            this.TotalVoltField.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.TotalVoltField.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.TotalVoltField.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.TotalVoltField.Location = new System.Drawing.Point(89, 23);
             this.TotalVoltField.Name = "TotalVoltField";
@@ -558,7 +565,7 @@
             // 
             // MaxTempLabel
             // 
-            this.MaxTempLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.MaxTempLabel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.MaxTempLabel.AutoSize = true;
             this.MaxTempLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.MaxTempLabel.Location = new System.Drawing.Point(9, 80);
@@ -569,7 +576,7 @@
             // 
             // AvgTempLabel
             // 
-            this.AvgTempLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.AvgTempLabel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.AvgTempLabel.AutoSize = true;
             this.AvgTempLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.AvgTempLabel.Location = new System.Drawing.Point(9, 53);
@@ -580,7 +587,7 @@
             // 
             // TotalVoltLabel
             // 
-            this.TotalVoltLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.TotalVoltLabel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.TotalVoltLabel.AutoSize = true;
             this.TotalVoltLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.TotalVoltLabel.Location = new System.Drawing.Point(9, 26);
@@ -591,7 +598,7 @@
             // 
             // VoltagesGB
             // 
-            this.VoltagesGB.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.VoltagesGB.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.VoltagesGB.Controls.Add(this.ESDBusVoltageField);
             this.VoltagesGB.Controls.Add(this.DCBusVoltageField);
             this.VoltagesGB.Controls.Add(this.SetPointVoltageField);
@@ -599,7 +606,7 @@
             this.VoltagesGB.Controls.Add(this.DCBusVoltageLabel);
             this.VoltagesGB.Controls.Add(this.SetPointVoltageLabel);
             this.VoltagesGB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.VoltagesGB.Location = new System.Drawing.Point(313, 5);
+            this.VoltagesGB.Location = new System.Drawing.Point(313, 36);
             this.VoltagesGB.Name = "VoltagesGB";
             this.VoltagesGB.Size = new System.Drawing.Size(216, 118);
             this.VoltagesGB.TabIndex = 4;
@@ -608,7 +615,7 @@
             // 
             // ESDBusVoltageField
             // 
-            this.ESDBusVoltageField.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ESDBusVoltageField.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.ESDBusVoltageField.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.ESDBusVoltageField.Location = new System.Drawing.Point(96, 80);
             this.ESDBusVoltageField.Name = "ESDBusVoltageField";
@@ -617,7 +624,7 @@
             // 
             // DCBusVoltageField
             // 
-            this.DCBusVoltageField.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.DCBusVoltageField.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.DCBusVoltageField.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.DCBusVoltageField.Location = new System.Drawing.Point(96, 53);
             this.DCBusVoltageField.Name = "DCBusVoltageField";
@@ -626,7 +633,7 @@
             // 
             // SetPointVoltageField
             // 
-            this.SetPointVoltageField.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.SetPointVoltageField.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.SetPointVoltageField.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.SetPointVoltageField.Location = new System.Drawing.Point(96, 26);
             this.SetPointVoltageField.Name = "SetPointVoltageField";
@@ -635,7 +642,7 @@
             // 
             // ESDBusVoltageLabel
             // 
-            this.ESDBusVoltageLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ESDBusVoltageLabel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.ESDBusVoltageLabel.AutoSize = true;
             this.ESDBusVoltageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.ESDBusVoltageLabel.Location = new System.Drawing.Point(16, 83);
@@ -646,7 +653,7 @@
             // 
             // DCBusVoltageLabel
             // 
-            this.DCBusVoltageLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.DCBusVoltageLabel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.DCBusVoltageLabel.AutoSize = true;
             this.DCBusVoltageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.DCBusVoltageLabel.Location = new System.Drawing.Point(16, 56);
@@ -657,7 +664,7 @@
             // 
             // SetPointVoltageLabel
             // 
-            this.SetPointVoltageLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.SetPointVoltageLabel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.SetPointVoltageLabel.AutoSize = true;
             this.SetPointVoltageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.SetPointVoltageLabel.Location = new System.Drawing.Point(16, 29);
@@ -668,7 +675,7 @@
             // 
             // CurrentsGB
             // 
-            this.CurrentsGB.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.CurrentsGB.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.CurrentsGB.Controls.Add(this.ESDCurrentField);
             this.CurrentsGB.Controls.Add(this.ESDCurrentLabel);
             this.CurrentsGB.Controls.Add(this.ConvDCCurrentField);
@@ -678,7 +685,7 @@
             this.CurrentsGB.Controls.Add(this.LoadCurrentLabel);
             this.CurrentsGB.Controls.Add(this.SourceCurrentLabel);
             this.CurrentsGB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CurrentsGB.Location = new System.Drawing.Point(313, 129);
+            this.CurrentsGB.Location = new System.Drawing.Point(313, 160);
             this.CurrentsGB.Name = "CurrentsGB";
             this.CurrentsGB.Size = new System.Drawing.Size(216, 147);
             this.CurrentsGB.TabIndex = 5;
@@ -687,7 +694,7 @@
             // 
             // ESDCurrentField
             // 
-            this.ESDCurrentField.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ESDCurrentField.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.ESDCurrentField.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.ESDCurrentField.Location = new System.Drawing.Point(96, 107);
             this.ESDCurrentField.Name = "ESDCurrentField";
@@ -696,7 +703,7 @@
             // 
             // ESDCurrentLabel
             // 
-            this.ESDCurrentLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ESDCurrentLabel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.ESDCurrentLabel.AutoSize = true;
             this.ESDCurrentLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.ESDCurrentLabel.Location = new System.Drawing.Point(16, 110);
@@ -707,7 +714,7 @@
             // 
             // ConvDCCurrentField
             // 
-            this.ConvDCCurrentField.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ConvDCCurrentField.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.ConvDCCurrentField.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.ConvDCCurrentField.Location = new System.Drawing.Point(96, 80);
             this.ConvDCCurrentField.Name = "ConvDCCurrentField";
@@ -716,7 +723,7 @@
             // 
             // LoadCurrentField
             // 
-            this.LoadCurrentField.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.LoadCurrentField.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.LoadCurrentField.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.LoadCurrentField.Location = new System.Drawing.Point(96, 53);
             this.LoadCurrentField.Name = "LoadCurrentField";
@@ -725,7 +732,7 @@
             // 
             // SourceCurrentField
             // 
-            this.SourceCurrentField.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.SourceCurrentField.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.SourceCurrentField.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.SourceCurrentField.Location = new System.Drawing.Point(96, 26);
             this.SourceCurrentField.Name = "SourceCurrentField";
@@ -734,7 +741,7 @@
             // 
             // ConvDCCurrentLabel
             // 
-            this.ConvDCCurrentLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ConvDCCurrentLabel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.ConvDCCurrentLabel.AutoSize = true;
             this.ConvDCCurrentLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.ConvDCCurrentLabel.Location = new System.Drawing.Point(16, 83);
@@ -745,7 +752,7 @@
             // 
             // LoadCurrentLabel
             // 
-            this.LoadCurrentLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.LoadCurrentLabel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.LoadCurrentLabel.AutoSize = true;
             this.LoadCurrentLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.LoadCurrentLabel.Location = new System.Drawing.Point(16, 56);
@@ -756,7 +763,7 @@
             // 
             // SourceCurrentLabel
             // 
-            this.SourceCurrentLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.SourceCurrentLabel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.SourceCurrentLabel.AutoSize = true;
             this.SourceCurrentLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.SourceCurrentLabel.Location = new System.Drawing.Point(16, 29);
@@ -767,7 +774,7 @@
             // 
             // TemperaturesGB
             // 
-            this.TemperaturesGB.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.TemperaturesGB.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.TemperaturesGB.Controls.Add(this.TempField8);
             this.TemperaturesGB.Controls.Add(this.TempLabel8);
             this.TemperaturesGB.Controls.Add(this.TempField7);
@@ -785,7 +792,7 @@
             this.TemperaturesGB.Controls.Add(this.TempLabel2);
             this.TemperaturesGB.Controls.Add(this.TempLabel1);
             this.TemperaturesGB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TemperaturesGB.Location = new System.Drawing.Point(313, 282);
+            this.TemperaturesGB.Location = new System.Drawing.Point(313, 313);
             this.TemperaturesGB.Name = "TemperaturesGB";
             this.TemperaturesGB.Size = new System.Drawing.Size(216, 255);
             this.TemperaturesGB.TabIndex = 6;
@@ -794,7 +801,7 @@
             // 
             // TempField8
             // 
-            this.TempField8.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.TempField8.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.TempField8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.TempField8.Location = new System.Drawing.Point(96, 215);
             this.TempField8.Name = "TempField8";
@@ -803,7 +810,7 @@
             // 
             // TempLabel8
             // 
-            this.TempLabel8.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.TempLabel8.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.TempLabel8.AutoSize = true;
             this.TempLabel8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.TempLabel8.Location = new System.Drawing.Point(16, 218);
@@ -814,7 +821,7 @@
             // 
             // TempField7
             // 
-            this.TempField7.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.TempField7.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.TempField7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.TempField7.Location = new System.Drawing.Point(96, 188);
             this.TempField7.Name = "TempField7";
@@ -823,7 +830,7 @@
             // 
             // TempField6
             // 
-            this.TempField6.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.TempField6.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.TempField6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.TempField6.Location = new System.Drawing.Point(96, 161);
             this.TempField6.Name = "TempField6";
@@ -832,7 +839,7 @@
             // 
             // TempField5
             // 
-            this.TempField5.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.TempField5.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.TempField5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.TempField5.Location = new System.Drawing.Point(96, 134);
             this.TempField5.Name = "TempField5";
@@ -841,7 +848,7 @@
             // 
             // TempLabel7
             // 
-            this.TempLabel7.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.TempLabel7.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.TempLabel7.AutoSize = true;
             this.TempLabel7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.TempLabel7.Location = new System.Drawing.Point(16, 191);
@@ -852,7 +859,7 @@
             // 
             // TempLabel6
             // 
-            this.TempLabel6.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.TempLabel6.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.TempLabel6.AutoSize = true;
             this.TempLabel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.TempLabel6.Location = new System.Drawing.Point(16, 164);
@@ -863,7 +870,7 @@
             // 
             // TempLabel5
             // 
-            this.TempLabel5.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.TempLabel5.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.TempLabel5.AutoSize = true;
             this.TempLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.TempLabel5.Location = new System.Drawing.Point(16, 137);
@@ -874,7 +881,7 @@
             // 
             // TempField4
             // 
-            this.TempField4.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.TempField4.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.TempField4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.TempField4.Location = new System.Drawing.Point(96, 107);
             this.TempField4.Name = "TempField4";
@@ -883,7 +890,7 @@
             // 
             // TempLabel4
             // 
-            this.TempLabel4.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.TempLabel4.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.TempLabel4.AutoSize = true;
             this.TempLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.TempLabel4.Location = new System.Drawing.Point(16, 110);
@@ -894,7 +901,7 @@
             // 
             // TempField3
             // 
-            this.TempField3.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.TempField3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.TempField3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.TempField3.Location = new System.Drawing.Point(96, 80);
             this.TempField3.Name = "TempField3";
@@ -903,7 +910,7 @@
             // 
             // TempField2
             // 
-            this.TempField2.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.TempField2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.TempField2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.TempField2.Location = new System.Drawing.Point(96, 53);
             this.TempField2.Name = "TempField2";
@@ -912,7 +919,7 @@
             // 
             // TempField1
             // 
-            this.TempField1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.TempField1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.TempField1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.TempField1.Location = new System.Drawing.Point(96, 26);
             this.TempField1.Name = "TempField1";
@@ -921,7 +928,7 @@
             // 
             // TempLabel3
             // 
-            this.TempLabel3.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.TempLabel3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.TempLabel3.AutoSize = true;
             this.TempLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.TempLabel3.Location = new System.Drawing.Point(16, 83);
@@ -932,7 +939,7 @@
             // 
             // TempLabel2
             // 
-            this.TempLabel2.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.TempLabel2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.TempLabel2.AutoSize = true;
             this.TempLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.TempLabel2.Location = new System.Drawing.Point(16, 56);
@@ -943,7 +950,7 @@
             // 
             // TempLabel1
             // 
-            this.TempLabel1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.TempLabel1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.TempLabel1.AutoSize = true;
             this.TempLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.TempLabel1.Location = new System.Drawing.Point(16, 29);
@@ -954,7 +961,7 @@
             // 
             // ModGB
             // 
-            this.ModGB.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ModGB.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.ModGB.Controls.Add(this.ModAlarmsGB);
             this.ModGB.Controls.Add(this.ModInfoGB);
             this.ModGB.Controls.Add(this.ModLabel9);
@@ -976,7 +983,7 @@
             this.ModGB.Controls.Add(this.ModRB2);
             this.ModGB.Controls.Add(this.ModRB1);
             this.ModGB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ModGB.Location = new System.Drawing.Point(5, 282);
+            this.ModGB.Location = new System.Drawing.Point(5, 313);
             this.ModGB.Name = "ModGB";
             this.ModGB.Size = new System.Drawing.Size(300, 255);
             this.ModGB.TabIndex = 6;
@@ -985,7 +992,7 @@
             // 
             // ModAlarmsGB
             // 
-            this.ModAlarmsGB.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ModAlarmsGB.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.ModAlarmsGB.Controls.Add(this.ModErrorField);
             this.ModAlarmsGB.Controls.Add(this.ModErrorRB);
             this.ModAlarmsGB.Controls.Add(this.ModOverTempRB);
@@ -1001,7 +1008,7 @@
             // 
             // ModErrorField
             // 
-            this.ModErrorField.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ModErrorField.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.ModErrorField.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.ModErrorField.Location = new System.Drawing.Point(204, 57);
             this.ModErrorField.Name = "ModErrorField";
@@ -1010,7 +1017,7 @@
             // 
             // ModErrorRB
             // 
-            this.ModErrorRB.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ModErrorRB.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.ModErrorRB.AutoSize = true;
             this.ModErrorRB.Location = new System.Drawing.Point(140, 58);
             this.ModErrorRB.Name = "ModErrorRB";
@@ -1022,7 +1029,7 @@
             // 
             // ModOverTempRB
             // 
-            this.ModOverTempRB.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ModOverTempRB.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.ModOverTempRB.AutoSize = true;
             this.ModOverTempRB.Location = new System.Drawing.Point(12, 58);
             this.ModOverTempRB.Name = "ModOverTempRB";
@@ -1034,7 +1041,7 @@
             // 
             // ModOverDischargedRB
             // 
-            this.ModOverDischargedRB.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ModOverDischargedRB.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.ModOverDischargedRB.AutoSize = true;
             this.ModOverDischargedRB.Location = new System.Drawing.Point(140, 29);
             this.ModOverDischargedRB.Name = "ModOverDischargedRB";
@@ -1046,7 +1053,7 @@
             // 
             // ModOverChargedRB
             // 
-            this.ModOverChargedRB.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ModOverChargedRB.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.ModOverChargedRB.AutoSize = true;
             this.ModOverChargedRB.Location = new System.Drawing.Point(12, 29);
             this.ModOverChargedRB.Name = "ModOverChargedRB";
@@ -1058,7 +1065,7 @@
             // 
             // ModInfoGB
             // 
-            this.ModInfoGB.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ModInfoGB.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.ModInfoGB.Controls.Add(this.ModTempUnits);
             this.ModInfoGB.Controls.Add(this.ModVoltageUnits);
             this.ModInfoGB.Controls.Add(this.ModTempField);
@@ -1075,7 +1082,7 @@
             // 
             // ModTempUnits
             // 
-            this.ModTempUnits.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ModTempUnits.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.ModTempUnits.AutoSize = true;
             this.ModTempUnits.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.75F);
             this.ModTempUnits.Location = new System.Drawing.Point(195, 52);
@@ -1087,7 +1094,7 @@
             // 
             // ModVoltageUnits
             // 
-            this.ModVoltageUnits.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ModVoltageUnits.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.ModVoltageUnits.AutoSize = true;
             this.ModVoltageUnits.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.75F);
             this.ModVoltageUnits.Location = new System.Drawing.Point(195, 25);
@@ -1099,7 +1106,7 @@
             // 
             // ModTempField
             // 
-            this.ModTempField.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ModTempField.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.ModTempField.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.ModTempField.Location = new System.Drawing.Point(89, 48);
             this.ModTempField.Name = "ModTempField";
@@ -1108,7 +1115,7 @@
             // 
             // ModVoltageField
             // 
-            this.ModVoltageField.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ModVoltageField.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.ModVoltageField.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.ModVoltageField.Location = new System.Drawing.Point(89, 21);
             this.ModVoltageField.Name = "ModVoltageField";
@@ -1117,7 +1124,7 @@
             // 
             // ModTempLabel
             // 
-            this.ModTempLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ModTempLabel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.ModTempLabel.AutoSize = true;
             this.ModTempLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.ModTempLabel.Location = new System.Drawing.Point(9, 51);
@@ -1128,7 +1135,7 @@
             // 
             // ModVoltageLabel
             // 
-            this.ModVoltageLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ModVoltageLabel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.ModVoltageLabel.AutoSize = true;
             this.ModVoltageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.ModVoltageLabel.Location = new System.Drawing.Point(9, 24);
@@ -1139,7 +1146,7 @@
             // 
             // ModLabel9
             // 
-            this.ModLabel9.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ModLabel9.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.ModLabel9.AutoSize = true;
             this.ModLabel9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.75F);
             this.ModLabel9.Location = new System.Drawing.Point(272, 23);
@@ -1151,7 +1158,7 @@
             // 
             // ModLabel8
             // 
-            this.ModLabel8.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ModLabel8.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.ModLabel8.AutoSize = true;
             this.ModLabel8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.75F);
             this.ModLabel8.Location = new System.Drawing.Point(240, 23);
@@ -1163,7 +1170,7 @@
             // 
             // ModLabel7
             // 
-            this.ModLabel7.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ModLabel7.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.ModLabel7.AutoSize = true;
             this.ModLabel7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.75F);
             this.ModLabel7.Location = new System.Drawing.Point(208, 23);
@@ -1175,7 +1182,7 @@
             // 
             // ModLabel6
             // 
-            this.ModLabel6.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ModLabel6.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.ModLabel6.AutoSize = true;
             this.ModLabel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.75F);
             this.ModLabel6.Location = new System.Drawing.Point(176, 23);
@@ -1187,7 +1194,7 @@
             // 
             // ModLabel5
             // 
-            this.ModLabel5.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ModLabel5.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.ModLabel5.AutoSize = true;
             this.ModLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.75F);
             this.ModLabel5.Location = new System.Drawing.Point(144, 23);
@@ -1199,7 +1206,7 @@
             // 
             // ModLabel4
             // 
-            this.ModLabel4.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ModLabel4.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.ModLabel4.AutoSize = true;
             this.ModLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.75F);
             this.ModLabel4.Location = new System.Drawing.Point(112, 23);
@@ -1211,7 +1218,7 @@
             // 
             // ModLabel3
             // 
-            this.ModLabel3.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ModLabel3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.ModLabel3.AutoSize = true;
             this.ModLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.75F);
             this.ModLabel3.Location = new System.Drawing.Point(80, 23);
@@ -1223,7 +1230,7 @@
             // 
             // ModLabel2
             // 
-            this.ModLabel2.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ModLabel2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.ModLabel2.AutoSize = true;
             this.ModLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.75F);
             this.ModLabel2.Location = new System.Drawing.Point(48, 23);
@@ -1235,7 +1242,7 @@
             // 
             // ModLabel1
             // 
-            this.ModLabel1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ModLabel1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.ModLabel1.AutoSize = true;
             this.ModLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.75F);
             this.ModLabel1.Location = new System.Drawing.Point(16, 23);
@@ -1247,7 +1254,7 @@
             // 
             // ModRB9
             // 
-            this.ModRB9.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ModRB9.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.ModRB9.AutoSize = true;
             this.ModRB9.BackColor = System.Drawing.SystemColors.Control;
             this.ModRB9.Location = new System.Drawing.Point(269, 44);
@@ -1260,7 +1267,7 @@
             // 
             // ModRB8
             // 
-            this.ModRB8.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ModRB8.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.ModRB8.AutoSize = true;
             this.ModRB8.Location = new System.Drawing.Point(237, 44);
             this.ModRB8.Name = "ModRB8";
@@ -1272,7 +1279,7 @@
             // 
             // ModRB7
             // 
-            this.ModRB7.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ModRB7.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.ModRB7.AutoSize = true;
             this.ModRB7.Location = new System.Drawing.Point(205, 44);
             this.ModRB7.Name = "ModRB7";
@@ -1284,7 +1291,7 @@
             // 
             // ModRB6
             // 
-            this.ModRB6.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ModRB6.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.ModRB6.AutoSize = true;
             this.ModRB6.Location = new System.Drawing.Point(173, 44);
             this.ModRB6.Name = "ModRB6";
@@ -1296,7 +1303,7 @@
             // 
             // ModRB5
             // 
-            this.ModRB5.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ModRB5.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.ModRB5.AutoSize = true;
             this.ModRB5.Location = new System.Drawing.Point(141, 44);
             this.ModRB5.Name = "ModRB5";
@@ -1308,7 +1315,7 @@
             // 
             // ModRB4
             // 
-            this.ModRB4.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ModRB4.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.ModRB4.AutoSize = true;
             this.ModRB4.Location = new System.Drawing.Point(109, 44);
             this.ModRB4.Name = "ModRB4";
@@ -1320,7 +1327,7 @@
             // 
             // ModRB3
             // 
-            this.ModRB3.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ModRB3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.ModRB3.AutoSize = true;
             this.ModRB3.Location = new System.Drawing.Point(77, 44);
             this.ModRB3.Name = "ModRB3";
@@ -1332,7 +1339,7 @@
             // 
             // ModRB2
             // 
-            this.ModRB2.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ModRB2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.ModRB2.AutoSize = true;
             this.ModRB2.Location = new System.Drawing.Point(45, 44);
             this.ModRB2.Name = "ModRB2";
@@ -1344,7 +1351,7 @@
             // 
             // ModRB1
             // 
-            this.ModRB1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ModRB1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.ModRB1.AutoSize = true;
             this.ModRB1.Location = new System.Drawing.Point(13, 44);
             this.ModRB1.Name = "ModRB1";
@@ -1356,12 +1363,12 @@
             // 
             // ControlsGB
             // 
-            this.ControlsGB.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ControlsGB.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.ControlsGB.Controls.Add(this.EStopButton);
             this.ControlsGB.Controls.Add(this.StopButton);
             this.ControlsGB.Controls.Add(this.StartButton);
             this.ControlsGB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ControlsGB.Location = new System.Drawing.Point(536, 389);
+            this.ControlsGB.Location = new System.Drawing.Point(536, 420);
             this.ControlsGB.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ControlsGB.Name = "ControlsGB";
             this.ControlsGB.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -1372,7 +1379,7 @@
             // 
             // EStopButton
             // 
-            this.EStopButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.EStopButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.EStopButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.EStopButton.Location = new System.Drawing.Point(76, 101);
             this.EStopButton.Name = "EStopButton";
@@ -1383,7 +1390,7 @@
             // 
             // StopButton
             // 
-            this.StopButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.StopButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.StopButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.StopButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.StopButton.Location = new System.Drawing.Point(141, 28);
@@ -1395,7 +1402,7 @@
             // 
             // StartButton
             // 
-            this.StartButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.StartButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.StartButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.StartButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.StartButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
@@ -1408,13 +1415,13 @@
             // 
             // ConnectGB
             // 
-            this.ConnectGB.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ConnectGB.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.ConnectGB.Controls.Add(this.ConnectedLED);
             this.ConnectGB.Controls.Add(this.ConnectedLabel);
             this.ConnectGB.Controls.Add(this.OfflineLabel);
             this.ConnectGB.Controls.Add(this.ConnectTrackbar);
             this.ConnectGB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ConnectGB.Location = new System.Drawing.Point(536, 5);
+            this.ConnectGB.Location = new System.Drawing.Point(536, 36);
             this.ConnectGB.Name = "ConnectGB";
             this.ConnectGB.Size = new System.Drawing.Size(256, 91);
             this.ConnectGB.TabIndex = 8;
@@ -1423,7 +1430,7 @@
             // 
             // ConnectedLabel
             // 
-            this.ConnectedLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ConnectedLabel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.ConnectedLabel.AutoSize = true;
             this.ConnectedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.ConnectedLabel.Location = new System.Drawing.Point(115, 37);
@@ -1434,7 +1441,7 @@
             // 
             // OfflineLabel
             // 
-            this.OfflineLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.OfflineLabel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.OfflineLabel.AutoSize = true;
             this.OfflineLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.OfflineLabel.Location = new System.Drawing.Point(9, 37);
@@ -1445,17 +1452,68 @@
             // 
             // ConnectTrackbar
             // 
-            this.ConnectTrackbar.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ConnectTrackbar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.ConnectTrackbar.LargeChange = 1;
             this.ConnectTrackbar.Location = new System.Drawing.Point(64, 37);
             this.ConnectTrackbar.Maximum = 1;
             this.ConnectTrackbar.Name = "ConnectTrackbar";
             this.ConnectTrackbar.Size = new System.Drawing.Size(51, 45);
             this.ConnectTrackbar.TabIndex = 9;
+            this.ConnectTrackbar.Scroll += new System.EventHandler(this.ConnectTrackbar_Scroll);
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem,
+            this.editToolStripMenuItem,
+            this.toolsToolStripMenuItem,
+            this.helpToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(802, 29);
+            this.menuStrip1.TabIndex = 9;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 25);
+            this.fileToolStripMenuItem.Text = "File";
+            // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(48, 25);
+            this.editToolStripMenuItem.Text = "Edit";
+            // 
+            // toolsToolStripMenuItem
+            // 
+            this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.commsSetupToolStripMenuItem});
+            this.toolsToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(59, 25);
+            this.toolsToolStripMenuItem.Text = "Tools";
+            // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(54, 25);
+            this.helpToolStripMenuItem.Text = "Help";
+            // 
+            // commsSetupToolStripMenuItem
+            // 
+            this.commsSetupToolStripMenuItem.Name = "commsSetupToolStripMenuItem";
+            this.commsSetupToolStripMenuItem.Size = new System.Drawing.Size(178, 26);
+            this.commsSetupToolStripMenuItem.Text = "Comms Setup";
             // 
             // ConnectedLED
             // 
-            this.ConnectedLED.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ConnectedLED.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.ConnectedLED.BlinkTime = 500;
             this.ConnectedLED.IsBlinking = false;
             this.ConnectedLED.Location = new System.Drawing.Point(212, 35);
@@ -1470,7 +1528,7 @@
             // 
             // RelayLED
             // 
-            this.RelayLED.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.RelayLED.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.RelayLED.BlinkTime = 500;
             this.RelayLED.IsBlinking = false;
             this.RelayLED.Location = new System.Drawing.Point(90, 184);
@@ -1487,7 +1545,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(802, 546);
+            this.ClientSize = new System.Drawing.Size(802, 577);
             this.Controls.Add(this.ConnectGB);
             this.Controls.Add(this.ControlsGB);
             this.Controls.Add(this.ModGB);
@@ -1496,8 +1554,10 @@
             this.Controls.Add(this.ShelfGB);
             this.Controls.Add(this.VoltagesGB);
             this.Controls.Add(this.SystemGB);
+            this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "MainForm";
             this.Text = "CERDEC";
@@ -1526,7 +1586,10 @@
             this.ConnectGB.ResumeLayout(false);
             this.ConnectGB.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ConnectTrackbar)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -1643,6 +1706,12 @@
         private System.Windows.Forms.Button ClearNumDischargesButton;
         private M4359_GUI.LEDPanel RelayLED;
         private M4359_GUI.LEDPanel ConnectedLED;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem commsSetupToolStripMenuItem;
     }
 }
 

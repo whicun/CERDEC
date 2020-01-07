@@ -261,7 +261,6 @@ namespace M4359_GUI
             }
             catch(Exception exc)
             {
-                exc = exc;
             }
         }
     }
