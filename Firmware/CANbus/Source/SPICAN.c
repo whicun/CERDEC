@@ -352,79 +352,65 @@ void SPICANConfigure(void)
 	return;
 
 	/*
+	// Javascript for calculating the Configurations
+	// Following the Init here (Line 143)
+	// https://github.com/macchina/mcp2515/blob/master/src/MCP2515.cpp
+	SJW = 2;
+	BRP = 0.0; // Int
+	TQ = 0;
+	BT = 0; // Int
+	tempBT = 0;
+	freqMhz = 16 * 10 ** 6;
+	bestMatchf = 10.0;
+	bestMatchIdx = 10; // Int
+	savedBT = 0;
 
-	// Trying to configure the SPI CAN module for use with ESL ProD
-	// ProD SPI is 9.375MHz
-	// SPICAN Oscillator is 16MHz
-	// CAN Bus is 500kHz
+	speed = 250 * 10 ** 3;
+	NBT = 1.0 / speed;
 
-	// Following the manual on Pg. 41
-	// https://microcontrollershop.com/download/21801F.pdf
-	// And this one helped a lot with understanding everything
-	// http://ww1.microchip.com/downloads/en/Appnotes/00754.pdf
+	for(BRP=0; BRP < 63; BRP++)
+	{
+			TQ = 2.0 * (BRP + 1) / freqMhz;
+			tempBT = NBT / TQ;
+			BT = parseInt(tempBT);
+			if ( (tempBT - BT) < bestMatchf)
+			{
+					if (BT > 7 && BT < 25)
+					{
+							bestMatchf = (tempBT - BT);
+							bestMatchIdx = BRP;
+							savedBT = BT;
+					}
+			}
+	}
 
-	Logic behind configuration
-	Necessary pieces:
-		SJW - Synchronization Jump Width
-		BRP - Baud Rate Prescalar
-		BTLMODE - Mode for determining PHSEG2
-		SAM - Sample Point Configuration
-		PRSEG - Propagation Segment
-		PHSEG1 - Phase Segment 1 (PS1)
-		PHSEG2 - Phase Segment 2 (PS2)
+	BT = savedBT;
+	BRP = bestMatchIdx;
+	SPT = parseInt((0.7 * BT)); // Sample point
+	PRSEG = parseInt((SPT - 1) / 2);
+	PHSEG1 = SPT - PRSEG - 1;
+	PHSEG2 = BT - PHSEG1 - PRSEG - 1;
 
-		I used the second link
-		(http://ww1.microchip.com/downloads/en/Appnotes/00754.pdf)
-		to calculate the maximum SJW I want to use, which was 3 TQs in this case:
-		Code below is in Javascript and can be run in an internet browser
-			// Inits
-			SEC2NANO = 1 * 10 ** 9;
-			f_osc = 500 * 10 ** 3; // 500 kHz
-			t_bit = 1.0 / f_osc;
+	if(PRSEG + PHSEG1 < PHSEG2) 
+	{
+		//SerialUSB.println("PRSEG + PHSEG1 less than PHSEG2!");
+		console.log("PS2 IS TOO LARGE");
+	}
 
-			console.log("t_bit is: " + (t_bit * SEC2NANO) + " ns");
+	if(PHSEG2 <= SJW) 
+	{
+			//SerialUSB.println("PHSEG2 less than SJW");
+			console.log("PS2 IS LESS THAN SJW");
+	}
 
-			t_bit_min = t_bit * (1 - .0125);
-			t_bit_max = t_bit * (1 + .0125);
+	BTLMODE = 1;
+	SAMPLE = 0;
 
-			console.log("t_bit_min is: " + (t_bit_min * SEC2NANO) + " ns");
-			console.log("t_bit_max is: " + (t_bit_max * SEC2NANO) + " ns");
-
-			t_q_per_bit = 8.0;
-			t_q_min = t_bit_min / t_q_per_bit;
-			t_q_max = t_bit_max / t_q_per_bit;
-
-			console.log("t_q_min is: " + (t_q_min * SEC2NANO) + " ns");
-			console.log("t_q_max is: " + (t_q_max * SEC2NANO) + " ns");
-
-			t_diff = 10 * t_bit_max - 10 * t_bit_min
-			console.log("t_diff is: " + (t_diff * SEC2NANO) + " ns");
-
-			t_q_sjw = Math.ceil(t_diff / t_q_min);
-			console.log("t_q_sjw is: " + (t_q_sjw) + " TQs");
-		
-		I then looked at all the examples, and in the second link it said max
-		oscillator tolerance is found when the length of PS1 == PS2 == SJW (pg. 8)
-		(Although that was if SJW is the max of 4 TQs)
-
-		So I set the length of SJW == PS1 == PS2 == 3
-
-		Since I am using 8 TQ per 1 bit, that leaves me with 8 - 3 - 3 == 2 TQ
-		for the Sync Segment and the Propagation Segment, so 1 TQ for each
-
-		THUS
-
-		Setting up CNF1 (0x2A) for:
-		 [SJW 7:6, BRP 5:0]
-		 0b 10 000001 => 0x81
-
-		Setting up CNF2 (0x29) for:
-		 [BTLMODE, SAM, PHSEG1 5:3, PRSEG 2:0]
-		 0b 1 1 010 000 => 0xD0
-
-		Setting up CNF3 (0x28) for:
-		 [SOF, WAKFIL, NA 5:3, PHSEG2 2:0]
-		 0b 1 1 000 010 => 0xC2		
+	// Set registers
+	data = (((SJW-1) << 6) | BRP);
+	console.log("CNF1: " + data.toString(16) );
+	console.log("CNF2: " + ((BTLMODE << 7) | (SAMPLE << 6) | ((PHSEG1-1) << 3) | (PRSEG-1)).toString(16) );
+	console.log("CNF3: " + (0b10000000 | (PHSEG2-1)).toString(16) );
 
 */
 }
@@ -654,14 +640,18 @@ And came up with this for my configuration settings
   Setting up CNF1 (0x2A) for:
    [SJW 7:6, BRP 5:0]
    0b 10 000001 => 0x81
+	 0b 01 000011 => 0x42
+	 0b 11 000001 => 0xC1
 
   Setting up CNF2 (0x29) for:
    [BTLMODE, SAM, PHSEG1 5:3, PRSEG 2:0]
    0b 1 1 010 000 => 0xD0
+	 0b 1 1 100 100 => 0xE4
 
   Setting up CNF3 (0x28) for:
    [SOF, WAKFIL, NA 5:3, PHSEG2 2:0]
-   0b 1 1 000 010 => 0xC2 
+   0b 1 1 000 010 => 0xC2
+	 0b 1 1 000 100 => 0xC4 
 
 
 }
