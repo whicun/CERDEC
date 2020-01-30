@@ -64,5 +64,8 @@ void SPICANRoutine(void);
 void SPICANReadyConfig(void);
 void SPICANCheckInts(int line);
 void SPICANISR(void);
+void SPICAN_SetT0AddrExt(long canAddressExt);
+void SPICANReadSetT0MessageExt(long canAddressExt, Uint16 numBytes, Uint16 *buf);
+long SPICANReadID (Uint16 whichBuf);
 
 #endif

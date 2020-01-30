@@ -9,6 +9,11 @@
 #include "qep.h"
 #include "diskio.h"
 #include "dl.h"
+#include "can.h"
+#include "CAN_PCKA.h"
+#include "System_Object.h"
+#include "spican.h"
+
 
 #define ADCREG_COMM	0x00			// (W)   Communications
 #define ADCREG_IOPORT	0x01			// (R/W) I/O Port
@@ -246,8 +251,7 @@ void velf_rst()
 // init the ad 7738 chips and also the timer0
 void ad7738_init()
 {
-/*
-	int i;
+  int i;
 
   spi_init();					// SPI init
   mcbsp_init();					// the other SPI
@@ -284,8 +288,8 @@ void ad7738_init()
   EDIS;
   
   InitCpuTimer0();				// initialize the CpuTimer0
-  //ConfigCpuTimer0( 150, 100 );			// Configure CpuTimer0 to interrupt 100us
-  ConfigCpuTimer0( 150, (500000L/SAMPRATE) );	// Configure CpuTimer0 to interrupt twice the rate
+  ConfigCpuTimer0( 150, 1000 );			// Configure CpuTimer0 to interrupt 100us
+  //ConfigCpuTimer0( 150, (500000L/SAMPRATE) );	// Configure CpuTimer0 to interrupt twice the rate
   
   // config the adc chip
   GpioDataRegs.GPBCLEAR.bit.GPIOB5 = 1;		// A0CSn
@@ -395,7 +399,6 @@ void ad7738_init()
   PieCtrlRegs.PIEIER1.bit.INTx7 = 1;		// Enable TINT0 in the PIE: Group 1 interrupt 7
   
   StartCpuTimer0();
-*/
 }
 
 
@@ -653,8 +656,146 @@ void ad7738_settemp( double tempv )
   EINT;
 }
 
+#define MAXCAPVOLTFAULT	310.0
+#define MAXCAPVOLTALARM	305.0
+#define MINCAPVOLTFAULT	238.0
+#define MINCAPVOLTALARM	250.0
+
+#define MAXCURRFAULT	1000.0
+#define MAXCURRALARM	300.0
+
+#define MAXCAPTEMPFAULT	70.0
+#define MAXCAPTEMPALARM	50.0
+
+#define ALARMOVERVOLT		0x0001
+#define ALARMUNDERVOLT		0x0002
+#define ALARMOVERCURR		0x0004
+#define ALARMOVERTEMP		0x0008
+#define FAULTOVERVOLT		0x0010
+#define FAULTUNDERVOLT		0x0020
+#define FAULTOVERCURR		0x0040
+#define FAULTOVERTEMP		0x0080
+#define FAULTMCOVERVOLT		0x0100
+#define FAULTMCUNDERVOLT	0x0200
+#define FAULTMCERROR		0x0400
+#define FAULTMCOVERTEMP		0x0800
+#define FAULTCONTACTOR		0x1000
 
 
+int checkFaults(void) {
+	float capVolt1, capVolt2, outCurr, maxTemp;
+	int fault=0;
+
+	capVolt1 = getSystemCapVoltageF();
+	//capVolt2 = ((float)System.capVoltage)/10.0;
+
+	//outCurr = System.outCurrentF;
+	//maxTemp = (float)(System.shelves[0].maxTemp/10.0);
+
+	if(capVolt1 > MAXCAPVOLTFAULT || capVolt2 > MAXCAPVOLTFAULT) {
+		fault |= FAULTOVERVOLT;
+	}
+	else if(capVolt1 > MAXCAPVOLTALARM || capVolt2 > MAXCAPVOLTALARM) {
+		fault |= ALARMOVERVOLT;
+	}
+	if(capVolt1 < MINCAPVOLTFAULT || capVolt2 < MINCAPVOLTFAULT) {
+		fault |= FAULTUNDERVOLT;
+	}
+	else if(capVolt1 < MINCAPVOLTALARM || capVolt2 < MINCAPVOLTALARM) {
+		fault |= ALARMUNDERVOLT;
+	}
+	if(outCurr > MAXCURRFAULT) {
+		fault |= FAULTOVERCURR;
+	}
+	else if(outCurr > MAXCURRALARM) {
+		fault |= ALARMOVERCURR;
+	}
+	if(maxTemp > MAXCAPTEMPFAULT) {
+		fault |= FAULTOVERCURR;
+	}
+	else if(maxTemp > MAXCAPTEMPALARM) {
+		fault |= ALARMOVERCURR;
+	}
+
+	return fault;
+
+}
+
+#define sOFF 		0
+#define sINIT		1
+#define sSTANDBY	2
+#define sON			3
+#define sFAULT		7
+
+int sysState = 0;
+int prevSysState = 0;
+
+void stateMachine(void) {
+	int faults;
+
+	faults = checkFaults()&0xFFF0;
+
+	switch(sysState) {
+		case sOFF:
+			if(prevSysState != sOFF) {
+			}
+			prevSysState = sOFF;
+			sysState = sINIT;
+		break;
+		case sINIT:
+			if(prevSysState != sINIT) {
+				// TODO: verify contactor is open
+				wakeUpMCs();
+
+			}
+			prevSysState = sINIT;
+
+			if(faults == 0 && bms_cmd.bit.MODE == 1) {
+				sysState = sSTANDBY;
+			}
+
+		break;
+		case sSTANDBY:
+			if(prevSysState != sSTANDBY) {
+			}
+			prevSysState = sSTANDBY;
+
+			if(faults) {
+				sysState = sFAULT;
+			}
+			else if(faults == 0 && bms_cmd.bit.MODE == 2) {
+				sysState = sON;
+			}
+
+
+
+		break;
+		case sON:
+			if(prevSysState != sON) {
+				// TODO: Close contactor
+			}
+			prevSysState = sON;
+
+			if(faults) {
+				sysState = sFAULT;
+			}
+			else if(faults == 0 && bms_cmd.bit.MODE == 1) {
+				sysState = sSTANDBY;
+			}
+
+		break;
+		case sFAULT:
+			if(prevSysState != sFAULT) {
+			}
+			prevSysState = sFAULT;
+
+		break;
+
+		default:
+		break;
+	}
+
+}
 
 
 // isr for cpu timer0 for adc data read and processing
@@ -662,662 +803,633 @@ void ad7738_settemp( double tempv )
 interrupt void cpu_timer0_isr()
 {
   
-  int i, j;
+  int i, j, g;
   long temp;
-  int status;
+  int status,k;
   double limld;
+	static int cccp=0;
+	Uint16 arr[8];
+
+	for(k=0;k<8;k++)
+		arr[k] = k;
+
+/*
+	if(cccp == 100) {
+		// Wait for the TX Buffer to be ready
+		SPICANWaitForTXBuf(0);
+		// Set the message on the buffer
+		SPICANReadSetT0Message(0x32, 8, arr);
+		SPICANWaitForTXBuf(0);
+		// Signal that the message is ready to send
+		SPICAN_T0_RTS();
+		cccp = 0;
+	}
+	cccp++;
+
+	SPICANRoutine();
+*/
+
+	if(cccp == 100) {
+		//sendModStatus(1, 1);	// Shelf 1 Module 1+2
+		//sendModStatus(1, 3);
+		//sendModStatus(1, 5);
+		//sendModStatus(1, 7);
+		//sendModStatus(1, 9);
+	}
+	else if(cccp >= 200) {
+		cccp = 0;
+
+		mailboxTX(0, MOD_1_2, 0);
+		mailboxTX(0, MOD_1_2, 10);
+
+	}
+	cccp++;
+
+
+
+
 
   // GpioDataRegs.GPBCLEAR.bit.GPIOB3 = 1;	// DEBUG: TAG_TX
-  
+#if(0)
+	processJSRGlobal(1);		// Shelf 1
 
-  //  ***** read the converted data *****
-  if( 0 == ad7738_ph )				// phase 0
-  {
-    
-    // --- chip 1 ---
-    if( GpioDataRegs.GPDDAT.bit.GPIOD5 )
-    {
-      ad7738_err[0] = 1;			// error, not coverting
-    }
-    else
-    {
-      GpioDataRegs.GPBCLEAR.bit.GPIOB5 = 1;	// A0CSn low
-      
-      // Channel 1A
-      ad7738_err[0] = 0;			// no error
-      
-      spi_xmit( ADCREG_DATA );			// send the read command
-      status = spi_recv();			// read the status byte
-      temp = 0;
-      for( i = 0; i < 3; i++ )
-      {
-	temp <<= 8;
-	temp |= spi_recv();			// read three bytes (24bits)
-      }
-      
-      if( 0x0004 & status )			// no ref
-      {
-	ad7738_err[0] = 1;			// error
-      }
-      else if( 0x0001 & status )		// over
-      {
-	if( 0x0002 & status )			// negative
-	{
-	  ad7738_cnt.adc[0] = temp - 0x01800000;
+	if(cccp == 100) {
+		sendModStatus(1, 1);	// Shelf 1 Module 1+2
+		sendModStatus(1, 3);
+		sendModStatus(1, 5);
+		sendModStatus(1, 7);
+		sendModStatus(1, 9);
 	}
-	else					// positive
-	{
-	  ad7738_cnt.adc[0] = temp + 0x00800000;
-	}
-      }
-      else					// normal range
-      {
-	ad7738_cnt.adc[0] = temp - 0x00800000;
-      }
-      GpioDataRegs.GPBSET.bit.GPIOB5 = 1;	// A0CSn high
-    }
-    
-    
-    // --- chip 2 ---
-    if( GpioDataRegs.GPDDAT.bit.GPIOD6 )
-    {
-      ad7738_err[2] = 1;			// error, not coverting
-    }
-    else
-    {
-      GpioDataRegs.GPBCLEAR.bit.GPIOB4 = 1;	// A1CSn low
-      
-      // Channel 2A
-      ad7738_err[2] = 0;			// no error
-      spi_xmit( ADCREG_DATA );			// send the read command
-      status = spi_recv();			// read the status byte
-      temp = 0;
-      for( i = 0; i < 3; i++ )
-      {
-	temp <<= 8;
-	temp |= spi_recv();			// read three bytes (24bits)
-      }
-      
-      if( 0x0004 & status )			// no ref
-      {
-	ad7738_err[2] = 1;			// error
-      }
-      else if( 0x0001 & status )		// over
-      {
-	if( 0x0002 & status )			// negative
-	{
-	  ad7738_cnt.adc[2] = temp - 0x01800000;
-	}
-	else					// positive
-	{
-	  ad7738_cnt.adc[2] = temp + 0x00800000;
-	}
-      }
-      else					// normal range
-      {
-	ad7738_cnt.adc[2] = temp - 0x00800000;
-      }
-      
-      GpioDataRegs.GPBSET.bit.GPIOB4 = 1;	// A1CSn high
-    }
+	else if(cccp >= 200) {
+		cccp = 0;
+		CAN_Tx_SendInformationRequest(MOD_1_2, (long)0);		// Shelf 1 Module 1+2
+		CAN_Tx_SendInformationRequest(MOD_3_4, (long)0);
+		CAN_Tx_SendInformationRequest(MOD_5_6, (long)0);
+		CAN_Tx_SendInformationRequest(MOD_7_8, (long)0);
+		CAN_Tx_SendInformationRequest(MOD_9_10, (long)0);
 
-    
-    // ***** read the encoders *****
+		//wakeUpMCs();
+	}
+	cccp++;
 
-    // channel 1
-    enccnt[0] += (int)EvaRegs.T2CNT;		// add the count for the interval
-    EvaRegs.T2CNT = 0;				// reset the count
-    
-    // channel 2
-    enccnt[1] += (int)EvbRegs.T4CNT;		// add the count for the interval
-    EvbRegs.T4CNT = 0;				// reset the count
-    
-  }
-  else						// phase 1
-  {
-    
-    // --- chip 1 ---
-    if( GpioDataRegs.GPDDAT.bit.GPIOD5 )
-    {
-      ad7738_err[1] = 1;			// error, not coverting
-    }
-    else
-    {
-      
-      GpioDataRegs.GPBCLEAR.bit.GPIOB5 = 1;	// A0CSn low
-      
-      // Channel 1B
-      ad7738_err[1] = 0;			// no error
-      
-      spi_xmit( ADCREG_DATA+1 );		// send the read command
-      status = spi_recv();			// read the status byte
-      temp = 0;
-      for( i = 0; i < 3; i++ )
-      {
-	temp <<= 8;
-	temp |= spi_recv();			// read three bytes (24bits)
-      }
-      
-      if( 0x0004 & status )			// no ref
-      {
-	ad7738_err[1] = 1;			// error
-      }
-      else if( 0x0001 & status )		// over
-      {
-	if( 0x0002 & status )			// negative
+	int spi_buf[12];
+	for(g = 0; g < 12; g++)
 	{
-	  ad7738_cnt.adc[1] = temp - 0x01800000;
+		spi_buf[g] = spi_recv();
 	}
-	else					// positive
-	{
-	  ad7738_cnt.adc[1] = temp + 0x00800000;
-	}
-      }
-      else					// normal range
-      {
-	ad7738_cnt.adc[1] = temp - 0x00800000;
-      }
-      
-      GpioDataRegs.GPBSET.bit.GPIOB5 = 1;	// A0CSn high
-    }
-    
-    
-    // --- chip 2 ---
-    if( GpioDataRegs.GPDDAT.bit.GPIOD6 )
-    {
-      ad7738_err[3] = 1;			// error, not coverting
-    }
-    else
-    {
-      GpioDataRegs.GPBCLEAR.bit.GPIOB4 = 1;	// A1CSn low
-      
-      // Channel 2B
-      ad7738_err[3] = 0;			// no error
-      spi_xmit( ADCREG_DATA+1 );		// send the read command
-      status = spi_recv();			// read the status byte
-      temp = 0;
-      for( i = 0; i < 3; i++ )
-      {
-	temp <<= 8;
-	temp |= spi_recv();			// read three bytes (24bits)
-      }
-      
-      if( 0x0004 & status )			// no ref
-      {
-	ad7738_err[3] = 1;			// error
-      }
-      else if( 0x0001 & status )		// over
-      {
-	if( 0x0002 & status )			// negative
-	{
-	  ad7738_cnt.adc[3] = temp - 0x01800000;
-	}
-	else					// positive
-	{
-	  ad7738_cnt.adc[3] = temp + 0x00800000;
-	}
-      }
-      else					// normal range
-      {
-	ad7738_cnt.adc[3] = temp - 0x00800000;
-      }
-      
-      GpioDataRegs.GPBSET.bit.GPIOB4 = 1;	// A1CSn high
-    }
-  }
-  
-  
-  
-  
-
-  // ***** start the next conversion *****
-  
-  GpioDataRegs.GPBCLEAR.bit.GPIOB7 = 1;		// A_SYNC low
-  
-  GpioDataRegs.GPBCLEAR.bit.GPIOB5 = 1;		// A0CSn
-  GpioDataRegs.GPBCLEAR.bit.GPIOB4 = 1;		// A1CSn
-
-  // send command to start the next conversion
-  if( 0 == ad7738_ph )				// phase 0
-  {
-    spi_xmit( ADCREG_MODE+1 );			// mode
-  }
-  else						// phase 1
-  {
-    spi_xmit( ADCREG_MODE );			// mode
-  }
-  spi_xmit( 0x5a );				// single conversion, dump, 24bit, np clamp
-  
-  GpioDataRegs.GPBSET.bit.GPIOB5 = 1;		// A0CSn
-  GpioDataRegs.GPBSET.bit.GPIOB4 = 1;		// A1CSn
-  
-  GpioDataRegs.GPBSET.bit.GPIOB7 = 1;		// A_SYNC high
-  
+	spi_buf[0] = spi_buf[0];
 
 
-  // ****** processing data ******
-  
+	//  ***** read the converted data *****
+	if (0 == ad7738_ph)				// phase 0
+	{
 
-  if( 0 == ad7738_ph )				
-  {
-    // --- phase 0 ---
-    // processing encoder data
-    
-    // convert encoder count to inch
-    for( i = 0; i < ENC_MAX; i++ )
-    {
-      ad7738_load.pos[i] = enccnt[i] * slope[0].pos[i];
-      
-      // *** tare here ***
-      if( tare_reset & BITMAP[CHS_MAX+i] )	// new tare value
-      {
-	tare_reset &= ~BITMAP[CHS_MAX+i];
-	ad7738_tare.pos[i] = ad7738_load.pos[i];
-	ad7738_load.pos[i] = 0;
-      }
-      else					// apply tare
-      {
-	ad7738_load.pos[i] -= ad7738_tare.pos[i];
-      }
-      
-      // *** peak ***
-      if( peak_reset & BITMAP[CHS_MAX+i] )
-      {
-	peak_reset &= ~BITMAP[CHS_MAX+i];
-	ad7738_peak.pos[i] = ad7738_load.pos[i];
-      }
-      else
-      {
-	if( ad7738_peak.pos[i] < ad7738_load.pos[i] )
-	{
-	  ad7738_peak.pos[i] = ad7738_load.pos[i];
-	}
-      }
-      
-      // *** valley ***
-      if( vall_reset & BITMAP[CHS_MAX+i] )
-      {
-	vall_reset &= ~BITMAP[CHS_MAX+i];
-	ad7738_vall.pos[i] = ad7738_load.pos[i];
-      }
-      else
-      {
-	if( ad7738_vall.pos[i] > ad7738_load.pos[i] )
-	{
-	  ad7738_vall.pos[i] = ad7738_load.pos[i];
-	}
-      }
-    }
-    
-    // velocity calculation
-    for( i = 0; i < ENC_MAX; i++ )
-    {
-      temp = enccnt[i] - velpbuf[i][velidx];
-      velpbuf[i][velidx] = enccnt[i];
-      veldsum[i] += temp - veldbuf[i][velidx];
-      veldbuf[i][velidx] = temp;
-      
-      ad7738_load.vel[i] = veldsum[i] * slope[0].vel[i];
+		// --- chip 1 ---
+		if (GpioDataRegs.GPDDAT.bit.GPIOD5) {
+			ad7738_err[0] = 1;			// error, not coverting
+		} else {
+			GpioDataRegs.GPBCLEAR.bit.GPIOB5 = 1;	// A0CSn low
 
-      // *** tare here ***
-      if( tare_reset & BITMAP[CHS_MAX+ENC_MAX+i] )	// new tare value
-      {
-	tare_reset &= ~BITMAP[CHS_MAX+ENC_MAX+i];
-	ad7738_tare.vel[i] = ad7738_load.vel[i];
-	ad7738_load.vel[i] = 0;
-      }
-      else					// apply tare
-      {
-	ad7738_load.vel[i] -= ad7738_tare.vel[i];
-      }
-      
-      // *** peak ***
-      if( peak_reset & BITMAP[CHS_MAX+ENC_MAX+i] )
-      {
-	peak_reset &= ~BITMAP[CHS_MAX+ENC_MAX+i];
-	ad7738_peak.vel[i] = ad7738_load.vel[i];
-      }
-      else
-      {
-	if( ad7738_peak.vel[i] < ad7738_load.vel[i] )
+			// Channel 1A
+			ad7738_err[0] = 0;			// no error
+
+			spi_xmit( ADCREG_DATA);			// send the read command
+			status = spi_recv();			// read the status byte
+			temp = 0;
+			for (i = 0; i < 3; i++) {
+				temp <<= 8;
+				temp |= spi_recv();			// read three bytes (24bits)
+			}
+
+			if (0x0004 & status)			// no ref
+					{
+				ad7738_err[0] = 1;			// error
+			} else if (0x0001 & status)		// over
+					{
+				if (0x0002 & status)			// negative
+						{
+					ad7738_cnt.adc[0] = temp - 0x01800000;
+				} else					// positive
+				{
+					ad7738_cnt.adc[0] = temp + 0x00800000;
+				}
+			} else					// normal range
+			{
+				ad7738_cnt.adc[0] = temp - 0x00800000;
+			}
+			GpioDataRegs.GPBSET.bit.GPIOB5 = 1;	// A0CSn high
+		}
+
+		// --- chip 2 ---
+		if (GpioDataRegs.GPDDAT.bit.GPIOD6) {
+			ad7738_err[2] = 1;			// error, not coverting
+		} else {
+			GpioDataRegs.GPBCLEAR.bit.GPIOB4 = 1;	// A1CSn low
+
+			// Channel 2A
+			ad7738_err[2] = 0;			// no error
+			spi_xmit( ADCREG_DATA);			// send the read command
+			status = spi_recv();			// read the status byte
+			temp = 0;
+			for (i = 0; i < 3; i++) {
+				temp <<= 8;
+				temp |= spi_recv();			// read three bytes (24bits)
+			}
+
+			if (0x0004 & status)			// no ref
+					{
+				ad7738_err[2] = 1;			// error
+			} else if (0x0001 & status)		// over
+					{
+				if (0x0002 & status)			// negative
+						{
+					ad7738_cnt.adc[2] = temp - 0x01800000;
+				} else					// positive
+				{
+					ad7738_cnt.adc[2] = temp + 0x00800000;
+				}
+			} else					// normal range
+			{
+				ad7738_cnt.adc[2] = temp - 0x00800000;
+			}
+
+			GpioDataRegs.GPBSET.bit.GPIOB4 = 1;	// A1CSn high
+		}
+/*
+		// ***** read the encoders *****
+
+		// channel 1
+		enccnt[0] += (int) EvaRegs.T2CNT;	// add the count for the interval
+		EvaRegs.T2CNT = 0;				// reset the count
+
+		// channel 2
+		enccnt[1] += (int) EvbRegs.T4CNT;	// add the count for the interval
+		EvbRegs.T4CNT = 0;				// reset the count
+*/
+	} else						// phase 1
 	{
-	  ad7738_peak.vel[i] = ad7738_load.vel[i];
-	}
-      }
-      
-      // *** valley ***
-      if( vall_reset & BITMAP[CHS_MAX+ENC_MAX+i] )
-      {
-	vall_reset &= ~BITMAP[CHS_MAX+ENC_MAX+i];
-	ad7738_vall.vel[i] = ad7738_load.vel[i];
-      }
-      else
-      {
-	if( ad7738_vall.vel[i] > ad7738_load.vel[i] )
-	{
-	  ad7738_vall.vel[i] = ad7738_load.vel[i];
-	}
-      }
-    }
-    
-    velidx++;
-    if( velidx >= conf_data.velfilter )
-    {
-      velidx = 0;
-    }
-    
-    
-    // *** limit ***
-    for( i = 0; i < LIM_MAX; i++ )
-    {
-      j = 0;
-      switch( conf_data.lim[i].what )
-      {
-      case VFD_LOAD:
-	limld = ad7738_load.adw[conf_data.lim[i].ch];
-	j = ad7738_err[conf_data.lim[i].ch];
-	break;
-      case VFD_PEAK:
-	limld = ad7738_peak.adw[conf_data.lim[i].ch];
-	j = ad7738_err[conf_data.lim[i].ch];
-	break;
-      case VFD_VALL:
-	limld = ad7738_vall.adw[conf_data.lim[i].ch];
-	j = ad7738_err[conf_data.lim[i].ch];
-	break;
-      case VFD_POSI:
-	limld = ad7738_vall.pos[conf_data.lim[i].ch];
-	break;
-      case VFD_VELO:
-	limld = ad7738_vall.vel[conf_data.lim[i].ch];
-	break;
-      }
-      
-      if( j != 0 )					// error
-      {
-	continue;
-      }
-      
-      if( limit[i] & LIM_ON )
-      {							// limit is on
-	if( ((limit[i] & LIM_HL) &&			// higher than
-	     (limld > conf_data.lim[i].limits)) ||	// true
-	    (!(limit[i] & LIM_HL) &&			// lower than
-	     (limld < conf_data.lim[i].limits)) )	// true
-	{						// set triggered
-	  if( !(limit[i] & LIM_ST) )			// if not already triggered
-	  {
-	    limit[i] |= LIM_ST;				// set status bit
-	    limitchgd[i] = 1;
-	    ssr_set( i, !(limit[i] & LIM_NC) );
-	  }
-	}
-	else if( ((limit[i] & LIM_HL) &&		// higher than
-		  (limld < conf_data.lim[i].limitr)) ||	// reset
-		 (!(limit[i] & LIM_HL) &&		// lower than
-		  (limld > conf_data.lim[i].limitr)) )	// reset
-	{						// reset triggered
-	  if( !(limit[i] & LIM_LA) && (limit[i] & LIM_ST) )
-	  {						// non-latching
-	    limit[i] &= ~LIM_ST;			// set status bit
-	    limitchgd[i] = 1;
-	    ssr_set( i, (limit[i] & LIM_NC) );
-	  }
-	}
-      }
-    }
-    
-    
-    // *** DAC out ***
-    if( !dacsetvolt )
-    {
-      for( i = 0; i < DAC_MAX; i++ )
-      {	
-	if( VFD_VOLT == conf_data.dac[i].what )		// skip this if direct voltage
-	{
-	  continue;
-	}
-	
-	j = 0;
-	switch( conf_data.dac[i].what )
-	{
-	case VFD_LOAD:
-	  limld = ad7738_load.adw[conf_data.dac[i].ch] * dacs.adw[i] + daci.adc[i];
-	  j = ad7738_err[conf_data.dac[i].ch];
-	  break;
-	case VFD_PEAK:
-	  limld = ad7738_peak.adw[conf_data.dac[i].ch] * dacs.adw[i] + daci.adc[i];
-	  j = ad7738_err[conf_data.dac[i].ch];
-	  break;
-	case VFD_VALL:
-	  limld = ad7738_vall.adw[conf_data.dac[i].ch] * dacs.adw[i] + daci.adc[i];
-	  j = ad7738_err[conf_data.dac[i].ch];
-	  break;
-	case VFD_POSI:
-	  limld = ad7738_load.pos[conf_data.dac[i].ch] * dacs.adw[i] + daci.adc[i];
-	  break;
-	case VFD_VELO:
-	  limld = ad7738_load.vel[conf_data.dac[i].ch] * dacs.adw[i] + daci.adc[i];
-	  break;
+
+		// --- chip 1 ---
+		if (GpioDataRegs.GPDDAT.bit.GPIOD5) {
+			ad7738_err[1] = 1;			// error, not coverting
+		} else {
+
+			GpioDataRegs.GPBCLEAR.bit.GPIOB5 = 1;	// A0CSn low
+
+			// Channel 1B
+			ad7738_err[1] = 0;			// no error
+
+			spi_xmit( ADCREG_DATA + 1);		// send the read command
+			status = spi_recv();			// read the status byte
+			temp = 0;
+			for (i = 0; i < 3; i++) {
+				temp <<= 8;
+				temp |= spi_recv();			// read three bytes (24bits)
+			}
+
+			if (0x0004 & status)			// no ref
+					{
+				ad7738_err[1] = 1;			// error
+			} else if (0x0001 & status)		// over
+					{
+				if (0x0002 & status)			// negative
+						{
+					ad7738_cnt.adc[1] = temp - 0x01800000;
+				} else					// positive
+				{
+					ad7738_cnt.adc[1] = temp + 0x00800000;
+				}
+			} else					// normal range
+			{
+				ad7738_cnt.adc[1] = temp - 0x00800000;
+			}
+
+			GpioDataRegs.GPBSET.bit.GPIOB5 = 1;	// A0CSn high
+		}
+
+		// --- chip 2 ---
+		if (GpioDataRegs.GPDDAT.bit.GPIOD6) {
+			ad7738_err[3] = 1;			// error, not coverting
+		} else {
+			GpioDataRegs.GPBCLEAR.bit.GPIOB4 = 1;	// A1CSn low
+
+			// Channel 2B
+			ad7738_err[3] = 0;			// no error
+			spi_xmit( ADCREG_DATA + 1);		// send the read command
+			status = spi_recv();			// read the status byte
+			temp = 0;
+			for (i = 0; i < 3; i++) {
+				temp <<= 8;
+				temp |= spi_recv();			// read three bytes (24bits)
+			}
+
+			if (0x0004 & status)			// no ref
+					{
+				ad7738_err[3] = 1;			// error
+			} else if (0x0001 & status)		// over
+					{
+				if (0x0002 & status)			// negative
+						{
+					ad7738_cnt.adc[3] = temp - 0x01800000;
+				} else					// positive
+				{
+					ad7738_cnt.adc[3] = temp + 0x00800000;
+				}
+			} else					// normal range
+			{
+				ad7738_cnt.adc[3] = temp - 0x00800000;
+			}
+
+			GpioDataRegs.GPBSET.bit.GPIOB4 = 1;	// A1CSn high
+		}
 	}
 
-	if( j != 0 )					// error
-	{
-	  continue;
-	}
-	
-	if( limld < 0 )
-	{
-	  temp = conf_data.dac[i].dslopen * limld + conf_data.dac[i].dint;
-	}
-	else
-	{
-	  temp = conf_data.dac[i].dslopep * limld + conf_data.dac[i].dint;
-	}
-	
-	if( temp <= 0 )
-	{
-	  dacvalue = 0;
-	}
-	else if( temp >= 0x0000ffff )
-	{
-	  dacvalue = 0x0000ffff;
-	}
-	else
-	{
-	  dacvalue = (Uint16)temp;
-	}
-	mcbsp_xmit( dacvalue, i );
-      }
-      
-      // *** DAC out, latch out new value ***
-      latch_dac();
-    }
-    
-    
-    
+	// ***** start the next conversion *****
 
+	GpioDataRegs.GPBCLEAR.bit.GPIOB7 = 1;		// A_SYNC low
 
-    // ***** temperature reading count *****
-    tempcnt++;					// increase temperature count
-    if( tempcnt == TEMPRATE )
-    {
-      tempstart = 1;				// time to start conversion
-    }
-    else if( tempcnt >= 2 * TEMPRATE )
-    {
-      tempcnt = 0;				// reset count
-      tempread = 1;				// time to read
-    }
-    
-    // ***** tag id detection count *****
-    tagscnt++;
-    if( tagscnt == TAGSRATE )
-    {
-      tagscnt = 0;
-      tagsdetect = 1;
-    }
-    
-    // ***** update LCD display, one character *****
+	GpioDataRegs.GPBCLEAR.bit.GPIOB5 = 1;		// A0CSn
+	GpioDataRegs.GPBCLEAR.bit.GPIOB4 = 1;		// A1CSn
+
+	// send command to start the next conversion
+	if (0 == ad7738_ph)				// phase 0
+			{
+		spi_xmit( ADCREG_MODE + 1);			// mode
+	} else						// phase 1
+	{
+		spi_xmit( ADCREG_MODE);			// mode
+	}
+	spi_xmit(0x5a);				// single conversion, dump, 24bit, np clamp
+
+	GpioDataRegs.GPBSET.bit.GPIOB5 = 1;		// A0CSn
+	GpioDataRegs.GPBSET.bit.GPIOB4 = 1;		// A1CSn
+
+	GpioDataRegs.GPBSET.bit.GPIOB7 = 1;		// A_SYNC high
+
+	// ****** processing data ******
+
+	if (0 == ad7738_ph) {
+		// --- phase 0 ---		// processing encoder data
+/*
+		// convert encoder count to inch
+		for (i = 0; i < ENC_MAX; i++) {
+			ad7738_load.pos[i] = enccnt[i] * slope[0].pos[i];
+
+			// *** tare here ***
+			if (tare_reset & BITMAP[CHS_MAX + i])	// new tare value
+					{
+				tare_reset &= ~BITMAP[CHS_MAX + i];
+				ad7738_tare.pos[i] = ad7738_load.pos[i];
+				ad7738_load.pos[i] = 0;
+			} else					// apply tare
+			{
+				ad7738_load.pos[i] -= ad7738_tare.pos[i];
+			}
+
+			// *** peak ***
+			if (peak_reset & BITMAP[CHS_MAX + i]) {
+				peak_reset &= ~BITMAP[CHS_MAX + i];
+				ad7738_peak.pos[i] = ad7738_load.pos[i];
+			} else {
+				if (ad7738_peak.pos[i] < ad7738_load.pos[i]) {
+					ad7738_peak.pos[i] = ad7738_load.pos[i];
+				}
+			}
+
+			// *** valley ***
+			if (vall_reset & BITMAP[CHS_MAX + i]) {
+				vall_reset &= ~BITMAP[CHS_MAX + i];
+				ad7738_vall.pos[i] = ad7738_load.pos[i];
+			} else {
+				if (ad7738_vall.pos[i] > ad7738_load.pos[i]) {
+					ad7738_vall.pos[i] = ad7738_load.pos[i];
+				}
+			}
+		}
+*/
+/*
+		// velocity calculation
+		for (i = 0; i < ENC_MAX; i++) {
+			temp = enccnt[i] - velpbuf[i][velidx];
+			velpbuf[i][velidx] = enccnt[i];
+			veldsum[i] += temp - veldbuf[i][velidx];
+			veldbuf[i][velidx] = temp;
+
+			ad7738_load.vel[i] = veldsum[i] * slope[0].vel[i];
+
+			// *** tare here ***
+			if (tare_reset & BITMAP[CHS_MAX + ENC_MAX + i])	// new tare value
+					{
+				tare_reset &= ~BITMAP[CHS_MAX + ENC_MAX + i];
+				ad7738_tare.vel[i] = ad7738_load.vel[i];
+				ad7738_load.vel[i] = 0;
+			} else					// apply tare
+			{
+				ad7738_load.vel[i] -= ad7738_tare.vel[i];
+			}
+
+			// *** peak ***
+			if (peak_reset & BITMAP[CHS_MAX + ENC_MAX + i]) {
+				peak_reset &= ~BITMAP[CHS_MAX + ENC_MAX + i];
+				ad7738_peak.vel[i] = ad7738_load.vel[i];
+			} else {
+				if (ad7738_peak.vel[i] < ad7738_load.vel[i]) {
+					ad7738_peak.vel[i] = ad7738_load.vel[i];
+				}
+			}
+
+			// *** valley ***
+			if (vall_reset & BITMAP[CHS_MAX + ENC_MAX + i]) {
+				vall_reset &= ~BITMAP[CHS_MAX + ENC_MAX + i];
+				ad7738_vall.vel[i] = ad7738_load.vel[i];
+			} else {
+				if (ad7738_vall.vel[i] > ad7738_load.vel[i]) {
+					ad7738_vall.vel[i] = ad7738_load.vel[i];
+				}
+			}
+		}
+
+		velidx++;
+		if (velidx >= conf_data.velfilter) {
+			velidx = 0;
+		}
+*/
+/*
+		// *** limit ***
+		for (i = 0; i < LIM_MAX; i++) {
+			j = 0;
+			switch (conf_data.lim[i].what) {
+			case VFD_LOAD:
+				limld = ad7738_load.adw[conf_data.lim[i].ch];
+				j = ad7738_err[conf_data.lim[i].ch];
+				break;
+			case VFD_PEAK:
+				limld = ad7738_peak.adw[conf_data.lim[i].ch];
+				j = ad7738_err[conf_data.lim[i].ch];
+				break;
+			case VFD_VALL:
+				limld = ad7738_vall.adw[conf_data.lim[i].ch];
+				j = ad7738_err[conf_data.lim[i].ch];
+				break;
+			case VFD_POSI:
+				limld = ad7738_vall.pos[conf_data.lim[i].ch];
+				break;
+			case VFD_VELO:
+				limld = ad7738_vall.vel[conf_data.lim[i].ch];
+				break;
+			}
+
+			if (j != 0)					// error
+					{
+				continue;
+			}
+
+			if (limit[i] & LIM_ON) {							// limit is on
+				if (((limit[i] & LIM_HL) &&			// higher than
+						(limld > conf_data.lim[i].limits)) ||	// true
+						(!(limit[i] & LIM_HL) &&			// lower than
+								(limld < conf_data.lim[i].limits)))	// true
+						{						// set triggered
+					if (!(limit[i] & LIM_ST))		// if not already triggered
+					{
+						limit[i] |= LIM_ST;				// set status bit
+						limitchgd[i] = 1;
+						ssr_set(i, !(limit[i] & LIM_NC));
+					}
+				} else if (((limit[i] & LIM_HL) &&		// higher than
+						(limld < conf_data.lim[i].limitr)) ||	// reset
+						(!(limit[i] & LIM_HL) &&		// lower than
+								(limld > conf_data.lim[i].limitr)))	// reset
+						{						// reset triggered
+					if (!(limit[i] & LIM_LA) && (limit[i] & LIM_ST)) {// non-latching
+						limit[i] &= ~LIM_ST;			// set status bit
+						limitchgd[i] = 1;
+						ssr_set(i, (limit[i] & LIM_NC));
+					}
+				}
+			}
+		}
+*/
+/*
+		// *** DAC out ***
+		if (!dacsetvolt) {
+			for (i = 0; i < DAC_MAX; i++) {
+				if ( VFD_VOLT == conf_data.dac[i].what)	// skip this if direct voltage
+						{
+					continue;
+				}
+
+				j = 0;
+				switch (conf_data.dac[i].what) {
+				case VFD_LOAD:
+					limld = ad7738_load.adw[conf_data.dac[i].ch] * dacs.adw[i]
+							+ daci.adc[i];
+					j = ad7738_err[conf_data.dac[i].ch];
+					break;
+				case VFD_PEAK:
+					limld = ad7738_peak.adw[conf_data.dac[i].ch] * dacs.adw[i]
+							+ daci.adc[i];
+					j = ad7738_err[conf_data.dac[i].ch];
+					break;
+				case VFD_VALL:
+					limld = ad7738_vall.adw[conf_data.dac[i].ch] * dacs.adw[i]
+							+ daci.adc[i];
+					j = ad7738_err[conf_data.dac[i].ch];
+					break;
+				case VFD_POSI:
+					limld = ad7738_load.pos[conf_data.dac[i].ch] * dacs.adw[i]
+							+ daci.adc[i];
+					break;
+				case VFD_VELO:
+					limld = ad7738_load.vel[conf_data.dac[i].ch] * dacs.adw[i]
+							+ daci.adc[i];
+					break;
+				}
+
+				if (j != 0)					// error
+						{
+					continue;
+				}
+
+				if (limld < 0) {
+					temp = conf_data.dac[i].dslopen * limld
+							+ conf_data.dac[i].dint;
+				} else {
+					temp = conf_data.dac[i].dslopep * limld
+							+ conf_data.dac[i].dint;
+				}
+
+				if (temp <= 0) {
+					dacvalue = 0;
+				} else if (temp >= 0x0000ffff) {
+					dacvalue = 0x0000ffff;
+				} else {
+					dacvalue = (Uint16) temp;
+				}
+				mcbsp_xmit(dacvalue, i);
+			}
+
+			// *** DAC out, latch out new value ***
+			latch_dac();
+		}
+*/
+
+		// ***** temperature reading count *****
+		tempcnt++;					// increase temperature count
+		if (tempcnt == TEMPRATE) {
+			tempstart = 1;				// time to start conversion
+		} else if (tempcnt >= 2 * TEMPRATE) {
+			tempcnt = 0;				// reset count
+			tempread = 1;				// time to read
+		}
+
+		// ***** tag id detection count *****
+		tagscnt++;
+		if (tagscnt == TAGSRATE) {
+			tagscnt = 0;
+			tagsdetect = 1;
+		}
+
+		// ***** update LCD display, one character *****
 #if(SAMPRATE < 3001)
-    if( !(mon_cnt &0x01) )
+		if (!(mon_cnt & 0x01))
 #endif
-    {
-      lcd_next();				// update lcd
-    }
-    
+		{
+			lcd_next();				// update lcd
+		}
+
 #ifdef SDHCCARD
-    disk_timerproc();				// SD library
+		disk_timerproc();				// SD library
 #endif
-    
-  }
-  else
-  {
-    
-    // ***** phase 1 *****
-    // process analog data
-    
-    for( i = 0; i < CHS_MAX; i++ )
-    {
-      if( ad7738_err[i] )
-      {
-	// error condition
-	//ad7738_cnt.adc[i] = 0;
-	//ad7738_raw.adc[i] = 0;
-	//ad7738_load.adw[i] = 0;
-	continue;
-      }
-      
-      // no error on adc reading
-      // *** moving average filter ***
-      if( conf_data.filter > 1 )
-      {
-	// first calculate the diff between the oldest and newset
-	if( mafsize[i] < conf_data.filter )	// moving window not full
-	{
-	  if( mafsize[i] > 0 )
-	  {
-	    mafdiff[i] = ad7738_cnt.adc[i] - mafbuf[i][0];// diff from current to the first (oldest)
-	  }
-	  else
-	  {
-	    mafdiff[i] = 0;
-	  }
-	  mafsize[i]++;				// one more added
+
+	} else {
+
+		// ***** phase 1 *****
+		// process analog data
+
+		for (i = 0; i < CHS_MAX; i++) {
+			if (ad7738_err[i]) {
+				// error condition
+				//ad7738_cnt.adc[i] = 0;
+				//ad7738_raw.adc[i] = 0;
+				//ad7738_load.adw[i] = 0;
+				continue;
+			}
+
+			// no error on adc reading
+			// *** moving average filter ***
+			if (conf_data.filter > 1) {
+				// first calculate the diff between the oldest and newset
+				if (mafsize[i] < conf_data.filter)	// moving window not full
+						{
+					if (mafsize[i] > 0) {
+						mafdiff[i] = ad7738_cnt.adc[i] - mafbuf[i][0];// diff from current to the first (oldest)
+					} else {
+						mafdiff[i] = 0;
+					}
+					mafsize[i]++;				// one more added
+				} else					// moving window full
+				{
+					mafdiff[i] = ad7738_cnt.adc[i] - mafbuf[i][mafidx[i]];
+					mafsum[i] -= mafbuf[i][mafidx[i]];// remove the oldest point
+				}
+
+				if (labs(mafdiff[i]) > adcdiff) {
+					mafsum[i] = 0;
+					mafidx[i] = 0;
+					mafsize[i] = 1;
+				}
+
+				mafbuf[i][mafidx[i]] = ad7738_cnt.adc[i];// load the new value to buffer
+				mafsum[i] += ad7738_cnt.adc[i];		// add the newest
+
+				ad7738_cnt.adc[i] = mafsum[i] / mafsize[i];	// calculate the average
+
+				mafidx[i]++;				// point to the next cell
+				if (mafidx[i] >= conf_data.filter) {
+					mafidx[i] = 0;			// loop back
+				}
+			}
+
+			// *** heat correction here ***
+			ad7738_cnt.adc[i] *= hfactor.adw[i];
+
+			// *** keep a copy for raw reading ***
+			ad7738_raw.adc[i] = ad7738_cnt.adc[i];
+
+			// *** apply cal scales ***
+			j = 0;
+			if (conf_data.sensor[conf_data.ch[i].ci].points > 2) {
+				while (ad7738_cnt.adc[i]
+						> conf_data.sensor[conf_data.ch[i].ci].adc[j + 1]
+						&& j < conf_data.sensor[conf_data.ch[i].ci].points - 2) {
+					j++;
+				}
+			}
+			ad7738_load.adw[i] = ad7738_cnt.adc[i] * slope[j].adw[i]
+					+ intercept[j].adw[i];
+
+			// *** tare here ***
+			if (tare_reset & BITMAP[i])		// new tare value
+					{
+				tare_reset &= ~BITMAP[i];
+				ad7738_tare.adw[i] = ad7738_load.adw[i];
+				ad7738_load.adw[i] = 0;
+			} else					// apply tare
+			{
+				ad7738_load.adw[i] -= ad7738_tare.adw[i];
+			}
+/*
+			// *** peak ***
+			if (peak_reset & BITMAP[i]) {
+				peak_reset &= ~BITMAP[i];
+				ad7738_peak.adw[i] = ad7738_load.adw[i];
+			} else {
+				if (ad7738_peak.adw[i] < ad7738_load.adw[i]) {
+					ad7738_peak.adw[i] = ad7738_load.adw[i];
+				}
+			}
+
+			// *** valley ***
+			if (vall_reset & BITMAP[i]) {
+				vall_reset &= ~BITMAP[i];
+				ad7738_vall.adw[i] = ad7738_load.adw[i];
+			} else {
+				if (ad7738_vall.adw[i] > ad7738_load.adw[i]) {
+					ad7738_vall.adw[i] = ad7738_load.adw[i];
+				}
+			}
+*/
+		}
+
+		rawrdy = 1;
+
+		// *** add to the big buffer ***
+		prod_add(&ad7738_load);
+
+		// *** monitor data check ***
+		mon_cnt++;
+		if (mon_cnt > MON_RATE) {
+			mon_cnt = 0;
+			memcpy((void*) &ad7738_mon, (void*) &ad7738_load, sizeof(adcwt_t));
+			monrdy = 1;
+		}
+
 	}
-	else					// moving window full
-	{
-	  mafdiff[i] = ad7738_cnt.adc[i] - mafbuf[i][mafidx[i]];
-	  mafsum[i] -= mafbuf[i][mafidx[i]];	// remove the oldest point
+
+	// change phase
+	ad7738_ph++;
+	if (ad7738_ph > 1) {
+		ad7738_ph = 0;
 	}
-	
-	if( labs(mafdiff[i]) > adcdiff )
-	{
-	  mafsum[i] = 0;
-	  mafidx[i] = 0;
-	  mafsize[i] = 1;
-	}
-	
-	mafbuf[i][mafidx[i]] = ad7738_cnt.adc[i];// load the new value to buffer
-	mafsum[i] += ad7738_cnt.adc[i];		// add the newest
-	
-	ad7738_cnt.adc[i] = mafsum[i] / mafsize[i];// calculate the average
-	
-	mafidx[i]++;				// point to the next cell
-	if( mafidx[i] >= conf_data.filter )
-	{
-	  mafidx[i] = 0;			// loop back
-	}
-      }
-      
-      // *** heat correction here ***
-      ad7738_cnt.adc[i] *= hfactor.adw[i];
-      
-      // *** keep a copy for raw reading ***
-      ad7738_raw.adc[i] = ad7738_cnt.adc[i];
-      
-      // *** apply cal scales ***
-      j = 0;
-      if( conf_data.sensor[conf_data.ch[i].ci].points > 2 )
-      {
-	while( ad7738_cnt.adc[i] > conf_data.sensor[conf_data.ch[i].ci].adc[j+1] &&
-	       j < conf_data.sensor[conf_data.ch[i].ci].points - 2 )
-	{
-	  j++;
-	}
-      }
-      ad7738_load.adw[i] = ad7738_cnt.adc[i] * slope[j].adw[i] + intercept[j].adw[i];
-      
-      
-      // *** tare here ***
-      if( tare_reset & BITMAP[i] )		// new tare value
-      {
-	tare_reset &= ~BITMAP[i];
-	ad7738_tare.adw[i] = ad7738_load.adw[i];
-	ad7738_load.adw[i] = 0;
-      }
-      else					// apply tare
-      {
-	ad7738_load.adw[i] -= ad7738_tare.adw[i];
-      }
-      
-      
-      // *** peak ***
-      if( peak_reset & BITMAP[i] )
-      {
-	peak_reset &= ~BITMAP[i];
-	ad7738_peak.adw[i] = ad7738_load.adw[i];
-      }
-      else
-      {
-	if( ad7738_peak.adw[i] < ad7738_load.adw[i] )
-	{
-	  ad7738_peak.adw[i] = ad7738_load.adw[i];
-	}
-      }
-      
-      // *** valley ***
-      if( vall_reset & BITMAP[i] )
-      {
-	vall_reset &= ~BITMAP[i];
-	ad7738_vall.adw[i] = ad7738_load.adw[i];
-      }
-      else
-      {
-	if( ad7738_vall.adw[i] > ad7738_load.adw[i] )
-	{
-	  ad7738_vall.adw[i] = ad7738_load.adw[i];
-	}
-      }
-    }
-    
-    
-    rawrdy = 1;
-    
-    // *** add to the big buffer ***
-    prod_add( &ad7738_load );
-    
-    // *** monitor data check ***
-    mon_cnt++;
-    if( mon_cnt > MON_RATE )
-    {
-      mon_cnt = 0;
-      memcpy( (void*)&ad7738_mon, (void*)&ad7738_load, sizeof(adcwt_t) );
-      monrdy = 1;
-    }
-    
-  }
-  
-  // change phase
-  ad7738_ph++;
-  if( ad7738_ph > 1 )
-  {
-    ad7738_ph = 0;
-  }
-  
-  
-  // GpioDataRegs.GPBSET.bit.GPIOB3 = 1;	// DEBUG: TAG_TX
-  
-  // Acknowledge this interrupt to receive more interrupts from group 1
-  PieCtrlRegs.PIEACK.all = PIEACK_GROUP1;
+
+	setSystemCapVoltageF(ad7738_load.adw[0]);
+	setSystemOutCurrentF(ad7738_load.adw[1]);
+
+#endif
+
+	// GpioDataRegs.GPBSET.bit.GPIOB3 = 1;	// DEBUG: TAG_TX
+
+	// Acknowledge this interrupt to receive more interrupts from group 1
+	PieCtrlRegs.PIEACK.all = PIEACK_GROUP1;
 }

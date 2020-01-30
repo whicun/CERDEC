@@ -1112,7 +1112,7 @@
             this.ModVoltageUnits.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.ModVoltageUnits.AutoSize = true;
             this.ModVoltageUnits.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.75F);
-            this.ModVoltageUnits.Location = new System.Drawing.Point(195, 25);
+            this.ModVoltageUnits.Location = new System.Drawing.Point(200, 25);
             this.ModVoltageUnits.Name = "ModVoltageUnits";
             this.ModVoltageUnits.Size = new System.Drawing.Size(14, 15);
             this.ModVoltageUnits.TabIndex = 35;

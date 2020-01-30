@@ -50,50 +50,50 @@ OBJS += \
 ./Source/system.obj 
 
 C_DEPS += \
-./Source/CAN_PCKA.d \
-./Source/DSP281x_ECan.d \
-./Source/SPICAN.d \
-./Source/System_Object.d \
-./Source/ad7738.d \
-./Source/data.d \
-./Source/diskio.d \
-./Source/ds1wire.d \
-./Source/extio.d \
-./Source/ff.d \
-./Source/flash.d \
-./Source/gpio.d \
-./Source/lcd.d \
-./Source/led.d \
-./Source/mcbsp.d \
-./Source/motor.d \
-./Source/prod.d \
-./Source/qep.d \
-./Source/sci.d \
-./Source/spi.d \
-./Source/system.d 
+./Source/CAN_PCKA.pp \
+./Source/DSP281x_ECan.pp \
+./Source/SPICAN.pp \
+./Source/System_Object.pp \
+./Source/ad7738.pp \
+./Source/data.pp \
+./Source/diskio.pp \
+./Source/ds1wire.pp \
+./Source/extio.pp \
+./Source/ff.pp \
+./Source/flash.pp \
+./Source/gpio.pp \
+./Source/lcd.pp \
+./Source/led.pp \
+./Source/mcbsp.pp \
+./Source/motor.pp \
+./Source/prod.pp \
+./Source/qep.pp \
+./Source/sci.pp \
+./Source/spi.pp \
+./Source/system.pp 
 
 C_DEPS__QUOTED += \
-"Source\CAN_PCKA.d" \
-"Source\DSP281x_ECan.d" \
-"Source\SPICAN.d" \
-"Source\System_Object.d" \
-"Source\ad7738.d" \
-"Source\data.d" \
-"Source\diskio.d" \
-"Source\ds1wire.d" \
-"Source\extio.d" \
-"Source\ff.d" \
-"Source\flash.d" \
-"Source\gpio.d" \
-"Source\lcd.d" \
-"Source\led.d" \
-"Source\mcbsp.d" \
-"Source\motor.d" \
-"Source\prod.d" \
-"Source\qep.d" \
-"Source\sci.d" \
-"Source\spi.d" \
-"Source\system.d" 
+"Source\CAN_PCKA.pp" \
+"Source\DSP281x_ECan.pp" \
+"Source\SPICAN.pp" \
+"Source\System_Object.pp" \
+"Source\ad7738.pp" \
+"Source\data.pp" \
+"Source\diskio.pp" \
+"Source\ds1wire.pp" \
+"Source\extio.pp" \
+"Source\ff.pp" \
+"Source\flash.pp" \
+"Source\gpio.pp" \
+"Source\lcd.pp" \
+"Source\led.pp" \
+"Source\mcbsp.pp" \
+"Source\motor.pp" \
+"Source\prod.pp" \
+"Source\qep.pp" \
+"Source\sci.pp" \
+"Source\spi.pp" \
+"Source\system.pp" 
 
 OBJS__QUOTED += \
 "Source\CAN_PCKA.obj" \

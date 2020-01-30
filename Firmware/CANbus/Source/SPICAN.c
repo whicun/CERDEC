@@ -18,16 +18,20 @@ void SPICANInit(void)
 	SPICANBitModify(0x0C, 0xFF, 0x0F); // Enable the BFPCTRL bits
 	// SPICANBitModify(0x0C, 0xFF, 0x0F); // Enable the BFPCTRL bits
 	SPICANMasksFilts();
-	SPICANWrite(0x60, 0x06);
-	SPICANWrite(0x70, 0x00);
-	SPICANWrite(0x0D, 0x00);
+
+
+	//SPICANWrite(0x60, 0x06);			// RXB0CTRL		0x06 = Roll over to RXB1
+	SPICANWrite(0x60, 0x00);			// RXB0CTRL
+	SPICANWrite(0x70, 0x00);			// RXB1CTRL
+	SPICANWrite(0x0D, 0x00);			// TXRTSCTRL
+	SPICANWrite(0x2B, 0x03);			// CANINTE		0x03 Enable RX interrupts
+
 	// SPICANBitModify(0x60, 0xFF, 0x04);		// Set BUKT to be 1
 	// SPICANBitModify(0x70, 0xFF, 0x00);		// Setup up RXB1 to receive all messages
 	// SPICANBitModify(0x0C, 0xFF, 0x00); // Set TXRTSCTRL to 0x00
 	
 	SPICANConfigure();	
 	SPICANWrite(0x2C, 0x00);		// Clearing all interrupts
-	SPICANWrite(0x2B, 0x00);		// Clearing all interrupts
 
 	SPICANWrite(0x0F, 0x00); // Set CANCTRL to 0x00
 	// SPICANBitModify(0x0F, 0xFF, 0x00); // Set TXRTSCTRL to 0x00
@@ -47,11 +51,102 @@ void SPICANReadyConfig(void)
 void SPICANMasksFilts(void)
 {
 	volatile Uint16 res;
+
+
+	volatile int acc0, acc1, acc2, acc3, acc4, acc5;
+	volatile int mask0, mask1;
+
+	SPICANWrite(0x0F, 0x80); 		// Set CANCTRL to 0x80 (config mode)
+
+/*	SPICANWrite(0x20, 0xFF);
+	SPICANWrite(0x21, 0xF0);
+	SPICANWrite(0x00, 0x7E);
+	SPICANWrite(0x01, 0x00);
+*/
+	// FILT: 111 1110 0000
+	// MASK: 111 1111 1111
+	// RSLT: 111 1110 0000 (X is don't care)
+
+	SPICANWrite(0x20, 0xFF);		// mask 0 match only specific ID
+	SPICANWrite(0x21, 0xFF);
+	SPICANWrite(0x22, 0xFF);
+	SPICANWrite(0x23, 0xFF);
+
+	SPICANWrite(0x24, 0x00);		// mask 1 match all IDs
+	SPICANWrite(0x25, 0x00);
+	SPICANWrite(0x26, 0x00);
+	SPICANWrite(0x27, 0x00);
+
+	SPICANWrite(0x00, 0xC7);			// only look for 0x18FA000
+	SPICANWrite(0x01, 0xEB);
+	SPICANWrite(0x02, 0xA0);
+	SPICANWrite(0x03, 0x00);
+
+	SPICANWrite(0x04, 0xC7);			// only look for 0x18FA000
+	SPICANWrite(0x05, 0xEB);
+	SPICANWrite(0x06, 0xA0);
+	SPICANWrite(0x07, 0x00);
+
+	SPICANWrite(0x08, 0xC7);			// only look for 0x18FFB000
+	SPICANWrite(0x09, 0xEB);
+	SPICANWrite(0x0A, 0xA0);
+	SPICANWrite(0x0B, 0x00);
+
+
+
+//	ECanaMboxes.MBOX6.MSGID.all = 0x18FFB000;
+//	ECanaMboxes.MBOX7.MSGID.all = 0x18FFB100;
+//	ECanaMboxes.MBOX8.MSGID.all = 0x18FFB200;
+//	ECanaMboxes.MBOX9.MSGID.all = 0x18FFB300;
+//	ECanaMboxes.MBOX10.MSGID.all = 0x18FFB400;
+
+
+
+
+	SPICANWrite(0x08, 0xFC);			// only look for 0x7E1 (FC2 = 7E1<<1)
+	SPICANWrite(0x09, 0x20);
+
+
+
+	acc0 = (SPICANRead(0x00)<<3) + ((SPICANRead(0x01)&0xe0)>>5);
+	acc1 = (SPICANRead(0x04)<<3) + ((SPICANRead(0x05)&0xe0)>>5);
+	acc2 = (SPICANRead(0x08)<<3) + ((SPICANRead(0x09)&0xe0)>>5);
+	acc3 = (SPICANRead(0x10)<<3) + ((SPICANRead(0x11)&0xe0)>>5);
+	acc4 = (SPICANRead(0x14)<<3) + ((SPICANRead(0x15)&0xe0)>>5);
+	acc5 = (SPICANRead(0x18)<<3) + ((SPICANRead(0x19)&0xe0)>>5);
+
+	mask0 = (SPICANRead(0x20)<<3) + ((SPICANRead(0x21)&0xe0)>>5);
+	mask1 = (SPICANRead(0x24)<<3) + ((SPICANRead(0x25)&0xe0)>>5);
+
+	acc0++;
+
+	/*
+
+
+	volatile Uint16 res;
 	res = SPICANRead(0x00);
-	// Set up filters for RX buffs
-	while(res != 0x80)
+
+	// Set up masks for RX buffs
+	res = SPICANRead(0x20);
+	while(res != 0xFF)
 	{
-		SPICANWrite(0x00, 0x80);
+		SPICANWrite(0x20, 0xFF);
+		res = SPICANRead(0x20);
+	}
+
+	res = SPICANRead(0x21);
+	while(res != 0xF0)
+	{
+		SPICANWrite(0x21, 0xF0);
+		res = SPICANRead(0x21);
+	}
+
+
+
+	// Set up filters for RX buffs
+	while(res != 0x7E)
+	{
+		SPICANWrite(0x00, 0x7E);
 		res = SPICANRead(0x00);
 	}
 	
@@ -61,37 +156,26 @@ void SPICANMasksFilts(void)
 		SPICANWrite(0x01, 0x00);
 		res = SPICANRead(0x01);
 	}
+*/
 
-	// Set up masks for RX buffs
-	res = SPICANRead(0x20);
-	while(res != 0xF9)
-	{
-		SPICANWrite(0x20, 0xF9);
-		res = SPICANRead(0x20);
-	}
-
-	res = SPICANRead(0x21);
-	while(res != 0x00)
-	{
-		SPICANWrite(0x21, 0x00);
-		res = SPICANRead(0x21);
-	}
-
-	res = SPICANRead(0x00);
-	res = SPICANRead(0x01);
-	res = SPICANRead(0x20);
-	res = SPICANRead(0x21);
+//	res = SPICANRead(0x00);
+//	res = SPICANRead(0x01);
+//	res = SPICANRead(0x20);
+//	res = SPICANRead(0x21);
+//	res++;
 	// MASK: 111 1100 1000
 	// FILT: 100 0000 0000
 	// RSLT: 100 00XX 0XXX (X is don't care)
 	return;
+
+
 }
 
 void SPICANReset (void)
 {
-	GpioDataRegs.GPADAT.bit.GPIOA0	= 0;		//Chip Select Low
+	GpioDataRegs.GPADAT.bit.GPIOA5	= 0;		//Chip Select Low
 	spi_xmit(SPICAN_RESET);						//Transmit Reset command
-	GpioDataRegs.GPADAT.bit.GPIOA0	= 1;		//Release chip select
+	GpioDataRegs.GPADAT.bit.GPIOA5	= 1;		//Release chip select
 	return;
 }
 
@@ -101,11 +185,11 @@ void SPICANReset (void)
 Uint16 SPICANRead (Uint16 Input)
 {
 	Uint16	RetVal;
-	GpioDataRegs.GPADAT.bit.GPIOA0	= 0;		//Chip Select Low
+	GpioDataRegs.GPADAT.bit.GPIOA5	= 0;		//Chip Select Low
 	spi_xmit(SPICAN_READ);
 	spi_xmit(Input);
 	RetVal = spi_recv();
-	GpioDataRegs.GPADAT.bit.GPIOA0	= 1;		//Release chip select
+	GpioDataRegs.GPADAT.bit.GPIOA5	= 1;		//Release chip select
 	return(RetVal);
 }
 
@@ -114,11 +198,11 @@ Uint16 SPICANRead (Uint16 Input)
 // See Pg. 61 in (Table 11-2) for list of addresses
 void SPICANWrite (Uint16 ADDR, Uint16 Input)
 {
-	GpioDataRegs.GPADAT.bit.GPIOA0	= 0;		//Chip Select Low
+	GpioDataRegs.GPADAT.bit.GPIOA5	= 0;		//Chip Select Low
 	spi_xmit(SPICAN_WRITE);						//Write command
 	spi_xmit(ADDR);								//Write location
 	spi_xmit(Input);							//Write Info
-	GpioDataRegs.GPADAT.bit.GPIOA0	= 1;
+	GpioDataRegs.GPADAT.bit.GPIOA5	= 1;
 }
 
 // Quick polling command that reads several status bits for transmit
@@ -126,57 +210,57 @@ void SPICANWrite (Uint16 ADDR, Uint16 Input)
 Uint16 SPICANReadStat (void)
 {
 	Uint16	RetVal;
-	GpioDataRegs.GPADAT.bit.GPIOA0	= 0;		//Chip Select Low
+	GpioDataRegs.GPADAT.bit.GPIOA5	= 0;		//Chip Select Low
 	spi_xmit(SPICAN_READ);
 	spi_xmit(SPICAN_CANSTAT);
 	RetVal = spi_recv();
-	GpioDataRegs.GPADAT.bit.GPIOA0	= 1;		//Release chip select
+	GpioDataRegs.GPADAT.bit.GPIOA5	= 1;		//Release chip select
 	return(RetVal);
 }
 
 void SPICANSetNorm (void)
 {
-	GpioDataRegs.GPADAT.bit.GPIOA0	= 0;		//Chip Select Low
+	GpioDataRegs.GPADAT.bit.GPIOA5	= 0;		//Chip Select Low
 	spi_xmit(SPICAN_WRITE);
 	spi_xmit(SPICAN_CANCTRL);
 	spi_xmit(0x00);								//Normal Mode, No Abort, No One Shot, No CLK En, No Clock Pre
-	GpioDataRegs.GPADAT.bit.GPIOA0	= 1;		//Release chip select
+	GpioDataRegs.GPADAT.bit.GPIOA5	= 1;		//Release chip select
 }
 
 void SPICANIntEn (void)							//Enables RX interupts for now
 {
-	GpioDataRegs.GPADAT.bit.GPIOA0	= 0;		//Chip Select Low
+	GpioDataRegs.GPADAT.bit.GPIOA5	= 0;		//Chip Select Low
 	spi_xmit(SPICAN_WRITE);
 	spi_xmit(0x2B);
 	spi_xmit(0x03);								//Enable RX Interupts
-	GpioDataRegs.GPADAT.bit.GPIOA0	= 1;		//Release chip select
+	GpioDataRegs.GPADAT.bit.GPIOA5	= 1;		//Release chip select
 }
 
 Uint16 SPICANReadInt (void)
 {
 	Uint16 RetVal;
-	GpioDataRegs.GPADAT.bit.GPIOA0	= 0;		//Chip Select Low
+	GpioDataRegs.GPADAT.bit.GPIOA5	= 0;		//Chip Select Low
 	spi_xmit(SPICAN_READ);
 	spi_xmit(0x2B);
 	RetVal = spi_recv();
-	GpioDataRegs.GPADAT.bit.GPIOA0	= 1;		//Release chip select
+	GpioDataRegs.GPADAT.bit.GPIOA5	= 1;		//Release chip select
 }
 
 Uint16 SPICANRXStatus (void)
 {
 	Uint16	RetVal;
-	GpioDataRegs.GPADAT.bit.GPIOA0	= 0;		//Chip Select Low
+	GpioDataRegs.GPADAT.bit.GPIOA5	= 0;		//Chip Select Low
 	spi_xmit(SPICAN_RXSTAT);
 	RetVal = spi_recv();
 	spi_recv();
-	GpioDataRegs.GPADAT.bit.GPIOA0	= 1;		//Release chip select
+	GpioDataRegs.GPADAT.bit.GPIOA5	= 1;		//Release chip select
 	return(RetVal);
 }
 
 Uint32 SPICANReadBuf1 (void)
 {
 	Uint32  RetVal;
-	GpioDataRegs.GPADAT.bit.GPIOA0	= 0;		//Chip Select Low
+	GpioDataRegs.GPADAT.bit.GPIOA5	= 0;		//Chip Select Low
 	spi_xmit(SPICAN_RXBUF1);
 	RetVal = spi_recv() << 24;
 	RetVal |= spi_recv() << 16;
@@ -186,21 +270,70 @@ Uint32 SPICANReadBuf1 (void)
 	spi_recv();
 	spi_recv();
 	spi_recv();
-	GpioDataRegs.GPADAT.bit.GPIOA0	= 1;		//Release chip select
+	GpioDataRegs.GPADAT.bit.GPIOA5	= 1;		//Release chip select
 	return(RetVal);
 }
 
 void SPICANReadBuf_Array (Uint16 data[], Uint16 whichBuf)
 {
 	int k;
-	GpioDataRegs.GPADAT.bit.GPIOA0	= 0;		//Chip Select Low
+	GpioDataRegs.GPADAT.bit.GPIOA5	= 0;		//Chip Select Low
 	spi_xmit(SPICAN_RXBUF0 + 4 * whichBuf);
 	for(k = 0; k < 8; k++)
 	{
 		data[k] = spi_recv();
 	}
-	GpioDataRegs.GPADAT.bit.GPIOA0	= 1;		//Release chip select
+	GpioDataRegs.GPADAT.bit.GPIOA5	= 1;		//Release chip select
 }
+
+void SPICANReadID_Array (Uint16 data[], Uint16 whichBuf)
+{
+	volatile int k;
+	volatile Uint16 res;
+
+	data[0] = SPICANRead(0x60);
+	data[1] = (SPICANRead(0x61)>>3);
+	data[2] = (SPICANRead(0x62)&0x03) + ((SPICANRead(0x62)&0xE0)>>3) + ((SPICANRead(0x61)&0x07)<<5);
+	data[3] = SPICANRead(0x63);
+	data[4] = SPICANRead(0x64);
+	data[5] = SPICANRead(0x61);
+	data[6] = SPICANRead(0x62);
+	data[7] = SPICANRead(0x63);
+	res = SPICANRead(0x64);
+	k++;
+
+
+
+
+
+}
+
+long SPICANReadID (Uint16 whichBuf)
+{
+	volatile long res;
+	int data[4];
+	volatile int k;
+
+	data[0] = (SPICANRead(0x61+(whichBuf*0x10))>>3);
+	data[1] = (SPICANRead(0x62+(whichBuf*0x10))&0x03) + ((SPICANRead(0x62+(whichBuf*0x10))&0xE0)>>3) + ((SPICANRead(0x61+(whichBuf*0x10))&0x07)<<5);
+	data[2] = SPICANRead(0x63+(whichBuf*0x10));
+	data[3] = SPICANRead(0x64+(whichBuf*0x10));
+
+	res = (((long)data[0])<<24) + (((long)data[1])<<16) + (((long)data[2])<<8) + (((long)data[3])<<0);
+
+	k++;
+	return res;
+
+}
+
+
+
+
+
+
+
+
+
 
 // Refer to Table 11-2 and pages 19 - 21 for formatting message
 void SPICANReadSetT0Message(Uint16 canAddress, Uint16 numBytes, Uint16 *buf)
@@ -211,6 +344,18 @@ void SPICANReadSetT0Message(Uint16 canAddress, Uint16 numBytes, Uint16 *buf)
 	// Set the data
 	SPICAN_SetT0Data(numBytes, buf);
 }
+
+// Refer to Table 11-2 and pages 19 - 21 for formatting message
+void SPICANReadSetT0MessageExt(long canAddressExt, Uint16 numBytes, Uint16 *buf)
+{
+	// Set the new address
+	SPICAN_SetT0AddrExt(canAddressExt);
+
+	// Set the data
+	SPICAN_SetT0Data(numBytes, buf);
+}
+
+
 
 // For specifics on format look at Pg 19/20 in the SPI CAN documentation
 // canAddress -> XXXXX HHHHHHHH LLL
@@ -231,6 +376,46 @@ void SPICAN_SetT0Addr(Uint16 canAddress)
 	SPICANWrite(SPICAN_TXB0SIDH, addrHi); // H (SID10 - SID3)
 	// Then want to send 0bLLL00000
 	SPICANWrite(SPICAN_TXB0SIDL, addrLo); // L (SID2 - SID0)
+
+	//SPICANWrite(0x33, addrLo); // L (SID2 - SID0)
+	//SPICANWrite(0x34, addrLo); // L (SID2 - SID0)
+}
+
+
+#define SPICAN_EXIDE 0x8
+void SPICAN_SetT0AddrExt(long canAddressExt)
+{
+	volatile Uint16 addrHi, addrLo;
+	volatile Uint16 addrHiExt, addrLoExt;
+	volatile int a,b,c,d;
+
+
+	// First grab the important bits
+//	addrHi = canAddress & 0x7F8;
+//	addrLo = canAddress & 0x7;
+
+	// Now shift them to the right places
+//	addrHi = addrHi >> 3;
+//	addrLo = ((canAddressExt&0x30000)>>16) + SPICAN_EXIDE + (addrLo << 5);
+
+
+	addrHi = (canAddressExt&0x1FE00000)>>21;
+	addrLo = 0;SPICAN_EXIDE + (canAddressExt&0x30000)>>16 + (canAddressExt&0x1C0000)>>13;
+	addrLo = SPICAN_EXIDE + ((canAddressExt&0x30000)>>16) + ((canAddressExt&0x1C0000)>>13);
+
+	addrHiExt = (canAddressExt&0xFF00)>>8;
+	addrLoExt = (canAddressExt&0xFF);
+
+
+	// Set up the ID (X - unused, H - Hi, L - Lo)
+	// Want to first send 0bHHHHHHHH
+	SPICANWrite(SPICAN_TXB0SIDH, addrHi); // H (SID10 - SID3)
+	// Then want to send 0bLLL00000
+	SPICANWrite(SPICAN_TXB0SIDL, addrLo); // L (SID2 - SID0)
+
+	SPICANWrite(SPICAN_TXB0EID8, addrHiExt); // EID15-8
+	SPICANWrite(SPICAN_TXB0EID0, addrLoExt); //  EDI7-0
+
 }
 
 // For specifics on format look at Pg 21 in the SPI CAN documentation
@@ -250,9 +435,9 @@ void SPICAN_SetT0Data(Uint16 numBytes, Uint16 *buf)
 
 void SPICAN_T0_RTS (void)
 {
-	GpioDataRegs.GPADAT.bit.GPIOA0	= 0;		//Chip Select Low
+	GpioDataRegs.GPADAT.bit.GPIOA5	= 0;		//Chip Select Low
 	spi_xmit(SPICAN_RTS + 0x1);
-	GpioDataRegs.GPADAT.bit.GPIOA0	= 1;		//Release chip select
+	GpioDataRegs.GPADAT.bit.GPIOA5	= 1;		//Release chip select
 }
 
 Uint16 SPICANRXBufReady(void)
@@ -318,12 +503,12 @@ void SPICANWaitForTXBuf(Uint16 buf_num)
 
 void SPICANBitModify(Uint16 address, Uint16 mask, Uint16 data_byte)
 {
-	GpioDataRegs.GPADAT.bit.GPIOA0	= 0;		//Chip Select Low
+	GpioDataRegs.GPADAT.bit.GPIOA5	= 0;		//Chip Select Low
 	spi_xmit(0x05);						//Bit modify command
 	spi_xmit(address);								//Write location
 	spi_xmit(mask);							//Write Info
 	spi_xmit(data_byte);							//Write Info
-	GpioDataRegs.GPADAT.bit.GPIOA0	= 1;
+	GpioDataRegs.GPADAT.bit.GPIOA5	= 1;
 }
 
 Uint16 SPICANReadInts(void)
@@ -343,88 +528,194 @@ void SPICANConfigure(void)
 {
 
 	// For configuration details, see note at bottom
-	// SPICANWrite(0x2A, 0x81);		// Setting up CNF1
-	// SPICANWrite(0x29, 0xD0);		// Setting up CNF2
-	// SPICANWrite(0x28, 0xC2);		// Setting up CNF3
-	SPICANWrite(0x2A, 0x01);		// Setting up CNF1
-	SPICANWrite(0x29, 0xD0);		// Setting up CNF2
-	SPICANWrite(0x28, 0xC2);		// Setting up CNF3
+//	SPICANWrite(0x2A, 0xC1);		// Setting up CNF1
+//	SPICANWrite(0x29, 0xE4);		// Setting up CNF2
+//	SPICANWrite(0x28, 0xC4);		// Setting up CNF3
+
+	SPICANWrite(0x2A, 0x41);		// Setting up CNF1
+	SPICANWrite(0x29, 0xA4);		// Setting up CNF2
+	SPICANWrite(0x28, 0x84);		// Setting up CNF3
+
+
+//	SPICANWrite(0x2A, 0x01);		// Setting up CNF1
+//	SPICANWrite(0x29, 0xD0);		// Setting up CNF2
+//	SPICANWrite(0x28, 0xC2);		// Setting up CNF3
+
+
+
+
 	return;
 
 	/*
-	// Javascript for calculating the Configurations
-	// Following the Init here (Line 143)
-	// https://github.com/macchina/mcp2515/blob/master/src/MCP2515.cpp
-	SJW = 2;
-	BRP = 0.0; // Int
-	TQ = 0;
-	BT = 0; // Int
-	tempBT = 0;
-	freqMhz = 16 * 10 ** 6;
-	bestMatchf = 10.0;
-	bestMatchIdx = 10; // Int
-	savedBT = 0;
 
-	speed = 250 * 10 ** 3;
-	NBT = 1.0 / speed;
+	// Trying to configure the SPI CAN module for use with ESL ProD
+	// ProD SPI is 9.375MHz
+	// SPICAN Oscillator is 16MHz
+	// CAN Bus is 500kHz
 
-	for(BRP=0; BRP < 63; BRP++)
-	{
-			TQ = 2.0 * (BRP + 1) / freqMhz;
-			tempBT = NBT / TQ;
-			BT = parseInt(tempBT);
-			if ( (tempBT - BT) < bestMatchf)
-			{
-					if (BT > 7 && BT < 25)
-					{
-							bestMatchf = (tempBT - BT);
-							bestMatchIdx = BRP;
-							savedBT = BT;
-					}
-			}
-	}
+	// Following the manual on Pg. 41
+	// https://microcontrollershop.com/download/21801F.pdf
+	// And this one helped a lot with understanding everything
+	// http://ww1.microchip.com/downloads/en/Appnotes/00754.pdf
 
-	BT = savedBT;
-	BRP = bestMatchIdx;
-	SPT = parseInt((0.7 * BT)); // Sample point
-	PRSEG = parseInt((SPT - 1) / 2);
-	PHSEG1 = SPT - PRSEG - 1;
-	PHSEG2 = BT - PHSEG1 - PRSEG - 1;
+	Logic behind configuration
+	Necessary pieces:
+		SJW - Synchronization Jump Width
+		BRP - Baud Rate Prescalar
+		BTLMODE - Mode for determining PHSEG2
+		SAM - Sample Point Configuration
+		PRSEG - Propagation Segment
+		PHSEG1 - Phase Segment 1 (PS1)
+		PHSEG2 - Phase Segment 2 (PS2)
 
-	if(PRSEG + PHSEG1 < PHSEG2) 
-	{
-		//SerialUSB.println("PRSEG + PHSEG1 less than PHSEG2!");
-		console.log("PS2 IS TOO LARGE");
-	}
+		I used the second link
+		(http://ww1.microchip.com/downloads/en/Appnotes/00754.pdf)
+		to calculate the maximum SJW I want to use, which was 3 TQs in this case:
+		Code below is in Javascript and can be run in an internet browser
+			// Inits
+			SEC2NANO = 1 * 10 ** 9;
+			f_osc = 500 * 10 ** 3; // 500 kHz
+			t_bit = 1.0 / f_osc;
 
-	if(PHSEG2 <= SJW) 
-	{
-			//SerialUSB.println("PHSEG2 less than SJW");
-			console.log("PS2 IS LESS THAN SJW");
-	}
+			console.log("t_bit is: " + (t_bit * SEC2NANO) + " ns");
 
-	BTLMODE = 1;
-	SAMPLE = 0;
+			t_bit_min = t_bit * (1 - .0125);
+			t_bit_max = t_bit * (1 + .0125);
 
-	// Set registers
-	data = (((SJW-1) << 6) | BRP);
-	console.log("CNF1: " + data.toString(16) );
-	console.log("CNF2: " + ((BTLMODE << 7) | (SAMPLE << 6) | ((PHSEG1-1) << 3) | (PRSEG-1)).toString(16) );
-	console.log("CNF3: " + (0b10000000 | (PHSEG2-1)).toString(16) );
+			console.log("t_bit_min is: " + (t_bit_min * SEC2NANO) + " ns");
+			console.log("t_bit_max is: " + (t_bit_max * SEC2NANO) + " ns");
+
+			t_q_per_bit = 8.0;
+			t_q_min = t_bit_min / t_q_per_bit;
+			t_q_max = t_bit_max / t_q_per_bit;
+
+			console.log("t_q_min is: " + (t_q_min * SEC2NANO) + " ns");
+			console.log("t_q_max is: " + (t_q_max * SEC2NANO) + " ns");
+
+			t_diff = 10 * t_bit_max - 10 * t_bit_min
+			console.log("t_diff is: " + (t_diff * SEC2NANO) + " ns");
+
+			t_q_sjw = Math.ceil(t_diff / t_q_min);
+			console.log("t_q_sjw is: " + (t_q_sjw) + " TQs");
+		
+		I then looked at all the examples, and in the second link it said max
+		oscillator tolerance is found when the length of PS1 == PS2 == SJW (pg. 8)
+		(Although that was if SJW is the max of 4 TQs)
+
+		So I set the length of SJW == PS1 == PS2 == 3
+
+		Since I am using 8 TQ per 1 bit, that leaves me with 8 - 3 - 3 == 2 TQ
+		for the Sync Segment and the Propagation Segment, so 1 TQ for each
+
+		THUS
+
+		Setting up CNF1 (0x2A) for:
+		 [SJW 7:6, BRP 5:0]
+		 0b 10 000001 => 0x81
+
+		Setting up CNF2 (0x29) for:
+		 [BTLMODE, SAM, PHSEG1 5:3, PRSEG 2:0]
+		 0b 1 1 010 000 => 0xD0
+
+		Setting up CNF3 (0x28) for:
+		 [SOF, WAKFIL, NA 5:3, PHSEG2 2:0]
+		 0b 1 1 000 010 => 0xC2		
 
 */
 }
 
+processModStatus(Uint16 data[], long addr) {
+	int voltage1;
+	int voltage2;
+	int temp1;
+	int temp2;
+	int mod;
+	int shelf=1;
+
+	voltage1 = ((data[1] << 8) | data[0])/5;
+	temp1 = (data[2] * 10) / 2 - 400;
+	voltage2 = ((data[5] << 8) | data[4])/5;
+	temp2 = (data[6] * 10) / 2 - 400;
+
+	if(addr == 0x18FFB000) mod = 1;
+	else if(addr == 0x18FFB100) mod = 3;
+	else if(addr == 0x18FFB200) mod = 5;
+	else if(addr == 0x18FFB300) mod = 7;
+	else if(addr == 0x18FFB400) mod = 9;
+	else if(addr == 0x18FFB500) mod = 10;
+
+	//Send data to the System object
+	if(mod % 2 == 1) //If it's an odd module (1, 3, 5, ...)
+	{
+		setModVoltage(shelf, mod, voltage1);
+		setModTemp(shelf, mod, temp1);
+
+		setModVoltage(shelf, mod+1, voltage2);
+		setModTemp(shelf, mod+1, temp2);
+
+	}
+	else // It's an even modules (0, 2, 4, ...)
+	{
+		setModVoltage(shelf, mod-1, voltage1);
+		setModTemp(shelf, mod-1, temp1);
+
+		setModVoltage(shelf, mod, voltage2);
+		setModTemp(shelf, mod, temp2);
+	}
+
+}
+
+processJSRStatus(Uint16 data[], long addr) {
+	//Send the data to the System object
+	int shelf = 1;
+	int voltage = (data[1] << 8) | data[0];
+	voltage = voltage / 5;
+
+	int avgTemp = (data[2] * 10) / 2 - 400;
+	int maxTemp = (data[3] * 10) / 2 - 400;
+	int minTemp = (data[4] * 10) / 2 - 400;
+	int maxTempID = data[5] & 0x0F;
+	int minTempID = data[5] & 0xF0;
+
+	setShelfVoltage(shelf, voltage);
+	setShelfAvgTemp(shelf, avgTemp);
+	setShelfMaxTemp(shelf, maxTemp);
+	setShelfMinTemp(shelf, minTemp);
+	setShelfMaxTempID(shelf, maxTempID);
+	setShelfMinTempID(shelf, minTempID);
+	setShelfAlarms(shelf, data[6]);
+	setShelfErrors(shelf, data[7]);
+
+	setSystemCapVoltage(voltage);
+
+
+}
+
+
 void SPICANRoutine(void)
 {
 	volatile Uint16 interrupts;
+	volatile int x=0;
+	volatile Uint16 dataarray[8];
+	volatile Uint16 count, res;
+	volatile long addr;
 	// Check interrupts for what all happened
-	interrupts = SPICANRead(0x2B);
-
+	interrupts = SPICANRead(0x2C);
+/*
 	if(interrupts == 0xFF)
 		return;
 
 	// TX Interrupts
+
+	if(SPICANRead(0x2C) & 0x01) {
+		//res = SPICANRead(0x2C);
+		SPICANReadBuf_Array(dataarray, 0);
+		SPICANBitModify(0x2C, 0x01, 0x00);
+	}
+
+	x=16;
+
+*/
 
 	// RX Interrupts
 	if((interrupts & 0x03) > 0x00)
@@ -436,15 +727,24 @@ void SPICANRoutine(void)
 		// RX1 Interrupt
 		if((interrupts & 0x02) == 0x02)
 		{
+			res = SPICANRead(0x70);
+			//SPICANReadBuf_Array(arr, 1);
+			addr = SPICANReadID(1);
 			SPICANReadBuf_Array(arr, 1);
+
+			processModStatus(arr, addr);
+
+
+
+
 			// For now, send back dummy data
 			// Wait for the TX Buffer to be ready
-			SPICANWaitForTXBuf(0);
+			//SPICANWaitForTXBuf(0);
 			// Set the message on the buffer
-			SPICANReadSetT0Message(0x32, 8, arr);
-			SPICANWaitForTXBuf(0);
+			//SPICANReadSetT0Message(0x32, 8, arr);
+			//SPICANWaitForTXBuf(0);
 			// Signal that the message is ready to send
-			SPICAN_T0_RTS();
+			//SPICAN_T0_RTS();
 			bits_to_flip |= 0x02;
 		}
 		// RX0 Interrupt
@@ -453,26 +753,42 @@ void SPICANRoutine(void)
 			if(bits_to_flip > 0x00)
 				delay_us(5);
 			
+			res = SPICANRead(0x60);
+
+			addr = SPICANReadID(0);
 			SPICANReadBuf_Array(arr, 0);
+
+			processJSRStatus(arr, addr);
+
+
+
+			//SPICANReadBuf_Array(arr, 0);
+			//SPICANReadID_Array(arr,0);
+			//addr = SPICANReadID(0);
 			// For now, send back dummy data
 			// Wait for the TX Buffer to be ready
-			SPICANWaitForTXBuf(0);
+			//SPICANWaitForTXBuf(0);
 			// Set the message on the buffer
-			SPICANReadSetT0Message(0x43, 8, arr);
-			SPICANWaitForTXBuf(0);
+			//SPICANReadSetT0Message(0x43, 8, arr);
+			//SPICANWaitForTXBuf(0);
 			// Signal that the message is ready to send
-			SPICAN_T0_RTS();
+			//SPICAN_T0_RTS();
 			bits_to_flip |= 0x01;
 		}
+		SPICANBitModify(0x2C, bits_to_flip, 0x00);
+
+		/*
 		volatile Uint16 res;
-		res = SPICANRead(0x2B);
+		res = SPICANRead(0x2C);
 		// Set up filters for RX buffs
 		while((res & 0x03) > 0x00)
 		{
-			SPICANBitModify(0x2B, bits_to_flip, 0x00);
-			res = SPICANRead(0x2B);
+			SPICANBitModify(0x2C, bits_to_flip, 0x00);
+			res = SPICANRead(0x2C);
 		}
+		*/
 	}
+
 
 	// Clear the interrupts
 	// SPICANWrite(0x0E, 0x00);
@@ -640,18 +956,14 @@ And came up with this for my configuration settings
   Setting up CNF1 (0x2A) for:
    [SJW 7:6, BRP 5:0]
    0b 10 000001 => 0x81
-	 0b 01 000011 => 0x42
-	 0b 11 000001 => 0xC1
 
   Setting up CNF2 (0x29) for:
    [BTLMODE, SAM, PHSEG1 5:3, PRSEG 2:0]
    0b 1 1 010 000 => 0xD0
-	 0b 1 1 100 100 => 0xE4
 
   Setting up CNF3 (0x28) for:
    [SOF, WAKFIL, NA 5:3, PHSEG2 2:0]
-   0b 1 1 000 010 => 0xC2
-	 0b 1 1 000 100 => 0xC4 
+   0b 1 1 000 010 => 0xC2 
 
 
 }
@@ -778,13 +1090,13 @@ Here is the code for my routine.
 void SPICANReadBuf_Array (Uint16 data[], Uint16 whichBuf)
 {
   int k;
-  GpioDataRegs.GPADAT.bit.GPIOA0  = 0;    //Chip Select Low
+  GpioDataRegs.GPADAT.bit.GPIOA5  = 0;    //Chip Select Low
   spi_xmit(SPICAN_RXBUF0 + 4 * whichBuf);
   for(k = 0; k < 8; k++)
   {
     data[k] = spi_recv();
   }
-  GpioDataRegs.GPADAT.bit.GPIOA0  = 1;    //Release chip select
+  GpioDataRegs.GPADAT.bit.GPIOA5  = 1;    //Release chip select
 }
 
 
@@ -836,9 +1148,9 @@ void SPICAN_SetT0Data(Uint16 numBytes, Uint16 *buf)
 
 void SPICAN_T0_RTS (void)
 {
-  GpioDataRegs.GPADAT.bit.GPIOA0  = 0;    //Chip Select Low
+  GpioDataRegs.GPADAT.bit.GPIOA5  = 0;    //Chip Select Low
   spi_xmit(SPICAN_RTS + 0x1);
-  GpioDataRegs.GPADAT.bit.GPIOA0  = 1;    //Release chip select
+  GpioDataRegs.GPADAT.bit.GPIOA5  = 1;    //Release chip select
 }
 
 Uint16 SPICANRXBufReady(void)
@@ -848,12 +1160,12 @@ Uint16 SPICANRXBufReady(void)
 
 void SPICANBitModify(Uint16 address, Uint16 mask, Uint16 data_byte)
 {
-  GpioDataRegs.GPADAT.bit.GPIOA0  = 0;    //Chip Select Low
+  GpioDataRegs.GPADAT.bit.GPIOA5  = 0;    //Chip Select Low
   spi_xmit(0x05);           //Bit modify command
   spi_xmit(address);                //Write location
   spi_xmit(mask);             //Write Info
   spi_xmit(data_byte);              //Write Info
-  GpioDataRegs.GPADAT.bit.GPIOA0  = 1;
+  GpioDataRegs.GPADAT.bit.GPIOA5  = 1;
 }
 [/code]
 

@@ -35,6 +35,7 @@ Source/ad7738.obj: C:/Users/antons/workspace_v6_1/CANbus/Headers/sci.h
 Source/ad7738.obj: C:/Users/antons/workspace_v6_1/CANbus/Headers/can.h
 Source/ad7738.obj: C:/Users/antons/workspace_v6_1/CANbus/Headers/CAN_PCKA.h
 Source/ad7738.obj: C:/Users/antons/workspace_v6_1/CANbus/Headers/System_Object.h
+Source/ad7738.obj: C:/Users/antons/workspace_v6_1/CANbus/Headers/spican.h
 
 ../Source/ad7738.c: 
 C:/Users/antons/workspace_v6_1/CANbus/DSP281x_headers/include/DSP281x_Device.h: 
@@ -71,3 +72,4 @@ C:/Users/antons/workspace_v6_1/CANbus/Headers/sci.h:
 C:/Users/antons/workspace_v6_1/CANbus/Headers/can.h: 
 C:/Users/antons/workspace_v6_1/CANbus/Headers/CAN_PCKA.h: 
 C:/Users/antons/workspace_v6_1/CANbus/Headers/System_Object.h: 
+C:/Users/antons/workspace_v6_1/CANbus/Headers/spican.h: 

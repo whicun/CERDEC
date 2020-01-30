@@ -35,6 +35,8 @@ Source/prod.obj: C:/Users/antons/workspace_v6_1/CANbus/Headers/gpio.h
 Source/prod.obj: C:/Users/antons/workspace_v6_1/CANbus/Headers/led.h
 Source/prod.obj: C:/Users/antons/workspace_v6_1/CANbus/Headers/lcd.h
 Source/prod.obj: C:/Users/antons/workspace_v6_1/CANbus/Headers/sci.h
+Source/prod.obj: C:/Users/antons/workspace_v6_1/CANbus/Headers/spi.h
+Source/prod.obj: C:/Users/antons/workspace_v6_1/CANbus/Headers/SPICAN.h
 Source/prod.obj: C:/Users/antons/workspace_v6_1/CANbus/Headers/data.h
 Source/prod.obj: C:/Users/antons/workspace_v6_1/CANbus/Headers/flash.h
 Source/prod.obj: C:/Users/antons/workspace_v6_1/CANbus/Headers/ad7738.h
@@ -85,6 +87,8 @@ C:/Users/antons/workspace_v6_1/CANbus/Headers/gpio.h:
 C:/Users/antons/workspace_v6_1/CANbus/Headers/led.h: 
 C:/Users/antons/workspace_v6_1/CANbus/Headers/lcd.h: 
 C:/Users/antons/workspace_v6_1/CANbus/Headers/sci.h: 
+C:/Users/antons/workspace_v6_1/CANbus/Headers/spi.h: 
+C:/Users/antons/workspace_v6_1/CANbus/Headers/SPICAN.h: 
 C:/Users/antons/workspace_v6_1/CANbus/Headers/data.h: 
 C:/Users/antons/workspace_v6_1/CANbus/Headers/flash.h: 
 C:/Users/antons/workspace_v6_1/CANbus/Headers/ad7738.h: 

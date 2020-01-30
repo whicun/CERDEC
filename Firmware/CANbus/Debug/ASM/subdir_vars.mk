@@ -16,10 +16,10 @@ OBJS += \
 ./ASM/reboot.obj 
 
 ASM_DEPS += \
-./ASM/SetDBGIER.d \
-./ASM/delay_us.d \
-./ASM/passwords.d \
-./ASM/reboot.d 
+./ASM/SetDBGIER.pp \
+./ASM/delay_us.pp \
+./ASM/passwords.pp \
+./ASM/reboot.pp 
 
 OBJS__QUOTED += \
 "ASM\SetDBGIER.obj" \
@@ -28,10 +28,10 @@ OBJS__QUOTED += \
 "ASM\reboot.obj" 
 
 ASM_DEPS__QUOTED += \
-"ASM\SetDBGIER.d" \
-"ASM\delay_us.d" \
-"ASM\passwords.d" \
-"ASM\reboot.d" 
+"ASM\SetDBGIER.pp" \
+"ASM\delay_us.pp" \
+"ASM\passwords.pp" \
+"ASM\reboot.pp" 
 
 ASM_SRCS__QUOTED += \
 "../ASM/SetDBGIER.asm" \

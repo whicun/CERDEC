@@ -77,6 +77,14 @@ void ssr_set( Uint16 ch, int close )
   ANALCTRL = analogout;
 }
 
+int ssr_get(int ch) {
+	int mask;
+
+	mask = 0x10 << ch;		// one channel
+
+	return (analogout&mask);
+}
+
 
 volatile Uint16 analogen = 0xff;
 

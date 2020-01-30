@@ -38,10 +38,10 @@ void gpio_init()
   GpioMuxRegs.GPADIR.bit.GPIOA7		= 1;
   GpioMuxRegs.GPAMUX.bit.T1PWM_GPIOA6     = 0;	// SYNC_OUT (out)
   GpioMuxRegs.GPADIR.bit.GPIOA6		= 1;
-  GpioMuxRegs.GPAMUX.bit.PWM6_GPIOA5      = 1;	// PWM6 (p)
-  GpioMuxRegs.GPADIR.bit.GPIOA5		= 0;
-  GpioMuxRegs.GPAMUX.bit.PWM5_GPIOA4      = 1;	// PWM5 (p)
-  GpioMuxRegs.GPADIR.bit.GPIOA4		= 0;
+  GpioMuxRegs.GPAMUX.bit.PWM6_GPIOA5      = 0;	// PWM6 (out)
+  GpioMuxRegs.GPADIR.bit.GPIOA5		= 1;
+  GpioMuxRegs.GPAMUX.bit.PWM5_GPIOA4      = 0;	// PWM5 (out)
+  GpioMuxRegs.GPADIR.bit.GPIOA4		= 1;
   GpioMuxRegs.GPAMUX.bit.PWM4_GPIOA3      = 0;	// PWM4 (out)
   GpioMuxRegs.GPADIR.bit.GPIOA3		= 1;
   GpioMuxRegs.GPAMUX.bit.PWM3_GPIOA2      = 0;	// PWM3 (out)

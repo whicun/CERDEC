@@ -12,6 +12,7 @@
 #include "can.h"
 #include "CAN_PCKA.h"
 #include "System_Object.h"
+#include "spican.h"
 
 
 #define ADCREG_COMM	0x00			// (W)   Communications
@@ -655,10 +656,17 @@ void ad7738_settemp( double tempv )
   EINT;
 }
 
-#define MAXCAPVOLTFAULT	310.0
-#define MAXCAPVOLTALARM	305.0
-#define MINCAPVOLTFAULT	238.0
-#define MINCAPVOLTALARM	250.0
+//#define MAXCAPVOLTFAULT	310.0
+//#define MAXCAPVOLTALARM	305.0
+//#define MINCAPVOLTFAULT	238.0
+//#define MINCAPVOLTALARM	250.0
+
+#define MAXCAPVOLTFAULT	43.0
+#define MAXCAPVOLTALARM	45.0
+#define MINCAPVOLTFAULT	33.0
+#define MINCAPVOLTALARM	35.0
+
+
 
 #define MAXCURRFAULT	1000.0
 #define MAXCURRALARM	300.0
@@ -666,56 +674,85 @@ void ad7738_settemp( double tempv )
 #define MAXCAPTEMPFAULT	70.0
 #define MAXCAPTEMPALARM	50.0
 
-#define ALARMOVERVOLT		0x0001
-#define ALARMUNDERVOLT		0x0002
-#define ALARMOVERCURR		0x0004
-#define ALARMOVERTEMP		0x0008
-#define FAULTOVERVOLT		0x0010
-#define FAULTUNDERVOLT		0x0020
-#define FAULTOVERCURR		0x0040
-#define FAULTOVERTEMP		0x0080
-#define FAULTMCOVERVOLT		0x0100
-#define FAULTMCUNDERVOLT	0x0200
-#define FAULTMCERROR		0x0400
-#define FAULTMCOVERTEMP		0x0800
+#define ALARMOVERTEMP		0x0001
+#define ALARMOVERVOLT		0x0002
+#define ALARMUNDERVOLT		0x0004
+#define ALARMOVERCURR		0x0008
+
+#define FAULTOVERTEMP		0x0010
+#define FAULTOVERVOLT		0x0020
+#define FAULTUNDERVOLT		0x0040
+#define FAULTOVERCURR		0x0080
+
+#define FAULTMCOVERTEMP		0x0100
+#define FAULTMCOVERVOLT		0x0200
+#define FAULTMCUNDERVOLT	0x0400
+#define FAULTMCERROR		0x0800
+
 #define FAULTCONTACTOR		0x1000
 
 
 int checkFaults(void) {
 	float capVolt1, capVolt2, outCurr, maxTemp;
 	int fault=0;
+	unsigned int *jsrFault;
+
+
+	jsrFault = (unsigned int*)0x2000;
+	fault = (*jsrFault)<<8;
 
 	capVolt1 = getSystemCapVoltageF();
-	//capVolt2 = ((float)System.capVoltage)/10.0;
+	capVolt2 = ((float)getSystemCapVoltage())/10.0;
 
-	//outCurr = System.outCurrentF;
-	//maxTemp = (float)(System.shelves[0].maxTemp/10.0);
+	outCurr = getSystemOutCurrentF();
+	maxTemp = ((float)getShelfMaxTemp(1))/10.0;//(float)(System.shelves[0].maxTemp/10.0);
 
 	if(capVolt1 > MAXCAPVOLTFAULT || capVolt2 > MAXCAPVOLTFAULT) {
 		fault |= FAULTOVERVOLT;
+		bms_status.status.bits.OVWARNING = 1;
 	}
 	else if(capVolt1 > MAXCAPVOLTALARM || capVolt2 > MAXCAPVOLTALARM) {
 		fault |= ALARMOVERVOLT;
+		bms_status.status.bits.OVWARNING = 1;
 	}
-	if(capVolt1 < MINCAPVOLTFAULT || capVolt2 < MINCAPVOLTFAULT) {
+	else if(capVolt1 < MINCAPVOLTFAULT || capVolt2 < MINCAPVOLTFAULT) {
 		fault |= FAULTUNDERVOLT;
+		bms_status.status.bits.OVWARNING = 1;
 	}
 	else if(capVolt1 < MINCAPVOLTALARM || capVolt2 < MINCAPVOLTALARM) {
 		fault |= ALARMUNDERVOLT;
+		bms_status.status.bits.OVWARNING = 1;
+	}
+	else {
+		bms_status.status.bits.OVWARNING = 0;
+
 	}
 	if(outCurr > MAXCURRFAULT) {
 		fault |= FAULTOVERCURR;
+		bms_status.status.bits.OCWARNING = 1;
 	}
 	else if(outCurr > MAXCURRALARM) {
 		fault |= ALARMOVERCURR;
+		bms_status.status.bits.OCWARNING = 1;
+	}
+	else {
+		bms_status.status.bits.OCWARNING = 0;
+
 	}
 	if(maxTemp > MAXCAPTEMPFAULT) {
 		fault |= FAULTOVERCURR;
+		bms_status.status.bits.OTWARNING = 1;
 	}
 	else if(maxTemp > MAXCAPTEMPALARM) {
 		fault |= ALARMOVERCURR;
+		bms_status.status.bits.OTWARNING = 1;
+	}
+	else {
+		bms_status.status.bits.OTWARNING = 0;
+
 	}
 
+	bms_status.status.bits.TRIPCODE = 0;			// TODO
 	return fault;
 
 }
@@ -731,6 +768,7 @@ int prevSysState = 0;
 
 void stateMachine(void) {
 	int faults;
+	static int prevFaultReset=0;
 
 	faults = checkFaults()&0xFFF0;
 
@@ -743,8 +781,10 @@ void stateMachine(void) {
 		break;
 		case sINIT:
 			if(prevSysState != sINIT) {
+				ssr_set(0, 0);  // open contactor
+				bms_status.status.bits.CONTACTOR = 0;
 				// TODO: verify contactor is open
-				wakeUpMCs();
+				//wakeUpMCs();
 
 			}
 			prevSysState = sINIT;
@@ -756,6 +796,8 @@ void stateMachine(void) {
 		break;
 		case sSTANDBY:
 			if(prevSysState != sSTANDBY) {
+				ssr_set(0, 0);  // open contactor
+				bms_status.status.bits.CONTACTOR = 0;
 			}
 			prevSysState = sSTANDBY;
 
@@ -772,6 +814,8 @@ void stateMachine(void) {
 		case sON:
 			if(prevSysState != sON) {
 				// TODO: Close contactor
+				ssr_set(0, 1);
+				bms_status.status.bits.CONTACTOR = 1;
 			}
 			prevSysState = sON;
 
@@ -785,8 +829,17 @@ void stateMachine(void) {
 		break;
 		case sFAULT:
 			if(prevSysState != sFAULT) {
+				ssr_set(0, 0);  // open contactor
+				bms_status.status.bits.CONTACTOR = 0;
+				prevFaultReset = bms_cmd.bit.RESET;
 			}
 			prevSysState = sFAULT;
+
+			if((prevFaultReset) == 0 && (bms_cmd.bit.RESET == 1)) {
+				sysState = sSTANDBY;
+			}
+
+			prevFaultReset = bms_cmd.bit.RESET;
 
 		break;
 
@@ -794,9 +847,11 @@ void stateMachine(void) {
 		break;
 	}
 
+	bms_status.status.bits.MODE = sysState;
 }
 
 
+int cycletime = 100;
 // isr for cpu timer0 for adc data read and processing
 //
 interrupt void cpu_timer0_isr()
@@ -804,40 +859,73 @@ interrupt void cpu_timer0_isr()
   
   int i, j, g;
   long temp;
-  int status;
+  int status,k;
   double limld;
+  volatile int add = 0x1234;
+  volatile long addext = 0x18EA000F;	// mod voltage request
 	static int cccp=0;
+	Uint16 arr[8];
 
-  // GpioDataRegs.GPBCLEAR.bit.GPIOB3 = 1;	// DEBUG: TAG_TX
-  
-	processJSRGlobal(1);		// Shelf 1
+	for(k=0;k<8;k++)
+		arr[k] = 0;
 
-	if(cccp == 100) {
-		sendModStatus(1, 1);	// Shelf 1 Module 1+2
-		sendModStatus(1, 3);
-		sendModStatus(1, 5);
-		sendModStatus(1, 7);
-		sendModStatus(1, 9);
+	if(cccp % cycletime == 0) {
+		processBMSData();
+		processGUIData();
 	}
-	else if(cccp >= 200) {
-		cccp = 0;
-		CAN_Tx_SendInformationRequest(MOD_1_2, (long)0);		// Shelf 1 Module 1+2
-		CAN_Tx_SendInformationRequest(MOD_3_4, (long)0);
-		CAN_Tx_SendInformationRequest(MOD_5_6, (long)0);
-		CAN_Tx_SendInformationRequest(MOD_7_8, (long)0);
-		CAN_Tx_SendInformationRequest(MOD_9_10, (long)0);
+	else if(cccp == (5*cycletime-40)) {
+		arr[0] = (MOD_1_2&0xff00)>>8;
+		arr[1] = MOD_1_2&0xff;
+//		SPICANWaitForTXBuf(0);
+		SPICANReadSetT0MessageExt(addext, 8, arr);
+//		SPICANWaitForTXBuf(0);
+		SPICAN_T0_RTS();
+	}
+	else if (cccp == (5*cycletime-30)) {
+		arr[0] = (MOD_3_4&0xff00)>>8;
+		arr[1] = MOD_3_4&0xff;
+//		SPICANWaitForTXBuf(0);
+		SPICANReadSetT0MessageExt(addext, 8, arr);
+//		SPICANWaitForTXBuf(0);
+		SPICAN_T0_RTS();
 
-		//wakeUpMCs();
+	}
+	else if (cccp == (5*cycletime-20)) {
+		arr[0] = (MOD_5_6&0xff00)>>8;
+		arr[1] = MOD_5_6&0xff;
+//		SPICANWaitForTXBuf(0);
+		SPICANReadSetT0MessageExt(addext, 8, arr);
+//		SPICANWaitForTXBuf(0);
+		SPICAN_T0_RTS();
+
+	}
+	else if (cccp == (5*cycletime-10)) {
+		arr[0] = (MOD_7_8&0xff00)>>8;
+		arr[1] = MOD_7_8&0xff;
+//		SPICANWaitForTXBuf(0);
+		SPICANReadSetT0MessageExt(addext, 8, arr);
+//		SPICANWaitForTXBuf(0);
+		SPICAN_T0_RTS();
+
+	}
+	else if (cccp == (5*cycletime-0)) {
+		arr[0] = (MOD_9_10&0xff00)>>8;
+		arr[1] = MOD_9_10&0xff;
+//		SPICANWaitForTXBuf(0);
+		SPICANReadSetT0MessageExt(addext, 8, arr);
+//		SPICANWaitForTXBuf(0);
+		SPICAN_T0_RTS();
+		cccp = 0;
 	}
 	cccp++;
 
-	int spi_buf[12];
-	for(g = 0; g < 12; g++)
-	{
-		spi_buf[g] = spi_recv();
-	}
-	spi_buf[0] = spi_buf[0];
+	SPICANRoutine();
+	stateMachine();
 
+
+
+  // GpioDataRegs.GPBCLEAR.bit.GPIOB3 = 1;	// DEBUG: TAG_TX
+#if(0)
 
 	//  ***** read the converted data *****
 	if (0 == ad7738_ph)				// phase 0
@@ -1384,6 +1472,8 @@ interrupt void cpu_timer0_isr()
 
 	setSystemCapVoltageF(ad7738_load.adw[0]);
 	setSystemOutCurrentF(ad7738_load.adw[1]);
+
+#endif
 
 	// GpioDataRegs.GPBSET.bit.GPIOB3 = 1;	// DEBUG: TAG_TX
 

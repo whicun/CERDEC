@@ -239,6 +239,7 @@ void main(void) {
 	extio_init();
 	InitECan();
 	configCAN();
+	canVarInit();
 
 	// Set SD select output as appropriate (Usually high)
 	//SFC_SELECT(1);			// Set SD Card select line high (disables card for SPI)
@@ -297,10 +298,18 @@ void main(void) {
 
 	// ************  ADDED FOR IMPACT TESTER **********/
 
-	ssr_set(0, 0);			// turn on electomagnet
+	ssr_set(0, 1);			// turn on electomagnet
 	ssr_set(1, 0);			// turn off jog up
 	ssr_set(2, 0);			// turn off jog down
 	ssr_set(3, 0);			// indicate gui not connected
+
+
+	GpioDataRegs.GPADAT.bit.GPIOA0 = 0;			// Error Reset
+	GpioDataRegs.GPADAT.bit.GPIOA1 = 1;			// Master Sleep
+	GpioDataRegs.GPADAT.bit.GPIOA2 = 0;			// Alarm Reset
+	GpioDataRegs.GPADAT.bit.GPIOA3 = 0;			// Disable Mod Sleep
+	GpioDataRegs.GPADAT.bit.GPIOA4 = 0;			// Disable Bal
+
 
 	// ************  (end) ADDED FOR IMPACT TESTER **********/
 
@@ -594,6 +603,7 @@ void main(void) {
 	//==========================================================================//
 	// main loop
 	//==========================================================================//
+
 	Uint16 data[8];
 	Uint16 data2[8];
 	Uint16 data3[8];
@@ -657,7 +667,7 @@ void main(void) {
 // 			sprintf(buff_ints, "There were interrupts %d", interrupts);
 // //			printf("%s", buff_ints);
 // 		}
-		SPICANRoutine();
+//		SPICANRoutine();
 		// data[7] = SPICANReadBufs(data2, data3);
 //		should_send = SPICANReadBufs(data2, data3);
 
@@ -687,7 +697,7 @@ void main(void) {
 // 		}
 
 		// Check for any errors
-		data[6] = SPICANRead(0x2D);
+//		data[6] = SPICANRead(0x2D);
 
 		// check SW2 for reset command
 		if (!(0x0010 & INBTTN)) {
@@ -1044,18 +1054,23 @@ void main(void) {
 			//////////////////////////////////////////////////////////////////////////////////
 
 			// ************  ADDED FOR IMPACT TESTER **********/
-/*
+
 			case 'A':
 
-				sprintf(buff, "\r\nLoad Cell:            %.2f\r\n",	ad7738_getload());
+				sprintf(buff, "\r\nVoltage:            %.2f %.2f\r\n",	getSystemCapVoltageF(), (float)getSystemCapVoltage()/10.0);
 				scia_puts(buff);
-				//sprintf(buff, "Sensor State:         %d\r\n",	getspeedSens());
-				sprintf(buff, "Sensor State:         %d %d\r\n",	((*(unsigned int*)0x2000)&0x2), ((*(unsigned int*)0x2000)&0x1));
+				sprintf(buff, "ShelfV :            %.2f %.2f\r\n",	(float)getModVoltage(1,1)/10.0,(float)getModVoltage(1,2)/10.0);
 				scia_puts(buff);
-				sprintf(buff, "Encoder:              %.2f\r\n",	ad7738_getpos());
+				sprintf(buff, "ShelfT :            %.2f (%d) %.2f (%d)\r\n",	(float)getShelfMaxTemp(1)/10.0,getShelfMaxTempID(1),(float)getShelfMinTemp(1)/10.0,getShelfMinTempID(1));
 				scia_puts(buff);
 
+
+				sprintf(buff, "Current:            %.2f\r\n",	getSystemOutCurrentF());
+				scia_puts(buff);
+
+
 				break;
+/*
 			case 'J':
 
 				if (getMotorJog() == NOTJOG) {

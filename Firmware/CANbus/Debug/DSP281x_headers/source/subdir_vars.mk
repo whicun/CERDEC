@@ -10,10 +10,10 @@ OBJS += \
 ./DSP281x_headers/source/DSP281x_GlobalVariableDefs.obj 
 
 C_DEPS += \
-./DSP281x_headers/source/DSP281x_GlobalVariableDefs.d 
+./DSP281x_headers/source/DSP281x_GlobalVariableDefs.pp 
 
 C_DEPS__QUOTED += \
-"DSP281x_headers\source\DSP281x_GlobalVariableDefs.d" 
+"DSP281x_headers\source\DSP281x_GlobalVariableDefs.pp" 
 
 OBJS__QUOTED += \
 "DSP281x_headers\source\DSP281x_GlobalVariableDefs.obj" 

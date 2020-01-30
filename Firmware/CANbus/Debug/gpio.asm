@@ -1,15 +1,15 @@
 ;***************************************************************
-;* TMS320C2000 C/C++ Codegen                   PC v15.12.7.LTS *
-;* Date/Time created: Fri Dec 20 09:02:01 2019                 *
+;* TMS320C2000 C/C++ Codegen                   PC v15.12.6.LTS *
+;* Date/Time created: Mon Jan 20 11:06:02 2020                 *
 ;***************************************************************
 	.compiler_opts --abi=coffabi --float_support=softlib --hll_source=on --mem_model:code=flat --mem_model:data=large --object_format=coff --quiet --silicon_version=28 --symdebug:dwarf --symdebug:dwarf_version=3 
 FP	.set	XAR2
 
 $C$DW$CU	.dwtag  DW_TAG_compile_unit
 	.dwattr $C$DW$CU, DW_AT_name("../Source/gpio.c")
-	.dwattr $C$DW$CU, DW_AT_producer("TI TMS320C2000 C/C++ Codegen PC v15.12.7.LTS Copyright (c) 1996-2017 Texas Instruments Incorporated")
+	.dwattr $C$DW$CU, DW_AT_producer("TI TMS320C2000 C/C++ Codegen PC v15.12.6.LTS Copyright (c) 1996-2017 Texas Instruments Incorporated")
 	.dwattr $C$DW$CU, DW_AT_TI_version(0x01)
-	.dwattr $C$DW$CU, DW_AT_comp_dir("C:\Users\ebenton\Documents\CERDEC TS\Firmware\CANbus\Debug")
+	.dwattr $C$DW$CU, DW_AT_comp_dir("C:\Users\antons\workspace_v6_1\CANbus\Debug")
 $C$DW$1	.dwtag  DW_TAG_variable
 	.dwattr $C$DW$1, DW_AT_name("GpioDataRegs")
 	.dwattr $C$DW$1, DW_AT_TI_symbol_name("_GpioDataRegs")
@@ -24,8 +24,8 @@ $C$DW$2	.dwtag  DW_TAG_variable
 	.dwattr $C$DW$2, DW_AT_declaration
 	.dwattr $C$DW$2, DW_AT_external
 
-;	C:\ti\ccsv6\tools\compiler\ti-cgt-c2000_15.12.7.LTS\bin\opt2000.exe C:\\Users\\ebenton\\AppData\\Local\\Temp\\{B44CFF31-D72F-4D56-98D6-C60D17EC5E7B} C:\\Users\\ebenton\\AppData\\Local\\Temp\\{204FF788-8E77-4303-833F-5449193BACBA} 
-;	C:\ti\ccsv6\tools\compiler\ti-cgt-c2000_15.12.7.LTS\bin\ac2000.exe -@C:\\Users\\ebenton\\AppData\\Local\\Temp\\{A021B03F-E5E0-45C5-B18D-B2311A7A7AA7} 
+;	C:\ti\ccsv6\tools\compiler\ti-cgt-c2000_15.12.6.LTS\bin\opt2000.exe C:\\Users\\antons\\AppData\\Local\\Temp\\{1409ABDB-CF2E-48E6-B3FE-803778C4A07D} C:\\Users\\antons\\AppData\\Local\\Temp\\{E3A8D3BC-B0A3-4F7B-BD01-4CD2A9B60A15} 
+;	C:\ti\ccsv6\tools\compiler\ti-cgt-c2000_15.12.6.LTS\bin\ac2000.exe -@C:\\Users\\antons\\AppData\\Local\\Temp\\{59D1A8BA-36B2-4677-97C2-2607DB714A0D} 
 	.sect	".text"
 	.clink
 	.global	_gpio_init
@@ -88,10 +88,10 @@ _gpio_init:
 ;  38 | GpioMuxRegs.GPADIR.bit.GPIOA7         = 1;                             
 ;  39 | GpioMuxRegs.GPAMUX.bit.T1PWM_GPIOA6     = 0;  // SYNC_OUT (out)        
 ;  40 | GpioMuxRegs.GPADIR.bit.GPIOA6         = 1;                             
-;  41 | GpioMuxRegs.GPAMUX.bit.PWM6_GPIOA5      = 1;  // PWM6 (p)              
-;  42 | GpioMuxRegs.GPADIR.bit.GPIOA5         = 0;                             
-;  43 | GpioMuxRegs.GPAMUX.bit.PWM5_GPIOA4      = 1;  // PWM5 (p)              
-;  44 | GpioMuxRegs.GPADIR.bit.GPIOA4         = 0;                             
+;  41 | GpioMuxRegs.GPAMUX.bit.PWM6_GPIOA5      = 0;  // PWM6 (out)            
+;  42 | GpioMuxRegs.GPADIR.bit.GPIOA5         = 1;                             
+;  43 | GpioMuxRegs.GPAMUX.bit.PWM5_GPIOA4      = 0;  // PWM5 (out)            
+;  44 | GpioMuxRegs.GPADIR.bit.GPIOA4         = 1;                             
 ;  45 | GpioMuxRegs.GPAMUX.bit.PWM4_GPIOA3      = 0;  // PWM4 (out)            
 ;  46 | GpioMuxRegs.GPADIR.bit.GPIOA3         = 1;                             
 ;  47 | GpioMuxRegs.GPAMUX.bit.PWM3_GPIOA2      = 0;  // PWM3 (out)            
@@ -190,13 +190,13 @@ _gpio_init:
 	.dwpsn	file "../Source/gpio.c",line 40,column 3,is_stmt,isa 0
         OR        @_GpioMuxRegs+1,#0x0040 ; [CPU_] |40| 
 	.dwpsn	file "../Source/gpio.c",line 41,column 3,is_stmt,isa 0
-        OR        *+XAR4[0],#0x0020     ; [CPU_] |41| 
+        AND       *+XAR4[0],#0xffdf     ; [CPU_] |41| 
 	.dwpsn	file "../Source/gpio.c",line 42,column 3,is_stmt,isa 0
-        AND       @_GpioMuxRegs+1,#0xffdf ; [CPU_] |42| 
+        OR        @_GpioMuxRegs+1,#0x0020 ; [CPU_] |42| 
 	.dwpsn	file "../Source/gpio.c",line 43,column 3,is_stmt,isa 0
-        OR        *+XAR4[0],#0x0010     ; [CPU_] |43| 
+        AND       *+XAR4[0],#0xffef     ; [CPU_] |43| 
 	.dwpsn	file "../Source/gpio.c",line 44,column 3,is_stmt,isa 0
-        AND       @_GpioMuxRegs+1,#0xffef ; [CPU_] |44| 
+        OR        @_GpioMuxRegs+1,#0x0010 ; [CPU_] |44| 
 	.dwpsn	file "../Source/gpio.c",line 45,column 3,is_stmt,isa 0
         AND       *+XAR4[0],#0xfff7     ; [CPU_] |45| 
 	.dwpsn	file "../Source/gpio.c",line 46,column 3,is_stmt,isa 0

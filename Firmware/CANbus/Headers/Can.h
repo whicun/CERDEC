@@ -28,4 +28,8 @@ void processJSRGlobal(int shelf);
 void CAN_Tx_SendInformationRequest(long MC_PGN, long MC_Index);
 void sendModStatus(int shelf, int mod);
 
+void mailboxTX(long dataH, long dataL, int mailboxBit);
+
+
+
 #endif /* HEADERS_CAN_H_ */

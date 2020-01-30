@@ -1,15 +1,15 @@
 ;***************************************************************
-;* TMS320C2000 C/C++ Codegen                   PC v15.12.7.LTS *
-;* Date/Time created: Fri Dec 20 09:01:50 2019                 *
+;* TMS320C2000 C/C++ Codegen                   PC v15.12.6.LTS *
+;* Date/Time created: Mon Jan 20 11:05:46 2020                 *
 ;***************************************************************
 	.compiler_opts --abi=coffabi --float_support=softlib --hll_source=on --mem_model:code=flat --mem_model:data=large --object_format=coff --quiet --silicon_version=28 --symdebug:dwarf --symdebug:dwarf_version=3 
 FP	.set	XAR2
 
 $C$DW$CU	.dwtag  DW_TAG_compile_unit
 	.dwattr $C$DW$CU, DW_AT_name("../Source/data.c")
-	.dwattr $C$DW$CU, DW_AT_producer("TI TMS320C2000 C/C++ Codegen PC v15.12.7.LTS Copyright (c) 1996-2017 Texas Instruments Incorporated")
+	.dwattr $C$DW$CU, DW_AT_producer("TI TMS320C2000 C/C++ Codegen PC v15.12.6.LTS Copyright (c) 1996-2017 Texas Instruments Incorporated")
 	.dwattr $C$DW$CU, DW_AT_TI_version(0x01)
-	.dwattr $C$DW$CU, DW_AT_comp_dir("C:\Users\ebenton\Documents\CERDEC TS\Firmware\CANbus\Debug")
+	.dwattr $C$DW$CU, DW_AT_comp_dir("C:\Users\antons\workspace_v6_1\CANbus\Debug")
 ;**************************************************************
 ;* CINIT RECORDS                                              *
 ;**************************************************************
@@ -228,8 +228,8 @@ $C$DW$19	.dwtag  DW_TAG_variable
 	.dwattr $C$DW$19, DW_AT_type(*$C$DW$T$55)
 	.dwattr $C$DW$19, DW_AT_external
 
-;	C:\ti\ccsv6\tools\compiler\ti-cgt-c2000_15.12.7.LTS\bin\opt2000.exe C:\\Users\\ebenton\\AppData\\Local\\Temp\\{1534337D-A03B-411C-A469-5EF59D3FAC14} C:\\Users\\ebenton\\AppData\\Local\\Temp\\{9BE5E8F8-62EB-4F6A-A291-80E2DF3AF6E9} 
-;	C:\ti\ccsv6\tools\compiler\ti-cgt-c2000_15.12.7.LTS\bin\ac2000.exe -@C:\\Users\\ebenton\\AppData\\Local\\Temp\\{B8D13742-AB4E-45A6-9B5A-1BFF6477E200} 
+;	C:\ti\ccsv6\tools\compiler\ti-cgt-c2000_15.12.6.LTS\bin\opt2000.exe C:\\Users\\antons\\AppData\\Local\\Temp\\{CD87FA6B-5092-4808-9708-4907699878C0} C:\\Users\\antons\\AppData\\Local\\Temp\\{75B46F4E-589C-4832-B2D4-55DFE4CB785C} 
+;	C:\ti\ccsv6\tools\compiler\ti-cgt-c2000_15.12.6.LTS\bin\ac2000.exe -@C:\\Users\\antons\\AppData\\Local\\Temp\\{17D52EF2-9F7A-4E70-8352-E3F523647E41} 
 	.sect	".text"
 	.clink
 	.global	_prod_init
@@ -1138,17 +1138,19 @@ $C$L12:
 ; 124 | for (i = 0; i < ENC_MAX; i++) {                                        
 ;----------------------------------------------------------------------
         MOVL      XAR4,#_conf_data      ; [CPU_U] |123| 
-        MOVL      XAR0,#3214            ; [CPU_] |123| 
+        MOVL      ACC,XAR4              ; [CPU_] |123| 
+        ADD       ACC,#1607 << 1        ; [CPU_] |123| 
+        MOVL      XAR5,ACC              ; [CPU_] |123| 
         MOVL      ACC,XAR4              ; [CPU_] 
-        MOV       *+XAR4[AR0],#1024     ; [CPU_] |123| 
         ADD       ACC,#201 << 4         ; [CPU_] 
         MOVL      XAR4,ACC              ; [CPU_] 
-        MOVB      XAR6,#1               ; [CPU_] 
+        MOV       *+XAR5[0],#1024       ; [CPU_] |123| 
 	.dwpsn	file "../Source/data.c",line 125,column 3,is_stmt,isa 0
 ;----------------------------------------------------------------------
 ; 125 | conf_data.cntperin[i] = 5120;           //512 * 10;                    
 ;----------------------------------------------------------------------
         MOVL      XAR5,#5120            ; [CPU_U] |125| 
+        MOVB      XAR6,#1               ; [CPU_] 
 $C$L13:    
         MOVL      *XAR4++,XAR5          ; [CPU_] |125| 
 	.dwpsn	file "../Source/data.c",line 124,column 14,is_stmt,isa 0

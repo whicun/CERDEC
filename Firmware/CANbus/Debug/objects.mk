@@ -4,5 +4,5 @@
 
 USER_OBJS :=
 
-LIBS := -lrts2800_ml.lib -llibc.a
+LIBS := -l"rts2800_ml.lib" -l"libc.a"
 
