@@ -16,6 +16,8 @@ namespace cerdec_gui
         public const byte ModeVolt = 0x02;
         public const byte ModePower = 0x03;
 
+        public const byte SetModUpdateTime = 0xD8;
+
         public const byte GetShelfData = 0xE0;
         public const byte GetModData = 0xE1;
         public const byte ConvVoltData = 0xE2;

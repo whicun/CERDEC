@@ -168,6 +168,11 @@
             this.systemLogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewSystemLogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clearSystemLogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.setModuleUpdateTimeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.offToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.slowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mediumToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fastToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SystemGB.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -1753,23 +1758,24 @@
             // 
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.commsSetupToolStripMenuItem,
-            this.shelfErrorMessageToolStripMenuItem});
+            this.shelfErrorMessageToolStripMenuItem,
+            this.setModuleUpdateTimeToolStripMenuItem});
             this.toolsToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(57, 25);
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(59, 25);
             this.toolsToolStripMenuItem.Text = "Tools";
             // 
             // commsSetupToolStripMenuItem
             // 
             this.commsSetupToolStripMenuItem.Name = "commsSetupToolStripMenuItem";
-            this.commsSetupToolStripMenuItem.Size = new System.Drawing.Size(219, 26);
+            this.commsSetupToolStripMenuItem.Size = new System.Drawing.Size(251, 26);
             this.commsSetupToolStripMenuItem.Text = "Comms Setup";
             this.commsSetupToolStripMenuItem.Click += new System.EventHandler(this.commsSetupToolStripMenuItem_Click);
             // 
             // shelfErrorMessageToolStripMenuItem
             // 
             this.shelfErrorMessageToolStripMenuItem.Name = "shelfErrorMessageToolStripMenuItem";
-            this.shelfErrorMessageToolStripMenuItem.Size = new System.Drawing.Size(219, 26);
+            this.shelfErrorMessageToolStripMenuItem.Size = new System.Drawing.Size(251, 26);
             this.shelfErrorMessageToolStripMenuItem.Text = "Shelf Error Message";
             this.shelfErrorMessageToolStripMenuItem.Click += new System.EventHandler(this.ShelfErrorMessageToolStripMenuItem_Click);
             // 
@@ -1789,7 +1795,7 @@
             this.viewUsersLogToolStripMenuItem,
             this.clearUsersLogToolStripMenuItem});
             this.userLogToolStripMenuItem.Name = "userLogToolStripMenuItem";
-            this.userLogToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.userLogToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
             this.userLogToolStripMenuItem.Text = "User";
             this.userLogToolStripMenuItem.Click += new System.EventHandler(this.UserLogToolStripMenuItem_Click);
             // 
@@ -1813,23 +1819,58 @@
             this.viewSystemLogToolStripMenuItem,
             this.clearSystemLogToolStripMenuItem});
             this.systemLogToolStripMenuItem.Name = "systemLogToolStripMenuItem";
-            this.systemLogToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.systemLogToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
             this.systemLogToolStripMenuItem.Text = "System";
             this.systemLogToolStripMenuItem.Click += new System.EventHandler(this.SystemLogToolStripMenuItem_Click);
             // 
             // viewSystemLogToolStripMenuItem
             // 
             this.viewSystemLogToolStripMenuItem.Name = "viewSystemLogToolStripMenuItem";
-            this.viewSystemLogToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.viewSystemLogToolStripMenuItem.Size = new System.Drawing.Size(116, 26);
             this.viewSystemLogToolStripMenuItem.Text = "View";
             this.viewSystemLogToolStripMenuItem.Click += new System.EventHandler(this.ViewSystemLogToolStripMenuItem_Click);
             // 
             // clearSystemLogToolStripMenuItem
             // 
             this.clearSystemLogToolStripMenuItem.Name = "clearSystemLogToolStripMenuItem";
-            this.clearSystemLogToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.clearSystemLogToolStripMenuItem.Size = new System.Drawing.Size(116, 26);
             this.clearSystemLogToolStripMenuItem.Text = "Clear";
             this.clearSystemLogToolStripMenuItem.Click += new System.EventHandler(this.ClearSystemLogToolStripMenuItem_Click);
+            // 
+            // setModuleUpdateTimeToolStripMenuItem
+            // 
+            this.setModuleUpdateTimeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.offToolStripMenuItem,
+            this.slowToolStripMenuItem,
+            this.mediumToolStripMenuItem,
+            this.fastToolStripMenuItem});
+            this.setModuleUpdateTimeToolStripMenuItem.Name = "setModuleUpdateTimeToolStripMenuItem";
+            this.setModuleUpdateTimeToolStripMenuItem.Size = new System.Drawing.Size(251, 26);
+            this.setModuleUpdateTimeToolStripMenuItem.Text = "Set Module Update Time";
+            // 
+            // offToolStripMenuItem
+            // 
+            this.offToolStripMenuItem.Name = "offToolStripMenuItem";
+            this.offToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
+            this.offToolStripMenuItem.Text = "Off";
+            // 
+            // slowToolStripMenuItem
+            // 
+            this.slowToolStripMenuItem.Name = "slowToolStripMenuItem";
+            this.slowToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
+            this.slowToolStripMenuItem.Text = "Slow";
+            // 
+            // mediumToolStripMenuItem
+            // 
+            this.mediumToolStripMenuItem.Name = "mediumToolStripMenuItem";
+            this.mediumToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
+            this.mediumToolStripMenuItem.Text = "Medium";
+            // 
+            // fastToolStripMenuItem
+            // 
+            this.fastToolStripMenuItem.Name = "fastToolStripMenuItem";
+            this.fastToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
+            this.fastToolStripMenuItem.Text = "Fast";
             // 
             // MainForm
             // 
@@ -2029,6 +2070,11 @@
         private System.Windows.Forms.ToolStripMenuItem shelfToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem currentModuleToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem shelfErrorMessageToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem setModuleUpdateTimeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem offToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem slowToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mediumToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem fastToolStripMenuItem;
     }
 }
 
