@@ -35,6 +35,7 @@ Source/ad7738.obj: C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers
 Source/ad7738.obj: C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/can.h
 Source/ad7738.obj: C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/CAN_PCKA.h
 Source/ad7738.obj: C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/System_Object.h
+Source/ad7738.obj: C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/spican.h
 
 ../Source/ad7738.c: 
 C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/DSP281x_headers/include/DSP281x_Device.h: 
@@ -71,3 +72,4 @@ C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/sci.h:
 C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/can.h: 
 C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/CAN_PCKA.h: 
 C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/System_Object.h: 
+C:/Users/ebenton/Documents/CERDEC\ TS/Firmware/CANbus/Headers/spican.h: 

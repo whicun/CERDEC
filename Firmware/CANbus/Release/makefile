@@ -4,7 +4,7 @@
 
 SHELL = cmd.exe
 
-CG_TOOL_ROOT := C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.4.LTS
+CG_TOOL_ROOT := C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.7.LTS
 
 GEN_OPTS__FLAG := 
 GEN_CMDS__FLAG := 
@@ -22,6 +22,7 @@ ORDERED_OBJS += \
 "C:/ESL/ProD/code/GL/Release/DSP281x_GlobalVariableDefs.obj" \
 "C:/ESL/ProD/code/GL/Release/CAN_PCKA.obj" \
 "C:/ESL/ProD/code/GL/Release/DSP281x_ECan.obj" \
+"C:/ESL/ProD/code/GL/Release/SPICAN.obj" \
 "C:/ESL/ProD/code/GL/Release/System_Object.obj" \
 "C:/ESL/ProD/code/GL/Release/ad7738.obj" \
 "C:/ESL/ProD/code/GL/Release/data.obj" \
@@ -186,22 +187,22 @@ all: Example_281xCpuTimer.out
 Example_281xCpuTimer.out: $(OBJS) $(CMD_SRCS) $(LIB_SRCS) $(GEN_CMDS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: C2000 Linker'
-	"C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.4.LTS/bin/cl2000" -v28 -ml -mt -O3 -g --define="LARGE_MODEL" --quiet --diag_warning=225 --obj_directory="C:/ESL/ProD/code/GL/Release" -z -m"loadcellSDHC.map" --warn_sections -i"C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.4.LTS/lib" -i"C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.4.LTS/include" -i"C:/Users/ebenton/Documents/CERDEC TS/Firmware/CANbus" --reread_libs --xml_link_info="Example_281xCpuTimer_linkInfo.xml" --rom_model -o "Example_281xCpuTimer.out" $(ORDERED_OBJS)
+	"C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.7.LTS/bin/cl2000" -v28 -ml -mt -O3 -g --define="LARGE_MODEL" --quiet --diag_warning=225 --obj_directory="C:/ESL/ProD/code/GL/Release" -z -m"loadcellSDHC.map" --warn_sections -i"C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.7.LTS/lib" -i"C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.7.LTS/include" -i"C:/Users/ebenton/Documents/CERDEC TS/Firmware/CANbus" --reread_libs --xml_link_info="Example_281xCpuTimer_linkInfo.xml" --rom_model -o "Example_281xCpuTimer.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
 Example_281xCpuTimer.hex: $(EXE_OUTPUTS)
 	@echo 'Invoking: C2000 Hex Utility'
-	"C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.4.LTS/bin/hex2000"  -o "Example_281xCpuTimer.hex" $(EXE_OUTPUTS__QUOTED)
+	"C:/ti/ccsv6/tools/compiler/ti-cgt-c2000_15.12.7.LTS/bin/hex2000"  -o "Example_281xCpuTimer.hex" $(EXE_OUTPUTS__QUOTED)
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
 	-$(RM) $(EXE_OUTPUTS__QUOTED)$(BIN_OUTPUTS__QUOTED)
-	-$(RM) "DSP281x_common\source\DSP281x_DefaultIsr.d" "DSP281x_common\source\DSP281x_PieCtrl.d" "DSP281x_common\source\DSP281x_PieVect.d" "DSP281x_headers\source\DSP281x_GlobalVariableDefs.d" "Source\CAN_PCKA.d" "Source\DSP281x_ECan.d" "Source\System_Object.d" "Source\ad7738.d" "Source\data.d" "Source\diskio.d" "Source\dl.d" "Source\ds1wire.d" "Source\extio.d" "Source\ff.d" "Source\flash.d" "Source\gpio.d" "Source\lcd.d" "Source\led.d" "Source\mcbsp.d" "Source\motor.d" "Source\prod.d" "Source\qep.d" "Source\sci.d" "Source\spi.d" "Source\system.d" 
-	-$(RM) "C:\ESL\ProD\code\GL\Release\SetDBGIER.obj" "C:\ESL\ProD\code\GL\Release\delay_us.obj" "C:\ESL\ProD\code\GL\Release\passwords.obj" "C:\ESL\ProD\code\GL\Release\reboot.obj" "C:\ESL\ProD\code\GL\Release\DSP281x_CodeStartBranch.obj" "C:\ESL\ProD\code\GL\Release\DSP281x_DefaultIsr.obj" "C:\ESL\ProD\code\GL\Release\DSP281x_PieCtrl.obj" "C:\ESL\ProD\code\GL\Release\DSP281x_PieVect.obj" "C:\ESL\ProD\code\GL\Release\DSP281x_GlobalVariableDefs.obj" "C:\ESL\ProD\code\GL\Release\CAN_PCKA.obj" "C:\ESL\ProD\code\GL\Release\DSP281x_ECan.obj" "C:\ESL\ProD\code\GL\Release\System_Object.obj" "C:\ESL\ProD\code\GL\Release\ad7738.obj" "C:\ESL\ProD\code\GL\Release\data.obj" "C:\ESL\ProD\code\GL\Release\diskio.obj" "C:\ESL\ProD\code\GL\Release\dl.obj" "C:\ESL\ProD\code\GL\Release\ds1wire.obj" "C:\ESL\ProD\code\GL\Release\extio.obj" "C:\ESL\ProD\code\GL\Release\ff.obj" "C:\ESL\ProD\code\GL\Release\flash.obj" "C:\ESL\ProD\code\GL\Release\gpio.obj" "C:\ESL\ProD\code\GL\Release\lcd.obj" "C:\ESL\ProD\code\GL\Release\led.obj" 
-	-$(RM) "C:\ESL\ProD\code\GL\Release\mcbsp.obj" "C:\ESL\ProD\code\GL\Release\motor.obj" "C:\ESL\ProD\code\GL\Release\prod.obj" "C:\ESL\ProD\code\GL\Release\qep.obj" "C:\ESL\ProD\code\GL\Release\sci.obj" "C:\ESL\ProD\code\GL\Release\spi.obj" "C:\ESL\ProD\code\GL\Release\system.obj" 
+	-$(RM) "DSP281x_common\source\DSP281x_DefaultIsr.d" "DSP281x_common\source\DSP281x_PieCtrl.d" "DSP281x_common\source\DSP281x_PieVect.d" "DSP281x_headers\source\DSP281x_GlobalVariableDefs.d" "Source\CAN_PCKA.d" "Source\DSP281x_ECan.d" "Source\SPICAN.d" "Source\System_Object.d" "Source\ad7738.d" "Source\data.d" "Source\diskio.d" "Source\dl.d" "Source\ds1wire.d" "Source\extio.d" "Source\ff.d" "Source\flash.d" "Source\gpio.d" "Source\lcd.d" "Source\led.d" "Source\mcbsp.d" "Source\motor.d" "Source\prod.d" "Source\qep.d" "Source\sci.d" "Source\spi.d" "Source\system.d" 
+	-$(RM) "C:\ESL\ProD\code\GL\Release\SetDBGIER.obj" "C:\ESL\ProD\code\GL\Release\delay_us.obj" "C:\ESL\ProD\code\GL\Release\passwords.obj" "C:\ESL\ProD\code\GL\Release\reboot.obj" "C:\ESL\ProD\code\GL\Release\DSP281x_CodeStartBranch.obj" "C:\ESL\ProD\code\GL\Release\DSP281x_DefaultIsr.obj" "C:\ESL\ProD\code\GL\Release\DSP281x_PieCtrl.obj" "C:\ESL\ProD\code\GL\Release\DSP281x_PieVect.obj" "C:\ESL\ProD\code\GL\Release\DSP281x_GlobalVariableDefs.obj" "C:\ESL\ProD\code\GL\Release\CAN_PCKA.obj" "C:\ESL\ProD\code\GL\Release\DSP281x_ECan.obj" "C:\ESL\ProD\code\GL\Release\SPICAN.obj" "C:\ESL\ProD\code\GL\Release\System_Object.obj" "C:\ESL\ProD\code\GL\Release\ad7738.obj" "C:\ESL\ProD\code\GL\Release\data.obj" "C:\ESL\ProD\code\GL\Release\diskio.obj" "C:\ESL\ProD\code\GL\Release\dl.obj" "C:\ESL\ProD\code\GL\Release\ds1wire.obj" "C:\ESL\ProD\code\GL\Release\extio.obj" "C:\ESL\ProD\code\GL\Release\ff.obj" "C:\ESL\ProD\code\GL\Release\flash.obj" "C:\ESL\ProD\code\GL\Release\gpio.obj" "C:\ESL\ProD\code\GL\Release\lcd.obj" 
+	-$(RM) "C:\ESL\ProD\code\GL\Release\led.obj" "C:\ESL\ProD\code\GL\Release\mcbsp.obj" "C:\ESL\ProD\code\GL\Release\motor.obj" "C:\ESL\ProD\code\GL\Release\prod.obj" "C:\ESL\ProD\code\GL\Release\qep.obj" "C:\ESL\ProD\code\GL\Release\sci.obj" "C:\ESL\ProD\code\GL\Release\spi.obj" "C:\ESL\ProD\code\GL\Release\system.obj" 
 	-$(RM) "ASM\SetDBGIER.d" "ASM\delay_us.d" "ASM\passwords.d" "ASM\reboot.d" "DSP281x_common\source\DSP281x_CodeStartBranch.d" 
 	-@echo 'Finished clean'
 	-@echo ' '

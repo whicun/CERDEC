@@ -71,7 +71,7 @@ void setSystemMode(Uint16 mode)
 	return;
 }
 //getSystemIsoRelay
-Uint16 getSystemIsRelay()
+Uint16 getSystemIsoRelay()
 {
 	return System.isoRelay;
 }

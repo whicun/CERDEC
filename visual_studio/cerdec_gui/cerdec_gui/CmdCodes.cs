@@ -8,8 +8,20 @@ namespace cerdec_gui
 {
     public class CmdCodes
     {
-        public const byte GetShelfInfo = 0x70;
-        public const byte GetModInfo = 0xD0;
+        public const byte GetESDInfo = 0xD4;
+        public const byte SetCurrMod = 0xD6;
+        public const byte SetCMDMode = 0xD7;
+        public const byte ModeOff = 0x00;
+        public const byte ModeIdle = 0x01;
+        public const byte ModeVolt = 0x02;
+        public const byte ModePower = 0x03;
+
+        public const byte GetShelfData = 0xE0;
+        public const byte GetModData = 0xE1;
+        public const byte ConvVoltData = 0xE2;
+        public const byte ConvCurrData = 0xE3;
+        public const byte ConvTempData = 0xE4;
+        public const byte ConvStat = 0xE5;
 
         public const byte CheckAddress = 0x10;
         public const byte SetAddress = 0x11;

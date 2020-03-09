@@ -1495,6 +1495,43 @@ namespace ICDIBasic
             return PCANBasic.Write(m_PcanHandle, ref CANMsg);
         }
 
+        private TPCANStatus WriteTest()
+        {
+            TPCANMsg CANMsg;
+            TextBox txtbCurrentTextBox;
+
+            // We create a TPCANMsg message structure 
+            //
+            CANMsg = new TPCANMsg();
+            CANMsg.DATA = new byte[8];
+
+            // We configurate the Message.  The ID,
+            // Length of the Data, Message Type
+            // and the data
+            //
+            CANMsg.ID = Convert.ToUInt32(txtID.Text, 16);
+            CANMsg.LEN = Convert.ToByte(nudLength.Value);
+            CANMsg.MSGTYPE = (chbExtended.Checked) ? TPCANMessageType.PCAN_MESSAGE_EXTENDED : TPCANMessageType.PCAN_MESSAGE_STANDARD;
+            // If a remote frame will be sent, the data bytes are not important.
+            //
+            if (chbRemote.Checked)
+                CANMsg.MSGTYPE |= TPCANMessageType.PCAN_MESSAGE_RTR;
+            else
+            {
+                // We get so much data as the Len of the message
+                //
+                for (int i = 0; i < GetLengthFromDLC(CANMsg.LEN, true); i++)
+                {
+                    txtbCurrentTextBox = (TextBox)this.Controls.Find("txtData" + i.ToString(), true)[0];
+                    CANMsg.DATA[i] = Convert.ToByte(txtbCurrentTextBox.Text, 16);
+                }
+            }
+
+            // The message is sent to the configured hardware
+            //
+            return PCANBasic.Write(m_PcanHandle, ref CANMsg);
+        }
+
         private TPCANStatus WriteFrameFD()
         {
             TPCANMsgFD CANMsg;
@@ -1538,6 +1575,24 @@ namespace ICDIBasic
         }
 
         private void btnWrite_Click(object sender, EventArgs e)
+        {
+            TPCANStatus stsResult;
+
+            // Send the message
+            //
+            stsResult = m_IsFD ? WriteFrameFD() : WriteFrame();
+
+            // The message was successfully sent
+            //
+            if (stsResult == TPCANStatus.PCAN_ERROR_OK)
+                IncludeTextMessage("Message was successfully SENT");
+            // An error occurred.  We show the error.
+            //			
+            else
+                MessageBox.Show(GetFormatedError(stsResult));
+        }
+
+        private void ESLTestButton_Click(object sender, EventArgs e)
         {
             TPCANStatus stsResult;
 
@@ -1891,6 +1946,8 @@ namespace ICDIBasic
             }
         }
         #endregion        
+
+        
         #endregion        
         #endregion        
     }

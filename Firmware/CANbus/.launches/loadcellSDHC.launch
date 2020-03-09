@@ -8,7 +8,7 @@
 <stringAttribute key="com.ti.ccstudio.debug.debugModel.ATTR_PROJECT.Spectrum Digital XDS510USB Emulator_0/C28xx" value="loadcellSDHC"/>
 <stringAttribute key="com.ti.ccstudio.debug.debugModel.ATTR_PROJECT.Texas Instruments XDS2xx USB Debug Probe/C28xx" value="loadcellSDHC"/>
 <stringAttribute key="com.ti.ccstudio.debug.debugModel.ATTR_TARGET_CONFIG" value="${target_config_active_default:loadcellSDHC}"/>
-<stringAttribute key="com.ti.ccstudio.debug.debugModel.MRU_PROGRAM.Spectrum Digital XDS510USB Emulator_0/C28xx" value="C:/Users\antons\Desktop\testing\loadcellSDHC\Debug\loadcell.out"/>
+<stringAttribute key="com.ti.ccstudio.debug.debugModel.MRU_PROGRAM.Spectrum Digital XDS510USB Emulator_0/C28xx" value="P:/M4363\For Kyle\M4358 Dynamic Data Acquisition\4363_FW\Debug\loadcell.out"/>
 <stringAttribute key="com.ti.ccstudio.debug.debugModel.MRU_PROGRAM.Texas Instruments XDS2xx USB Debug Probe/C28xx" value="F:/WayneDuponts_Project_Code\M4358_PROD\FIRMWARE\trunk\code\Debug\loadcell.out"/>
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
 <listEntry value="/loadcellSDHC"/>

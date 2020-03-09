@@ -6,6 +6,7 @@
 C_SRCS += \
 ../Source/CAN_PCKA.c \
 ../Source/DSP281x_ECan.c \
+../Source/SPICAN.c \
 ../Source/System_Object.c \
 ../Source/ad7738.c \
 ../Source/data.c \
@@ -29,6 +30,7 @@ C_SRCS += \
 OBJS += \
 C:/ESL/ProD/code/GL/Release/CAN_PCKA.obj \
 C:/ESL/ProD/code/GL/Release/DSP281x_ECan.obj \
+C:/ESL/ProD/code/GL/Release/SPICAN.obj \
 C:/ESL/ProD/code/GL/Release/System_Object.obj \
 C:/ESL/ProD/code/GL/Release/ad7738.obj \
 C:/ESL/ProD/code/GL/Release/data.obj \
@@ -52,6 +54,7 @@ C:/ESL/ProD/code/GL/Release/system.obj
 C_DEPS += \
 ./Source/CAN_PCKA.d \
 ./Source/DSP281x_ECan.d \
+./Source/SPICAN.d \
 ./Source/System_Object.d \
 ./Source/ad7738.d \
 ./Source/data.d \
@@ -75,6 +78,7 @@ C_DEPS += \
 C_DEPS__QUOTED += \
 "Source\CAN_PCKA.d" \
 "Source\DSP281x_ECan.d" \
+"Source\SPICAN.d" \
 "Source\System_Object.d" \
 "Source\ad7738.d" \
 "Source\data.d" \
@@ -98,6 +102,7 @@ C_DEPS__QUOTED += \
 OBJS__QUOTED += \
 "C:\ESL\ProD\code\GL\Release\CAN_PCKA.obj" \
 "C:\ESL\ProD\code\GL\Release\DSP281x_ECan.obj" \
+"C:\ESL\ProD\code\GL\Release\SPICAN.obj" \
 "C:\ESL\ProD\code\GL\Release\System_Object.obj" \
 "C:\ESL\ProD\code\GL\Release\ad7738.obj" \
 "C:\ESL\ProD\code\GL\Release\data.obj" \
@@ -121,6 +126,7 @@ OBJS__QUOTED += \
 C_SRCS__QUOTED += \
 "../Source/CAN_PCKA.c" \
 "../Source/DSP281x_ECan.c" \
+"../Source/SPICAN.c" \
 "../Source/System_Object.c" \
 "../Source/ad7738.c" \
 "../Source/data.c" \

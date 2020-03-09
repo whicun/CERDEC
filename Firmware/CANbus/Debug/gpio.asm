@@ -1,15 +1,15 @@
 ;***************************************************************
-;* TMS320C2000 C/C++ Codegen                   PC v15.12.6.LTS *
-;* Date/Time created: Mon Jan 20 11:06:02 2020                 *
+;* TMS320C2000 C/C++ Codegen                   PC v15.12.7.LTS *
+;* Date/Time created: Thu Feb 06 15:25:59 2020                 *
 ;***************************************************************
 	.compiler_opts --abi=coffabi --float_support=softlib --hll_source=on --mem_model:code=flat --mem_model:data=large --object_format=coff --quiet --silicon_version=28 --symdebug:dwarf --symdebug:dwarf_version=3 
 FP	.set	XAR2
 
 $C$DW$CU	.dwtag  DW_TAG_compile_unit
 	.dwattr $C$DW$CU, DW_AT_name("../Source/gpio.c")
-	.dwattr $C$DW$CU, DW_AT_producer("TI TMS320C2000 C/C++ Codegen PC v15.12.6.LTS Copyright (c) 1996-2017 Texas Instruments Incorporated")
+	.dwattr $C$DW$CU, DW_AT_producer("TI TMS320C2000 C/C++ Codegen PC v15.12.7.LTS Copyright (c) 1996-2017 Texas Instruments Incorporated")
 	.dwattr $C$DW$CU, DW_AT_TI_version(0x01)
-	.dwattr $C$DW$CU, DW_AT_comp_dir("C:\Users\antons\workspace_v6_1\CANbus\Debug")
+	.dwattr $C$DW$CU, DW_AT_comp_dir("C:\Users\ebenton\Documents\CERDEC TS\Firmware\CANbus\Debug")
 $C$DW$1	.dwtag  DW_TAG_variable
 	.dwattr $C$DW$1, DW_AT_name("GpioDataRegs")
 	.dwattr $C$DW$1, DW_AT_TI_symbol_name("_GpioDataRegs")
@@ -24,8 +24,8 @@ $C$DW$2	.dwtag  DW_TAG_variable
 	.dwattr $C$DW$2, DW_AT_declaration
 	.dwattr $C$DW$2, DW_AT_external
 
-;	C:\ti\ccsv6\tools\compiler\ti-cgt-c2000_15.12.6.LTS\bin\opt2000.exe C:\\Users\\antons\\AppData\\Local\\Temp\\{1409ABDB-CF2E-48E6-B3FE-803778C4A07D} C:\\Users\\antons\\AppData\\Local\\Temp\\{E3A8D3BC-B0A3-4F7B-BD01-4CD2A9B60A15} 
-;	C:\ti\ccsv6\tools\compiler\ti-cgt-c2000_15.12.6.LTS\bin\ac2000.exe -@C:\\Users\\antons\\AppData\\Local\\Temp\\{59D1A8BA-36B2-4677-97C2-2607DB714A0D} 
+;	C:\ti\ccsv6\tools\compiler\ti-cgt-c2000_15.12.7.LTS\bin\opt2000.exe C:\\Users\\ebenton\\AppData\\Local\\Temp\\{1FDEA9C5-FAB9-4269-BEB1-C822FE822A46} C:\\Users\\ebenton\\AppData\\Local\\Temp\\{96B7DA47-FADA-4ABA-AC4B-B5BE4803CEB5} 
+;	C:\ti\ccsv6\tools\compiler\ti-cgt-c2000_15.12.7.LTS\bin\ac2000.exe -@C:\\Users\\ebenton\\AppData\\Local\\Temp\\{BB7A15AE-C61B-436E-A381-9D50D7C6A979} 
 	.sect	".text"
 	.clink
 	.global	_gpio_init

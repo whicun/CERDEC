@@ -11,9 +11,9 @@ namespace cerdec_gui
 
     class CommsLib
     {
-        public static byte STX = 0xAA;
-        public static byte ETX = 0xBB;
-        public static byte ESC = 0xDD;
+        public static byte STX = 0x02;
+        public static byte ETX = 0x03;
+        public static byte ESC = 0x1b;
 
         private processDataRx process_decoded = null;
         private CommsCon phys_connection = null;
@@ -78,17 +78,19 @@ namespace cerdec_gui
         {
             if (phys_connection != null)
             {
+                /*
                 byte[] cmd = new byte[2];
                 cmd[0] = 0;
                 cmd[1] = CmdCodes.StopStream;
                 send_cmd(cmd);
-
+                
                 System.Threading.Thread.Sleep(500);
                 cmd[0] = 0;
                 cmd[1] = CmdCodes.SwitchToASCII;
                 send_cmd(cmd);
-
                 System.Threading.Thread.Sleep(500);
+                */
+
                 phys_connection.close();
             }
         }

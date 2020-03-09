@@ -2,24 +2,31 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Timers;
 using System.Threading.Tasks;
 
 namespace cerdec_gui
 {
 
-    class Shelf
+    public class Shelf
     {
-        private float volt_total;
+        private float volt_tot;
+        private Queue<float> volt_tots = new Queue<float>();
 
         private float temp_avg;
         private float temp_max;
         private float temp_min;
+        private Queue<float> temp_avgs = new Queue<float>();
+        private Queue<float> temp_maxs = new Queue<float>();
+        private Queue<float> temp_mins = new Queue<float>();
+        private Queue<DateTime> times = new Queue<DateTime>();
+        private bool is_recording;
 
         private int temp_max_id;
         private int temp_min_id;
 
-        private byte alarms_errors;
-        private byte error_code;
+        private int alarms_errors;
+        private int error_code;
         private string error_message;
 
         // ===================
@@ -28,11 +35,13 @@ namespace cerdec_gui
 
         public Shelf()
         {
-            volt_total = 0.0F;
+            volt_tot = 0.0F;
 
             temp_avg = 0.0F;
             temp_max = 0.0F;
             temp_min = 0.0F;
+
+            is_recording = true;
 
             temp_max_id = 0;
             temp_min_id = 0;
@@ -46,10 +55,10 @@ namespace cerdec_gui
         // = Getters/Setters =
         // ===================
 
-        public float Volt_total
+        public float Volt_tot
         {
-            get { return volt_total; }
-            set { volt_total = value; }
+            get { return volt_tot; }
+            set { volt_tot = value; }
         }
 
         public float Temp_min
@@ -82,13 +91,13 @@ namespace cerdec_gui
             set { temp_max_id = value; }
         }
 
-        public byte Alarms_errors
+        public int Alarms_errors
         {
             get { return alarms_errors; }
             set { alarms_errors = value; }
         }
 
-        public byte Error_code
+        public int Error_code
         {
             get { return error_code; }
             set { error_code = value; }
@@ -99,6 +108,33 @@ namespace cerdec_gui
             get { return error_message; }
             set { error_message = value; }
         }
+
+        public Queue<float> Volt_tots
+        {
+            get { return volt_tots; }
+            set { volt_tots = value; }
+        }
+
+        public Queue<float> Temp_avgs
+        {
+            get { return temp_avgs; }
+            set { temp_avgs = value; }
+        }
+
+        public Queue<float> Temp_maxs
+        {
+            get { return temp_maxs; }
+            set { temp_maxs = value; }
+        }
+
+        public Queue<float> Temp_mins
+        {
+            get { return temp_mins; }
+            set { temp_mins = value; }
+        }
+
+        public Queue<DateTime> Times { get => times; set => times = value; }
+        public bool Is_recording { get => is_recording; set => is_recording = value; }
 
         // ===================
         // ===== Parsers =====
@@ -131,7 +167,7 @@ namespace cerdec_gui
                 {
                     case 0xF1:
                     case 0xF2:
-                        message = "MC: ROM Error";
+                        message = "Master Controller: ROM Error";
                         break;
 
                     case 0xF5:
@@ -139,7 +175,7 @@ namespace cerdec_gui
                     case 0xF7:
                     case 0xF8:
                     case 0xF9:
-                        message = "MC: Communication error to any module";
+                        message = "Master Controller: Communication error to any module";
                         break;
                     default:
                         break;
@@ -147,12 +183,13 @@ namespace cerdec_gui
             }
             else
             {
-                int mod_id = ((error_code & 0xF0) >> 8);
+                int mod_id = ((error_code & 0xF0) >> 4);
+                mod_id++;
                 switch (error_code & 0x0F)
                 {
                     case 0x1:
                     case 0x9:
-                        message = "Mod " + mod_id.ToString() + ": Communication error to MC";
+                        message = "Mod " + mod_id.ToString() + ": Communication error to Master Controller";
                         break;
                     case 0x2:
                         message = "Mod " + mod_id.ToString() + ": Communication error between ICs";
@@ -177,14 +214,94 @@ namespace cerdec_gui
                         break;
                 }
             }
-            
 
+            Error_message = message;
             return message;
         }
 
         // ===================
         // === Class Funcs ===
         // ===================
+
+        public void dequeue_old_data()
+        {
+            int thirty_seconds_data = 30 * 1000 / 50;
+            if (Volt_tots.Count > thirty_seconds_data)
+                Volt_tots.Dequeue();
+
+            if (Temp_avgs.Count > thirty_seconds_data)
+                Temp_avgs.Dequeue();
+
+            if (Temp_maxs.Count > thirty_seconds_data)
+                Temp_maxs.Dequeue();
+
+            if (Temp_mins.Count > thirty_seconds_data)
+                Temp_mins.Dequeue();
+
+            if (Times.Count > thirty_seconds_data)
+                Times.Dequeue();
+
+        }
+
+        public void enqueue_data()
+        {
+            if (!is_recording)
+                return;
+
+            dequeue_old_data();
+            Volt_tots.Enqueue(Volt_tot);
+            Temp_avgs.Enqueue(Temp_avg);
+            Temp_maxs.Enqueue(Temp_max);
+            Temp_mins.Enqueue(Temp_min);
+        }
+
+        public void enqueue_data(DateTime time)
+        {
+            if (!is_recording)
+                return;
+
+            dequeue_old_data();
+            Volt_tots.Enqueue(Volt_tot);
+            Temp_avgs.Enqueue(Temp_avg);
+            Temp_maxs.Enqueue(Temp_max);
+            Temp_mins.Enqueue(Temp_min);
+            Times.Enqueue(time);
+        }
+
+        public void clear_queues()
+        {
+            Volt_tots.Clear();
+            Temp_avgs.Clear();
+            Temp_maxs.Clear();
+            Temp_mins.Clear();
+            Times.Clear();
+        }
+
+        public List<Queue<float>> data_for_graph()
+        {
+            List<Queue<float>> gift = new List<Queue<float>>
+            {
+                Volt_tots,
+                Temp_avgs,
+                Temp_maxs,
+                Temp_mins
+            };
+
+            return gift;
+        }
+
+        public List<string> names_for_graph()
+        {
+            List<string> names = new List<string>
+            {
+                "Voltage (V)",
+                "Avg. Temp (°F)",
+                "Max Temp (°F)",
+                "Min Temp (°F)"
+            };
+
+            return names;
+        }
 
     }
 }

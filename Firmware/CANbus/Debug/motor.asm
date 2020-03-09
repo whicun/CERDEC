@@ -1,15 +1,15 @@
 ;***************************************************************
-;* TMS320C2000 C/C++ Codegen                   PC v15.12.6.LTS *
-;* Date/Time created: Mon Jan 20 11:06:06 2020                 *
+;* TMS320C2000 C/C++ Codegen                   PC v15.12.7.LTS *
+;* Date/Time created: Thu Feb 06 15:26:04 2020                 *
 ;***************************************************************
 	.compiler_opts --abi=coffabi --float_support=softlib --hll_source=on --mem_model:code=flat --mem_model:data=large --object_format=coff --quiet --silicon_version=28 --symdebug:dwarf --symdebug:dwarf_version=3 
 FP	.set	XAR2
 
 $C$DW$CU	.dwtag  DW_TAG_compile_unit
 	.dwattr $C$DW$CU, DW_AT_name("../Source/motor.c")
-	.dwattr $C$DW$CU, DW_AT_producer("TI TMS320C2000 C/C++ Codegen PC v15.12.6.LTS Copyright (c) 1996-2017 Texas Instruments Incorporated")
+	.dwattr $C$DW$CU, DW_AT_producer("TI TMS320C2000 C/C++ Codegen PC v15.12.7.LTS Copyright (c) 1996-2017 Texas Instruments Incorporated")
 	.dwattr $C$DW$CU, DW_AT_TI_version(0x01)
-	.dwattr $C$DW$CU, DW_AT_comp_dir("C:\Users\antons\workspace_v6_1\CANbus\Debug")
+	.dwattr $C$DW$CU, DW_AT_comp_dir("C:\Users\ebenton\Documents\CERDEC TS\Firmware\CANbus\Debug")
 ;**************************************************************
 ;* CINIT RECORDS                                              *
 ;**************************************************************
@@ -87,8 +87,8 @@ $C$DW$7	.dwtag  DW_TAG_variable
 	.dwattr $C$DW$7, DW_AT_type(*$C$DW$T$16)
 	.dwattr $C$DW$7, DW_AT_external
 
-;	C:\ti\ccsv6\tools\compiler\ti-cgt-c2000_15.12.6.LTS\bin\opt2000.exe C:\\Users\\antons\\AppData\\Local\\Temp\\{5B64D135-7440-4B81-BFD4-6201E102F0AC} C:\\Users\\antons\\AppData\\Local\\Temp\\{F8666ACA-DC52-4E89-B793-331BB2B0ECB2} 
-;	C:\ti\ccsv6\tools\compiler\ti-cgt-c2000_15.12.6.LTS\bin\ac2000.exe -@C:\\Users\\antons\\AppData\\Local\\Temp\\{3745614D-B174-41A8-B97B-0B30B96408D0} 
+;	C:\ti\ccsv6\tools\compiler\ti-cgt-c2000_15.12.7.LTS\bin\opt2000.exe C:\\Users\\ebenton\\AppData\\Local\\Temp\\{978379F9-995C-4E0B-89BC-14E914AEF413} C:\\Users\\ebenton\\AppData\\Local\\Temp\\{7331AA60-B33D-4D63-B90E-3EDF0644D95D} 
+;	C:\ti\ccsv6\tools\compiler\ti-cgt-c2000_15.12.7.LTS\bin\ac2000.exe -@C:\\Users\\ebenton\\AppData\\Local\\Temp\\{EE4BE781-895C-4A45-ADC2-309E00F33E31} 
 	.sect	".text"
 	.clink
 	.global	_setautoHeightEnable

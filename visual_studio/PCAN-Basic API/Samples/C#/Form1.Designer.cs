@@ -166,6 +166,7 @@
             this.nudLength = new System.Windows.Forms.NumericUpDown();
             this.tmrRead = new System.Windows.Forms.Timer(this.components);
             this.tmrDisplay = new System.Windows.Forms.Timer(this.components);
+            this.ESLTestButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudIdTo)).BeginInit();
@@ -940,6 +941,7 @@
             // 
             this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox6.Controls.Add(this.ESLTestButton);
             this.groupBox6.Controls.Add(this.label5);
             this.groupBox6.Controls.Add(this.laLength);
             this.groupBox6.Controls.Add(this.label3);
@@ -2057,6 +2059,16 @@
             // 
             this.tmrDisplay.Tick += new System.EventHandler(this.tmrDisplay_Tick);
             // 
+            // ESLTestButton
+            // 
+            this.ESLTestButton.Location = new System.Drawing.Point(639, 120);
+            this.ESLTestButton.Name = "ESLTestButton";
+            this.ESLTestButton.Size = new System.Drawing.Size(65, 23);
+            this.ESLTestButton.TabIndex = 60;
+            this.ESLTestButton.Text = "Test";
+            this.ESLTestButton.UseVisualStyleBackColor = true;
+            this.ESLTestButton.Click += new System.EventHandler(this.ESLTestButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2231,6 +2243,7 @@
         private System.Windows.Forms.ComboBox cbbBaudrates;
         private System.Windows.Forms.Label laBaudrate;
         private System.Windows.Forms.CheckBox chbCanFD;
+        private System.Windows.Forms.Button ESLTestButton;
     }
 }
 

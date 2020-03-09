@@ -44,7 +44,14 @@ namespace cerdec_gui
             Array.Sort(com_ports);
 
             COMPortCB.Items.AddRange(com_ports);
-            COMPortCB.SelectedItem = saved_port;
+            if (saved_port != "")
+            {
+                COMPortCB.SelectedItem = saved_port;
+            }
+            else
+            {
+                COMPortCB.SelectedItem = com_ports[0];
+            }
         }
 
         private void COMPortCB_SelectedIndexChanged(object sender, EventArgs e)

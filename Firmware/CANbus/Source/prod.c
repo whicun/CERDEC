@@ -58,6 +58,7 @@
 #include "dl.h"
 #include "motor.h"
 #include "can.h"
+#include "System_Object.h"
 
 
 #define PRE_SIZE 1000000000L
@@ -915,7 +916,7 @@ void main(void) {
 		}
 
 		//==================================================================================//
-		// Data streamming									//
+		// Data streamming - Erik                                                           //
 		//==================================================================================//
 		// stream data if we're in BINARY command mode, and data streaming is enabled
 		if ( SCI_MODE_BIN == cmd_mode && ds_en) {
@@ -924,6 +925,7 @@ void main(void) {
 			if (prod_getavail() >= (ds_dn * ds_dec) || ds_stop) {
 
 				//GpioDataRegs.GPBCLEAR.bit.GPIOB3 = 1;	// DEBUG: TAG_TX
+				int gui_temp; // Storing ints to be sent to GUI
 
 				ds_ct = 0;
 				k = ds_dec;				// for decimation
@@ -931,6 +933,39 @@ void main(void) {
 				buff[j++] = 0;				// 0, address
 				buff[j++] = 0xdd;			// 1, data packet ID
 				buff[j++] = ds_dn;			// 2, number of dataset
+
+				gui_temp = getShelfVoltage(1);
+				buff[j++] = 0xff & gui_temp;
+				buff[j++] = 0xff & (gui_temp >> 8);
+
+				gui_temp = getShelfAvgTemp(1);
+				buff[j++] = 0xff & gui_temp;
+				buff[j++] = 0xff & (gui_temp >> 8);
+
+				gui_temp = getShelfMaxTemp(1);
+				buff[j++] = 0xff & gui_temp;
+				buff[j++] = 0xff & (gui_temp >> 8);
+
+				gui_temp = getShelfMinTemp(1);
+				buff[j++] = 0xff & gui_temp;
+				buff[j++] = 0xff & (gui_temp >> 8);
+
+				gui_temp = getShelfMaxTempID(1);
+				buff[j++] = 0xff & gui_temp;
+				buff[j++] = 0xff & (gui_temp >> 8);
+
+				gui_temp = getShelfMinTempID(1);
+				buff[j++] = 0xff & gui_temp;
+				buff[j++] = 0xff & (gui_temp >> 8);
+
+				gui_temp = getShelfAlarms(1);
+				buff[j++] = 0xff & gui_temp;
+				buff[j++] = 0xff & (gui_temp >> 8);
+
+				gui_temp = getShelfErrors(1);
+				buff[j++] = 0xff & gui_temp;
+				buff[j++] = 0xff & (gui_temp >> 8);
+				/*
 				buff[j++] = 0xff & ds_dec;		// 3, decimation low
 				buff[j++] = 0xff & ds_dec >> 8;		// 4, decimation high
 				buff[j++] = ds_bm;			// 5, bitmap
@@ -983,7 +1018,7 @@ void main(void) {
 				}
 
 				buff[2] = ds_ct;			// 2, number of dataset
-
+				*/
 				if (ds_stop) {
 					ds_en = 0;
 				}

@@ -80,6 +80,7 @@ namespace cerdec_gui
                 serial_port.StopBits = StopBits.One;
                 serial_port.Handshake = Handshake.None;
                 serial_port.ReadBufferSize = 0x10000;
+                serial_port.RtsEnable = true;
 
                 // Try to open it
                 serial_port.Open();

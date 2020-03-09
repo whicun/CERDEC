@@ -18,3 +18,16 @@ C:\Users\ebenton\Documents\CERDEC TS\visual_studio\cerdec_gui\cerdec_gui\obj\Deb
 C:\Users\ebenton\Documents\CERDEC TS\visual_studio\cerdec_gui\cerdec_gui\obj\Debug\cerdec_gui.exe
 C:\Users\ebenton\Documents\CERDEC TS\visual_studio\cerdec_gui\cerdec_gui\obj\Debug\cerdec_gui.pdb
 C:\Users\ebenton\Documents\CERDEC TS\visual_studio\cerdec_gui\cerdec_gui\obj\Debug\cerdec_gui.CommsSetup.resources
+C:\Users\EBenton\Desktop\cerdec_gui\cerdec_gui\bin\Debug\cerdec_gui.exe.config
+C:\Users\EBenton\Desktop\cerdec_gui\cerdec_gui\bin\Debug\cerdec_gui.exe
+C:\Users\EBenton\Desktop\cerdec_gui\cerdec_gui\bin\Debug\cerdec_gui.pdb
+C:\Users\EBenton\Desktop\cerdec_gui\cerdec_gui\obj\Debug\cerdec_gui.csprojAssemblyReference.cache
+C:\Users\EBenton\Desktop\cerdec_gui\cerdec_gui\obj\Debug\cerdec_gui.CommsSetup.resources
+C:\Users\EBenton\Desktop\cerdec_gui\cerdec_gui\obj\Debug\cerdec_gui.MainForm.resources
+C:\Users\EBenton\Desktop\cerdec_gui\cerdec_gui\obj\Debug\cerdec_gui.Properties.Resources.resources
+C:\Users\EBenton\Desktop\cerdec_gui\cerdec_gui\obj\Debug\cerdec_gui.csproj.GenerateResource.cache
+C:\Users\EBenton\Desktop\cerdec_gui\cerdec_gui\obj\Debug\cerdec_gui.csproj.CoreCompileInputs.cache
+C:\Users\EBenton\Desktop\cerdec_gui\cerdec_gui\obj\Debug\cerdec_gui.exe
+C:\Users\EBenton\Desktop\cerdec_gui\cerdec_gui\obj\Debug\cerdec_gui.pdb
+C:\Users\EBenton\Desktop\cerdec_gui\cerdec_gui\obj\Debug\cerdec_gui.GraphForm.resources
+C:\Users\EBenton\Desktop\cerdec_gui\cerdec_gui\obj\Debug\cerdec_gui.LogForm.resources

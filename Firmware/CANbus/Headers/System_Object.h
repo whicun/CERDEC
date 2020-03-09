@@ -94,7 +94,7 @@ Uint16 getSystemStatus();
 void setSystemStatus(Uint16 status);
 Uint16 getSystemMode();
 void setSystemMode(Uint16 mode);
-Uint16 getSystemIsRelay();
+Uint16 getSystemIsoRelay();
 void setSystemIsoRelay(Uint16 isoRelay);
 Uint16 getSystemSSRelay();
 void setSSRelay(Uint16 ssRelay);
