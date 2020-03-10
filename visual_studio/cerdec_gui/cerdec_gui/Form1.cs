@@ -725,7 +725,29 @@ namespace cerdec_gui
 
                         break;
                     
-                    
+                    case CmdCodes.SetModUpdateTime:
+
+                        switch(buff[offset + 2])
+                        {
+                            case CmdCodes.UpdateOff:
+
+                                break;
+
+                            case CmdCodes.UpdateSlow:
+
+                                break;
+
+                            case CmdCodes.UpdateMedium:
+
+                                break;
+
+                            case CmdCodes.UpdateFast:
+
+                                break;
+                        }
+
+                        break;
+
                     case CmdCodes.CmdUnImpl:
 
                         break;
@@ -1429,14 +1451,13 @@ namespace cerdec_gui
                 MessageBox.Show("No error message for the shelf", "Shelf Error Message");
         }
 
-        private void SetModuleUpdateTime(UInt16 msecs)
+        private void SetModuleUpdateTime(byte speed)
         {
             //  Command data streaming to stop...
-            byte[] cmd = new byte[4];
+            byte[] cmd = new byte[3];
             cmd[0] = 0;
             cmd[1] = CmdCodes.SetModUpdateTime;
-            cmd[2] = (byte)(msecs & 0xFF);
-            cmd[3] = (byte)((msecs & 0xFF00) >> 8);
+            cmd[2] = speed;
             sendCmd(cmd);
         }
 
