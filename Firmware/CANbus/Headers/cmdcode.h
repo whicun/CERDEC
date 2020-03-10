@@ -93,6 +93,11 @@
 
 #define StartStream	0xd2
 #define StopStream	0xd3
+#define SetModUpdateTime  0xD8
+#define UpdateOff 0x00
+#define UpdateSlow  0x01
+#define UpdateMedium  0x02
+#define UpdateFast  0x03
 
 #define DataPacket	0xdd
 

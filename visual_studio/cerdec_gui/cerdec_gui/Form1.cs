@@ -591,17 +591,17 @@ namespace cerdec_gui
                             // ====================== 26 Bytes
 
                             // Data Set 1: Converter Voltages
-                            // Set Point        Long 4B
-                            // DC Bus           Long 4B
-                            // ESD Bus          Long 4B
-                            // ===================== 16 Bytes
+                            // Set Point        UInt 2B
+                            // DC Bus           UInt 2B
+                            // ESD Bus          UInt 2B
+                            // ===================== 10 Bytes
 
                             // Data Set 2: Converter Currents
-                            // Source           Long 4B
-                            // Load             Long 4B
-                            // Conv. DC         Long 4B
-                            // ESD              Long 4B
-                            // ===================== 20 Bytes
+                            // Source            Int 2B
+                            // Load              Int 2B
+                            // Conv. DC          Int 2B
+                            // ESD               Int 2B
+                            // ===================== 12 Bytes
 
                             // Data Set 3: Converter Temperatures
                             // Temp 1           Int 2B
@@ -679,12 +679,12 @@ namespace cerdec_gui
                             case 1:
 
                                 // Converter Voltage Data
-                                pcka_conv.Volt_bus_set = BitConverter.ToInt32(buff, offset + data_index);
-                                data_index += 4;
-                                pcka_conv.Volt_bus_act = BitConverter.ToInt32(buff, offset + data_index);
-                                data_index += 4;
-                                pcka_conv.Volt_esd_act = BitConverter.ToInt32(buff, offset + data_index);
-                                data_index += 4;
+                                pcka_conv.Volt_bus_set = (float)(BitConverter.ToUInt16(buff, offset + data_index) * (600.0F / UInt16.MaxValue));
+                                data_index += 2;
+                                pcka_conv.Volt_bus_act = (float)(BitConverter.ToUInt16(buff, offset + data_index) * (600.0F / UInt16.MaxValue));
+                                data_index += 2;
+                                pcka_conv.Volt_esd_act = (float)(BitConverter.ToUInt16(buff, offset + data_index) * (600.0F / UInt16.MaxValue));
+                                data_index += 2;
 
                                 //refresh_conv_voltages();
 
@@ -693,14 +693,14 @@ namespace cerdec_gui
                             case 2:
 
                                 // Converter Current Data
-                                pcka_conv.Curr_src_act = BitConverter.ToInt32(buff, offset + data_index);
-                                data_index += 4;
-                                pcka_conv.Curr_load_act = BitConverter.ToInt32(buff, offset + data_index);
-                                data_index += 4;
-                                pcka_conv.Curr_bus_act = BitConverter.ToInt32(buff, offset + data_index);
-                                data_index += 4;
-                                pcka_conv.Curr_esd_act = BitConverter.ToInt32(buff, offset + data_index);
-                                data_index += 4;
+                                pcka_conv.Curr_src_act = (float)(BitConverter.ToInt16(buff, offset + data_index) * (2000.0F / Int16.MaxValue));
+                                data_index += 2;
+                                pcka_conv.Curr_load_act = (float)(BitConverter.ToInt16(buff, offset + data_index) * (2000.0F / Int16.MaxValue));
+                                data_index += 2;
+                                pcka_conv.Curr_bus_act = (float)(BitConverter.ToInt16(buff, offset + data_index) * (2000.0F / Int16.MaxValue));
+                                data_index += 2;
+                                pcka_conv.Curr_esd_act = (float)(BitConverter.ToInt16(buff, offset + data_index) * (2000.0F / Int16.MaxValue));
+                                data_index += 2;
 
                                 //refresh_conv_currents();
 
@@ -711,7 +711,7 @@ namespace cerdec_gui
                                 // Converter Temperature Data
                                 for(int i = 0; i < 8; i++)
                                 {
-                                    pcka_conv.Temps[i] = BitConverter.ToInt16(buff, offset + data_index);
+                                    pcka_conv.Temps[i] = (float)((BitConverter.ToInt16(buff, offset + data_index) / 10.0F) * 9.0F / 5.0F + 32); // Cels -> Fahr
                                     data_index += 2;
                                 }
 
@@ -730,7 +730,7 @@ namespace cerdec_gui
                         switch(buff[offset + 2])
                         {
                             case CmdCodes.UpdateOff:
-
+                                    
                                 break;
 
                             case CmdCodes.UpdateSlow:

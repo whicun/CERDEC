@@ -31,3 +31,5 @@ C:\Users\EBenton\Desktop\cerdec_gui\cerdec_gui\obj\Debug\cerdec_gui.exe
 C:\Users\EBenton\Desktop\cerdec_gui\cerdec_gui\obj\Debug\cerdec_gui.pdb
 C:\Users\EBenton\Desktop\cerdec_gui\cerdec_gui\obj\Debug\cerdec_gui.GraphForm.resources
 C:\Users\EBenton\Desktop\cerdec_gui\cerdec_gui\obj\Debug\cerdec_gui.LogForm.resources
+C:\Users\ebenton\Documents\CERDEC TS\visual_studio\cerdec_gui\cerdec_gui\obj\Debug\cerdec_gui.GraphForm.resources
+C:\Users\ebenton\Documents\CERDEC TS\visual_studio\cerdec_gui\cerdec_gui\obj\Debug\cerdec_gui.LogForm.resources
